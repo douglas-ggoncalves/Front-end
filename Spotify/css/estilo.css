@@ -1,0 +1,142 @@
+html {
+    height: 100%;
+}
+
+body {
+    background: #AF2DA1;
+    background-image: url("../imagens/capa.png");
+    background-attachment: fixed;
+    height: 100%;
+}
+
+.barraMenu {
+    background: rgba(61, 21, 77, 0.7)
+}
+
+.navbar-dark .navbar-nav .nav-link {
+    color: white;
+}
+
+.navbar-dark .navbar-nav .nav-link:hover {
+    color: rgb(155, 240, 225);
+}
+
+.navbar-dark .navbar-toggler {
+    border-color: rgb(255, 255, 255, 0.6);
+}
+
+button.btn {
+    border-radius: 40px;
+}
+
+button.btn.btn-outline-light.footerBotton {
+    border-radius: 10px;
+    margin-right: 10px;
+}
+
+h2 {
+    color: #7C25F8;
+    font-size: 2.5em;
+    font-weight: bold;
+}
+
+h3 {
+    color: #7C25F8;
+    font-size: 2em;
+    font-weight: bold;
+}
+
+h4 {
+    color: #9BF0E1;
+    font-size: 2em;
+}
+
+h4.text-white {
+    color: white;
+    font-size: 3em;
+}
+
+h5 {
+    font-size: 1.2em;
+}
+
+h1.text-white {
+    font-weight: bold;
+}
+
+.finalImages {
+    transform: rotate(30deg);
+    -ms-transform: rotate(30deg);
+    /* IE 9 */
+    -webkit-transform: rotate(30deg);
+    /* Chrome, Safari, Opera */
+}
+
+ul li {
+    list-style: none;
+}
+
+ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 0.9em;
+}
+
+ul li a:hover {
+    color: rgb(155, 240, 225);
+    text-decoration: none;
+}
+
+a.nav-link {
+    font-size: 15px;
+}
+
+.footerImage {
+    height: 41px;
+}
+
+@media (min-width: 576px) {
+    h1.text-white {
+        font-size: 3em;
+    }
+}
+
+@media (min-width: 768px) {
+    h1.text-white {
+        font-size: 3em;
+    }
+    img {
+        height: 170px;
+    }
+    .finalImages img {
+        height: 350px;
+    }
+}
+
+@media (min-width: 992px) {
+    h1.text-white {
+        font-size: 4em;
+    }
+    img {
+        height: 220px;
+    }
+    .finalImages img {
+        height: 400px;
+    }
+}
+
+@media (min-width: 1200px) {
+    h1.text-white {
+        font-size: 6em;
+    }
+    img {
+        height: 230px;
+    }
+    .finalImages img {
+        margin-top: 18px;
+        height: 540px;
+    }
+    a.nav-link {
+        font-size: 17px;
+    }
+}
