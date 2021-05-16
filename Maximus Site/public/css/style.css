@@ -1,0 +1,70 @@
+h5 {
+    font-weight: 400;
+}
+
+.barraMenu {
+    background: rgba(59, 52, 52, 0.164);
+}
+
+.navbar-dark .navbar-nav .nav-link {
+    color: white;
+}
+
+.navbar-dark .navbar-nav .nav-link:hover {
+    color: rgb(155, 240, 225);
+}
+
+a.nav-link.sol {
+    color: #ee0327 !important;
+}
+
+a.nav-link.sol:hover {
+    color: rgb(209, 45, 23) !important;
+}
+
+.image {
+    /*background: url("../img/banner.png");*/
+    background: black;
+}
+
+.navbar {
+    padding: 0 1rem 0 1rem;
+}
+
+@media (min-width: 576px) {
+    .card-columns {
+        -webkit-column-count: 1;
+        -moz-column-count: 1;
+        column-count: 1;
+    }
+}
+
+@media (min-width: 768px) {
+    ul li a {
+        font-size: 1.1em;
+    }
+    .card-columns {
+        -webkit-column-count: 1;
+        -moz-column-count: 1;
+        column-count: 1;
+    }
+}
+
+@media (min-width: 992px) {
+    ul li a {
+        font-size: 1.12em;
+    }
+    .card-columns {
+        -webkit-column-count: 2;
+        -moz-column-count: 2;
+        column-count: 2;
+    }
+}
+
+@media (min-width: 1200px) {
+    .card-columns {
+        -webkit-column-count: 2;
+        -moz-column-count: 2;
+        column-count: 2;
+    }
+}
