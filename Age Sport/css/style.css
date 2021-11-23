@@ -27,7 +27,3 @@ li{
 #navbar>a span{
     line-height: 0;
 }
-
-.carousel-indicators {
-    position: relative;
-}
