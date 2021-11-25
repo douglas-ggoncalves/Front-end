@@ -32,8 +32,12 @@
 <body style="background-color: black;">
 
     <div class="container-fluid">
-        <div class="row d-flex align-items-center" style="background-color: black;">
-            <div class="col-5 offset-1">
+        <div class="row" style="background-color: black;">
+            <!-- 
+            <div class="d-flex align-items-center" style="width: 100%;">
+            </div>
+-->
+            <div class="col-5 offset-1 d-flex align-items-center" style="max-height: 55px;">
                 <span id="soon" style="color: red;">
                     AGE
                 </span>
@@ -44,7 +48,7 @@
             </div>
 
 
-            <div class="col-6 offset-lg-1 col-lg-5 d-flex align-items-center" style="height: 100%;">
+            <div class="col-6 col-lg-5" style="height: 100%;">
                 <nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="background-color: black;">
                     <a class="navbar-brand" href="#"></a>
                     
@@ -52,8 +56,9 @@
                         aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
+
                     <div class="collapse navbar-collapse" id="navbarNavDropdown">
-                        <ul class="navbar-nav col-6 offset-6 offset-md-1 pl-4 pt-2 pt-md-0">
+                        <ul class="navbar-nav col-6 pl-4 pt-2 pt-md-0">
                             <li class="nav-item active">
                                 <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
                             </li>
@@ -86,7 +91,7 @@
                     <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
                 </ol>
 
-                <div class="carousel-inner" style="border: 1px solid greenyellow; max-height: 700px; width: 100%;">
+                <div class="carousel-inner" style="width: 100%;">
                     <div class="carousel-item active">
                         <img class="d-block w-100" src="imagens/home-bg-1.jpg" alt="First slide">
                     </div>
@@ -98,20 +103,16 @@
                     </div>
                 </div>
 
-                <a class="carousel-control-prev" href="#" role="button" data-slide="prev" style="opacity: 1;">
+                <a class="carousel-control-prev justify-content-start ml-3" href="#" role="button" data-slide="prev" style="opacity: 1; width: 80%;">
                     <p>
-                        <span id="" style="color: red; font-size: 1.1em;">
+                        <span id="banners" style="color: red;">
                             Be Strong, Be Fit
                         </span>
 
-                        <span id="" style="color: rgb(255, 255, 255); width: 100%; font-size: 1.1em; display: block;">
+                        <span id="banners" style="color: rgb(255, 255, 255); width: 100%; display: block;">
                             Torne-se mais forte do que suas desculpas
                         </span>
                     </p>
-                </a>
-                <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Next</span>
                 </a>
             </div>
         </div>
