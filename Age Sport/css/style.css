@@ -65,30 +65,30 @@ li {
     background: #b30000; 
 }
 
-    
 @media (max-width: 575.98px) {
     .carousel-inner{
         max-height: 280px;
     }
 
-    span#banners{
-        font-size: 1.1em;
+    span#bannersTextRed{
+        font-size: 1.15em;
+    }
+
+    span#bannersTextWhite{
+        font-size: 1.4em;
     }
 }
 
 @media (min-width: 576px) and (max-width: 767.98px) {
     .carousel-inner{
-        max-height: 350px;
+        max-height: 330px;
     }
 
-    span#banners{
-        font-size: 1.1em;
-    }
 }
 
 @media (min-width: 768px) and (max-width: 991.98px) {
     .carousel-inner{
-        max-height: 450px;
+        max-height: 420px;
     }
 }
 
