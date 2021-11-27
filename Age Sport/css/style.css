@@ -101,7 +101,6 @@ li {
     .navbar-dark .navbar-nav .nav-link{
         font-size: 1.2em;
     }
-
 }
 
 @media (min-width: 768px) and (max-width: 991.98px) {
@@ -120,6 +119,7 @@ li {
     .navbar-dark .navbar-nav .nav-link{
         font-size: 1.25em;
     }
+
 }
 
 @media (min-width: 992px) and (max-width: 1199.98px) {
@@ -137,6 +137,14 @@ li {
 
     .navbar-dark .navbar-nav .nav-link{
         font-size: 1.18em;
+    }
+
+    #infoLorem{
+        font-size: 1.1em;
+    }
+
+    #divInfo{
+        max-width: 50%;
     }
 }
 
@@ -156,10 +164,20 @@ li {
     .navbar-dark .navbar-nav .nav-link{
         font-size: 1.20em;
     }
+
+    #infoLorem{
+        font-size: 1.15em;
+    }
+
+    #divInfo{
+        max-width: 50%;
+    }
 }
 
 @media (min-width: 1700px) {
     .navbar-dark .navbar-nav .nav-link{
         font-size: 1.35em;
     }
+
 }
+
