@@ -34,9 +34,10 @@ li {
         background: url('../imagens/home-bg-3.jpg');
         width: 100%;
         height: 100%;
-    */
-    margin-right: -15px; 
+    margin-right: -15px;
     margin-left: -15px;
+    */
+
 }
 
 .bg-dark {
@@ -47,137 +48,155 @@ li {
 ::-webkit-scrollbar {
     width: 9px;
 }
-  
+
 /* Track */
 ::-webkit-scrollbar-track {
     box-shadow: inset 0 0 5px #cf3a3a;
     border-radius: 10px;
 }
-   
+
 /* Handle */
 ::-webkit-scrollbar-thumb {
-    background: red; 
+    background: red;
     border-radius: 10px;
 }
-  
+
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-    background: #b30000; 
+    background: #b30000;
 }
 
-
-
 @media (max-width: 575.98px) {
-    .carousel-inner{
+    .carousel-inner {
         max-height: 280px;
     }
 
-    span#bannersTextRed{
+    span#bannersTextRed {
         font-size: 1.3em;
     }
 
-    span#bannersTextWhite{
+    span#bannersTextWhite {
         font-size: 1.5em;
     }
 
-    .navbar-dark .navbar-nav .nav-link{
+    .navbar-dark .navbar-nav .nav-link {
         font-size: 1.1em;
     }
-}
 
-@media (min-width: 576px) and (max-width: 767.98px) {
-    .carousel-inner{
-        max-height: 330px;
-    }
-
-    span#bannersTextRed{
-        font-size: 1.5em;
-    }
-
-    span#bannersTextWhite{
-        font-size: 2.2em;
-    }
-
-    .navbar-dark .navbar-nav .nav-link{
+    .text-danger {
         font-size: 1.2em;
     }
 }
 
+@media (min-width: 576px) and (max-width: 767.98px) {
+    .carousel-inner {
+        max-height: 330px;
+    }
+
+    span#bannersTextRed {
+        font-size: 1.5em;
+    }
+
+    span#bannersTextWhite {
+        font-size: 2.2em;
+    }
+
+    .navbar-dark .navbar-nav .nav-link {
+        font-size: 1.2em;
+    }
+
+    .text-danger {
+        font-size: 1.25em;
+    }
+}
+
 @media (min-width: 768px) and (max-width: 991.98px) {
-    .carousel-inner{
+    .carousel-inner {
         max-height: 420px;
     }
 
-    span#bannersTextRed{
+    span#bannersTextRed {
         font-size: 1.6em;
     }
 
-    span#bannersTextWhite{
+    span#bannersTextWhite {
         font-size: 2.5em;
     }
 
-    .navbar-dark .navbar-nav .nav-link{
+    .navbar-dark .navbar-nav .nav-link {
         font-size: 1.25em;
     }
 
+    .text-danger {
+        font-size: 1.3em;
+    }
 }
 
 @media (min-width: 992px) and (max-width: 1199.98px) {
-    .carousel-inner{
+    .carousel-inner {
         max-height: 520px;
     }
 
-    span#bannersTextRed{
+    span#bannersTextRed {
         font-size: 1.7em;
     }
 
-    span#bannersTextWhite{
+    span#bannersTextWhite {
         font-size: 2.6em;
     }
 
-    .navbar-dark .navbar-nav .nav-link{
+    .navbar-dark .navbar-nav .nav-link {
         font-size: 1.18em;
     }
 
-    #infoLorem{
+    #infoLorem {
         font-size: 1.1em;
     }
 
-    #divInfo{
+    #divInfo {
         max-width: 50%;
+    }
+
+    .text-danger {
+        font-size: 1.5em;
     }
 }
 
+
+
 @media (min-width: 1200px) {
-    .carousel-inner{
+    .carousel-inner {
         max-height: 650px;
     }
 
-    span#bannersTextRed{
+    span#bannersTextRed {
         font-size: 1.7em;
     }
 
-    span#bannersTextWhite{
+    span#bannersTextWhite {
         font-size: 2.6em;
     }
 
-    .navbar-dark .navbar-nav .nav-link{
+    .navbar-dark .navbar-nav .nav-link {
         font-size: 1.20em;
     }
 
-    #infoLorem{
+    #infoLorem {
         font-size: 1.15em;
     }
 
-    #divInfo{
+    #divInfo {
         max-width: 50%;
+    }
+
+    .text-danger {
+        font-size: 2em;
     }
 }
 
 @media (min-width: 1700px) {
-    .navbar-dark .navbar-nav .nav-link{
+    .navbar-dark .navbar-nav .nav-link {
         font-size: 1.35em;
     }
 
 }
-
