@@ -122,6 +122,10 @@ span#options{
     text-align: justify;
 }
 
+div#plans{
+    padding: 5px; background-color: rgba(65, 63, 63, 0.255); border: 1px solid rgb(129, 126, 126); border-radius: 30px;
+}
+
 @media (max-width: 575.98px) {
     .carousel-inner {
         max-height: 280px;
