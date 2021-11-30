@@ -123,7 +123,10 @@ span#options{
 }
 
 div#plans{
-    padding: 5px; background-color: rgba(65, 63, 63, 0.255); border: 1px solid rgb(129, 126, 126); border-radius: 30px;
+    padding: 5px; 
+    background-color: rgba(65, 63, 63, 0.255); 
+    border: 1px solid rgb(129, 126, 126); 
+    border-radius: 30px;
 }
 
 @media (max-width: 575.98px) {
@@ -168,6 +171,8 @@ div#plans{
     .text-danger {
         font-size: 1.25em;
     }
+
+    
 }
 
 @media (min-width: 768px) and (max-width: 991.98px) {
@@ -190,6 +195,8 @@ div#plans{
     .text-danger {
         font-size: 1.3em;
     }
+
+    
 }
 
 @media (min-width: 992px) and (max-width: 1199.98px) {
@@ -220,12 +227,20 @@ div#plans{
     .text-danger {
         font-size: 1.5em;
     }
+
+    div#plans{
+        margin: 20px;
+    }
+
+    
 }
 
 @media (min-width: 576px) {
     .container img {
         width: 100%;
     }
+
+
 }
 
 @media (min-width: 1200px) {
@@ -255,6 +270,10 @@ div#plans{
 
     .text-danger {
         font-size: 2em;
+    }
+
+    div#myRowPlans{
+        max-width: 90%;
     }
 }
 
