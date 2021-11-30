@@ -171,8 +171,6 @@ div#plans{
     .text-danger {
         font-size: 1.25em;
     }
-
-    
 }
 
 @media (min-width: 768px) and (max-width: 991.98px) {
@@ -195,8 +193,6 @@ div#plans{
     .text-danger {
         font-size: 1.3em;
     }
-
-    
 }
 
 @media (min-width: 992px) and (max-width: 1199.98px) {
@@ -231,8 +227,6 @@ div#plans{
     div#plans{
         margin: 20px;
     }
-
-    
 }
 
 @media (min-width: 576px) {
