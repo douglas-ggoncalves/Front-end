@@ -179,7 +179,7 @@ div#plans{
     }
 
     span#bannersTextRed {
-        font-size: 1.6em;
+        font-size: 1.55em;
     }
 
     span#bannersTextWhite {
@@ -205,15 +205,11 @@ div#plans{
     }
 
     span#bannersTextWhite {
-        font-size: 2.6em;
+        font-size: 2.4em;
     }
 
     .navbar-dark .navbar-nav .nav-link {
         font-size: 1.18em;
-    }
-
-    #infoLorem {
-        font-size: 1.1em;
     }
 
     #divInfo {
@@ -233,8 +229,6 @@ div#plans{
     .container img {
         width: 100%;
     }
-
-
 }
 
 @media (min-width: 1200px) {
