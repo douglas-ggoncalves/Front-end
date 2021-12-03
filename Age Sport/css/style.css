@@ -27,39 +27,26 @@ li {
     line-height: 0;
 }
 
-/*
-#div1 {
-        background: url('../imagens/home-bg-1.jpg');
-        background: url('../imagens/home-bg-2.jpg');
-        background: url('../imagens/home-bg-3.jpg');
-        width: 100%;
-        height: 100%;
-    margin-right: -15px;
-    margin-left: -15px;
-}
-    */
-
-
 .containerInfo {
     position: relative;
     border: 1px solid #000;
     overflow: hidden;
+    /*
     width: 400px;
-    margin: 100px;
+    max-width: 400px;
+    */
 }
 
 .containerInfo img {
-    max-width: 100%;
     -moz-transition: all 0.5s;
     -webkit-transition: all 0.5s;
     transition: all 0.5s;
 }
 
 .containerInfo:hover img {
-    -moz-transform: scale(1.1);
-    -webkit-transform: scale(1.1);
-    transform: scale(1.1);
-    max-width: 90%;
+    -moz-transform: scale(1.2);
+    -webkit-transform: scale(1.2);
+    transform: scale(1.2);
 }
 
 .bg-dark {
@@ -111,7 +98,6 @@ span#infoTextRedTitle {
 span#infoTextWhite {
     color: rgb(255, 255, 255); 
     font-family: Verdana, sans-serif; 
-    
     letter-spacing: 1.1px;
     display: flex; 
     justify-content: center;
@@ -212,10 +198,6 @@ div#plans{
         font-size: 1.18em;
     }
 
-    #divInfo {
-        max-width: 50%;
-    }
-
     .text-danger {
         font-size: 1.5em;
     }
@@ -252,9 +234,6 @@ div#plans{
         font-size: 1.15em;
     }
 
-    #divInfo {
-        max-width: 50%;
-    }
 
     .text-danger {
         font-size: 2em;
