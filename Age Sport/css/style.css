@@ -41,12 +41,16 @@ li {
     -moz-transition: all 0.5s;
     -webkit-transition: all 0.5s;
     transition: all 0.5s;
-}
-
-.containerInfo:hover img {
     -moz-transform: scale(1.2);
     -webkit-transform: scale(1.2);
     transform: scale(1.2);
+    min-width: 100%;
+}
+
+.containerInfo:hover img {
+    -moz-transform: scale(1.4);
+    -webkit-transform: scale(1.4);
+    transform: scale(1.4);
 }
 
 .bg-dark {
