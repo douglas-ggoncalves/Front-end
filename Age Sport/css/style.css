@@ -40,22 +40,22 @@ li {
     */
 
 
-.container {
+.containerInfo {
     position: relative;
     border: 1px solid #000;
     overflow: hidden;
-    /*width: 300px;*/
-    /*margin: 100px;*/
+    width: 400px;
+    margin: 100px;
 }
 
-.container img {
+.containerInfo img {
+    max-width: 100%;
     -moz-transition: all 0.5s;
     -webkit-transition: all 0.5s;
     transition: all 0.5s;
-    width: 90%;
 }
 
-.container:hover img {
+.containerInfo:hover img {
     -moz-transform: scale(1.1);
     -webkit-transform: scale(1.1);
     transform: scale(1.1);
