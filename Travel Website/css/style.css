@@ -32,7 +32,7 @@ body {
 
 #buttonNav {
     padding: 10px 14px;
-    background-color: rgb(27, 27, 27);
+    background-color: transparent;
     color: #29d9d5;
     border: 1px solid #29d9d5;
     border-radius: 50px;
@@ -51,23 +51,58 @@ body {
     font-size: 1.45em;
 }
 
-#textBgTop {
+#textBgTopOne {
     display: block;
     width: 100%;
-    opacity: 1;
+    color: white;
+    font-family: Extreme;
+    font-size: 3.5em;
+}
+
+#textBgTopTwo {
+    display: block;
+    width: 100%;
+    color: white;
+    font-size: 2.5em;
+    font-weight: bold;
+}
+
+#textBgTopThree {
+    display: block;
+    width: 100%;
+    color: rgba(255, 228, 196, 0.684);
+    width: 80%;
+    text-align: justify;
 }
 
 #rowBanner {
-    height: 500px;
-    background: linear-gradient(rgba(255,255,255,.5), rgba(255,255,255,.5)), url("../images/home-bg.jpg");
+    min-height: 600px;
+    background: linear-gradient(rgba(18, 15, 16, 0.5), rgba(18, 15, 16, 0.5)), url("../images/home-bg.jpg") no-repeat center center;
     background-size: cover;
+    border-radius: 8px;
 }
 
-@media only screen and (max-width: 600px) {}
+@media only screen and (max-width: 600px) {
+    #rowBanner {
+        max-height: 900px;
+    }
+}
 
-@media only screen and (min-width: 600px) {}
+@media only screen and (min-width: 600px) {
+    #textBgTopOne {
+        font-size: 4.5em;
+    }
 
-@media only screen and (min-width: 768px) {}
+    #textBgTopTwo {
+        font-size: 3.0em;
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    #textBgTopThree {
+        width: 62%;
+    }
+}
 
 @media only screen and (min-width: 992px) {
     .myNav a.nav-link {
@@ -78,6 +113,14 @@ body {
         font-size: 1.2em;
         padding: 10px 24px;
     }
+
+    #textBgTopOne {
+        font-size: 5.5em;
+    }
+
+    #textBgTopTwo {
+        font-size: 3.5em;
+    }
 }
 
 @media only screen and (min-width: 1200px) {
@@ -86,12 +129,20 @@ body {
         letter-spacing: 0.6px;
     }
 
+    #textBgTopTwo {
+        font-size: 5em;
+    }
+
+    #textBgTopThree {
+        width: 40%;
+        font-size: 1.05em;
+    }
 }
 
 @font-face {
     font-family: 'Extreme';
-    src: url('../Extreme-Regular.woff2') format('woff2'),
-        url('../Extreme-Regular.woff') format('woff');
+    src: url('../fonts/Extreme-Regular.woff2') format('woff2'),
+        url('../fonts/Extreme-Regular.woff') format('woff');
     font-weight: normal;
     font-style: normal;
     font-display: swap;
