@@ -1,3 +1,12 @@
+@font-face {
+    font-family: 'Extreme';
+    src: url('../fonts/Extreme-Regular.woff2') format('woff2'),
+        url('../fonts/Extreme-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
 * {
     font-family: 'Poppins', sans-serif;
 }
@@ -82,6 +91,56 @@ body {
     border-radius: 8px;
 }
 
+.divFrontBanner{
+    padding: 7px 14px;
+    display: block;
+    width: 100%;
+}   
+
+.divFrontBanner span{
+    width: 100%; 
+    font-size: 0.9em;
+    letter-spacing: 0.1px;
+    display: block; 
+    color: rgb(180, 177, 173);
+    margin-bottom: 2px;
+}
+
+#divFrontBannerLast a{
+    display: block; 
+    width: 100%; 
+    text-align: center; 
+    padding: 8px 8px; 
+    height: 45px;
+}
+
+.divFrontBanner input{
+    border: 1px solid #29d9d5;
+    border-radius: 20px;
+    background-color: transparent;
+    padding: 10px 10px;
+    color: rgba(163, 159, 155, 0.89);
+    outline: none;
+    width: 100%;
+    height: 45px;
+}
+
+.myBall{
+    height: 20px; 
+    width: 20px; 
+    border-radius: 10px;
+    background-color: white; 
+    display: inline-block;
+    margin: 5px 7px;
+    border: none;
+    outline: none;
+}
+
+.myBall:hover{
+    background-color: #29d9d5; 
+    cursor: pointer;
+}
+
 @media only screen and (max-width: 600px) {
     #rowBanner {
         max-height: 900px;
@@ -102,6 +161,16 @@ body {
     #textBgTopThree {
         width: 62%;
     }
+
+    .divFrontBanner{
+        width: 50%;
+        display: inline; 
+        float: left;
+    } 
+
+    .divFrontBanner a{
+        margin-top: 22px;
+    }     
 }
 
 @media only screen and (min-width: 992px) {
@@ -121,6 +190,25 @@ body {
     #textBgTopTwo {
         font-size: 3.5em;
     }
+
+    .divFrontBanner input{
+        border: 2px solid #29d9d5;
+    }
+        
+    #divFrontBannerLast a{
+        border: 2px solid #29d9d5;
+    }
+
+    .divFrontBanner{
+        width: 33.33%;
+        display: inline; 
+        float: left;
+    } 
+
+    #divFrontBannerLast {
+        width: 100%;
+        padding-top: 0;
+    }
 }
 
 @media only screen and (min-width: 1200px) {
@@ -137,13 +225,20 @@ body {
         width: 40%;
         font-size: 1.05em;
     }
-}
 
-@font-face {
-    font-family: 'Extreme';
-    src: url('../fonts/Extreme-Regular.woff2') format('woff2'),
-        url('../fonts/Extreme-Regular.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-    font-display: swap;
+    #rowBanner {
+        min-height: 800px;
+    }
+
+    .divFrontBanner{
+        width: 25%;
+        display: inline; 
+        float: left;
+    } 
+
+    #divFrontBannerLast {
+        width: 25%;
+        padding: 7px;
+    }
+
 }
