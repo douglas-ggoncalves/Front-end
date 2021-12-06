@@ -91,30 +91,30 @@ body {
     border-radius: 8px;
 }
 
-.divFrontBanner{
+.divFrontBanner {
     padding: 7px 14px;
     display: block;
     width: 100%;
-}   
+}
 
-.divFrontBanner span{
-    width: 100%; 
+.divFrontBanner span {
+    width: 100%;
     font-size: 0.9em;
     letter-spacing: 0.1px;
-    display: block; 
+    display: block;
     color: rgb(180, 177, 173);
     margin-bottom: 2px;
 }
 
-#divFrontBannerLast a{
-    display: block; 
-    width: 100%; 
-    text-align: center; 
-    padding: 8px 8px; 
+#divFrontBannerLast a {
+    display: block;
+    width: 100%;
+    text-align: center;
+    padding: 8px 8px;
     height: 45px;
 }
 
-.divFrontBanner input{
+.divFrontBanner input {
     border: 1px solid #29d9d5;
     border-radius: 20px;
     background-color: transparent;
@@ -125,19 +125,27 @@ body {
     height: 45px;
 }
 
-.myBall{
-    height: 20px; 
-    width: 20px; 
+.myBall {
+    height: 20px;
+    width: 20px;
     border-radius: 10px;
-    background-color: white; 
+    background-color: white;
     display: inline-block;
     margin: 5px 7px;
     border: none;
     outline: none;
 }
 
-.myBall:hover{
-    background-color: #29d9d5; 
+.videos {
+    display: block; 
+    border-radius: 8px;
+    height: 300px; 
+    width: 450px; 
+    margin: 0 auto;
+}
+
+.myBall:hover {
+    background-color: #29d9d5;
     cursor: pointer;
 }
 
@@ -155,6 +163,11 @@ body {
     #textBgTopTwo {
         font-size: 3.0em;
     }
+
+    .videos {
+        height: 400px; 
+        width: 560px; 
+    }
 }
 
 @media only screen and (min-width: 768px) {
@@ -162,15 +175,21 @@ body {
         width: 62%;
     }
 
-    .divFrontBanner{
+    .divFrontBanner {
         width: 50%;
-        display: inline; 
+        display: inline;
         float: left;
-    } 
+    }
 
-    .divFrontBanner a{
+    .divFrontBanner a {
         margin-top: 22px;
-    }     
+    }
+
+    .videos {
+        height: 400px; 
+        width: 660px; 
+        border: 1px solid red;
+    }
 }
 
 @media only screen and (min-width: 992px) {
@@ -191,19 +210,19 @@ body {
         font-size: 3.5em;
     }
 
-    .divFrontBanner input{
-        border: 2px solid #29d9d5;
-    }
-        
-    #divFrontBannerLast a{
+    .divFrontBanner input {
         border: 2px solid #29d9d5;
     }
 
-    .divFrontBanner{
+    #divFrontBannerLast a {
+        border: 2px solid #29d9d5;
+    }
+
+    .divFrontBanner {
         width: 33.33%;
-        display: inline; 
+        display: inline;
         float: left;
-    } 
+    }
 
     #divFrontBannerLast {
         width: 100%;
@@ -230,11 +249,11 @@ body {
         min-height: 800px;
     }
 
-    .divFrontBanner{
+    .divFrontBanner {
         width: 25%;
-        display: inline; 
+        display: inline;
         float: left;
-    } 
+    }
 
     #divFrontBannerLast {
         width: 25%;
