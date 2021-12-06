@@ -186,8 +186,9 @@ body {
     }
 
     .videos {
-        height: 400px; 
         width: 660px; 
+        max-height: 250px; 
+        max-width: 100%;
         border: 1px solid red;
     }
 }
