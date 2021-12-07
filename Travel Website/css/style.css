@@ -152,14 +152,14 @@ body {
 #titleImageRight{
     color: #29d9d5; 
     font-family: 'Poppins'; 
-    font-size: 2em;
+    font-size: 1.7em;
 }
 
 #messageImageRight{
     width: 100%; 
     display: block; 
     color: white; 
-    font-size: 1.5em; 
+    font-size: 1.6em; 
     font-weight: bold;
 }
 
@@ -187,6 +187,15 @@ body {
         height: 400px; 
         width: 560px; 
     }
+
+    #titleImageRight{
+        font-size: 1.8em;
+    }
+    
+    #messageImageRight{
+        font-size: 1.65em; 
+    }
+    
 }
 
 @media only screen and (min-width: 768px) {
@@ -208,6 +217,18 @@ body {
         width: 660px; 
         max-height: 300px; 
         max-width: 100%;
+    }
+
+    #titleImageRight{
+        font-size: 1.9em;
+    }
+    
+    #messageImageRight{
+        font-size: 1.75em; 
+    }
+    
+    #loremImageRight{
+        font-size: 0.9em;
     }
 }
 
@@ -248,9 +269,24 @@ body {
         padding-top: 0;
     }
     .videos {
-        width: 660px; 
-        max-height: 300px; 
+        width: 1060px; 
+        max-height: 1060px; 
         max-width: 100%;
+    }
+
+    #titleImageRight{
+        border: 1px solid red;
+        font-size: 2.2em;
+    }
+    
+    #messageImageRight{
+        border: 1px solid red;
+        font-size: 1.95em; 
+    }
+    
+    #loremImageRight{
+        font-size: 0.9em; 
+        /*border: 1px solid red;*/
     }
 }
 
