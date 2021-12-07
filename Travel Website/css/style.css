@@ -187,9 +187,8 @@ body {
 
     .videos {
         width: 660px; 
-        max-height: 250px; 
+        max-height: 300px; 
         max-width: 100%;
-        border: 1px solid red;
     }
 }
 
@@ -229,6 +228,11 @@ body {
         width: 100%;
         padding-top: 0;
     }
+    .videos {
+        width: 660px; 
+        max-height: 300px; 
+        max-width: 100%;
+    }
 }
 
 @media only screen and (min-width: 1200px) {
@@ -259,6 +263,13 @@ body {
     #divFrontBannerLast {
         width: 25%;
         padding: 7px;
+    }
+
+    .videos {
+        width: 660px; 
+        height: 460px;
+        max-height: 100%; 
+        max-width: 100%;
     }
 
 }
