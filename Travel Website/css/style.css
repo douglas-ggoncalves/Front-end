@@ -149,6 +149,25 @@ body {
     cursor: pointer;
 }
 
+#titleImageRight{
+    color: #29d9d5; 
+    font-family: 'Poppins'; 
+    font-size: 2em;
+}
+
+#messageImageRight{
+    width: 100%; 
+    display: block; 
+    color: white; 
+    font-size: 1.5em; 
+    font-weight: bold;
+}
+
+#loremImageRight{
+    color: rgba(233, 229, 225, 0.684); 
+    font-family: sans-serif;
+}
+
 @media only screen and (max-width: 600px) {
     #rowBanner {
         max-height: 900px;
