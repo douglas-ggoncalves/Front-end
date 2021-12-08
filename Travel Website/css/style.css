@@ -91,6 +91,35 @@ body {
     border-radius: 8px;
 }
 
+#teste {
+    max-height: 600px;
+    height: 350px;
+    background: url('../images/des-1.jpg') no-repeat center center;
+    background-size: contain;
+    border-radius: 8px;
+}
+
+#teste:hover  {
+    transition: all 0.25s ease-in;
+    background-size: cover;
+
+   
+
+}
+
+/*
+.containerInfo img {
+    -moz-transition: all 0.5s;
+    -webkit-transition: all 0.5s;
+    transition: all 0.5s;
+    -moz-transform: scale(1.2);
+    -webkit-transform: scale(1.2);
+    C
+    min-width: 100%;
+}
+
+
+*/
 .divFrontBanner {
     padding: 7px 14px;
     display: block;

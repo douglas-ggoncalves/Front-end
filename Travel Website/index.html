@@ -34,7 +34,7 @@
 
 <body>
 
-    <div class="container-fluid" id="teste">
+    <div class="container-fluid">
 
         <div class="row p-0">
             <div class="col-3 col-md-6 mx-md-auto d-flex align-items-left pl-0 pl-md-0 py-2 order-md-2">
@@ -86,9 +86,8 @@
 
     <div class="container-fluid mt-2" style="background-color: rgb(0, 0, 0); width: 100%;">
 
-        <div id="rowBanner" class="row px-5 m-0 d-flex align-items-center justify-content-center"
-            style="position: relative;">
-            <div style="display: block; width: 100%; position: absolute;">
+        <div id="rowBanner" class="row px-5 m-0 d-flex align-items-center justify-content-center">
+            <div style="display: block; width: 100%;">
                 <span id="textBgTopOne" class="text-center">
                     Siga-nos
                 </span>
@@ -108,13 +107,13 @@
             </div>
         </div>
 
-        <div class="row mx-0" style="width: 100%; margin-top: -40px; position: relative;">
-            <div class="mx-auto py-3 px-2 px-lg-3"
-                style="width: 80%; border-radius: 5px; background-color: rgb(27, 27, 27);">
+        <div class="row mx-0" style="width: 100%; margin-top: -40px;">
+            <div class="mx-auto py-3 px-2 px-lg-3" style="width: 80%; border-radius: 5px; background-color: rgb(27, 27, 27);">
                 <div class="divFrontBanner">
                     <span>Para Onde?</span>
                     <input type="text" placeholder="Informe o Nome">
                 </div>
+                
                 <div class="divFrontBanner">
                     <span>Quando?</span>
                     <input type="date">
@@ -176,22 +175,31 @@
 
         </div>
 
-        <div class="row" style="background-color: black;">
+        <div class="row p-3">
             <div class="col-12">
                 <span class="text-center" style="display: block; color: #29d9d5;">Nosso Destino</span>
-                <span class="text-center" style="display: block; color: white;">Escolha seu destino</span>
+                <span class="text-center" style="display: block; color: rgb(255, 255, 255);">Escolha seu destino</span>
             </div>
 
-            <div class="col-12">
-                <div style="position: relative; border: 1px solid white; height: 420px;">
-                    <img src="images/des-1.jpg" alt="" style="max-width: 100%;">
+            <div class="col-12 mt-5" id="teste" style="position: relative; width: 100%; display: flex;">
+                
+
+                <div class="p-2" style="background-color: rgb(27, 27, 27); display: block; width: 100%; position: absolute; bottom: 0; left: 0; margin: 0; ">
+                    <span class="text-center py-2" style="display: block; color: white;">
+                        Tours & Travel
+                    </span>
+
+                    <span class="text-center" style="color: rgba(233, 229, 225, 0.684); display: block; font-size: 0.85em;">
+                        Lorem Ipsum Dolor, Sit Amet Consectetur Adipisicing.
+                    </span>
+
+                    <a class="text-center mt-2" href="" style="display: block; color: #29d9d5;">
+                        Saiba Mais <i class="fas fa-angle-right"></i> 
+                    </a>
                 </div>
-
-                <div style="position: absolute; background: red; width: 80%; height: 20%; bottom: 0;">
-
-                </div>
-
             </div>
+
+            
         </div>
     </div>
 
@@ -203,7 +211,6 @@
             document.getElementsByClassName("videos")[1].style.display = 'none'
             document.getElementsByClassName("videos")[2].style.display = 'none'
             document.getElementById("divVideo" + x).style.display = 'block'
-
         }
     </script>
 
