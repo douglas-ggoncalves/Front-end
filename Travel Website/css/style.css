@@ -270,23 +270,20 @@ body {
     }
     .videos {
         width: 1060px; 
-        max-height: 1060px; 
+        height: 860px; 
         max-width: 100%;
     }
 
     #titleImageRight{
-        border: 1px solid red;
         font-size: 2.2em;
     }
     
     #messageImageRight{
-        border: 1px solid red;
         font-size: 1.95em; 
     }
     
     #loremImageRight{
-        font-size: 0.9em; 
-        /*border: 1px solid red;*/
+        font-size: 0.9em;
     }
 }
 
@@ -326,5 +323,8 @@ body {
         max-height: 100%; 
         max-width: 100%;
     }
-
+    
+    #messageImageRight{
+        font-size: 2.1em; 
+    }
 }
