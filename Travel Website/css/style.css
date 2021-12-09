@@ -91,35 +91,48 @@ body {
     border-radius: 8px;
 }
 
-#teste {
+.gallery {
     max-height: 600px;
     height: 350px;
     background: url('../images/des-1.jpg') no-repeat center center;
-    background-size: contain;
-    border-radius: 8px;
-}
-
-#teste:hover  {
-    transition: all 0.25s ease-in;
     background-size: cover;
-
-   
-
-}
-
-/*
-.containerInfo img {
-    -moz-transition: all 0.5s;
-    -webkit-transition: all 0.5s;
-    transition: all 0.5s;
-    -moz-transform: scale(1.2);
-    -webkit-transform: scale(1.2);
-    C
-    min-width: 100%;
+    position: relative;
+    border-radius: 5px;
+    width: 100%;
+    display: flex;
+    /*padding: 200px;*/
 }
 
 
-*/
+.gallery:hover {
+    transition: all 0.5s ease-in;
+    border: 1px solid #29d9d5;
+}
+
+.galleryDivs {
+    background-color: rgb(27, 27, 27); 
+    display: block; 
+    width: 100%; 
+    position: absolute; 
+    bottom: 0; 
+    left: 0; 
+    margin: 0; 
+    border-radius: 5px 5px;
+}
+
+.galleryFirstSpan {
+    display: block; 
+    color: white;
+    font-size: 1.1em;
+}
+
+.galleryLorem{
+    color: rgba(233, 229, 225, 0.684);
+    display: block; 
+    width: 100%;
+    font-size: 0.85em;
+}
+
 .divFrontBanner {
     padding: 7px 14px;
     display: block;
@@ -166,10 +179,10 @@ body {
 }
 
 .videos {
-    display: block; 
+    display: block;
     border-radius: 8px;
-    height: 300px; 
-    width: 450px; 
+    height: 300px;
+    width: 450px;
     margin: 0 auto;
 }
 
@@ -178,22 +191,22 @@ body {
     cursor: pointer;
 }
 
-#titleImageRight{
-    color: #29d9d5; 
-    font-family: 'Poppins'; 
+.titleImageRight {
+    color: #29d9d5;
+    font-family: 'Poppins';
     font-size: 1.7em;
 }
 
-#messageImageRight{
-    width: 100%; 
-    display: block; 
-    color: white; 
-    font-size: 1.6em; 
+.messageImageRight {
+    width: 100%;
+    display: block;
+    color: white;
+    font-size: 1.6em;
     font-weight: bold;
 }
 
-#loremImageRight{
-    color: rgba(233, 229, 225, 0.684); 
+#loremImageRight {
+    color: rgba(233, 229, 225, 0.684);
     font-family: sans-serif;
 }
 
@@ -213,18 +226,18 @@ body {
     }
 
     .videos {
-        height: 400px; 
-        width: 560px; 
+        height: 400px;
+        width: 560px;
     }
 
-    #titleImageRight{
+    .titleImageRight {
         font-size: 1.8em;
     }
-    
-    #messageImageRight{
-        font-size: 1.65em; 
+
+    .messageImageRight {
+        font-size: 1.65em;
     }
-    
+
 }
 
 @media only screen and (min-width: 768px) {
@@ -243,22 +256,27 @@ body {
     }
 
     .videos {
-        width: 660px; 
-        max-height: 300px; 
+        width: 660px;
+        max-height: 300px;
         max-width: 100%;
     }
 
-    #titleImageRight{
+    .titleImageRight {
         font-size: 1.9em;
     }
-    
-    #messageImageRight{
-        font-size: 1.75em; 
+
+    .messageImageRight {
+        font-size: 1.75em;
     }
-    
-    #loremImageRight{
+
+    #loremImageRight {
         font-size: 0.9em;
     }
+
+    .galleryFirstSpan {
+        font-size: 1.2em;
+    }
+
 }
 
 @media only screen and (min-width: 992px) {
@@ -297,22 +315,28 @@ body {
         width: 100%;
         padding-top: 0;
     }
+
     .videos {
-        width: 1060px; 
-        height: 860px; 
+        width: 1060px;
+        height: 860px;
         max-width: 100%;
     }
 
-    #titleImageRight{
+    .titleImageRight {
         font-size: 2.2em;
     }
-    
-    #messageImageRight{
-        font-size: 1.95em; 
+
+    .messageImageRight {
+        font-size: 1.95em;
     }
-    
-    #loremImageRight{
+
+    #loremImageRight {
         font-size: 0.9em;
+    }
+
+    .gallery {
+        max-height: 680px;
+        height: 420px;
     }
 }
 
@@ -347,13 +371,22 @@ body {
     }
 
     .videos {
-        width: 660px; 
+        width: 660px;
         height: 460px;
-        max-height: 100%; 
+        max-height: 100%;
         max-width: 100%;
     }
-    
-    #messageImageRight{
-        font-size: 2.1em; 
+
+    .messageImageRight {
+        font-size: 2.1em;
+    }
+
+    .galleryFirstSpan {
+        font-size: 1.2em;
+    }
+
+    .galleryLorem{
+        font-size: 1em;
+        max-width: 80%;
     }
 }

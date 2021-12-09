@@ -89,7 +89,9 @@ span#bannersTextWhite {
 }
 
 span#bannersTextRed {
-    color: red; font-family: Tahoma; display: block;
+    color: red; 
+    font-family: Tahoma; 
+    display: block;
 }
 
 span#infoTextRedTitle {
