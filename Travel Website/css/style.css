@@ -94,13 +94,13 @@ body {
 .gallery {
     max-height: 600px;
     height: 350px;
-    background: url('../images/des-1.jpg') no-repeat center center;
+    background: url('../images/des-2.jpg') no-repeat center center;
     background-size: cover;
     position: relative;
     border-radius: 5px;
     width: 100%;
     display: flex;
-    /*padding: 200px;*/
+    border: 1px solid #070505;
 }
 
 
@@ -276,7 +276,6 @@ body {
     .galleryFirstSpan {
         font-size: 1.2em;
     }
-
 }
 
 @media only screen and (min-width: 992px) {
@@ -336,7 +335,7 @@ body {
 
     .gallery {
         max-height: 680px;
-        height: 420px;
+        height: 370px;
     }
 }
 
