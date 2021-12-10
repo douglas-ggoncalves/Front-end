@@ -216,13 +216,22 @@ body {
     font-family: sans-serif;
 }
 
-.aaaa {
+.divServices {
     background-color: rgb(27, 27, 27);
     border-radius: 8px;
     border: 1px solid rgb(0, 0, 0);
+    height: 100%;
 }
 
-.aaaa:hover {
+.divServices i{
+    color: #29d9d5; 
+    font-size: 2em; 
+    display: block;
+    width: 100%;
+    text-align: center;
+}
+
+.divServices:hover {
     transition: all 0.5s ease-in;
     border: 1px solid #29d9d5;
 }
@@ -404,6 +413,10 @@ body {
     .galleryLorem{
         font-size: 1em;
         max-width: 80%;
+    }
+
+    .divServices .galleryLorem{
+        max-width: 90%;
     }
 
     .galleryFirstSpan {
