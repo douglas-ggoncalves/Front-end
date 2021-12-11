@@ -46,6 +46,7 @@ body {
     color: #29d9d5;
     border: 1px solid #29d9d5;
     border-radius: 50px;
+    text-align: center;
 }
 
 #buttonNav:hover {
@@ -54,10 +55,21 @@ body {
     text-decoration: none;
 }
 
+#abc{
+    width: 80%; 
+    border-radius: 5px; 
+    background-color: rgb(27, 27, 27);
+}
+
 #textTravel {
     color: rgb(255, 255, 255);
     display: inline;
     font-weight: bolder;
+    font-size: 1.45em;
+}
+
+.fa-paper-plane {
+    color: #29d9d5; 
     font-size: 1.45em;
 }
 
@@ -133,8 +145,8 @@ body {
     font-size: 1.2em;
     font-weight: bold;
     text-align: center;
+    
 }
-
 .galleryLorem{
     color: rgba(233, 229, 225, 0.684);
     display: block; 
@@ -158,6 +170,7 @@ body {
     margin-bottom: 2px;
 }
 
+/*
 #divFrontBannerLast a {
     display: block;
     width: 100%;
@@ -165,6 +178,7 @@ body {
     padding: 8px 8px;
     height: 45px;
 }
+*/
 
 .divFrontBanner input {
     border: 1px solid #29d9d5;
@@ -243,12 +257,97 @@ body {
     border: 1px solid #29d9d5;
 }
 
-@media only screen and (max-width: 600px) {
+.memories{
+    margin: 0;
+    display: inline-block !important;
+    height: min-content;
+    
+}
+
+.memories span{
+    display: block; 
+    color: white;
+    font-size: 1.2em;
+    font-weight: bold;
+    text-align: left;
+    margin-bottom: 0.5rem;
+    margin-top: 0.5rem;
+}
+
+.memories img{
+    border-radius: 8px;
+}
+
+@media only screen and (max-width: 300px) {
+
+    #buttonNav {
+        font-size: 0.62em;
+        display: block;
+        width: 100%;
+    }
+
+    .divFrontBanner #buttonNav {
+        padding: 10px 14px;
+        font-size: 0.8em;
+        border-radius: 50px;
+        text-align: center;
+    }
+
+    #divImages a {
+        padding: 10px 14px;
+        font-size: 0.8em;
+        border-radius: 50px;
+        text-align: center;
+    }
+
+    #textBgTopOne {
+        font-size: 3.3em;
+    }
+
+    #textBgTopTwo {
+        font-size: 1.3em;
+    }
+
+    #textBgTopThree{
+        font-size: 0.7em;
+        width: 100%;
+    }
+
+    .divFrontBanner input {
+        font-size: 0.9em;
+        height: 38px;
+    }
+
+    .titleImageRight{
+        font-size: 1.8em;
+    }
+
+    .messageImageRight{
+        font-size: 2.0em;
+    }
+
+    .galleryDad{
+        padding: 0;
+    }
+
+    .divDadServices {
+        padding: 0;
+    }
+
+    .memories, .memories div{
+        padding: 0 !important;
+    }
+
+    #abc{
+        width: 88%;
+    }
+}
+
+@media only screen and (min-width: 300px) {
     #rowBanner {
         max-height: 900px;
     }
 
-    
     #textBgTopTwo {
         /*font-size: 2.5em; */
         /* font-size: 1.9em; */
@@ -262,6 +361,14 @@ body {
     #textBgTopThree{
         font-size: 0.8em;
         width: 100%;
+    }
+
+    #textTravel {
+        font-size: 1.25em;
+    }
+    
+    .fa-paper-plane {
+        font-size: 1.25em;
     }
 }
 
