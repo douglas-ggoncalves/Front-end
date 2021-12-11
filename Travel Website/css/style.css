@@ -28,7 +28,6 @@ body {
 
 .container-fluid {
     background-color: rgb(27, 27, 27);
-    width: 100%;
 }
 
 .navbar-nav .nav-link {
@@ -40,8 +39,10 @@ body {
 }
 
 #buttonNav {
-    padding: 10px 14px;
+    /* padding: 10px 14px; */
     background-color: transparent;
+    padding: 10px 14px;
+    font-size: 0.7em;
     color: #29d9d5;
     border: 1px solid #29d9d5;
     border-radius: 50px;
@@ -73,7 +74,9 @@ body {
     display: block;
     width: 100%;
     color: white;
-    font-size: 2.5em;
+    /*font-size: 2.5em; */
+    /* font-size: 1.9em; */
+    font-size: 1.9em;
     font-weight: bold;
 }
 
@@ -189,7 +192,8 @@ body {
     display: block;
     border-radius: 8px;
     height: 300px;
-    width: 450px;
+    /* width: 450px; */
+    max-width: 100%;
     margin: 0 auto;
 }
 
@@ -243,6 +247,22 @@ body {
     #rowBanner {
         max-height: 900px;
     }
+
+    
+    #textBgTopTwo {
+        /*font-size: 2.5em; */
+        /* font-size: 1.9em; */
+        font-size: 1.3em;
+    }
+
+    #textBgTopOne {
+        font-size: 2.8em;
+    }
+
+    #textBgTopThree{
+        font-size: 0.8em;
+        width: 100%;
+    }
 }
 
 @media only screen and (min-width: 600px) {
@@ -267,6 +287,9 @@ body {
         font-size: 1.65em;
     }
 
+    #buttonNav {
+        font-size: 1em;
+    }
 }
 
 @media only screen and (min-width: 768px) {
