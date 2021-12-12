@@ -232,6 +232,8 @@ body {
     text-align: center;
 }
 
+
+
 #loremImageRight {
     color: rgba(233, 229, 225, 0.684);
     font-family: sans-serif;
@@ -257,25 +259,30 @@ body {
     border: 1px solid #29d9d5;
 }
 
-.memories{
-    margin: 0;
-    display: inline-block !important;
-    height: min-content;
-    
+.ourGallery .boxContainer {
+    -webkit-columns: 3 25rem !important;
+    columns: 3 25rem !important;
+    margin-bottom: 0.5rem;
 }
 
-.memories span{
-    display: block; 
+.ourGallery .boxContainer div{
+    margin-bottom: 1.5rem;
+}
+
+.boxContainer span{
     color: white;
     font-size: 1.2em;
     font-weight: bold;
     text-align: left;
-    margin-bottom: 0.5rem;
-    margin-top: 0.5rem;
 }
 
-.memories img{
+.boxContainer img{
     border-radius: 8px;
+    padding-bottom: 5px;
+}
+
+#testimonials {
+    
 }
 
 @media only screen and (max-width: 300px) {

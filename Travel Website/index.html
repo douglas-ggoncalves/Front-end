@@ -26,6 +26,9 @@
     <!-- Font Awesome -->
     <link href="fontawesome/css/all.css" rel="stylesheet">
 
+    <link href="aos-master/dist/aos.css" rel="stylesheet">
+    <script src="aos-master/dist/aos.js"></script>
+
     <!--[if lt IE 9]>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
 	<![endif]-->
@@ -47,23 +50,22 @@
 
                     <div class="collapse navbar-collapse" id="myNavBar">
                         <ul class="navbar-nav">
-                            <li class="nav-item active">
-                                <a class="nav-link pt-3 pt-md-2" href="#">Home <span
-                                        class="sr-only">(current)</span></a>
+                            <li class="nav-item" data-aos="fade-left" data-aos-delay="300">
+                                <a class="nav-link pt-3 pt-md-2" href="#">Home</a>
                             </li>
-                            <li class="nav-item">
+                            <li class="nav-item" data-aos="fade-left" data-aos-delay="400">
                                 <a class="nav-link" href="#">Sobre</a>
                             </li>
-                            <li class="nav-item">
+                            <li class="nav-item" data-aos="fade-left" data-aos-delay="500">
                                 <a class="nav-link" href="#">Destino</a>
                             </li>
-                            <li class="nav-item">
+                            <li class="nav-item" data-aos="fade-left" data-aos-delay="600">
                                 <a class="nav-link" href="#">Serviços</a>
                             </li>
-                            <li class="nav-item">
+                            <li class="nav-item" data-aos="fade-left" data-aos-delay="700">
                                 <a class="nav-link" href="#">Galeria</a>
                             </li>
-                            <li class="nav-item">
+                            <li class="nav-item" data-aos="fade-left" data-aos-delay="800">
                                 <a class="nav-link" href="#">Blogs</a>
                             </li>
                         </ul>
@@ -73,18 +75,18 @@
 
             <div class="col-4 col-md-3 mx-auto my-md-auto d-flex justify-content-center align-items-center order-md-1"
                 style="height: 60px;">
-                <i class="fas fa-paper-plane"></i>
-                <p id="textTravel" class="my-auto ml-1">Travel</p>
+                <i class="fas fa-paper-plane" data-aos="fade-left" data-aos-delay="100"></i>
+                <p id="textTravel" class="my-auto ml-1" data-aos="fade-left" data-aos-delay="200">Travel</p>
             </div>
 
             <div class="col-4 col-md-3 p-0 my-md-auto d-flex justify-content-center align-items-center justify-content-md-center order-md-3"
                 style="height: 60px;">
-                <a href="#" id="buttonNav" class="">Agende Agora</a>
+                <a href="#" id="buttonNav" data-aos="fade-left" data-aos-delay="900">Agende Agora</a>
             </div>
         </div>
     </div>
 
-    <div class="container-fluid mt-2" style="background-color: rgb(0, 0, 0); width: 100%;">
+    <div class="container-fluid mt-2" style="background-color: rgb(0, 0, 0);">
 
         <div id="rowBanner" class="row px-5 m-0 d-flex align-items-center justify-content-center">
             <div style="display: block; width: 100%;">
@@ -113,7 +115,7 @@
                     <span>Para Onde?</span>
                     <input type="text" placeholder="Informe o Nome">
                 </div>
-                
+
                 <div class="divFrontBanner">
                     <span>Quando?</span>
                     <input type="date">
@@ -137,11 +139,13 @@
                     <source src="images/about-vid-2.mp4" type="video/mp4">
                 </video>
 
-                <video class="img-fluid videos" loop="true" autoplay="autoplay" id="divVideo2" muted style="display: none;">
+                <video class="img-fluid videos" loop="true" autoplay="autoplay" id="divVideo2" muted
+                    style="display: none;">
                     <source src="images/about-vid-1.mp4" type="video/mp4">
                 </video>
 
-                <video class="img-fluid videos" loop="true" autoplay="autoplay" id="divVideo3" muted style="display: none;">
+                <video class="img-fluid videos" loop="true" autoplay="autoplay" id="divVideo3" muted
+                    style="display: none;">
                     <source src="images/about-vid-3.mp4" type="video/mp4">
                 </video>
 
@@ -175,13 +179,13 @@
 
         </div>
 
-        <div class="row p-3 p-lg-5">
+        <div class="row p-3 p-lg-5 " style="flex-wrap: wrap">
             <div class="col-12">
                 <span class="text-center titleImageRight" style="display: block;">Nosso Destino</span>
                 <span class="text-center messageImageRight">Escolha seu destino</span>
             </div>
 
-            <div class="col-12 col-md-6 col-lg-3 p-lg-1 mt-3 galleryDad" style="border-radius: 5px;">
+            <div class="col-12 col-md-6 col-lg-3 p-lg-1 mt-3 galleryDad" style="border-radius: 5px; ">
                 <div class="gallery">
                     <div class="p-0 galleryDivs">
                         <span class="text-center py-2 subTitleServices">
@@ -192,15 +196,17 @@
                             Lorem Ipsum Dolor, Sit Amet Consectetur Adipisicing.
                         </span>
 
-                        <a class="text-center mt-2 pb-lg-2 subTitleServices" href="#" style="display: block; color: #29d9d5;">
-                            Saiba Mais <i class="fas fa-angle-right"></i> 
+                        <a class="text-center mt-2 pb-lg-2 subTitleServices" href="#"
+                            style="display: block; color: #29d9d5;">
+                            Saiba Mais <i class="fas fa-angle-right"></i>
                         </a>
                     </div>
                 </div>
             </div>
 
             <div class="col-12 col-md-6 col-lg-3 p-lg-1 mt-3  galleryDad">
-                <div class="gallery" style="background: url('images/des-2.jpg') no-repeat center center; background-size: cover;">
+                <div class="gallery"
+                    style="background: url('images/des-2.jpg') no-repeat center center; background-size: cover;">
 
                     <div class="p-0 galleryDivs">
                         <span class="text-center py-2 subTitleServices">
@@ -211,15 +217,17 @@
                             Lorem Ipsum Dolor, Sit Amet Consectetur Adipisicing.
                         </span>
 
-                        <a class="text-center mt-2 pb-2 subTitleServices" href="#" style="display: block; color: #29d9d5;">
-                            Saiba Mais <i class="fas fa-angle-right"></i> 
+                        <a class="text-center mt-2 pb-2 subTitleServices" href="#"
+                            style="display: block; color: #29d9d5;">
+                            Saiba Mais <i class="fas fa-angle-right"></i>
                         </a>
                     </div>
                 </div>
             </div>
 
             <div class="col-12 col-md-6 col-lg-3 p-lg-1 mt-3 galleryDad">
-                <div class="gallery" style="background: url('images/des-3.jpg') no-repeat center center; background-size: cover;">
+                <div class="gallery"
+                    style="background: url('images/des-3.jpg') no-repeat center center; background-size: cover;">
                     <div class="p-0 galleryDivs">
                         <span class="text-center py-2 subTitleServices">
                             Passeios e Viagens
@@ -229,15 +237,17 @@
                             Lorem Ipsum Dolor, Sit Amet Consectetur Adipisicing.
                         </span>
 
-                        <a class="text-center mt-2 pb-lg-2 subTitleServices" href="#" style="display: block; color: #29d9d5;">
-                            Saiba Mais <i class="fas fa-angle-right"></i> 
+                        <a class="text-center mt-2 pb-lg-2 subTitleServices" href="#"
+                            style="display: block; color: #29d9d5;">
+                            Saiba Mais <i class="fas fa-angle-right"></i>
                         </a>
                     </div>
                 </div>
             </div>
 
             <div class="col-12 col-md-6 col-lg-3 p-lg-1 mt-3 galleryDad">
-                <div class="gallery" style="background: url('images/des-4.jpg') no-repeat center center; background-size: cover;">
+                <div class="gallery"
+                    style="background: url('images/des-4.jpg') no-repeat center center; background-size: cover;">
                     <div class="p-0 galleryDivs">
                         <span class="text-center py-2 subTitleServices">
                             Passeios e Viagens
@@ -247,15 +257,17 @@
                             Lorem Ipsum Dolor, Sit Amet Consectetur Adipisicing.
                         </span>
 
-                        <a class="text-center mt-2 pb-lg-2 subTitleServices" href="#" style="display: block; color: #29d9d5;">
-                            Saiba Mais <i class="fas fa-angle-right"></i> 
+                        <a class="text-center mt-2 pb-lg-2 subTitleServices" href="#"
+                            style="display: block; color: #29d9d5;">
+                            Saiba Mais <i class="fas fa-angle-right"></i>
                         </a>
                     </div>
                 </div>
             </div>
 
             <div class="col-12 col-md-6 col-lg-3 p-lg-1 mt-3 mt-lg-1 galleryDad">
-                <div class="gallery" style="background: url('images/des-5.jpg') no-repeat center center; background-size: cover;">
+                <div class="gallery"
+                    style="background: url('images/des-5.jpg') no-repeat center center; background-size: cover;">
                     <div class="p-0 galleryDivs">
                         <span class="text-center py-2 subTitleServices">
                             Passeios e Viagens
@@ -265,15 +277,17 @@
                             Lorem Ipsum Dolor, Sit Amet Consectetur Adipisicing.
                         </span>
 
-                        <a class="text-center mt-2 pb-lg-2 subTitleServices" href="#" style="display: block; color: #29d9d5;">
-                            Saiba Mais <i class="fas fa-angle-right"></i> 
+                        <a class="text-center mt-2 pb-lg-2 subTitleServices" href="#"
+                            style="display: block; color: #29d9d5;">
+                            Saiba Mais <i class="fas fa-angle-right"></i>
                         </a>
                     </div>
                 </div>
             </div>
 
             <div class="col-12 col-md-6 col-lg-3 p-lg-1 mt-3 mt-lg-1 galleryDad">
-                <div class="gallery" style="background: url('images/des-6.jpg') no-repeat center center; background-size: cover;">
+                <div class="gallery"
+                    style="background: url('images/des-6.jpg') no-repeat center center; background-size: cover;">
                     <div class="p-0 galleryDivs">
                         <span class="text-center py-2 subTitleServices">
                             Passeios e Viagens
@@ -283,15 +297,17 @@
                             Lorem Ipsum Dolor, Sit Amet Consectetur Adipisicing.
                         </span>
 
-                        <a class="text-center mt-2 pb-lg-2 subTitleServices" href="#" style="display: block; color: #29d9d5;">
-                            Saiba Mais <i class="fas fa-angle-right"></i> 
+                        <a class="text-center mt-2 pb-lg-2 subTitleServices" href="#"
+                            style="display: block; color: #29d9d5;">
+                            Saiba Mais <i class="fas fa-angle-right"></i>
                         </a>
                     </div>
                 </div>
             </div>
 
             <div class="col-12 col-md-6 col-lg-3 p-lg-1 mt-3 mt-lg-1 galleryDad">
-                <div class="gallery" style="background: url('images/des-7.jpg') no-repeat center center; background-size: cover;">
+                <div class="gallery"
+                    style="background: url('images/des-7.jpg') no-repeat center center; background-size: cover;">
                     <div class="p-0 galleryDivs">
                         <span class="text-center py-2 subTitleServices">
                             Passeios e Viagens
@@ -301,15 +317,17 @@
                             Lorem Ipsum Dolor, Sit Amet Consectetur Adipisicing.
                         </span>
 
-                        <a class="text-center mt-2 pb-lg-2 subTitleServices" href="#" style="display: block; color: #29d9d5;">
-                            Saiba Mais <i class="fas fa-angle-right"></i> 
+                        <a class="text-center mt-2 pb-lg-2 subTitleServices" href="#"
+                            style="display: block; color: #29d9d5;">
+                            Saiba Mais <i class="fas fa-angle-right"></i>
                         </a>
                     </div>
                 </div>
             </div>
 
             <div class="col-12 col-md-6 col-lg-3 p-lg-1 mt-3 mt-lg-1 galleryDad">
-                <div class="gallery" style="background: url('images/des-8.jpg') no-repeat center center; background-size: cover;">
+                <div class="gallery"
+                    style="background: url('images/des-8.jpg') no-repeat center center; background-size: cover;">
                     <div class="p-0 galleryDivs">
                         <span class="text-center py-2 subTitleServices">
                             Passeios e Viagens
@@ -319,8 +337,9 @@
                             Lorem Ipsum Dolor, Sit Amet Consectetur Adipisicing.
                         </span>
 
-                        <a class="text-center mt-2 pb-lg-2 subTitleServices" href="#" style="display: block; color: #29d9d5;">
-                            Saiba Mais <i class="fas fa-angle-right"></i> 
+                        <a class="text-center mt-2 pb-lg-2 subTitleServices" href="#"
+                            style="display: block; color: #29d9d5;">
+                            Saiba Mais <i class="fas fa-angle-right"></i>
                         </a>
                     </div>
                 </div>
@@ -344,7 +363,7 @@
                 </div>
             </div>
 
-            
+
             <div class="col-12 col-sm-6 col-lg-4 mt-3 m-0 p-sm-2 divDadServices">
                 <div class="p-3 py-4 py-lg-5 divServices">
                     <i class="fas fa-hiking"></i>
@@ -354,10 +373,10 @@
                     </span>
                 </div>
             </div>
-            
+
             <div class="col-12 col-sm-6 col-lg-4 mt-3 m-0 mt-sm-0 mt-lg-3 p-sm-2 divDadServices">
                 <div class="p-3 py-4 py-lg-5 divServices">
-                    
+
                     <i class="fas fa-utensils"></i>
                     <span class="py-2 subTitleServices">Comidas e Bebidas</span>
 
@@ -401,79 +420,81 @@
             </div>
         </div>
 
-
-
-
-
-        <div class="row p-3 p-lg-5">
+        <div class="row p-3 p-lg-5 ourGallery">
             <div class="col-12">
                 <span class="text-center titleImageRight" style="display: block;">Nossa Galeria</span>
-                <span class="text-center messageImageRight">Colecionamos Memórias</span>
+                <span class="text-center mb-3 messageImageRight">Colecionamos Memórias</span>
             </div>
 
-            <div class="col-12 col-sm-6 col-lg-4 order-sm-1 mt-3 p-sm-2 memories">
-                <div class="pb-1 py-lg-5">
+            <div class="boxContainer">
+                <div>
                     <img class="img-fluid" src="images/gallery-img-1.jpg" alt="">
                     <span>Islândia</span>
                 </div>
-            </div>
-            
-            <div class="col-12 col-sm-6 order-sm-3 col-lg-4 memories">
-                <div class="pb-1 py-lg-5">
+        
+                <div>
                     <img class="img-fluid" src="images/gallery-img-2.jpg" alt="">
                     <span>Groenlândia</span>
                 </div>
-            </div>
-
-            <div class="col-12 col-sm-6 col-lg-4 order-sm-5 p-sm-2 memories" style="border: 1px solid red; float:initial;">
-                <div class="pb-1 py-lg-5">
+        
+                <div>
                     <img class="img-fluid" src="images/gallery-img-3.jpg" alt="">
-                    <span>Alaska</span>
+                    <span>Alasca</span>
                 </div>
-            </div>
-
-            <div class="col-12 col-sm-6 order-sm-7 col-lg-4 p-sm-2 memories">
-                <div class="pb-1 py-lg-5">
+        
+                <div>
                     <img class="img-fluid" src="images/gallery-img-4.jpg" alt="">
                     <span>Tailândia</span>
                 </div>
-            </div>
-
-            <div class="col-12 col-sm-6 col-lg-4 order-sm-9 p-sm-2 memories">
-                <div class="pb-1 py-lg-5">
+        
+                <div>
                     <img class="img-fluid" src="images/gallery-img-5.jpg" alt="">
                     <span>Brasil</span>
                 </div>
-            </div>
-
-            <div class="col-12 col-sm-6 col-lg-4 order-sm-2 mt-sm-3 p-sm-2 memories">
-                <div class="pb-1 py-lg-5">
+        
+                <div>
                     <img class="img-fluid" src="images/gallery-img-6.jpg" alt="">
                     <span>Maldivas</span>
                 </div>
-            </div>
-
-            <div class="col-12 col-sm-6 col-lg-4 order-sm-4 p-sm-2 memories">
-                <div class="pb-1 py-lg-5">
+        
+                <div>
                     <img class="img-fluid" src="images/gallery-img-7.jpg" alt="">
                     <span>Islândia</span>
                 </div>
-            </div>
-
-            <div class="col-12 col-sm-6 col-lg-4 order-sm-6 p-sm-2 memories">
-                <div class="pb-1 py-lg-5">
+        
+                <div>
                     <img class="img-fluid" src="images/gallery-img-8.jpg" alt="">
-                    <span>Alaska</span>
+                    <span>Alasca</span>
                 </div>
-            </div>
-
-            <div class="col-12 col-sm-6 col-lg-4 order-sm-8 p-sm-2 memories">
-                <div class="pb-1 py-lg-5">
-                    <img class="img-fluid" src="images/gallery-img-9.jpg" alt="">
+        
+                <div>
+                    <img  class="img-fluid" src="images/gallery-img-9.jpg" alt="">
                     <span>Maldivas</span>
                 </div>
             </div>
         </div>
+
+        <div class="row">
+            <div class="col-12">
+                <span class="text-left titleImageRight" style="display: block; font-family: 'Trebuchet MS', 'Lucida Sans Unicode';">Testemunhos</span>
+                <span class="text-left messageImageRight">Testemunhos De Nossos Clientes</span>
+                
+                <span class="galleryLorem text-justify">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Deleniti in voluptatum non quibusdam laboriosam modi eos libero assumenda nam nihil fugiat nobis tempora, dolorem eaque voluptate. Vitae vero nihil maxime.</span>
+            </div>
+
+            <div class="col-6">
+                <div class="divServices">
+                    <span class="mx-auto galleryLorem">
+                        Lorem Ipsum Dolor Sit, Amet Consectetur Adipisicing Elit. Numquam, Cumque.
+                    </span>
+
+                    <i class="fas fa-hiking"></i>
+                    <span class="py-2 subTitleServices">Aventuras</span>
+                    
+                </div>
+            </div>
+        </div>
+      
     </div>
 
     <script>
@@ -485,6 +506,10 @@
             document.getElementsByClassName("videos")[2].style.display = 'none'
             document.getElementById("divVideo" + x).style.display = 'block'
         }
+    </script>
+
+    <script>
+        AOS.init();
     </script>
 
     <!-- Optional JavaScript -->
