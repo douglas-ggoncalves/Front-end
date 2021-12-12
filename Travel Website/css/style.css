@@ -232,8 +232,6 @@ body {
     text-align: center;
 }
 
-
-
 #loremImageRight {
     color: rgba(233, 229, 225, 0.684);
     font-family: sans-serif;
@@ -281,9 +279,57 @@ body {
     padding-bottom: 5px;
 }
 
-#testimonials {
-    
+.blogsEPosts{
+    border-radius: 8px;
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
 }
+
+.blogsEPosts img{
+    border-top-right-radius: 8px; 
+    border-top-left-radius: 8px;
+    -moz-transition: all 0.3s;
+	-webkit-transition: all 0.3s;
+	transition: all 0.3s;
+    max-height: 80%;
+    width: 100%;
+}
+
+.blogsEPosts img:hover{
+    -moz-transform: scale(1.1);
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+}
+
+.blogsEPosts div{
+    min-height: 90%;
+    min-width: 100%;
+    background-color: rgb(27, 27, 27); 
+    padding: 12px; 
+    margin: 0;
+    position: absolute;
+    border-bottom-right-radius: 8px; 
+    border-bottom-left-radius: 8px;
+}
+
+.blogsEPosts span{
+    display: block;
+    width: 100%;
+    color: #aaa;
+    width: 80%;
+    text-align: justify;
+}
+
+.blogsEPosts a{
+   color: white;
+}
+
+.blogsEPosts a:hover{
+    cursor: pointer;
+    color: #29d9d6d3;
+    text-decoration: none;
+ }
 
 @media only screen and (max-width: 300px) {
 
