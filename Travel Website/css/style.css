@@ -145,8 +145,8 @@ body {
     font-size: 1.2em;
     font-weight: bold;
     text-align: center;
-    
 }
+
 .galleryLorem{
     color: rgba(233, 229, 225, 0.684);
     display: block; 
@@ -280,6 +280,7 @@ body {
     padding: 0;
     margin: 0;
     overflow: hidden;
+    text-align: center;
 }
 
 .blogsEPosts img{
@@ -307,25 +308,50 @@ body {
     bottom: 0;
     border-bottom-right-radius: 8px; 
     border-bottom-left-radius: 8px;
+    padding-top: 1rem;
+    padding-left: 20px;
+    padding-right: 20px;
+
 }
 
 .blogsEPosts span{
     display: block;
-    width: 100%;
-    color: #aaa;
+    color: #aaaaaa;
     width: 80%;
-    text-align: justify;
 }
 
-.blogsEPosts a{
-   color: white;
+.blogsEPosts span a{
+   display: inline; 
+   color: #29d9d5; 
+   padding-left: 10px;
+   padding-right: 10px;
 }
 
 .blogsEPosts a:hover{
     cursor: pointer;
     color: #29d9d6d3;
     text-decoration: none;
- }
+}
+
+.blogsEPosts .titleLinkBlog {
+    color: white; 
+    line-height: 25px; 
+    font-size: 1.25rem;
+    margin: 0 auto;
+    padding-top: 3rem;
+}
+
+.blogsEPosts span.by:hover{
+    color: #29d9d6d3;
+}
+
+
+#back {
+    background: linear-gradient(rgb(4, 9, 10), rgba(10, 68, 78, 0.3)), url("../images/banner-bg.jpg") no-repeat center center;
+    /*background: url('../images/banner-bg.jpg') no-repeat center center;*/
+    background-attachment: fixed;
+    height: 100%;
+}
 
 @media only screen and (max-width: 300px) {
 
