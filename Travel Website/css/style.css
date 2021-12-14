@@ -39,7 +39,6 @@ body {
 }
 
 #buttonNav {
-    /* padding: 10px 14px; */
     background-color: transparent;
     padding: 10px 14px;
     font-size: 0.7em;
@@ -61,7 +60,7 @@ body {
     background-color: rgb(27, 27, 27);
 }
 
-#textTravel {
+.textTravel {
     color: rgb(255, 255, 255);
     display: inline;
     font-weight: bolder;
@@ -169,7 +168,6 @@ body {
     color: rgb(180, 177, 173);
     margin-bottom: 2px;
 }
-
 
 #divFrontBannerLast a {
     display: block;
@@ -345,13 +343,70 @@ body {
     color: #29d9d6d3;
 }
 
-
 #back {
     background: linear-gradient(rgb(4, 9, 10), rgba(10, 68, 78, 0.3)), url("../images/banner-bg.jpg") no-repeat center center;
     /*background: url('../images/banner-bg.jpg') no-repeat center center;*/
     background-attachment: fixed;
+    background-size: cover;
     height: 100%;
+    display: flex;
+    align-items: center;
 }
+
+.knowMore{
+    background-color: transparent;
+    padding: 10px 24px;
+    font-size: 1em;
+    color: #29d9d5;
+    border: 1px solid #29d9d5;
+    border-radius: 50px;
+    text-align: center;
+}
+
+.knowMore:hover {
+    background-color: #29d9d5;
+    color: #000000;
+    transition: all 0.2s ease-in;
+    text-decoration: none;
+}
+
+#baseboardDiv {
+    text-align: center;
+    align-items: baseline;
+    height: 50px;
+}
+
+#baseboardDiv div{
+    position: absolute; 
+    padding: 16px 0;
+    background-color: rgb(46, 42, 42);
+    bottom: 0; 
+    left: 0; 
+    right: 0; 
+}
+
+.baseboardSpan {
+    color: #AAA;
+}
+
+.aaaa a{
+    color: #29d9d5;
+    text-decoration: none;
+}
+
+.aaaa span{
+    font-family: sans-serif;
+    margin-left: 3px; 
+    color: #ccc;
+    font-size: 0.9em;
+}
+
+.aaaa a:hover span{
+    color: #29d9d5;
+    padding-left: 5px;
+    transition: all 0.3s;
+}
+
 
 @media only screen and (max-width: 300px) {
 
@@ -438,7 +493,7 @@ body {
         width: 100%;
     }
 
-    #textTravel {
+    .textTravel {
         font-size: 1.25em;
     }
     
@@ -581,6 +636,10 @@ body {
         border: 2px solid #29d9d5;
     }
 
+    .knowMore{
+        border: 2px solid #29d9d5;
+    }
+
     #divFrontBannerLast a {
         display: block;
         width: 100%;
@@ -588,7 +647,7 @@ body {
 }
 
 @media only screen and (min-width: 1200px) {
-    #textTravel {
+    .textTravel {
         font-size: 1.45em;
         letter-spacing: 0.6px;
     }
