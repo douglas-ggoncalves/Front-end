@@ -392,19 +392,37 @@ body {
 .aaaa a{
     color: #29d9d5;
     text-decoration: none;
+    display: block;
+    margin-top: 1.3rem;
+}
+
+.aaaa i{
+    color: #29d9d5;
+    display: block;
+    margin-top: 1rem;
+}
+
+.aaaa input{
+    border: 1px solid #29d9d5; 
+    background: none; 
+    padding: 10px 12px; 
+    border-radius: 20px; 
+    outline: none;
+    color: rgba(233, 229, 225, 0.684);
 }
 
 .aaaa span{
     font-family: sans-serif;
-    margin-left: 3px; 
-    color: #ccc;
+    margin-left: 0.3rem; 
+    color: rgba(233, 229, 225, 0.684);
     font-size: 0.9em;
+    font-weight: 100 !important;
 }
 
 .aaaa a:hover span{
     color: #29d9d5;
-    padding-left: 3px;
-    transition: all 0.3s;
+    padding-left: 1rem;
+    transition: all 0.4s ease-in-out;
 }
 
 @media only screen and (max-width: 300px) {
