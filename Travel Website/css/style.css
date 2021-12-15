@@ -154,6 +154,14 @@ body {
     text-align: center;
 }
 
+.loremFinal{
+    color: rgba(233, 229, 225, 0.684);
+    display: block; 
+    width: 100%;
+    font-size: 0.85em;
+    text-align: center;
+}
+
 .divFrontBanner {
     padding: 7px 14px;
     display: block;
@@ -372,7 +380,7 @@ body {
 #baseboardDiv {
     text-align: center;
     align-items: baseline;
-    height: 50px;
+    height: 80px;
 }
 
 #baseboardDiv div{
@@ -388,20 +396,23 @@ body {
     color: #AAA;
 }
 
+
+
 .infoStore a{
     color: #29d9d5;
     text-decoration: none;
     display: block;
     font-size: 1.1em;
-    padding-top: 1.3rem;
+    padding-top: 0;
+    padding-bottom: 1.3rem;
 }
 
 .infoStore i{
     color: #29d9d5;
     display: block;
     font-size: 1.1em;
-    padding-top: 1.3rem;
-    padding-bottom: 0;
+    padding-top: 0;
+    padding-bottom: 1.3rem;
 }
 
 .infoStore input{
@@ -420,7 +431,6 @@ body {
     color: rgba(233, 229, 225, 0.684);
     font-size: 0.9em;
     font-weight: 100 !important;
-    border: 1px solid white;
 }
 
 .infoStore a:hover span{
@@ -590,6 +600,10 @@ body {
     .galleryFirstSpan {
         font-size: 1.2em;
     }
+
+    #baseboardDiv span{
+        font-size: 1.2em;
+    }
 }
 
 @media only screen and (min-width: 992px) {
@@ -599,7 +613,7 @@ body {
 
     #buttonNav {
         font-size: 1.2em;
-        padding: 10px 24px;
+        padding: 7px 24px;
     }
 
     #textBgTopOne {
@@ -723,6 +737,11 @@ body {
     .galleryLorem{
         font-size: 1em;
         max-width: 80%;
+    }
+
+    .loremFinal{
+        font-size: 1em;
+        max-width: 90%;
     }
 
     .divServices .galleryLorem{
