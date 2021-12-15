@@ -309,7 +309,6 @@ body {
     padding-top: 1rem;
     padding-left: 20px;
     padding-right: 20px;
-
 }
 
 .blogsEPosts span{
@@ -389,20 +388,23 @@ body {
     color: #AAA;
 }
 
-.aaaa a{
+.infoStore a{
     color: #29d9d5;
     text-decoration: none;
     display: block;
-    margin-top: 1.3rem;
+    font-size: 1.1em;
+    padding-top: 1.3rem;
 }
 
-.aaaa i{
+.infoStore i{
     color: #29d9d5;
     display: block;
-    margin-top: 1rem;
+    font-size: 1.1em;
+    padding-top: 1.3rem;
+    padding-bottom: 0;
 }
 
-.aaaa input{
+.infoStore input{
     border: 1px solid #29d9d5; 
     background: none; 
     padding: 10px 12px; 
@@ -411,7 +413,7 @@ body {
     color: rgba(233, 229, 225, 0.684);
 }
 
-.aaaa span{
+.infoStore span{
     font-family: sans-serif;
     margin-left: 0.3rem; 
     color: rgba(233, 229, 225, 0.684);
@@ -419,10 +421,14 @@ body {
     font-weight: 100 !important;
 }
 
-.aaaa a:hover span{
+.infoStore a:hover span{
     color: #29d9d5;
     padding-left: 1rem;
-    transition: all 0.4s ease-in-out;
+    transition: all 0.3s ease-in-out;
+}
+
+.infoStore .firstElement{
+    margin-top: 0;
 }
 
 @media only screen and (max-width: 300px) {
@@ -654,6 +660,10 @@ body {
     }
 
     .knowMore{
+        border: 2px solid #29d9d5;
+    }
+
+    .infoStore input{
         border: 2px solid #29d9d5;
     }
 
