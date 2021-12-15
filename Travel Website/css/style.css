@@ -41,11 +41,15 @@ body {
 .buttonNav {
     background-color: transparent;
     padding: 10px 14px;
-    font-size: 0.7em;
+    font-size: 1em;
     color: #29d9d5;
     border: 1px solid #29d9d5;
     border-radius: 50px;
     text-align: center;
+}
+
+nav .buttonNav {
+    font-size: 0.7em;
 }
 
 .buttonNav:hover {
@@ -381,7 +385,7 @@ body {
 
 #baseboardDiv div{
     position: absolute; 
-    padding: 16px 0;
+    padding: 16px 4px;
     background-color: rgb(46, 42, 42);
     bottom: 0; 
     left: 0; 
@@ -502,9 +506,17 @@ body {
     #abc{
         width: 88%;
     }
+
+    #baseboardDiv span{
+        font-size: 0.8em;
+    }
 }
 
 @media only screen and (min-width: 300px) {
+
+    #baseboardDiv span{
+        font-size: 1em;
+    }
     #rowBanner {
         max-height: 900px;
     }
@@ -682,11 +694,6 @@ body {
         width: 100%;
     }
 
-    .aaaaaaa{
-        border: 1px solid red;
-        content: attr(data-aos) 'fade-left';
-        content: attr(data-aos-delay) '200';
-    }
 }
 
 @media only screen and (min-width: 1200px) {
