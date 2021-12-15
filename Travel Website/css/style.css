@@ -683,7 +683,7 @@ body {
     }
 
     .aaaaaaa{
-        content: attr(data-aos-delay);
+        content: attr(data-aos) 'fade-left';
     }
 
     .aaaaaaa[data-aos="fade-left"] {
