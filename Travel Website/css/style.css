@@ -38,7 +38,7 @@ body {
     color: #29d9d5;
 }
 
-#buttonNav {
+.buttonNav {
     background-color: transparent;
     padding: 10px 14px;
     font-size: 0.7em;
@@ -48,7 +48,7 @@ body {
     text-align: center;
 }
 
-#buttonNav:hover {
+.buttonNav:hover {
     background-color: #29d9d5;
     color: #000000;
     text-decoration: none;
@@ -85,8 +85,6 @@ body {
     display: block;
     width: 100%;
     color: white;
-    /*font-size: 2.5em; */
-    /* font-size: 1.9em; */
     font-size: 1.9em;
     font-weight: bold;
 }
@@ -208,7 +206,6 @@ body {
     display: block;
     border-radius: 8px;
     height: 300px;
-    /* width: 450px; */
     max-width: 100%;
     margin: 0 auto;
 }
@@ -352,7 +349,6 @@ body {
 
 #back {
     background: linear-gradient(rgb(4, 9, 10), rgba(10, 68, 78, 0.3)), url("../images/banner-bg.jpg") no-repeat center center;
-    /*background: url('../images/banner-bg.jpg') no-repeat center center;*/
     background-attachment: fixed;
     background-size: cover;
     height: 100%;
@@ -445,13 +441,13 @@ body {
 
 @media only screen and (max-width: 300px) {
 
-    #buttonNav {
+    .buttonNav {
         font-size: 0.62em;
         display: block;
         width: 100%;
     }
 
-    .divFrontBanner #buttonNav {
+    .divFrontBanner .buttonNav {
         padding: 10px 14px;
         font-size: 0.8em;
         border-radius: 50px;
@@ -514,8 +510,6 @@ body {
     }
 
     #textBgTopTwo {
-        /*font-size: 2.5em; */
-        /* font-size: 1.9em; */
         font-size: 1.3em;
     }
 
@@ -559,7 +553,7 @@ body {
         font-size: 1.65em;
     }
 
-    #buttonNav {
+    .buttonNav {
         font-size: 1em;
     }
 }
@@ -611,7 +605,7 @@ body {
         font-size: 1.2em;
     }
 
-    #buttonNav {
+    .buttonNav {
         font-size: 1.2em;
         padding: 7px 24px;
     }
@@ -687,6 +681,14 @@ body {
         display: block;
         width: 100%;
     }
+
+    .aaaaaaa{
+        content: attr(data-aos-delay);
+    }
+
+    .aaaaaaa[data-aos="fade-left"] {
+        width: 400px;
+      }
 }
 
 @media only screen and (min-width: 1200px) {
