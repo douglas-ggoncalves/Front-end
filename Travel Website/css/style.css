@@ -410,6 +410,7 @@ body {
     padding: 10px 12px; 
     border-radius: 20px; 
     outline: none;
+    margin-top: 0.5rem;
     color: rgba(233, 229, 225, 0.684);
 }
 
@@ -419,6 +420,7 @@ body {
     color: rgba(233, 229, 225, 0.684);
     font-size: 0.9em;
     font-weight: 100 !important;
+    border: 1px solid white;
 }
 
 .infoStore a:hover span{
