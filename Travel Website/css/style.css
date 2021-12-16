@@ -297,7 +297,6 @@ nav .buttonNav {
     border-radius: 8px;
 }
 
-
 .ourDestiny div{
     height: 100%;
     width: 100%;
@@ -320,15 +319,13 @@ nav .buttonNav {
 .ourDestiny .linkDestiny{
     display: inline; 
     color: #29d9d5; 
-    font-size: 1.1em;
+    font-size: 1.12em;
     text-decoration: none;
-    margin-top: 10px;
-    padding-top: 10px;
+    
  }
 
-
- .ourDestiny .linkDestiny:hover > i{
-    padding-left: 0.7rem;
+ .ourDestiny .linkDestiny span:hover{
+    padding-right: 0.4rem;
     transition: all 0.3s ease-in-out;
  }
 
@@ -683,7 +680,7 @@ nav .buttonNav {
 
     .buttonNav {
         font-size: 1.2em;
-        padding: 7px 24px;
+        padding: 10px 16px;
     }
 
     #textBgTopOne {
