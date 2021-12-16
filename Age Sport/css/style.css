@@ -29,28 +29,22 @@ li {
 
 .containerInfo {
     position: relative;
-    border: 1px solid #000;
     overflow: hidden;
-    /*
-    width: 400px;
-    max-width: 400px;
-    */
+    background-size: cover;
 }
 
 .containerInfo img {
     -moz-transition: all 0.5s;
     -webkit-transition: all 0.5s;
     transition: all 0.5s;
-    -moz-transform: scale(1.2);
-    -webkit-transform: scale(1.2);
-    transform: scale(1.2);
-    min-width: 100%;
+    max-height: 100%;
+    width: 100%;
 }
 
 .containerInfo:hover img {
-    -moz-transform: scale(1.4);
-    -webkit-transform: scale(1.4);
-    transform: scale(1.4);
+    -moz-transform: scale(1.2);
+    -webkit-transform: scale(1.2);
+    transform: scale(1.2);
 }
 
 .bg-dark {
@@ -96,20 +90,21 @@ span#bannersTextRed {
 
 span#infoTextRedTitle {
     color: red; 
-    font-family: Tahoma; 
     display: block;
-    letter-spacing: 1.2px;
+    font-weight: 600;
+    font-size: 1.1rem;
 }
 
 span#infoTextWhite {
     color: rgb(255, 255, 255); 
     font-family: Verdana, sans-serif; 
-    letter-spacing: 1.1px;
+    font-size: 1.1rem;
+    font-weight: 500;
     display: flex; 
     justify-content: center;
 }
 
-span#options{
+span.options{
     color: #848d96d7!important; 
     text-align: justify;
 }
@@ -119,6 +114,20 @@ div#plans{
     background-color: rgba(65, 63, 63, 0.255); 
     border: 1px solid rgb(129, 126, 126); 
     border-radius: 30px;
+}
+
+#rowAbout #subTitleAbout {
+    color: rgb(255, 255, 255); 
+    font-weight: bold; 
+    letter-spacing: 1.1px; 
+}
+
+#infoLorem{
+    color: #848d96d7!important; 
+    display: block; 
+    width: 100%;
+    font-size: 0.9em;
+    font-weight: 400;
 }
 
 @media (max-width: 575.98px) {
@@ -235,11 +244,6 @@ div#plans{
     .navbar-dark .navbar-nav .nav-link {
         font-size: 1.20em;
     }
-
-    #infoLorem {
-        font-size: 1.15em;
-    }
-
 
     .text-danger {
         font-size: 2em;
