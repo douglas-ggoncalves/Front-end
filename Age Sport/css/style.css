@@ -220,6 +220,12 @@ div#plans{
     div#plans{
         margin: 20px;
     }
+
+    #infoLorem{
+        font-size: 0.95em;
+    }
+
+
 }
 
 @media (min-width: 576px) {
@@ -234,7 +240,7 @@ div#plans{
     }
 
     span#bannersTextRed {
-        font-size: 1.7em;
+        font-size: 1.9em;
     }
 
     span#bannersTextWhite {
@@ -251,6 +257,10 @@ div#plans{
 
     div#myRowPlans{
         max-width: 90%;
+    }
+
+    #infoLorem{
+        font-size: 1em;
     }
 }
 
