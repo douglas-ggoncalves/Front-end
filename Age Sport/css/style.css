@@ -27,13 +27,21 @@ li {
     line-height: 0;
 }
 
-.containerInfo {
+.rowResources{
+    
+}
+
+.resourcersContainer {
     position: relative;
     overflow: hidden;
     background-size: cover;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
 }
 
-.containerInfo img {
+.resourcersContainer img {
     -moz-transition: all 0.5s;
     -webkit-transition: all 0.5s;
     transition: all 0.5s;
@@ -41,7 +49,7 @@ li {
     width: 100%;
 }
 
-.containerInfo:hover img {
+.resourcersContainer:hover img {
     -moz-transform: scale(1.2);
     -webkit-transform: scale(1.2);
     transform: scale(1.2);
@@ -116,18 +124,42 @@ div#plans{
     border-radius: 30px;
 }
 
-#rowAbout #subTitleAbout {
-    color: rgb(255, 255, 255); 
-    font-weight: bold; 
-    letter-spacing: 1.1px; 
+#rowAbout .infoLorem{
+    text-align: justify;
 }
 
-#infoLorem{
+.infoLorem{
     color: #848d96d7!important; 
     display: block; 
     width: 100%;
     font-size: 0.9em;
     font-weight: 400;
+}
+
+#divisionScreen {
+    border: 1px solid rgba(202, 192, 192, 0.719); 
+    display: inline; 
+    padding: 3px 10px; 
+    border-radius: 3px; 
+    background-color: black;
+    z-index: 1;
+}
+
+#subRowAbout svg{
+    color: red;
+}
+
+#subRowAbout .subTitleAbout {
+    color: rgb(255, 255, 255); 
+    font-weight: bold; 
+    letter-spacing: 1.1px; 
+}
+
+.textRedForResources{
+    color: rgb(221, 39, 39); 
+    font-weight: 650; 
+    font-family: Trebuchet MS; 
+    letter-spacing: 1.1px;
 }
 
 @media (max-width: 575.98px) {
@@ -152,7 +184,11 @@ div#plans{
     }
 }
 
-@media (min-width: 576px) and (max-width: 767.98px) {
+@media (min-width: 576px){
+    .container img {
+        width: 100%;
+    }
+
     .carousel-inner {
         max-height: 330px;
     }
@@ -174,7 +210,7 @@ div#plans{
     }
 }
 
-@media (min-width: 768px) and (max-width: 991.98px) {
+@media (min-width: 768px){
     .carousel-inner {
         max-height: 420px;
     }
@@ -196,7 +232,7 @@ div#plans{
     }
 }
 
-@media (min-width: 992px) and (max-width: 1199.98px) {
+@media (min-width: 992px){
     .carousel-inner {
         max-height: 520px;
     }
@@ -221,17 +257,11 @@ div#plans{
         margin: 20px;
     }
 
-    #infoLorem{
+    .infoLorem{
         font-size: 0.95em;
     }
 
 
-}
-
-@media (min-width: 576px) {
-    .container img {
-        width: 100%;
-    }
 }
 
 @media (min-width: 1200px) {
@@ -259,8 +289,16 @@ div#plans{
         max-width: 90%;
     }
 
-    #infoLorem{
+    .infoLorem{
         font-size: 1em;
+    }
+
+    #subRowAbout .subTitleAbout {
+        font-size: 1.14em;
+    }
+
+    .textRedForResources{
+        font-size: 1.2em;
     }
 }
 
