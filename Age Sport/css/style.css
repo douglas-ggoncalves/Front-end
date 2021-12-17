@@ -28,7 +28,8 @@ li {
 }
 
 .rowResources{
-    
+    display: flex;
+    justify-content: center;
 }
 
 .resourcersContainer {
@@ -143,6 +144,9 @@ div#plans{
     border-radius: 3px; 
     background-color: black;
     z-index: 1;
+    font-size: 1.5em;
+    color: rgba(255, 0, 0, 0.911);
+    font-weight: 500;
 }
 
 #subRowAbout svg{
@@ -154,8 +158,6 @@ div#plans{
     font-weight: bold; 
     letter-spacing: 1.1px; 
 }
-
-
 
 .rowResources .blackDiv{
     background-color: rgba(65, 63, 63, 0.255);
@@ -203,10 +205,11 @@ div#plans{
     margin-top: 0.5rem;
 }
 
-
 .rowResources .blackDiv img{
     filter: invert(100%); 
     max-height: 110px;
+    max-width: 100%;
+    height: auto;
 }
 
 @media (max-width: 575.98px) {
@@ -354,3 +357,10 @@ div#plans{
         font-size: 1.35em;
     }
 }
+
+
+/*
+
+https://drive.google.com/drive/folders/1Qv5LFzyrEKtWqa75Wi2iGnNTOA-EP5Ni?usp=sharing
+
+*/
