@@ -155,11 +155,58 @@ div#plans{
     letter-spacing: 1.1px; 
 }
 
-.textRedForResources{
+
+
+.rowResources .blackDiv{
+    background-color: rgba(65, 63, 63, 0.255);
+    display: flex;
+    align-items: center;
+}
+
+.rowResources .blackDiv .blackDivForImg {
+    width: 100%;
+}
+
+.rowResources .blackDiv .blackDivForImg div{
+    display: flex; 
+    justify-content: center;
+}
+
+.rowResources .blackDiv .blackDivTitle{
+    margin-top: 10px; 
+    display: flex; 
+    justify-content: center;
+}
+
+.rowResources .blackDiv .blackDivTitle span{
     color: rgb(221, 39, 39); 
     font-weight: 650; 
     font-family: Trebuchet MS; 
     letter-spacing: 1.1px;
+}
+.rowResources .blackDiv .blackDivLorem{
+    display: flex; 
+    justify-content: center;
+}
+
+.rowResources .blackDiv .blackDivLorem span{
+    color: #848d96d7!important; 
+    display: inline; 
+    text-align: center;
+    margin-left: 1rem;
+    margin-right: 1rem;
+}
+
+.rowResources .blackDiv .blackDivAboutMore{
+    display: flex; 
+    justify-content: center;
+    margin-top: 0.5rem;
+}
+
+
+.rowResources .blackDiv img{
+    filter: invert(100%); 
+    max-height: 110px;
 }
 
 @media (max-width: 575.98px) {
@@ -297,7 +344,7 @@ div#plans{
         font-size: 1.14em;
     }
 
-    .textRedForResources{
+    .rowResources .blackDiv .blackDivTitle span{
         font-size: 1.2em;
     }
 }
