@@ -27,35 +27,6 @@ li {
     line-height: 0;
 }
 
-.rowResources{
-    display: flex;
-    justify-content: center;
-}
-
-.resourcersContainer {
-    position: relative;
-    overflow: hidden;
-    background-size: cover;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-}
-
-.resourcersContainer img {
-    -moz-transition: all 0.5s;
-    -webkit-transition: all 0.5s;
-    transition: all 0.5s;
-    max-height: 100%;
-    width: 100%;
-}
-
-.resourcersContainer:hover img {
-    -moz-transform: scale(1.2);
-    -webkit-transform: scale(1.2);
-    transform: scale(1.2);
-}
-
 .bg-dark {
     background-color: black !important;
 }
@@ -126,7 +97,7 @@ div#plans{
 }
 
 #rowAbout .infoLorem{
-    text-align: justify;
+    text-align: left;
 }
 
 .infoLorem{
@@ -137,7 +108,37 @@ div#plans{
     font-weight: 400;
 }
 
-#divisionScreen {
+#subRowAbout svg{
+    color: red;
+}
+
+#subRowAbout .subTitleAbout {
+    color: rgb(255, 255, 255); 
+    font-weight: bold; 
+    letter-spacing: 1.01px;
+}
+
+/* ------------------ Start Screen ------------------ */
+.rowForDivisionScreen{
+    display: flex;
+    justify-content: center;
+    margin-top: 3rem;
+}
+
+.rowForDivisionScreen .helpDiv{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 0.5rem;
+}
+
+.rowForDivisionScreen .helpDiv .firstDiv{
+    border: 1px solid rgba(202, 192, 192, 0.589); 
+    width: 100%; 
+    position: absolute;
+}
+
+.rowForDivisionScreen .helpDiv .secondDiv{
     border: 1px solid rgba(202, 192, 192, 0.719); 
     display: inline; 
     padding: 3px 10px; 
@@ -148,15 +149,42 @@ div#plans{
     color: rgba(255, 0, 0, 0.911);
     font-weight: 500;
 }
+/* ------------------ Final Screen ------------------ */
 
-#subRowAbout svg{
-    color: red;
+
+/* ------------------ Start Resources ------------------ */
+.rowResources{
+    display: flex;
+    justify-content: center;
+    padding: 0 1rem;
 }
 
-#subRowAbout .subTitleAbout {
-    color: rgb(255, 255, 255); 
-    font-weight: bold; 
-    letter-spacing: 1.1px; 
+#firstRow{
+    margin-top: 1rem;
+}
+
+.resourcersContainer {
+    position: relative;
+    overflow: hidden;
+    background-size: cover;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+}
+
+.resourcersContainer img {
+    -moz-transition: all 0.5s;
+    -webkit-transition: all 0.5s;
+    transition: all 0.5s;
+    max-height: 100%;
+    width: 100%;
+}
+
+.resourcersContainer:hover img {
+    -moz-transform: scale(1.2);
+    -webkit-transform: scale(1.2);
+    transform: scale(1.2);
 }
 
 .rowResources .blackDiv{
@@ -199,18 +227,19 @@ div#plans{
     margin-right: 1rem;
 }
 
-.rowResources .blackDiv .blackDivAboutMore{
-    display: flex; 
-    justify-content: center;
-    margin-top: 0.5rem;
-}
-
 .rowResources .blackDiv img{
     filter: invert(100%); 
     max-height: 110px;
     max-width: 100%;
     height: auto;
 }
+
+.rowResources .blackDiv .blackDivAboutMore{
+    display: flex; 
+    justify-content: center;
+    margin-top: 0.5rem;
+}
+/* ------------------ Fim Resources ------------------ */
 
 @media (max-width: 575.98px) {
     .carousel-inner {
@@ -311,7 +340,9 @@ div#plans{
         font-size: 0.95em;
     }
 
-
+    .rowResources .blackDiv .blackDivAboutMore .btn{
+        font-size: 1.1em;
+    }
 }
 
 @media (min-width: 1200px) {
