@@ -6,6 +6,21 @@ li {
     background-color: black !important;
 }
 
+.btn.btn-danger{
+    border: none;
+    background-color: red;
+    padding: 0.6rem 1rem;
+    -moz-transition: all 0.4s;
+	-webkit-transition: all 0.4s;
+	transition: all 0.4s;
+}
+
+.btn.btn-danger:hover{
+    -moz-transform: scale(1.1);
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+}
+
 /* ------------------ Start Navbar ------------------ */
 
 #myNavBarRow{
@@ -45,9 +60,6 @@ li {
 #myNavBarRow #navbar>a:hover {
     background-color: red;
     transition: all 0.25s ease-in;
-}
-
-#myNavBarRow #navbarNavDropdown ul {
 }
 
 #myNavBarRow #navbar>a span {
@@ -156,8 +168,37 @@ span.bannersTextRed {
     height: 25px;
 }
 
-div.plans{
+div#plansBackgroundDiferent{
     background: linear-gradient(130deg, rgba(65, 63, 63, 0.255) 93%, transparent 0%);
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+.plans .myButton{
+    background: linear-gradient(130deg, red 93%, transparent 0%);
+    color: white;
+    padding: 0.6rem;
+    -moz-transition: all 0.4s;
+	-webkit-transition: all 0.4s;
+	transition: all 0.4s;
+    text-decoration: none;
+}
+
+.plans .myButton:hover{
+    -moz-transform: scale(1.1);
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+}
+
+.btn.btn-danger{
+    background-color: red;
+    -moz-transition: all 0.4s;
+	-webkit-transition: all 0.4s;
+	transition: all 0.4s;
+}
+
+.plans .btn.btn-danger{
+    background: linear-gradient(130deg, red 93%, transparent 0%);
 }
 
 .plans div{
