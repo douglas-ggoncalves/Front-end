@@ -6,19 +6,21 @@ li {
     background-color: black !important;
 }
 
-.btn.btn-danger{
+.buttonWithZoom{
     border: none;
-    background-color: red;
+    background-color: rgba(255, 0, 0, 0.849);
     padding: 0.6rem 1rem;
     -moz-transition: all 0.4s;
 	-webkit-transition: all 0.4s;
 	transition: all 0.4s;
+    color: white;
+    cursor: pointer;
+    border-radius: 3px;
 }
 
-.btn.btn-danger:hover{
-    -moz-transform: scale(1.1);
-    -webkit-transform: scale(1.1);
-    transform: scale(1.1);
+button.buttonWithZoom:hover{
+    background-color: white;
+    color: black;
 }
 
 /* ------------------ Start Navbar ------------------ */
@@ -125,9 +127,9 @@ span.bannersTextRed {
 /* ------------------ Start Plans ------------------ */
 #myRowPlans {
     padding: 0;
-    margin-top: 1rem !important;
-    margin: 0 auto;
-    border: 1px solid red;
+    margin-top: 3.5rem !important;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 #myRowPlans #firstDivInfoPlans {
@@ -136,20 +138,27 @@ span.bannersTextRed {
     margin-bottom: 1rem !important;
 }
 
-#myRowPlans #infoTextRedTitle {
+#myRowPlans .infoTextRedTitle {
     color: red; 
     display: block;
-    font-weight: 600;
-    font-size: 1.1rem;
+    font-family: Verdana, sans-serif; 
+    font-weight: 500;
+    font-size: 1.2rem;
+    padding-top: 1rem;
 }
 
-#myRowPlans #infoTextWhite {
+#myRowPlans .infoTextWhite {
     color: rgb(255, 255, 255); 
     font-family: Verdana, sans-serif; 
     font-size: 1.1rem;
     font-weight: 500;
     display: flex; 
     justify-content: center;
+}
+
+#myRowPlans #infoTextWhiteDifferent {
+    display: flex; 
+    justify-content: left;
 }
 
 #myRowPlans #firstDivInfoPlans .optionsForFirstDiv {
@@ -166,13 +175,11 @@ span.bannersTextRed {
     height: 25px;
 }
 
-div#plansBackgroundDiferent{
+div#plansBasic{
     background: linear-gradient(130deg, rgba(65, 63, 63, 0.255) 93%, transparent 0%);
-    padding-top: 1rem;
-    padding-bottom: 1rem;
 }
 
-.plans .myButton{
+#myRowPlans .myButton{
     background: linear-gradient(130deg, red 93%, transparent 0%);
     color: white;
     padding: 0.6rem;
@@ -180,9 +187,11 @@ div#plansBackgroundDiferent{
 	-webkit-transition: all 0.4s;
 	transition: all 0.4s;
     text-decoration: none;
+    margin-bottom: 1rem;
+    margin-top: 1rem;
 }
 
-.plans .myButton:hover{
+#myRowPlans a:hover{
     -moz-transform: scale(1.1);
     -webkit-transform: scale(1.1);
     transform: scale(1.1);
@@ -202,6 +211,17 @@ div#plansBackgroundDiferent{
 .plans div{
     display: flex; 
     justify-content: center;
+    margin-top: 1rem;
+}
+
+.plans{
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+.divPlans #divPlansLeft div{
+    display: flex; 
+    justify-content: left;
 }
 
 .plans div span{
@@ -216,7 +236,7 @@ div#plansBackgroundDiferent{
 
 #myRowPlans .divPlans {
     margin-bottom: 1rem !important;
-    padding: 0;
+    padding: 0.5rem;
 }
 
 /* ------------------ Final Plans ------------------ */
@@ -284,6 +304,7 @@ div#plansBackgroundDiferent{
     display: flex;
     justify-content: center;
     padding: 0 1rem;
+    margin: 0 auto 1.5rem auto;
 }
 
 .resourcersContainer {
@@ -391,10 +412,6 @@ div#plansBackgroundDiferent{
     .text-danger {
         font-size: 1.2em;
     }
-
-    .rowResources{
-        
-    }
 }
 
 @media (min-width: 576px){
@@ -451,6 +468,14 @@ div#plansBackgroundDiferent{
     .text-danger {
         font-size: 1.3em;
     }
+
+    div#plansBasic{
+        background: linear-gradient(-130deg, rgba(65, 63, 63, 0.255) 93%, transparent 0%);
+    }
+    
+    div#plansPremium{
+        background: linear-gradient(60deg, rgba(65, 63, 63, 0.255) 93%, transparent 0%);
+    }
 }
 
 @media (min-width: 992px){
@@ -478,10 +503,6 @@ div#plansBackgroundDiferent{
         font-size: 1.5em;
     }
 
-    div.plans{
-        margin: 20px;
-    }
-
     .infoLorem{
         font-size: 0.95em;
     }
@@ -489,6 +510,15 @@ div#plansBackgroundDiferent{
     .rowResources .blackDiv .blackDivAboutMore .btn{
         font-size: 1.1em;
     }
+
+    #myRowPlans #firstDivInfoPlans .optionsForFirstDiv {
+        margin-top: 0.9rem;
+    }
+
+    .plans div{
+        margin-top: 0.9rem;
+    }
+    
 }
 
 @media (min-width: 1200px) {
@@ -529,6 +559,19 @@ div#plansBackgroundDiferent{
         padding-right: 3rem !important;
     }
 
+    #myRowPlans{
+        padding-left: 3rem !important;
+        padding-right: 3rem !important;
+    }
+
+    #myRowPlans .infoTextWhite {
+        font-size: 1.2em;
+    }
+
+    .rowForDivisionScreen .helpDiv .secondDiv{
+        font-size: 1.7em;
+        padding: 0.5rem 1rem;
+    }
 }
 
 @media (min-width: 1700px) {
