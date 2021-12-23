@@ -1,3 +1,4 @@
+
 li {
     list-style: none;
 }
@@ -335,7 +336,6 @@ div#plansBasic{
     padding: 0.5rem;
 }
 
-
 .rowResources .blackDiv{
     background-color: rgba(65, 63, 63, 0.255);
     display: flex;
@@ -392,6 +392,169 @@ div#plansBasic{
 }
 /* ------------------ Final Resources ------------------ */
 
+/* ------------------ Start Trainers" ------------------ */
+span.functionTrainer {
+    color: red; 
+    font-family: Tahoma; 
+    display: block;
+    font-size: 1.2rem;
+}
+
+span.nameTrainer { 
+    color: rgb(255, 255, 255);
+    width: 100%; 
+    display: block; 
+    font-weight: 600;  
+    font-size: 1.2rem;
+}
+
+#rowTrainers{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1rem;
+}
+
+#rowTrainers > div{
+    margin-bottom: 1rem;
+}
+
+#rowTrainers .divUpTrainers{
+    background-color: rgb(17, 16, 16);
+    margin: 0 15px;
+    padding: 0.7rem 0.5rem;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+#rowTrainers div:hover .divUpTrainers div{
+    display: block !important;
+    transition: all 0.5s;
+} 
+
+#rowTrainers .divUpTrainers hr{
+    background-color: white;
+}
+
+#rowTrainers .divUpTrainers img{
+    width: 100%;
+}
+
+#rowTrainers .divUpTrainers a{
+    text-decoration: none;
+}
+
+#rowTrainers .divUpTrainers i{
+    -moz-transition: all 0.4s;
+	-webkit-transition: all 0.4s;
+	transition: all 0.4s;
+    color: white;
+    font-size: 1.3rem;
+    margin-right: 0.5rem;
+}
+
+#rowTrainers .divUpTrainers i:hover{
+    cursor: pointer;
+    color: rgb(240, 0, 0);
+}
+
+/* ------------------ Final Trainers" ------------------ */
+
+/* ------------------ Final Background Att" ------------------ */
+
+#rowWithBackground{
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+#rowWithBackground #divOfBackground{
+    background: linear-gradient(180deg, rgba(74, 135, 153, 0.1) 0%, rgba(52,51,65,0.1) 64%), url('../imagens/banner-bg.jpg') no-repeat center center;
+    background-attachment: fixed;
+    opacity: 0.4;
+    background-size: cover;
+    height: 300px;
+}
+
+#rowWithBackground #divOfContent{
+    position: absolute;
+}
+
+#rowWithBackground #divOfContent div{
+    display: flex;
+    justify-content: center;
+}
+
+#rowWithBackground #divOfContent span{
+    text-align: center;
+}
+
+#rowWithBackground #divOfContent #textRed{
+    color: red; 
+    display: block;
+    font-family: Verdana, sans-serif; 
+    font-weight: 500;
+    font-size: 1.2rem;
+    padding-top: 1rem;
+}
+
+#rowWithBackground #divOfContent #textWhite{
+    color: rgb(255, 255, 255);
+    width: 100%; 
+    display: block; 
+    font-weight: 650;  
+    font-family: Trebuchet MS; 
+    letter-spacing: 1.1px;
+    font-size: 1.3em;
+}
+
+#rowWithBackground #divOfContent #loremGray{
+    color: #a5aeb8d7!important; 
+    display: block; 
+    padding: 0 2rem;
+    font-size: 1em;
+    font-weight: 400;
+    margin: 0 auto;
+}
+
+#rowWithBackground .myButton{
+    background: linear-gradient(130deg, red 93%, transparent 0%);
+    color: white;
+    font-size: 1.1rem;
+    padding: 0.6rem;
+    text-decoration: none;
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+}
+
+#rowWithBackground .myButton:hover{
+    background: linear-gradient(130deg, rgb(255, 255, 255) 93%, transparent 0%);
+    color: red;
+}
+/* ------------------ Final Background Att" ------------------ */
+
+/* ------------------ Start Testimonials" ------------------ */
+#rowTestimonials #textRedTestimonials{
+        color: red; 
+        display: block;
+        font-size: 1.2rem;
+        font-weight: 500;
+}
+
+#rowTestimonials #textWhiteTestimonials{
+    color: rgb(255, 255, 255);
+    width: 100%; 
+    display: block; 
+    font-size: 1.3rem;
+    font-weight: 500;
+    letter-spacing: 1.6px;
+}
+
+/* ------------------ Final Testimonials" ------------------ */
+
+
+
 @media (max-width: 575.98px) {
     .carousel-inner {
         max-height: 280px;
@@ -442,6 +605,10 @@ div#plansBasic{
     .text-danger {
         font-size: 1.25em;
     }
+
+    #rowWithBackground #divOfContent #textWhite{
+        font-size: 1.4em;
+    }
 }
 
 @media (min-width: 768px){
@@ -475,6 +642,14 @@ div#plansBasic{
     
     div#plansPremium{
         background: linear-gradient(60deg, rgba(65, 63, 63, 0.255) 93%, transparent 0%);
+    }
+
+    #rowWithBackground #divOfContent #textRed{
+        font-size: 1.5rem;
+    }
+
+    #rowWithBackground #divOfContent #textWhite{
+        font-size: 1.6em;
     }
 }
 
@@ -518,7 +693,16 @@ div#plansBasic{
     .plans div{
         margin-top: 0.9rem;
     }
-    
+
+    #rowWithBackground #divOfContent #loremGray{
+        max-width: 70%;
+        font-size: 1.1em;
+    }
+
+    #rowWithBackground #divOfContent #textRed{
+        font-weight: 500;
+        font-size: 1.6em;
+    }
 }
 
 @media (min-width: 1200px) {
@@ -572,6 +756,18 @@ div#plansBasic{
         font-size: 1.7em;
         padding: 0.5rem 1rem;
     }
+
+    #rowWithBackground #divOfContent #loremGray{
+        max-width: 40%;
+    }
+
+    #rowWithBackground #divOfContent #textRed{
+        font-size: 1.8em;
+    }
+
+    #rowWithBackground #divOfContent #textWhite{
+        font-size: 1.8em;
+    }
 }
 
 @media (min-width: 1700px) {
@@ -584,5 +780,7 @@ div#plansBasic{
 /*
 
 https://drive.google.com/drive/folders/1Qv5LFzyrEKtWqa75Wi2iGnNTOA-EP5Ni?usp=sharing
+
+Quais seriam as condições para eu te dar um beijo hoje?
 
 */
