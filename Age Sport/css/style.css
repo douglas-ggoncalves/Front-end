@@ -644,8 +644,7 @@ span.nameTrainer {
     -moz-transition: all 0.3s;
     -webkit-transition: all 0.3s;
     transition: all 0.3s;
-    max-height: 80%;
-    min-height: 80%;
+    height: 450px;
     width: 100%;
 }
 
@@ -653,6 +652,7 @@ span.nameTrainer {
     -moz-transform: scale(1.1);
     -webkit-transform: scale(1.1);
     transform: scale(1.1);
+    cursor: pointer;
 }
 
 #rowForPosts .buttonNavegation{
@@ -671,12 +671,12 @@ span.nameTrainer {
     margin-right: 15px;
 }
 
-#rowForPosts .postsElements>div{
-    border: 1px solid white;
-}
-
 #rowForPosts .postsElements .infoElementsBackgroundBlack .separator{
     color: rgb(253, 253, 253);
+}
+
+#rowForPosts .postsElements .infoElementsBackgroundBlack span{
+    margin-top: 0.3rem;
 }
 
 #rowForPosts .postsElements .infoElementsBackgroundBlack .redSpanPosts{
@@ -700,7 +700,6 @@ span.nameTrainer {
 
 #rowForPosts .postsElements .infoElementsBackgroundBlack div{
     display: flex;
-    justify-content: center;
 }
 
 #rowForPosts .postsElements .infoElementsBackgroundBlack .btnForPosts{
@@ -709,7 +708,7 @@ span.nameTrainer {
     font-size: 1.1rem;
     padding: 0.4rem 0.6rem;
     text-decoration: none;
-    margin-bottom: 0.2rem;
+    margin-top: 0.5rem;
 }
 
 #rowForPosts .postsElements .infoElementsBackgroundBlack .btnForPosts:hover{
