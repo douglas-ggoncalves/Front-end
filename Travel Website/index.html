@@ -26,6 +26,7 @@
     <!-- Font Awesome -->
     <link href="fontawesome/css/all.css" rel="stylesheet">
 
+    <!-- AOS (Effets Top Index) -->
     <link href="aos-master/dist/aos.css" rel="stylesheet">
     <script src="aos-master/dist/aos.js"></script>
 
@@ -36,9 +37,7 @@
 </head>
 
 <body>
-
     <div class="container-fluid">
-
         <div class="row p-0">
             <div class="col-3 col-md-6 mx-md-auto d-flex align-items-left pl-0 pl-md-0 py-2 order-md-2">
                 <nav class="navbar navbar-expand-md mx-md-auto myNav" style="background-color: rgb(27, 27, 27);">
@@ -54,19 +53,19 @@
                                 <a class="nav-link pt-3 pt-md-2" href="#">Home</a>
                             </li>
                             <li class="nav-item" data-aos="fade-left" data-aos-delay="400">
-                                <a class="nav-link" href="#">Sobre</a>
+                                <a class="nav-link" href="#about">Sobre</a>
                             </li>
                             <li class="nav-item" data-aos="fade-left" data-aos-delay="500">
-                                <a class="nav-link" href="#">Destino</a>
+                                <a class="nav-link" href="#destination">Destino</a>
                             </li>
                             <li class="nav-item" data-aos="fade-left" data-aos-delay="600">
-                                <a class="nav-link" href="#">Serviços</a>
+                                <a class="nav-link" href="#services">Serviços</a>
                             </li>
                             <li class="nav-item" data-aos="fade-left" data-aos-delay="700">
-                                <a class="nav-link" href="#">Galeria</a>
+                                <a class="nav-link" href="#gallery">Galeria</a>
                             </li>
                             <li class="nav-item" data-aos="fade-left" data-aos-delay="800">
-                                <a class="nav-link" href="#">Blogs</a>
+                                <a class="nav-link" href="#postsAndBlogs">Blogs</a>
                             </li>
                         </ul>
                     </div>
@@ -81,13 +80,12 @@
 
             <div class="col-4 col-md-3 p-0 my-md-auto d-flex justify-content-center align-items-center justify-content-md-center order-md-3"
                 style="height: 60px;">
-                <a href="#" class="buttonNav" data-aos="fade-left" data-aos-delay="800">Agende Agora</a>
+                <a href="#toWhere" class="buttonNav" data-aos="fade-left" data-aos-delay="800">Agende Agora</a>
             </div>
         </div>
     </div>
 
     <div class="container-fluid mt-2" style="background-color: rgb(0, 0, 0);">
-
         <div id="rowBanner" class="row px-5 m-0 d-flex align-items-center justify-content-center">
             <div style="display: block; width: 100%;">
                 <span id="textBgTopOne" class="text-center">
@@ -104,12 +102,12 @@
                 </span>
 
                 <span class="text-center my-3 d-block w-100">
-                    <a href="#" class="buttonNav">Agende Agora</a>
+                    <a href="#toWhere" class="buttonNav">Agende Agora</a>
                 </span>
             </div>
         </div>
 
-        <div class="row mx-0" style="width: 100%; margin-top: -40px;">
+        <div class="row mx-0" style="width: 100%; margin-top: -40px;" id="toWhere">
             <div id="abc" class="mx-auto py-3 px-2 px-lg-3">
                 <div class="divFrontBanner">
                     <span>Para Onde?</span>
@@ -123,7 +121,7 @@
 
                 <div class="divFrontBanner">
                     <span>Quantas Pessoas?</span>
-                    <input type="number" placeholder="Número de Pessoas">
+                    <input id="inputPeople" type="number" placeholder="Número de Pessoas" onchange="inputPeople(this)" onkeyup="inputPeople(this)">
                 </div>
 
                 <div class="divFrontBanner" id="divFrontBannerLast">
@@ -132,8 +130,7 @@
             </div>
         </div>
 
-        <div class="row mt-0 mx-0 mx-md-auto py-5 mt-lg-3">
-
+        <div class="row mt-0 mx-0 mx-md-auto py-5 mt-lg-3" id="about">
             <div class="col-12 col-md-6 my-auto px-2 col-lg-5 offset-lg-1">
                 <video class="videos" loop="true" autoplay="autoplay" id="divVideo1" muted>
                     <source src="images/about-vid-2.mp4" type="video/mp4">
@@ -159,7 +156,7 @@
             <div class="col-12 col-md-6 col-lg-5 mt-3 mt-md-0 " style="display: flex; align-items: center;">
                 <div id="divImages">
                     <span class="titleImageRight">
-                        Por que Nos Escolher?
+                        Por Que Nos Escolher?
                     </span>
 
                     <span class="messageImageRight" style="text-align: left;">
@@ -179,10 +176,10 @@
 
         </div>
 
-        <div class="row p-3 p-lg-5 " style="flex-wrap: wrap">
+        <div class="row p-3 p-lg-5" style="flex-wrap: wrap" id="destination">
             <div class="col-12">
                 <span class="text-center titleImageRight" style="display: block;">Nosso Destino</span>
-                <span class="text-center messageImageRight">Escolha seu destino</span>
+                <span class="text-center messageImageRight">Escolha Seu Destino</span>
             </div>
 
             <div class="col-12 col-md-6 col-lg-3 p-lg-1 mt-3">
@@ -201,7 +198,6 @@
                             </span>
                             <i class="fas fa-angle-right"></i>
                         </a>
-
                     </div>
                 </div>
             </div>
@@ -222,7 +218,6 @@
                             </span>
                             <i class="fas fa-angle-right"></i>
                         </a>
-
                     </div>
                 </div>
             </div>
@@ -243,7 +238,6 @@
                             </span>
                             <i class="fas fa-angle-right"></i>
                         </a>
-
                     </div>
                 </div>
             </div>
@@ -264,7 +258,6 @@
                             </span>
                             <i class="fas fa-angle-right"></i>
                         </a>
-
                     </div>
                 </div>
             </div>
@@ -350,7 +343,7 @@
             </div>
         </div>
 
-        <div class="row p-3 p-lg-5">
+        <div class="row p-3 p-lg-5" id="services">
             <div class="col-12">
                 <span class="text-center titleImageRight" style="display: block;">Nossos Serviços</span>
                 <span class="text-center messageImageRight">Experiências Incontáveis</span>
@@ -423,7 +416,7 @@
             </div>
         </div>
 
-        <div class="row p-3 p-lg-5 ourGallery">
+        <div class="row p-3 p-lg-5 ourGallery" id="gallery">
             <div class="col-12">
                 <span class="text-center titleImageRight" style="display: block;">Nossa Galeria</span>
                 <span class="text-center mb-3 messageImageRight">Colecionamos Memórias</span>
@@ -477,18 +470,15 @@
             </div>
         </div>
 
-        <div class="row">
+        <div class="row" id="postsAndBlogs">
             <div class="col-12 mb-2">
                 <span class="titleImageRight"
                     style="display: block; font-family: 'Trebuchet MS', 'Lucida Sans Unicode';">Posts e Blogs</span>
                 <span class="messageImageRight">Nós Contamos Histórias</span>
             </div>
-
-
         </div>
 
         <div class="row p-2" style="background-color: black;">
-
             <div class="col-12 col-md-6 col-xl-4">
                 <div class="blogsEPosts">
                     <img src="images/blog-1.jpg" class="img-fluid" alt="">
@@ -506,7 +496,7 @@
                             <a class="my-2" href="#">
                                 <i class="fas fa-clock"></i>
                                 <span class="by" style="display: inline;">
-                                    21/05/2021
+                                    19/05/2021
                                 </span>
                             </a>
 
@@ -536,7 +526,7 @@
                             <a class="my-2" href="#">
                                 <i class="fas fa-clock"></i>
                                 <span class="by" style="display: inline;">
-                                    21/05/2021
+                                    20/05/2021
                                 </span>
                             </a>
 
@@ -573,24 +563,22 @@
                             <a class="ml-auto my-2" href="#">
                                 <i class="fas fa-user"></i>
                                 <span class="by" style="display: inline;">
-                                    By Jhon
+                                    By Lucas
                                 </span>
                             </a>
                         </span>
                     </div>
                 </div>
             </div>
-
         </div>
 
         <div class="row mt-3" style="height: 300px;">
-            <!-- Parallax -->
             <div class="col-12" id="back">
-                <div style="height: 50%; margin: auto; text-align: center;">
+                <div style="margin: auto; text-align: center;">
                     <span class="titleImageRight"
-                        style="display: block; font-family: 'Trebuchet MS', 'Lucida Sans Unicode';">Comece suas
-                        aventuras</span>
-                    <span class="messageImageRight">Vamos explorar este mundo</span>
+                        style="display: block; font-family: 'Trebuchet MS', 'Lucida Sans Unicode';">Comece Suas
+                        Aventuras</span>
+                    <span class="messageImageRight">Vamos Explorar Este Mundo</span>
 
                     <span class="mx-auto px-lg-2 pb-3 galleryLorem">
                         Lorem Ipsum Dolor, Sit Amet Consectetur Adipisicing.
@@ -598,12 +586,10 @@
 
                     <a href="#" class="knowMore">Saiba Mais</a>
                 </div>
-
             </div>
         </div>
 
         <div class="row mt-4">
-
             <div class="col-12 col-sm-6 col-md-4 col-lg-3">
                 <i class="fas fa-paper-plane"></i>
                 <p class="my-auto ml-1 textTravel">Travel</p>
@@ -633,12 +619,11 @@
                 <div class="infoStore">
                     <p class="textTravel" style="font-size: 1.3em; display: block;">Links Rápidos</p>
                     <a class="fas fa-angle-right firstElement" href="#"> <span onmouseout="link(this)">Home</span> </a>
-                    <!-- Criar efeito para quando o mouse sair do link -->
-                    <a class="fas fa-angle-right" href="#"> <span onmouseout="link(this)">Sobre</span> </a>
-                    <a class="fas fa-angle-right" href="#"> <span onmouseout="link(this)">Destino</span> </a>
-                    <a class="fas fa-angle-right" href="#"> <span onmouseout="link(this)">Serviços</span> </a>
-                    <a class="fas fa-angle-right" href="#"> <span onmouseout="link(this)">Galeria</span> </a>
-                    <a class="fas fa-angle-right" href="#"> <span onmouseout="link(this)">Blogs</span> </a>
+                    <a class="fas fa-angle-right" href="#about"> <span onmouseout="link(this)">Sobre</span> </a>
+                    <a class="fas fa-angle-right" href="#destination"> <span onmouseout="link(this)">Destino</span> </a>
+                    <a class="fas fa-angle-right" href="#services"> <span onmouseout="link(this)">Serviços</span> </a>
+                    <a class="fas fa-angle-right" href="#gallery"> <span onmouseout="link(this)">Galeria</span> </a>
+                    <a class="fas fa-angle-right" href="#postsAndBlogs"> <span onmouseout="link(this)">Blogs</span> </a>
                 </div>
             </div>
 
@@ -675,10 +660,19 @@
                 </div>
             </div>
         </div>
-
     </div>
 
     <script>
+        function inputPeople(input){
+            if(input.value < 0 ){
+                document.getElementById("inputPeople").value = ''
+            }
+
+            if(input.value > 30 ){
+                document.getElementById("inputPeople").value = '30'
+            }
+        }
+
         function onMouseOutDestiny(ele) {
             ele.style = "transition: all 0.3s ease-in-out";
         }

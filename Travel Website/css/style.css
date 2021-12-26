@@ -58,9 +58,9 @@ nav .buttonNav {
     text-decoration: none;
 }
 
-#abc{
-    width: 80%; 
-    border-radius: 5px; 
+#abc {
+    width: 80%;
+    border-radius: 5px;
     background-color: rgb(27, 27, 27);
 }
 
@@ -72,7 +72,7 @@ nav .buttonNav {
 }
 
 .fa-paper-plane {
-    color: #29d9d5; 
+    color: #29d9d5;
     font-size: 1.45em;
 }
 
@@ -124,24 +124,24 @@ nav .buttonNav {
 }
 
 .galleryDivs {
-    background-color: rgb(27, 27, 27); 
-    display: block; 
-    width: 100%; 
-    position: absolute; 
-    bottom: 0; 
-    left: 0; 
-    margin: 0; 
+    background-color: rgb(27, 27, 27);
+    display: block;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    margin: 0;
 }
 
 .galleryFirstSpan {
-    display: block; 
+    display: block;
     color: white;
     font-size: 1.1em;
     font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
-.subTitleServices{
-    display: block; 
+.subTitleServices {
+    display: block;
     color: white;
     font-size: 1.2em;
     font-weight: bold;
@@ -149,7 +149,7 @@ nav .buttonNav {
 }
 
 .subTitleDestiny {
-    display: block; 
+    display: block;
     color: white;
     font-size: 1.2em;
     font-weight: bold;
@@ -158,17 +158,17 @@ nav .buttonNav {
     padding-top: 1rem;
 }
 
-.galleryLorem, .destinyLorem{
+.galleryLorem, .destinyLorem {
     color: rgba(233, 229, 225, 0.684);
-    display: block; 
+    display: block;
     width: 100%;
     font-size: 0.85em;
     text-align: center;
 }
 
-.loremFinal{
+.loremFinal {
     color: rgba(233, 229, 225, 0.684);
-    display: block; 
+    display: block;
     width: 100%;
     font-size: 0.85em;
     text-align: center;
@@ -213,7 +213,7 @@ nav .buttonNav {
     display: inline-block;
     margin: 5px 7px;
     border: none;
-    outline: none;
+    outline: none !important;
 }
 
 .videos {
@@ -257,9 +257,9 @@ nav .buttonNav {
     height: 100%;
 }
 
-.divServices i{
-    color: #29d9d5; 
-    font-size: 2em; 
+.divServices i {
+    color: #29d9d5;
+    font-size: 2em;
     display: block;
     width: 100%;
     text-align: center;
@@ -276,76 +276,75 @@ nav .buttonNav {
     margin-bottom: 0.5rem;
 }
 
-.ourGallery .boxContainer div{
+.ourGallery .boxContainer div {
     margin-bottom: 1.5rem;
 }
 
-.boxContainer span{
+.boxContainer span {
     color: white;
     font-size: 1.2em;
     font-weight: bold;
     text-align: left;
 }
 
-.boxContainer img{
+.boxContainer img {
     border-radius: 8px;
     padding-bottom: 5px;
 }
 
-.ourDestiny{
+.ourDestiny {
     overflow: hidden;
     border-radius: 8px;
 }
 
-.ourDestiny div{
+.ourDestiny div {
     height: 100%;
     width: 100%;
-    background-color: rgb(27, 27, 27); 
+    background-color: rgb(27, 27, 27);
     margin: 0;
     position: relative;
     bottom: 0;
-    border-bottom-right-radius: 8px; 
+    border-bottom-right-radius: 8px;
     border-bottom-left-radius: 8px;
     padding: 0.8rem 20px;
     text-align: center;
 }
 
-.ourDestiny .destinyLorem span{
+.ourDestiny .destinyLorem span {
     display: block;
     color: #aaaaaa;
     width: 80%;
 }
 
-.ourDestiny .linkDestiny{
-    display: inline; 
-    color: #29d9d5; 
+.ourDestiny .linkDestiny {
+    display: inline;
+    color: #29d9d5;
     font-size: 1.12em;
     text-decoration: none;
-    
- }
+}
 
- .ourDestiny .linkDestiny span:hover{
+.ourDestiny .linkDestiny span:hover {
     padding-right: 0.4rem;
     transition: all 0.3s ease-in-out;
- }
+}
 
-.ourDestiny img{
-    border-top-right-radius: 8px; 
+.ourDestiny img {
+    border-top-right-radius: 8px;
     border-top-left-radius: 8px;
     -moz-transition: all 0.3s;
-	-webkit-transition: all 0.3s;
-	transition: all 0.3s;
+    -webkit-transition: all 0.3s;
+    transition: all 0.3s;
     max-height: 80%;
     width: 100%;
 }
 
-.ourDestiny:hover > img{
+.ourDestiny:hover>img {
     -moz-transform: scale(1.1);
     -webkit-transform: scale(1.1);
     transform: scale(1.1);
 }
 
-.blogsEPosts{
+.blogsEPosts {
     border-radius: 8px;
     padding: 0;
     margin: 0;
@@ -353,64 +352,64 @@ nav .buttonNav {
     text-align: center;
 }
 
-.blogsEPosts img{
-    border-top-right-radius: 8px; 
+.blogsEPosts img {
+    border-top-right-radius: 8px;
     border-top-left-radius: 8px;
     -moz-transition: all 0.3s;
-	-webkit-transition: all 0.3s;
-	transition: all 0.3s;
+    -webkit-transition: all 0.3s;
+    transition: all 0.3s;
     max-height: 80%;
     width: 100%;
 }
 
-.blogsEPosts img:hover{
+.blogsEPosts img:hover {
     -moz-transform: scale(1.1);
     -webkit-transform: scale(1.1);
     transform: scale(1.1);
-} 
+}
 
-.blogsEPosts div{
+.blogsEPosts div {
     height: 100%;
     width: 100%;
-    background-color: rgb(27, 27, 27); 
+    background-color: rgb(27, 27, 27);
     margin: 0;
     position: relative;
     bottom: 0;
-    border-bottom-right-radius: 8px; 
+    border-bottom-right-radius: 8px;
     border-bottom-left-radius: 8px;
     padding-top: 1rem;
     padding-left: 20px;
     padding-right: 20px;
 }
 
-.blogsEPosts span{
+.blogsEPosts span {
     display: block;
     color: #aaaaaa;
     width: 80%;
 }
 
-.blogsEPosts span a{
-   display: inline; 
-   color: #29d9d5; 
-   padding-left: 10px;
-   padding-right: 10px;
+.blogsEPosts span a {
+    display: inline;
+    color: #29d9d5;
+    padding-left: 10px;
+    padding-right: 10px;
 }
 
-.blogsEPosts a:hover{
+.blogsEPosts a:hover {
     cursor: pointer;
     color: #29d9d6d3;
     text-decoration: none;
 }
 
 .blogsEPosts .titleLinkBlog {
-    color: white; 
-    line-height: 25px; 
+    color: white;
+    line-height: 25px;
     font-size: 1.25rem;
     margin: 0 auto;
     padding-top: 3rem;
 }
 
-.blogsEPosts span.by:hover{
+.blogsEPosts span.by:hover {
     color: #29d9d6d3;
 }
 
@@ -423,7 +422,7 @@ nav .buttonNav {
     align-items: center;
 }
 
-.knowMore{
+.knowMore {
     background-color: transparent;
     padding: 10px 24px;
     font-size: 1em;
@@ -446,20 +445,20 @@ nav .buttonNav {
     height: 80px;
 }
 
-#baseboardDiv div{
-    position: absolute; 
+#baseboardDiv div {
+    position: absolute;
     padding: 16px 4px;
     background-color: rgb(46, 42, 42);
-    bottom: 0; 
-    left: 0; 
-    right: 0; 
+    bottom: 0;
+    left: 0;
+    right: 0;
 }
 
 .baseboardSpan {
     color: #AAA;
 }
 
-.infoStore a{
+.infoStore a {
     color: #29d9d5;
     text-decoration: none;
     display: block;
@@ -468,7 +467,7 @@ nav .buttonNav {
     padding-bottom: 1.3rem;
 }
 
-.infoStore i{
+.infoStore i {
     color: #29d9d5;
     display: block;
     font-size: 1.1em;
@@ -476,36 +475,35 @@ nav .buttonNav {
     padding-bottom: 1.3rem;
 }
 
-.infoStore input{
-    border: 1px solid #29d9d5; 
-    background: none; 
-    padding: 10px 12px; 
-    border-radius: 20px; 
+.infoStore input {
+    border: 1px solid #29d9d5;
+    background: none;
+    padding: 10px 12px;
+    border-radius: 20px;
     outline: none;
     margin-top: 0.5rem;
     color: rgba(233, 229, 225, 0.684);
 }
 
-.infoStore span{
+.infoStore span {
     font-family: sans-serif;
-    margin-left: 0.3rem; 
+    margin-left: 0.3rem;
     color: rgba(233, 229, 225, 0.684);
     font-size: 0.9em;
     font-weight: 100 !important;
 }
 
-.infoStore a:hover span{
+.infoStore a:hover span {
     color: #29d9d5;
     padding-left: 1rem;
     transition: all 0.3s ease-in-out;
 }
 
-.infoStore .firstElement{
+.infoStore .firstElement {
     margin-top: 0;
 }
 
 @media only screen and (max-width: 300px) {
-
     .buttonNav {
         font-size: 0.62em;
         display: block;
@@ -534,7 +532,7 @@ nav .buttonNav {
         font-size: 1.3em;
     }
 
-    #textBgTopThree{
+    #textBgTopThree {
         font-size: 0.7em;
         width: 100%;
     }
@@ -544,15 +542,15 @@ nav .buttonNav {
         height: 38px;
     }
 
-    .titleImageRight{
+    .titleImageRight {
         font-size: 1.8em;
     }
 
-    .messageImageRight{
+    .messageImageRight {
         font-size: 2.0em;
     }
 
-    .galleryDad{
+    .galleryDad {
         padding: 0;
     }
 
@@ -560,24 +558,24 @@ nav .buttonNav {
         padding: 0;
     }
 
-    .memories, .memories div{
+    .memories, .memories div {
         padding: 0 !important;
     }
 
-    #abc{
+    #abc {
         width: 88%;
     }
 
-    #baseboardDiv span{
+    #baseboardDiv span {
         font-size: 0.8em;
     }
 }
 
 @media only screen and (min-width: 300px) {
-
-    #baseboardDiv span{
+    #baseboardDiv span {
         font-size: 1em;
     }
+
     #rowBanner {
         max-height: 900px;
     }
@@ -590,7 +588,7 @@ nav .buttonNav {
         font-size: 2.8em;
     }
 
-    #textBgTopThree{
+    #textBgTopThree {
         font-size: 0.8em;
         width: 100%;
     }
@@ -598,7 +596,7 @@ nav .buttonNav {
     .textTravel {
         font-size: 1.25em;
     }
-    
+
     .fa-paper-plane {
         font-size: 1.25em;
     }
@@ -668,7 +666,7 @@ nav .buttonNav {
         font-size: 1.2em;
     }
 
-    #baseboardDiv span{
+    #baseboardDiv span {
         font-size: 1.2em;
     }
 }
@@ -681,6 +679,11 @@ nav .buttonNav {
     .buttonNav {
         font-size: 1.2em;
         padding: 10px 16px;
+    }
+
+    #divFrontBannerLast a{
+        font-size: 1.1em;
+        padding: 8px 16px;
     }
 
     #textBgTopOne {
@@ -742,11 +745,11 @@ nav .buttonNav {
         border: 2px solid #29d9d5;
     }
 
-    .knowMore{
+    .knowMore {
         border: 2px solid #29d9d5;
     }
 
-    .infoStore input{
+    .infoStore input {
         border: 2px solid #29d9d5;
     }
 
@@ -754,7 +757,6 @@ nav .buttonNav {
         display: block;
         width: 100%;
     }
-
 }
 
 @media only screen and (min-width: 1200px) {
@@ -802,17 +804,17 @@ nav .buttonNav {
         font-size: 1.2em;
     }
 
-    .galleryLorem, .destinyLorem{
+    .galleryLorem, .destinyLorem {
         font-size: 1em;
         max-width: 80%;
     }
 
-    .loremFinal{
+    .loremFinal {
         font-size: 1em;
         max-width: 90%;
     }
 
-    .divServices .galleryLorem{
+    .divServices .galleryLorem {
         max-width: 90%;
     }
 
