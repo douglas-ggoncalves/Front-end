@@ -43,7 +43,7 @@ button.buttonWithZoom:hover{
     align-items: center;
 }
 
-#myNavBarRow #soon {
+#myNavBarRow .soon {
     font-family: Nunito;
     font-size: 30px;
     padding: 0;
@@ -233,7 +233,7 @@ div#plansBasic{
 /* ------------------ Final Plans ------------------ */
 
 
-#rowAbout .infoLorem{
+#about .infoLorem{
     text-align: left;
 }
 
@@ -757,6 +757,11 @@ span.nameTrainer {
     justify-content: center;
     padding-top: 1rem;
     padding-bottom: 1rem;
+    margin-top: 3rem;
+}
+
+#footer div{
+    margin-top: 1rem;
 }
 
 #footer div h5{
@@ -786,9 +791,15 @@ span.nameTrainer {
     color: #aaaaaa;
 }
 
+#footer div .textContact{
+    color: #aaaaaa;
+    font-size: 0.8em;
+}
+
 #footer div .textHour{
     color: red;
 }
+
 #footer div .iconsContact{
     color: red;
     margin-right: 0.2rem;
@@ -803,11 +814,11 @@ span.nameTrainer {
     color: white;
     border-radius: 4px;
     display: inline;
-    padding: 0.5rem 1rem;
+    padding: 0.5rem 0.8rem;
     outline: none;
     border: none;
     cursor: pointer;
-    margin-right: 0.5rem;
+    margin-right: 0.4rem;
 }
 
 #footer #divOfSocials a:hover {
@@ -817,15 +828,63 @@ span.nameTrainer {
 
 #footer div input {
     display: block;
-    width: 75%;
+    width: 14rem;
+    max-width: 100%;
     background-color: rgb(17, 16, 16);
+    color: #aaaaaa;
     outline: none;
     border: none;
-    padding: 0.5rem;
+    padding: 0.6rem;
     margin-top: 0.5rem;
+    margin-bottom: 1rem;
+}
+/* ------------------ Final Footer" ------------------ */
+
+/* ------------------ Start Baseboard" ------------------ */
+#baseboardDiv{
+    background-color: rgb(17, 16, 16);
+    margin-top: 2rem;
 }
 
-/* ------------------ Final Footer" ------------------ */
+#baseboardDiv>div{
+    display: flex; 
+    justify-content: center;
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+}
+
+#baseboardDiv .baseboardAgeSpan {
+    font-family: Nunito, 'Times New Roman', Times, serif;
+    padding: 0;
+    font-size: 1.8em;
+    margin: 0;
+    line-height: 0;
+    color: rgb(255, 255, 255);
+    position: relative;
+}
+
+#baseboardDiv .baseboardSportSpan {
+    font-family: Nunito, 'Times New Roman', Times, serif;
+    padding: 0;
+    margin: 0;
+    line-height: 0;
+    font-size: 1.8em;
+    color: rgb(192, 24, 24);
+    position: relative;
+}
+
+#baseboardDiv #copy {
+    font-family: Nunito, 'Times New Roman', Times, serif;
+    padding: 0;
+    margin: 0;
+    line-height: 0;
+    font-size: 1.6em;
+    color: rgb(255, 255, 255);
+    position: relative;
+}
+/* ------------------ Final Baseboard" ------------------ */
+
+
 
 
 @media (max-width: 575.98px) {
@@ -1007,6 +1066,7 @@ span.nameTrainer {
     #rowForPosts .postsElements div .divForImage{
         min-height: 25rem;
     }
+
 }
 
 @media (min-width: 1200px) {
@@ -1071,6 +1131,10 @@ span.nameTrainer {
 
     #rowWithBackground #divOfContent #textWhite{
         font-size: 1.8em;
+    }
+
+    #footer div .textContact{
+        font-size: 1em;
     }
 }
 
