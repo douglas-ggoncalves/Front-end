@@ -3,19 +3,148 @@
   list-style: none;
   margin: 0;
   padding: 0;
+  transition: all 0.2s;
+  outline: none !important;
+  border: none;
 }
 
-body {
-  background-color: #130a0a;
+/* ---------- Variables ---------- */
+/* ---------- End Variables ---------- */
+/* ---------- Scrollbar ---------- */
+::-webkit-scrollbar {
+  width: 9px;
 }
 
-h3 {
-  font-size: 1.2em;
+::-webkit-scrollbar-thumb {
+  background: #0cccda;
+  border-radius: 10px;
 }
 
-#MyDiv a {
-  color: white;
+/* ---------- End Scrollbar ---------- */
+/* ---------- Navbar ---------- */
+#sectionNavbar {
+  background-color: #130f40;
+  display: flex;
+  align-items: center;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
 }
-#MyDiv a:hover {
+#sectionNavbar nav {
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+#sectionNavbar nav button {
+  border-color: #fafafa !important;
+}
+#sectionNavbar nav button i {
+  color: #fafafa !important;
+}
+#sectionNavbar #navbarDropdown nav {
+  padding-left: 0 !important;
+}
+#sectionNavbar #mark {
+  color: #fafafa;
+  font-weight: bold;
+  font-size: 2em;
+}
+#sectionNavbar a {
+  color: #fafafa;
+}
+#sectionNavbar a:hover {
   color: #0cccda;
+}
+
+/* ---------- End Navbar ---------- */
+/* ---------- Creative Section ---------- */
+#creativeSection .row > div {
+  display: flex;
+  align-items: center;
+}
+#creativeSection .row img {
+  max-width: 100%;
+  height: auto;
+}
+#creativeSection .row h1 {
+  color: #130f40;
+  font-weight: bold;
+  font-size: 2.5em;
+}
+#creativeSection .row button {
+  padding: 0.7rem 1.5rem;
+  background-color: #130f40;
+  color: white;
+  border-radius: 5px;
+  display: block;
+  cursor: pointer;
+  margin-top: 0.5rem;
+}
+#creativeSection .row button:hover {
+  background-color: #0cccda;
+}
+
+/* ---------- End Creative Section ---------- */
+/* ---------- Services Section ---------- */
+#servicesSection {
+  margin-top: 1rem;
+}
+#servicesSection > .row {
+  display: flex;
+  justify-content: center;
+}
+#servicesSection > .row div.elements {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+}
+#servicesSection > .row div.elements div {
+  box-shadow: 5px 4px 6px -1px rgba(1, 2, 2, 0.24);
+}
+#servicesSection > .row div {
+  text-align: center;
+}
+#servicesSection > .row h1 {
+  color: #130f40;
+  font-weight: bold;
+  font-size: 2.5em;
+}
+#servicesSection > .row img {
+  max-width: 100%;
+  max-height: 300px;
+}
+#servicesSection > .row h5 {
+  color: #130f40;
+  font-weight: bold;
+}
+#servicesSection > .row button {
+  padding: 0.7rem 1.5rem;
+  background-color: #130f40;
+  color: white;
+  border-radius: 5px;
+  display: block;
+  cursor: pointer;
+  margin: 0.5rem auto;
+}
+#servicesSection > .row button:hover {
+  background-color: #0cccda;
+}
+
+/* ---------- End Services Section ---------- */
+@media (max-width: 400px) {
+  html {
+    font-size: 65%;
+  }
+}
+@media (min-width: 992px) {
+  #sectionNavbar #navbarDropdown {
+    display: none;
+  }
+  #sectionNavbar a {
+    font-size: 1.1em;
+    font-weight: 500;
+  }
+
+  #creativeSection {
+    font-size: 1.2rem;
+  }
 }/*# sourceMappingURL=style.css.map */

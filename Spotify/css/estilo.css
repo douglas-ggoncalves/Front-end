@@ -111,6 +111,14 @@ a.nav-link {
     .finalImages img {
         height: 350px;
     }
+
+    #firstContainer a{
+        font-size: 1.05rem;
+    }
+
+    #footer a{
+        font-size: 1.05rem;
+    }
 }
 
 @media (min-width: 992px) {
@@ -136,7 +144,12 @@ a.nav-link {
         margin-top: 18px;
         height: 540px;
     }
-    a.nav-link {
-        font-size: 17px;
+    
+    #firstContainer a{
+        font-size: 1.08rem;
+    }
+
+    #footer a{
+        font-size: 1.07rem;
     }
 }

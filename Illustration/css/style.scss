@@ -1,27 +1,199 @@
-$blue: #0cccda;
-
 *{
     text-decoration: none !important;
     list-style: none;
     margin: 0;
     padding: 0;
+    transition: all 0.2s;
+    outline: none !important;
+    border: none;
 }
 
-body {
-    background-color: rgb(19, 10, 10);
+/* ---------- Variables ---------- */
+$white: rgb(250, 250, 250);
+$lightBlue: #0cccda;
+$darkBlue: rgb(19, 15, 64);
+/* ---------- End Variables ---------- */
+
+/* ---------- Scrollbar ---------- */
+::-webkit-scrollbar {
+    width: 9px;
 }
 
-h3 {
-    font-size: 1.2em;
+::-webkit-scrollbar-thumb {
+    background: $lightBlue;
+    border-radius: 10px;
 }
+/* ---------- End Scrollbar ---------- */
 
-#MyDiv {
+/* ---------- Navbar ---------- */
+#sectionNavbar{
+   background-color: $darkBlue;
+   display: flex;
+   align-items: center;
+   padding-top: 1rem;
+   padding-bottom: 1rem;
 
-    a{
-        color: white;
+   
+   nav {
+    height: 100%;
+    display: flex;
+    align-items: center;
+        button{
+            border-color: $white !important;
 
-        &:hover{
-            color: $blue;
+            i{
+                color: $white !important;
+
+            }
         }
     }
+
+    #navbarDropdown{
+        nav {
+            padding-left: 0 !important;
+        }
+    }
+
+   #mark{
+       color: $white;
+       font-weight: bold;
+       font-size: 2em;
+   }
+
+   a{
+       color: $white;
+
+       &:hover{
+        color: $lightBlue;
+       }
+   }
 }
+/* ---------- End Navbar ---------- */
+
+/* ---------- Creative Section ---------- */
+    #creativeSection{
+        .row {
+            >div{
+                display: flex;
+                align-items: center;
+            }
+
+            img{
+                max-width: 100%;
+                height: auto;
+            }
+
+            h1{
+                color: $darkBlue;
+                font-weight: bold;
+                font-size: 2.5em;
+            }
+
+            button{
+                padding: 0.7rem 1.5rem;
+                background-color: $darkBlue;
+                color: white;
+                border-radius: 5px;
+                display: block;
+                cursor: pointer;
+                margin-top: 0.5rem;
+
+                &:hover{
+                    background-color: $lightBlue;
+                }
+            }
+        }
+
+    }
+/* ---------- End Creative Section ---------- */
+
+/* ---------- Services Section ---------- */
+    #servicesSection{
+        margin-top: 1rem;
+
+        >.row{
+            display: flex;
+            justify-content: center;
+
+            div.elements{
+                display: flex;
+                justify-content: center;
+                margin-bottom: 1.5rem;
+                div{
+                    box-shadow: 5px 4px 6px -1px rgba(1, 2, 2, 0.24);
+                }
+            }
+
+            div{
+                text-align: center;
+            }
+    
+            h1{
+                color: $darkBlue;
+                font-weight: bold;
+                font-size: 2.5em;
+            }
+    
+            img{
+                max-width: 100%;
+                max-height: 300px;
+            }
+    
+            h5{
+                color: $darkBlue;
+                font-weight: bold;
+            }
+    
+            button{
+                padding: 0.7rem 1.5rem;
+                background-color: $darkBlue;
+                color: white;
+                border-radius: 5px;
+                display: block;
+                cursor: pointer;
+                margin: 0.5rem auto;
+
+                &:hover{
+                    background-color: $lightBlue;
+                }
+            }
+        }
+    }
+/* ---------- End Services Section ---------- */
+
+
+@media (max-width: 400px) { 
+    html{
+        font-size: 65%;
+    }
+}
+
+@media (min-width: 576px) { 
+
+ }
+
+@media (min-width: 768px) { 
+
+ }
+
+@media (min-width: 992px) { 
+    #sectionNavbar{
+        #navbarDropdown{
+            display: none;
+        }
+
+        a{
+            font-size: 1.1em;
+            font-weight: 500;
+        }
+    }
+
+    #creativeSection{
+        font-size: 1.2rem;
+    }
+    
+ }
+
+@media (min-width: 1200px) { 
+    
+ }
