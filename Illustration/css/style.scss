@@ -1,0 +1,27 @@
+$blue: #0cccda;
+
+*{
+    text-decoration: none !important;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: rgb(19, 10, 10);
+}
+
+h3 {
+    font-size: 1.2em;
+}
+
+#MyDiv {
+
+    a{
+        color: white;
+
+        &:hover{
+            color: $blue;
+        }
+    }
+}

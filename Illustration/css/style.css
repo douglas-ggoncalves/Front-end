@@ -1,0 +1,21 @@
+* {
+  text-decoration: none !important;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #130a0a;
+}
+
+h3 {
+  font-size: 1.2em;
+}
+
+#MyDiv a {
+  color: white;
+}
+#MyDiv a:hover {
+  color: #0cccda;
+}/*# sourceMappingURL=style.css.map */
