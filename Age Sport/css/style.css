@@ -1034,11 +1034,6 @@ span.nameTrainer {
     #rowWithBackground #divOfContent #textWhite {
         font-size: 1.4em;
     }
-
-    #rowForPosts #divForbuttonNavegation4, #divForbuttonNavegation5, #divForbuttonNavegation6, #divForbuttonNavegation7{
-        /* display: none !important;
-        border: 1px solid red; */
-    }
 }
 
 @media (min-width: 768px) {

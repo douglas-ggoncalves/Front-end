@@ -30,7 +30,7 @@
     <title>Age Sport</title>
 </head>
 
-<body style="background-color: black;">
+<body style="background-color: black;" onresize="myFunction()">
 
     <div class="container-fluid">
         <div class="row" id="myNavBarRow">
@@ -1049,60 +1049,68 @@
         </div>  
 
         <div class="row" id="footer">
-            <div class="col-6 col-md-5 col-lg-3 col-xl-2" id="divLinks">
-                <h5>Links Rápidos</h5>
-                <a href="#">Home</a>
-                <a href="#about">Sobre</a>
-                <a href="#resources">Recursos</a>
-                <a href="#myRowPlans">Preços</a>
-                <a href="#trainers">Treinos</a>
-                <a href="#blogs">Blogs</a>
+            <div class="col-6 col-md-4 col-lg-3 d-flex justify-content-md-center" id="divLinks">
+                <div>
+                    <h5>Links Rápidos</h5>
+                    <a href="#">Home</a>
+                    <a href="#about">Sobre</a>
+                    <a href="#resources">Recursos</a>
+                    <a href="#myRowPlans">Preços</a>
+                    <a href="#trainers">Treinos</a>
+                    <a href="#blogs">Blogs</a>
+                </div>
             </div>
             
-            <div class="col-6 col-md-5 col-lg-3 col-xl-2">
-                <h5>Período De Trabalho</h5>
-                <span class="textDay">Segunda:</span> <span class="textHour">08:00 - 22:00</span> <br>
-                <span class="textDay">Terça:</span> <span class="textHour">08:00 - 22:00</span> <br>
-                <span class="textDay">Quarta:</span> <span class="textHour">08:00 - 22:00</span> <br>
-                <span class="textDay">Quinta:</span> <span class="textHour">08:00 - 22:00</span> <br>
-                <span class="textDay">Sexta:</span> <span class="textHour">08:00 - 22:00</span> <br>
-                <span class="textDay">Sábado:</span> <span class="textHour">08:00 - 13:00</span> <br>
-                <span class="textDay">Domingo:</span> <span class="textHour">Fechado</span> 
-            </div>
-
-            <div class="col-6 col-md-5 col-lg-3 col-xl-2">
-                <h5>Contato</h5>
-                <i class="fas fa-phone iconsContact"></i> <span class="textContact">+55 (62) 999999-8888</span> <br>
-                <i class="fas fa-envelope iconsContact"></i> <span class="textContact">agesport@gmail.com</span> <br>
-                <i class="fas fa-map iconsContact"></i> <span class="textContact">Goiânia-GO</span> <br>
-
-                <div id="divOfSocials">
-                    <a href="#">
-                        <i class="fab fa-facebook-f"></i>
-                    </a>
-
-                    <a href="#">
-                        <i class="fab fa-twitter"></i>
-                    </a>
-
-                    <a href="#">
-                        <i class="fab fa-linkedin"></i>
-                    </a>
-
-                    <a href="#">
-                        <i class="fab fa-pinterest"></i>
-                    </a>
+            <div class="col-6 col-md-4 col-lg-3 d-flex justify-content-md-center">
+                <div>
+                    <h5>Período De Trabalho</h5>
+                    <span class="textDay">Segunda:</span> <span class="textHour">08:00 - 22:00</span> <br>
+                    <span class="textDay">Terça:</span> <span class="textHour">08:00 - 22:00</span> <br>
+                    <span class="textDay">Quarta:</span> <span class="textHour">08:00 - 22:00</span> <br>
+                    <span class="textDay">Quinta:</span> <span class="textHour">08:00 - 22:00</span> <br>
+                    <span class="textDay">Sexta:</span> <span class="textHour">08:00 - 22:00</span> <br>
+                    <span class="textDay">Sábado:</span> <span class="textHour">08:00 - 13:00</span> <br>
+                    <span class="textDay">Domingo:</span> <span class="textHour">Fechado</span> 
                 </div>
             </div>
 
-            <div class="col-6 col-md-5 col-lg-3 col-xl-2">
-                <h5>Notícias</h5>
-                <span class="textDay">Se inscreva para mais notícias</span>
-                <input type="text" placeholder="Digite Seu E-mail">
+            <div class="col-6 col-md-4 col-lg-3 d-flex justify-content-md-center">
+                <div>
+                    <h5>Contato</h5>
+                    <i class="fas fa-phone iconsContact"></i> <span class="textContact">+55 (62) 999999-8888</span> <br>
+                    <i class="fas fa-envelope iconsContact"></i> <span class="textContact">agesport@gmail.com</span> <br>
+                    <i class="fas fa-map iconsContact"></i> <span class="textContact">Goiânia-GO</span> <br>
 
-                <button class="buttonWithZoom">
-                    Inscrever-se
-                </button>
+                    <div id="divOfSocials">
+                        <a href="#">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+
+                        <a href="#">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+
+                        <a href="#">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+
+                        <a href="#">
+                            <i class="fab fa-pinterest"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-6 col-md-4 col-lg-3 d-flex justify-content-md-center">
+                <div>
+                    <h5>Notícias</h5>
+                    <span class="textDay">Se inscreva para mais notícias</span>
+                    <input type="text" placeholder="Digite Seu E-mail">
+
+                    <button class="buttonWithZoom">
+                        Inscrever-se
+                    </button>
+                </div>
             </div>            
         </div>
 
@@ -1118,16 +1126,118 @@
     </div>
 
     <script>
+        
+    </script>
+
+    <script>
+        var widthAtualized;
+        var buttons = document.getElementsByClassName('btnNavegation');
+        var divElements = document.getElementsByClassName('postsElements');
+        var x = document.getElementsByClassName("myTestimonials");
+
+        function myFunction(){ // Esse método é chamado pela tag Body toda vez que o tamanho da janela for alterada, e aqui é aplicado o estado padrão em todos os elementos, ou seja, se o tamanho da tela atual ter a possibilidade de haver 3 elementos o site seta os estilos iniciais, o site irá mostrar os 3 primeiros elementos e irá selecionar o 1º botão para ficar vermelho por exemplo
+            widthAtualized = outerWidth;
+
+            for (i = 0; i < divElements.length; i++) {
+                divElements[i].classList.add("d-none");
+                divElements[i].classList.remove("d-md-block");
+                divElements[i].classList.remove("d-lg-block");
+            }
+
+            for(var y=0; y<buttons.length; y++){
+                buttons[y].classList.remove('active')
+            }
+
+            if(widthAtualized < 768){ 
+                document.getElementById('divForbuttonNavegation1').classList.remove('d-none')
+                document.getElementById('buttonNavegation1').classList='active btnNavegation'
+                x[0].style.cssText = "display: block;";
+                x[1].style.cssText = "display: none;";  
+                x[2].style.cssText = "display: none;";  
+                x[3].style.cssText = "display: none;";  
+            } else if(widthAtualized >= 768 && widthAtualized < 992){
+                document.getElementById('divForbuttonNavegation1').classList.remove('d-none')
+                document.getElementById('divForbuttonNavegation2').classList.remove('d-none')
+                document.getElementById('buttonNavegation1').classList='active btnNavegation'
+                x[0].style.cssText = "display: block;";
+                x[1].style.cssText = "display: block;";  
+                x[2].style.cssText = "display: none;";  
+                x[3].style.cssText = "display: none;";  
+            } else if(widthAtualized >= 992){
+                document.getElementById('divForbuttonNavegation1').classList.remove('d-none')
+                document.getElementById('divForbuttonNavegation2').classList.remove('d-none')
+                document.getElementById('divForbuttonNavegation3').classList.remove('d-none')
+                document.getElementById('buttonNavegation1').classList='active btnNavegation'
+                x[0].style.cssText = "display: block;";
+                x[1].style.cssText = "display: block;";  
+                x[2].style.cssText = "display: none;";  
+                x[3].style.cssText = "display: none;"; 
+            }
+        }
+
+        function buttonNavegation(button){
+            myFunction();
+            var reallyIdNumber = button.id.replace('buttonNavegation','')
+
+            var idOfDiv = 'divFor' + button.id;
+
+            for(var y=0; y<buttons.length; y++){
+                buttons[y].classList = 'btnNavegation'
+            }
+
+            for (i = 0; i < divElements.length; i++) {
+                divElements[i].classList.add("d-none");
+                divElements[i].classList.remove("d-md-block");
+                divElements[i].classList.remove("d-lg-block");
+            }
+            if(widthAtualized < 768){ 
+                document.getElementById(idOfDiv).classList.remove('d-none')
+                document.getElementById(button.id).classList='active btnNavegation'
+            } else if(widthAtualized >= 768 && widthAtualized < 992){
+                document.getElementById('divForbuttonNavegation'+reallyIdNumber).classList.remove('d-none')
+                document.getElementById('divForbuttonNavegation'+ (parseInt(reallyIdNumber) + 1 )).classList.remove('d-none')
+                document.getElementById(button.id).classList='active btnNavegation'
+            } else if(widthAtualized >= 992){
+                document.getElementById('divForbuttonNavegation'+reallyIdNumber).classList.remove('d-none')
+                document.getElementById('divForbuttonNavegation'+ (parseInt(reallyIdNumber) + 1 )).classList.remove('d-none')
+                document.getElementById('divForbuttonNavegation'+ (parseInt(reallyIdNumber) + 2 )).classList.remove('d-none')
+                document.getElementById(button.id).classList='active btnNavegation'
+            }
+        }
+
         var myIndex = 0;
         carousel();
-
         var innerWidth = window.innerWidth;
         
-        function carousel() {
+        function carousel() { // Esse método roda a cada 4 segundos, o método retira o(s) depoimentos atuais e substitui por outros depoimentos.
           var i;
-          var x = document.getElementsByClassName("myTestimonials");
 
-            if(innerWidth < 768){
+          if(widthAtualized != undefined){ // Se a largura da tela for alterada essa variável irá receber o valor do largura nova, ai aplicamos os estilos de acordo com a janela do usuário
+            if(widthAtualized < 768){
+                for (i = 0; i < x.length; i++) {
+                    x[i].style.cssText = "display: none;";  
+                }
+                myIndex++;
+                if (myIndex > x.length){
+                    myIndex = 1
+                }    
+                    x[myIndex-1].style.cssText = "display: block;";  
+                } 
+
+            else if(widthAtualized >= 768){
+                for (i = 0; i < x.length; i++) {
+                    x[i].style.cssText = "display: none;";
+                }
+
+                myIndex++;
+                if (myIndex >= x.length) {
+                    myIndex = 1
+                }
+                x[myIndex-1].style.cssText = "display: block;";
+                x[myIndex].style.cssText = "display: block;";
+            }
+          } else{ // Aqui entramos no bloco da largura inicial, essa largura não muda se o usuário alterar o tamanho da janela
+            if(innerWidth < 768){ 
                 for (i = 0; i < x.length; i++) {
                     x[i].style.cssText = "display: none;";  
                 }
@@ -1150,43 +1260,8 @@
                 x[myIndex-1].style.cssText = "display: block;";
                 x[myIndex].style.cssText = "display: block;";
             }
-
-            setTimeout(carousel, 4000);
-        }
-
-        function buttonNavegation(button){
-            var buttons = document.getElementsByClassName('btnNavegation');
-            var divElements = document.getElementsByClassName('postsElements');
-            
-            var reallyIdNumber = button.id.replace('buttonNavegation','')
-
-            var idOfDiv = 'divFor' + button.id;
-            var widthScreen = window.innerWidth;
-
-            for(var y=0; y<buttons.length; y++){
-                buttons[y].classList = 'btnNavegation'
-            }
-
-            for (i = 0; i < divElements.length; i++) {
-                    divElements[i].classList.add("d-none");
-                    divElements[i].classList.remove("d-md-block");  /* ---------------------------- */
-                    divElements[i].classList.remove("d-lg-block");
-            }
-
-            if(widthScreen < 768){
-                document.getElementById(idOfDiv).classList.remove('d-none')
-                document.getElementById(button.id).classList='active btnNavegation'
-            } else if(widthScreen >= 768 && widthScreen < 992){
-                
-                document.getElementById('divForbuttonNavegation'+reallyIdNumber).classList.remove('d-none')
-                document.getElementById('divForbuttonNavegation'+ (parseInt(reallyIdNumber) + 1 )).classList.remove('d-none')
-                document.getElementById(button.id).classList='active btnNavegation'
-            } else if(widthScreen >= 992){
-                document.getElementById('divForbuttonNavegation'+reallyIdNumber).classList.remove('d-none')
-                document.getElementById('divForbuttonNavegation'+ (parseInt(reallyIdNumber) + 1 )).classList.remove('d-none')
-                document.getElementById('divForbuttonNavegation'+ (parseInt(reallyIdNumber) + 2 )).classList.remove('d-none')
-                document.getElementById(button.id).classList='active btnNavegation'
-            }
+          }
+            setTimeout(carousel, 4000); // Executamos a função Carousel a cada 4 segundos
         }
     </script>
 
