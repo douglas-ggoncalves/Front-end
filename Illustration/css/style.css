@@ -3,9 +3,12 @@
   list-style: none;
   margin: 0;
   padding: 0;
-  transition: all 0.2s;
   outline: none !important;
   border: none;
+  transition: all 0.2s;
+  -webkit-transition: all 0.2s;
+  -moz-transition: all 0.2s;
+  -o-transition: all 0.2s;
 }
 
 /* ---------- Variables ---------- */
@@ -86,7 +89,7 @@
 /* ---------- End Creative Section ---------- */
 /* ---------- Services Section ---------- */
 #servicesSection {
-  margin-top: 1rem;
+  margin-top: 2.5rem;
 }
 #servicesSection > .row {
   display: flex;
@@ -100,6 +103,7 @@
 #servicesSection > .row div.elements div {
   box-shadow: 5px 4px 6px -1px rgba(1, 2, 2, 0.24);
   border: 1px solid rgba(44, 44, 44, 0.192);
+  border-radius: 5px;
   padding-top: 1rem;
   padding-bottom: 1rem;
 }
@@ -135,6 +139,9 @@
 
 /* ---------- End Services Section ---------- */
 /* ---------- About Section ---------- */
+#aboutSection {
+  margin-top: 1.5rem;
+}
 #aboutSection > .row {
   display: flex;
   justify-content: center;
@@ -182,25 +189,30 @@
 
 /* ---------- End About Section ---------- */
 /* ---------- Plans Section ---------- */
+#plansSection {
+  margin-top: 1.5rem;
+}
 #plansSection > .row {
   display: flex;
   justify-content: center;
 }
 #plansSection > .row div {
   text-align: center;
+  margin-bottom: 0.5rem;
 }
 #plansSection > .row div h1 {
   color: #130f40;
   font-weight: bold;
-  font-size: 2.5em;
+  font-size: 2.5rem;
 }
 #plansSection > .row div img {
   max-width: 100%;
-  height: auto;
+  max-height: 300px;
 }
 #plansSection > .row .elements div {
   box-shadow: 5px 4px 6px -1px rgba(1, 2, 2, 0.24);
   border: 1px solid rgba(44, 44, 44, 0.192);
+  border-radius: 5px;
   padding-top: 1rem;
   padding-bottom: 1rem;
 }
@@ -241,9 +253,157 @@
 }
 
 /* ---------- End Plans Section ---------- */
+/* ---------- Clients Section ---------- */
+#clientsSection {
+  margin-top: 1rem;
+}
+#clientsSection > .row {
+  display: flex;
+  justify-content: center;
+}
+#clientsSection > .row div.content > div {
+  box-shadow: 5px 4px 6px -1px rgba(1, 2, 2, 0.24);
+  border: 1px solid rgba(44, 44, 44, 0.192);
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  border-radius: 5px;
+  margin-bottom: 1rem;
+}
+#clientsSection > .row div.content > div:hover {
+  border: 1px solid #0cccda;
+  box-shadow: 5px 4px 6px -1px rgba(17, 130, 138, 0.425);
+}
+#clientsSection > .row div {
+  text-align: center;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+#clientsSection > .row div h1 {
+  color: #130f40;
+  font-size: 2.5rem;
+  font-weight: bold;
+}
+#clientsSection > .row div img {
+  border-radius: 50%;
+  max-width: 100%;
+  height: 100px;
+}
+#clientsSection > .row div h4 {
+  font-weight: bold;
+  color: #130f40;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+#clientsSection > .row div span {
+  margin-bottom: 1rem;
+  display: block;
+  font-size: 1rem;
+  opacity: 0.9;
+}
+#clientsSection > .row div i {
+  color: #0cccda;
+}
+
+/* ---------- End Clients Section ---------- */
+/* ---------- Clients Section ---------- */
+#contactSection {
+  margin-top: 1rem;
+}
+#contactSection > .row {
+  display: flex;
+  justify-content: center;
+}
+#contactSection > .row #content {
+  display: flex;
+  align-items: center;
+}
+#contactSection > .row #content div {
+  border: 1px solid rgba(44, 44, 44, 0.192);
+  border-radius: 5px;
+  box-shadow: 5px 4px 6px -1px rgba(1, 2, 2, 0.24);
+  width: 100%;
+  padding: 1rem 1rem 0.5rem 1rem;
+}
+#contactSection > .row div {
+  text-align: center;
+}
+#contactSection > .row div h1 {
+  color: #130f40;
+  font-weight: bold;
+  font-size: 2.5rem;
+}
+#contactSection > .row div img {
+  max-width: 100%;
+  height: auto;
+}
+#contactSection > .row div h4 {
+  color: #130f40;
+  font-weight: bold;
+  font-size: 1.8rem;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+#contactSection > .row div input, #contactSection > .row div textarea {
+  border: 1px solid rgba(44, 44, 44, 0.192);
+  border-radius: 5px;
+  padding: 0.7rem 1rem;
+  width: 100%;
+  color: #6e6767;
+  margin-top: 0.7rem;
+  font-size: 0.9rem;
+}
+#contactSection > .row div input:hover, #contactSection > .row div textarea:hover {
+  border: 1px solid #0cccda;
+}
+#contactSection > .row div button {
+  padding: 0.7rem 1rem;
+  background-color: #130f40;
+  color: white;
+  border-radius: 5px;
+  display: block;
+  cursor: pointer;
+  margin: 0.5rem auto 0.5rem auto;
+  font-weight: 500;
+}
+#contactSection > .row div button:hover {
+  background-color: #0cccda;
+}
+
+/* ---------- End Clients Section ---------- */
+/* ---------- Footer ---------- */
+#footer {
+  margin-top: 3rem;
+}
+#footer > .row div {
+  display: flex;
+  justify-content: center;
+}
+#footer > .row div a {
+  font-size: 2rem;
+  color: #130f40 !important;
+  margin: 0.5rem;
+}
+#footer > .row div a:hover {
+  color: #0cccda !important;
+}
+#footer > .row div h5 {
+  color: #130f40 !important;
+}
+
+/* ---------- End Footer ---------- */
 @media (max-width: 400px) {
   html {
     font-size: 65%;
+  }
+}
+@media (min-width: 768px) {
+  #plansSection > .row {
+    padding-right: 0.5rem;
+    padding-left: 0.5rem;
+  }
+  #plansSection > .row div {
+    padding-right: 0.5rem;
+    padding-left: 0.5rem;
   }
 }
 @media (min-width: 992px) {

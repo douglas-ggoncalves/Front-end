@@ -3,16 +3,24 @@
     list-style: none;
     margin: 0;
     padding: 0;
-    transition: all 0.2s;
     outline: none !important;
     border: none;
+    transition: all 0.2s;
+    -webkit-transition: all 0.2s;
+    -moz-transition: all 0.2s;
+    -o-transition: all 0.2s;
 }
 
 /* ---------- Variables ---------- */
 $white: rgb(250, 250, 250);
-$lightBlue: #0cccda;
+$lightBlue: rgb(12, 204, 218);
 $darkBlue: rgb(19, 15, 64);
+$border: 1px solid rgba(44, 44, 44, 0.192);
+$boxShadow: 5px 4px 6px -1px rgba(1, 2, 2, 0.24);
+$borderRadius: 5px;
 /* ---------- End Variables ---------- */
+
+
 
 /* ---------- Scrollbar ---------- */
 ::-webkit-scrollbar {
@@ -33,7 +41,6 @@ $darkBlue: rgb(19, 15, 64);
    padding-top: 1rem;
    padding-bottom: 1rem;
 
-   
    nav {
     height: 100%;
     display: flex;
@@ -109,7 +116,7 @@ $darkBlue: rgb(19, 15, 64);
 
 /* ---------- Services Section ---------- */
     #servicesSection{
-        margin-top: 1rem;
+        margin-top: 2.5rem;
 
         >.row{
             display: flex;
@@ -121,8 +128,9 @@ $darkBlue: rgb(19, 15, 64);
                 margin-bottom: 1.5rem;
 
                 div{
-                    box-shadow: 5px 4px 6px -1px rgba(1, 2, 2, 0.24);
-                    border: 1px solid rgba(44, 44, 44, 0.192);
+                    box-shadow: $boxShadow;
+                    border: $border;
+                    border-radius: $borderRadius;
                     padding-top: 1rem;
                     padding-bottom: 1rem;
                 }
@@ -153,7 +161,7 @@ $darkBlue: rgb(19, 15, 64);
                 padding: 0.7rem 1.5rem;
                 background-color: $darkBlue;
                 color: white;
-                border-radius: 5px;
+                border-radius: $borderRadius;
                 display: block;
                 cursor: pointer;
                 margin: 0.5rem auto;
@@ -168,8 +176,8 @@ $darkBlue: rgb(19, 15, 64);
 
 /* ---------- About Section ---------- */
 #aboutSection{
+    margin-top: 1.5rem;
     >.row{
-
         display: flex;
         justify-content: center;
 
@@ -212,7 +220,7 @@ $darkBlue: rgb(19, 15, 64);
                 padding: 0.7rem 1.5rem;
                 background-color: $darkBlue;
                 color: white;
-                border-radius: 5px;
+                border-radius: $borderRadius;
                 display: block;
                 cursor: pointer;
                 margin-top: 0.5rem;
@@ -228,29 +236,32 @@ $darkBlue: rgb(19, 15, 64);
 
 /* ---------- Plans Section ---------- */
 #plansSection{
+    margin-top: 1.5rem;
     >.row{
         display: flex;
         justify-content: center;
 
         div{
             text-align: center;
+            margin-bottom: 0.5rem;
 
             h1{
                 color: $darkBlue;
                 font-weight: bold;
-                font-size: 2.5em;
+                font-size: 2.5rem;
             }
 
             img{
                 max-width: 100%;
-                height: auto;
+                max-height: 300px;
             }
         }
 
         .elements{
             div{
-                box-shadow: 5px 4px 6px -1px rgba(1, 2, 2, 0.24);
-                border: 1px solid rgba(44, 44, 44, 0.192);
+                box-shadow: $boxShadow;
+                border: $border;
+                border-radius: $borderRadius;
                 padding-top: 1rem;
                 padding-bottom: 1rem;
             }
@@ -259,7 +270,7 @@ $darkBlue: rgb(19, 15, 64);
                 padding: 0.7rem 1.0rem;
                 background-color: $darkBlue;
                 color: white;
-                border-radius: 5px;
+                border-radius: $borderRadius;
                 display: block;
                 cursor: pointer;
                 margin-top: 0.5rem;
@@ -304,6 +315,170 @@ $darkBlue: rgb(19, 15, 64);
 }
 /* ---------- End Plans Section ---------- */
 
+/* ---------- Clients Section ---------- */
+#clientsSection{
+    margin-top: 1rem;
+    >.row{
+        display: flex;
+        justify-content: center;
+
+        div.content > div{
+            box-shadow: $boxShadow;
+            border: $border;
+            padding-top: 1rem;
+            padding-bottom: 1rem;
+            border-radius: $borderRadius;
+            margin-bottom: 1rem;
+        }
+
+        div.content > div:hover{
+            border: 1px solid $lightBlue;
+            box-shadow: 5px 4px 6px -1px rgba(17, 130, 138, 0.425);
+        }
+
+        div{
+            text-align: center;
+            padding-left: 1rem;
+            padding-right: 1rem;
+
+            h1{
+                color: $darkBlue;
+                font-size: 2.5rem;
+                font-weight: bold;
+            }
+
+            img{
+                border-radius: 50%;
+                max-width: 100%;
+                height: 100px;
+            }
+
+            h4{
+                font-weight: bold;
+                color: $darkBlue;
+                margin-top: 0.5rem;
+                margin-bottom: 0.5rem;
+            }
+
+            span{
+                margin-bottom: 1rem;
+                display: block;
+                font-size: 1rem;
+                opacity: 0.9;   
+            }
+
+            i{
+                color: $lightBlue;
+            }
+        }
+
+    }
+}
+/* ---------- End Clients Section ---------- */
+
+/* ---------- Clients Section ---------- */
+#contactSection{
+    margin-top: 1rem;
+    >.row{
+        display: flex;
+        justify-content: center;
+        
+        #content{
+            display: flex;
+            align-items: center;
+        }
+
+        #content div{
+            border: $border;
+            border-radius: $borderRadius;
+            box-shadow: $boxShadow;
+            width: 100%;
+            padding: 1rem 1rem 0.5rem 1rem;
+        }
+
+        div{
+            text-align: center;
+            
+            h1{
+                color: $darkBlue;
+                font-weight: bold;
+                font-size: 2.5rem;
+            }
+
+            img{
+                max-width: 100%;
+                height: auto;
+            }
+
+            h4{
+                color: $darkBlue;
+                font-weight: bold;
+                font-size: 1.8rem;
+                margin-top: 0.5rem;
+                margin-bottom: 0.5rem;
+            }
+
+            input, textarea{
+                border: $border;
+                border-radius: $borderRadius;
+                padding: 0.7rem 1rem;
+                width: 100%;
+                color: rgb(110, 103, 103);
+                margin-top: 0.7rem;
+                font-size: 0.9rem;
+            }
+
+            input:hover, textarea:hover{
+                border: 1px solid $lightBlue;
+            }
+
+            button{
+                padding: 0.7rem 1rem;
+                background-color: $darkBlue;
+                color: white;
+                border-radius: $borderRadius;
+                display: block;
+                cursor: pointer;
+                margin: 0.5rem auto 0.5rem auto;
+                font-weight: 500;
+
+                &:hover{
+                    background-color: $lightBlue;
+                }
+            }
+
+
+        }
+    }
+}
+/* ---------- End Clients Section ---------- */
+
+/* ---------- Footer ---------- */
+#footer{
+    margin-top: 3rem;
+
+    >.row{
+        div{
+            display: flex;
+            justify-content: center;
+            a{
+                font-size: 2rem;
+                color: $darkBlue !important;
+                margin: 0.5rem;
+
+                &:hover{
+                    color: $lightBlue !important;
+                }
+            }
+
+            h5{
+                color: $darkBlue !important;
+            }
+        }
+        
+    }
+}
+/* ---------- End Footer ---------- */
 
 
 @media (max-width: 400px) { 
@@ -317,7 +492,16 @@ $darkBlue: rgb(19, 15, 64);
  }
 
 @media (min-width: 768px) { 
-
+    #plansSection{
+        >.row{
+            padding-right: 0.5rem;
+            padding-left: 0.5rem;
+            div{
+                padding-right: 0.5rem;
+                padding-left: 0.5rem;
+            }
+        }
+    }
  }
 
 @media (min-width: 992px) { 
