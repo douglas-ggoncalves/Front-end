@@ -32,6 +32,11 @@
   padding-top: 1rem;
   padding-bottom: 1rem;
 }
+#sectionNavbar > .row {
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
 #sectionNavbar nav {
   height: 100%;
   display: flex;
