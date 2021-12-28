@@ -119,8 +119,12 @@ $darkBlue: rgb(19, 15, 64);
                 display: flex;
                 justify-content: center;
                 margin-bottom: 1.5rem;
+
                 div{
                     box-shadow: 5px 4px 6px -1px rgba(1, 2, 2, 0.24);
+                    border: 1px solid rgba(44, 44, 44, 0.192);
+                    padding-top: 1rem;
+                    padding-bottom: 1rem;
                 }
             }
 
@@ -142,6 +146,7 @@ $darkBlue: rgb(19, 15, 64);
             h5{
                 color: $darkBlue;
                 font-weight: bold;
+                font-size: 1.3rem;
             }
     
             button{
@@ -160,6 +165,145 @@ $darkBlue: rgb(19, 15, 64);
         }
     }
 /* ---------- End Services Section ---------- */
+
+/* ---------- About Section ---------- */
+#aboutSection{
+    >.row{
+
+        display: flex;
+        justify-content: center;
+
+        div#title{
+            text-align: center;
+        }
+
+        div#aboutContent{
+            display: flex; 
+            align-items: center;
+        }
+
+        div{
+            h1{
+                color: $darkBlue;
+                font-weight: bold;
+                font-size: 2.5em;
+            }
+
+            img{
+                max-width: 100%;
+                height: auto;
+            }
+
+            h5{
+                color: $darkBlue;
+                font-weight: bold;
+                font-size: 2.3em;
+                line-height: 2.5rem;
+            }
+
+            span{
+                margin-bottom: 1rem;
+                display: block;
+                font-size: 0.9rem;
+                opacity: 0.8;   
+            }
+
+            button{
+                padding: 0.7rem 1.5rem;
+                background-color: $darkBlue;
+                color: white;
+                border-radius: 5px;
+                display: block;
+                cursor: pointer;
+                margin-top: 0.5rem;
+
+                &:hover{
+                    background-color: $lightBlue;
+                }
+            }
+        }
+    }
+}
+/* ---------- End About Section ---------- */
+
+/* ---------- Plans Section ---------- */
+#plansSection{
+    >.row{
+        display: flex;
+        justify-content: center;
+
+        div{
+            text-align: center;
+
+            h1{
+                color: $darkBlue;
+                font-weight: bold;
+                font-size: 2.5em;
+            }
+
+            img{
+                max-width: 100%;
+                height: auto;
+            }
+        }
+
+        .elements{
+            div{
+                box-shadow: 5px 4px 6px -1px rgba(1, 2, 2, 0.24);
+                border: 1px solid rgba(44, 44, 44, 0.192);
+                padding-top: 1rem;
+                padding-bottom: 1rem;
+            }
+
+            button{
+                padding: 0.7rem 1.0rem;
+                background-color: $darkBlue;
+                color: white;
+                border-radius: 5px;
+                display: block;
+                cursor: pointer;
+                margin-top: 0.5rem;
+                margin-left: auto;
+                margin-right: auto;
+
+                &:hover{
+                    background-color: $lightBlue;
+                }
+            }
+
+            h4{
+                color: $darkBlue;
+                font-size: 1.5rem;
+                font-weight: bold;
+            }
+
+            h5{
+                color: $darkBlue;
+                font-size: 1.5rem;
+            }
+
+            span {
+                font-weight: bold;
+                font-size: 3.5rem;
+            }
+
+            ul {
+                li{
+                    margin-top: 1rem;
+                    margin-bottom: 1rem;
+                    color:  $darkBlue;
+                    font-size: 1.05em;
+                    font-weight: 500;
+                    opacity: 0.8;
+                }
+            }
+        }
+
+        
+    }
+}
+/* ---------- End Plans Section ---------- */
+
 
 
 @media (max-width: 400px) { 
@@ -191,9 +335,40 @@ $darkBlue: rgb(19, 15, 64);
     #creativeSection{
         font-size: 1.2rem;
     }
-    
+
+    #aboutSection{
+        >.row{
+            h5{
+                line-height: 3rem !important;
+            }
+            span{
+                font-size: 0.95rem !important;
+            }
+
+            button{
+                font-size: 1.1rem;
+            }
+        }
+    }
  }
 
 @media (min-width: 1200px) { 
-    
+    #servicesSection{
+        margin-top: 1rem;
+
+        >.row{
+            h5{
+                font-size: 1.5rem;
+            }
+        }
+    }
+
+    #aboutSection{
+        >.row{
+            h5{
+                font-size: 2.7rem !important;
+            }
+            
+        }
+    }
  }

@@ -99,6 +99,9 @@
 }
 #servicesSection > .row div.elements div {
   box-shadow: 5px 4px 6px -1px rgba(1, 2, 2, 0.24);
+  border: 1px solid rgba(44, 44, 44, 0.192);
+  padding-top: 1rem;
+  padding-bottom: 1rem;
 }
 #servicesSection > .row div {
   text-align: center;
@@ -115,6 +118,7 @@
 #servicesSection > .row h5 {
   color: #130f40;
   font-weight: bold;
+  font-size: 1.3rem;
 }
 #servicesSection > .row button {
   padding: 0.7rem 1.5rem;
@@ -130,6 +134,113 @@
 }
 
 /* ---------- End Services Section ---------- */
+/* ---------- About Section ---------- */
+#aboutSection > .row {
+  display: flex;
+  justify-content: center;
+}
+#aboutSection > .row div#title {
+  text-align: center;
+}
+#aboutSection > .row div#aboutContent {
+  display: flex;
+  align-items: center;
+}
+#aboutSection > .row div h1 {
+  color: #130f40;
+  font-weight: bold;
+  font-size: 2.5em;
+}
+#aboutSection > .row div img {
+  max-width: 100%;
+  height: auto;
+}
+#aboutSection > .row div h5 {
+  color: #130f40;
+  font-weight: bold;
+  font-size: 2.3em;
+  line-height: 2.5rem;
+}
+#aboutSection > .row div span {
+  margin-bottom: 1rem;
+  display: block;
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
+#aboutSection > .row div button {
+  padding: 0.7rem 1.5rem;
+  background-color: #130f40;
+  color: white;
+  border-radius: 5px;
+  display: block;
+  cursor: pointer;
+  margin-top: 0.5rem;
+}
+#aboutSection > .row div button:hover {
+  background-color: #0cccda;
+}
+
+/* ---------- End About Section ---------- */
+/* ---------- Plans Section ---------- */
+#plansSection > .row {
+  display: flex;
+  justify-content: center;
+}
+#plansSection > .row div {
+  text-align: center;
+}
+#plansSection > .row div h1 {
+  color: #130f40;
+  font-weight: bold;
+  font-size: 2.5em;
+}
+#plansSection > .row div img {
+  max-width: 100%;
+  height: auto;
+}
+#plansSection > .row .elements div {
+  box-shadow: 5px 4px 6px -1px rgba(1, 2, 2, 0.24);
+  border: 1px solid rgba(44, 44, 44, 0.192);
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+#plansSection > .row .elements button {
+  padding: 0.7rem 1rem;
+  background-color: #130f40;
+  color: white;
+  border-radius: 5px;
+  display: block;
+  cursor: pointer;
+  margin-top: 0.5rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+#plansSection > .row .elements button:hover {
+  background-color: #0cccda;
+}
+#plansSection > .row .elements h4 {
+  color: #130f40;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+#plansSection > .row .elements h5 {
+  color: #130f40;
+  font-size: 1.5rem;
+}
+#plansSection > .row .elements span {
+  font-weight: bold;
+  font-size: 3.5rem;
+}
+#plansSection > .row .elements ul li {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  color: #130f40;
+  font-size: 1.05em;
+  font-weight: 500;
+  opacity: 0.8;
+}
+
+/* ---------- End Plans Section ---------- */
 @media (max-width: 400px) {
   html {
     font-size: 65%;
@@ -146,5 +257,27 @@
 
   #creativeSection {
     font-size: 1.2rem;
+  }
+
+  #aboutSection > .row h5 {
+    line-height: 3rem !important;
+  }
+  #aboutSection > .row span {
+    font-size: 0.95rem !important;
+  }
+  #aboutSection > .row button {
+    font-size: 1.1rem;
+  }
+}
+@media (min-width: 1200px) {
+  #servicesSection {
+    margin-top: 1rem;
+  }
+  #servicesSection > .row h5 {
+    font-size: 1.5rem;
+  }
+
+  #aboutSection > .row h5 {
+    font-size: 2.7rem !important;
   }
 }/*# sourceMappingURL=style.css.map */
