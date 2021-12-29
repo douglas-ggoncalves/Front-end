@@ -1,0 +1,72 @@
+* {
+  margin: 0;
+  padding: 0;
+  border: none;
+  list-style: none;
+  outline: none !important;
+  text-decoration: none !important;
+  transition: all 0.2s;
+  -webkit-transition: all 0.2s;
+  -moz-transition: all 0.2s;
+  -o-transition: all 0.2s;
+}
+
+/* ---------- Variables ---------- */
+/* ---------- End Variables ---------- */
+body {
+  background-color: black !important;
+}
+
+/* ---------- Header ---------- */
+#header {
+  border-bottom: 1px solid rgba(250, 250, 250, 0.4);
+  height: 6rem;
+}
+#header > .row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 6rem;
+}
+#header > .row div {
+  display: flex;
+  align-items: center;
+  justify-content: end;
+}
+#header > .row img {
+  max-width: 100%;
+  height: 70px;
+}
+#header > .row i {
+  font-size: 1.5rem;
+  color: white;
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+  cursor: pointer;
+}
+#header > .row i:hover {
+  color: #d3ad7f;
+}
+#header > .row nav#navbarCollapse {
+  background-color: white;
+  position: absolute;
+  bottom: 0 !important;
+  right: 0 !important;
+  height: calc(100vh - 6rem);
+  padding-right: 15rem;
+}
+#header > .row nav#navbarCollapse ul li {
+  margin: 0.5rem;
+}
+#header > .row nav#navbarCollapse ul li a {
+  color: black;
+  font-size: 1.2rem;
+  border-bottom: 1px solid white !important;
+}
+#header > .row nav#navbarCollapse ul li a:hover {
+  margin-left: 0rem;
+  color: #d3ad7f;
+  border-bottom: 1px solid #d3ad7f !important;
+}
+
+/* ---------- End Header ---------- *//*# sourceMappingURL=style.css.map */
