@@ -17,6 +17,15 @@ body {
   background-color: black !important;
 }
 
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: white;
+  border-radius: 4px;
+}
+
 /* ---------- Header ---------- */
 #header {
   border-bottom: 1px solid rgba(250, 250, 250, 0.4);
@@ -31,6 +40,9 @@ body {
 #header > .row div {
   display: flex;
   align-items: center;
+  justify-content: center;
+}
+#header > .row #divWithIcons {
   justify-content: end;
 }
 #header > .row img {
@@ -47,26 +59,326 @@ body {
 #header > .row i:hover {
   color: #d3ad7f;
 }
-#header > .row nav#navbarCollapse {
-  background-color: white;
+
+/* ---------- End Header ---------- */
+/* ---------- Home ---------- */
+#home > .row {
+  position: relative;
+  height: 800px;
+}
+#home > .row #divBackground {
+  background-image: url("../images/home-img.jpeg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  opacity: 0.7;
+}
+#home > .row #divAbsolute {
   position: absolute;
-  bottom: 0 !important;
-  right: 0 !important;
-  height: calc(100vh - 6rem);
-  padding-right: 15rem;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  text-align: center;
 }
-#header > .row nav#navbarCollapse ul li {
-  margin: 0.5rem;
+#home > .row #divAbsolute h1 {
+  color: white;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 2.5rem;
 }
-#header > .row nav#navbarCollapse ul li a {
-  color: black;
-  font-size: 1.2rem;
-  border-bottom: 1px solid white !important;
+#home > .row #divAbsolute span {
+  display: block;
+  color: white;
+  font-weight: lighter;
+  font-size: 0.9rem;
 }
-#header > .row nav#navbarCollapse ul li a:hover {
-  margin-left: 0rem;
-  color: #d3ad7f;
-  border-bottom: 1px solid #d3ad7f !important;
+#home > .row #divAbsolute div {
+  display: block;
+  width: 100%;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+#home > .row #divAbsolute button {
+  margin-top: 1rem;
+  padding: 0.8rem;
+  color: white;
+  cursor: pointer;
+  background-color: #d3ad7f;
+  border-radius: 4px;
+}
+#home > .row #divAbsolute button:hover {
+  background-color: #8b6c44;
 }
 
-/* ---------- End Header ---------- *//*# sourceMappingURL=style.css.map */
+/* ---------- End Home ---------- */
+/* ---------- About ---------- */
+#about {
+  margin-top: 3rem;
+}
+#about > .row {
+  display: flex;
+  justify-content: center;
+}
+#about > .row div#aboutTitle {
+  margin-bottom: 1rem;
+  text-align: center;
+  background-color: black;
+}
+#about > .row #divWithImage {
+  display: flex;
+  align-items: center;
+}
+#about > .row div {
+  background-color: #13131a;
+  padding-left: 0;
+  padding-right: 0;
+}
+#about > .row div img {
+  width: 100%;
+  height: auto;
+  background-image: cover;
+}
+#about > .row div h1 {
+  color: white;
+  display: inline;
+  margin-left: 0.1rem;
+  margin-right: 0.1rem;
+  font-weight: bold;
+  font-size: 2.5rem;
+}
+#about > .row div h1#golden {
+  color: #d3ad7f;
+}
+#about > .row #content {
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+}
+#about > .row #content h4 {
+  color: white;
+  font-weight: bold;
+}
+#about > .row #content span {
+  margin-top: 1rem;
+  display: block;
+  color: #d8d3d3;
+  font-weight: lighter;
+  font-size: 0.9rem;
+}
+#about > .row #content button {
+  margin-top: 1rem;
+  padding: 0.5rem 1.2rem;
+  font-size: 1.1rem;
+  color: white;
+  cursor: pointer;
+  background-color: #d3ad7f;
+  border-radius: 4px;
+}
+#about > .row #content button:hover {
+  background-color: #8b6c44;
+}
+
+/* ---------- End About ---------- */
+/* ---------- Menu ---------- */
+#menu > .row {
+  margin-top: 3rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+#menu > .row h1 {
+  color: white;
+  display: inline;
+  margin-left: 0.1rem;
+  margin-right: 0.1rem;
+  font-weight: bold;
+  font-size: 2.5rem;
+}
+#menu > .row h1#golden {
+  color: #d3ad7f;
+}
+#menu > .row .elements {
+  margin-top: 0.7rem;
+}
+#menu > .row .elements div {
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+#menu > .row .elements div:hover {
+  background-color: white;
+  color: red;
+}
+#menu > .row .elements div:hover h5 {
+  color: #d3ad7f;
+}
+#menu > .row .elements div:hover span {
+  color: #d3ad7f;
+}
+#menu > .row .elements div h5 {
+  margin-top: 0.8rem;
+  color: white;
+}
+#menu > .row .elements div span {
+  color: white;
+  display: block;
+  font-size: 1.5rem;
+}
+#menu > .row .elements div p {
+  text-decoration: line-through !important;
+  font-size: 1.2rem;
+  display: inline;
+}
+#menu > .row .elements div button {
+  margin-top: 1rem;
+  padding: 0.5rem 1.2rem;
+  font-size: 1.1rem;
+  color: white;
+  cursor: pointer;
+  background-color: #d3ad7f;
+  border-radius: 4px;
+}
+#menu > .row .elements div button:hover {
+  background-color: #8b6c44;
+}
+
+/* ---------- End Menu ---------- */
+/* ---------- Products ---------- */
+#products > .row div {
+  border: 1px solid red;
+}
+#products > .row img {
+  max-width: 100%;
+  height: auto;
+}
+#products > .row h4 {
+  margin-top: 0.8rem;
+  color: white;
+  font-weight: bold;
+}
+#products > .row i {
+  color: #d3ad7f;
+}
+
+/* ---------- End Products ---------- */
+@media (max-width: 767.98px) {
+  nav#navbarCollapse {
+    background-color: white;
+    position: absolute;
+    bottom: 0 !important;
+    right: 0 !important;
+    height: calc(100vh - 6rem);
+    padding-right: 15rem;
+    z-index: 1000;
+  }
+  nav#navbarCollapse ul li {
+    margin-top: 0.7rem;
+  }
+  nav#navbarCollapse ul li a {
+    color: black;
+    font-size: 1.2rem;
+    border-bottom: 1px solid white !important;
+    padding-top: 0.7rem;
+    margin-left: 0.5rem;
+  }
+  nav#navbarCollapse ul li a:hover {
+    margin-left: 0rem;
+    color: #d3ad7f;
+    border-bottom: 1px solid #d3ad7f !important;
+  }
+}
+@media (min-width: 576px) {
+  #menu .elements {
+    padding-left: 0.5rem !important;
+    padding-right: 0.5rem !important;
+  }
+}
+@media (min-width: 768px) {
+  #header .fas.fa-bars {
+    display: none;
+  }
+  #header nav#navbarCollapse {
+    display: flex !important;
+    justify-content: center;
+  }
+  #header nav#navbarCollapse ul {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  #header nav#navbarCollapse ul li {
+    margin-top: 0.7rem;
+    display: inline;
+  }
+  #header nav#navbarCollapse ul li a {
+    color: white;
+    font-size: 1.2rem;
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+    display: inline;
+  }
+  #header nav#navbarCollapse ul li a:hover {
+    padding-bottom: 0.5rem;
+    color: #d3ad7f;
+    border-bottom: 1px solid #d3ad7f;
+  }
+
+  #home #divAbsolute {
+    text-align: left !important;
+  }
+  #home #divAbsolute h1 {
+    font-size: 3rem !important;
+  }
+  #home #divAbsolute span {
+    font-size: 1rem !important;
+  }
+  #home #divAbsolute button:hover {
+    margin-left: 0.7rem;
+  }
+
+  #about > .row {
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+  }
+  #about #content button:hover {
+    background-color: white !important;
+    color: black !important;
+    margin-left: 0.7rem;
+  }
+}
+@media (min-width: 992px) {
+  #home #divAbsolute {
+    text-align: left !important;
+  }
+  #home #divAbsolute h1 {
+    font-size: 3.5rem !important;
+  }
+  #home #divAbsolute span {
+    font-size: 1.2rem !important;
+  }
+  #home #divAbsolute button {
+    font-size: 1.1rem;
+  }
+
+  #about #content {
+    padding-left: 1.5rem !important;
+    padding-right: 1.5rem !important;
+  }
+  #about #content h4 {
+    font-size: 1.7rem;
+  }
+
+  #menu > .row {
+    margin-left: 3rem !important;
+    margin-right: 3rem !important;
+  }
+}
+@media (min-width: 1200px) {
+  #about #content h4 {
+    font-size: 1.9rem;
+  }
+  #about #content span {
+    font-size: 1rem !important;
+  }
+}/*# sourceMappingURL=style.css.map */
