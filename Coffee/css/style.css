@@ -200,11 +200,13 @@ body {
 }
 #menu > .row .elements {
   margin-top: 0.7rem;
+  height: 100%;
 }
 #menu > .row .elements div {
   border: 1px solid rgba(255, 255, 255, 0.3);
   padding-top: 2rem;
   padding-bottom: 2rem;
+  height: 100%;
 }
 #menu > .row .elements div:hover {
   background-color: white;
@@ -245,23 +247,114 @@ body {
 
 /* ---------- End Menu ---------- */
 /* ---------- Products ---------- */
-#products > .row div {
-  border: 1px solid red;
+#products {
+  margin-top: 3rem;
 }
-#products > .row img {
-  max-width: 100%;
-  height: auto;
+#products > .row {
+  display: flex;
+  justify-content: center;
+  text-align: center;
 }
-#products > .row h4 {
+#products > .row h1 {
+  color: white;
+  display: inline;
+  margin-left: 0.1rem;
+  margin-right: 0.1rem;
+  font-weight: bold;
+  font-size: 2.5rem;
+}
+#products > .row h1#golden {
+  color: #d3ad7f;
+}
+#products > .row .elements {
+  margin-top: 0.7rem;
+  cursor: pointer;
+}
+#products > .row .elements div.divContent {
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+}
+#products > .row .elements div.divContent img {
+  max-width: 90%;
+  max-height: 220px !important;
+}
+#products > .row .elements div.divContent h4 {
   margin-top: 0.8rem;
   color: white;
   font-weight: bold;
+  margin-left: auto;
+  margin-right: auto;
 }
-#products > .row i {
+#products > .row .elements div.divContent i {
   color: #d3ad7f;
+}
+#products > .row .elements div.divContent span {
+  color: white;
+  display: block;
+  font-size: 1.5rem;
+}
+#products > .row .elements div.divContent p {
+  text-decoration: line-through !important;
+  font-size: 1.2rem;
+  display: inline;
+}
+#products > .row .elements:hover > div.divAbsolute {
+  display: block;
+}
+#products > .row .elements div.divAbsolute {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin-left: 15px;
+  margin-right: 15px;
+  display: none;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+#products > .row .elements div.divAbsolute button {
+  background: none;
+  cursor: pointer;
+}
+#products > .row .elements div.divAbsolute button i {
+  color: white;
+  font-size: 1.2rem;
+  padding: 0.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+#products > .row .elements div.divAbsolute button i:hover {
+  background-color: white;
+  color: black;
 }
 
 /* ---------- End Products ---------- */
+/* ---------- Contact ---------- */
+#contact {
+  margin-top: 3rem;
+}
+#contact > .row {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  background-color: #13131a;
+}
+#contact > .row #titleContact {
+  background-color: black;
+}
+#contact > .row #titleContact h1 {
+  color: white;
+  display: inline;
+  margin-left: 0.1rem;
+  margin-right: 0.1rem;
+  font-weight: bold;
+  font-size: 2.5rem;
+}
+#contact > .row #titleContact h1#golden {
+  color: #d3ad7f;
+}
+
+/* ---------- End Contact ---------- */
 @media (max-width: 767.98px) {
   nav#navbarCollapse {
     background-color: white;
@@ -290,6 +383,11 @@ body {
 }
 @media (min-width: 576px) {
   #menu .elements {
+    padding-left: 0.5rem !important;
+    padding-right: 0.5rem !important;
+  }
+
+  #products .elements {
     padding-left: 0.5rem !important;
     padding-right: 0.5rem !important;
   }
@@ -370,6 +468,11 @@ body {
   }
 
   #menu > .row {
+    margin-left: 3rem !important;
+    margin-right: 3rem !important;
+  }
+
+  #products > .row {
     margin-left: 3rem !important;
     margin-right: 3rem !important;
   }

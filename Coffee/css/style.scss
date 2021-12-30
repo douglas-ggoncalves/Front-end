@@ -236,11 +236,12 @@ body{
 
         .elements{
             margin-top: .7rem;
-
+            height: 100%;
             div{
                 border: 1px solid rgb(255, 255, 255, 0.3);
                 padding-top: 2rem;
                 padding-bottom: 2rem;
+                height: 100%;
 
                 &:hover{
                     background-color: white;
@@ -293,28 +294,135 @@ body{
 
 /* ---------- Products ---------- */
 #products{
+    margin-top: 3rem;
+
     >.row{
-        div{
-            border: 1px solid red;
-        }
+        display: flex;
+        justify-content: center;
+        text-align: center;
 
-        img{
-            max-width: 100%;
-            height: auto;
-        }
-
-        h4 {
-            margin-top: 0.8rem;
+        h1{
             color: $white;
+            display: inline;
+            margin-left: 0.1rem;
+            margin-right: 0.1rem;
             font-weight: bold;
+            font-size: 2.5rem;
         }
 
-        i{
+        h1#golden{
             color: $golden;
+        }
+
+        .elements{
+            margin-top: .7rem;
+            cursor: pointer;
+
+            div.divContent{
+                border: 1px solid rgb(255, 255, 255, 0.3);
+                padding-top: 3rem;
+                padding-bottom: 3rem;
+
+                img{
+                    max-width: 90%;
+                    max-height: 220px !important;
+                }
+        
+                h4 {
+                    margin-top: 0.8rem;
+                    color: $white;
+                    font-weight: bold;
+                    margin-left: auto;
+                    margin-right: auto;
+                }
+        
+                i{
+                    color: $golden;
+                }
+        
+                span{
+                    color: $white;
+                    display: block;
+                    font-size: 1.5rem;
+                }
+        
+                p{
+                    text-decoration: line-through !important;
+                    font-size: 1.2rem;
+                    display: inline;
+                }
+            }
+
+            &:hover > div.divAbsolute{
+                    &{
+                        display: block;
+                    }
+            }
+
+            div.divAbsolute{
+                position: absolute; 
+                left: 0; 
+                right: 0; 
+                bottom: 0; 
+                margin-left: 15px; 
+                margin-right: 15px;
+                display: none;
+                padding-top: 0.5rem;
+                padding-bottom: 0.5rem;
+
+                button{
+                    background: none;
+                    cursor: pointer;
+
+                    i{
+                        color: $white;
+                        font-size: 1.2rem;
+                        padding: 0.5rem;
+                        border: 1px solid rgb(255, 255, 255, 0.3);
+    
+                        &:hover{
+                            background-color: white;
+                            color:  black;
+                        }
+                    }
+                }
+                
+                
+            }
         }
     }
 }
 /* ---------- End Products ---------- */
+
+/* ---------- Contact ---------- */
+#contact{
+    margin-top: 3rem;
+
+    >.row{
+        display: flex;
+        justify-content: center;
+        text-align: center;
+        background-color: rgb(19, 19, 26);
+
+        #titleContact{
+            background-color: $black;
+            h1{
+                color: $white;
+                display: inline;
+                margin-left: 0.1rem;
+                margin-right: 0.1rem;
+                font-weight: bold;
+                font-size: 2.5rem;
+            }
+    
+            h1#golden{
+                color: $golden;
+            }
+        }
+        
+    }
+}
+/* ---------- End Contact ---------- */
 
 
 
@@ -358,6 +466,13 @@ body{
             padding-right: 0.5rem !important;
         }
     }
+
+    #products{
+        .elements{
+            padding-left: 0.5rem !important;
+            padding-right: 0.5rem !important;
+        }
+    }
  }
 
 @media (min-width: 768px){ 
@@ -377,15 +492,12 @@ body{
                 li{
                     margin-top: 0.7rem;
                     display: inline;
-                    
                     a{
                         color: $white;
                         font-size: 1.2rem;
                         margin-left: 0.5rem;
                         margin-right: 0.5rem;
-
                         display: inline;
-
                         &:hover{
                             padding-bottom: 0.5rem;
                             color: $golden;
@@ -472,6 +584,14 @@ body{
             margin-right: 3rem !important;
         }
     }
+
+    #products{
+        >.row{
+            margin-left: 3rem !important;
+            margin-right: 3rem !important;
+        }
+    }
+
 }
 
 @media (min-width: 1200px) { 
