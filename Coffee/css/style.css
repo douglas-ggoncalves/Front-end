@@ -333,16 +333,74 @@ body {
 #contact {
   margin-top: 3rem;
 }
+#contact div#WeContent.row {
+  margin-top: 0.8rem;
+  background-color: #13131a;
+  margin-left: 0;
+  margin-right: 0;
+}
+#contact div#divMap {
+  padding-left: 0;
+  padding-right: 0;
+}
 #contact > .row {
   display: flex;
   justify-content: center;
   text-align: center;
-  background-color: #13131a;
 }
-#contact > .row #titleContact {
+#contact > .row h4 {
+  color: white;
+  font-weight: bold;
+  font-size: 2rem;
+}
+#contact > .row div.content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-left: 0;
+  padding-right: 0;
+}
+#contact > .row div.content > div {
+  display: block;
+  width: 100%;
+}
+#contact > .row div.content > div div.input-group {
+  margin-top: 0.8rem !important;
+  margin-bottom: 0.8rem !important;
+  width: 70% !important;
+  margin-left: auto;
+  margin-right: auto;
+}
+#contact > .row div.content > div input {
+  padding: 1.3rem;
+  color: white;
+}
+#contact > .row div.content > div span.input-group-text {
+  background-color: black !important;
+}
+#contact > .row div.content > div span.input-group-text i {
+  color: white;
+}
+#contact > .row div.content input {
   background-color: black;
 }
-#contact > .row #titleContact h1 {
+#contact > .row div.content button {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  padding: 0.5rem 1.2rem;
+  font-size: 1.1rem;
+  color: white;
+  cursor: pointer;
+  background-color: #d3ad7f;
+  border-radius: 4px;
+}
+#contact > .row div.content button:hover {
+  background-color: #8b6c44;
+}
+#contact > .row div#titleContact {
+  background-color: black;
+}
+#contact > .row div#titleContact h1 {
   color: white;
   display: inline;
   margin-left: 0.1rem;
@@ -350,11 +408,31 @@ body {
   font-weight: bold;
   font-size: 2.5rem;
 }
-#contact > .row #titleContact h1#golden {
+#contact > .row div#titleContact h1#golden {
   color: #d3ad7f;
 }
 
 /* ---------- End Contact ---------- */
+/* ---------- Blogs ---------- */
+#blogs {
+  margin-top: 1.5rem;
+}
+#blogs > .row {
+  text-align: center;
+}
+#blogs > .row #titleBlogs h1 {
+  color: white;
+  display: inline;
+  margin-left: 0.1rem;
+  margin-right: 0.1rem;
+  font-weight: bold;
+  font-size: 2.5rem;
+}
+#blogs > .row #titleBlogs h1#golden {
+  color: #d3ad7f;
+}
+
+/* ---------- End Blogs ---------- */
 @media (max-width: 767.98px) {
   nav#navbarCollapse {
     background-color: white;
@@ -473,6 +551,11 @@ body {
   }
 
   #products > .row {
+    margin-left: 3rem !important;
+    margin-right: 3rem !important;
+  }
+
+  #contact > .row {
     margin-left: 3rem !important;
     margin-right: 3rem !important;
   }

@@ -354,9 +354,9 @@ body{
             }
 
             &:hover > div.divAbsolute{
-                    &{
-                        display: block;
-                    }
+                &{
+                    display: block;
+                }
             }
 
             div.divAbsolute{
@@ -386,8 +386,6 @@ body{
                         }
                     }
                 }
-                
-                
             }
         }
     }
@@ -398,14 +396,108 @@ body{
 #contact{
     margin-top: 3rem;
 
+    div#WeContent.row{
+        margin-top: 0.8rem;
+        background-color: rgb(19, 19, 26);
+        margin-left: 0; 
+        margin-right: 0;
+    }
+
+    div#divMap{
+        padding-left: 0;
+        padding-right: 0;
+    }
+
     >.row{
         display: flex;
         justify-content: center;
         text-align: center;
-        background-color: rgb(19, 19, 26);
 
-        #titleContact{
+        h4{
+            color: $white;
+            font-weight: bold;
+            font-size: 2.0rem;
+        }
+
+        div.content{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding-left: 0;
+            padding-right: 0;
+            >div{
+                display: block;
+                width: 100%;
+
+                div.input-group{
+                    margin-top: .8rem !important;
+                    margin-bottom: .8rem !important;
+                    width: 70% !important;
+                    margin-left: auto;
+                    margin-right: auto;
+                }
+
+                input{
+                    padding: 1.3rem;
+                    color: $white;
+                }
+
+                span.input-group-text{
+                    background-color: black !important;
+
+                    i{
+                        color: white;
+                    }
+                }
+            }
+
+            input{
+                background-color: $black;
+            }
+
+            button{
+                margin-top: 1rem;
+                margin-bottom: 1rem;
+                padding: 0.5rem 1.2rem;
+                font-size: 1.1rem;
+                color: $white;
+                cursor: pointer;
+                background-color: $golden;
+                border-radius: $borderRadius;
+    
+                &:hover{
+                    background-color: $goldenDark;
+                }
+            }
+        }
+
+        div#titleContact{
             background-color: $black;
+
+            h1{
+                color: $white;
+                display: inline;
+                margin-left: 0.1rem;
+                margin-right: 0.1rem;
+                font-weight: bold;
+                font-size: 2.5rem;
+            }
+    
+            h1#golden{
+                color: $golden;
+            }
+        }
+    }
+}
+/* ---------- End Contact ---------- */
+
+/* ---------- Blogs ---------- */
+#blogs{
+    margin-top: 1.5rem;
+    >.row{
+        text-align: center;
+
+        #titleBlogs{
             h1{
                 color: $white;
                 display: inline;
@@ -422,9 +514,7 @@ body{
         
     }
 }
-/* ---------- End Contact ---------- */
-
-
+/* ---------- End Blogs ---------- */
 
 @media (max-width: 575.98px) { 
 }
@@ -592,6 +682,12 @@ body{
         }
     }
 
+    #contact{
+        >.row{
+            margin-left: 3rem !important;
+            margin-right: 3rem !important;
+        }
+    }
 }
 
 @media (min-width: 1200px) { 
