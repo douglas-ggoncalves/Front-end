@@ -199,7 +199,7 @@ body {
   color: #d3ad7f;
 }
 #menu > .row .elements {
-  margin-top: 0.7rem;
+  margin-top: 1rem;
   height: 100%;
 }
 #menu > .row .elements div {
@@ -267,7 +267,7 @@ body {
   color: #d3ad7f;
 }
 #products > .row .elements {
-  margin-top: 0.7rem;
+  margin-top: 1rem;
   cursor: pointer;
 }
 #products > .row .elements div.divContent {
@@ -332,6 +332,9 @@ body {
 /* ---------- Contact ---------- */
 #contact {
   margin-top: 3rem;
+}
+#contact div#rowContact {
+  margin-bottom: 1rem;
 }
 #contact div#WeContent.row {
   margin-top: 0.8rem;
@@ -418,21 +421,118 @@ body {
   margin-top: 1.5rem;
 }
 #blogs > .row {
+  display: flex;
+  justify-content: center;
   text-align: center;
 }
-#blogs > .row #titleBlogs h1 {
+#blogs > .row div#titleBlogs {
+  margin-bottom: 1rem;
+}
+#blogs > .row div#titleBlogs h1 {
   color: white;
   display: inline;
-  margin-left: 0.1rem;
-  margin-right: 0.1rem;
   font-weight: bold;
   font-size: 2.5rem;
 }
-#blogs > .row #titleBlogs h1#golden {
+#blogs > .row div#titleBlogs h1#golden {
   color: #d3ad7f;
+}
+#blogs > .row .content .elements {
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+#blogs > .row .content img {
+  width: 100%;
+  height: auto;
+}
+#blogs > .row .content .absolute {
+  text-align: left;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: black;
+  height: 15px;
+  padding: 1.5rem 0;
+  margin: 0 15px;
+  border: 1px solid red;
+}
+#blogs > .row .content h5 {
+  color: white;
+  font-weight: lighter;
+}
+#blogs > .row .content span.byGolden {
+  display: block;
+  color: #d3ad7f;
+  font-size: 1.3rem;
+}
+#blogs > .row .content span.lorem {
+  display: block;
+  color: white;
+  font-weight: lighter;
+}
+#blogs > .row .content:hover img {
+  transform: scale(1.1);
 }
 
 /* ---------- End Blogs ---------- */
+/* ---------- Footer ---------- */
+#footer {
+  background-color: #13131a;
+  margin-top: 15rem;
+  padding-bottom: 0.1rem;
+  padding-top: 0.7rem;
+  text-align: center !important;
+}
+#footer div.divIcons {
+  text-align: center;
+}
+#footer div.divIcons a {
+  height: 2.9rem;
+  width: 2.9rem;
+  line-height: 2.9rem;
+  font-size: 1.2rem;
+  color: #fff;
+  margin: 0.3rem;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+#footer div.divIcons a:hover {
+  background-color: white;
+  color: black;
+}
+#footer div.rowElements {
+  display: flex;
+  justify-content: center;
+  padding-top: 0.7rem;
+  padding-bottom: 0.7rem;
+}
+#footer div.rowElements div.elementsMenu {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 0;
+}
+#footer div.rowElements div.elementsMenu div {
+  display: inline !important;
+  color: white;
+  padding: 0.5rem 1.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+}
+#footer div.rowElements div.elementsMenu div a {
+  color: white;
+  font-size: 1.1rem;
+  display: block;
+}
+#footer div.rowElements div.elementsMenu div:hover {
+  background-color: #8b6c44;
+  border: 1px solid black;
+}
+
+/* ---------- End Footer ---------- */
 @media (max-width: 767.98px) {
   nav#navbarCollapse {
     background-color: white;
@@ -559,6 +659,14 @@ body {
     margin-left: 3rem !important;
     margin-right: 3rem !important;
   }
+
+  #footer {
+    padding-left: 5rem;
+    padding-right: 5rem;
+  }
+  #footer div.elementsMenu div {
+    padding: 0.5rem 3rem !important;
+  }
 }
 @media (min-width: 1200px) {
   #about #content h4 {
@@ -566,5 +674,10 @@ body {
   }
   #about #content span {
     font-size: 1rem !important;
+  }
+
+  #footer {
+    padding-left: 8rem;
+    padding-right: 8rem;
   }
 }/*# sourceMappingURL=style.css.map */

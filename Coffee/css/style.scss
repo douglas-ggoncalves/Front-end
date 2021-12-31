@@ -17,6 +17,9 @@ $white: rgb(255, 255, 255);
 $golden: rgb(211, 173, 127);
 $goldenDark: rgb(139, 108, 68);
 $borderRadius: 4px;
+$blueDark: rgb(19, 19, 26);
+$borderLight: rgb(255, 255, 255, 0.3);
+
 /* ---------- End Variables ---------- */
 
 body{
@@ -153,11 +156,10 @@ body{
         }
         
         div{
-            background-color: rgb(19, 19, 26);
+            background-color: $blueDark;
             padding-left: 0;
             padding-right: 0;
             
-
             img{
                 width: 100%;
                 height: auto;
@@ -235,10 +237,10 @@ body{
         }
 
         .elements{
-            margin-top: .7rem;
+            margin-top: 1rem;
             height: 100%;
             div{
-                border: 1px solid rgb(255, 255, 255, 0.3);
+                border: 1px solid $borderLight;
                 padding-top: 2rem;
                 padding-bottom: 2rem;
                 height: 100%;
@@ -315,11 +317,11 @@ body{
         }
 
         .elements{
-            margin-top: .7rem;
+            margin-top: 1rem;
             cursor: pointer;
 
             div.divContent{
-                border: 1px solid rgb(255, 255, 255, 0.3);
+                border: 1px solid $borderLight;
                 padding-top: 3rem;
                 padding-bottom: 3rem;
 
@@ -378,7 +380,7 @@ body{
                         color: $white;
                         font-size: 1.2rem;
                         padding: 0.5rem;
-                        border: 1px solid rgb(255, 255, 255, 0.3);
+                        border: 1px solid $borderLight;
     
                         &:hover{
                             background-color: white;
@@ -396,9 +398,13 @@ body{
 #contact{
     margin-top: 3rem;
 
+    div#rowContact{
+        margin-bottom: 1rem;
+    }
+
     div#WeContent.row{
         margin-top: 0.8rem;
-        background-color: rgb(19, 19, 26);
+        background-color: $blueDark;
         margin-left: 0; 
         margin-right: 0;
     }
@@ -494,15 +500,17 @@ body{
 /* ---------- Blogs ---------- */
 #blogs{
     margin-top: 1.5rem;
+
     >.row{
+        display: flex;
+        justify-content: center;
         text-align: center;
 
-        #titleBlogs{
+        div#titleBlogs{
+            margin-bottom: 1rem;
             h1{
                 color: $white;
                 display: inline;
-                margin-left: 0.1rem;
-                margin-right: 0.1rem;
                 font-weight: bold;
                 font-size: 2.5rem;
             }
@@ -512,9 +520,119 @@ body{
             }
         }
         
+        .content{
+
+            .elements{
+                overflow: hidden;
+                border: 1px solid $borderLight;
+            }
+            
+            img{
+                width: 100%;
+                height: auto;
+            }
+
+            .absolute{
+                text-align: left;
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                background-color: $black;
+                height: 15px;
+                padding: 1.5rem 0;
+                margin: 0 15px;
+                border: 1px solid red;
+            }
+
+            h5{
+                color: $white;
+                font-weight: lighter;
+            }
+
+            span.byGolden{
+                display: block;
+                color: $golden;
+                font-size: 1.3rem;
+            }
+
+            span.lorem{
+                display: block;
+                color: $white;
+                    font-weight: lighter;
+            }
+
+            &:hover{
+                img{
+                    transform: scale(1.1);
+                }
+            }
+        }  
     }
 }
 /* ---------- End Blogs ---------- */
+
+/* ---------- Footer ---------- */
+#footer{
+    background-color: $blueDark;
+    margin-top: 15rem;
+    padding-bottom: .1rem;
+    padding-top: .7rem;
+    text-align: center !important;
+
+        div.divIcons{
+            text-align: center;
+            a{
+                height: 2.9rem;
+                width: 2.9rem;
+                line-height: 2.9rem;
+                font-size: 1.2rem;
+                color: #fff;
+                margin: 0.3rem;
+                border-radius: 50%;
+                border: 1px solid $borderLight;
+
+                &:hover{
+                    background-color: $white;
+                    color: $black;
+                }
+            }
+        }
+
+        div.rowElements{
+            display: flex;
+            justify-content: center;
+            padding-top: .7rem;
+            padding-bottom: .7rem;
+
+            div.elementsMenu{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                margin-bottom: 0;
+                
+                div {
+                    display: inline !important;
+                    color: $white;
+                    padding: 0.5rem 1.5rem;
+                    border: 1px solid $borderLight;
+                    text-align: center;
+                    cursor: pointer;
+                    width: 100%;
+                    a{
+                        color: $white;
+                        font-size: 1.1rem;
+                        display: block;
+                    }
+                    &:hover{
+                        background-color: $goldenDark;
+                        border: 1px solid $black;
+                    }
+                }
+            }
+        }
+}
+/* ---------- End Footer ---------- */
 
 @media (max-width: 575.98px) { 
 }
@@ -688,11 +806,21 @@ body{
             margin-right: 3rem !important;
         }
     }
+
+    #footer{
+     padding-left: 5rem;   
+     padding-right: 5rem;   
+
+     div.elementsMenu{
+        div {
+            padding: 0.5rem 3.0rem !important;
+        }
+    }
+    }
 }
 
 @media (min-width: 1200px) { 
     #about{
-
         #content{
             h4{
                 font-size: 1.9rem;
@@ -703,4 +831,9 @@ body{
             }
         }
     }
+
+    #footer{
+        padding-left: 8rem;   
+        padding-right: 8rem;   
+       }
 }
