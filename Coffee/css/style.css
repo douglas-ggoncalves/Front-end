@@ -437,34 +437,39 @@ body {
 #blogs > .row div#titleBlogs h1#golden {
   color: #d3ad7f;
 }
+#blogs > .row .content {
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  padding: 0;
+  margin-top: 0.7rem;
+}
 #blogs > .row .content .elements {
   overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.3);
 }
 #blogs > .row .content img {
   width: 100%;
+  min-height: 270px;
   height: auto;
+  margin-bottom: 7.5rem;
 }
 #blogs > .row .content .absolute {
-  text-align: left;
+  text-align: center;
   position: absolute;
   bottom: 0;
   left: 0;
   right: 0;
   background-color: black;
-  height: 15px;
-  padding: 1.5rem 0;
-  margin: 0 15px;
-  border: 1px solid red;
+  padding: 0.7rem 1rem;
 }
 #blogs > .row .content h5 {
+  display: inline;
   color: white;
-  font-weight: lighter;
+  font-weight: bold;
 }
 #blogs > .row .content span.byGolden {
   display: block;
   color: #d3ad7f;
-  font-size: 1.3rem;
+  font-size: 1.2rem;
+  margin-left: 0.5rem;
 }
 #blogs > .row .content span.lorem {
   display: block;
@@ -474,12 +479,26 @@ body {
 #blogs > .row .content:hover img {
   transform: scale(1.1);
 }
+#blogs > .row .content button {
+  margin-top: 0.3rem;
+  padding: 0.5rem 1.2rem;
+  font-size: 1.1rem;
+  color: white;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  cursor: pointer;
+  background-color: #d3ad7f;
+  border-radius: 4px;
+}
+#blogs > .row .content button:hover {
+  background-color: #8b6c44;
+}
 
 /* ---------- End Blogs ---------- */
 /* ---------- Footer ---------- */
 #footer {
   background-color: #13131a;
-  margin-top: 15rem;
+  margin-top: 4.5rem;
   padding-bottom: 0.1rem;
   padding-top: 0.7rem;
   text-align: center !important;
@@ -511,7 +530,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: 0;
+  margin-bottom: 0.7rem;
 }
 #footer div.rowElements div.elementsMenu div {
   display: inline !important;
@@ -526,6 +545,7 @@ body {
   color: white;
   font-size: 1.1rem;
   display: block;
+  height: 100%;
 }
 #footer div.rowElements div.elementsMenu div:hover {
   background-color: #8b6c44;
