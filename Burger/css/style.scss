@@ -1,0 +1,230 @@
+*{
+    margin: 0;
+    padding: 0;
+    border: none;
+    list-style: none;
+    outline: none !important;
+    text-decoration: none !important;
+    transition: all 0.2s;
+    -webkit-transition: all 0.2s;
+    -moz-transition: all 0.2s;
+    -o-transition: all 0.2s;
+}
+
+/* ---------- Variables ---------- */
+$yellow: rgb(234, 207, 79);
+$black: rgb(0, 0, 0);
+$white: rgb(255, 255, 255);
+/* ---------- End Variables ---------- */
+
+body{
+    background: url('../images/background.jpg') ;
+}
+
+header, section{
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+::-webkit-scrollbar{
+    width: 8px;
+}
+
+::-webkit-scrollbar-thumb{
+    background-color: $yellow;
+    width: 8px;
+    border-radius: 8px;
+}
+
+::-webkit-scrollbar-track{
+    background-color: $black;
+    width: 8px;
+}
+
+/* Header */
+header{
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    background-color: black;
+    position: fixed;
+    top: 0;
+    div.row{
+        display: flex;
+        align-items: center;
+        height: 100%;
+
+
+        div{
+            display: flex;
+            justify-content: end;
+            img{
+                height: auto;
+                max-width: 100%;
+                cursor: pointer;
+            } i{
+                cursor: pointer;
+                color: $white;
+                margin-left: .9rem;
+                font-size: 1.4rem;
+    
+                &:hover{
+                    color: $yellow;
+                }
+            }
+        }
+
+        div#firstDiv{
+            display: flex;
+            justify-content: center;
+        }
+    }
+
+    #navbar{
+        background-color: $black;
+        ul{
+            li{
+                a{
+                    color: $white;
+                    font-weight: 400;
+                    font-size: 1.1rem;
+
+                    &:hover{
+                        color: $yellow;
+                        border-bottom: 1px solid $yellow;
+                    }
+                }
+            }
+        }
+    }
+}
+/* End Header */
+
+@media (min-width: 576px) { 
+
+ }
+
+@media (min-width: 768px) { 
+
+}
+
+@media (max-width: 992px) { 
+    header{
+        div#firstDiv{
+            i{
+                display: none;
+            }
+        }
+        #navbar{
+            background-color: $black;
+            width: 100%;
+            display: none;
+                img{
+                    display: none !important;
+                }
+    
+            ul{
+                margin-top: 1.5rem;
+
+                li{
+                    margin-top: .5rem;
+                    margin-left: 1rem;
+                    
+                    a{
+                        color: $white;
+                        font-weight: 400;
+                        font-size: 1.1rem;
+    
+                        &:hover{
+                            color: $yellow;
+                            border-bottom: 1px solid $yellow;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (min-width: 992px) { 
+    header{
+        display: flex;
+        align-items: center;
+
+        div.row div{
+            justify-content: center;
+
+            .fas.fa-bars{
+                display: none;
+            }
+
+            .fas.fa-search{
+                display: none;
+            }
+        }
+    
+        #divIcons{
+            order: 2;
+        }
+
+        #firstDiv{
+            img{
+                display: none;
+            }
+
+            .fas.fa-search{
+                display: block;
+            }
+        }
+    
+        #navbar{
+            background-color: $black;
+            order: 1;
+            display: flex !important;
+            align-items: center;
+            justify-content: center;
+            ul{
+                margin-bottom: 0;
+
+                li{
+                    margin-left: 1rem;
+                    display: inline;
+                    a{
+                        color: $white;
+                        font-weight: lighter;
+                        font-size: 1.2rem;
+    
+                        &:hover{
+                            color: $yellow;
+                            border-bottom: 1px solid $yellow;
+                        }
+                    }
+
+                    a#aWithImg{
+                        border: none;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (min-width: 1200px) { 
+    header{
+        ul{
+            li{
+                a{
+                    font-weight: lighter !important;
+                    font-size: 1.4rem !important;
+                }
+            }
+        }
+    }
+
+ }
+
+
+
+
