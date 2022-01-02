@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -14,7 +15,7 @@
     <!-- Normalize -->
     <link rel="stylesheet" href="css/normalize.css">
 
-    
+
 
     <!-- Font Awesome - Icons -->
     <link href="font_awesome/css/all.css" rel="stylesheet">
@@ -29,6 +30,7 @@
 
     <title>Burger Website</title>
 </head>
+
 <body>
 
     <!-- Header -->
@@ -36,16 +38,15 @@
         <div class="row">
             <div class="col-6 col-lg-1 col-xl-2" id="firstDiv">
                 <img src="images/logo.png" alt="">
-                <i class="fas fa-search"></i>
+                <i class="fas fa-search searchIconNav "></i>
             </div>
-    
+
             <div class="col-5 col-lg-1 col-xl-2" id="divIcons">
-                <i class="fas fa-bars"></i>
-                <i class="fas fa-search"></i>
+                <i class="fas fa-bars hamburguerIconNav"></i>
+                <i class="fas fa-search searchIconNav"></i>
                 <i class="fas fa-shopping-cart"></i>
-                <!-- <i class="fas fa-times"></i> -->
             </div>
-        
+
             <div class="col-12 col-lg-10 col-xl-8" id="divNavbar">
                 <navbar id="navbar">
                     <ul>
@@ -60,17 +61,322 @@
                 </navbar>
             </div>
 
-            <div class="col-12" id="divInput">
-                <input type="text">
+            <div class="col-12" id="divInput" style="display: none;">
+                <input type="text" placeholder="Digite Aqui...">
+                <i class="fas fa-search"></i>
             </div>
         </div>
     </header>
     <!-- End Header -->
-    
-    <section  class="container-fluid mt-5" style="height: 5000px;">
-        <h3 style="color: white; padding-top: 3rem;">Nosso conteúdo</h3>
-    </section>
 
+    <!-- Home -->
+    <section id="home">
+        <div class="row">
+            <div class="col-12" data-aos="fade-up" data-aos-duration="1000">
+                <img src="images/burger-baner.png" alt="">
+            </div>
+
+            <div class="col-12">
+                <h3 data-aos="fade-up" data-aos-duration="1100">
+                    A OPÇÃO IDEAL PARA VOCÊ CONHECER !
+                </h3>
+
+                <span data-aos="fade-up" data-aos-duration="1200">
+                    Lorem Ipsum Dolor Sit Amet Consectetur Adipisicing Elit. Dolores At Fuga Aliquam Ipsa Recusandae
+                    Repellat Laudantium Pariatur Amet Culpa Cum.
+                </span>
+
+                <button data-aos="fade-up" data-aos-duration="1300">
+                    <a href="#menu">
+                        Nosso Menu
+                    </a>
+                </button>
+            </div>
+
+            <div class="col-12 col-md-6 col-lg-4 col-xl-3 divMoreInfo">
+                <div data-aos="fade-up" data-aos-duration="1000">
+                    <i class="fas fa-hamburger"></i>
+                </div>
+
+                <span data-aos="fade-up" data-aos-duration="1100">
+                    <h5>Melhor Qualidade</h5>
+                </span>
+
+                <span data-aos="fade-up" data-aos-duration="1200">
+                    Lorem Ipsum Dolor Sit, Amet Consectetur Adipisicing Elit. Incidunt, Cum.
+                </span>
+            </div>
+
+            <div class="col-12 col-md-6 col-lg-4 col-xl-3 divMoreInfo">
+                <div data-aos="fade-up" data-aos-duration="1000">
+                    <i class="fas fa-truck"></i>
+                </div>
+
+                <span data-aos="fade-up" data-aos-duration="1100">
+                    <h5>Frete Grátis</h5>
+                </span>
+
+                <span data-aos="fade-up" data-aos-duration="1200">
+                    Lorem Ipsum Dolor Sit, Amet Consectetur Adipisicing Elit. Incidunt, Cum.
+                </span>
+            </div>
+
+            <div class="col-12 col-md-6 col-lg-4 col-xl-3 divMoreInfo">
+                <div data-aos="fade-up" data-aos-duration="1000">
+                    <i class="fas fa-headset"></i>
+                </div>
+
+                <span data-aos="fade-up" data-aos-duration="1100">
+                    <h5>Suporte 24/7</h5>
+                </span>
+
+                <span data-aos="fade-up" data-aos-duration="1200">
+                    Lorem Ipsum Dolor Sit, Amet Consectetur Adipisicing Elit. Incidunt, Cum.
+                </span>
+            </div>
+        </div>
+    </section>
+    <!-- End Home -->
+
+    <!-- Menu -->
+    <section id="menu">
+        <div class="row" data-aos="fade-up" data-aos-duration="1000">
+            <img src="images/title-img.png" alt="Título">
+        </div>
+
+        <div class="row" data-aos="fade-up" data-aos-duration="1000">
+            <h3>Nosso Menu</h3>
+        </div>
+
+        <div class="row">
+            <div class="col-8 col-sm-4 col-lg-3 divHamburguers">
+                <img src="images/product-1.png" alt="Foto-Hamburguer" data-aos="fade-up" data-aos-duration="1000">
+
+                <span data-aos="fade-up" data-aos-duration="1100">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                </span>
+
+                <span data-aos="fade-up" data-aos-duration="1100">
+                    <h5>
+                        Big Burger
+                    </h5>
+                </span>
+
+                <span data-aos="fade-up" data-aos-duration="1200">
+                    <p>
+                        R$ 27.99
+                    </p>
+                </span>
+
+                <button data-aos="fade-up" data-aos-duration="1300">
+                    Pedir Agora
+                </button>
+            </div>
+
+            <div class="col-8 col-sm-4 col-lg-3 divHamburguers">
+                <img src="images/product-2.png" alt="Foto-Hamburguer" data-aos="fade-up" data-aos-duration="1000">
+
+                <span data-aos="fade-up" data-aos-duration="1100">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                </span>
+
+                <span data-aos="fade-up" data-aos-duration="1100">
+                    <h5>
+                        Top Burger
+                    </h5>
+                </span>
+
+                <span data-aos="fade-up" data-aos-duration="1200">
+                    <p>
+                        R$ 27.99
+                    </p>
+                </span>
+
+                <button data-aos="fade-up" data-aos-duration="1300">
+                    Pedir Agora
+                </button>
+            </div>
+
+            <div class="col-8 col-sm-4 col-lg-3 divHamburguers">
+                <img src="images/product-3.png" alt="Foto-Hamburguer" data-aos="fade-up" data-aos-duration="1000">
+
+                <span data-aos="fade-up" data-aos-duration="1100">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                </span>
+
+                <span data-aos="fade-up" data-aos-duration="1100">
+                    <h5>
+                        Best Burger
+                    </h5>
+                </span>
+
+                <span data-aos="fade-up" data-aos-duration="1200">
+                    <p>
+                        R$ 27.99
+                    </p>
+                </span>
+
+                <button data-aos="fade-up" data-aos-duration="1300">
+                    Pedir Agora
+                </button>
+            </div>
+
+            <div class="col-8 col-sm-4 col-lg-3 ml-lg-1 divHamburguers">
+                <img src="images/product-4.png" alt="Foto-Hamburguer" data-aos="fade-up" data-aos-duration="1000">
+
+                <span data-aos="fade-up" data-aos-duration="1100">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                </span>
+
+                <span data-aos="fade-up" data-aos-duration="1100">
+                    <h5>
+                        Mega Burger
+                    </h5>
+                </span>
+
+                <span data-aos="fade-up" data-aos-duration="1200">
+                    <p>
+                        R$ 27.99
+                    </p>
+                </span>
+
+                <button data-aos="fade-up" data-aos-duration="1300">
+                    Pedir Agora
+                </button>
+            </div>
+
+            <div class="col-8 col-sm-4 col-lg-3 divHamburguers">
+                <img src="images/product-5.png" alt="Foto-Hamburguer" data-aos="fade-up" data-aos-duration="1000">
+
+                <span data-aos="fade-up" data-aos-duration="1100">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                </span>
+
+                <span data-aos="fade-up" data-aos-duration="1100">
+                    <h5>
+                        Vip Burger
+                    </h5>
+                </span>
+
+                <span data-aos="fade-up" data-aos-duration="1200">
+                    <p>
+                        R$ 27.99
+                    </p>
+                </span>
+
+                <button data-aos="fade-up" data-aos-duration="1300">
+                    Pedir Agora
+                </button>
+            </div>
+
+            <div class="col-8 col-sm-4 col-lg-3 divHamburguers">
+                <img src="images/product-6.png" alt="Foto-Hamburguer" data-aos="fade-up" data-aos-duration="1000">
+
+                <span data-aos="fade-up" data-aos-duration="1100">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                </span>
+
+                <span data-aos="fade-up" data-aos-duration="1100">
+                    <h5>
+                        Golden Burger
+                    </h5>
+                </span>
+
+                <span data-aos="fade-up" data-aos-duration="1200">
+                    <p>
+                        R$ 27.99
+                    </p>
+                </span>
+
+                <button data-aos="fade-up" data-aos-duration="1300">
+                    Pedir Agora
+                </button>
+            </div>
+        </div>
+    </section>
+    <!-- End Menu -->
+
+    <!-- About -->
+    <section id="about">
+        <div class="row">
+            <div class="col-12 col-md-5">
+                <img src="images/about-img.png" alt="Imagem-Sobre">
+            </div>
+
+            <div class="col-12 col-md-5">
+                <h3>Paraíso Do Hambúrguer</h3>
+
+                <span>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Error optio id consequatur voluptatum animi
+                    illum architecto temporibus voluptate dolorem, qui porro praesentium sequi blanditiis,
+                    harum quasi molestiae eaque assumenda illo?
+                </span>
+
+                <p>
+                    <i class="fas fa-check"></i>
+                    Melhor Preço
+                </p>
+
+                <p>
+                    <i class="fas fa-check"></i>
+                    Lanches Veganos
+                </p>
+
+                <p>
+                    <i class="fas fa-check"></i>
+                    Melhor Serviço
+                </p>
+
+                <p>
+                    <i class="fas fa-check"></i>
+                    Drive-Thru
+                </p>
+
+                <p>
+                    <i class="fas fa-check"></i>
+                    Queijo Natural
+                </p>
+
+                <p>
+                    <i class="fas fa-check"></i>
+                    Lanches Fitness
+                </p>
+
+                <button>
+                    <a href="#">
+                        Saiba Mais
+                    </a>
+                </button>
+            </div>
+        </div>
+    </section>
+    <!-- End About -->
+
+    <div style="height: 8000px;"></div>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -86,7 +392,8 @@
         AOS.init();
     </script>
 
-      <!-- JavaScript -->
+    <!-- JavaScript -->
     <script src="js/script.js"></script>
 </body>
+
 </html>

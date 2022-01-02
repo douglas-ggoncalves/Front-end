@@ -40,13 +40,74 @@ header, section {
   width: 8px;
 }
 
+@-webkit-keyframes myFrameFromLeft {
+  50% {
+    transform: rotate(180deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes myFrameFromLeft {
+  50% {
+    transform: rotate(180deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@-webkit-keyframes myFrameFromRight {
+  25% {
+    transform: rotate(270deg);
+  }
+  50% {
+    transform: rotate(180deg);
+  }
+  75% {
+    transform: rotate(90deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+@keyframes myFrameFromRight {
+  25% {
+    transform: rotate(270deg);
+  }
+  50% {
+    transform: rotate(180deg);
+  }
+  75% {
+    transform: rotate(90deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+.animatedLeft {
+  -webkit-animation-name: myFrameFromLeft;
+          animation-name: myFrameFromLeft;
+  -webkit-animation-duration: 0.2s;
+          animation-duration: 0.2s;
+}
+
+.animatedRight {
+  -webkit-animation-name: myFrameFromRight;
+          animation-name: myFrameFromRight;
+  -webkit-animation-duration: 0.2s;
+          animation-duration: 0.2s;
+}
+
 /* Header */
 header {
   padding-top: 1rem;
   padding-bottom: 1rem;
   background-color: black;
-  position: fixed;
+  position: -webkit-sticky;
+  position: sticky;
   top: 0;
+  z-index: 999;
 }
 header div.row {
   display: flex;
@@ -75,6 +136,24 @@ header div.row div#firstDiv {
   display: flex;
   justify-content: center;
 }
+header div.row div#divInput {
+  border-top: 1px solid rgba(255, 255, 255, 0.3);
+  padding-top: 1rem;
+  margin-top: 1.5rem;
+  order: 3;
+  display: flex;
+  align-items: center;
+  justify-content: left !important;
+}
+header div.row div#divInput input {
+  width: 70%;
+  background-color: black;
+  color: white;
+  padding: 0.7rem 0.5rem;
+}
+header div.row div#divInput i {
+  margin-left: auto !important;
+}
 header #navbar {
   background-color: black;
 }
@@ -89,6 +168,189 @@ header #navbar ul li a:hover {
 }
 
 /* End Header */
+/* Home */
+#home {
+  background: url("../images/home-bg.png") no-repeat center;
+  background-size: cover;
+}
+#home > .row {
+  display: flex;
+  justify-content: center;
+}
+#home > .row div {
+  text-align: center;
+}
+#home > .row div img {
+  max-width: 100%;
+  max-height: 450px;
+}
+#home > .row div h3 {
+  color: white;
+  display: block;
+  font-weight: bold;
+}
+#home > .row div span {
+  color: #aaaaaa;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+#home > .row div button {
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  cursor: pointer;
+  background: none;
+  color: white;
+  margin-top: 0.5rem;
+  font-size: 1.3rem;
+  padding: 0.5rem 0.7rem;
+  box-shadow: 0px 0px 2px 1px rgba(255, 255, 255, 0.7);
+}
+#home > .row div button a {
+  color: white;
+}
+#home > .row div button:hover {
+  background-color: white;
+}
+#home > .row div button:hover a {
+  color: black;
+}
+#home > .row div.divMoreInfo {
+  margin-top: 7.5rem;
+}
+#home > .row div.divMoreInfo div {
+  background-color: #eacf4f;
+  display: inline;
+  padding: 1.2rem;
+  border-radius: 50%;
+}
+#home > .row div.divMoreInfo div i {
+  color: black;
+  font-size: 1.5rem;
+}
+#home > .row div.divMoreInfo span {
+  display: block;
+  width: 100%;
+}
+#home > .row div.divMoreInfo span h5 {
+  color: white;
+  margin-top: 1.7rem;
+}
+
+/* End Home */
+/* Menu */
+#menu {
+  margin-top: 7.5rem;
+  text-align: center;
+  color: white;
+}
+#menu > .row {
+  display: flex;
+  justify-content: center;
+}
+#menu > .row h3 {
+  font-size: 2.2rem;
+}
+#menu > .row img {
+  height: auto;
+  max-height: 270px;
+  max-width: 100%;
+}
+#menu > .row div.divHamburguers {
+  margin-top: 0.7rem;
+  margin-bottom: 0.7rem;
+}
+#menu > .row div.divHamburguers:hover > img {
+  transform: translateY(0.5rem);
+}
+#menu > .row div.divHamburguers span {
+  display: block;
+  margin-top: 0.5rem;
+}
+#menu > .row div.divHamburguers span p {
+  color: #aaaaaa;
+  font-size: 1.3rem;
+}
+#menu > .row div.divHamburguers span i {
+  color: #eacf4f;
+}
+#menu > .row div.divHamburguers span h5 {
+  color: white;
+}
+#menu > .row div.divHamburguers button {
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  cursor: pointer;
+  background: none;
+  color: white;
+  margin-top: 0.5rem;
+  font-size: 1.3rem;
+  padding: 0.5rem 0.7rem;
+  box-shadow: 0px 0px 2px 1px rgba(255, 255, 255, 0.7);
+}
+#menu > .row div.divHamburguers button:hover {
+  background-color: white;
+  color: black;
+}
+
+/* End Menu */
+/* About */
+#about {
+  color: white;
+}
+#about > .row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: left;
+}
+#about > .row img {
+  max-width: 100%;
+  height: auto;
+}
+#about > .row h3 {
+  font-size: 2.2rem;
+}
+#about > .row span {
+  color: #aaaaaa;
+  display: block;
+}
+#about > .row p {
+  padding-right: 1.5rem;
+  display: inline-block;
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  font-weight: bold;
+}
+#about > .row p i {
+  color: #eacf4f;
+}
+#about > .row button {
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  cursor: pointer;
+  background: none;
+  display: block;
+  margin-top: 0.5rem;
+  font-size: 1.3rem;
+  padding: 0.5rem 0.7rem;
+  box-shadow: 0px 0px 2px 1px rgba(255, 255, 255, 0.7);
+}
+#about > .row button a {
+  color: white;
+}
+#about > .row button:hover {
+  background-color: white;
+}
+#about > .row button:hover a {
+  color: black;
+}
+
+/* End About */
+@media (max-width: 280px) {
+  html {
+    font-size: 65%;
+  }
+}
 @media (max-width: 992px) {
   header div#firstDiv i {
     display: none;
@@ -129,9 +391,6 @@ header #navbar ul li a:hover {
   header div.row div .fas.fa-bars {
     display: none;
   }
-  header div.row div .fas.fa-search {
-    display: none;
-  }
   header #divIcons {
     order: 2;
   }
@@ -140,6 +399,9 @@ header #navbar ul li a:hover {
   }
   header #firstDiv .fas.fa-search {
     display: block;
+  }
+  header div#divIcons .fas.fa-search {
+    display: none;
   }
   header #navbar {
     background-color: black;
@@ -167,10 +429,21 @@ header #navbar ul li a:hover {
   header #navbar ul li a#aWithImg {
     border: none;
   }
+
+  #home > .row div img {
+    max-height: 720px !important;
+  }
+  #home > .row div span {
+    width: 70%;
+  }
 }
 @media (min-width: 1200px) {
   header ul li a {
     font-weight: lighter !important;
     font-size: 1.4rem !important;
+  }
+
+  #home > .row div span {
+    width: 40%;
   }
 }/*# sourceMappingURL=style.css.map */
