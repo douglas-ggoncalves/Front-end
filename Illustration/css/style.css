@@ -27,38 +27,58 @@
 /* ---------- Navbar ---------- */
 #sectionNavbar {
   background-color: #130f40;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   padding-top: 1rem;
   padding-bottom: 1rem;
 }
+
 #sectionNavbar > .row {
   width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
+
 #sectionNavbar nav {
   height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
+
 #sectionNavbar nav button {
   border-color: #fafafa !important;
 }
+
 #sectionNavbar nav button i {
   color: #fafafa !important;
 }
+
 #sectionNavbar #navbarDropdown nav {
   padding-left: 0 !important;
 }
+
 #sectionNavbar #mark {
   color: #fafafa;
   font-weight: bold;
   font-size: 2em;
 }
+
 #sectionNavbar a {
   color: #fafafa;
 }
+
 #sectionNavbar a:hover {
   color: #0cccda;
 }
@@ -66,18 +86,25 @@
 /* ---------- End Navbar ---------- */
 /* ---------- Creative Section ---------- */
 #creativeSection .row > div {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
+
 #creativeSection .row img {
   max-width: 100%;
   height: auto;
 }
+
 #creativeSection .row h1 {
   color: #130f40;
   font-weight: bold;
   font-size: 2.5em;
 }
+
 #creativeSection .row button {
   padding: 0.7rem 1.5rem;
   background-color: #130f40;
@@ -87,6 +114,7 @@
   cursor: pointer;
   margin-top: 0.5rem;
 }
+
 #creativeSection .row button:hover {
   background-color: #0cccda;
 }
@@ -96,39 +124,56 @@
 #servicesSection {
   margin-top: 2.5rem;
 }
+
 #servicesSection > .row {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
+
 #servicesSection > .row div.elements {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   margin-bottom: 1.5rem;
 }
+
 #servicesSection > .row div.elements div {
-  box-shadow: 5px 4px 6px -1px rgba(1, 2, 2, 0.24);
+  -webkit-box-shadow: 5px 4px 6px -1px rgba(1, 2, 2, 0.24);
+          box-shadow: 5px 4px 6px -1px rgba(1, 2, 2, 0.24);
   border: 1px solid rgba(44, 44, 44, 0.192);
   border-radius: 5px;
   padding-top: 1rem;
   padding-bottom: 1rem;
 }
+
 #servicesSection > .row div {
   text-align: center;
 }
+
 #servicesSection > .row h1 {
   color: #130f40;
   font-weight: bold;
   font-size: 2.5em;
 }
+
 #servicesSection > .row img {
   max-width: 100%;
   max-height: 300px;
 }
+
 #servicesSection > .row h5 {
   color: #130f40;
   font-weight: bold;
   font-size: 1.3rem;
 }
+
 #servicesSection > .row button {
   padding: 0.7rem 1.5rem;
   background-color: #130f40;
@@ -138,6 +183,7 @@
   cursor: pointer;
   margin: 0.5rem auto;
 }
+
 #servicesSection > .row button:hover {
   background-color: #0cccda;
 }
@@ -147,38 +193,54 @@
 #aboutSection {
   margin-top: 1.5rem;
 }
+
 #aboutSection > .row {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
+
 #aboutSection > .row div#title {
   text-align: center;
 }
+
 #aboutSection > .row div#aboutContent {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
+
 #aboutSection > .row div h1 {
   color: #130f40;
   font-weight: bold;
   font-size: 2.5em;
 }
+
 #aboutSection > .row div img {
   max-width: 100%;
   height: auto;
 }
+
 #aboutSection > .row div h5 {
   color: #130f40;
   font-weight: bold;
   font-size: 2.3em;
   line-height: 2.5rem;
 }
+
 #aboutSection > .row div span {
   margin-bottom: 1rem;
   display: block;
   font-size: 0.9rem;
   opacity: 0.8;
 }
+
 #aboutSection > .row div button {
   padding: 0.7rem 1.5rem;
   background-color: #130f40;
@@ -188,6 +250,7 @@
   cursor: pointer;
   margin-top: 0.5rem;
 }
+
 #aboutSection > .row div button:hover {
   background-color: #0cccda;
 }
@@ -197,32 +260,43 @@
 #plansSection {
   margin-top: 1.5rem;
 }
+
 #plansSection > .row {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
+
 #plansSection > .row div {
   text-align: center;
   margin-bottom: 0.5rem;
 }
+
 #plansSection > .row div h1 {
   color: #130f40;
   font-weight: bold;
   font-size: 2.5rem;
 }
+
 #plansSection > .row div img {
   max-width: 100%;
   max-height: 300px;
 }
+
 #plansSection > .row .elements div {
-  box-shadow: 5px 4px 6px -1px rgba(1, 2, 2, 0.24);
+  -webkit-box-shadow: 5px 4px 6px -1px rgba(1, 2, 2, 0.24);
+          box-shadow: 5px 4px 6px -1px rgba(1, 2, 2, 0.24);
   border: 1px solid rgba(44, 44, 44, 0.192);
   border-radius: 5px;
   padding-top: 1rem;
   padding-bottom: 1rem;
 }
+
 #plansSection > .row .elements button {
-  padding: 0.7rem 1rem;
+  padding: 0.7rem 1.0rem;
   background-color: #130f40;
   color: white;
   border-radius: 5px;
@@ -232,22 +306,27 @@
   margin-left: auto;
   margin-right: auto;
 }
+
 #plansSection > .row .elements button:hover {
   background-color: #0cccda;
 }
+
 #plansSection > .row .elements h4 {
   color: #130f40;
   font-size: 1.5rem;
   font-weight: bold;
 }
+
 #plansSection > .row .elements h5 {
   color: #130f40;
   font-size: 1.5rem;
 }
+
 #plansSection > .row .elements span {
   font-weight: bold;
   font-size: 3.5rem;
 }
+
 #plansSection > .row .elements ul li {
   margin-top: 1rem;
   margin-bottom: 1rem;
@@ -262,49 +341,64 @@
 #clientsSection {
   margin-top: 1rem;
 }
+
 #clientsSection > .row {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
+
 #clientsSection > .row div.content > div {
-  box-shadow: 5px 4px 6px -1px rgba(1, 2, 2, 0.24);
+  -webkit-box-shadow: 5px 4px 6px -1px rgba(1, 2, 2, 0.24);
+          box-shadow: 5px 4px 6px -1px rgba(1, 2, 2, 0.24);
   border: 1px solid rgba(44, 44, 44, 0.192);
   padding-top: 1rem;
   padding-bottom: 1rem;
   border-radius: 5px;
   margin-bottom: 1rem;
 }
+
 #clientsSection > .row div.content > div:hover {
   border: 1px solid #0cccda;
-  box-shadow: 5px 4px 6px -1px rgba(17, 130, 138, 0.425);
+  -webkit-box-shadow: 5px 4px 6px -1px rgba(17, 130, 138, 0.425);
+          box-shadow: 5px 4px 6px -1px rgba(17, 130, 138, 0.425);
 }
+
 #clientsSection > .row div {
   text-align: center;
   padding-left: 1rem;
   padding-right: 1rem;
 }
+
 #clientsSection > .row div h1 {
   color: #130f40;
   font-size: 2.5rem;
   font-weight: bold;
 }
+
 #clientsSection > .row div img {
   border-radius: 50%;
   max-width: 100%;
   height: 100px;
 }
+
 #clientsSection > .row div h4 {
   font-weight: bold;
   color: #130f40;
   margin-top: 0.5rem;
   margin-bottom: 0.5rem;
 }
+
 #clientsSection > .row div span {
   margin-bottom: 1rem;
   display: block;
   font-size: 1rem;
   opacity: 0.9;
 }
+
 #clientsSection > .row div i {
   color: #0cccda;
 }
@@ -314,33 +408,49 @@
 #contactSection {
   margin-top: 1rem;
 }
+
 #contactSection > .row {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
+
 #contactSection > .row #content {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
+
 #contactSection > .row #content div {
   border: 1px solid rgba(44, 44, 44, 0.192);
   border-radius: 5px;
-  box-shadow: 5px 4px 6px -1px rgba(1, 2, 2, 0.24);
+  -webkit-box-shadow: 5px 4px 6px -1px rgba(1, 2, 2, 0.24);
+          box-shadow: 5px 4px 6px -1px rgba(1, 2, 2, 0.24);
   width: 100%;
   padding: 1rem 1rem 0.5rem 1rem;
 }
+
 #contactSection > .row div {
   text-align: center;
 }
+
 #contactSection > .row div h1 {
   color: #130f40;
   font-weight: bold;
   font-size: 2.5rem;
 }
+
 #contactSection > .row div img {
   max-width: 100%;
   height: auto;
 }
+
 #contactSection > .row div h4 {
   color: #130f40;
   font-weight: bold;
@@ -348,6 +458,7 @@
   margin-top: 0.5rem;
   margin-bottom: 0.5rem;
 }
+
 #contactSection > .row div input, #contactSection > .row div textarea {
   border: 1px solid rgba(44, 44, 44, 0.192);
   border-radius: 5px;
@@ -357,9 +468,11 @@
   margin-top: 0.7rem;
   font-size: 0.9rem;
 }
+
 #contactSection > .row div input:hover, #contactSection > .row div textarea:hover {
   border: 1px solid #0cccda;
 }
+
 #contactSection > .row div button {
   padding: 0.7rem 1rem;
   background-color: #130f40;
@@ -370,6 +483,7 @@
   margin: 0.5rem auto 0.5rem auto;
   font-weight: 500;
 }
+
 #contactSection > .row div button:hover {
   background-color: #0cccda;
 }
@@ -379,18 +493,26 @@
 #footer {
   margin-top: 3rem;
 }
+
 #footer > .row div {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
+
 #footer > .row div a {
   font-size: 2rem;
   color: #130f40 !important;
   margin: 0.5rem;
 }
+
 #footer > .row div a:hover {
   color: #0cccda !important;
 }
+
 #footer > .row div h5 {
   color: #130f40 !important;
 }
@@ -401,6 +523,7 @@
     font-size: 65%;
   }
 }
+
 @media (min-width: 768px) {
   #plansSection > .row {
     padding-right: 0.5rem;
@@ -411,6 +534,7 @@
     padding-left: 0.5rem;
   }
 }
+
 @media (min-width: 992px) {
   #sectionNavbar #navbarDropdown {
     display: none;
@@ -419,11 +543,9 @@
     font-size: 1.1em;
     font-weight: 500;
   }
-
   #creativeSection {
     font-size: 1.2rem;
   }
-
   #aboutSection > .row h5 {
     line-height: 3rem !important;
   }
@@ -434,6 +556,7 @@
     font-size: 1.1rem;
   }
 }
+
 @media (min-width: 1200px) {
   #servicesSection {
     margin-top: 1rem;
@@ -441,8 +564,8 @@
   #servicesSection > .row h5 {
     font-size: 1.5rem;
   }
-
   #aboutSection > .row h5 {
     font-size: 2.7rem !important;
   }
-}/*# sourceMappingURL=style.css.map */
+}
+/*# sourceMappingURL=style.css.map */
