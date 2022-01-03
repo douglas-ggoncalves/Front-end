@@ -517,23 +517,38 @@ header #navbar ul li a:hover {
           justify-content: center;
 }
 
-#contact div.elements {
+#contact div.rowContent {
   margin-top: 1rem;
 }
 
-#contact div.elements div {
-  display: inline-block;
+#contact div.rowContent div.elements {
+  padding-left: 0;
+  padding-right: 0;
 }
 
-#contact div.elements i {
+#contact div.rowContent div.elements input, #contact div.rowContent div.elements textarea {
+  background: none;
+  display: block;
+  padding: .7rem .5rem;
+  margin-top: 0.7rem;
+  width: 100%;
+  -webkit-box-shadow: 0px 0px 2px 1px rgba(255, 255, 255, 0.7);
+  box-shadow: 0px 0px 2px 1px rgba(255, 255, 255, 0.7);
+}
+
+#contact div.rowContent div.elements div i {
   color: black;
   background-color: #eacf4f;
   padding: 1rem;
   border-radius: 50%;
 }
 
-#contact div.elements h5 {
+#contact div.rowContent div.elements div h5 {
   margin-top: .7rem;
+}
+
+#contact div.rowContent div.elements div span {
+  color: #aaaaaa;
 }
 
 /* End Contact */
