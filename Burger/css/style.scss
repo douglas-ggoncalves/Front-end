@@ -401,6 +401,84 @@ header{
 }
 /* End About */
 
+/* Reviews */
+#reviews{
+    margin-top: 7.5rem;
+    text-align: center;
+    color: $white;
+    >.row{
+        display: flex;
+        justify-content: center;
+
+        div.elements{
+            margin-top: 1.7rem;
+            margin-bottom: 1.7rem;
+            img{
+                height: 100px;
+                border-radius: 50%;
+            }
+
+            h5{
+                margin-top: .5rem;
+                margin-bottom: .5rem;
+            }
+
+            span{
+                display: block;
+                color: $gray;
+                margin-bottom: .5rem;
+                font-weight: lighter;
+            }
+
+            i{
+                color: $yellow;
+            }
+        }
+
+        h3{
+            font-size: 2.2rem;
+        }
+
+        img{
+            height: auto;
+            max-height: 270px;
+            max-width: 100%;
+        }
+    }
+}
+/* End Reviews */
+
+/* Contact */
+#contact{
+    margin-top: 7.5rem;
+    text-align: center;
+    color: $white;
+    >.row{
+        display: flex;
+        justify-content: center;
+    }
+
+    div.elements{
+        margin-top: 1rem;
+
+        div{
+            display: inline-block;
+        }
+
+        i{
+            color: $black;
+            background-color: $yellow;
+            padding: 1rem;
+            border-radius: 50%;
+        }
+
+        h5{
+            margin-top: .7rem;
+        }
+    }
+}
+/* End Contact */
+
 
 @media (max-width: 280px) { 
     html{
@@ -452,18 +530,6 @@ header{
             }
         }
     }
-
-    #about{
-        
-        span{
-            font-size: 10rem !important;
-    }
-        >.row{
-    
-        
-        }
-    }
-    
 }
 
 @media (min-width: 992px) { 
@@ -543,6 +609,18 @@ header{
             }        
         }
     }
+
+    #about{
+        
+        span{
+            font-size: 1rem !important;
+        }
+
+        p{
+            font-size: 1rem !important;
+        }
+        
+    }
 }
 
 @media (min-width: 1200px) { 
@@ -564,6 +642,12 @@ header{
                     width: 40%;
                 }
             }        
+        }
+    }
+
+    #about{
+        p{
+            font-size: 1.10rem !important;
         }
     }
 

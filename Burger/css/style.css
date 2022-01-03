@@ -448,6 +448,95 @@ header #navbar ul li a:hover {
 }
 
 /* End About */
+/* Reviews */
+#reviews {
+  margin-top: 7.5rem;
+  text-align: center;
+  color: white;
+}
+
+#reviews > .row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+#reviews > .row div.elements {
+  margin-top: 1.7rem;
+  margin-bottom: 1.7rem;
+}
+
+#reviews > .row div.elements img {
+  height: 100px;
+  border-radius: 50%;
+}
+
+#reviews > .row div.elements h5 {
+  margin-top: .5rem;
+  margin-bottom: .5rem;
+}
+
+#reviews > .row div.elements span {
+  display: block;
+  color: #aaaaaa;
+  margin-bottom: .5rem;
+  font-weight: lighter;
+}
+
+#reviews > .row div.elements i {
+  color: #eacf4f;
+}
+
+#reviews > .row h3 {
+  font-size: 2.2rem;
+}
+
+#reviews > .row img {
+  height: auto;
+  max-height: 270px;
+  max-width: 100%;
+}
+
+/* End Reviews */
+/* Contact */
+#contact {
+  margin-top: 7.5rem;
+  text-align: center;
+  color: white;
+}
+
+#contact > .row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+#contact div.elements {
+  margin-top: 1rem;
+}
+
+#contact div.elements div {
+  display: inline-block;
+}
+
+#contact div.elements i {
+  color: black;
+  background-color: #eacf4f;
+  padding: 1rem;
+  border-radius: 50%;
+}
+
+#contact div.elements h5 {
+  margin-top: .7rem;
+}
+
+/* End Contact */
 @media (max-width: 280px) {
   html {
     font-size: 65%;
@@ -481,9 +570,6 @@ header #navbar ul li a:hover {
   header #navbar ul li a:hover {
     color: #eacf4f;
     border-bottom: 1px solid #eacf4f;
-  }
-  #about span {
-    font-size: 10rem !important;
   }
 }
 
@@ -558,6 +644,12 @@ header #navbar ul li a:hover {
   #home > .row div span {
     width: 70%;
   }
+  #about span {
+    font-size: 1rem !important;
+  }
+  #about p {
+    font-size: 1rem !important;
+  }
 }
 
 @media (min-width: 1200px) {
@@ -567,6 +659,9 @@ header #navbar ul li a:hover {
   }
   #home > .row div span {
     width: 40%;
+  }
+  #about p {
+    font-size: 1.10rem !important;
   }
 }
 /*# sourceMappingURL=style.css.map */
