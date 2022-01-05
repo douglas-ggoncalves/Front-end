@@ -517,6 +517,10 @@ header #navbar ul li a:hover {
           justify-content: center;
 }
 
+#contact h3 {
+  font-size: 2.2rem;
+}
+
 #contact div.rowContent {
   margin-top: 1rem;
   display: -webkit-box;
@@ -544,6 +548,7 @@ header #navbar ul li a:hover {
 #contact div.rowContent div.elements input, #contact div.rowContent div.elements textarea {
   background: none;
   display: block;
+  color: #aaaaaa;
   padding: .7rem .5rem;
   margin-top: 0.7rem;
   width: 100%;
@@ -611,16 +616,43 @@ header #navbar ul li a:hover {
 }
 
 #blog > .row div.elements {
-  margin-top: 1.5rem;
-  border: 1px solid red;
+  margin-top: 2.5rem;
+  text-align: center;
 }
 
-#blog > .row div.elements .absolute {
+#blog > .row div.elements div.content h3 {
+  margin-top: 1rem;
+}
+
+#blog > .row div.elements div.content span {
+  color: #aaaaaa;
+  font-weight: lighter;
+  font-size: 1.2rem;
+}
+
+#blog > .row div.elements div.content button {
+  cursor: pointer;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  background: none;
+  display: block;
+  font-size: 1.3rem;
+  padding: .5rem 1.5rem;
+  -webkit-box-shadow: 0px 0px 2px 1px rgba(255, 255, 255, 0.7);
+  box-shadow: 0px 0px 2px 1px rgba(255, 255, 255, 0.7);
+  color: white;
+  margin: 1rem auto;
+}
+
+#blog > .row div.elements div.content button:hover {
+  background-color: white;
+  color: black;
+}
+
+#blog > .row div.elements div.absolute {
   overflow: hidden;
-  border: 1px solid greenyellow;
 }
 
-#blog > .row div.elements .absolute img {
+#blog > .row div.elements div.absolute img {
   max-width: 100%;
   height: auto;
   -webkit-transition: 0.4s all;
@@ -629,95 +661,55 @@ header #navbar ul li a:hover {
   transform: scale(1.1);
 }
 
-#blog > .row div.elements .absolute span {
+#blog > .row div.elements div.absolute div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: relative;
+}
+
+#blog > .row div.elements div.absolute div span {
   background-color: black;
   position: absolute;
   bottom: 0;
   left: 0;
   right: 0;
-  margin-left: 15px;
-  margin-right: 15px;
   display: none;
-  padding-top: 1rem;
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+  font-size: 1.3rem;
 }
 
-#blog > .row div.elements .absolute span p {
+#blog > .row div.elements div.absolute div span p {
   display: inline;
   padding-left: 15px;
   padding-right: 15px;
+  margin-top: auto;
+  margin-bottom: auto;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
 }
 
-#blog > .row div.elements .absolute span p i {
+#blog > .row div.elements div.absolute div span p i {
   margin-right: .1rem;
   color: #eacf4f;
 }
 
-#blog > .row div.elements:hover .absolute span {
+#blog > .row div.elements:hover div.absolute div span {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
 }
 
-#blog > .row div.elements:hover .absolute img {
+#blog > .row div.elements:hover div.absolute img {
   -webkit-transform: scale(1.2);
   transform: scale(1.2);
 }
 
-#blog > .row div.elements div.content {
-  padding-top: 5rem;
-  border: 1px solid red;
-}
-
 /* End Blog */
-/* Footer */
-footer {
-  margin-top: 2rem;
-}
-
-footer nav {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  width: 100%;
-  height: 150px;
-}
-
-footer nav ul {
-  width: 100%;
-  font-size: 1.3rem;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-}
-
-footer nav ul li {
-  display: inline;
-  background: none;
-  margin-left: .5rem;
-  margin-right: .5rem;
-}
-
-footer nav ul li a {
-  color: white;
-  border: 1px solid rgba(255, 255, 255, 0.6);
-  padding: .5rem .7rem;
-  font-size: 1.3rem;
-}
-
-footer nav ul li a:hover {
-  background-color: white;
-  color: black;
-}
-
-/* End Footer */
 @media (max-width: 280px) {
   html {
     font-size: 65%;
@@ -751,6 +743,40 @@ footer nav ul li a:hover {
   header #navbar ul li a:hover {
     color: #eacf4f;
     border-bottom: 1px solid #eacf4f;
+  }
+  footer {
+    margin-top: 7rem;
+  }
+  footer nav {
+    height: 150px;
+  }
+  footer nav ul {
+    display: -webkit-box !important;
+    display: -ms-flexbox !important;
+    display: flex !important;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    text-align: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+  footer nav ul li {
+    display: inline;
+    margin: 5px;
+    padding-left: 0;
+    background: none;
+  }
+  footer nav ul li a {
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    padding: 0.2rem 1.5rem;
+    font-size: 1.5rem;
+    font-weight: lighter;
+  }
+  footer nav ul li a:hover {
+    background-color: white;
+    color: black;
   }
 }
 
@@ -830,6 +856,42 @@ footer nav ul li a:hover {
   }
   #about p {
     font-size: 1rem !important;
+  }
+  footer {
+    margin-top: 7rem;
+  }
+  footer nav {
+    height: 50px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+  footer nav ul {
+    display: inline !important;
+    text-align: center;
+  }
+  footer nav ul li {
+    display: inline;
+    -webkit-box-flex: 1;
+        -ms-flex: 1 0 30%;
+            flex: 1 0 30%;
+    margin: 10px;
+    padding-left: 0;
+    background: none;
+  }
+  footer nav ul li a {
+    color: white;
+    border: 3px solid rgba(255, 255, 255, 0.6);
+    padding: 0.2rem 1.5rem;
+    font-size: 1.5rem;
+    font-weight: lighter;
+  }
+  footer nav ul li a:hover {
+    background-color: white;
+    color: black;
   }
 }
 

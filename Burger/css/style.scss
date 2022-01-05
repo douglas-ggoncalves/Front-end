@@ -124,17 +124,18 @@ header{
         div{
             display: flex;
             justify-content: end;
+
             img{
                 height: auto;
                 max-width: 100%;
                 cursor: pointer;
-            } i{
+            } 
+            
+            i{
                 cursor: pointer;
                 color: $white;
                 margin-left: .9rem;
                 font-size: 1.4rem;
-                // animation: mymove 2s;
-                
 
                 &:hover{
                     color: $yellow;
@@ -453,9 +454,14 @@ header{
     margin-top: 7.5rem;
     text-align: center;
     color: $white;
+
     >.row{
         display: flex;
         justify-content: center;
+    }
+
+    h3{
+        font-size: 2.2rem;
     }
 
     div.rowContent{
@@ -474,6 +480,7 @@ header{
             input, textarea{
                 background: none;
                 display: block;
+                color: $gray;
                 padding: .7rem .5rem;
                 margin-top: 0.7rem;
                 width: 100%;
@@ -510,6 +517,7 @@ header{
                 box-shadow: 0px 0px 2px 1px rgba(255,255,255,0.7);
                 color: $white;
                 margin: 1rem auto;
+
                 &:hover{
                     background-color: $white;
                     color: $black;
@@ -524,6 +532,7 @@ header{
 #blog{
     margin-top: 7.5rem;
     color: $white;
+
     >.row{
         display: flex;
         justify-content: center;
@@ -534,11 +543,42 @@ header{
         }
 
         div.elements{
-            margin-top: 1.5rem;
-            border: 1px solid red;
-            .absolute{
+            margin-top: 2.5rem;
+            text-align: center;
+
+            div.content{
+                h3{
+                    margin-top: 1rem;
+                }
+
+                span{
+                    color: $gray;
+                    font-weight: lighter;
+                    font-size: 1.2rem;
+                }
+
+                button{
+                    cursor: pointer;
+                    border: 1px solid rgba(255, 255, 255,0.6);
+                    background: none;
+                    display: block;
+                    font-size: 1.3rem;
+                    padding: .5rem 1.5rem;
+                    -webkit-box-shadow: 0px 0px 2px 1px rgba(255,255,255,0.7);
+                    box-shadow: 0px 0px 2px 1px rgba(255,255,255,0.7);
+                    color: $white;
+                    margin: 1rem auto;
+    
+                    &:hover{
+                        background-color: $white;
+                        color: $black;
+                    }
+                }
+            }
+            
+
+            div.absolute{
                 overflow: hidden;
-                border: 1px solid greenyellow;
 
                 img{
                     max-width: 100%;
@@ -549,33 +589,46 @@ header{
                     -o-transform: scale(1.1);
                     transform: scale(1.1);
                 }
-    
-                span{
-                    background-color: $black;
-                    position: absolute;
-                    bottom: 0;
-                    left: 0;
-                    right: 0;
-                    margin-left: 15px;
-                    margin-right: 15px;
-                    display: none;
-                    padding-top: 1rem;
-                    p{
-                        display: inline;
-                        padding-left: 15px;
-                        padding-right: 15px;
-                        i{
-                            margin-right: .1rem;
-                            color: $yellow;
+                
+                div{
+                    display: flex; 
+                    align-items: center;
+                    position: relative;
+                   
+                    span{
+                        background-color: $black;
+                        position: absolute;
+                        bottom: 0;
+                        left: 0;
+                        right: 0;
+                        display: none;
+                        //display: flex;
+                        padding-top: 1.5rem;
+                        padding-bottom: 1.5rem;
+                        font-size: 1.3rem;
+                        p{
+                            display: inline;
+                            padding-left: 15px;
+                            padding-right: 15px;
+                            margin-top: auto;
+                            margin-bottom: auto;
+                            padding-top: 0 !important;
+                            padding-bottom: 0 !important;
+                            i{
+                                margin-right: .1rem;
+                                color: $yellow;
+                            }
                         }
                     }
                 }
             }
 
             &:hover{
-                .absolute{
-                    span{
-                        display: flex;
+                div.absolute{
+                    div{
+                        span{
+                            display: flex;
+                        }
                     }
     
                     img{
@@ -585,56 +638,11 @@ header{
                         transform: scale(1.2);
                     }
                 }
-                
-            }
-            div.content{
-                padding-top: 5rem;
-                border: 1px solid red;
             }
         }
     }
 }
 /* End Blog */
-
-/* Footer */
-footer{
-    margin-top: 2rem;
-
-        nav{
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            width:100%;
-            height: 150px;
-
-            ul {
-                width: 100%;
-                font-size: 1.3rem;
-                display: flex;
-                justify-content: center;
-                li{
-                    display: inline;
-                    background: none;
-                    margin-left: .5rem;
-                    margin-right: .5rem;
-
-                    a{
-                        color: $white;
-                        border: 1px solid rgba(255, 255, 255,0.6);
-                        padding: .5rem .7rem;
-                        font-size: 1.3rem;
-
-                        &:hover{
-                            background-color: $white;
-                            color: $black;
-                        }
-                    }
-                }
-            }
-    }
-}
-/* End Footer */
-
 
 @media (max-width: 280px) { 
     html{
@@ -661,9 +669,9 @@ footer{
             background-color: $black;
             width: 100%;
             display: none;
-                img{
-                    display: none !important;
-                }
+            img{
+                display: none !important;
+            }
     
             ul{
                 margin-top: 1.5rem;
@@ -686,6 +694,41 @@ footer{
             }
         }
     }
+
+    footer{
+        margin-top: 7rem;
+    
+        nav{
+            height: 150px;
+    
+            ul {
+                display: flex !important;
+                flex-wrap: wrap;
+                text-align: center;
+                justify-content: center;
+                li{
+                    display: inline;
+                    margin: 5px;
+                    padding-left: 0;
+                    background: none;
+    
+                    a{
+                        color: $white;
+                        border: 1px solid rgba(255, 255, 255,0.6);
+                        padding: 0.2rem 1.5rem;
+                        font-size: 1.5rem;
+                        font-weight: lighter;
+    
+                        &:hover{
+                            background-color: $white;
+                            color: $black;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
 }
 
 @media (min-width: 992px) { 
@@ -774,8 +817,42 @@ footer{
 
         p{
             font-size: 1rem !important;
+        }   
+    }
+
+    footer{
+        margin-top: 7rem;
+    
+        nav{
+            height: 50px;
+            display: flex;
+            justify-content: center;
+
+            ul {
+                display: inline !important;
+                text-align: center;
+                li{
+                    display: inline;
+                    flex: 1 0 30%;
+                    margin: 10px;
+                    padding-left: 0;
+                    background: none;
+    
+                    a{
+                        color: $white;
+                        border: 3px solid rgba(255, 255, 255,0.6);
+                        padding: 0.2rem 1.5rem;
+                        font-size: 1.5rem;
+                        font-weight: lighter;
+    
+                        &:hover{
+                            background-color: $white;
+                            color: $black;
+                        }
+                    }
+                }
+            }
         }
-        
     }
 }
 
