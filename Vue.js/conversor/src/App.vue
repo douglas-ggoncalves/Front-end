@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <h1>Conversor de Moedas</h1>
-    <Coin :Coin="teste" />
+    <Coin :coinsXML="coinsXML"/>
   </div>
 </template>
 
@@ -13,17 +13,33 @@ export default {
   name: "App",
   data() {
     return {
-      teste: 'sasd',
-      array: [
+      palavra: '',
+      coinsXML: [
         {
-          nomeElementos: "<AFN>Afghani do Afeganistão</AFN>",
-        },
-        {
-          nomeElementos: "<MGA>Ariary Madagascarense</MGA>",
-        },
-        {
-          nomeElementos: "<THB>Baht Tailandês</THB>",
-        },
+          sigla: "BRL",
+          nome: "Real Brasileiro",
+        }, {
+          sigla: "USD",
+          nome: "Dólar Americano",
+        }, {
+          sigla: "EUR",
+          nome: "Euro",
+        }, {
+          sigla: "AUD",
+          nome: "Dólar Australiano",
+        }, {
+          sigla: "CAD",
+          nome: "Dólar Canadense",
+        }, {
+          sigla: "CHF",
+          nome: "Franco Suíço",
+        }, {
+          sigla: "JPY",
+          nome: "Iene Japonês",
+        }, {
+          sigla: "GBP",
+          nome: "Libra Esterlina",
+        }
       ],
     }
   },
@@ -33,9 +49,8 @@ export default {
   created() {
     axios
       .get("https://economia.awesomeapi.com.br/xml/available/uniq")
-      .then((res) => {
-        console.log(res.data)
-        console.log(this.array)
+      .then(res => {
+        this.palavra = res.data
       })
       .catch((err) => {
         console.log(err);
@@ -58,6 +73,6 @@ div#app {
 }
 
 h1 {
-  color: gray;
+  color: rgba(255, 255, 255, 0.927);
 }
 </style>
