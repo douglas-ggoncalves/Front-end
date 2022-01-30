@@ -1,16 +1,49 @@
 <template>
     <div id="myDiv">
-        <h3>{{ pokemon.name }}</h3>
-        <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/201.png" style="" alt="">
+        <h3>{{ pokemon.name | firstBig }}</h3>
+        <img :src="currentImg" style="" alt="">
         <h3>{{ pokemon.url }}</h3>
-        <button>Mudar Sprite</button>
+        <button @click="mudarSprite()">Mudar Sprite</button>
     </div>
 </template>
-
 <script>
+
+import axios from "axios";
 export default {
+    data(){
+        return{
+            isFront: true,
+            currentImg: '',
+            pokemons: [
+                {
+                    backDefault: '',
+                    frontDefault: ''
+                }
+            ]
+        }
+    },
     props :{
         pokemon: Object
+    }, created(){
+        axios.get(this.pokemon.url).then(res => {
+            this.pokemons.backDefault = res.data.sprites.back_default
+            this.pokemons.frontDefault = res.data.sprites.front_default
+            this.currentImg = this.pokemons.frontDefault;
+        });
+    }, methods: {
+        mudarSprite: function(){
+            if(this.isFront){
+                this.currentImg = this.pokemons.backDefault
+                this.isFront = false
+            } else{
+                this.currentImg = this.pokemons.frontDefault
+                this.isFront = true
+            }
+        }
+    }, filters: {
+        firstBig: function(value){
+            return value[0].toUpperCase() + value.substring(1)
+        }
     }
 }
 </script>

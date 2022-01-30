@@ -29,17 +29,16 @@ export default {
     Pokemon,
   },
   created() {
-    axios.get("https://pokeapi.co/api/v2/pokemon?limit=100&offset=200").then((res) => {
-        this.pokemons = res.data.results;
-      });
+    axios.get("https://pokeapi.co/api/v2/pokemon?limit=100&offset=200").then(res => {
+      this.pokemons = res.data.results;
+    });
   },
   computed: {
     myFunction: function () {
       if(this.inputSearch.trim() == ''){
         return this.pokemons;
-      }
-      else{
-        return this.pokemons.filter(element =>
+      } else {
+        return this.pokemons.filter(element => 
           element.name.match(this.inputSearch)
         );
       }
