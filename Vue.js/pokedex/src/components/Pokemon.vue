@@ -1,8 +1,9 @@
 <template>
     <div id="myDiv">
         <h3>{{ pokemon.name | firstBig }}</h3>
-        <img :src="currentImg" style="" alt="">
-        <h3>{{ pokemon.url }}</h3>
+        <div>
+            <img :src="currentImg" style="" alt="">
+        </div>
         <button @click="mudarSprite()">Mudar Sprite</button>
     </div>
 </template>
@@ -16,44 +17,53 @@ export default {
             currentImg: '',
             pokemons: [
                 {
-                    backDefault: '',
-                    frontDefault: ''
+                    back_default: '',
+                    front_default: ''
                 }
             ]
         }
     },
     props :{
         pokemon: Object
-    }, created(){
+    }, created: function(){
         axios.get(this.pokemon.url).then(res => {
-            this.pokemons.backDefault = res.data.sprites.back_default
-            this.pokemons.frontDefault = res.data.sprites.front_default
-            this.currentImg = this.pokemons.frontDefault;
-        });
+            this.pokemons.front_default = res.data.sprites.front_default
+            this.pokemons.back_default = res.data.sprites.back_default
+            this.currentImg = this.pokemons.front_default;
+        }).catch(err => {
+            console.log("Erro: " +err)
+        })
     }, methods: {
         mudarSprite: function(){
             if(this.isFront){
-                this.currentImg = this.pokemons.backDefault
+                this.currentImg = this.pokemons.back_default
                 this.isFront = false
             } else{
-                this.currentImg = this.pokemons.frontDefault
+                this.currentImg = this.pokemons.front_default
                 this.isFront = true
             }
         }
     }, filters: {
         firstBig: function(value){
-            return value[0].toUpperCase() + value.substring(1)
+            return value.substr(0, 1).toUpperCase() + value.substring(1)
         }
     }
 }
 </script>
 
 <style scoped>
-    div{
+    @media (max-width: 900px) {
+        div#myDiv{
+            max-width: 90% !important;
+        }
+    }
+
+    div#myDiv{
         border: 1px solid black;
-        max-width: 95%;
+        max-width: 50%;
         margin: 1rem auto;
         padding: 1rem;
+        text-align: center;
     }
 
     button{
