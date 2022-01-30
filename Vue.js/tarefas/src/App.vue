@@ -10,7 +10,6 @@
     <div v-for="task in tasks" :key="task.id">
       <Tasks :task="task" @deleteThisTask="destroyTask($event)"/>
     </div>
-
   </div>
 </template>
 
@@ -54,7 +53,8 @@ export default {
         alert("Valor inválido, preencha o campo adicionar tarefa antes de adicionar");
         this.message = '';
       }
-    }, destroyTask($event){
+    }, 
+    destroyTask($event){
       var id = $event.idTask
       var novoArray = this.tasks.filter(element => element.id != id)
       this.tasks = novoArray;

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <span :class="{'checked': task.checked}" v-if="editOn">{{ task.descricao }} </span>
+    <span :class="{'checked': task.checked}" v-if="editOn">{{ task.descricao }}</span>
     <input v-else v-model="task.descricao">
 
     <button v-show="editOn" @click="edit()">
@@ -27,8 +27,7 @@ export default {
     data(){
         return {
             editOn: true,
-            checkOn: false,
-            newDesc: ''
+            checkOn: false
         }
     },
     props: {
@@ -58,7 +57,6 @@ export default {
         }
     }
 }
-
 </script>
 
 <style scoped>
