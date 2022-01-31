@@ -17,7 +17,7 @@ export default {
   },
   data() {
     return {
-      weather: "00:00.00"
+      weather: "00:00:00"
     };
   }
 };

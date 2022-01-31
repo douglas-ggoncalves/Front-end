@@ -2,33 +2,37 @@
   <div>
     <h2>{{ time }}</h2>
 
-    <button @click="start()">Iniciar</button>
+    <button @click="initial()">Iniciar</button>
     <button @click="stop()">Parar</button>
-    <button>Reiniciar</button>
+    <button @click="reload()">Reiniciar</button>
   </div>
 </template>
 
 <script>
 export default {
-  data(){
+  data() {
     return {
-      myInterval: true
-    }
+      myInterval: true,
+    };
   },
   props: {
-    time: String
-  },created() {
-    this.myInterval = setInterval(this.start, 1);
+    time: String,
   },
   methods: {
-    
+    initial: function () {
+      this.myInterval = setInterval(this.start, 1);
+    },
 
     start: function () {
-      console.log("bb")
-    }, 
+      console.log("bb");
+    },
     stop: function () {
       clearInterval(this.myInterval);
-    }
+    },
+    reload: function () {
+      console.log("reiniciar");
+      this.time = '00:00:00'
+    },
   },
 };
 </script>
@@ -36,8 +40,7 @@ export default {
 <style scoped>
 @font-face {
   font-family: "DS-Digital";
-  src: local("DS-Digital"),
-    url('../fonts/DS-DIGI.TTF') format("truetype");
+  src: local("DS-Digital"), url("../fonts/DS-DIGI.TTF") format("truetype");
 }
 
 button {
