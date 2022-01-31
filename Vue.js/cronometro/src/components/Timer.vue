@@ -1,24 +1,58 @@
 <template>
   <div>
-    <button>Iniciar</button>
-    <button>Parar</button>
+    <h2>{{ time }}</h2>
+
+    <button @click="start()">Iniciar</button>
+    <button @click="stop()">Parar</button>
     <button>Reiniciar</button>
   </div>
 </template>
 
 <script>
 export default {
+  data(){
+    return {
+      myInterval: true
+    }
+  },
+  props: {
+    time: String
+  },created() {
+    this.myInterval = setInterval(this.start, 1);
+  },
+  methods: {
+    
 
-}
+    start: function () {
+      console.log("bb")
+    }, 
+    stop: function () {
+      clearInterval(this.myInterval);
+    }
+  },
+};
 </script>
 
 <style scoped>
-  button{
-    padding: .7rem 1.7rem;
-    background: none;
-    color: white;
-    border: 1px solid rgb(88, 84, 84);
-    margin: 0 .3rem;
-    font-style: 1.5rem;
-  }
+@font-face {
+  font-family: "DS-Digital";
+  src: local("DS-Digital"),
+    url('../fonts/DS-DIGI.TTF') format("truetype");
+}
+
+button {
+  cursor: pointer;
+  padding: 0.7rem 1.7rem;
+  background: none;
+  color: white;
+  border: 1px solid rgb(88, 84, 84);
+  margin: 0 0.3rem;
+  font-style: 1.5rem;
+}
+
+h2 {
+  font-family: "DS-Digital";
+  color: rgba(216, 144, 35, 0.979);
+  font-size: 5.5rem;
+}
 </style>

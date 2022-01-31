@@ -1,27 +1,26 @@
 <template>
   <div id="app">
     <div>
-      <h1>Cronômetro</h1>
-      <h3>Cronômetro com Vue</h3>
-      <Timer/>
+      <h1>Cronômetro - Vue.js</h1>
+      <Timer :time="weather" />
     </div>
   </div>
 </template>
 
 <script>
-import Timer from './components/Timer.vue'
+import Timer from "./components/Timer.vue";
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
-    Timer
+    Timer,
   },
-  data(){
-    return{
-      
-    }
+  data() {
+    return {
+      weather: "00:00.00"
+    };
   }
-}
+};
 </script>
 
 <style scoped>
@@ -40,7 +39,7 @@ h1 {
   color: white;
 }
 
-h3 {
+h2 {
   color: rgba(255, 255, 255, 0.94);
 }
 </style>
