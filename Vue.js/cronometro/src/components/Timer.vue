@@ -24,14 +24,14 @@ export default {
     },
 
     start: function () {
-      console.log("bb");
+      console.log("123");
     },
     stop: function () {
       clearInterval(this.myInterval);
     },
     reload: function () {
-      console.log("reiniciar");
-      this.time = '00:00:00'
+      //this.time = '00:00:05'
+      console.log(this.time)
     },
   },
 };
