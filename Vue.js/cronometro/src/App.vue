@@ -22,9 +22,9 @@ export default {
           hoursA: 0,
           hoursB: 0,
           minutesA: 0,
-          minutesB: 0,
+          minutesB: 5,
           secondsA: 0,
-          secondsB: 0,
+          secondsB: 5,
         }
     };
   }
