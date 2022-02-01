@@ -2,7 +2,7 @@
   <div id="app">
     <div>
       <h1>Cronômetro - Vue.js</h1>
-      <Timer :time="weather" />
+      <Timer :time="time" />
     </div>
   </div>
 </template>
@@ -17,7 +17,15 @@ export default {
   },
   data() {
     return {
-      weather: "00:00:00"
+      time: 
+        {
+          hoursA: 0,
+          hoursB: 0,
+          minutesA: 0,
+          minutesB: 0,
+          secondsA: 0,
+          secondsB: 0,
+        }
     };
   }
 };

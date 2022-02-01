@@ -1,6 +1,8 @@
 <template>
   <div>
-    <h2>{{ time }}</h2>
+    <h2>
+      {{ time.hoursA }}{{ time.hoursB }}:{{ time.minutesA }}{{ time.minutesB }}:{{ time.secondsA }}{{ time.secondsB }}
+    </h2>
 
     <button @click="initial()">Iniciar</button>
     <button @click="stop()">Parar</button>
@@ -16,22 +18,52 @@ export default {
     };
   },
   props: {
-    time: String,
+    time: Object,
   },
   methods: {
     initial: function () {
-      this.myInterval = setInterval(this.start, 1);
+      this.myInterval = setInterval(this.start, 1000);
     },
-
     start: function () {
-      console.log("123");
+      this.time.secondsB += 1;
+      if (this.time.secondsB == 10) {
+        this.time.secondsA += 1;
+        this.time.secondsB = 0;
+        if (this.time.secondsA == 6) {
+          this.time.minutesB += 1;
+          this.time.secondsA = 0;
+        }
+      }
+
+      if (this.time.minutesB == 10) {
+        this.time.minutesA += 1;
+        this.time.minutesB = 0;
+        if (this.time.minutesA == 6) {
+          this.time.hoursB += 1;
+          this.time.minutesA = 0;
+        }
+      }
+
+      if (this.time.hoursB == 10) {
+        this.time.hoursA += 1;
+        this.time.hoursB = 0;
+      }
+
+      if (this.time.hoursA == 2 && this.time.hoursB == 4) {
+        this.reload();
+      }
     },
     stop: function () {
       clearInterval(this.myInterval);
     },
     reload: function () {
-      //this.time = '00:00:05'
-      console.log(this.time)
+      //this.stop();
+      this.time.hoursA = 0;
+      this.time.hoursB = 0;
+      this.time.minutesA = 0;
+      this.time.minutesB = 0;
+      this.time.secondsA = 0;
+      this.time.secondsB = 0;
     },
   },
 };
