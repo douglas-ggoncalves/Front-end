@@ -1,6 +1,15 @@
 <template>
   <div id="app">
-    <Movie/>
+    <nav>
+      <h3>Cinemax</h3>
+    </nav>
+
+    <input type="text" placeholder="Digite o nome do filme">
+    <button>Buscar</button>
+    <hr>
+    <h5>Alguns de nossos filmes favoritos</h5>
+
+    <Movie :movies='movies' />
   </div>
 </template>
 
@@ -9,6 +18,22 @@ import Movie from './components/Movie.vue'
 
 export default {
   name: 'App',
+  data(){
+    return {
+      movies: [
+        {
+          id:1,
+          title: 'Homem Aranha',
+          date: 2008
+        },
+        {
+          id:2,
+          title: 'Iron Man',
+          date: 2008
+        }
+      ]
+    }
+  },
   components: {
     Movie
   }
@@ -22,6 +47,21 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  width: 100%;
 }
+
+nav {
+  width: 100%;
+  padding: 0.5rem;
+  background-color: black;
+  margin-bottom: 0.5rem;
+}
+
+h3{
+  color: rgb(248, 244, 244);
+}
+
+button{
+  margin-left: .3rem;
+}
+
 </style>
