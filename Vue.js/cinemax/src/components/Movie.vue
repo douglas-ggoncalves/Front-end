@@ -26,7 +26,6 @@ export default {
 }
 
 #main div{
-  border: 1px solid red;
   margin: 2rem;
 }
 </style>

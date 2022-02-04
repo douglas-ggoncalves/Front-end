@@ -53,7 +53,7 @@ nav {
   width: 100%;
   padding: 0.5rem;
   background-color: black;
-  margin-bottom: 0.5rem;
+  margin-bottom: 1.5rem;
 }
 
 h3{
@@ -62,6 +62,10 @@ h3{
 
 button{
   margin-left: .3rem;
+}
+
+hr{
+  width: 75%;
 }
 
 </style>
