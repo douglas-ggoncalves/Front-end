@@ -4,40 +4,37 @@
       <h3>Cinemax</h3>
     </nav>
 
-    <input type="text" placeholder="Digite o nome do filme">
+    <input type="text" placeholder="Digite o nome do filme" />
     <button>Buscar</button>
     <hr>
-    <h5>Alguns de nossos filmes favoritos</h5>
 
-    <Movie :movies='movies' />
+    <Movie :moviesPopular="moviesPopular" />
   </div>
 </template>
 
 <script>
-import Movie from './components/Movie.vue'
+import Movie from "./components/Movie.vue";
+import axios from "axios";
 
 export default {
-  name: 'App',
-  data(){
+  name: "App",
+  data() {
     return {
-      movies: [
-        {
-          id:1,
-          title: 'Homem Aranha',
-          date: 2008
-        },
-        {
-          id:2,
-          title: 'Iron Man',
-          date: 2008
-        }
-      ]
-    }
+      apiV3Auth: "d6f0ef55abc9bbf18dbe5089523aad16",
+      
+      moviesPopular: []
+    };
   },
   components: {
-    Movie
+    Movie,
+  },
+  created(){
+    axios.get("https://api.themoviedb.org/3/movie/popular?api_key=d6f0ef55abc9bbf18dbe5089523aad16&language=pt-BR&page=1").then(res=> {
+      //console.log(res.data.results)
+      this.moviesPopular = res.data.results
+    })
   }
-}
+};
 </script>
 
 <style scoped>
@@ -56,16 +53,17 @@ nav {
   margin-bottom: 1.5rem;
 }
 
-h3{
+h3 {
   color: rgb(248, 244, 244);
 }
 
-button{
-  margin-left: .3rem;
+button {
+  margin-left: 0.3rem;
 }
 
-hr{
+hr {
   width: 75%;
+  margin-left: auto;
+  margin-right: auto;
 }
-
 </style>
