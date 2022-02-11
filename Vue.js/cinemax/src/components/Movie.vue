@@ -42,15 +42,13 @@ export default {
 
 .data {
   display: flex;
-  width: 100%;
-  padding: 0 2rem;
+  margin: 0 2rem;
   /*flex-wrap: wrap;*/ 
   overflow-y: scroll;
 }
 
 #main .elements {
   flex-grow: 1;
-  margin-left: .5rem;
   margin-right: .5rem;
 }
 
@@ -60,7 +58,7 @@ export default {
 
 h2{
   font-family: 'Source Sans Pro', Arial, sans-serif;
-  margin: 2rem 0 1rem 2.5rem;
+  margin: 3rem 0 1rem 2rem;
 }
 
 h3{
@@ -68,6 +66,11 @@ h3{
   font-family: 'Source Sans Pro', Arial, sans-serif;
 }
 
+
+
+</style>
+
+<style>
  /* width */
 ::-webkit-scrollbar {
   width: 10px;
@@ -88,5 +91,4 @@ h3{
 ::-webkit-scrollbar-thumb:hover {
   background: rgb(153, 150, 150);
 }
-
 </style>

@@ -68,23 +68,4 @@ hr {
   margin-right: auto;
 }
 
-  /* width */
-::-webkit-scrollbar {
-  width: 10px;
-}
-
-/* Track */
-::-webkit-scrollbar-track {
-  background: red;
-}
-
-/* Handle */
-::-webkit-scrollbar-thumb {
-  background: red;
-}
-
-/* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
-  background: red;
-}
 </style>
