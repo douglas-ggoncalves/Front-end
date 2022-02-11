@@ -8,7 +8,7 @@
     <button>Buscar</button>
     <hr>
 
-    <Movie :moviesPopular="moviesPopular" />
+    <Movie :movie="movie" :moviesPopular="moviesPopular" :moviesTopRated="moviesTopRated" />
   </div>
 </template>
 
@@ -21,29 +21,30 @@ export default {
   data() {
     return {
       apiV3Auth: "d6f0ef55abc9bbf18dbe5089523aad16",
-      
-      moviesPopular: []
+      movie: {
+        moviesPopular: [],
+        moviesTopRated: []
+      },
     };
   },
   components: {
     Movie,
   },
   created(){
-    axios.get("https://api.themoviedb.org/3/movie/popular?api_key=d6f0ef55abc9bbf18dbe5089523aad16&language=pt-BR&page=1").then(res=> {
-      //console.log(res.data.results)
-      this.moviesPopular = res.data.results
+    axios.get(`https://api.themoviedb.org/3/movie/popular?api_key=${this.apiV3Auth}&language=pt-BR&page=1`).then(res=> {
+      this.movie.moviesPopular = res.data.results
+    })
+
+    axios.get(`https://api.themoviedb.org/3/movie/top_rated?api_key=${this.apiV3Auth}&language=pt-BR&page=1`).then(res=> {
+      this.movie.moviesTopRated = res.data.results
     })
   }
 };
 </script>
 
-<style scoped>
+<style>
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
 }
 
 nav {
@@ -65,5 +66,25 @@ hr {
   width: 75%;
   margin-left: auto;
   margin-right: auto;
+}
+
+  /* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: red;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: red;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: red;
 }
 </style>
