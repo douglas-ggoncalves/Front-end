@@ -15,6 +15,9 @@
     <div class="data">
       <div class="elements" v-for="movie in movie.moviesTopRated" :key="movie.id">
           <img :src="'https://image.tmdb.org/t/p/w500/' + movie.backdrop_path">
+          <button>
+            10,00
+          </button>
           <h3>{{ movie.title }}</h3>
           <h4>Média de votos {{ movie.vote_average }}</h4>
         </div>
@@ -50,6 +53,16 @@ export default {
 #main .elements {
   flex-grow: 1;
   margin-right: .5rem;
+  margin-bottom: 0;
+  padding: 0;
+}
+
+div.elements > button{
+  background-color: black;
+  outline: none;
+  border: none;
+  padding: 0;
+  border-radius: 50%;
 }
 
 #main >h2{
@@ -64,6 +77,10 @@ h2{
 h3{
   color: #212529 !important;
   font-family: 'Source Sans Pro', Arial, sans-serif;
+}
+
+h4{
+  
 }
 
 
