@@ -14,13 +14,18 @@
     <h2>Filmes Mais Bem Avaliados</h2>
     <div class="data">
       <div class="elements" v-for="movie in movie.moviesTopRated" :key="movie.id">
+        <div>
           <img :src="'https://image.tmdb.org/t/p/w500/' + movie.backdrop_path">
           <button>
-            10,00
+            {{ movie.vote_average }}
           </button>
           <h3>{{ movie.title }}</h3>
-          <h4>Média de votos {{ movie.vote_average }}</h4>
         </div>
+      </div>
+    </div>
+
+    <div style="height: 500px">
+
     </div>
     
   </div>
@@ -57,15 +62,24 @@ export default {
   padding: 0;
 }
 
-div.elements > button{
-  background-color: black;
-  outline: none;
-  border: none;
-  padding: 0;
+div.elements div > button{
+  position: absolute;
+  right: 0;
+  padding: 0 !important;
+  background-color: white;
+  margin: .3rem;
+  border: 2px solid rgb(148, 173, 110);
+  height: 2rem;
+  font-size: 1.05rem;
+  width: 2rem;
   border-radius: 50%;
 }
 
-#main >h2{
+div.elements div {
+  position: relative;
+}
+
+#main{
   text-align: left;
 }
 
@@ -78,12 +92,6 @@ h3{
   color: #212529 !important;
   font-family: 'Source Sans Pro', Arial, sans-serif;
 }
-
-h4{
-  
-}
-
-
 
 </style>
 

@@ -5,7 +5,9 @@
     </nav>
 
     <input type="text" placeholder="Digite o nome do filme" />
-    <button>Buscar</button>
+    <button>
+      Buscar
+    </button>
     <hr>
 
     <Movie :movie="movie" :moviesPopular="moviesPopular" :moviesTopRated="moviesTopRated" />
@@ -42,7 +44,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 #app {
   text-align: center;
 }
@@ -59,13 +61,33 @@ h3 {
 }
 
 button {
+  outline: none;
+  border-radius: 20px;
   margin-left: 0.3rem;
+  padding: .5rem 1rem;
+  color: #b1a9a9;
+  border: 1px solid #b1a9a9;
+  background-color: white;
+}
+
+button:hover {
+  background-color: rgb(226, 220, 220);
 }
 
 hr {
   width: 75%;
   margin-left: auto;
   margin-right: auto;
+}
+
+input {
+  padding:8px 50px 8px 20px;
+  width: 50%;
+  font-size: 1.05rem;
+  border-top:1px solid #b1a9a9 !important;
+  border: 3px solid #b1a9a9;
+  border-radius:20px;
+  outline:none;
 }
 
 </style>
