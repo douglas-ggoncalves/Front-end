@@ -10,7 +10,7 @@
     </button>
     <hr>
 
-    <Movie :movie="movie" :moviesPopular="moviesPopular" :moviesTopRated="moviesTopRated" />
+    <Movie :movie="movie" />
   </div>
 </template>
 
@@ -25,7 +25,8 @@ export default {
       apiV3Auth: "d6f0ef55abc9bbf18dbe5089523aad16",
       movie: {
         moviesPopular: [],
-        moviesTopRated: []
+        moviesTopRated: [],
+        moviesUpcoming: []
       },
     };
   },
@@ -35,11 +36,15 @@ export default {
   created(){
     axios.get(`https://api.themoviedb.org/3/movie/popular?api_key=${this.apiV3Auth}&language=pt-BR&page=1`).then(res=> {
       this.movie.moviesPopular = res.data.results
-    })
+    });
 
     axios.get(`https://api.themoviedb.org/3/movie/top_rated?api_key=${this.apiV3Auth}&language=pt-BR&page=1`).then(res=> {
       this.movie.moviesTopRated = res.data.results
-    })
+    });
+
+    axios.get(`https://api.themoviedb.org/3/movie/upcoming?api_key=${this.apiV3Auth}&language=pt-BR`).then(res=> {
+        this.movie.moviesUpcoming = res.data.results
+    });
   }
 };
 </script>
