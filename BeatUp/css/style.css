@@ -1,0 +1,33 @@
+* {
+  margin: 0;
+  padding: 0;
+  border: none;
+  list-style: none;
+  outline: none !important;
+  text-decoration: none !important;
+  transition: all 0.2s;
+  -webkit-transition: all 0.2s;
+  -moz-transition: all 0.2s;
+  -o-transition: all 0.2s;
+}
+
+/* ---------- Variables ---------- */
+/* ---------- End Variables ---------- */
+#navbar {
+  background-color: #2273F8;
+}
+
+#navbar #myNavBarRow #myNavBarTitleLeft {
+  color: white;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+#navbar a {
+  color: white;
+}
+/*# sourceMappingURL=style.css.map */
