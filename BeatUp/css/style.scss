@@ -19,20 +19,37 @@ $darkBlue: #2273F8;
 /* ---------- End Variables ---------- */
 
 #navbar{
+    font-size: 1.2rem;
+    font-weight: 400;
     background-color: $darkBlue;
+
     #myNavBarRow {
         #myNavBarTitleLeft {
             color: $white;
             display: flex;
             align-items: center;
         }
+
+        a {
+            color: $white;
+        }
     }
 
-   
+    
+}
 
-    a {
-        color: $white;
-    }
+@media (min-width: 576px) {
+    
+}
 
+@media (min-width: 768px) {
+
+}
+
+@media (min-width: 992px) {
+    
+}
+
+@media (min-width: 1200px) {
     
 }
