@@ -17,19 +17,18 @@ $white: rgb(255, 255, 255);
 $darkBlue: #2273F8;
 /* ---------- End Variables ---------- */
 
-html, body {
-}
-
 /* ---------- Navbar ---------- */
 header{
     position: -webkit-sticky;
     position: sticky;
     top: 0;
     z-index: 999;
-    height: 10vh;
+    //height: 8vh;
     background-color: $darkBlue;
     font-size: 1.2rem;
     font-weight: 400;
+    display: flex;
+    align-items: center;
     padding-bottom: .5rem;
     padding-top: .5rem;
 
@@ -69,21 +68,19 @@ header{
 
 /* ---------- Home ---------- */
 #home {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: url(../img/homg-img.png);
-    background-position: top center;
+    background: url(../img/homg-img.png) no-repeat;
     background-repeat: no-repeat;
-    background-size: 100%;
-    height: 90vh;
+    background-size: 140% 85%;
+    background-position: top center;
+    min-height: 90vh;
 
     >.row{
-        background-color: #2273F8;
+        display: flex;
+        justify-content: center;
+        text-align: center;
     }
 
-    h3 {
-        font-weight: 600;
+    h1 {
         color: $white;
     }
 
@@ -97,7 +94,7 @@ header{
         border-radius: 1rem;
         font-size: 1.1rem;
         background: $white;
-        padding: .5rem 1.5rem;
+        padding: .5rem 2rem;
         margin-top: .7rem;
 
         &:hover {
@@ -107,6 +104,12 @@ header{
     }
 }
 /* ---------- End Home ---------- */
+
+/* ---------- About ---------- */
+#about {
+    margin-top: 5rem;
+}
+/* ---------- End About ---------- */
 
 
 @media (min-width: 576px) {
@@ -125,4 +128,14 @@ header{
     #navbar{
         font-size: 1.25rem;
     }
+
+    #home {
+        font-size: 1.2rem;
+        justify-content: left;
+
+        >.row{
+            text-align: left;
+        }
+    }
+
 }

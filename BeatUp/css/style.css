@@ -20,10 +20,11 @@ header {
   position: sticky;
   top: 0;
   z-index: 999;
-  height: 10vh;
   background-color: #2273F8;
   font-size: 1.2rem;
   font-weight: 400;
+  display: flex;
+  align-items: center;
   padding-bottom: 0.5rem;
   padding-top: 0.5rem;
 }
@@ -55,20 +56,18 @@ header #myNavBarRow .active {
 /* ---------- End Navbar ---------- */
 /* ---------- Home ---------- */
 #home {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: url(../img/homg-img.png);
-  background-position: top center;
+  background: url(../img/homg-img.png) no-repeat;
   background-repeat: no-repeat;
-  background-size: 100%;
-  height: 90vh;
+  background-size: 140% 85%;
+  background-position: top center;
+  min-height: 90vh;
 }
 #home > .row {
-  background-color: #2273F8;
+  display: flex;
+  justify-content: center;
+  text-align: center;
 }
-#home h3 {
-  font-weight: 600;
+#home h1 {
   color: white;
 }
 #home span {
@@ -80,7 +79,7 @@ header #myNavBarRow .active {
   border-radius: 1rem;
   font-size: 1.1rem;
   background: white;
-  padding: 0.5rem 1.5rem;
+  padding: 0.5rem 2rem;
   margin-top: 0.7rem;
 }
 #home button:hover {
@@ -89,8 +88,22 @@ header #myNavBarRow .active {
 }
 
 /* ---------- End Home ---------- */
+/* ---------- About ---------- */
+#about {
+  margin-top: 5rem;
+}
+
+/* ---------- End About ---------- */
 @media (min-width: 1200px) {
   #navbar {
     font-size: 1.25rem;
+  }
+
+  #home {
+    font-size: 1.2rem;
+    justify-content: left;
+  }
+  #home > .row {
+    text-align: left;
   }
 }/*# sourceMappingURL=style.css.map */

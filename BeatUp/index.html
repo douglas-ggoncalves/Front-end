@@ -48,22 +48,22 @@
                     <div class="collapse navbar-collapse">
                         <ul class="navbar-nav navbar-light">
                             <li class="nav-item">
-                                <a class="nav-link active" href="#">Home</a>
+                                <a class="nav-link active" id="aHome" href="#">Home</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#about">Sobre</a>
+                                <a class="nav-link" id="aAbout" href="#about">Sobre</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#resources">Recursos</a>
+                                <a class="nav-link" id="aResources" href="#resources">Recursos</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#products">Produtos</a>
+                                <a class="nav-link" id="aProducts" href="#products">Produtos</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#contact">Contato</a>
+                                <a class="nav-link" id="aContact" href="#contact">Contato</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#FAQ">FAQ</a>
+                                <a class="nav-link" id="aFAQ" href="#FAQ">FAQ</a>
                             </li>
                         </ul>
                     </div>
@@ -73,23 +73,23 @@
             <div class="col-12 collapse navbar-collapse" id="navbarNavDropdown">
                 <nav class="navbar">
                     <ul class="navbar-nav col-6">
-                        <li class="nav-item active">
-                            <a class="nav-link" href="#">Home</a>
+                        <li class="nav-item">
+                            <a class="nav-link active" id="aHome2" href="#">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#about">Sobre</a>
+                            <a class="nav-link" id="aAbout2" href="#about">Sobre</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#resources">Recursos</a>
+                            <a class="nav-link" id="aResources2" href="#resources">Recursos</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#products">Produtos</a>
+                            <a class="nav-link" id="aProducts2" href="#products">Produtos</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#contact">Contato</a>
+                            <a class="nav-link" id="aContact2" href="#contact">Contato</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#FAQ">FAQ</a>
+                            <a class="nav-link" id="aFAQ2" href="#FAQ">FAQ</a>
                         </li>
                     </ul>
                 </nav>
@@ -99,16 +99,36 @@
     <!-- End Navbar -->
 
     <!-- Home -->
-    <div class="container-fluid" id="home">
-        <div class="row" style="border: 1px solid red;">
-            <div class="col-12 col-md-6">
-                <h3>Best quality products for you</h3>
-                <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium aperiam aspernatur in sapiente repellat, fugiat, totam optio iusto consequuntur non consectetur perferendis accusamus quae! Eum unde odit deleniti vitae officia.</span>
+    <div class="container-fluid d-flex align-items-lg-center" id="home">
+        <div class="row mt-5 mt-lg-0">
+
+            <div class="col-6">
+                <h1>Best quality products for you</h1>
+                <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium aperiam aspernatur in sapiente repellat, fugiat.</span>
                 <button>Pedir Agora</button>
+            </div>
+
+            <div class="col-6">
+                <img class="img-fluid" src="img/pexels-sound-on-3394666.jpg" alt="">
             </div>
         </div>
     </div>
     <!-- End Home -->
+
+    <!-- About -->
+    <div class="container-fluid" id="about">
+        <div class="row">
+            <div class="col-6">
+                ABOUT
+            </div>
+
+            <div class="col-6">
+                ABOUT
+            </div>
+        </div>
+    </div>
+    <!-- End About -->
+
 
      
     <div style="height: 5000px;">
@@ -132,12 +152,30 @@
     <script src="js/bootstrap.min.js"></script>
 
     <script>
-        var scrollTopoffset = $('#dois').offset().top - $(window).height();
+        var divHome = $('#home').offset().top - $(window).height();
+        var divAbout = $('#about').offset().top - $(window).height();
 
         $(window).scroll(function() {
-            if ($(window).scrollTop() > scrollTopoffset) {
-            // rolagem chegou ao elemento
-                alert('#dois apareceu!');
+            if ($(window).scrollTop() > divHome) { // rolagem chegou ao elemento
+                var x = $('.nav-link').length;
+
+                for(var y=0; y < x; y++ ){ // vamos percorrer os links
+                    $('.nav-link')[y].classList.remove("active")
+                }
+                document.getElementById("aHome").classList.add("active")
+                document.getElementById("aHome2").classList.add("active")
+            }
+        });
+
+        $(window).scroll(function() {
+            if ($(window).scrollTop() > divAbout) { // rolagem chegou ao elemento
+                var x = $('.nav-link').length;
+
+                for(var y=0; y < x; y++ ){ // vamos percorrer os links
+                    $('.nav-link')[y].classList.remove("active")
+                }
+                document.getElementById("aAbout").classList.add("active")
+                document.getElementById("aAbout2").classList.add("active")
             }
         });
     </script>
