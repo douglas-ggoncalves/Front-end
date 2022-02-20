@@ -1,6 +1,7 @@
 * {
   margin: 0;
   padding: 0;
+  font-family: "Open Sans", sans-serif;
   border: none;
   list-style: none;
   outline: none !important;
@@ -13,16 +14,83 @@
 
 /* ---------- Variables ---------- */
 /* ---------- End Variables ---------- */
-#navbar {
+/* ---------- Navbar ---------- */
+header {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  height: 10vh;
+  background-color: #2273F8;
   font-size: 1.2rem;
   font-weight: 400;
-  background-color: #2273F8;
+  padding-bottom: 0.5rem;
+  padding-top: 0.5rem;
 }
-#navbar #myNavBarRow #myNavBarTitleLeft {
+header #myNavBarRow #myNavBarTitleLeft {
   color: white;
   display: flex;
   align-items: center;
 }
-#navbar #myNavBarRow a {
+header #myNavBarRow .navbar-toggler {
   color: white;
+  border: 1px solid white;
+}
+header #myNavBarRow li {
+  padding-left: 0.3rem;
+  padding-right: 0.3rem;
+}
+header #myNavBarRow li a {
+  color: white;
+  padding: 0 0.5rem;
+  border-bottom: 2px solid #2273F8;
+}
+header #myNavBarRow li a:hover {
+  border-bottom: 2px solid white;
+}
+header #myNavBarRow .active {
+  border-bottom: 2px solid white;
+}
+
+/* ---------- End Navbar ---------- */
+/* ---------- Home ---------- */
+#home {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: url(../img/homg-img.png);
+  background-position: top center;
+  background-repeat: no-repeat;
+  background-size: 100%;
+  height: 90vh;
+}
+#home > .row {
+  background-color: #2273F8;
+}
+#home h3 {
+  font-weight: 600;
+  color: white;
+}
+#home span {
+  display: block;
+  color: white;
+}
+#home button {
+  cursor: pointer;
+  border-radius: 1rem;
+  font-size: 1.1rem;
+  background: white;
+  padding: 0.5rem 1.5rem;
+  margin-top: 0.7rem;
+}
+#home button:hover {
+  background-color: black;
+  color: white;
+}
+
+/* ---------- End Home ---------- */
+@media (min-width: 1200px) {
+  #navbar {
+    font-size: 1.25rem;
+  }
 }/*# sourceMappingURL=style.css.map */
