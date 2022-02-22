@@ -1,7 +1,7 @@
 * {
   margin: 0;
   padding: 0;
-  font-family: "Open Sans", sans-serif;
+  font-family: 'Open Sans', sans-serif;
   border: none;
   list-style: none;
   outline: none !important;
@@ -23,32 +23,46 @@ header {
   background-color: #2273F8;
   font-size: 1.2rem;
   font-weight: 400;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: center;
-  padding-bottom: 0.5rem;
-  padding-top: 0.5rem;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding-bottom: .5rem;
+  padding-top: .5rem;
 }
+
 header #myNavBarRow #myNavBarTitleLeft {
   color: white;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
+
 header #myNavBarRow .navbar-toggler {
   color: white;
   border: 1px solid white;
 }
+
 header #myNavBarRow li {
-  padding-left: 0.3rem;
-  padding-right: 0.3rem;
+  padding-left: .3rem;
+  padding-right: .3rem;
 }
+
 header #myNavBarRow li a {
   color: white;
-  padding: 0 0.5rem;
+  padding: 0 .5rem;
   border-bottom: 2px solid #2273F8;
 }
+
 header #myNavBarRow li a:hover {
   border-bottom: 2px solid white;
 }
+
 header #myNavBarRow .active {
   border-bottom: 2px solid white;
 }
@@ -62,26 +76,35 @@ header #myNavBarRow .active {
   background-position: top center;
   min-height: 90vh;
 }
+
 #home > .row {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   text-align: center;
 }
+
 #home h1 {
   color: white;
 }
+
 #home span {
   display: block;
   color: white;
 }
+
 #home button {
   cursor: pointer;
   border-radius: 1rem;
   font-size: 1.1rem;
   background: white;
-  padding: 0.5rem 2rem;
-  margin-top: 0.7rem;
+  padding: .5rem 2rem;
+  margin-top: .7rem;
 }
+
 #home button:hover {
   background-color: black;
   color: white;
@@ -93,17 +116,27 @@ header #myNavBarRow .active {
   margin-top: 5rem;
 }
 
+#about > .row {
+  background-color: #242020;
+}
+
+#about > .row h2 {
+  color: white;
+}
+
 /* ---------- End About ---------- */
 @media (min-width: 1200px) {
   #navbar {
     font-size: 1.25rem;
   }
-
   #home {
     font-size: 1.2rem;
-    justify-content: left;
+    -webkit-box-pack: left;
+        -ms-flex-pack: left;
+            justify-content: left;
   }
   #home > .row {
     text-align: left;
   }
-}/*# sourceMappingURL=style.css.map */
+}
+/*# sourceMappingURL=style.css.map */

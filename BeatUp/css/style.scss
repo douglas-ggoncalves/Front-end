@@ -108,6 +108,14 @@ header{
 /* ---------- About ---------- */
 #about {
     margin-top: 5rem;
+
+    >.row {
+        background-color: rgb(36, 32, 32);
+
+        h2 {
+            color: $white;
+        }
+    }
 }
 /* ---------- End About ---------- */
 
