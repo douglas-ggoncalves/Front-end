@@ -1,7 +1,7 @@
 * {
   margin: 0;
   padding: 0;
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
   border: none;
   list-style: none;
   outline: none !important;
@@ -23,46 +23,32 @@ header {
   background-color: #2273F8;
   font-size: 1.2rem;
   font-weight: 400;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  padding-bottom: .5rem;
-  padding-top: .5rem;
+  align-items: center;
+  padding-bottom: 0.5rem;
+  padding-top: 0.5rem;
 }
-
 header #myNavBarRow #myNavBarTitleLeft {
   color: white;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  align-items: center;
 }
-
 header #myNavBarRow .navbar-toggler {
   color: white;
   border: 1px solid white;
 }
-
 header #myNavBarRow li {
-  padding-left: .3rem;
-  padding-right: .3rem;
+  padding-left: 0.3rem;
+  padding-right: 0.3rem;
 }
-
 header #myNavBarRow li a {
   color: white;
-  padding: 0 .5rem;
+  padding: 0 0.5rem;
   border-bottom: 2px solid #2273F8;
 }
-
 header #myNavBarRow li a:hover {
   border-bottom: 2px solid white;
 }
-
 header #myNavBarRow .active {
   border-bottom: 2px solid white;
 }
@@ -76,35 +62,26 @@ header #myNavBarRow .active {
   background-position: top center;
   min-height: 90vh;
 }
-
 #home > .row {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  justify-content: center;
   text-align: center;
 }
-
 #home h1 {
   color: white;
 }
-
 #home span {
   display: block;
   color: white;
 }
-
 #home button {
   cursor: pointer;
   border-radius: 1rem;
   font-size: 1.1rem;
   background: white;
-  padding: .5rem 2rem;
-  margin-top: .7rem;
+  padding: 0.5rem 2rem;
+  margin-top: 0.7rem;
 }
-
 #home button:hover {
   background-color: black;
   color: white;
@@ -115,13 +92,43 @@ header #myNavBarRow .active {
 #about {
   margin-top: 5rem;
 }
-
 #about > .row {
-  background-color: #242020;
+  display: flex;
+  justify-content: center;
+  background-color: #0b0b0b;
 }
-
-#about > .row h2 {
+#about > .row > div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#about > .row h2, #about > .row p {
   color: white;
+}
+#about > .row span {
+  display: block;
+}
+#about > .row span p {
+  display: inline;
+}
+#about > .row span i {
+  color: #2273F8;
+}
+#about > .row a {
+  color: #2273F8;
+}
+#about > .row a button {
+  cursor: pointer;
+  border-radius: 1rem;
+  font-size: 1.1rem;
+  background: white;
+  padding: 0.5rem 2rem;
+  margin-top: 0.7rem;
+  color: #2273F8;
+}
+#about > .row a button:hover {
+  color: white;
+  background-color: #2273F8;
 }
 
 /* ---------- End About ---------- */
@@ -129,14 +136,12 @@ header #myNavBarRow .active {
   #navbar {
     font-size: 1.25rem;
   }
+
   #home {
     font-size: 1.2rem;
-    -webkit-box-pack: left;
-        -ms-flex-pack: left;
-            justify-content: left;
+    justify-content: left;
   }
   #home > .row {
     text-align: left;
   }
-}
-/*# sourceMappingURL=style.css.map */
+}/*# sourceMappingURL=style.css.map */
