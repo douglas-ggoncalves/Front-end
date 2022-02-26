@@ -93,6 +93,7 @@ header #myNavBarRow .active {
   margin-top: 5rem;
 }
 #about > .row {
+  min-height: 100vh;
   display: flex;
   justify-content: center;
   background-color: #0b0b0b;
@@ -101,6 +102,8 @@ header #myNavBarRow .active {
   display: flex;
   align-items: center;
   justify-content: center;
+  padding-bottom: 1.5rem;
+  padding-top: 1.5rem;
 }
 #about > .row h2, #about > .row p {
   color: white;
@@ -132,6 +135,29 @@ header #myNavBarRow .active {
 }
 
 /* ---------- End About ---------- */
+/* ---------- Resources ---------- */
+#resources {
+  min-height: 100vh;
+  margin-top: 5rem;
+}
+#resources > .row {
+  display: flex;
+  justify-content: center;
+}
+#resources > .row #title {
+  text-align: center;
+}
+#resources > .row #title h3 {
+  color: #2273F8;
+}
+#resources > .row #title hr {
+  color: #2273F8;
+  width: 25%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ---------- End Resources ---------- */
 @media (min-width: 1200px) {
   #navbar {
     font-size: 1.25rem;

@@ -54,7 +54,7 @@
                                 <a class="nav-link" id="aAbout" href="#about">Sobre</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" id="aResources" href="#resources">Recursos</a>
+                                <a class="nav-link" id="aResources" href="#resources">Características</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" id="aProducts" href="#products">Produtos</a>
@@ -80,7 +80,7 @@
                             <a class="nav-link" id="aAbout2" href="#about">Sobre</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" id="aResources2" href="#resources">Recursos</a>
+                            <a class="nav-link" id="aResources2" href="#resources">Características</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" id="aProducts2" href="#products">Produtos</a>
@@ -103,9 +103,9 @@
         <div class="row mt-5 mt-lg-0">
 
             <div class="col-8 col-md-5">
-                    <h1>Best quality products for you</h1>
-                    <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium aperiam aspernatur in sapiente repellat, fugiat.</span>
-                    <button>Pedir Agora</button>
+                <h1>Produtos da melhor qualidade para você</h1>
+                <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium aperiam aspernatur in sapiente repellat, fugiat.</span>
+                <button>Pedir Agora</button>
             </div>
 
             <div class="col-5 d-none d-md-block">
@@ -118,11 +118,11 @@
     <!-- About -->
     <div class="container-fluid" id="about">
         <div class="row">
-            <div class="col-10 col-md-5">
+            <div class="col-12 col-md-10 col-lg-7 col-xl-6 px-lg-3">
                 <img class="img-fluid" src="img/about.jpg" alt="">
             </div>
 
-            <div class="col-10 col-md-5">
+            <div class="col-12 col-md-10 col-lg-5 px-lg-3">
                 <div>
                     <h2>
                         Mude sua vida com nossos produtos de alta qualidade
@@ -154,25 +154,28 @@
 
                     <a href="#">
                         <button>
-                                Saiba Mais
+                            Saiba Mais
                         </button>
                     </a>
-
                 </div>
-
             </div>
         </div>
     </div>
     <!-- End About -->
 
-
-     
-    <div style="height: 5000px;">
-
+     <!-- Resources -->
+    <div class="container-fluid" id="resources">
+        <div class="row">
+            <div class="col-12" id="title">
+                <h3>
+                    Características do produto
+                </h3>
+                <hr>
+            </div>
+        </div>
     </div>
+    <!-- End Resources -->
 
-
-    
     <div id='dois' style="height: 500px; border: 1px solid red;">
         div2
     </div>
@@ -190,6 +193,7 @@
     <script>
         var divHome = $('#home').offset().top - $(window).height();
         var divAbout = $('#about').offset().top - $(window).height();
+        var divResources = $('#resources').offset().top - $(window).height();
 
         $(window).scroll(function() {
             if ($(window).scrollTop() > divHome) { // rolagem chegou ao elemento
@@ -212,6 +216,18 @@
                 }
                 document.getElementById("aAbout").classList.add("active")
                 document.getElementById("aAbout2").classList.add("active")
+            }
+        });
+
+        $(window).scroll(function() {
+            if ($(window).scrollTop() > divResources) { // rolagem chegou ao elemento
+                var x = $('.nav-link').length;
+
+                for(var y=0; y < x; y++ ){ // vamos percorrer os links
+                    $('.nav-link')[y].classList.remove("active")
+                }
+                document.getElementById("aResources").classList.add("active")
+                document.getElementById("aResources2").classList.add("active")
             }
         });
     </script>

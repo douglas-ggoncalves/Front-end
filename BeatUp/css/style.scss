@@ -107,8 +107,8 @@ header{
 /* ---------- About ---------- */
 #about {
     margin-top: 5rem;
-
     >.row {
+        min-height: 100vh;
         display: flex;
         justify-content: center;
         background-color: rgb(11, 11, 11);
@@ -117,6 +117,8 @@ header{
             display: flex;
             align-items: center;
             justify-content: center;
+            padding-bottom: 1.5rem;
+            padding-top: 1.5rem;
         }
 
         h2, p{
@@ -158,6 +160,32 @@ header{
     }
 }
 /* ---------- End About ---------- */
+
+/* ---------- Resources ---------- */
+#resources {
+    min-height: 100vh;
+    margin-top: 5rem;
+    >.row {
+        display: flex;
+            justify-content: center;
+        #title {
+            
+            text-align: center;
+
+            h3 {
+                color: $darkBlue;
+            }
+
+            hr {
+                color: $darkBlue;
+                width: 25%;
+                margin-left: auto;
+                margin-right: auto;
+            }
+        }
+    }
+}
+/* ---------- End Resources ---------- */
 
 
 @media (min-width: 576px) {
