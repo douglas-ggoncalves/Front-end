@@ -167,20 +167,53 @@ header{
     margin-top: 5rem;
     >.row {
         display: flex;
-            justify-content: center;
-        #title {
-            
+        justify-content: center;
+        
+        .texts {
             text-align: center;
 
             h3 {
                 color: $darkBlue;
             }
 
+            h4 {
+                font-family: 'Segoe UI', 'Open Sans', sans-serif;
+            }
+
             hr {
-                color: $darkBlue;
-                width: 25%;
+                background-color: $darkBlue;
+                width: 60%;
                 margin-left: auto;
                 margin-right: auto;
+            }
+
+            span {
+                text-align: center;
+                color: rgb(158, 158, 158);
+            }
+        }
+    }
+
+    .elements{
+        margin-top: 2rem;
+        >div{
+            display: block;
+            align-items: center;
+            justify-content: center;
+            border: .5rem solid rgba(233, 227, 227, 0.856);
+            background-color: $darkBlue;
+            height: 6rem;
+            width: 6rem;
+            transform: rotate(45deg);
+            font-size: 2rem;
+
+            i{
+                color: $white;
+                transform: rotate(315deg);
+            }
+
+            span{
+                display: block;
             }
         }
     }

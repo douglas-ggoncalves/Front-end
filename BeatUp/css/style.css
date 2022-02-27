@@ -144,17 +144,45 @@ header #myNavBarRow .active {
   display: flex;
   justify-content: center;
 }
-#resources > .row #title {
+#resources > .row .texts {
   text-align: center;
 }
-#resources > .row #title h3 {
+#resources > .row .texts h3 {
   color: #2273F8;
 }
-#resources > .row #title hr {
-  color: #2273F8;
-  width: 25%;
+#resources > .row .texts h4 {
+  font-family: "Segoe UI", "Open Sans", sans-serif;
+}
+#resources > .row .texts hr {
+  background-color: #2273F8;
+  width: 60%;
   margin-left: auto;
   margin-right: auto;
+}
+#resources > .row .texts span {
+  text-align: center;
+  color: #9e9e9e;
+}
+#resources .elements {
+  margin-top: 2rem;
+}
+#resources .elements > div {
+  display: block;
+  align-items: center;
+  justify-content: center;
+  border: 0.5rem solid rgba(233, 227, 227, 0.856);
+  background-color: #2273F8;
+  height: 6rem;
+  width: 6rem;
+  transform: rotate(45deg);
+  font-size: 2rem;
+}
+#resources .elements > div i {
+  color: white;
+  transform: rotate(315deg);
+}
+#resources .elements > div span {
+  display: block;
 }
 
 /* ---------- End Resources ---------- */
