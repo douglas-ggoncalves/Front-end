@@ -163,7 +163,7 @@ header{
 
 /* ---------- Resources ---------- */
 #resources {
-    min-height: 100vh;
+    min-height: calc(90vh - 5rem);
     margin-top: 5rem;
     >.row {
         display: flex;
@@ -195,30 +195,77 @@ header{
     }
 
     .elements{
-        margin-top: 2rem;
+        min-height: calc(90vh - 6rem);
+        font-family: 'Segoe UI', 'Open Sans', sans-serif;
+        text-align: center;
+        margin-top: 3rem;
+
         >div{
-            display: block;
+            margin-bottom: 3rem;
+
+            span{
+                color: rgb(128, 128, 128);
+                font-size: 0.9rem;
+            }
+        }
+
+        div.subElements{
+            display: flex;
             align-items: center;
             justify-content: center;
+            margin-left: auto;
+            margin-right: auto;
             border: .5rem solid rgba(233, 227, 227, 0.856);
             background-color: $darkBlue;
             height: 6rem;
             width: 6rem;
             transform: rotate(45deg);
             font-size: 2rem;
+            margin-bottom: 3rem;
 
             i{
                 color: $white;
                 transform: rotate(315deg);
             }
-
-            span{
-                display: block;
-            }
         }
     }
 }
 /* ---------- End Resources ---------- */
+/* ---------- Products ---------- */
+#products {
+    border: 1px solid red;
+    min-height: 90vh;
+    text-align: center;
+    font-family: 'Segoe UI', 'Open Sans', sans-serif;
+    >.row{
+
+        div.elements {
+            padding-bottom: 1rem;
+            padding-top: 1rem;
+            -webkit-box-shadow: 3px 3px 7px 1px rgba(0,0,0,0.78); 
+            box-shadow: 3px 3px 7px 1px rgba(0,0,0,0.78);
+
+            button {
+                cursor: pointer;
+                color: $white;
+                background-color: $darkBlue;
+
+                &:hover {
+                    background-color: black;
+                }
+            }
+        }
+        .texts {
+            text-align: center;
+
+            h3 {
+                color: $darkBlue;
+            }
+        }
+    }
+}
+/* ---------- End Products ---------- */
+
 
 
 @media (min-width: 576px) {
@@ -230,7 +277,9 @@ header{
 }
 
 @media (min-width: 992px) {
-    
+    hr{
+        width: 25% !important;
+    }
 }
 
 @media (min-width: 1200px) {
