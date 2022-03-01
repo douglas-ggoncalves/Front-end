@@ -25,16 +25,6 @@
      <![endif]-->
 
     <title>Maximus Gestão de Resultados</title>
-
-    <style>
-        html {
-            height: 100%;
-        }
-
-        body {
-            height: 100%;
-        }
-    </style>
 </head>
 
 <body id="index">
@@ -47,11 +37,11 @@
         </div>
 
         <!-- Menu Hamburguer -->
-        <button class="navbar-toggler" data-toggle="collapse" data-target="#navegacao">
+        <button class="navbar-toggler" type="button" data-toggle="collapse"  data-target="#navegacao">
             <span class="navbar-toggler-icon"></span>
         </button>
 
-        <div class="collapse navbar-collapse" id="navegacao">
+        <div class="collapse navbar-collapse" id="navegacao" style="z-index: 999;">
             <ul class="navbar-nav navbar-expand-lg">
                 <li class="nav-item">
                     <a class="nav-link" href="index.html">Home</a>
@@ -71,12 +61,10 @@
             </ul>
         </div>
     </nav>
-    <!--/.Navbar-->
 
-    <div class="container-fluid image" style="overflow: hidden; height: 94%;">
-        <div class="row d-flex align-items-center" style="height: 100%;">
+    <div class="container-fluid image">
+        <div class="row d-flex align-items-center" style="height: 95vh;">
             <div class="col-12 mt-3 mx-auto text-center">
-
                 <img class="img-fluid" src="img/icone_maximus_gestao.png" width="145px">
                
                 <h1 class="text-white" style="font-weight: bold; text-align: center;">Sistema de gestão com resultados
@@ -167,7 +155,7 @@
             <div class="col-12 col-md-4 mx-auto text-center">
                 <img class="img-fluid" src="img/price.png" width="70px">
                 <h3>Economize seu tempo</h3>
-                <p>Oferecemos soluções completas, ágeis e eficazes para todos os setores da farmácia ou da <br> rede.
+                <p>Oferecemos soluções completas, ágeis e eficazes para todos os setores da farmácia ou da rede.
                 </p>
             </div>
 
@@ -181,7 +169,7 @@
     </div>
 
     <div class="container-fluid mt-4 pt-2">
-        <div class="row pt-3" style="background-color: black;">
+        <div class="row d-flex align-items-center pt-3" style="background-color: black;">
             <div class="col-12">
                 <p class="text-white text-center mx-auto" style="font-size: 1.05em;" style="border: 1px solid red;">©
                     Todos os direitos reservados Maximus Gestão e Sistemas.</p>
@@ -215,6 +203,6 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
     integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
     crossorigin="anonymous"></script>
-<script src="/js/bootstrap.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
 
 </html>

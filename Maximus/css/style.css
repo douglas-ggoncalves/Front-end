@@ -11,70 +11,60 @@
   -o-transition: all 0.2s;
 }
 
-h5 {
+#about h5 {
   font-weight: 400;
 }
 
-.barraMenu {
-  background: rgba(59, 52, 52, 0.164);
+#index, #products, #partners, #contact, #about {
+  font-size: 1.07rem !important;
 }
-
-.navbar-dark .navbar-nav .nav-link {
-  color: white;
+#index .navbar, #products .navbar, #partners .navbar, #contact .navbar, #about .navbar {
+  padding: 0.3rem 1rem;
+  font-size: 1.08rem !important;
 }
-
-.navbar-dark .navbar-nav .nav-link:hover {
-  color: #9bf0e1;
+#index .bg-dark, #products .bg-dark, #partners .bg-dark, #contact .bg-dark, #about .bg-dark {
+  background-color: #1d1c1c !important;
 }
-
-a.nav-link.sol {
-  color: #ee0327 !important;
-}
-
-a.nav-link.sol:hover {
-  color: #d12d17 !important;
-}
-
-a.btn.btn-outline-light.mt-3 {
-  color: white;
-}
-
-a.btn.btn-outline-light.mt-3:hover {
-  color: black;
-}
-
-a.btn.btn-outline-primary {
-  color: #007bff;
-}
-
-a.btn.btn-outline-primary:hover {
-  color: white;
-}
-
-a.btn.btn-outline-dark:hover {
-  color: white;
-}
-
-a.btn.btn-outline-light:hover {
-  color: black;
-}
-
-.image {
+#index .image, #products .image, #partners .image, #contact .image, #about .image {
   background: url("../img/thumbnail.jpg") center center no-repeat;
   background-size: cover;
+  overflow: hidden;
+  height: 94%;
 }
-
-#navegacao {
-  display: flex;
-  justify-content: left;
+#index .navbar-dark .navbar-nav .nav-link, #products .navbar-dark .navbar-nav .nav-link, #partners .navbar-dark .navbar-nav .nav-link, #contact .navbar-dark .navbar-nav .nav-link, #about .navbar-dark .navbar-nav .nav-link {
+  color: white;
 }
-
-.navbar {
-  padding: 0 1rem 0 1rem;
+#index .navbar-dark .navbar-nav .nav-link:hover, #products .navbar-dark .navbar-nav .nav-link:hover, #partners .navbar-dark .navbar-nav .nav-link:hover, #contact .navbar-dark .navbar-nav .nav-link:hover, #about .navbar-dark .navbar-nav .nav-link:hover {
+  color: #9bf0e1;
+}
+#index a.btn.btn-outline-primary, #products a.btn.btn-outline-primary, #partners a.btn.btn-outline-primary, #contact a.btn.btn-outline-primary, #about a.btn.btn-outline-primary {
+  color: #007bff;
+}
+#index a.btn.btn-outline-primary:hover, #products a.btn.btn-outline-primary:hover, #partners a.btn.btn-outline-primary:hover, #contact a.btn.btn-outline-primary:hover, #about a.btn.btn-outline-primary:hover {
+  color: white;
+}
+#index a.btn.btn-outline-light.mt-3, #products a.btn.btn-outline-light.mt-3, #partners a.btn.btn-outline-light.mt-3, #contact a.btn.btn-outline-light.mt-3, #about a.btn.btn-outline-light.mt-3 {
+  color: white;
+}
+#index a.btn.btn-outline-light.mt-3:hover, #products a.btn.btn-outline-light.mt-3:hover, #partners a.btn.btn-outline-light.mt-3:hover, #contact a.btn.btn-outline-light.mt-3:hover, #about a.btn.btn-outline-light.mt-3:hover {
+  color: black;
+}
+#index a.btn.btn-outline-dark:hover, #products a.btn.btn-outline-dark:hover, #partners a.btn.btn-outline-dark:hover, #contact a.btn.btn-outline-dark:hover, #about a.btn.btn-outline-dark:hover {
+  color: white;
+}
+#index a.btn.btn-outline-light:hover, #products a.btn.btn-outline-light:hover, #partners a.btn.btn-outline-light:hover, #contact a.btn.btn-outline-light:hover, #about a.btn.btn-outline-light:hover {
+  color: black;
+}
+#index hr, #products hr, #partners hr, #contact hr, #about hr {
+  margin-left: auto;
+  margin-right: auto;
+}
+#index .btn, #products .btn, #partners .btn, #contact .btn, #about .btn {
+  font-size: 1.07rem !important;
 }
 
 @media (min-width: 576px) {
-  .card-columns {
+  #about .card-columns {
     -moz-column-count: 1;
     column-count: 1;
   }
@@ -84,28 +74,21 @@ a.btn.btn-outline-light:hover {
     font-size: 1.1em;
   }
 
-  .card-columns {
-    -moz-column-count: 1;
-    column-count: 1;
-  }
-
   #navegacao {
-    justify-content: center;
+    display: flex;
+    justify-content: center !important;
   }
 }
 @media (min-width: 992px) {
-  ul li a {
-    font-size: 1.12em;
+  #about .card-columns {
+    -moz-column-count: 2;
+    column-count: 2;
   }
 
-  .card-columns {
-    -moz-column-count: 2;
-    column-count: 2;
+  #index ul li a, #products ul li a, #partners ul li a, #contact ul li a, #about ul li a {
+    font-size: 1.12em;
   }
-}
-@media (min-width: 1200px) {
-  .card-columns {
-    -moz-column-count: 2;
-    column-count: 2;
+  #index .btn, #products .btn, #partners .btn, #contact .btn, #about .btn {
+    font-size: 1.13rem !important;
   }
 }/*# sourceMappingURL=style.css.map */
