@@ -231,15 +231,19 @@ header{
     }
 }
 /* ---------- End Resources ---------- */
+
 /* ---------- Products ---------- */
 #products {
-    border: 1px solid red;
-    min-height: 90vh;
+    background-color: rgb(238, 238, 238);
+    min-height: 100vh;
     text-align: center;
     font-family: 'Segoe UI', 'Open Sans', sans-serif;
-    >.row{
 
-        div.elements {
+    >.row{
+        padding-bottom: 1rem;
+        padding-top: 1rem;
+        div.elements >div {
+            margin-top: 1rem;
             padding-bottom: 1rem;
             padding-top: 1rem;
             -webkit-box-shadow: 3px 3px 7px 1px rgba(0,0,0,0.78); 
@@ -255,6 +259,7 @@ header{
                 }
             }
         }
+        
         .texts {
             text-align: center;
 
@@ -266,10 +271,165 @@ header{
 }
 /* ---------- End Products ---------- */
 
+/* ---------- Contact ---------- */
+#contact {
+    background-color: rgb(32, 29, 29);
+    min-height: 100vh;
+    text-align: center;
+    display: flex;
+    align-items: center;
 
+    div#subMain{
+        width: 100%;
+    }
 
-@media (min-width: 576px) {
+    .row{
+        display: flex;
+        justify-content: center;
+        margin-left: auto;
+    }
     
+    h3 {
+        padding: .5rem .7rem;
+        background-color: rgb(17, 15, 15);
+        color: $white;
+        display: inline-block;
+    }
+
+    input{
+        border: 2px solid $white;
+        color: $white;
+        background: none;
+        padding: .5rem .7rem;
+        display: block;
+        min-width: 100%;
+        margin-top: .7rem;
+    }
+
+    input:focus{
+        border: 2px solid $darkBlue;
+    }
+
+    textarea{
+        color: $white;
+        min-width: 100%;
+        margin-top: .7rem;
+        padding: .5rem .7rem;
+        border: 2px solid $white;
+        background: none;
+    }
+
+    textarea:focus{
+        border: 2px solid $darkBlue;
+    }
+
+    button{
+        border: 1px solid black;
+        cursor: pointer;
+        color: $white;
+        background-color: $darkBlue;
+        padding: .7rem 1.2rem;
+        border-radius: 16px;
+
+        &:hover {
+            color: white;
+            border: 1px solid $white;
+            background-color: black;
+        }
+    }
+}
+/* ---------- End Contact ---------- */
+
+/* ---------- FAQ ---------- */
+#FAQ {
+    background-color: rgb(238, 238, 238);
+    min-height: 100vh;
+    text-align: center;
+    font-family: 'Segoe UI', 'Open Sans', sans-serif;
+    padding-bottom: 2rem;
+    padding-top: 2rem;
+
+    >.row{
+        >div.texts{
+            text-align: center;
+    
+            h3 {
+                color: $darkBlue;
+            }
+        
+            h4{
+                font-weight: 600;
+            }
+        }
+    }
+
+    div.elements{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
+/* ---------- End FAQ ---------- */
+
+/* ---------- Footer ---------- */
+
+footer {
+    background-color: rgb(238, 238, 238);
+    text-align: center;
+
+    >.row{
+        display: flex;
+        justify-content: center;
+    }
+
+    h4, i {
+        margin-top: 1rem;
+        color: $darkBlue;
+    }
+
+    div#links{
+        text-align: center;
+    }
+
+    a{
+        font-size: 1.1rem;
+        color: #212529;
+        display: block;
+
+        &:hover{
+
+            color: $darkBlue;
+        }
+    }
+
+    span{
+        display: block;
+        margin-bottom: 0.5rem;
+    }
+
+    div#final{
+        font-family: 'Segoe UI', 'Open Sans', sans-serif;
+        margin-top: 1rem;
+        background-color: #212529;
+        padding-bottom: .7rem;
+        padding-top: .7rem;
+
+        h3 {
+            color: $white;
+        }
+    }
+}
+/* ---------- End Footer ---------- */
+
+
+@media (max-width: 400px) {
+    *{
+        font-size: 0.9rem;
+
+        i{
+            font-size: 2rem;
+        }
+    }
 }
 
 @media (min-width: 768px) {

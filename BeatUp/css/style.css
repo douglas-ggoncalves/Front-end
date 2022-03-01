@@ -198,22 +198,27 @@ header #myNavBarRow .active {
 /* ---------- End Resources ---------- */
 /* ---------- Products ---------- */
 #products {
-  border: 1px solid red;
-  min-height: 90vh;
+  background-color: #eeeeee;
+  min-height: 100vh;
   text-align: center;
   font-family: "Segoe UI", "Open Sans", sans-serif;
 }
-#products > .row div.elements {
+#products > .row {
+  padding-bottom: 1rem;
+  padding-top: 1rem;
+}
+#products > .row div.elements > div {
+  margin-top: 1rem;
   padding-bottom: 1rem;
   padding-top: 1rem;
   box-shadow: 3px 3px 7px 1px rgba(0, 0, 0, 0.78);
 }
-#products > .row div.elements button {
+#products > .row div.elements > div button {
   cursor: pointer;
   color: white;
   background-color: #2273F8;
 }
-#products > .row div.elements button:hover {
+#products > .row div.elements > div button:hover {
   background-color: black;
 }
 #products > .row .texts {
@@ -224,6 +229,139 @@ header #myNavBarRow .active {
 }
 
 /* ---------- End Products ---------- */
+/* ---------- Contact ---------- */
+#contact {
+  background-color: #201d1d;
+  min-height: 100vh;
+  text-align: center;
+  display: flex;
+  align-items: center;
+}
+#contact div#subMain {
+  width: 100%;
+}
+#contact .row {
+  display: flex;
+  justify-content: center;
+  margin-left: auto;
+}
+#contact h3 {
+  padding: 0.5rem 0.7rem;
+  background-color: #110f0f;
+  color: white;
+  display: inline-block;
+}
+#contact input {
+  border: 2px solid white;
+  color: white;
+  background: none;
+  padding: 0.5rem 0.7rem;
+  display: block;
+  min-width: 100%;
+  margin-top: 0.7rem;
+}
+#contact input:focus {
+  border: 2px solid #2273F8;
+}
+#contact textarea {
+  color: white;
+  min-width: 100%;
+  margin-top: 0.7rem;
+  padding: 0.5rem 0.7rem;
+  border: 2px solid white;
+  background: none;
+}
+#contact textarea:focus {
+  border: 2px solid #2273F8;
+}
+#contact button {
+  border: 1px solid black;
+  cursor: pointer;
+  color: white;
+  background-color: #2273F8;
+  padding: 0.7rem 1.2rem;
+  border-radius: 16px;
+}
+#contact button:hover {
+  color: white;
+  border: 1px solid white;
+  background-color: black;
+}
+
+/* ---------- End Contact ---------- */
+/* ---------- FAQ ---------- */
+#FAQ {
+  background-color: #eeeeee;
+  min-height: 100vh;
+  text-align: center;
+  font-family: "Segoe UI", "Open Sans", sans-serif;
+  padding-bottom: 2rem;
+  padding-top: 2rem;
+}
+#FAQ > .row > div.texts {
+  text-align: center;
+}
+#FAQ > .row > div.texts h3 {
+  color: #2273F8;
+}
+#FAQ > .row > div.texts h4 {
+  font-weight: 600;
+}
+#FAQ div.elements {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ---------- End FAQ ---------- */
+/* ---------- Footer ---------- */
+footer {
+  background-color: #eeeeee;
+  text-align: center;
+}
+footer > .row {
+  display: flex;
+  justify-content: center;
+}
+footer h4, footer i {
+  margin-top: 1rem;
+  color: #2273F8;
+}
+footer div#links {
+  text-align: center;
+}
+footer a {
+  font-size: 1.1rem;
+  color: #212529;
+  display: block;
+}
+footer a:hover {
+  color: #2273F8;
+}
+footer span {
+  display: block;
+  margin-bottom: 0.5rem;
+}
+footer div#final {
+  font-family: "Segoe UI", "Open Sans", sans-serif;
+  margin-top: 1rem;
+  background-color: #212529;
+  padding-bottom: 0.7rem;
+  padding-top: 0.7rem;
+}
+footer div#final h3 {
+  color: white;
+}
+
+/* ---------- End Footer ---------- */
+@media (max-width: 400px) {
+  * {
+    font-size: 0.9rem;
+  }
+  * i {
+    font-size: 2rem;
+  }
+}
 @media (min-width: 992px) {
   hr {
     width: 25% !important;
