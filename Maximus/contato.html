@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="pt-br">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+
+    <!-- Folha de estilo -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- Normalize -->
+    <link rel="stylesheet" href="css/normalize.css">
+
+    <!-- Ícones -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+
+    <link rel="shortcut icon" href="img/icone_maximus_gestao.png">
+
+    <!--[if lt IE 9]>
+         <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
+     <![endif]-->
+
+    <title>Maximus Gestão de Resultados</title>
+</head>
+
+<body>
+    <!--Navbar-->
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+        <div class="col-6 col-md-3 offset-md-1 col-lg-3 offset-lg-1 pt-md-0 py-lg-1">
+            <a class="btn">
+                <img class="img-fluid" src="img/logo-white.png" width="145px">
+            </a>
+        </div>
+
+        <!-- Menu Hamburguer -->
+        <button class="navbar-toggler" data-toggle="collapse" data-target="#navegacao">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Collapsible content -->
+        <div class="collapse navbar-collapse" id="navegacao">
+            <ul class="navbar-nav navbar-expand-lg">
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="produtos.html">Produtos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="parceiros.html">Parceiros</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="sobre.html">Sobre</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="contato.html">Contate-nos</a>
+                </li>
+            </ul>
+        </div>
+        <!-- Collapsible content -->
+
+    </nav>
+    <!--/.Navbar-->
+
+    <div class="container mt-5 pt-sm-2 pt-lg-3">
+        <div class="row d-flex justify-content-center">
+            <div class="col-12 text-center">
+                <h3>Contate-nos</h3>
+            </div>
+
+            <div class="col-12 col-md-8 col-lg-6 mt-3">
+                <p class="text-center">Obrigado pelo seu interesse de contar com a Maximus, para falar com um de
+                    nossos
+                    representantes preencha o formulário abaixo ou ligue para <br class="d-block d-sm-none d-xl-block">
+                    (62) 98253-0974.</p>
+                <form id="form" method="POST" onsubmit="enviarForm(event, this)">
+                    <div class="form-group pt-3">
+                        <label for="name">Nome</label>
+                        <input type="text" class="form-control" id="name" aria-describedby="emailHelp"
+                            placeholder="Digite seu nome" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="company">Empresa</label>
+                        <input type="text" class="form-control" id="company" placeholder="Digite o nome de sua empresa"
+                            required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">E-mail</label>
+                        <input type="email" class="form-control" id="email" placeholder="Digite seu e-mail" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone">Telefone</label>
+                        <input type="text" class="form-control" id="phone" placeholder="Digite seu telefone"
+                            data-js="phone" required>
+                    </div>
+
+                    <div class="d-flex justify-content-center pt-lg-2">
+                        <button type="submit" class="btn btn-primary">Enviar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="row d-flex justify-content-center mt-2">
+            <div class="col-6 text-center" id="success" style="display: none;">
+                <div class="alert alert-success" role="alert">
+                    Formulário enviado com sucesso, em breve um representante
+                    entrará em contato.
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</body>
+
+<script>
+    function enviarForm(event, form) {
+        event.preventDefault();
+        document.getElementById("name").value = ""
+        document.getElementById("company").value = ""
+        document.getElementById("email").value = ""
+        document.getElementById("phone").value = ""
+        document.getElementById("success").style.display = 'block'
+    }
+</script>
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+<script src="/js/bootstrap.min.js"></script>
+
+<script>
+    const masks = {
+        phone(value) {
+            return value
+                .replace(/\D+/g, '')
+                .replace(/(\d{2})(\d)/, '($1) $2')
+                .replace(/(\d{4})(\d)/, '$1-$2')
+                .replace(/(\d{4})-(\d)(\d{4})/, '$1$2-$3')
+                .replace(/(-\d{4})\d+?$/, '$1')
+        }
+    }
+    document.querySelectorAll('input').forEach($input => {
+        const field = $input.dataset.js
+        $input.addEventListener('input', e => {
+            e.target.value = masks[field](e.target.value)
+        }, false)
+    })
+</script>
+
+</html>
