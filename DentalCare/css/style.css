@@ -13,4 +13,10 @@
 
 /* ---------- Variables ---------- */
 /* ---------- End Variables ---------- */
-/*# sourceMappingURL=style.css.map */
+/* ---------- Nav ---------- */
+nav {
+  background-color: #e7e8eb !important;
+}
+nav a span {
+  color: #00B8B8;
+}/*# sourceMappingURL=style.css.map */

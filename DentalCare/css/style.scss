@@ -12,8 +12,20 @@
 }
 
 /* ---------- Variables ---------- */
-
+$gray: rgb(231, 232, 235);
+$blue: #00B8B8;
 /* ---------- End Variables ---------- */
+
+/* ---------- Nav ---------- */
+nav {
+    background-color: $gray !important;
+    a{
+        span{
+            color: $blue;
+        }
+    }
+}
+
 
 @media (max-width: 575.98px) { 
      
