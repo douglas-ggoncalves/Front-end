@@ -78,14 +78,14 @@
 
 .fa-xs {
   font-size: 0.75em;
-  line-height: 0.0833333337em;
+  line-height: 0.08333em;
   vertical-align: 0.125em;
 }
 
 .fa-sm {
   font-size: 0.875em;
-  line-height: 0.0714285718em;
-  vertical-align: 0.0535714295em;
+  line-height: 0.07143em;
+  vertical-align: 0.05357em;
 }
 
 .fa-lg {
@@ -96,7 +96,7 @@
 
 .fa-xl {
   font-size: 1.5em;
-  line-height: 0.0416666682em;
+  line-height: 0.04167em;
   vertical-align: -0.125em;
 }
 
@@ -116,6 +116,7 @@
   margin-left: var(--fa-li-margin, 2.5em);
   padding-left: 0;
 }
+
 .fa-ul > li {
   position: relative;
 }
@@ -241,121 +242,155 @@
 
 @media (prefers-reduced-motion: reduce) {
   .fa-beat,
-.fa-fade,
-.fa-beat-fade,
-.fa-flip,
-.fa-pulse,
-.fa-spin,
-.fa-spin-pulse {
+  .fa-fade,
+  .fa-beat-fade,
+  .fa-flip,
+  .fa-pulse,
+  .fa-spin,
+  .fa-spin-pulse {
     -webkit-animation-delay: -1ms;
             animation-delay: -1ms;
     -webkit-animation-duration: 1ms;
             animation-duration: 1ms;
     -webkit-animation-iteration-count: 1;
             animation-iteration-count: 1;
-    transition-delay: 0s;
-    transition-duration: 0s;
+    -webkit-transition-delay: 0s;
+            transition-delay: 0s;
+    -webkit-transition-duration: 0s;
+            transition-duration: 0s;
   }
 }
+
 @-webkit-keyframes fa-beat {
   0%, 90% {
-    transform: scale(1);
+    -webkit-transform: scale(1);
+            transform: scale(1);
   }
   45% {
-    transform: scale(var(--fa-beat-scale, 1.25));
+    -webkit-transform: scale(var(--fa-beat-scale, 1.25));
+            transform: scale(var(--fa-beat-scale, 1.25));
   }
 }
+
 @keyframes fa-beat {
   0%, 90% {
-    transform: scale(1);
+    -webkit-transform: scale(1);
+            transform: scale(1);
   }
   45% {
-    transform: scale(var(--fa-beat-scale, 1.25));
+    -webkit-transform: scale(var(--fa-beat-scale, 1.25));
+            transform: scale(var(--fa-beat-scale, 1.25));
   }
 }
+
 @-webkit-keyframes fa-fade {
   50% {
     opacity: var(--fa-fade-opacity, 0.4);
   }
 }
+
 @keyframes fa-fade {
   50% {
     opacity: var(--fa-fade-opacity, 0.4);
   }
 }
+
 @-webkit-keyframes fa-beat-fade {
   0%, 100% {
     opacity: var(--fa-beat-fade-opacity, 0.4);
-    transform: scale(1);
+    -webkit-transform: scale(1);
+            transform: scale(1);
   }
   50% {
     opacity: 1;
-    transform: scale(var(--fa-beat-fade-scale, 1.125));
+    -webkit-transform: scale(var(--fa-beat-fade-scale, 1.125));
+            transform: scale(var(--fa-beat-fade-scale, 1.125));
   }
 }
+
 @keyframes fa-beat-fade {
   0%, 100% {
     opacity: var(--fa-beat-fade-opacity, 0.4);
-    transform: scale(1);
+    -webkit-transform: scale(1);
+            transform: scale(1);
   }
   50% {
     opacity: 1;
-    transform: scale(var(--fa-beat-fade-scale, 1.125));
+    -webkit-transform: scale(var(--fa-beat-fade-scale, 1.125));
+            transform: scale(var(--fa-beat-fade-scale, 1.125));
   }
 }
+
 @-webkit-keyframes fa-flip {
   50% {
-    transform: rotate3d(var(--fa-flip-x, 0), var(--fa-flip-y, 1), var(--fa-flip-z, 0), var(--fa-flip-angle, -180deg));
+    -webkit-transform: rotate3d(var(--fa-flip-x, 0), var(--fa-flip-y, 1), var(--fa-flip-z, 0), var(--fa-flip-angle, -180deg));
+            transform: rotate3d(var(--fa-flip-x, 0), var(--fa-flip-y, 1), var(--fa-flip-z, 0), var(--fa-flip-angle, -180deg));
   }
 }
+
 @keyframes fa-flip {
   50% {
-    transform: rotate3d(var(--fa-flip-x, 0), var(--fa-flip-y, 1), var(--fa-flip-z, 0), var(--fa-flip-angle, -180deg));
+    -webkit-transform: rotate3d(var(--fa-flip-x, 0), var(--fa-flip-y, 1), var(--fa-flip-z, 0), var(--fa-flip-angle, -180deg));
+            transform: rotate3d(var(--fa-flip-x, 0), var(--fa-flip-y, 1), var(--fa-flip-z, 0), var(--fa-flip-angle, -180deg));
   }
 }
+
 @-webkit-keyframes fa-spin {
   0% {
-    transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
   }
   100% {
-    transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
   }
 }
+
 @keyframes fa-spin {
   0% {
-    transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
   }
   100% {
-    transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
   }
 }
+
 .fa-rotate-90 {
-  transform: rotate(90deg);
+  -webkit-transform: rotate(90deg);
+          transform: rotate(90deg);
 }
 
 .fa-rotate-180 {
-  transform: rotate(180deg);
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
 }
 
 .fa-rotate-270 {
-  transform: rotate(270deg);
+  -webkit-transform: rotate(270deg);
+          transform: rotate(270deg);
 }
 
 .fa-flip-horizontal {
-  transform: scale(-1, 1);
+  -webkit-transform: scale(-1, 1);
+          transform: scale(-1, 1);
 }
 
 .fa-flip-vertical {
-  transform: scale(1, -1);
+  -webkit-transform: scale(1, -1);
+          transform: scale(1, -1);
 }
 
 .fa-flip-both,
 .fa-flip-horizontal.fa-flip-vertical {
-  transform: scale(-1, -1);
+  -webkit-transform: scale(-1, -1);
+          transform: scale(-1, -1);
 }
 
 .fa-rotate-by {
-  transform: rotate(var(--fa-rotate-angle, none));
+  -webkit-transform: rotate(var(--fa-rotate-angle, none));
+          transform: rotate(var(--fa-rotate-angle, none));
 }
 
 .fa-stack {
@@ -391,47 +426,47 @@
 /* Font Awesome uses the Unicode Private Use Area (PUA) to ensure screen
 readers do not read off random characters that represent icons */
 .fa-0::before {
-  content: "\30 ";
+  content: "\30";
 }
 
 .fa-1::before {
-  content: "\31 ";
+  content: "\31";
 }
 
 .fa-2::before {
-  content: "\32 ";
+  content: "\32";
 }
 
 .fa-3::before {
-  content: "\33 ";
+  content: "\33";
 }
 
 .fa-4::before {
-  content: "\34 ";
+  content: "\34";
 }
 
 .fa-5::before {
-  content: "\35 ";
+  content: "\35";
 }
 
 .fa-6::before {
-  content: "\36 ";
+  content: "\36";
 }
 
 .fa-7::before {
-  content: "\37 ";
+  content: "\37";
 }
 
 .fa-8::before {
-  content: "\38 ";
+  content: "\38";
 }
 
 .fa-9::before {
-  content: "\39 ";
+  content: "\39";
 }
 
 .fa-a::before {
-  content: "A";
+  content: "\41";
 }
 
 .fa-address-book::before {
@@ -847,11 +882,11 @@ readers do not read off random characters that represent icons */
 }
 
 .fa-asterisk::before {
-  content: "\*";
+  content: "\2a";
 }
 
 .fa-at::before {
-  content: "\@";
+  content: "\40";
 }
 
 .fa-atom::before {
@@ -871,7 +906,7 @@ readers do not read off random characters that represent icons */
 }
 
 .fa-b::before {
-  content: "B";
+  content: "\42";
 }
 
 .fa-baby::before {
@@ -1375,7 +1410,7 @@ readers do not read off random characters that represent icons */
 }
 
 .fa-c::before {
-  content: "C";
+  content: "\43";
 }
 
 .fa-cake-candles::before {
@@ -2239,7 +2274,7 @@ readers do not read off random characters that represent icons */
 }
 
 .fa-d::before {
-  content: "D";
+  content: "\44";
 }
 
 .fa-database::before {
@@ -2343,15 +2378,15 @@ readers do not read off random characters that represent icons */
 }
 
 .fa-dollar-sign::before {
-  content: "\$";
+  content: "\24";
 }
 
 .fa-dollar::before {
-  content: "\$";
+  content: "\24";
 }
 
 .fa-usd::before {
-  content: "\$";
+  content: "\24";
 }
 
 .fa-dolly::before {
@@ -2451,7 +2486,7 @@ readers do not read off random characters that represent icons */
 }
 
 .fa-e::before {
-  content: "E";
+  content: "\45";
 }
 
 .fa-ear-deaf::before {
@@ -2575,7 +2610,7 @@ readers do not read off random characters that represent icons */
 }
 
 .fa-equals::before {
-  content: "\=";
+  content: "\3d";
 }
 
 .fa-eraser::before {
@@ -2599,7 +2634,7 @@ readers do not read off random characters that represent icons */
 }
 
 .fa-exclamation::before {
-  content: "\!";
+  content: "\21";
 }
 
 .fa-expand::before {
@@ -2635,7 +2670,7 @@ readers do not read off random characters that represent icons */
 }
 
 .fa-f::before {
-  content: "F";
+  content: "\46";
 }
 
 .fa-face-angry::before {
@@ -3235,7 +3270,7 @@ readers do not read off random characters that represent icons */
 }
 
 .fa-g::before {
-  content: "G";
+  content: "\47";
 }
 
 .fa-gamepad::before {
@@ -3355,7 +3390,7 @@ readers do not read off random characters that represent icons */
 }
 
 .fa-greater-than::before {
-  content: "\>";
+  content: "\3e";
 }
 
 .fa-greater-than-equal::before {
@@ -3395,7 +3430,7 @@ readers do not read off random characters that represent icons */
 }
 
 .fa-h::before {
-  content: "H";
+  content: "\48";
 }
 
 .fa-hammer::before {
@@ -3599,7 +3634,7 @@ readers do not read off random characters that represent icons */
 }
 
 .fa-hashtag::before {
-  content: "\#";
+  content: "\23";
 }
 
 .fa-hat-cowboy::before {
@@ -3855,7 +3890,7 @@ readers do not read off random characters that represent icons */
 }
 
 .fa-i::before {
-  content: "I";
+  content: "\49";
 }
 
 .fa-i-cursor::before {
@@ -3955,7 +3990,7 @@ readers do not read off random characters that represent icons */
 }
 
 .fa-j::before {
-  content: "J";
+  content: "\4a";
 }
 
 .fa-jedi::before {
@@ -3975,7 +4010,7 @@ readers do not read off random characters that represent icons */
 }
 
 .fa-k::before {
-  content: "K";
+  content: "\4b";
 }
 
 .fa-kaaba::before {
@@ -4011,7 +4046,7 @@ readers do not read off random characters that represent icons */
 }
 
 .fa-l::before {
-  content: "L";
+  content: "\4c";
 }
 
 .fa-landmark::before {
@@ -4067,7 +4102,7 @@ readers do not read off random characters that represent icons */
 }
 
 .fa-less-than::before {
-  content: "\<";
+  content: "\3c";
 }
 
 .fa-less-than-equal::before {
@@ -4195,7 +4230,7 @@ readers do not read off random characters that represent icons */
 }
 
 .fa-m::before {
-  content: "M";
+  content: "\4d";
 }
 
 .fa-magnet::before {
@@ -4527,7 +4562,7 @@ readers do not read off random characters that represent icons */
 }
 
 .fa-n::before {
-  content: "N";
+  content: "\4e";
 }
 
 .fa-naira-sign::before {
@@ -4563,7 +4598,7 @@ readers do not read off random characters that represent icons */
 }
 
 .fa-o::before {
-  content: "O";
+  content: "\4f";
 }
 
 .fa-object-group::before {
@@ -4595,7 +4630,7 @@ readers do not read off random characters that represent icons */
 }
 
 .fa-p::before {
-  content: "P";
+  content: "\50";
 }
 
 .fa-pager::before {
@@ -4727,11 +4762,11 @@ readers do not read off random characters that represent icons */
 }
 
 .fa-percent::before {
-  content: "\%";
+  content: "\25";
 }
 
 .fa-percentage::before {
-  content: "\%";
+  content: "\25";
 }
 
 .fa-person::before {
@@ -4931,11 +4966,11 @@ readers do not read off random characters that represent icons */
 }
 
 .fa-plus::before {
-  content: "\+";
+  content: "\2b";
 }
 
 .fa-add::before {
-  content: "\+";
+  content: "\2b";
 }
 
 .fa-plus-minus::before {
@@ -4999,7 +5034,7 @@ readers do not read off random characters that represent icons */
 }
 
 .fa-q::before {
-  content: "Q";
+  content: "\51";
 }
 
 .fa-qrcode::before {
@@ -5007,7 +5042,7 @@ readers do not read off random characters that represent icons */
 }
 
 .fa-question::before {
-  content: "\?";
+  content: "\3f";
 }
 
 .fa-quote-left::before {
@@ -5027,7 +5062,7 @@ readers do not read off random characters that represent icons */
 }
 
 .fa-r::before {
-  content: "R";
+  content: "\52";
 }
 
 .fa-radiation::before {
@@ -5263,7 +5298,7 @@ readers do not read off random characters that represent icons */
 }
 
 .fa-s::before {
-  content: "S";
+  content: "\53";
 }
 
 .fa-sailboat::before {
@@ -5971,7 +6006,7 @@ readers do not read off random characters that represent icons */
 }
 
 .fa-t::before {
-  content: "T";
+  content: "\54";
 }
 
 .fa-table::before {
@@ -6447,7 +6482,7 @@ readers do not read off random characters that represent icons */
 }
 
 .fa-u::before {
-  content: "U";
+  content: "\55";
 }
 
 .fa-umbrella::before {
@@ -6667,7 +6702,7 @@ readers do not read off random characters that represent icons */
 }
 
 .fa-v::before {
-  content: "V";
+  content: "\56";
 }
 
 .fa-van-shuttle::before {
@@ -6791,7 +6826,7 @@ readers do not read off random characters that represent icons */
 }
 
 .fa-w::before {
-  content: "W";
+  content: "\57";
 }
 
 .fa-wallet::before {
@@ -6923,7 +6958,7 @@ readers do not read off random characters that represent icons */
 }
 
 .fa-x::before {
-  content: "X";
+  content: "\58";
 }
 
 .fa-x-ray::before {
@@ -6951,7 +6986,7 @@ readers do not read off random characters that represent icons */
 }
 
 .fa-y::before {
-  content: "Y";
+  content: "\59";
 }
 
 .fa-yen-sign::before {
@@ -6979,7 +7014,7 @@ readers do not read off random characters that represent icons */
 }
 
 .fa-z::before {
-  content: "Z";
+  content: "\5a";
 }
 
 .sr-only,
@@ -7006,4 +7041,5 @@ readers do not read off random characters that represent icons */
   clip: rect(0, 0, 0, 0);
   white-space: nowrap;
   border-width: 0;
-}/*# sourceMappingURL=fontawesome.css.map */
+}
+/*# sourceMappingURL=fontawesome.css.map */
