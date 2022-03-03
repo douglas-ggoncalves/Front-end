@@ -15,8 +15,19 @@
 /* ---------- End Variables ---------- */
 /* ---------- Nav ---------- */
 nav {
+  display: flex;
+  justify-content: space-between !important;
+  font-size: 1.2rem;
+  border: 1px solid red;
   background-color: #e7e8eb !important;
+}
+nav div {
+  display: flex !important;
+  flex-grow: 0 !important;
 }
 nav a span {
   color: #00B8B8;
+}
+nav a:hover {
+  color: #00B8B8 !important;
 }/*# sourceMappingURL=style.css.map */

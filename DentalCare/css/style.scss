@@ -18,10 +18,24 @@ $blue: #00B8B8;
 
 /* ---------- Nav ---------- */
 nav {
+    display: flex;
+    justify-content: space-between !important;
+    font-size: 1.2rem;
+    border: 1px solid red;
+
+    div{
+        display: flex !important;
+        flex-grow: 0 !important;
+    }
+
     background-color: $gray !important;
     a{
         span{
             color: $blue;
+        }
+
+        &:hover{
+            color: $blue !important;
         }
     }
 }
