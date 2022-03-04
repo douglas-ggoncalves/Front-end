@@ -1,6 +1,7 @@
 * {
   margin: 0;
   padding: 0;
+  font-family: 'Open Sans', sans-serif;
   border: none;
   list-style: none;
   outline: none !important;
@@ -13,21 +14,49 @@
 
 /* ---------- Variables ---------- */
 /* ---------- End Variables ---------- */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #00B8B8;
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: white;
+  width: 8px;
+}
+
 /* ---------- Nav ---------- */
 nav {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: space-between !important;
+  background-color: #e7e8eb !important;
   font-size: 1.2rem;
-  border: 1px solid red;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+nav > .row {
+  margin: 0;
+}
+
+nav ul, nav button {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+nav button.navbar-toggler {
   background-color: #e7e8eb !important;
 }
-nav div {
-  display: flex !important;
-  flex-grow: 0 !important;
-}
+
 nav a span {
   color: #00B8B8;
 }
+
 nav a:hover {
   color: #00B8B8 !important;
-}/*# sourceMappingURL=style.css.map */
+}
+/*# sourceMappingURL=style.css.map */
