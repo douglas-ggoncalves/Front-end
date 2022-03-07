@@ -34,16 +34,19 @@ $blue: #00B8B8;
 /* ---------- Nav ---------- */
 nav {
     display: flex;
+    justify-content: center;
+    align-items: center;
     background-color: $gray !important;
-
     font-size: 1.2rem;
     padding-left: 0 !important;
     padding-right: 0 !important;
 
     >.row{
+        display: flex;
+        justify-content: center;
+        align-items: center;
         margin: 0;
     }
-   
 
     ul, button{
         margin-left: auto;
@@ -76,7 +79,6 @@ nav {
 @media (min-width: 992px) { 
     nav {
         //font-size: 1.3rem;
-        
     }
 }
 
