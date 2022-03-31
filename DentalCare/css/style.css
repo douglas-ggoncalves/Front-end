@@ -98,5 +98,9 @@ nav a:hover {
   display: flex;
 }
 
+#home > .row h1 {
+  font-weight: 600;
+}
+
 /* ---------- End Home ---------- */
 /*# sourceMappingURL=style.css.map */

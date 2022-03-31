@@ -74,13 +74,19 @@ nav {
 
 /* ---------- Home ---------- */
 #home{
-    background: url('../img/home-bg.jpg') no-repeat center;
+    background: url('../img/home-bg.jpg') no-repeat  center;
     text-align: center;
     height: 92vh;
     display: flex;
     align-items: center;
     >.row{
         display: flex;
+        //text-align: justify;
+
+        h1 {
+            font-weight: 600;
+            
+        }
     }
 }
 /* ---------- End Home ---------- */
