@@ -36,6 +36,7 @@ nav {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  z-index: 999;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
@@ -103,4 +104,52 @@ nav a:hover {
 }
 
 /* ---------- End Home ---------- */
+/* ---------- About ---------- */
+#about > .row {
+  padding-bottom: 3rem;
+  padding-top: 3rem;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+#about img {
+  padding-bottom: 1rem;
+  padding-top: 1rem;
+}
+
+#about h3 {
+  color: #00B8B8;
+}
+
+#about h5 {
+  font-weight: bold;
+}
+
+#about p {
+  color: #66676a;
+  text-align: justify;
+  font-size: 0.9rem;
+}
+
+/* ---------- End About ---------- */
+/* ---------- Services ---------- */
+#services {
+  height: 92vh;
+  background-color: #e7e8eb;
+}
+
+#services > .row {
+  text-align: center;
+}
+
+#services h1 {
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+/* ---------- Services About ---------- */
 /*# sourceMappingURL=style.css.map */
