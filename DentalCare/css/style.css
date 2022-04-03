@@ -138,11 +138,16 @@ nav a:hover {
 /* ---------- End About ---------- */
 /* ---------- Services ---------- */
 #services {
-  height: 92vh;
+  min-height: 92vh;
   background-color: #e7e8eb;
+  padding-bottom: 1rem;
+  padding-top: 1rem;
 }
 
 #services > .row {
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   text-align: center;
 }
 
@@ -151,5 +156,178 @@ nav a:hover {
   text-transform: uppercase;
 }
 
-/* ---------- Services About ---------- */
+#services .elements {
+  margin-bottom: .5rem;
+  margin-top: .5rem;
+  border-radius: 8px;
+  padding-bottom: 1rem;
+  padding-top: 1rem;
+  background-color: white;
+  -webkit-box-shadow: 3px 5px 11px -2px rgba(0, 0, 0, 0.71);
+  box-shadow: 3px 5px 11px -2px rgba(0, 0, 0, 0.71);
+}
+
+#services .elements img {
+  margin-bottom: .5rem;
+  margin-top: .5rem;
+}
+
+#services .elements p {
+  font-size: 0.9rem;
+  color: #66676a;
+}
+
+/* ---------- End Services ---------- */
+/* ---------- Process ---------- */
+#process {
+  padding-bottom: 2.5rem;
+  padding-top: 1rem;
+}
+
+#process > .row {
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  text-align: center;
+}
+
+#process .elements {
+  margin-bottom: .5rem;
+  margin-top: .5rem;
+  border-radius: 8px;
+  padding-bottom: 1rem;
+  padding-top: 1rem;
+  background-color: #00B8B8;
+}
+
+#process .elements h5 {
+  color: white;
+}
+
+#process .elements img {
+  margin-bottom: .5rem;
+  margin-top: .5rem;
+}
+
+#process .elements p {
+  font-size: 0.9rem;
+  color: white;
+}
+
+/* ---------- End Process ---------- */
+/* ---------- Reviews ---------- */
+#reviews {
+  min-height: 92vh;
+  background-color: #e7e8eb;
+  padding-bottom: 1rem;
+  padding-top: 1rem;
+}
+
+#reviews > .row {
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  text-align: center;
+}
+
+#reviews .elements {
+  margin-bottom: .5rem;
+  margin-top: .5rem;
+  border-radius: 8px;
+  padding-bottom: 1rem;
+  padding-top: 1rem;
+  background-color: white;
+}
+
+#reviews .elements img {
+  margin-bottom: .5rem;
+  margin-top: .5rem;
+  border-radius: 50%;
+  height: 7rem;
+}
+
+#reviews .elements > div {
+  background-color: #e7e8eb;
+  padding: .3rem 1rem;
+  border-radius: 8px;
+  display: inline;
+}
+
+#reviews .elements i {
+  color: #00B8B8;
+}
+
+#reviews .elements p {
+  font-size: 0.9rem;
+  color: #66676a;
+}
+
+#reviews .elements h5 {
+  font-weight: 600;
+  letter-spacing: 0.1rem;
+  margin-top: 1rem;
+}
+
+/* ---------- End Reviews ---------- */
+/* ---------- Contact ---------- */
+#contact {
+  min-height: 92vh;
+}
+
+#contact > .row {
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  text-align: center;
+}
+
+#contact #form {
+  border-radius: 8px;
+  padding: 1.5rem;
+  background-color: #e7e8eb;
+}
+
+/* ---------- End Contact ---------- */
+/* ---------- Footer ---------- */
+#footer {
+  background-color: #e7e8eb;
+  padding-bottom: 1rem;
+  padding-top: 1rem;
+}
+
+#footer > .row {
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+#footer h4 {
+  color: #00B8B8;
+}
+
+#footer .elements {
+  text-align: center;
+}
+
+#footer .elements > div button {
+  margin-bottom: .5rem;
+  margin-top: .5rem;
+  border-radius: 50%;
+}
+
+/* ---------- End Footer ---------- */
+@media (min-width: 768px) {
+  #services .elements {
+    margin-left: .5rem;
+    margin-right: .5rem;
+  }
+  #process .elements {
+    margin-left: .5rem;
+    margin-right: .5rem;
+  }
+  #reviews .elements {
+    margin-left: .5rem;
+    margin-right: .5rem;
+  }
+}
 /*# sourceMappingURL=style.css.map */
