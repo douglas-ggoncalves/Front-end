@@ -5,9 +5,9 @@
     </nav>
 
     <input type="text" placeholder="Digite o nome do filme" />
-    <button>
-      Buscar
-    </button>
+      <button>
+        Buscar
+      </button>
     <hr>
 
     <Movie :movie="movie" />
@@ -17,9 +17,11 @@
 <script>
 import Movie from "./components/Movie.vue";
 import axios from "axios";
+//import Vue from 'vue'
 
 export default {
   name: "App",
+  
   data() {
     return {
       apiV3Auth: "d6f0ef55abc9bbf18dbe5089523aad16",
@@ -33,18 +35,57 @@ export default {
   components: {
     Movie,
   },
-  created(){
-    axios.get(`https://api.themoviedb.org/3/movie/popular?api_key=${this.apiV3Auth}&language=pt-BR&page=1`).then(res=> {
-      this.movie.moviesPopular = res.data.results
-    });
+  async created(){
+    for(var i=1; i<=10; i++) {
+      await axios.get(`https://api.themoviedb.org/3/movie/popular?api_key=${this.apiV3Auth}&language=pt-BR&page=${i}`).then(res=> {
+        res.data.results.forEach(element => {
+          if(element.popularity > 1000){
+            this.movie.moviesPopular.push(element)
+          }
+        })
+      });
+    }
 
-    axios.get(`https://api.themoviedb.org/3/movie/top_rated?api_key=${this.apiV3Auth}&language=pt-BR&page=1`).then(res=> {
-      this.movie.moviesTopRated = res.data.results
-    });
+    for(var x=1; x <= 50; x++) {
+      await axios.get(`https://api.themoviedb.org/3/movie/top_rated?api_key=${this.apiV3Auth}&language=pt-BR&page=${x}`).then(res=> {
+        res.data.results.forEach(element => {
+          if(element.vote_average > 8.5){
+            this.movie.moviesTopRated.push(element)
+          }
+        })
+      })
+    }
 
-    axios.get(`https://api.themoviedb.org/3/movie/upcoming?api_key=${this.apiV3Auth}&language=pt-BR`).then(res=> {
-        this.movie.moviesUpcoming = res.data.results
-    });
+    var millisecondsInOneDay = 86400000;
+    let today = Math.round(new Date() / millisecondsInOneDay);
+    var parts;
+    var mydate;
+    var split;
+    var split1;
+    var split2;
+    var split3;
+  
+    for(var z=1; z <= 100; z++) {
+      await axios.get(`https://api.themoviedb.org/3/movie/upcoming?api_key=${this.apiV3Auth}&language=pt-BR&page=${z}`).then(res=> {
+        res.data.results.forEach(element => {
+          if(element.original_language == 'en' || element.original_language == 'pt'){
+            parts = element.release_date.split('-');
+            mydate = Math.round(new Date(parts[0], parts[1] - 1, parts[2]) / millisecondsInOneDay)
+
+            if((mydate - today) < 30 && (mydate - today) > 0){
+              split = element.release_date.split("-")
+              split1 = split[0]
+              split2 = split[1]
+              split3 = split[2]
+              console.log(`${element.title} ${element.id}`)
+              element.release_date = `${split3}-${split2}-${split1}` 
+              this.movie.moviesUpcoming.push(element)
+            }
+          }
+
+        })
+      })
+    }
   }
 };
 </script>

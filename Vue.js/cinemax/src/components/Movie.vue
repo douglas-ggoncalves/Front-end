@@ -4,10 +4,13 @@
     <h2>Filmes Populares</h2>
     <div class="data">
       <div class="elements" v-for="movie in movie.moviesPopular" :key="movie.id">
+        <span>
           <img :src="'https://image.tmdb.org/t/p/w500/' + movie.backdrop_path">
           <h3>{{ movie.title }}</h3>
           <h4>Data de lançamento: {{ movie.release_date }}</h4>
-        </div>
+        </span>
+      </div>
+
     </div>
 
     <h2>Filmes Mais Bem Avaliados</h2>
@@ -23,20 +26,22 @@
       </div>
     </div>
 
-    <h2>Em breve nos cinemas</h2>
+    <h2>Filmes Recentemente Lançados</h2>
     <div class="data">
-      <div class="elements"  v-for="movie in movie.moviesUpcoming" :key="movie.id">
+      <div class="elements" v-for="movie in movie.moviesUpcoming" :key="movie.id">
+        <span v-if="movie.backdrop_path != null">
           <img :src="'https://image.tmdb.org/t/p/w500/' + movie.backdrop_path">
           <h3>{{ movie.title }}</h3>
-          <h4>Data de lançamento: {{ movie.release_date }}</h4>
-        </div>
+          <h4>{{ movie.release_date }}</h4>
+        </span>
+      </div>
     </div>
 
     <footer>
       <div>
         <div>
-        <h4>Desenvolvido por Douglas Gonçalves ©</h4>
-      </div>
+          <h4>Desenvolvido por Douglas Gonçalves ©</h4>
+        </div>
 
         <div>
           <a href="#">
@@ -71,8 +76,7 @@ export default {
   },
   props: {
     movie: Object,
-  },
-  computed: {},
+  }
 };
 </script>
 
