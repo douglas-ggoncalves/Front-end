@@ -65,7 +65,7 @@ export default {
     var split2;
     var split3;
   
-    for(var z=1; z <= 100; z++) {
+    for(var z=1; z <= 10; z++) {
       await axios.get(`https://api.themoviedb.org/3/movie/upcoming?api_key=${this.apiV3Auth}&language=pt-BR&page=${z}`).then(res=> {
         res.data.results.forEach(element => {
           if(element.original_language == 'en' || element.original_language == 'pt'){
