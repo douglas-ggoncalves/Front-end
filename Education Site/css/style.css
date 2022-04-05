@@ -19,6 +19,8 @@
   position: sticky;
   top: 0;
   z-index: 999;
+  -webkit-box-shadow: 0px 5px 13px 0px rgba(0, 0, 0, 0.41);
+  box-shadow: 0px 5px 13px 0px rgba(0, 0, 0, 0.41);
 }
 
 #home #navbar a {
@@ -129,6 +131,10 @@
 }
 
 #home #sectionPopulares > .row .elements {
+  margin-bottom: 1rem;
+}
+
+#home #sectionPopulares > .row .elements > div {
   cursor: pointer;
   padding-bottom: 1rem;
   padding-top: 1rem;
@@ -136,27 +142,91 @@
   background-color: #f0fdfa;
 }
 
-#home #sectionPopulares > .row .elements .modules {
+#home #sectionPopulares > .row .elements > div .modules {
   opacity: 0.7;
 }
 
-#home #sectionPopulares > .row .elements img {
+#home #sectionPopulares > .row .elements > div img {
   height: 5.8rem;
   margin-bottom: 1rem;
 }
 
-#home #sectionPopulares > .row .elements span {
+#home #sectionPopulares > .row .elements > div span {
   display: block;
   margin-bottom: .5rem;
 }
 
-#home #sectionPopulares > .row .elements:hover {
+#home #sectionPopulares > .row .elements > div:hover {
   background-color: #0eb582;
 }
 
-#home #sectionPopulares > .row .elements:hover span {
+#home #sectionPopulares > .row .elements > div:hover span {
   color: white;
   opacity: 1;
+}
+
+#home #sectionCourses {
+  text-align: center;
+  margin-top: 2.5rem;
+}
+
+#home #sectionCourses > .row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+#home #sectionCourses > .row div.elements {
+  padding-bottom: 1.5rem;
+  padding-top: 1.5rem;
+  margin-top: 2rem;
+  cursor: -webkit-grabbing;
+  cursor: grabbing;
+  background-color: #f0fdfa;
+  position: relative;
+}
+
+#home #sectionCourses > .row div.elements h4 {
+  margin-top: 1rem;
+}
+
+#home #sectionCourses > .row div.elements div.absolute {
+  display: none;
+  position: absolute;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  bottom: 0;
+  width: 100%;
+  padding: 1.5rem 15px;
+  color: #ffffff;
+  background-color: #0eb582;
+}
+
+#home #sectionCourses > .row div.elements div.absolute button.myBtn {
+  margin-top: .5rem;
+  cursor: pointer;
+  display: block;
+  color: #0eb582;
+  border: 1px solid #0eb582;
+  padding: .575rem .95rem;
+  line-height: 1rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#home #sectionCourses > .row div.elements div.absolute button.myBtn:hover {
+  color: #ffffff;
+  background-color: rgba(11, 10, 10, 0.871);
+}
+
+#home #sectionCourses > .row div.elements:hover > div.absolute {
+  display: -webkit-box !important;
+  display: -ms-flexbox !important;
+  display: flex !important;
 }
 
 @media (min-width: 992px) {
