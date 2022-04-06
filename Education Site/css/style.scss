@@ -19,62 +19,149 @@ $white: #ffffff;
 $black: rgba(11, 10, 10, 0.871);
 /* ---------- End Variables ---------- */
 
-// Home
-// Navbar
-#home{
-    #navbar {
-        position: sticky;
-        top: 0;
-        z-index: 999;
-        -webkit-box-shadow: 0px 5px 13px 0px rgba(0,0,0,0.41); 
-        box-shadow: 0px 5px 13px 0px rgba(0,0,0,0.41);
-        
-        a {
-            margin-right: auto;
-            font-size: 1.35rem;
+/* ---------- Scrollbar ---------- */
+::-webkit-scrollbar {
+    width: 9px;
+}
 
-            i {
-                color: $green;
+::-webkit-scrollbar-thumb {
+    background: $green;
+}
+/* ---------- End Scrollbar ---------- */
+
+#navbar {
+    position: sticky;
+    top: 0;
+    z-index: 999;
+    -webkit-box-shadow: 0px 5px 13px 0px rgba(0,0,0,0.41); 
+    box-shadow: 0px 5px 13px 0px rgba(0,0,0,0.41);
+    
+    a {
+        margin-right: auto;
+        font-size: 1.35rem;
+
+        i {
+            color: $green;
+        }
+
+        span {
+            font-weight: 600;
+        }
+    }
+
+    >button {
+        margin-right: .5rem;
+    }
+
+    ul {
+        li {
+            a {
+                font-size: 1.2rem;
+                color: black;
+
+                &:hover {
+                    color: $green;
+                }
+            }
+        }
+    }
+
+    .navbar-toggler {
+        color: black;
+        border: none !important;
+    }
+
+    .btn-outline-dark {
+        border: none !important;
+
+        &:hover {
+            color: $green;
+            background: none !important;
+        }
+    }
+}
+// End Navbar
+
+// Footer
+footer{
+    background-color: $greenLight;
+    margin-top: 1.5rem;
+    .row{
+        display: flex;
+        justify-content: center;
+        padding: 2rem 0;
+        >div{
+            margin-bottom: .5rem;
+        }
+        i {
+            color: $green;
+            font-size: 1.25rem;
+        }
+
+        span {
+            font-size: 1.25rem;
+            font-weight: 500;
+        }
+
+        p {
+            padding-top: .5rem !important;
+            opacity: 0.7;
+            font-size: 0.9rem;
+        }
+
+        button {
+            cursor: pointer;
+            padding: 0.375rem 0.75rem;
+            background-color: $green;
+
+            i{
+                color: $white;
             }
 
-            span {
-                font-weight: 600;
+            &:hover{
+                background-color: $black;
             }
         }
 
-        >button {
-            margin-right: .5rem;
-        }
+        ul{
+            padding-top: .5rem !important;
 
-        ul {
-            li {
-                a {
-                    font-size: 1.2rem;
-                    color: black;
+            li{
+                a{
+                    opacity: 0.7;
+                    color: $black;
+                    border-bottom: 1px solid $greenLight;
 
-                    &:hover {
+                    &:hover{
                         color: $green;
+                        border-bottom: 1px solid $green;
                     }
                 }
             }
         }
 
-        .navbar-toggler {
-            color: black;
-            border: none !important;
+        input{
+            border: 1px solid $green;
+            padding: 0.375rem 0.75rem;
         }
 
-        .btn-outline-dark {
-            border: none !important;
+        button#insc{
+            margin-top: .3rem;
+            color: $green;
+            border: 1px solid $green;
+            background: none;
 
-            &:hover {
-                color: $green;
-                background: none !important;
+            &:hover{
+                color: $white;
+                background: $green;
             }
         }
     }
-    // End Navbar
+}
+// End Footer
 
+// Home
+#home{
     //Banner Home
     #bannerHome {
         padding: 0 !important;
@@ -229,12 +316,59 @@ $black: rgba(11, 10, 10, 0.871);
                     }
                 }
             }
+        }
+    }
+}
 
+// About
+#about{
+    #bannerAbout{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 30vh;
+        background: url("../img/heading-bg.jpg") no-repeat center center;
+
+        .row{
+            display: flex;
+            margin-top: auto;
+            justify-content: center;
             
+            span{
+                font-size: 1.45rem;
+                opacity: 0.7;
+            }
+
+            h3{
+                font-size: 2.7rem;
+            }
+            
+            a {
+                opacity: 1;
+                color: $green;
+                border-bottom: 1px solid $greenLight;
+                &:hover {
+                    color: $green;
+                    border-bottom: 1px solid $green;
+                }
+            }
         }
     }
 
+    #courses{
+        margin-top: 2rem;
+
+        >.row{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            span{
+                opacity: 0.7;
+            }
+        }
+    }
 }
+// End About
 
 @media (min-width: 576px) { 
     
