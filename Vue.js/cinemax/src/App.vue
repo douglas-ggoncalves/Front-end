@@ -11,8 +11,10 @@
     <hr>
 
     <Movie :movie="movie" />
+    <router-view/>
   </div>
 </template>
+
 
 <script>
 import Movie from "./components/Movie.vue";
