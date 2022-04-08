@@ -1,8 +1,9 @@
 <template>
+
   <div id="main">
     <h2>Filmes Populares</h2>
     <div class="data">
-      <div class="elements" v-for="movie in movie.moviesPopular" :key="movie.id" @click="moreMetails(movie.id)">
+      <div class="elements" v-for="movie in movie.moviesPopular" :key="movie.id">
         <span>
           <img :src="'https://image.tmdb.org/t/p/w500/' + movie.backdrop_path">
           <h3>{{ movie.id }}</h3>
@@ -15,14 +16,12 @@
 
     <h2>Filmes Mais Bem Avaliados</h2>
     <div class="data">
-      <div class="elements" v-for="movie in movie.moviesTopRated" :key="movie.id" @click="moreMetails(movie.id)">
+      <div class="elements" v-for="movie in movie.moviesTopRated" :key="movie.id">
         <div>
           <img :src="'https://image.tmdb.org/t/p/w500/' + movie.backdrop_path">
           <button>
             {{ movie.vote_average }}
           </button>
-          <h3>{{ movie.id }}</h3>
-
           <h3>{{ movie.title }}</h3>
         </div>
       </div>
@@ -30,14 +29,14 @@
 
     <h2>Filmes Recentemente Lançados</h2>
     <div class="data">
-      <div class="elements" v-for="movie in movie.moviesUpcoming" :key="movie.id" @click="moreMetails(movie.id)">
+      <div class="elements" v-for="movie in movie.moviesUpcoming" :key="movie.id">
+        <a v-bind:href="`filme/${movie.id}`">
           <span v-if="movie.backdrop_path != null">
             <img :src="'https://image.tmdb.org/t/p/w500/' + movie.backdrop_path">
-          <h3>{{ movie.id }}</h3>
-
             <h3>{{ movie.title }}</h3>
             <h4>{{ movie.release_date }}</h4>
           </span>
+        </a>
       </div>
     </div>
 
@@ -61,64 +60,82 @@
           </a>
 
           <a href="#">
-          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-facebook" viewBox="0 0 16 16">
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-facebook" viewBox="0 0 16 16">
               <path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z"/>
             </svg>
           </a>
         </div>
       </div>
+      
     </footer>
     
-    <modal class="modal-open" name="moreMetails">
-      <div class="container-fluid">
-        <div class="row">
-          <img class="img-fluid" style="width: 250px" :src="moviePhotoBanner" alt="">
-          <img class="img-fluid" :src="moviePhotoBack" alt="">
-        </div>
-      </div>
-    </modal>
   </div>
 </template>
 
 <script>
-import VModal from 'vue-js-modal'
 import axios from "axios";
-import Vue from 'vue'
-import Multiselect from 'vue-multiselect'
-Vue.component('multiselect', Multiselect)
-
-Vue.use(VModal, {
-  dynamicDefaults: {height: 'auto', width: 'auto'} 
-})
 
 export default {
   data() {
     return {
       apiV3Auth: "d6f0ef55abc9bbf18dbe5089523aad16",
-      movieTitle: '',
-      moviePhotoBanner: '',
-      moviePhotoBack: '',
-      movieTagline: '',
-      movieOverview: '',
-      movieReleaseDate: '',
-      movieTimeDuration: '', // runtime(tempo de duração)
-      movieGenres: []
+      movie: {
+        moviesPopular: [],
+        moviesTopRated: [],
+        moviesUpcoming: []
+      },
     };
   },
-  props: {
-    movie: Object,
-  },
-  methods: {
-    async moreMetails(id){
-      await axios.get(`https://api.themoviedb.org/3/movie/${id}?api_key=${this.apiV3Auth}&language=pt-BR`).then(res =>{
-        //console.log(res.data.title)
-        console.log(res.data.backdrop_path)
-        this.moviePhotoBanner = 'https://image.tmdb.org/t/p/w500' + res.data.poster_path
-        this.moviePhotoBack = 'https://image.tmdb.org/t/p/w500' + res.data.backdrop_path
-      }).catch(err => {
-        console.log(err)
+  async created(){
+    for(var i=1; i<=10; i++) {
+      await axios.get(`https://api.themoviedb.org/3/movie/popular?api_key=${this.apiV3Auth}&language=pt-BR&page=${i}`).then(res=> {
+        res.data.results.forEach(element => {
+          if(element.popularity > 1000){
+            this.movie.moviesPopular.push(element)
+          }
+        })
+      });
+    }
+
+    for(var x=1; x <= 50; x++) {
+      await axios.get(`https://api.themoviedb.org/3/movie/top_rated?api_key=${this.apiV3Auth}&language=pt-BR&page=${x}`).then(res=> {
+        res.data.results.forEach(element => {
+          if(element.vote_average > 8.5){
+            this.movie.moviesTopRated.push(element)
+          }
+        })
       })
-      this.$modal.show(`moreMetails`);
+    }
+
+    var millisecondsInOneDay = 86400000;
+    let today = Math.round(new Date() / millisecondsInOneDay);
+    var parts;
+    var mydate;
+    var split;
+    var split1;
+    var split2;
+    var split3;
+  
+    for(var z=1; z <= 10; z++) {
+      await axios.get(`https://api.themoviedb.org/3/movie/upcoming?api_key=${this.apiV3Auth}&language=pt-BR&page=${z}`).then(res=> {
+        res.data.results.forEach(element => {
+          if(element.original_language == 'en' || element.original_language == 'pt'){
+            parts = element.release_date.split('-');
+            mydate = Math.round(new Date(parts[0], parts[1] - 1, parts[2]) / millisecondsInOneDay)
+
+            if((mydate - today) < 30 && (mydate - today) > 0){
+              split = element.release_date.split("-")
+              split1 = split[0]
+              split2 = split[1]
+              split3 = split[2]
+              console.log(`${element.title} ${element.id}`)
+              element.release_date = `${split3}-${split2}-${split1}` 
+              this.movie.moviesUpcoming.push(element)
+            }
+          }
+
+        })
+      })
     }
   }
 };
@@ -134,7 +151,7 @@ export default {
 }
 
 #main .elements {
-  cursor: pointer;
+  /*cursor: pointer;*/
   flex-grow: 1;
   margin-right: 0.5rem;
   margin-bottom: 0;
@@ -219,14 +236,5 @@ a:hover {
 
 ::-webkit-scrollbar-thumb:hover {
   background: rgb(153, 150, 150);
-}
-
-.vm--modal {
-  overflow-y: scroll;
-  /*height: auto !important;*/
-  height:150vh !important;
-  width: 100vh !important;
-  bottom: 2rem !important;
-  top: 2rem !important;
 }
 </style>

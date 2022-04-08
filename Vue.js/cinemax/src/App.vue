@@ -11,8 +11,10 @@
     <hr>
 
     <Movie :movie="movie" />
+    <router-view/>
   </div>
 </template>
+
 
 <script>
 import Movie from "./components/Movie.vue";
@@ -77,7 +79,6 @@ export default {
               split1 = split[0]
               split2 = split[1]
               split3 = split[2]
-              console.log(`${element.title} ${element.id}`)
               element.release_date = `${split3}-${split2}-${split1}` 
               this.movie.moviesUpcoming.push(element)
             }
