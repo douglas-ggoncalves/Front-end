@@ -362,9 +362,28 @@ footer{
             display: flex;
             justify-content: center;
             align-items: center;
+            text-align: center;
+
+            div.elements{
+                
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                border: 2px solid red;
+                background-color: $greenLight;
+                border: 1px solid $green;
+                >div{
+                    padding-bottom: 1rem;
+                padding-top: 1rem;
+                }
+              
+            }
+
             span{
                 opacity: 0.7;
             }
+
+            
         }
     }
 }
