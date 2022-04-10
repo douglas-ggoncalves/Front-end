@@ -367,11 +367,17 @@ footer{
             justify-content: center;
             align-items: center;
             text-align: center;
+            
+            h4{
+                margin-top: 1rem;
+                font-weight: 600;
+            }
 
             div.elements{
                 display: flex;
                 justify-content: center;
                 align-items: center;
+                
                 
 
                 >div{
@@ -408,24 +414,26 @@ footer{
         }
     }
 
+    //Teachers
     #teachers{
-        margin-top: 2rem;
+        margin-top: 5.0rem;
 
         >.row{
+            margin-top: 0;
             display: flex;
             justify-content: center;
             text-align: center;
 
             h3{
                 font-weight: 600;
+                margin-bottom: 0 !important;
             }
 
             div.elements{
                 cursor: pointer;
                 background-color: $greenLight;
                 padding-bottom: 1.5rem;
-                padding-top: 1.5rem;
-                margin-top: 2rem;
+                margin-top: 1rem;
                 position: relative; 
 
                 div.absolute{
@@ -479,7 +487,7 @@ footer{
 
     // Students
     #students{
-        margin-top: 2rem;
+        margin-top: 5rem;
 
         >.row{
             display: flex;
@@ -491,14 +499,16 @@ footer{
             }
 
             div.comment{
+                cursor: pointer;
                 position: relative;
                 border-radius: 10px;
-                padding: 1rem 2.5rem;
+                padding: 1rem;
                 background-color: $greenLight;
                 border: 1px solid $green;
 
                 span {
                     opacity: 0.8;
+                    font-size: 0.9rem;
                 }
             }
 
@@ -518,7 +528,7 @@ footer{
             }
 
             img{
-                margin-top: 1rem;
+                margin-top: 1.5rem;
                 width: 90px;
                 border-radius: 50%;
             }

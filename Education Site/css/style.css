@@ -385,6 +385,11 @@ footer .row button#insc:hover {
   text-align: center;
 }
 
+#about #courses > .row h4 {
+  margin-top: 1rem;
+  font-weight: 600;
+}
+
 #about #courses > .row div.elements {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -429,10 +434,11 @@ footer .row button#insc:hover {
 }
 
 #about #teachers {
-  margin-top: 2rem;
+  margin-top: 5.0rem;
 }
 
 #about #teachers > .row {
+  margin-top: 0;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -444,14 +450,14 @@ footer .row button#insc:hover {
 
 #about #teachers > .row h3 {
   font-weight: 600;
+  margin-bottom: 0 !important;
 }
 
 #about #teachers > .row div.elements {
   cursor: pointer;
   background-color: #f0fdfa;
   padding-bottom: 1.5rem;
-  padding-top: 1.5rem;
-  margin-top: 2rem;
+  margin-top: 1rem;
   position: relative;
 }
 
@@ -506,7 +512,7 @@ footer .row button#insc:hover {
 }
 
 #about #students {
-  margin-top: 2rem;
+  margin-top: 5rem;
 }
 
 #about #students > .row {
@@ -524,15 +530,17 @@ footer .row button#insc:hover {
 }
 
 #about #students > .row div.comment {
+  cursor: pointer;
   position: relative;
   border-radius: 10px;
-  padding: 1rem 2.5rem;
+  padding: 1rem;
   background-color: #f0fdfa;
   border: 1px solid #0eb582;
 }
 
 #about #students > .row div.comment span {
   opacity: 0.8;
+  font-size: 0.9rem;
 }
 
 #about #students > .row div.comment::after {
@@ -551,7 +559,7 @@ footer .row button#insc:hover {
 }
 
 #about #students > .row img {
-  margin-top: 1rem;
+  margin-top: 1.5rem;
   width: 90px;
   border-radius: 50%;
 }
