@@ -269,13 +269,17 @@ footer{
             display: flex;
             justify-content: center;
 
+            h3{
+                font-weight: 600;
+            }
+
             div.elements{
                 padding-bottom: 1.5rem;
                 padding-top: 1.5rem;
                 margin-top: 2rem;
                 cursor: grabbing;
                 background-color: $greenLight;
-                position: relative;
+                position: relative; 
 
                 h4{
                     margin-top: 1rem;
@@ -365,16 +369,33 @@ footer{
             text-align: center;
 
             div.elements{
-                
                 display: flex;
                 justify-content: center;
                 align-items: center;
-                border: 2px solid red;
-                background-color: $greenLight;
-                border: 1px solid $green;
+                
+
                 >div{
+                    background-color: $greenLight;
+                    border: 1px solid $green;
+                    width: 100vh;
                     padding-bottom: 1rem;
-                padding-top: 1rem;
+                    padding-top: 1rem;
+                    h4{
+                        margin-top: .5rem;
+                        font-size: 1.8rem;
+                        margin-bottom: 0;
+                    }
+                    img{
+                        padding-top: 1px;
+                        width: 55px;
+                        height: 60px;
+                    }
+                    p{
+                        opacity: 0.7;
+                        line-height: 1;
+                        margin-bottom: 0;
+                        margin-top: .5rem;
+                    }
                 }
               
             }
@@ -386,6 +407,129 @@ footer{
             
         }
     }
+
+    #teachers{
+        margin-top: 2rem;
+
+        >.row{
+            display: flex;
+            justify-content: center;
+            text-align: center;
+
+            h3{
+                font-weight: 600;
+            }
+
+            div.elements{
+                cursor: pointer;
+                background-color: $greenLight;
+                padding-bottom: 1.5rem;
+                padding-top: 1.5rem;
+                margin-top: 2rem;
+                position: relative; 
+
+                div.absolute{
+                    display: none;
+                    position: absolute;
+                    align-items: center;
+                    justify-content: center;
+                    bottom: 0;
+                    width: 100%;
+                    padding: 1.5rem 15px;
+                    color: white;
+                    background: rgba(0, 0, 0, 0.8);
+                    
+                    a{
+                        color: #ffffff;
+                        text-decoration: none;
+                    }
+
+                    i{
+                        margin-left: .5rem;
+                        margin-right: .5rem;
+                        font-size: 2rem;
+
+                        &:hover{
+                            color: $green;
+                        }
+                    }
+                }
+
+                &:hover{
+                    background-color: $green;
+
+                    div.absolute{
+                        display: flex !important;
+                        
+                    }
+                }
+            }
+
+            h5.left{
+                float: left;
+            }
+
+            span.right{
+                opacity: 0.8;
+                float: right;
+            }
+        }
+    }
+    // End teachers
+
+    // Students
+    #students{
+        margin-top: 2rem;
+
+        >.row{
+            display: flex;
+            justify-content: center;
+            text-align: center;
+
+            h3{
+                font-weight: 600;
+            }
+
+            div.comment{
+                position: relative;
+                border-radius: 10px;
+                padding: 1rem 2.5rem;
+                background-color: $greenLight;
+                border: 1px solid $green;
+
+                span {
+                    opacity: 0.8;
+                }
+            }
+
+            div.comment::after{
+                content: '';
+                position: absolute;
+                bottom: 0;
+                left: 50%;
+                width: 0;
+                height: 0;
+                border: 13px solid transparent;
+                border-bottom: 1px solid $greenLight;
+                border-top-color: $green;
+                border-bottom: 0;
+                margin-left: -13px;
+                margin-bottom: -13px;
+            }
+
+            img{
+                margin-top: 1rem;
+                width: 90px;
+                border-radius: 50%;
+            }
+
+            i{
+                font-size: 0.8rem;
+                color: $green;
+            }
+        }
+    }
+    // End Students
 }
 // End About
 

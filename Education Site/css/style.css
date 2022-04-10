@@ -270,6 +270,10 @@ footer .row button#insc:hover {
           justify-content: center;
 }
 
+#home #sectionCourses > .row h3 {
+  font-weight: 600;
+}
+
 #home #sectionCourses > .row div.elements {
   padding-bottom: 1.5rem;
   padding-top: 1.5rem;
@@ -391,18 +395,170 @@ footer .row button#insc:hover {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  border: 2px solid red;
-  background-color: #f0fdfa;
-  border: 1px solid #0eb582;
 }
 
 #about #courses > .row div.elements > div {
+  background-color: #f0fdfa;
+  border: 1px solid #0eb582;
+  width: 100vh;
   padding-bottom: 1rem;
   padding-top: 1rem;
 }
 
+#about #courses > .row div.elements > div h4 {
+  margin-top: .5rem;
+  font-size: 1.8rem;
+  margin-bottom: 0;
+}
+
+#about #courses > .row div.elements > div img {
+  padding-top: 1px;
+  width: 55px;
+  height: 60px;
+}
+
+#about #courses > .row div.elements > div p {
+  opacity: 0.7;
+  line-height: 1;
+  margin-bottom: 0;
+  margin-top: .5rem;
+}
+
 #about #courses > .row span {
   opacity: 0.7;
+}
+
+#about #teachers {
+  margin-top: 2rem;
+}
+
+#about #teachers > .row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  text-align: center;
+}
+
+#about #teachers > .row h3 {
+  font-weight: 600;
+}
+
+#about #teachers > .row div.elements {
+  cursor: pointer;
+  background-color: #f0fdfa;
+  padding-bottom: 1.5rem;
+  padding-top: 1.5rem;
+  margin-top: 2rem;
+  position: relative;
+}
+
+#about #teachers > .row div.elements div.absolute {
+  display: none;
+  position: absolute;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  bottom: 0;
+  width: 100%;
+  padding: 1.5rem 15px;
+  color: white;
+  background: rgba(0, 0, 0, 0.8);
+}
+
+#about #teachers > .row div.elements div.absolute a {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+#about #teachers > .row div.elements div.absolute i {
+  margin-left: .5rem;
+  margin-right: .5rem;
+  font-size: 2rem;
+}
+
+#about #teachers > .row div.elements div.absolute i:hover {
+  color: #0eb582;
+}
+
+#about #teachers > .row div.elements:hover {
+  background-color: #0eb582;
+}
+
+#about #teachers > .row div.elements:hover div.absolute {
+  display: -webkit-box !important;
+  display: -ms-flexbox !important;
+  display: flex !important;
+}
+
+#about #teachers > .row h5.left {
+  float: left;
+}
+
+#about #teachers > .row span.right {
+  opacity: 0.8;
+  float: right;
+}
+
+#about #students {
+  margin-top: 2rem;
+}
+
+#about #students > .row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  text-align: center;
+}
+
+#about #students > .row h3 {
+  font-weight: 600;
+}
+
+#about #students > .row div.comment {
+  position: relative;
+  border-radius: 10px;
+  padding: 1rem 2.5rem;
+  background-color: #f0fdfa;
+  border: 1px solid #0eb582;
+}
+
+#about #students > .row div.comment span {
+  opacity: 0.8;
+}
+
+#about #students > .row div.comment::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border: 13px solid transparent;
+  border-bottom: 1px solid #f0fdfa;
+  border-top-color: #0eb582;
+  border-bottom: 0;
+  margin-left: -13px;
+  margin-bottom: -13px;
+}
+
+#about #students > .row img {
+  margin-top: 1rem;
+  width: 90px;
+  border-radius: 50%;
+}
+
+#about #students > .row i {
+  font-size: 0.8rem;
+  color: #0eb582;
 }
 
 @media (min-width: 992px) {
