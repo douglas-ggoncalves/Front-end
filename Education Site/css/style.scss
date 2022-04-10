@@ -543,6 +543,315 @@ footer{
 }
 // End About
 
+// Courses
+#bodyCourses{
+    #bannerCourses{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 30vh;
+        background: url("../img/heading-bg.jpg") no-repeat center center;
+
+        .row{
+            display: flex;
+            margin-top: auto;
+            justify-content: center;
+            
+            span{
+                font-size: 1.45rem;
+                opacity: 0.7;
+            }
+
+            h3{
+                font-weight: 0 !important;
+                font-size: 2.7rem;
+            }
+            
+            a {
+                opacity: 1;
+                color: $green;
+                border-bottom: 1px solid $greenLight;
+                &:hover {
+                    color: $green;
+                    border-bottom: 1px solid $green;
+                }
+            }
+        }
+    }
+    
+    .row{
+        display: flex;
+        justify-content: center;
+        text-align: center;
+        margin-top: 2.5rem;
+
+        h3,h5{
+            font-weight: 600;
+        }
+
+        button.prof{
+            cursor: pointer;
+            margin-top: .5rem;
+            border: 1px solid $green;
+            background-color: $greenLight;
+            padding: 0.7rem 2rem;
+            color: $green;
+
+            &:hover{
+                color: $white;
+                background-color: $green;
+            }
+        }
+
+        div.elements{
+            position: relative;
+            margin-top: 1rem;
+            div.data{
+                padding-bottom: 1rem;
+                padding-top: 1rem;
+                border: 1px solid $green;
+            }
+            
+            >div{
+                position: relative;
+                overflow: hidden;
+                background-size: cover;
+                
+                img{
+                    -moz-transition: all 0.5s;
+                    -webkit-transition: all 0.5s;
+                    transition: all 0.5s;
+                }
+
+                span.lorem{
+                    display: block;
+                    padding-left: 1rem;
+                    padding-right: 1rem;
+                    opacity: 0.8;
+                }
+
+                hr{
+                    background-color: $green;
+                    margin-left: 1.5rem;
+                    margin-right: 1.5rem;
+                }
+
+                span.left{
+                    float: left;
+                    margin-left: 1.5rem;
+                }
+                
+                span.right{
+                    float: right;
+                    margin-right: 1.5rem;
+                }
+
+                i{
+                    color: $green;
+                }
+                
+            }
+
+            div.carrer{
+                display: inline;
+                padding: .3em .7rem;
+                position: absolute;
+                top: 0;
+                left: 0;
+                z-index: 1;
+                margin-left: 25px;
+                margin-top: 10px;
+                background-color: $white;
+                font-size: 0.9rem;
+            }
+
+            &:hover{
+                img{
+                    -moz-transform: scale(1.2);
+                    -webkit-transform: scale(1.2);
+                    transform: scale(1.2);
+                }
+            }
+        }
+    }
+}
+
+#bodyContact{
+    #bannerContact{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 30vh;
+        background: url("../img/heading-bg.jpg") no-repeat center center;
+
+        .row{
+            display: flex;
+            margin-top: auto;
+            justify-content: center;
+            text-align: center;
+            span{
+                font-size: 1.45rem;
+                opacity: 0.7;
+            }
+
+            h3{
+                font-weight: 600;
+                font-size: 2.7rem;
+            }
+            
+            a {
+                opacity: 1;
+                color: $green;
+                border-bottom: 1px solid $greenLight;
+                &:hover {
+                    color: $green;
+                    border-bottom: 1px solid $green;
+                }
+            }
+        }
+        
+    }
+
+    #sectionContact{
+        margin-top: 5rem;
+
+        >.row{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+    
+            h3{
+                font-weight: 600;
+                margin-bottom: 1rem;
+            }
+
+            div.elements{
+                margin-top: 1rem;
+                >div{
+                    border: 1px solid $green;
+                    padding-left: 1rem;
+                    padding-right: 1rem;
+                    background: $greenLight;
+                    min-height: 100%;
+
+                    padding-bottom: 1rem;
+                    padding-top: 1rem;
+                    i{
+                        margin-bottom: .5rem;
+                        color: $white;
+                        padding: 1rem;
+                        background: $green;
+                        border-radius: 50%;
+                    }
+        
+                    span{
+                        opacity: 0.8;
+                        font-size: 0.89rem;
+                        display: block;
+                    }
+                }
+            }
+
+            div.form{
+                margin-top: 1rem;
+                >div{
+                    border: 1px solid $green;
+                    padding-left: 1rem;
+                    padding-right: 1rem;
+                    background: $white;
+                    padding-bottom: 1rem;
+                    height: 100%;
+                    padding-top: 1rem;
+
+                    input,textarea{
+                        display: block;
+                        width: 100%;
+                        margin-top: 1rem;
+                        padding: .5rem .7rem;
+                        border: 1px solid $green;
+
+                        &:focus{
+                            background-color: $green;
+                            color: $white;
+                            &::placeholder{
+                                color: white;
+                            }
+                        }
+                    }
+                }
+
+                button{
+                    cursor: pointer;
+                    margin-top: 1rem;
+                    color: $green;
+                    border: 1px solid $green;
+                    padding: .5rem .7rem;
+                    background-color: $greenLight;
+
+                    &:hover{
+                        color: $white;
+                        background-color: $green;
+                    }
+                }
+            }
+        }
+    }
+
+    #sectionQuestion{
+        margin-top: 5rem;
+
+        >.row{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+    
+            h3{
+                font-weight: 600;
+                margin-bottom: 1rem;
+            }
+        }
+    }
+
+    #accordion, #accordion2{
+        text-align: justify;
+
+        .card-header{
+            background-color: $white !important;
+            
+            button{
+                color: $black !important;
+            }
+
+            button{
+                width: 100%;
+            }
+
+            i{
+                color: $green;
+                margin-left: .5rem !important;
+            }
+
+            
+        }
+
+        .card-header.active{
+            background-color: $green !important;
+            
+            button, i{
+                color: $white !important;
+            }
+        }
+        span{
+            opacity: 0.8;
+            font-size: 0.9;
+        }
+    }
+
+    
+}
+
 @media (min-width: 576px) { 
     
 }

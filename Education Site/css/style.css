@@ -569,6 +569,356 @@ footer .row button#insc:hover {
   color: #0eb582;
 }
 
+#bodyCourses #bannerCourses {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  height: 30vh;
+  background: url("../img/heading-bg.jpg") no-repeat center center;
+}
+
+#bodyCourses #bannerCourses .row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-top: auto;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+#bodyCourses #bannerCourses .row span {
+  font-size: 1.45rem;
+  opacity: 0.7;
+}
+
+#bodyCourses #bannerCourses .row h3 {
+  font-weight: 0 !important;
+  font-size: 2.7rem;
+}
+
+#bodyCourses #bannerCourses .row a {
+  opacity: 1;
+  color: #0eb582;
+  border-bottom: 1px solid #f0fdfa;
+}
+
+#bodyCourses #bannerCourses .row a:hover {
+  color: #0eb582;
+  border-bottom: 1px solid #0eb582;
+}
+
+#bodyCourses .row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  text-align: center;
+  margin-top: 2.5rem;
+}
+
+#bodyCourses .row h3, #bodyCourses .row h5 {
+  font-weight: 600;
+}
+
+#bodyCourses .row button.prof {
+  cursor: pointer;
+  margin-top: .5rem;
+  border: 1px solid #0eb582;
+  background-color: #f0fdfa;
+  padding: 0.7rem 2rem;
+  color: #0eb582;
+}
+
+#bodyCourses .row button.prof:hover {
+  color: #ffffff;
+  background-color: #0eb582;
+}
+
+#bodyCourses .row div.elements {
+  position: relative;
+  margin-top: 1rem;
+}
+
+#bodyCourses .row div.elements div.data {
+  padding-bottom: 1rem;
+  padding-top: 1rem;
+  border: 1px solid #0eb582;
+}
+
+#bodyCourses .row div.elements > div {
+  position: relative;
+  overflow: hidden;
+  background-size: cover;
+}
+
+#bodyCourses .row div.elements > div img {
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+}
+
+#bodyCourses .row div.elements > div span.lorem {
+  display: block;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  opacity: 0.8;
+}
+
+#bodyCourses .row div.elements > div hr {
+  background-color: #0eb582;
+  margin-left: 1.5rem;
+  margin-right: 1.5rem;
+}
+
+#bodyCourses .row div.elements > div span.left {
+  float: left;
+  margin-left: 1.5rem;
+}
+
+#bodyCourses .row div.elements > div span.right {
+  float: right;
+  margin-right: 1.5rem;
+}
+
+#bodyCourses .row div.elements > div i {
+  color: #0eb582;
+}
+
+#bodyCourses .row div.elements div.carrer {
+  display: inline;
+  padding: .3em .7rem;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  margin-left: 25px;
+  margin-top: 10px;
+  background-color: #ffffff;
+  font-size: 0.9rem;
+}
+
+#bodyCourses .row div.elements:hover img {
+  -webkit-transform: scale(1.2);
+  transform: scale(1.2);
+}
+
+#bodyContact #bannerContact {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  height: 30vh;
+  background: url("../img/heading-bg.jpg") no-repeat center center;
+}
+
+#bodyContact #bannerContact .row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-top: auto;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  text-align: center;
+}
+
+#bodyContact #bannerContact .row span {
+  font-size: 1.45rem;
+  opacity: 0.7;
+}
+
+#bodyContact #bannerContact .row h3 {
+  font-weight: 600;
+  font-size: 2.7rem;
+}
+
+#bodyContact #bannerContact .row a {
+  opacity: 1;
+  color: #0eb582;
+  border-bottom: 1px solid #f0fdfa;
+}
+
+#bodyContact #bannerContact .row a:hover {
+  color: #0eb582;
+  border-bottom: 1px solid #0eb582;
+}
+
+#bodyContact #sectionContact {
+  margin-top: 5rem;
+}
+
+#bodyContact #sectionContact > .row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-align: center;
+}
+
+#bodyContact #sectionContact > .row h3 {
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+#bodyContact #sectionContact > .row div.elements {
+  margin-top: 1rem;
+}
+
+#bodyContact #sectionContact > .row div.elements > div {
+  border: 1px solid #0eb582;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  background: #f0fdfa;
+  min-height: 100%;
+  padding-bottom: 1rem;
+  padding-top: 1rem;
+}
+
+#bodyContact #sectionContact > .row div.elements > div i {
+  margin-bottom: .5rem;
+  color: #ffffff;
+  padding: 1rem;
+  background: #0eb582;
+  border-radius: 50%;
+}
+
+#bodyContact #sectionContact > .row div.elements > div span {
+  opacity: 0.8;
+  font-size: 0.89rem;
+  display: block;
+}
+
+#bodyContact #sectionContact > .row div.form {
+  margin-top: 1rem;
+}
+
+#bodyContact #sectionContact > .row div.form > div {
+  border: 1px solid #0eb582;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  background: #ffffff;
+  padding-bottom: 1rem;
+  height: 100%;
+  padding-top: 1rem;
+}
+
+#bodyContact #sectionContact > .row div.form > div input, #bodyContact #sectionContact > .row div.form > div textarea {
+  display: block;
+  width: 100%;
+  margin-top: 1rem;
+  padding: .5rem .7rem;
+  border: 1px solid #0eb582;
+}
+
+#bodyContact #sectionContact > .row div.form > div input:focus, #bodyContact #sectionContact > .row div.form > div textarea:focus {
+  background-color: #0eb582;
+  color: #ffffff;
+}
+
+#bodyContact #sectionContact > .row div.form > div input:focus::-webkit-input-placeholder, #bodyContact #sectionContact > .row div.form > div textarea:focus::-webkit-input-placeholder {
+  color: white;
+}
+
+#bodyContact #sectionContact > .row div.form > div input:focus:-ms-input-placeholder, #bodyContact #sectionContact > .row div.form > div textarea:focus:-ms-input-placeholder {
+  color: white;
+}
+
+#bodyContact #sectionContact > .row div.form > div input:focus::-ms-input-placeholder, #bodyContact #sectionContact > .row div.form > div textarea:focus::-ms-input-placeholder {
+  color: white;
+}
+
+#bodyContact #sectionContact > .row div.form > div input:focus::placeholder, #bodyContact #sectionContact > .row div.form > div textarea:focus::placeholder {
+  color: white;
+}
+
+#bodyContact #sectionContact > .row div.form button {
+  cursor: pointer;
+  margin-top: 1rem;
+  color: #0eb582;
+  border: 1px solid #0eb582;
+  padding: .5rem .7rem;
+  background-color: #f0fdfa;
+}
+
+#bodyContact #sectionContact > .row div.form button:hover {
+  color: #ffffff;
+  background-color: #0eb582;
+}
+
+#bodyContact #sectionQuestion {
+  margin-top: 5rem;
+}
+
+#bodyContact #sectionQuestion > .row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-align: center;
+}
+
+#bodyContact #sectionQuestion > .row h3 {
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+#bodyContact #accordion, #bodyContact #accordion2 {
+  text-align: justify;
+}
+
+#bodyContact #accordion .card-header, #bodyContact #accordion2 .card-header {
+  background-color: #ffffff !important;
+}
+
+#bodyContact #accordion .card-header button, #bodyContact #accordion2 .card-header button {
+  color: rgba(11, 10, 10, 0.871) !important;
+}
+
+#bodyContact #accordion .card-header button, #bodyContact #accordion2 .card-header button {
+  width: 100%;
+}
+
+#bodyContact #accordion .card-header i, #bodyContact #accordion2 .card-header i {
+  color: #0eb582;
+  margin-left: .5rem !important;
+}
+
+#bodyContact #accordion .card-header.active, #bodyContact #accordion2 .card-header.active {
+  background-color: #0eb582 !important;
+}
+
+#bodyContact #accordion .card-header.active button, #bodyContact #accordion .card-header.active i, #bodyContact #accordion2 .card-header.active button, #bodyContact #accordion2 .card-header.active i {
+  color: #ffffff !important;
+}
+
+#bodyContact #accordion span, #bodyContact #accordion2 span {
+  opacity: 0.8;
+  font-size: 0.9;
+}
+
 @media (min-width: 992px) {
   #home #bannerHome a.carousel-control-prev div {
     margin-left: 2.5rem;
