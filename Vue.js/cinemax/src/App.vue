@@ -53,6 +53,9 @@ export default {
         res.data.results.forEach(element => {
           if(element.vote_average > 8.5){
             this.movie.moviesTopRated.push(element)
+            if(!element.backdrop_path){
+              console.log("")
+            }
           }
         })
       })

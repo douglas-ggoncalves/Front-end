@@ -1,70 +1,56 @@
 <template>
   <div id="main">
-<!-- Teachers -->
-<div class="swiper">
-  <!-- Additional required wrapper -->
-  <div class="swiper-wrapper">
-    <!-- Slides -->
-    <div class="swiper-slide">
-              <img class="img-fluid" src="https://static8.depositphotos.com/1003924/886/i/600/depositphotos_8868243-stock-photo-spectrum-multicolored-eye-macro.jpg" alt="">
+
+    <div class="row text-center">
+      <h2>Filmes Populares</h2>
+      <carousel :per-page="3">
+        <slide v-for="movie in movie.moviesPopular" :key="movie.id" @click="moreMetails(movie.id)">
+          <div class="elements" >
+            <span>
+              <img :src="'https://image.tmdb.org/t/p/w500/' + movie.backdrop_path">
+              <h3>{{ movie.id }}</h3>
+              <h3>{{ movie.title }}</h3>
+              <h4>Data de lançamento: {{ movie.release_date }}</h4>
+            </span>
+          </div>
+        </slide>
+      </carousel>
     </div>
-    <div class="swiper-slide">
-              <img class="img-fluid" src="https://s1.static.brasilescola.uol.com.br/be/conteudo/images/imagem-em-lente-convexa.jpg" alt="">
+    
+    <div class="row text-center">
+      <h2>Filmes Mais Bem Avaliados</h2>
+      <carousel :per-page="3">
+        <slide v-for="movie in movie.moviesTopRated" :key="movie.id" @click="moreMetails(movie.id)">
+          <div class="elements">
+            <div>
+              <img :src="'https://image.tmdb.org/t/p/w500/' + movie.backdrop_path">
+              <button>
+                {{ movie.vote_average }}
+              </button>
+              <h3>{{ movie.id }}</h3>
 
-    </div>
-              <img class="img-fluid" src="https://cdn.pixabay.com/photo/2012/11/21/17/02/lion-66898_960_720.jpg" alt="">
-    <div class="swiper-slide"></div>
-    ...
-  </div>
-  <!-- If we need pagination -->
-  <div class="swiper-pagination"></div>
-
-  <!-- If we need navigation buttons -->
-  <div class="swiper-button-prev"></div>
-  <div class="swiper-button-next"></div>
-
-  <!-- If we need scrollbar -->
-  <div class="swiper-scrollbar"></div>
-</div>
-
-    <div class="data">
-      <div class="elements" v-for="movie in movie.moviesPopular" :key="movie.id" @click="moreMetails(movie.id)">
-        <span>
-          <img :src="'https://image.tmdb.org/t/p/w500/' + movie.backdrop_path">
-          <h3>{{ movie.id }}</h3>
-          <h3>{{ movie.title }}</h3>
-          <h4>Data de lançamento: {{ movie.release_date }}</h4>
-        </span>
-      </div>
-
+              <h3>{{ movie.title }}</h3>
+            </div>
+          </div>
+        </slide>
+      </carousel>
     </div>
 
-    <h2>Filmes Mais Bem Avaliados</h2>
-    <div class="data">
-      <div class="elements" v-for="movie in movie.moviesTopRated" :key="movie.id" @click="moreMetails(movie.id)">
-        <div>
-          <img :src="'https://image.tmdb.org/t/p/w500/' + movie.backdrop_path">
-          <button>
-            {{ movie.vote_average }}
-          </button>
-          <h3>{{ movie.id }}</h3>
+    <div class="row text-center">
+      <h2>Filmes Recentemente Lançados</h2>
+      <carousel :per-page="3">
+        <slide v-for="movie in movie.moviesUpcoming" :key="movie.id" @click="moreMetails(movie.id)">
+          <div class="elements" v-if="movie.backdrop_path != null">
+            <span >
+              <img :src="'https://image.tmdb.org/t/p/w500/' + movie.backdrop_path">
+              <h3>{{ movie.id }}</h3>
 
-          <h3>{{ movie.title }}</h3>
-        </div>
-      </div>
-    </div>
-
-    <h2>Filmes Recentemente Lançados</h2>
-    <div class="data">
-      <div class="elements" v-for="movie in movie.moviesUpcoming" :key="movie.id" @click="moreMetails(movie.id)">
-          <span v-if="movie.backdrop_path != null">
-            <img :src="'https://image.tmdb.org/t/p/w500/' + movie.backdrop_path">
-          <h3>{{ movie.id }}</h3>
-
-            <h3>{{ movie.title }}</h3>
-            <h4>{{ movie.release_date }}</h4>
-          </span>
-      </div>
+              <h3>{{ movie.title }}</h3>
+              <h4>{{ movie.release_date }}</h4>
+            </span>
+          </div>
+        </slide>
+      </carousel>
     </div>
 
     <footer>
@@ -109,27 +95,15 @@
   </div>
 </template>
 
-<script type="module">
-  import Swiper from 'https://unpkg.com/swiper@8/swiper-bundle.esm.browser.min.js'
-
-this.swiper = new Swiper(".mySwiper", {
-    loop: true,
-    slidesPerView: 1,
-    spaceBetween: 30,
-    //freeMode: true,
-    pagination: {
-    el: ".swiper-pagination",
-    clickable: true,
-    }
-});
-</script>
-
 <script>
 import VModal from 'vue-js-modal'
 import axios from "axios";
 import Vue from 'vue'
 import Multiselect from 'vue-multiselect'
+import VueCarousel from 'vue-carousel';
+
 Vue.component('multiselect', Multiselect)
+Vue.use(VueCarousel);
 
 Vue.use(VModal, {
   dynamicDefaults: {height: 'auto', width: 'auto'} 
@@ -139,7 +113,6 @@ export default {
   
   data() {
     return {
-      swiper: '',
       apiV3Auth: "d6f0ef55abc9bbf18dbe5089523aad16",
       movieTitle: '',
       moviePhotoBanner: '',
@@ -171,12 +144,9 @@ export default {
 </script>
 
 <style scoped>
-.data {
-  display: flex;
-  margin: 0 2rem;
-  /*flex-wrap: wrap;*/
-  overflow-y: scroll;
-  padding-bottom: 1rem;
+.row{
+  margin-left: .5rem;
+  margin-right: .5rem;
 }
 
 #main .elements {
@@ -185,7 +155,6 @@ export default {
   margin-right: 0.5rem;
   margin-bottom: 0;
 }
-
 
 div.elements div > button {
   position: absolute;

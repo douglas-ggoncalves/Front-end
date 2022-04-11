@@ -1,39 +1,240 @@
 <template>
-  <swiper
-    :slides-per-view="3"
-    :space-between="50"
-    @swiper="onSwiper"
-    @slideChange="onSlideChange"
-  >
-    <swiper-slide>Slide 1</swiper-slide>
-    <swiper-slide>Slide 2</swiper-slide>
-    <swiper-slide>Slide 3</swiper-slide>
-    ...
-  </swiper>
-</template>
-<script>
-  // Import Swiper Vue.js components
-  import { Swiper, SwiperSlide } from 'swiper';
 
-  // Import Swiper styles
-  import 'swiper/swiper-bundle.min.css';
- 
-  export default {
-    components: {
-      Swiper,
-      SwiperSlide,
-    },
-    setup() {
-      const onSwiper = (swiper) => {
-        console.log(swiper);
-      };
-      const onSlideChange = () => {
-        console.log('slide change');
-      };
-      return {
-        onSwiper,
-        onSlideChange,
-      };
-    },
-  };
+  <div id="main">
+    <h2>Filmes Populares</h2>
+    <div class="data">
+      <div class="elements" v-for="movie in movie.moviesPopular" :key="movie.id">
+        <span>
+          <img :src="'https://image.tmdb.org/t/p/w500/' + movie.backdrop_path">
+          <h3>{{ movie.id }}</h3>
+          <h3>{{ movie.title }}</h3>
+          <h4>Data de lançamento: {{ movie.release_date }}</h4>
+        </span>
+      </div>
+
+    </div>
+
+    <h2>Filmes Mais Bem Avaliados</h2>
+    <div class="data">
+      <div class="elements" v-for="movie in movie.moviesTopRated" :key="movie.id">
+        <div>
+          <img :src="'https://image.tmdb.org/t/p/w500/' + movie.backdrop_path">
+          <button>
+            {{ movie.vote_average }}
+          </button>
+          <h3>{{ movie.title }}</h3>
+        </div>
+      </div>
+    </div>
+
+    <h2>Filmes Recentemente Lançados</h2>
+    <div class="data">
+      <div class="elements" v-for="movie in movie.moviesUpcoming" :key="movie.id">
+        <a v-bind:href="`filme/${movie.id}`">
+          <span v-if="movie.backdrop_path != null">
+            <img :src="'https://image.tmdb.org/t/p/w500/' + movie.backdrop_path">
+            <h3>{{ movie.title }}</h3>
+            <h4>{{ movie.release_date }}</h4>
+          </span>
+        </a>
+      </div>
+    </div>
+
+    <footer>
+      <div>
+        <div>
+          <h4>Desenvolvido por Douglas Gonçalves ©</h4>
+        </div>
+
+        <div>
+          <a href="#">
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-github" viewBox="0 0 16 16">
+              <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"/>
+            </svg>
+          </a>
+
+          <a href="#">
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-instagram" viewBox="0 0 16 16">
+              <path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.917 3.917 0 0 0-1.417.923A3.927 3.927 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.916 3.916 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.926 3.926 0 0 0-.923-1.417A3.911 3.911 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0h.003zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599.28.28.453.546.598.92.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.47 2.47 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.478 2.478 0 0 1-.92-.598 2.48 2.48 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233 0-2.136.008-2.388.046-3.231.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92.28-.28.546-.453.92-.598.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045v.002zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92zm-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217zm0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334z"/>
+            </svg>
+          </a>
+
+          <a href="#">
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-facebook" viewBox="0 0 16 16">
+              <path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+      
+    </footer>
+    
+  </div>
+</template>
+
+<script>
+import axios from "axios";
+
+export default {
+  data() {
+    return {
+      apiV3Auth: "d6f0ef55abc9bbf18dbe5089523aad16",
+      movie: {
+        moviesPopular: [],
+        moviesTopRated: [],
+        moviesUpcoming: []
+      },
+    };
+  },
+  async created(){
+    for(var i=1; i<=10; i++) {
+      await axios.get(`https://api.themoviedb.org/3/movie/popular?api_key=${this.apiV3Auth}&language=pt-BR&page=${i}`).then(res=> {
+        res.data.results.forEach(element => {
+          if(element.popularity > 1000){
+            this.movie.moviesPopular.push(element)
+          }
+        })
+      });
+    }
+
+    for(var x=1; x <= 50; x++) {
+      await axios.get(`https://api.themoviedb.org/3/movie/top_rated?api_key=${this.apiV3Auth}&language=pt-BR&page=${x}`).then(res=> {
+        res.data.results.forEach(element => {
+          if(element.vote_average > 8.5){
+            this.movie.moviesTopRated.push(element)
+          }
+        })
+      })
+    }
+
+    var millisecondsInOneDay = 86400000;
+    let today = Math.round(new Date() / millisecondsInOneDay);
+    var parts;
+    var mydate;
+    var split;
+    var split1;
+    var split2;
+    var split3;
+  
+    for(var z=1; z <= 10; z++) {
+      await axios.get(`https://api.themoviedb.org/3/movie/upcoming?api_key=${this.apiV3Auth}&language=pt-BR&page=${z}`).then(res=> {
+        res.data.results.forEach(element => {
+          if(element.original_language == 'en' || element.original_language == 'pt'){
+            parts = element.release_date.split('-');
+            mydate = Math.round(new Date(parts[0], parts[1] - 1, parts[2]) / millisecondsInOneDay)
+
+            if((mydate - today) < 30 && (mydate - today) > 0){
+              split = element.release_date.split("-")
+              split1 = split[0]
+              split2 = split[1]
+              split3 = split[2]
+              console.log(`${element.title} ${element.id}`)
+              element.release_date = `${split3}-${split2}-${split1}` 
+              this.movie.moviesUpcoming.push(element)
+            }
+          }
+
+        })
+      })
+    }
+  }
+};
 </script>
+
+<style scoped>
+.data {
+  display: flex;
+  margin: 0 2rem;
+  /*flex-wrap: wrap;*/
+  overflow-y: scroll;
+  padding-bottom: 1rem;
+}
+
+#main .elements {
+  /*cursor: pointer;*/
+  flex-grow: 1;
+  margin-right: 0.5rem;
+  margin-bottom: 0;
+}
+
+
+div.elements div > button {
+  position: absolute;
+  right: 0;
+  padding: 0 !important;
+  background-color: white;
+  margin: 0.3rem;
+  border: 2px solid rgb(148, 173, 110);
+  height: 2rem;
+  font-size: 1.05rem;
+  width: 2rem;
+  border-radius: 50%;
+}
+
+div.elements div {
+  position: relative;
+}
+
+#main {
+  text-align: left;
+}
+
+h2 {
+  font-family: "Source Sans Pro", Arial, sans-serif;
+  margin: 3rem 0 1rem 2rem;
+}
+
+h3 {
+  color: #212529 !important;
+  font-family: "Source Sans Pro", Arial, sans-serif;
+}
+
+footer {
+  background-color: black;
+  margin-top: 1rem;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.7rem;
+}
+
+footer h4 {
+  color: #a4b0bd !important;
+  margin: 0;
+}
+
+a {
+  color: rgb(185, 179, 179);
+  text-decoration: none;
+  margin-left: .5rem;
+}
+
+a:hover {
+  color: rgb(173, 164, 164);
+  
+}
+</style>
+
+<style>
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 7px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: none;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: rgb(185, 179, 179);
+  border-radius: 8px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(153, 150, 150);
+}
+</style>
