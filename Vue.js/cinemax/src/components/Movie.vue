@@ -1,8 +1,32 @@
 <template>
   <div id="main">
+<!-- Teachers -->
+<div class="swiper">
+  <!-- Additional required wrapper -->
+  <div class="swiper-wrapper">
+    <!-- Slides -->
+    <div class="swiper-slide">
+              <img class="img-fluid" src="https://static8.depositphotos.com/1003924/886/i/600/depositphotos_8868243-stock-photo-spectrum-multicolored-eye-macro.jpg" alt="">
+    </div>
+    <div class="swiper-slide">
+              <img class="img-fluid" src="https://s1.static.brasilescola.uol.com.br/be/conteudo/images/imagem-em-lente-convexa.jpg" alt="">
 
+    </div>
+              <img class="img-fluid" src="https://cdn.pixabay.com/photo/2012/11/21/17/02/lion-66898_960_720.jpg" alt="">
+    <div class="swiper-slide"></div>
+    ...
+  </div>
+  <!-- If we need pagination -->
+  <div class="swiper-pagination"></div>
 
-    <h2>Filmes Populares</h2>
+  <!-- If we need navigation buttons -->
+  <div class="swiper-button-prev"></div>
+  <div class="swiper-button-next"></div>
+
+  <!-- If we need scrollbar -->
+  <div class="swiper-scrollbar"></div>
+</div>
+
     <div class="data">
       <div class="elements" v-for="movie in movie.moviesPopular" :key="movie.id" @click="moreMetails(movie.id)">
         <span>
@@ -85,8 +109,22 @@
   </div>
 </template>
 
-<script>
+<script type="module">
+  import Swiper from 'https://unpkg.com/swiper@8/swiper-bundle.esm.browser.min.js'
 
+this.swiper = new Swiper(".mySwiper", {
+    loop: true,
+    slidesPerView: 1,
+    spaceBetween: 30,
+    //freeMode: true,
+    pagination: {
+    el: ".swiper-pagination",
+    clickable: true,
+    }
+});
+</script>
+
+<script>
 import VModal from 'vue-js-modal'
 import axios from "axios";
 import Vue from 'vue'
@@ -101,6 +139,7 @@ export default {
   
   data() {
     return {
+      swiper: '',
       apiV3Auth: "d6f0ef55abc9bbf18dbe5089523aad16",
       movieTitle: '',
       moviePhotoBanner: '',
