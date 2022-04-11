@@ -1,5 +1,7 @@
 <template>
   <div id="main">
+
+
     <h2>Filmes Populares</h2>
     <div class="data">
       <div class="elements" v-for="movie in movie.moviesPopular" :key="movie.id" @click="moreMetails(movie.id)">
@@ -42,6 +44,7 @@
     </div>
 
     <footer>
+      
       <div>
         <div>
           <h4>Desenvolvido por Douglas Gonçalves ©</h4>
@@ -67,6 +70,8 @@
           </a>
         </div>
       </div>
+
+      
     </footer>
     
     <modal class="modal-open" name="moreMetails">
@@ -81,6 +86,7 @@
 </template>
 
 <script>
+
 import VModal from 'vue-js-modal'
 import axios from "axios";
 import Vue from 'vue'
@@ -92,6 +98,7 @@ Vue.use(VModal, {
 })
 
 export default {
+  
   data() {
     return {
       apiV3Auth: "d6f0ef55abc9bbf18dbe5089523aad16",
