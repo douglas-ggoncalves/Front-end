@@ -1,23 +1,20 @@
 <template>
   <div id="main">
-
-    <div class="row text-center">
+    <div class="data text-center">
       <h2>Filmes Populares</h2>
       <carousel :per-page="3">
         <slide v-for="movie in movie.moviesPopular" :key="movie.id" @click="moreMetails(movie.id)">
-          <div class="elements" >
-            <span>
+          <div class="elements">
               <img :src="'https://image.tmdb.org/t/p/w500/' + movie.backdrop_path">
               <h3>{{ movie.id }}</h3>
               <h3>{{ movie.title }}</h3>
               <h4>Data de lançamento: {{ movie.release_date }}</h4>
-            </span>
           </div>
         </slide>
       </carousel>
     </div>
     
-    <div class="row text-center">
+    <div class="data text-center">
       <h2>Filmes Mais Bem Avaliados</h2>
       <carousel :per-page="3">
         <slide v-for="movie in movie.moviesTopRated" :key="movie.id" @click="moreMetails(movie.id)">
@@ -36,11 +33,11 @@
       </carousel>
     </div>
 
-    <div class="row text-center">
+    <div class="data text-center">
       <h2>Filmes Recentemente Lançados</h2>
       <carousel :per-page="3">
         <slide v-for="movie in movie.moviesUpcoming" :key="movie.id" @click="moreMetails(movie.id)">
-          <div class="elements" v-if="movie.backdrop_path != null">
+          <div class="elements">
             <span >
               <img :src="'https://image.tmdb.org/t/p/w500/' + movie.backdrop_path">
               <h3>{{ movie.id }}</h3>
@@ -80,8 +77,6 @@
           </a>
         </div>
       </div>
-
-      
     </footer>
     
     <modal class="modal-open" name="moreMetails">
@@ -110,7 +105,6 @@ Vue.use(VModal, {
 })
 
 export default {
-  
   data() {
     return {
       apiV3Auth: "d6f0ef55abc9bbf18dbe5089523aad16",
@@ -125,13 +119,13 @@ export default {
     };
   },
   props: {
-    movie: Object,
+    movie: Object
   },
   methods: {
     async moreMetails(id){
       await axios.get(`https://api.themoviedb.org/3/movie/${id}?api_key=${this.apiV3Auth}&language=pt-BR`).then(res =>{
         //console.log(res.data.title)
-        console.log(res.data.backdrop_path)
+        //console.log(res.data.backdrop_path)
         this.moviePhotoBanner = 'https://image.tmdb.org/t/p/w500' + res.data.poster_path
         this.moviePhotoBack = 'https://image.tmdb.org/t/p/w500' + res.data.backdrop_path
       }).catch(err => {
@@ -143,11 +137,19 @@ export default {
 };
 </script>
 
-<style scoped>
-.row{
-  margin-left: .5rem;
-  margin-right: .5rem;
+<style>
+.VueCarousel-dot-container{
+  margin-top: 0 !important;
+  margin-bottom: auto;
 }
+</style>
+
+<style scoped>
+#main{
+  text-align: center;
+}
+
+
 
 #main .elements {
   cursor: pointer;
@@ -156,7 +158,7 @@ export default {
   margin-bottom: 0;
 }
 
-div.elements div > button {
+.elements div > button {
   position: absolute;
   right: 0;
   padding: 0 !important;
@@ -169,7 +171,7 @@ div.elements div > button {
   border-radius: 50%;
 }
 
-div.elements div {
+.elements div {
   position: relative;
 }
 

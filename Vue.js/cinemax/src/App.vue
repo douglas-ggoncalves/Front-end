@@ -10,11 +10,10 @@
       </button>
     <hr>
 
-    <Movie :movie="movie" />
+    <Movie :movie="movie"/>
     <router-view/>
   </div>
 </template>
-
 
 <script>
 import Movie from "./components/Movie.vue";
@@ -53,11 +52,9 @@ export default {
         res.data.results.forEach(element => {
           if(element.vote_average > 8.5){
             this.movie.moviesTopRated.push(element)
-            if(!element.backdrop_path){
-              console.log("")
-            }
           }
         })
+       
       })
     }
 
@@ -76,17 +73,17 @@ export default {
           if(element.original_language == 'en' || element.original_language == 'pt'){
             parts = element.release_date.split('-');
             mydate = Math.round(new Date(parts[0], parts[1] - 1, parts[2]) / millisecondsInOneDay)
-
-            if((mydate - today) < 30 && (mydate - today) > 0){
-              split = element.release_date.split("-")
-              split1 = split[0]
-              split2 = split[1]
-              split3 = split[2]
-              element.release_date = `${split3}-${split2}-${split1}` 
-              this.movie.moviesUpcoming.push(element)
+            if(element.backdrop_path != null){
+              if((mydate - today) < 30 && (mydate - today) > 0){
+                split = element.release_date.split("-")
+                split1 = split[0]
+                split2 = split[1]
+                split3 = split[2]
+                element.release_date = `${split3}-${split2}-${split1}` 
+                this.movie.moviesUpcoming.push(element)
+              }
             }
           }
-
         })
       })
     }
