@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Style Sheet CSS -->
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+
+  <!-- Normalize -->
+  <link rel="stylesheet" href="css/normalize.css">
+
+  <!-- JavaScript -->
+  <script src="js/script.js"></script>
+
+  <!-- Font Awesome - Icons -->
+  <link href="font_awesome/css/all.css" rel="stylesheet">
+
+  <!--[if lt IE 9]>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
+	<![endif]-->
+
+  <title>Title Website</title>
+</head>
+<body>
+
+  <div class="row rightInfo">
+    <div class="row closeMenu">
+      <div class="col">
+        <button onclick="closeMenuInfo()">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+    </div>
+    
+    <div class="row data">
+      <div class="col-12 elements">
+        <div>
+          <i class="fa-solid fa-phone"></i>
+          <h5>Número de Contato</h5>
+    
+          <span>(62)9999-8888</span>
+          <span>(62)99999-8888</span>
+        </div>
+      </div>
+      
+      <div class="col-12 elements">
+        <div>
+          <i class="fa-solid fa-envelope"></i>
+          <h5>Email de Contato</h5>
+    
+          <span>email-empresa@gmail.com</span>
+          <span>email-empresa@outlook.com</span>
+        </div>
+      </div>
+      
+      <div class="col-12 elements">
+        <div>
+          <i class="fa-solid fa-location-dot"></i>
+          <h5>Localização</h5>
+    
+          <span>(62)9999-8888</span>
+          <span>(62)99999-8888</span>
+        </div>
+      </div>
+      
+      <div class="col-12 elements">
+        <div>
+          <hr>
+          <a href="https://twitter.com/" target="ablank">
+            <i class="fa-brands fa-twitter"></i>
+          </a>
+          <a href="https://twitter.com/" target="ablank">
+            <i class="fa-brands fa-facebook-f"></i>
+          </a>
+          <a href="https://twitter.com/" target="ablank">
+            <i class="fa-brands fa-instagram"></i>
+          </a>
+          <a href="https://twitter.com/" target="ablank">
+            <i class="fa-brands fa-linkedin"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Nav -->
+  <nav class="navbar navbar-expand-lg navbar-light" id="navbar">
+    <a class="navbar-brand ml-lg-5" href="#">
+      <span class="orange">D'</span><span>Bloco</span>
+    </a>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#myNavbar" aria-controls="myNavbar"
+      aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="navbar-nav mx-lg-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="#home">Home</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="#sobre">Sobre</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="#servicos">Servicos</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="#projetos">Projetos</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="#preco">Preço</a>
+        </li>
+        
+        <li class="nav-item">
+          <a class="nav-link" href="#contato">Contato</a>
+        </li>
+        
+        <li class="nav-item">
+          <a class="nav-link" href="#blogs">Blogs</a>
+        </li>
+      </ul>
+    </div>
+
+    <div>
+      <button class="btn btn-outline-dark" type="button" onclick="openMenuInfo()">
+        <i class="fa-solid fa-circle-info"></i>
+      </button>
+      
+      <button class="btn btn-outline-dark" type="button">
+        <i class="fa-solid fa-magnifying-glass"></i>
+      </button>
+      <button class="btn btn-outline-dark" type="button">
+        <i class="fa-solid fa-user"></i>
+      </button>
+    </div>
+  </nav>
+  <!-- ../Nav -->
+    
+  <div style="height: 5000px;">
+
+  </div>
+
+  <script>
+    function openMenuInfo(){
+      document.getElementsByClassName("rightInfo")[0].style.display = 'block'
+    }
+
+    function closeMenuInfo(){
+      document.getElementsByClassName("rightInfo")[0].style.display = 'none'
+    }
+  </script>
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+    integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+    crossorigin="anonymous"></script>
+  <script src="js/bootstrap.min.js"></script>
+</body>
+</html>

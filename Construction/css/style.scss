@@ -1,0 +1,161 @@
+*{
+    margin: 0;
+    padding: 0;
+    border: none;
+    list-style: none;
+    outline: none !important;
+    text-decoration: none !important;
+    transition: all 0.2s;
+    -webkit-transition: all 0.2s;
+    -moz-transition: all 0.2s;
+    -o-transition: all 0.2s;
+}
+
+/* ---------- Variables ---------- */
+
+$white: #ffffff;
+$gray: #eee;
+$grayDark: rgb(150, 143, 143);
+$black: rgb(17, 17, 17);
+$orange: rgb(245, 191, 35);
+$box-shadow: 0px 5px 13px 0px rgba(0,0,0,0.41);
+
+/* ---------- End Variables ---------- */
+
+html, body{
+    height: 100%;
+}
+div.row.rightInfo{
+    position: absolute;
+    display: block;
+    margin: 0;
+    padding: 0;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    width: 50vh;
+    background-color: white;
+    z-index: 1000;
+    text-align: center !important;
+    
+    >.row{
+        margin: 0;
+        padding: 0;
+    }
+
+    .row.closeMenu{
+        font-size: 2rem;
+        height: 5vh;
+        text-align: right;
+        font-weight: bold;
+        button{
+            cursor: pointer;
+            background: none;
+        }
+    }
+
+    >.row.data{
+        display: flex;
+        align-items: center;
+        height: 95vh;
+
+        div.elements{
+            display: flex;
+            justify-content: center !important;
+    
+            span{
+                display: block;
+                color: $grayDark;
+            }
+
+            a{
+                i{
+                    color: $black;
+                    font-size: 2rem;
+                    padding: 0.35rem 0.7rem;
+                    border: 1px solid $black;
+                }
+
+                &:hover{
+                    i{
+                        border: 1px solid $orange;
+                        color: $white;
+                        background-color: $orange;
+                    }
+                    
+                }
+            }
+        }
+    }
+
+    i{
+        font-size: 2rem;
+        font-weight: 600 !important;
+        color: $black;
+    }
+}
+#navbar {
+    position: sticky;
+    top: 0;
+    z-index: 999;
+    -webkit-box-shadow: $box-shadow; 
+    box-shadow: $box-shadow;
+    opacity: 0.6;
+    
+    a {
+        color: $black;
+        margin-right: auto;
+        font-size: 1.35rem;
+
+        span {
+            font-weight: 600;
+        }
+        
+        span.orange{
+            color: $orange;
+        }
+    }
+
+    button {
+        padding: 0.25rem 0.75rem;
+        margin-right: .5rem;
+        font-size: 1.25rem;
+        //background-color: $gray;
+    }
+
+    .btn-outline-dark {
+        border: none !important;
+
+        &:hover {
+            color: $white;
+            background-color: $orange;
+        }
+    }
+
+    ul{
+        li{
+            a{
+                &:hover{
+                    color: $orange;
+                }
+            }
+        }
+    }
+}
+// End Navbar
+
+@media (min-width: 576px) { 
+    
+}
+
+@media (min-width: 768px) { 
+    
+}
+
+@media (min-width: 992px) { 
+    
+}
+
+@media (min-width: 1200px) { 
+    
+}

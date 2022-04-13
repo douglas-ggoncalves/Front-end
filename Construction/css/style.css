@@ -1,0 +1,136 @@
+* {
+  margin: 0;
+  padding: 0;
+  border: none;
+  list-style: none;
+  outline: none !important;
+  text-decoration: none !important;
+  transition: all 0.2s;
+  -webkit-transition: all 0.2s;
+  -moz-transition: all 0.2s;
+  -o-transition: all 0.2s;
+}
+
+/* ---------- Variables ---------- */
+/* ---------- End Variables ---------- */
+html, body {
+  height: 100%;
+}
+
+div.row.rightInfo {
+  position: absolute;
+  display: block;
+  margin: 0;
+  padding: 0;
+  top: 0;
+  right: 0;
+  height: 100vh;
+  width: 50vh;
+  background-color: white;
+  z-index: 1000;
+  text-align: center !important;
+}
+
+div.row.rightInfo > .row {
+  margin: 0;
+  padding: 0;
+}
+
+div.row.rightInfo .row.closeMenu {
+  font-size: 2rem;
+  height: 5vh;
+  text-align: right;
+  font-weight: bold;
+}
+
+div.row.rightInfo .row.closeMenu button {
+  cursor: pointer;
+  background: none;
+}
+
+div.row.rightInfo > .row.data {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 95vh;
+}
+
+div.row.rightInfo > .row.data div.elements {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center !important;
+      -ms-flex-pack: center !important;
+          justify-content: center !important;
+}
+
+div.row.rightInfo > .row.data div.elements span {
+  display: block;
+  color: #968f8f;
+}
+
+div.row.rightInfo > .row.data div.elements a i {
+  color: #111111;
+  font-size: 2rem;
+  padding: 0.35rem 0.7rem;
+  border: 1px solid #111111;
+}
+
+div.row.rightInfo > .row.data div.elements a:hover i {
+  border: 1px solid #f5bf23;
+  color: #ffffff;
+  background-color: #f5bf23;
+}
+
+div.row.rightInfo i {
+  font-size: 2rem;
+  font-weight: 600 !important;
+  color: #111111;
+}
+
+#navbar {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  -webkit-box-shadow: 0px 5px 13px 0px rgba(0, 0, 0, 0.41);
+  box-shadow: 0px 5px 13px 0px rgba(0, 0, 0, 0.41);
+  opacity: 0.6;
+}
+
+#navbar a {
+  color: #111111;
+  margin-right: auto;
+  font-size: 1.35rem;
+}
+
+#navbar a span {
+  font-weight: 600;
+}
+
+#navbar a span.orange {
+  color: #f5bf23;
+}
+
+#navbar button {
+  padding: 0.25rem 0.75rem;
+  margin-right: .5rem;
+  font-size: 1.25rem;
+}
+
+#navbar .btn-outline-dark {
+  border: none !important;
+}
+
+#navbar .btn-outline-dark:hover {
+  color: #ffffff;
+  background-color: #f5bf23;
+}
+
+#navbar ul li a:hover {
+  color: #f5bf23;
+}
+/*# sourceMappingURL=style.css.map */
