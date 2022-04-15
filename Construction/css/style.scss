@@ -1,4 +1,4 @@
-*{
+* {
     margin: 0;
     padding: 0;
     border: none;
@@ -19,11 +19,11 @@ $gray: #eee;
 $grayDark: rgb(150, 143, 143);
 $black: rgb(17, 17, 17);
 $orange: rgb(245, 191, 35);
-$box-shadow: 0px 5px 13px 0px rgba(0,0,0,0.41);
+$box-shadow: 0px 5px 13px 0px rgba(0, 0, 0, 0.41);
 
 /* ---------- End Variables ---------- */
 
-div.row.rightInfo{
+div.row.rightInfo {
     position: absolute;
     display: none;
     margin: 0;
@@ -35,72 +35,75 @@ div.row.rightInfo{
     background-color: white;
     z-index: 1000;
     text-align: center !important;
-    
-    >.row{
+
+    >.row {
         margin: 0;
         padding: 0;
     }
 
-    .row.closeMenu{
+    .row.closeMenu {
         font-size: 2rem;
         height: 5vh;
         text-align: right;
         font-weight: bold;
-        button{
+
+        button {
             cursor: pointer;
             background: none;
         }
     }
 
-    >.row.data{
+    >.row.data {
         display: flex;
         align-items: center;
         height: 95vh;
-        div.elements{
+
+        div.elements {
             display: flex;
             justify-content: center !important;
-    
-            span{
+
+            span {
                 display: block;
                 color: $grayDark;
             }
 
-            a{
-                i{
+            a {
+                i {
                     color: $black;
                     font-size: 2rem;
                     padding: 0.35rem 0.7rem;
                     border: 1px solid $black;
                 }
 
-                &:hover{
-                    i{
+                &:hover {
+                    i {
                         border: 1px solid $orange;
                         color: $white;
                         background-color: $orange;
                     }
-                    
+
                 }
             }
         }
     }
 
-    i{
+    i {
         font-size: 2rem;
         font-weight: 600 !important;
         color: $black;
     }
 }
+
 #navbar {
     position: -webkit-sticky !important;
     position: sticky !important;
     top: 0;
     z-index: 999;
-    -webkit-box-shadow: $box-shadow; 
+    -webkit-box-shadow: $box-shadow;
     box-shadow: $box-shadow;
-    //opacity: 0.6;
     background-color: $white;
     min-height: 10vh;
+
     a {
         color: $black;
         margin-right: auto;
@@ -109,8 +112,8 @@ div.row.rightInfo{
         span {
             font-weight: 600;
         }
-        
-        span.orange{
+
+        span.orange {
             color: $orange;
         }
     }
@@ -131,58 +134,63 @@ div.row.rightInfo{
         }
     }
 
-    ul{
-        li{
-            a{
-                &:hover{
+    ul {
+        li {
+            a {
+                &:hover {
                     color: $orange;
                 }
             }
         }
     }
 }
+
 // End Navbar
 
 // Home
-#home{
+#home {
     padding-left: 0;
     padding-right: 0;
+    height: 90vh !important;
 
-    a{
+    a {
         font-size: 2.5rem;
         color: $orange;
     }
 }
+
 // End Home
 
 // Sobre
-#sobre{
-    padding-bottom: 2rem;
-    padding-top: 2rem;
+#sobre {
+    padding-bottom: 5rem;
+    padding-top: 5rem;
     background-color: $white;
     min-height: 90vh;
-    .row{
+
+    .row {
         display: flex;
         align-items: center;
         justify-content: center;
 
-        h4{
+        h4 {
             font-weight: bold;
             padding: .7rem .5rem;
             margin-bottom: 1rem;
             border-left: .6rem solid $orange;
         }
-        h5{
+
+        h5 {
             font-size: 1.95rem;
             font-weight: bold;
         }
 
-        span{
+        span {
             font-size: 1.05rem;
             opacity: 0.8;
         }
 
-        button{
+        button {
             display: block;
             cursor: pointer;
             color: $white;
@@ -192,13 +200,13 @@ div.row.rightInfo{
             background-color: $black;
             margin-top: 1rem;
 
-            &:hover{
+            &:hover {
                 color: $black;
                 background-color: $orange;
             }
         }
 
-        div.elements{
+        div.elements {
             position: relative;
             margin-top: 1rem;
             text-align: center;
@@ -206,7 +214,8 @@ div.row.rightInfo{
             display: flex;
             align-items: center;
             width: 100vh;
-            >div{
+
+            >div {
                 display: flex;
                 align-items: center;
                 justify-content: center;
@@ -215,12 +224,12 @@ div.row.rightInfo{
                 padding: 1.5rem .8rem;
                 background-color: $gray;
 
-                h6{
+                h6 {
                     opacity: 0.8;
                     font-size: 1.1rem;
                 }
 
-                span{
+                span {
                     //border: 1px solid red;
                     //padding: 0;
                     opacity: 1;
@@ -229,27 +238,29 @@ div.row.rightInfo{
         }
     }
 }
+
 // End Sobre
 
 // Servicos
-#servicos{
+#servicos {
     background-color: $gray;
     min-height: 90vh;
-    padding-bottom: 2rem;
-    padding-top: 2rem;
-    >.row{
-        h4{
+    padding-bottom: 5rem;
+    padding-top: 5rem;
+
+    >.row {
+        h4 {
             font-weight: bold;
             padding: .7rem .5rem;
             margin-bottom: 1rem;
             border-left: .6rem solid $orange;
         }
 
-        div.elements{
-            margin-top: 1rem;            
+        div.elements {
+            margin-top: 1rem;
             text-align: center;
-            
-            >div{
+
+            >div {
                 display: flex;
                 align-items: center;
                 height: 100%;
@@ -258,52 +269,212 @@ div.row.rightInfo{
                 background-color: $white;
                 padding: 1.5rem;
 
-                img{
+                img {
                     margin-top: .5rem;
                     margin-bottom: .5rem;
                     height: 5rem;
                 }
 
-                h5{
+                h5 {
                     margin-bottom: .5rem;
                     margin-top: .5rem;
                     font-weight: 600;
                 }
 
-                span{
+                span {
                     font-size: 0.9rem;
-                    span{
+
+                    span {
                         opacity: 0.8;
                     }
                 }
 
-                &:hover{
-                    span{
-                        >img{
+                &:hover {
+                    span {
+                        >img {
                             margin-top: .2rem;
                             margin-bottom: .8rem;
                         }
                     }
                 }
-               
+
             }
         }
     }
 }
+
 // End Servicos
 
 // Projetos
-#projetos{
-    padding-bottom: 2rem;
-    padding-top: 2rem;
+#projetos {
+    padding-bottom: 5rem;
+    padding-top: 5rem;
     background-color: $black;
     min-height: 90vh;
     color: $white;
-    .row{
+
+    .row {
         display: flex;
         align-items: center;
         justify-content: center;
 
+        h4 {
+            font-weight: bold;
+            padding: .7rem .5rem;
+            margin-bottom: 1rem;
+            border-left: .6rem solid $orange;
+        }
+
+        div.test {
+            margin-top: 1rem;
+
+            div.divImage {
+                overflow: hidden;
+                background-size: cover;
+
+                img {
+                    width: 100%;
+                }
+            }
+
+            div.elements {
+                z-index: 995;
+                text-align: center;
+
+                >div {
+                    padding-bottom: 1rem;
+                    padding-top: 1rem;
+                    color: $black;
+                    background-color: $white;
+
+                    h5 {
+                        font-weight: 700;
+
+                        span {
+                            color: $orange;
+                        }
+                    }
+
+                    span.foot {
+                        font-weight: 600;
+                        font-size: 1.1rem;
+                    }
+                }
+            }
+
+            &:hover {
+                img {
+                    -moz-transform: scale(1.2);
+                    -webkit-transform: scale(1.2);
+                    transform: scale(1.2);
+                }
+            }
+        }
+    }
+}
+
+// End Projetos
+
+// Preços
+#precos {
+    padding-bottom: 5rem;
+    padding-top: 5rem;
+    min-height: 90vh;
+    background-color: $gray;
+
+    .row {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        h4 {
+            font-weight: bold;
+            padding: .7rem .5rem;
+            margin-bottom: 1rem;
+            border-left: .6rem solid $orange;
+        }
+
+        div.elements {
+            text-align: center;
+            margin-top: 1rem;
+
+            >div {
+                background-color: $white;
+                padding-bottom: 1rem;
+                padding-top: 1rem;
+                border: 1px solid $black;
+                box-shadow: $box-shadow;
+
+                button.icon {
+                    font-size: 1.5rem;
+                    height: 3rem;
+                    width: 3rem;
+                    border-radius: 50%;
+                    background-color: $orange;
+                    color: $white;
+                }
+
+                span {
+                    margin-bottom: 1rem;
+                    margin-top: 1rem;
+                    display: block;
+
+                    p {
+                        display: inline;
+                        font-weight: bold;
+                        font-size: 1.9rem;
+                    }
+                }
+
+                h5 {
+                    margin-bottom: 1rem;
+                    margin-top: 1rem;
+                    font-weight: bold;
+                }
+
+                .data {
+                    span {
+                        opacity: 0.8;
+                    }
+
+                    button {
+                        display: block;
+                        cursor: pointer;
+                        color: $white;
+                        font-size: 1.25rem;
+                        font-weight: 600;
+                        padding: .5rem .7rem;
+                        background-color: $black;
+                        margin-top: 1rem;
+                        margin-left: auto;
+                        margin-right: auto;
+
+                        &:hover {
+                            color: $black;
+                            background-color: $orange;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+// End Preços
+
+// Contato
+#contato{
+    padding-bottom: 5rem;
+    padding-top: 5rem;
+    min-height: 90vh;
+    color: $white;
+    background-color: $black;
+    overflow: hidden;
+    background-size: cover;
+
+    .row{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        align-items: center;
         h4{
             font-weight: bold;
             padding: .7rem .5rem;
@@ -311,52 +482,218 @@ div.row.rightInfo{
             border-left: .6rem solid $orange;
         }
 
-        div.test{
-            div.elements{
-                text-align: center;
-                >div{
-                    padding-bottom: 1rem;
-                    padding-top: 1rem;
-                    color: $black;
-                    background-color: $white;
-    
-                    h5{
-                        font-weight: 700;
-    
-                        span{
-                            color: $orange;
-                        }
-                    }
-                    span.foot{
-                        font-weight: 600;
-                        font-size: 1.1rem;
-                    }
+        div.elements{
+            div{
+                color: $black;
+                background-color: $white;
+                padding: 1rem;
+ 
+                h5{
+                    font-weight: bold;
                 }
-            }
 
-            &:hover{
-                img{
-                    
+                input, textarea{
+                    color: $grayDark;
+                    padding-bottom: .7rem;
+                    padding-top: .7rem;
+                    width: 100%;
+                    border-bottom: 1px solid $grayDark;
+                }
+
+                input:focus, textarea:focus{
+                    border-bottom: 1px solid $orange;
+                }
+
+                button {
+                    display: block;
+                    cursor: pointer;
+                    color: $white;
+                    font-size: 1.15rem;
+                    padding: .5rem .7rem;
+                    background-color: $black;
+                    margin-top: 1rem;
+                    margin-left: auto;
+                    margin-right: auto;
+                    &:hover {
+                        color: $black;
+                        background-color: $orange;
+                    }
                 }
             }
         }
     }
 }
-// End Projetos
+// End Contato
 
+// Blogs
+#blogs {
+    padding-bottom: 5rem;
+    padding-top: 5rem;
+    min-height: 90vh;
+    background-color: $gray;
 
-@media (min-width: 576px) { 
+    .row {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        h4 {
+            font-weight: bold;
+            padding: .7rem .5rem;
+            margin-bottom: 1rem;
+            border-left: .6rem solid $orange;
+        }
+
+        div.main{
+            cursor: grab;
+            div.divImage{
+                img{
+                    width: 100%;
+                }
+
+                overflow: hidden;
+                background-size: cover;
+            }
+            
+            div.data{
+                text-align: center;
+                background-color: white;
+                padding: 1rem .7rem;
+                span{
+                    color: $grayDark;
+                }
     
+                h5 {
+                    font-weight: bold;
+                }
+    
+                button {
+                    display: block;
+                    cursor: pointer;
+                    color: $white;
+                    font-size: 1.15rem;
+                    padding: .5rem .7rem;
+                    background-color: $black;
+                    margin-top: 1rem;
+                    margin-left: auto;
+                    margin-right: auto;
+                    &:hover {
+                        color: $black;
+                        background-color: $orange;
+                    }
+                }
+            }
+
+            &:hover{
+                img {
+                    -moz-transform: scale(1.2);
+                    -webkit-transform: scale(1.2);
+                    transform: scale(1.2);
+                }
+            }
+        }
+
+        
+    }
+}
+// End Blogs
+
+// Footer
+#footer{
+    >.row{
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        ul{
+            li{
+                display: inline;
+
+                a{
+                    button {
+                        cursor: pointer;
+                        color: $white;
+                        font-size: 1.15rem;
+                        padding: .5rem .7rem;
+                        background-color: $black;
+                        margin-top: 1rem;
+                        margin-left: auto;
+                        margin-right: auto;
+                        &:hover {
+                            color: $black;
+                            background-color: $orange;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+// End Footer
+
+@media (min-width: 576px) {
+    #blogs {
+        .row {
+            div.main{
+                cursor: grab;
+                div.divImage{
+                    img{
+                        max-height: 20rem;
+                        width: 100%;
+                    }
+                }
+            
+            }
+        }
+    }
 }
 
-@media (min-width: 768px) { 
-    
+@media (min-width: 768px) {
+    #blogs {
+        .row {
+            div.main{
+                cursor: grab;
+                div.divImage{
+                    img{
+                        max-height: 15rem;
+                        width: 100%;
+                    }
+                }
+            
+            }
+        }
+    }
 }
 
-@media (min-width: 992px) { 
-    
+@media (min-width: 992px) {
+    #blogs {
+        .row {
+            div.main{
+                cursor: grab;
+                div.divImage{
+                    img{
+                        max-height: 11rem;
+                        width: 100%;
+                    }
+                }
+            
+            }
+        }
+    }
 }
 
-@media (min-width: 1200px) { 
-    
+@media (min-width: 1200px) {
+    #blogs {
+        .row {
+            div.main{
+                cursor: grab;
+                div.divImage{
+                    img{
+                        max-height: 15rem;
+                        width: 100%;
+                    }
+                }
+            
+            }
+        }
+    }
 }

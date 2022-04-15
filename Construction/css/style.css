@@ -135,6 +135,7 @@ div.row.rightInfo i {
 #home {
   padding-left: 0;
   padding-right: 0;
+  height: 90vh !important;
 }
 
 #home a {
@@ -143,8 +144,8 @@ div.row.rightInfo i {
 }
 
 #sobre {
-  padding-bottom: 2rem;
-  padding-top: 2rem;
+  padding-bottom: 5rem;
+  padding-top: 5rem;
   background-color: #ffffff;
   min-height: 90vh;
 }
@@ -236,8 +237,8 @@ div.row.rightInfo i {
 #servicos {
   background-color: #eee;
   min-height: 90vh;
-  padding-bottom: 2rem;
-  padding-top: 2rem;
+  padding-bottom: 5rem;
+  padding-top: 5rem;
 }
 
 #servicos > .row h4 {
@@ -293,8 +294,8 @@ div.row.rightInfo i {
 }
 
 #projetos {
-  padding-bottom: 2rem;
-  padding-top: 2rem;
+  padding-bottom: 5rem;
+  padding-top: 5rem;
   background-color: #111111;
   min-height: 90vh;
   color: #ffffff;
@@ -319,7 +320,21 @@ div.row.rightInfo i {
   border-left: 0.6rem solid #f5bf23;
 }
 
+#projetos .row div.test {
+  margin-top: 1rem;
+}
+
+#projetos .row div.test div.divImage {
+  overflow: hidden;
+  background-size: cover;
+}
+
+#projetos .row div.test div.divImage img {
+  width: 100%;
+}
+
 #projetos .row div.test div.elements {
+  z-index: 995;
   text-align: center;
 }
 
@@ -341,5 +356,318 @@ div.row.rightInfo i {
 #projetos .row div.test div.elements > div span.foot {
   font-weight: 600;
   font-size: 1.1rem;
+}
+
+#projetos .row div.test:hover img {
+  -webkit-transform: scale(1.2);
+  transform: scale(1.2);
+}
+
+#precos {
+  padding-bottom: 5rem;
+  padding-top: 5rem;
+  min-height: 90vh;
+  background-color: #eee;
+}
+
+#precos .row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+#precos .row h4 {
+  font-weight: bold;
+  padding: .7rem .5rem;
+  margin-bottom: 1rem;
+  border-left: 0.6rem solid #f5bf23;
+}
+
+#precos .row div.elements {
+  text-align: center;
+  margin-top: 1rem;
+}
+
+#precos .row div.elements > div {
+  background-color: #ffffff;
+  padding-bottom: 1rem;
+  padding-top: 1rem;
+  border: 1px solid #111111;
+  -webkit-box-shadow: 0px 5px 13px 0px rgba(0, 0, 0, 0.41);
+          box-shadow: 0px 5px 13px 0px rgba(0, 0, 0, 0.41);
+}
+
+#precos .row div.elements > div button.icon {
+  font-size: 1.5rem;
+  height: 3rem;
+  width: 3rem;
+  border-radius: 50%;
+  background-color: #f5bf23;
+  color: #ffffff;
+}
+
+#precos .row div.elements > div span {
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+  display: block;
+}
+
+#precos .row div.elements > div span p {
+  display: inline;
+  font-weight: bold;
+  font-size: 1.9rem;
+}
+
+#precos .row div.elements > div h5 {
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+  font-weight: bold;
+}
+
+#precos .row div.elements > div .data span {
+  opacity: 0.8;
+}
+
+#precos .row div.elements > div .data button {
+  display: block;
+  cursor: pointer;
+  color: #ffffff;
+  font-size: 1.25rem;
+  font-weight: 600;
+  padding: .5rem .7rem;
+  background-color: #111111;
+  margin-top: 1rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#precos .row div.elements > div .data button:hover {
+  color: #111111;
+  background-color: #f5bf23;
+}
+
+#contato {
+  padding-bottom: 5rem;
+  padding-top: 5rem;
+  min-height: 90vh;
+  color: #ffffff;
+  background-color: #111111;
+  overflow: hidden;
+  background-size: cover;
+}
+
+#contato .row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  align-items: center;
+}
+
+#contato .row h4 {
+  font-weight: bold;
+  padding: .7rem .5rem;
+  margin-bottom: 1rem;
+  border-left: 0.6rem solid #f5bf23;
+}
+
+#contato .row div.elements div {
+  color: #111111;
+  background-color: #ffffff;
+  padding: 1rem;
+}
+
+#contato .row div.elements div h5 {
+  font-weight: bold;
+}
+
+#contato .row div.elements div input, #contato .row div.elements div textarea {
+  color: #968f8f;
+  padding-bottom: .7rem;
+  padding-top: .7rem;
+  width: 100%;
+  border-bottom: 1px solid #968f8f;
+}
+
+#contato .row div.elements div input:focus, #contato .row div.elements div textarea:focus {
+  border-bottom: 1px solid #f5bf23;
+}
+
+#contato .row div.elements div button {
+  display: block;
+  cursor: pointer;
+  color: #ffffff;
+  font-size: 1.15rem;
+  padding: .5rem .7rem;
+  background-color: #111111;
+  margin-top: 1rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#contato .row div.elements div button:hover {
+  color: #111111;
+  background-color: #f5bf23;
+}
+
+#blogs {
+  padding-bottom: 5rem;
+  padding-top: 5rem;
+  min-height: 90vh;
+  background-color: #eee;
+}
+
+#blogs .row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+#blogs .row h4 {
+  font-weight: bold;
+  padding: .7rem .5rem;
+  margin-bottom: 1rem;
+  border-left: 0.6rem solid #f5bf23;
+}
+
+#blogs .row div.main {
+  cursor: -webkit-grab;
+  cursor: grab;
+}
+
+#blogs .row div.main div.divImage {
+  overflow: hidden;
+  background-size: cover;
+}
+
+#blogs .row div.main div.divImage img {
+  width: 100%;
+}
+
+#blogs .row div.main div.data {
+  text-align: center;
+  background-color: white;
+  padding: 1rem .7rem;
+}
+
+#blogs .row div.main div.data span {
+  color: #968f8f;
+}
+
+#blogs .row div.main div.data h5 {
+  font-weight: bold;
+}
+
+#blogs .row div.main div.data button {
+  display: block;
+  cursor: pointer;
+  color: #ffffff;
+  font-size: 1.15rem;
+  padding: .5rem .7rem;
+  background-color: #111111;
+  margin-top: 1rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#blogs .row div.main div.data button:hover {
+  color: #111111;
+  background-color: #f5bf23;
+}
+
+#blogs .row div.main:hover img {
+  -webkit-transform: scale(1.2);
+  transform: scale(1.2);
+}
+
+#footer > .row {
+  text-align: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+#footer > .row ul li {
+  display: inline;
+}
+
+#footer > .row ul li a button {
+  cursor: pointer;
+  color: #ffffff;
+  font-size: 1.15rem;
+  padding: .5rem .7rem;
+  background-color: #111111;
+  margin-top: 1rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#footer > .row ul li a button:hover {
+  color: #111111;
+  background-color: #f5bf23;
+}
+
+@media (min-width: 576px) {
+  #blogs .row div.main {
+    cursor: -webkit-grab;
+    cursor: grab;
+  }
+  #blogs .row div.main div.divImage img {
+    max-height: 20rem;
+    width: 100%;
+  }
+}
+
+@media (min-width: 768px) {
+  #blogs .row div.main {
+    cursor: -webkit-grab;
+    cursor: grab;
+  }
+  #blogs .row div.main div.divImage img {
+    max-height: 15rem;
+    width: 100%;
+  }
+}
+
+@media (min-width: 992px) {
+  #blogs .row div.main {
+    cursor: -webkit-grab;
+    cursor: grab;
+  }
+  #blogs .row div.main div.divImage img {
+    max-height: 11rem;
+    width: 100%;
+  }
+}
+
+@media (min-width: 1200px) {
+  #blogs .row div.main {
+    cursor: -webkit-grab;
+    cursor: grab;
+  }
+  #blogs .row div.main div.divImage img {
+    max-height: 15rem;
+    width: 100%;
+  }
 }
 /*# sourceMappingURL=style.css.map */
