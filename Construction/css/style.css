@@ -96,6 +96,7 @@ div.row.rightInfo i {
   -webkit-box-shadow: 0px 5px 13px 0px rgba(0, 0, 0, 0.41);
   box-shadow: 0px 5px 13px 0px rgba(0, 0, 0, 0.41);
   background-color: #ffffff;
+  min-height: 10vh;
 }
 
 #navbar a {
@@ -131,24 +132,24 @@ div.row.rightInfo i {
   color: #f5bf23;
 }
 
-#banner {
+#home {
   padding-left: 0;
   padding-right: 0;
 }
 
-#banner a {
+#home a {
   font-size: 2.5rem;
   color: #f5bf23;
 }
 
-#about {
+#sobre {
   padding-bottom: 2rem;
   padding-top: 2rem;
   background-color: #ffffff;
-  height: 95vh;
+  min-height: 90vh;
 }
 
-#about .row {
+#sobre .row {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -160,24 +161,24 @@ div.row.rightInfo i {
           justify-content: center;
 }
 
-#about .row h4 {
+#sobre .row h4 {
   font-weight: bold;
   padding: .7rem .5rem;
   margin-bottom: 1rem;
-  border-left: 0.8rem solid #f5bf23;
+  border-left: 0.6rem solid #f5bf23;
 }
 
-#about .row h5 {
+#sobre .row h5 {
   font-size: 1.95rem;
   font-weight: bold;
 }
 
-#about .row span {
+#sobre .row span {
   font-size: 1.05rem;
   opacity: 0.8;
 }
 
-#about .row button {
+#sobre .row button {
   display: block;
   cursor: pointer;
   color: #ffffff;
@@ -188,8 +189,157 @@ div.row.rightInfo i {
   margin-top: 1rem;
 }
 
-#about .row button:hover {
+#sobre .row button:hover {
   color: #111111;
   background-color: #f5bf23;
+}
+
+#sobre .row div.elements {
+  position: relative;
+  margin-top: 1rem;
+  text-align: center;
+  height: 10rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100vh;
+}
+
+#sobre .row div.elements > div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 100vh;
+  height: 100%;
+  padding: 1.5rem .8rem;
+  background-color: #eee;
+}
+
+#sobre .row div.elements > div h6 {
+  opacity: 0.8;
+  font-size: 1.1rem;
+}
+
+#sobre .row div.elements > div span {
+  opacity: 1;
+}
+
+#servicos {
+  background-color: #eee;
+  min-height: 90vh;
+  padding-bottom: 2rem;
+  padding-top: 2rem;
+}
+
+#servicos > .row h4 {
+  font-weight: bold;
+  padding: .7rem .5rem;
+  margin-bottom: 1rem;
+  border-left: 0.6rem solid #f5bf23;
+}
+
+#servicos > .row div.elements {
+  margin-top: 1rem;
+  text-align: center;
+}
+
+#servicos > .row div.elements > div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 100%;
+  border: 1px solid #111111;
+  -webkit-box-shadow: 0px 5px 13px 0px rgba(0, 0, 0, 0.41);
+          box-shadow: 0px 5px 13px 0px rgba(0, 0, 0, 0.41);
+  background-color: #ffffff;
+  padding: 1.5rem;
+}
+
+#servicos > .row div.elements > div img {
+  margin-top: .5rem;
+  margin-bottom: .5rem;
+  height: 5rem;
+}
+
+#servicos > .row div.elements > div h5 {
+  margin-bottom: .5rem;
+  margin-top: .5rem;
+  font-weight: 600;
+}
+
+#servicos > .row div.elements > div span {
+  font-size: 0.9rem;
+}
+
+#servicos > .row div.elements > div span span {
+  opacity: 0.8;
+}
+
+#servicos > .row div.elements > div:hover span > img {
+  margin-top: .2rem;
+  margin-bottom: .8rem;
+}
+
+#projetos {
+  padding-bottom: 2rem;
+  padding-top: 2rem;
+  background-color: #111111;
+  min-height: 90vh;
+  color: #ffffff;
+}
+
+#projetos .row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+#projetos .row h4 {
+  font-weight: bold;
+  padding: .7rem .5rem;
+  margin-bottom: 1rem;
+  border-left: 0.6rem solid #f5bf23;
+}
+
+#projetos .row div.test div.elements {
+  text-align: center;
+}
+
+#projetos .row div.test div.elements > div {
+  padding-bottom: 1rem;
+  padding-top: 1rem;
+  color: #111111;
+  background-color: #ffffff;
+}
+
+#projetos .row div.test div.elements > div h5 {
+  font-weight: 700;
+}
+
+#projetos .row div.test div.elements > div h5 span {
+  color: #f5bf23;
+}
+
+#projetos .row div.test div.elements > div span.foot {
+  font-weight: 600;
+  font-size: 1.1rem;
 }
 /*# sourceMappingURL=style.css.map */
