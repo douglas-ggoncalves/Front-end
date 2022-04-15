@@ -9,17 +9,14 @@
   -webkit-transition: all 0.2s;
   -moz-transition: all 0.2s;
   -o-transition: all 0.2s;
+  font-family: 'Poppins', sans-serif;
 }
 
 /* ---------- Variables ---------- */
 /* ---------- End Variables ---------- */
-html, body {
-  height: 100%;
-}
-
 div.row.rightInfo {
   position: absolute;
-  display: block;
+  display: none;
   margin: 0;
   padding: 0;
   top: 0;
@@ -92,13 +89,13 @@ div.row.rightInfo i {
 }
 
 #navbar {
-  position: -webkit-sticky;
-  position: sticky;
+  position: -webkit-sticky !important;
+  position: sticky !important;
   top: 0;
   z-index: 999;
   -webkit-box-shadow: 0px 5px 13px 0px rgba(0, 0, 0, 0.41);
   box-shadow: 0px 5px 13px 0px rgba(0, 0, 0, 0.41);
-  opacity: 0.6;
+  background-color: #ffffff;
 }
 
 #navbar a {
@@ -132,5 +129,67 @@ div.row.rightInfo i {
 
 #navbar ul li a:hover {
   color: #f5bf23;
+}
+
+#banner {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+#banner a {
+  font-size: 2.5rem;
+  color: #f5bf23;
+}
+
+#about {
+  padding-bottom: 2rem;
+  padding-top: 2rem;
+  background-color: #ffffff;
+  height: 95vh;
+}
+
+#about .row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+#about .row h4 {
+  font-weight: bold;
+  padding: .7rem .5rem;
+  margin-bottom: 1rem;
+  border-left: 0.8rem solid #f5bf23;
+}
+
+#about .row h5 {
+  font-size: 1.95rem;
+  font-weight: bold;
+}
+
+#about .row span {
+  font-size: 1.05rem;
+  opacity: 0.8;
+}
+
+#about .row button {
+  display: block;
+  cursor: pointer;
+  color: #ffffff;
+  font-size: 1.25rem;
+  font-weight: 600;
+  padding: .5rem .7rem;
+  background-color: #111111;
+  margin-top: 1rem;
+}
+
+#about .row button:hover {
+  color: #111111;
+  background-color: #f5bf23;
 }
 /*# sourceMappingURL=style.css.map */
