@@ -143,15 +143,39 @@ div.row.rightInfo i {
 }
 
 #exampleModal input {
-  color: #968f8f;
-  padding-bottom: .7rem;
-  padding-top: .7rem;
+  margin-top: .5rem;
+  padding: .7rem;
   width: 100%;
-  border-bottom: 1px solid #968f8f;
+  border: 1px solid #968f8f;
+  color: #968f8f;
+  background-color: #eee;
 }
 
 #exampleModal input:focus {
-  border-bottom: 1px solid #f5bf23;
+  border: 1px solid #f5bf23;
+}
+
+#exampleModal button {
+  cursor: pointer;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  color: #ffffff;
+  font-size: 1.25rem;
+  font-weight: 600;
+  padding: .5rem .7rem;
+  background-color: #111111;
+  margin-top: 1rem;
+}
+
+#exampleModal button:hover {
+  color: #111111;
+  background-color: #f5bf23;
+}
+
+#exampleModal a {
+  width: 100%;
+  display: block;
 }
 
 #home {
