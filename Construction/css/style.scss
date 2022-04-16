@@ -13,15 +13,23 @@
 }
 
 /* ---------- Variables ---------- */
-
 $white: #ffffff;
 $gray: #eee;
 $grayDark: rgb(150, 143, 143);
 $black: rgb(17, 17, 17);
 $orange: rgb(245, 191, 35);
 $box-shadow: 0px 5px 13px 0px rgba(0, 0, 0, 0.41);
-
 /* ---------- End Variables ---------- */
+
+/* ---------- Scrollbar ---------- */
+::-webkit-scrollbar {
+    width: 9px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: $orange;
+}
+/* ---------- End Scrollbar ---------- */
 
 div.row.rightInfo {
     position: absolute;
@@ -146,6 +154,22 @@ div.row.rightInfo {
 }
 
 // End Navbar
+
+// Modal
+#exampleModal{
+    input{
+        color: $grayDark;
+        padding-bottom: .7rem;
+        padding-top: .7rem;
+        width: 100%;
+        border-bottom: 1px solid $grayDark;
+    }
+
+    input:focus{
+        border-bottom: 1px solid $orange;
+    }
+}
+// End Modal
 
 // Home
 #home {

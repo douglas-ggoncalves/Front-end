@@ -14,6 +14,16 @@
 
 /* ---------- Variables ---------- */
 /* ---------- End Variables ---------- */
+/* ---------- Scrollbar ---------- */
+::-webkit-scrollbar {
+  width: 9px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #f5bf23;
+}
+
+/* ---------- End Scrollbar ---------- */
 div.row.rightInfo {
   position: absolute;
   display: none;
@@ -130,6 +140,18 @@ div.row.rightInfo i {
 
 #navbar ul li a:hover {
   color: #f5bf23;
+}
+
+#exampleModal input {
+  color: #968f8f;
+  padding-bottom: .7rem;
+  padding-top: .7rem;
+  width: 100%;
+  border-bottom: 1px solid #968f8f;
+}
+
+#exampleModal input:focus {
+  border-bottom: 1px solid #f5bf23;
 }
 
 #home {
