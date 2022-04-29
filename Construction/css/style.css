@@ -24,7 +24,18 @@
 }
 
 /* ---------- End Scrollbar ---------- */
-div.row.rightInfo {
+#navbar {
+  position: -webkit-sticky !important;
+  position: sticky !important;
+  top: 0;
+  z-index: 999;
+  -webkit-box-shadow: 0px 5px 13px 0px rgba(0, 0, 0, 0.41);
+  box-shadow: 0px 5px 13px 0px rgba(0, 0, 0, 0.41);
+  background-color: #ffffff;
+  min-height: 10vh;
+}
+
+#navbar div.row.rightInfo {
   position: absolute;
   display: none;
   margin: 0;
@@ -38,24 +49,24 @@ div.row.rightInfo {
   text-align: center !important;
 }
 
-div.row.rightInfo > .row {
+#navbar div.row.rightInfo > .row {
   margin: 0;
   padding: 0;
 }
 
-div.row.rightInfo .row.closeMenu {
+#navbar div.row.rightInfo .row.closeMenu {
   font-size: 2rem;
   height: 5vh;
   text-align: right;
   font-weight: bold;
 }
 
-div.row.rightInfo .row.closeMenu button {
+#navbar div.row.rightInfo .row.closeMenu button {
   cursor: pointer;
   background: none;
 }
 
-div.row.rightInfo > .row.data {
+#navbar div.row.rightInfo > .row.data {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -65,7 +76,7 @@ div.row.rightInfo > .row.data {
   height: 95vh;
 }
 
-div.row.rightInfo > .row.data div.elements {
+#navbar div.row.rightInfo > .row.data div.elements {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -74,39 +85,28 @@ div.row.rightInfo > .row.data div.elements {
           justify-content: center !important;
 }
 
-div.row.rightInfo > .row.data div.elements span {
+#navbar div.row.rightInfo > .row.data div.elements span {
   display: block;
   color: #968f8f;
 }
 
-div.row.rightInfo > .row.data div.elements a i {
+#navbar div.row.rightInfo > .row.data div.elements a i {
   color: #111111;
   font-size: 2rem;
   padding: 0.35rem 0.7rem;
   border: 1px solid #111111;
 }
 
-div.row.rightInfo > .row.data div.elements a:hover i {
+#navbar div.row.rightInfo > .row.data div.elements a:hover i {
   border: 1px solid #f5bf23;
   color: #ffffff;
   background-color: #f5bf23;
 }
 
-div.row.rightInfo i {
-  font-size: 2rem;
+#navbar i {
+  font-size: 1.5rem;
   font-weight: 600 !important;
   color: #111111;
-}
-
-#navbar {
-  position: -webkit-sticky !important;
-  position: sticky !important;
-  top: 0;
-  z-index: 999;
-  -webkit-box-shadow: 0px 5px 13px 0px rgba(0, 0, 0, 0.41);
-  box-shadow: 0px 5px 13px 0px rgba(0, 0, 0, 0.41);
-  background-color: #ffffff;
-  min-height: 10vh;
 }
 
 #navbar a {
@@ -140,6 +140,37 @@ div.row.rightInfo i {
 
 #navbar ul li a:hover {
   color: #f5bf23;
+}
+
+div.row.rightInfo2 {
+  position: absolute;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  border: 1px solid greenyellow;
+  height: 100vh;
+  top: 0;
+  margin: 0;
+  right: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  text-align: center !important;
+}
+
+div.row.rightInfo2 span {
+  cursor: pointer;
+}
+
+div.row.rightInfo2 span:hover {
+  background-color: #f5bf23;
+}
+
+div.row.rightInfo2 span:hover i {
+  color: #ffffff;
 }
 
 #exampleModal {
@@ -683,6 +714,11 @@ div.row.rightInfo i {
 #footer > .row ul li a button:hover {
   color: #111111;
   background-color: #f5bf23;
+}
+
+#footer > .row .swiper-slide {
+  cursor: -webkit-grab;
+  cursor: grab;
 }
 
 @media (min-width: 576px) {

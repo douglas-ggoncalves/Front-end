@@ -21,6 +21,7 @@ $orange: rgb(245, 191, 35);
 $box-shadow: 0px 5px 13px 0px rgba(0, 0, 0, 0.41);
 /* ---------- End Variables ---------- */
 
+
 /* ---------- Scrollbar ---------- */
 ::-webkit-scrollbar {
     width: 9px;
@@ -31,77 +32,7 @@ $box-shadow: 0px 5px 13px 0px rgba(0, 0, 0, 0.41);
 }
 /* ---------- End Scrollbar ---------- */
 
-div.row.rightInfo {
-    position: absolute;
-    display: none;
-    margin: 0;
-    padding: 0;
-    top: 0;
-    right: 0;
-    height: 100vh;
-    width: 50vh;
-    background-color: white;
-    z-index: 1000;
-    text-align: center !important;
-
-    >.row {
-        margin: 0;
-        padding: 0;
-    }
-
-    .row.closeMenu {
-        font-size: 2rem;
-        height: 5vh;
-        text-align: right;
-        font-weight: bold;
-
-        button {
-            cursor: pointer;
-            background: none;
-        }
-    }
-
-    >.row.data {
-        display: flex;
-        align-items: center;
-        height: 95vh;
-
-        div.elements {
-            display: flex;
-            justify-content: center !important;
-
-            span {
-                display: block;
-                color: $grayDark;
-            }
-
-            a {
-                i {
-                    color: $black;
-                    font-size: 2rem;
-                    padding: 0.35rem 0.7rem;
-                    border: 1px solid $black;
-                }
-
-                &:hover {
-                    i {
-                        border: 1px solid $orange;
-                        color: $white;
-                        background-color: $orange;
-                    }
-
-                }
-            }
-        }
-    }
-
-    i {
-        font-size: 2rem;
-        font-weight: 600 !important;
-        color: $black;
-    }
-}
-
+//navbar
 #navbar {
     position: -webkit-sticky !important;
     position: sticky !important;
@@ -111,6 +42,80 @@ div.row.rightInfo {
     box-shadow: $box-shadow;
     background-color: $white;
     min-height: 10vh;
+
+    
+    div.row.rightInfo {
+        position: absolute;
+        display: none;
+        margin: 0;
+        padding: 0;
+        top: 0;
+        right: 0;
+        height: 100vh;
+        width: 50vh;
+        background-color: white;
+        z-index: 1000;
+        text-align: center !important;
+
+        >.row {
+            margin: 0;
+            padding: 0;
+        }
+
+        .row.closeMenu {
+            font-size: 2rem;
+            height: 5vh;
+            text-align: right;
+            font-weight: bold;
+
+            button {
+                cursor: pointer;
+                background: none;
+            }
+        }
+
+        >.row.data {
+            display: flex;
+            align-items: center;
+            height: 95vh;
+
+            div.elements {
+                display: flex;
+                justify-content: center !important;
+
+                span {
+                    display: block;
+                    color: $grayDark;
+                }
+
+                a {
+                    i {
+                        color: $black;
+                        font-size: 2rem;
+                        padding: 0.35rem 0.7rem;
+                        border: 1px solid $black;
+                    }
+
+                    &:hover {
+                        i {
+                            border: 1px solid $orange;
+                            color: $white;
+                            background-color: $orange;
+                        }
+
+                    }
+                }
+            }
+        }
+    }
+
+    
+
+    i {
+        font-size: 1.5rem;
+        font-weight: 600 !important;
+        color: $black;
+    }
 
     a {
         color: $black;
@@ -152,12 +157,39 @@ div.row.rightInfo {
         }
     }
 }
-
 // End Navbar
+
+div.row.rightInfo2 {
+    position: absolute;
+    //display: none;
+    display: flex;
+    justify-content: center;
+    border: 1px solid greenyellow;
+    height: 100vh;
+    top: 0;
+    margin: 0;
+    right: 0;
+    left: 0;
+    background: rgba(0,0,0,0.5);
+    z-index: 1000;
+    text-align: center !important;
+    
+    span{
+        cursor: pointer;
+
+        &:hover{
+            background-color: $orange;
+            i{
+                color: $white;
+            }
+        }
+    }
+}
 
 // Modal
 #exampleModal{
     text-align: center;
+
     input{
         margin-top: .5rem;
         padding: .7rem;
@@ -683,6 +715,10 @@ div.row.rightInfo {
                     }
                 }
             }
+        }
+
+        .swiper-slide{
+            cursor: grab;
         }
     }
 }
