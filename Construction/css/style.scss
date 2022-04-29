@@ -21,7 +21,6 @@ $orange: rgb(245, 191, 35);
 $box-shadow: 0px 5px 13px 0px rgba(0, 0, 0, 0.41);
 /* ---------- End Variables ---------- */
 
-
 /* ---------- Scrollbar ---------- */
 ::-webkit-scrollbar {
     width: 9px;
@@ -43,6 +42,41 @@ $box-shadow: 0px 5px 13px 0px rgba(0, 0, 0, 0.41);
     background-color: $white;
     min-height: 10vh;
 
+    div.row.background {
+        position: absolute;
+        display: none;
+        justify-content: center;
+        height: 100vh;
+        top: 0;
+        margin: 0;
+        right: 0;
+        left: 0;
+        background: rgba(0,0,0,0.5);
+        z-index: 1000;
+        text-align: center !important;
+    }
+    
+    div.row.inputData {
+        position: absolute;
+        display: none;
+        justify-content: center;
+        z-index: 1001;
+        left: 0;
+        right: 0;
+        margin: 0;
+        margin-top: 8rem;
+        height: 1px;
+        span{
+            cursor: pointer;
+    
+            &:hover{
+                background-color: $orange;
+                i{
+                    color: $white;
+                }
+            }
+        }
+    }
     
     div.row.rightInfo {
         position: absolute;
@@ -109,8 +143,6 @@ $box-shadow: 0px 5px 13px 0px rgba(0, 0, 0, 0.41);
         }
     }
 
-    
-
     i {
         font-size: 1.5rem;
         font-weight: 600 !important;
@@ -135,7 +167,6 @@ $box-shadow: 0px 5px 13px 0px rgba(0, 0, 0, 0.41);
         padding: 0.25rem 0.75rem;
         margin-right: .5rem;
         font-size: 1.25rem;
-        //background-color: $gray;
     }
 
     .btn-outline-dark {
@@ -158,33 +189,6 @@ $box-shadow: 0px 5px 13px 0px rgba(0, 0, 0, 0.41);
     }
 }
 // End Navbar
-
-div.row.rightInfo2 {
-    position: absolute;
-    //display: none;
-    display: flex;
-    justify-content: center;
-    border: 1px solid greenyellow;
-    height: 100vh;
-    top: 0;
-    margin: 0;
-    right: 0;
-    left: 0;
-    background: rgba(0,0,0,0.5);
-    z-index: 1000;
-    text-align: center !important;
-    
-    span{
-        cursor: pointer;
-
-        &:hover{
-            background-color: $orange;
-            i{
-                color: $white;
-            }
-        }
-    }
-}
 
 // Modal
 #exampleModal{
@@ -222,6 +226,7 @@ div.row.rightInfo2 {
     a{
         margin-bottom: .3rem;
         margin-top: .3rem;
+
         span{
             color: $grayDark;
             border-bottom: 1px solid $white;
@@ -241,14 +246,12 @@ div.row.rightInfo2 {
 #home {
     padding-left: 0;
     padding-right: 0;
-    height: 90vh !important;
-
+    max-height: 90vh !important;
     a {
         font-size: 2.5rem;
         color: $orange;
     }
 }
-
 // End Home
 
 // Sobre
