@@ -9,11 +9,118 @@
     -webkit-transition: all 0.2s;
     -moz-transition: all 0.2s;
     -o-transition: all 0.2s;
+
+    section{
+        width: 100%;
+        padding-right: 15px;
+        padding-left: 15px;
+        margin-right: auto;
+        margin-left: auto;   
+    }
 }
 
-/* ---------- Variables ---------- */
 
+/* ---------- Variables ---------- */
+$green: #0eb582;
+$white: #ffffff;
+$pink: rgb(209, 98, 251);
+$pinkDark: rgb(255, 4, 111);
+$boxShadow: inset 5em 1em rgb(198, 59, 250); 
 /* ---------- End Variables ---------- */
+
+/* ---------- Scrollbar ---------- */
+::-webkit-scrollbar {
+    width: 9px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: $green;
+}
+/* ---------- End Scrollbar ---------- */
+
+div#space{
+    background: linear-gradient(rgba(198, 59, 250,.8),rgba(198, 59, 250,.8));
+    height: 1rem;
+}
+
+body{
+    background-color: red !important;
+    z-index: 99999;
+}
+
+/* ---------- Navbar ---------- */
+#navbar {
+    position: sticky;
+    top: 0;
+    z-index: 999;
+    -webkit-box-shadow: 0px 5px 13px 0px rgba(0,0,0,0.41); 
+    box-shadow: 0px 5px 13px 0px rgba(0,0,0,0.41);
+    padding: .5rem 3rem;
+    margin-left: 3rem;
+    margin-right: 3rem;
+
+    button{
+        font-size: 1.5rem;
+        color: $pinkDark !important;
+
+        &:hover{
+            color: $pink !important;
+        }
+    }
+    
+    a {
+        margin-right: auto;
+        font-size: 1.35rem;
+
+        i {
+            color: $pinkDark;
+        }
+
+        span {
+            font-weight: 600;
+            color: $pinkDark;
+
+        }
+    }
+
+    ul {
+        li {
+            a {
+                font-weight: 400;
+                font-size: 1.3rem;
+                color: $pinkDark;
+
+                &:hover {
+                    color: $pink;
+                }
+            }
+        }
+    }
+
+    .navbar-toggler {
+        color: black;
+        border: none !important;
+    }
+
+    .btn-outline-dark {
+        border: none !important;
+
+        &:hover {
+            color: $green;
+            background: none !important;
+        }
+    }
+}
+/* ---------- ../Navbar ---------- */
+
+/* ---------- Home ---------- */
+#home{
+    z-index: 50;
+    border: 1px solid $pink;
+    height: 50vh;
+    background: linear-gradient(rgba(198, 59, 250,.8),rgba(198, 59, 250,.8));
+}
+/* ---------- ../Home ---------- */
 
 @media (min-width: 576px) { 
     

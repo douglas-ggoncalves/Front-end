@@ -11,6 +11,106 @@
   -o-transition: all 0.2s;
 }
 
+* section {
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
 /* ---------- Variables ---------- */
 /* ---------- End Variables ---------- */
+/* ---------- Scrollbar ---------- */
+::-webkit-scrollbar {
+  width: 9px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #0eb582;
+}
+
+/* ---------- End Scrollbar ---------- */
+div#space {
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(198, 59, 250, 0.8)), to(rgba(198, 59, 250, 0.8)));
+  background: linear-gradient(rgba(198, 59, 250, 0.8), rgba(198, 59, 250, 0.8));
+  height: 1rem;
+}
+
+body {
+  background-color: red !important;
+  z-index: 99999;
+}
+
+/* ---------- Navbar ---------- */
+#navbar {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  -webkit-box-shadow: 0px 5px 13px 0px rgba(0, 0, 0, 0.41);
+  box-shadow: 0px 5px 13px 0px rgba(0, 0, 0, 0.41);
+  padding: .5rem 3rem;
+  margin-left: 3rem;
+  margin-right: 3rem;
+}
+
+#navbar button {
+  font-size: 1.5rem;
+  color: #ff046f !important;
+}
+
+#navbar button:hover {
+  color: #d162fb !important;
+}
+
+#navbar a {
+  margin-right: auto;
+  font-size: 1.35rem;
+}
+
+#navbar a i {
+  color: #ff046f;
+}
+
+#navbar a span {
+  font-weight: 600;
+  color: #ff046f;
+}
+
+#navbar ul li a {
+  font-weight: 400;
+  font-size: 1.3rem;
+  color: #ff046f;
+}
+
+#navbar ul li a:hover {
+  color: #d162fb;
+}
+
+#navbar .navbar-toggler {
+  color: black;
+  border: none !important;
+}
+
+#navbar .btn-outline-dark {
+  border: none !important;
+}
+
+#navbar .btn-outline-dark:hover {
+  color: #0eb582;
+  background: none !important;
+}
+
+/* ---------- ../Navbar ---------- */
+/* ---------- Home ---------- */
+#home {
+  z-index: 50;
+  border: 1px solid #d162fb;
+  height: 50vh;
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(198, 59, 250, 0.8)), to(rgba(198, 59, 250, 0.8)));
+  background: linear-gradient(rgba(198, 59, 250, 0.8), rgba(198, 59, 250, 0.8));
+}
+
+/* ---------- ../Home ---------- */
 /*# sourceMappingURL=style.css.map */
