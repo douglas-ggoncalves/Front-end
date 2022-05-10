@@ -111,12 +111,19 @@ body {
   z-index: 50;
   border: 1px solid #d162fb;
   min-height: 90vh;
+  padding-bottom: 3rem;
   background: -webkit-gradient(linear, left top, left bottom, from(rgba(198, 59, 250, 0.8)), to(rgba(198, 59, 250, 0.8))), url("../img/home.jpg");
   background: linear-gradient(rgba(198, 59, 250, 0.8), rgba(198, 59, 250, 0.8)), url("../img/home.jpg");
   background-size: cover;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
-#home > .row {
+#home .row {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -126,11 +133,11 @@ body {
   text-align: center;
 }
 
-#home > .row h1, #home > .row h6 {
+#home .row h1, #home .row h6 {
   color: #ffffff;
 }
 
-#home > .row button {
+#home .row button {
   cursor: pointer;
   color: #ffffff;
   background-color: #ff046f;
@@ -139,16 +146,16 @@ body {
   border-radius: 8rem;
 }
 
-#home > .row button a {
+#home .row button a {
   color: #ffffff;
 }
 
-#home > .row button:hover {
+#home .row button:hover {
   letter-spacing: 1.01px;
   background-color: #ffffff;
 }
 
-#home > .row button:hover a {
+#home .row button:hover a {
   color: #ff046f;
 }
 
@@ -195,4 +202,78 @@ body {
 }
 
 /* ---------- ../Home ---------- */
+/* ---------- About ---------- */
+#about {
+  background-color: #ffffff;
+  text-align: center;
+  padding-bottom: 2rem;
+  padding-top: 2rem;
+}
+
+#about div.row#main {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  text-align: center;
+}
+
+#about div.row#main h1 {
+  font-weight: 600;
+  color: #ff046f;
+  margin: 1rem 0 0 0;
+}
+
+#about div.row#main h5 {
+  opacity: 0.8;
+  margin-bottom: 1rem;
+}
+
+#about div.row {
+  text-align: justify;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+#about div.row h2 {
+  font-weight: 600;
+  color: #ff046f;
+}
+
+#about div.row button {
+  cursor: pointer;
+  color: #ffffff;
+  background-color: #ff046f;
+  font-size: 1.3rem;
+  padding: .5rem 1rem;
+  border-radius: 8rem;
+  margin-top: 1rem;
+  display: block;
+  -webkit-box-shadow: 0px 5px 13px 0px rgba(0, 0, 0, 0.41);
+  box-shadow: 0px 5px 13px 0px rgba(0, 0, 0, 0.41);
+}
+
+#about div.row button a {
+  color: #ffffff;
+}
+
+#about div.row button:hover {
+  letter-spacing: 1.01px;
+  background-color: #d162fb;
+}
+
+#about div.row button:hover a {
+  color: #ff046f;
+}
+
+/* ---------- ../About ---------- */
 /*# sourceMappingURL=style.css.map */

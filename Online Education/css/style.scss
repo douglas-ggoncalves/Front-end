@@ -123,10 +123,14 @@ body{
     z-index: 50;
     border: 1px solid $pink;
     min-height: 90vh;
+    padding-bottom: 3rem;
+
     background: linear-gradient(rgba(198, 59, 250,.8),rgba(198, 59, 250,.8)),
     url('../img/home.jpg');
     background-size: cover;
-    >.row{
+    display: flex;
+    align-items: center;
+    .row{
         display: flex;
         justify-content: center;
         text-align: center;
@@ -142,7 +146,6 @@ body{
             font-size: 1.3rem;
             padding: .5rem 1rem;
             border-radius: 8rem;
-
 
             a{
                 color: $white;
@@ -161,7 +164,6 @@ body{
 
     div.row#main{
         margin-top: 5rem;
-
         div.elements{
             margin-top: 1rem;
             cursor: pointer;
@@ -202,6 +204,70 @@ body{
     }
 }
 /* ---------- ../Home ---------- */
+
+/* ---------- About ---------- */
+#about{
+    background-color: $white;
+    text-align: center;
+    padding-bottom: 2rem;
+    padding-top: 2rem;
+   
+    div.row#main{
+        display: flex;
+        justify-content: center;
+        text-align: center;
+
+        h1{
+            font-weight: 600;
+            color: $pinkDark;
+            margin: 1rem 0 0 0;
+        }
+
+        h5{
+            opacity: 0.8;
+            margin-bottom: 1rem;
+        }
+    }
+
+    div.row{
+        text-align: justify;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        h2{
+            font-weight: 600;
+            color: $pinkDark;
+        }
+
+        button{
+            cursor: pointer;
+            color: $white;
+            background-color: $pinkDark;
+            font-size: 1.3rem;
+            padding: .5rem 1rem;
+            border-radius: 8rem;
+            margin-top: 1rem;
+            display: block;
+            -webkit-box-shadow: 0px 5px 13px 0px rgba(0,0,0,0.41); 
+            box-shadow: 0px 5px 13px 0px rgba(0,0,0,0.41);
+            a{
+                color: $white;
+            }
+
+            &:hover{
+                letter-spacing: 1.01px;
+                background-color: $pink;
+
+                a{
+                    color: $pinkDark;
+                }
+            }
+        }
+    }
+}
+/* ---------- ../About ---------- */
+
 
 @media (min-width: 576px) { 
     
