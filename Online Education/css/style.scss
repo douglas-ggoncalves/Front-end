@@ -19,7 +19,6 @@
     }
 }
 
-
 /* ---------- Variables ---------- */
 $green: #0eb582;
 $white: #ffffff;
@@ -34,30 +33,27 @@ $boxShadow: inset 5em 1em rgb(198, 59, 250);
 }
 
 ::-webkit-scrollbar-thumb {
-    background: $green;
+    background: $pinkDark;
 }
 /* ---------- End Scrollbar ---------- */
 
-div#space{
-    background: linear-gradient(rgba(198, 59, 250,.8),rgba(198, 59, 250,.8));
-    height: 1rem;
-}
-
 body{
-    background-color: red !important;
+    //background: linear-gradient(rgba(198, 59, 250,.8),rgba(198, 59, 250,.8));
+    background: rgb(202, 89, 237) !important;
     z-index: 99999;
 }
 
 /* ---------- Navbar ---------- */
 #navbar {
     position: sticky;
-    top: 0;
+    top: 1rem;
     z-index: 999;
     -webkit-box-shadow: 0px 5px 13px 0px rgba(0,0,0,0.41); 
     box-shadow: 0px 5px 13px 0px rgba(0,0,0,0.41);
     padding: .5rem 3rem;
     margin-left: 3rem;
     margin-right: 3rem;
+    margin-top: 1rem;
 
     button{
         font-size: 1.5rem;
@@ -79,7 +75,16 @@ body{
         span {
             font-weight: 600;
             color: $pinkDark;
+        }
 
+        &:hover{
+            i{
+                color: $pink;
+            }
+
+            span{
+                color: $pink;
+            }
         }
     }
 
@@ -117,8 +122,84 @@ body{
 #home{
     z-index: 50;
     border: 1px solid $pink;
-    height: 50vh;
-    background: linear-gradient(rgba(198, 59, 250,.8),rgba(198, 59, 250,.8));
+    min-height: 90vh;
+    background: linear-gradient(rgba(198, 59, 250,.8),rgba(198, 59, 250,.8)),
+    url('../img/home.jpg');
+    background-size: cover;
+    >.row{
+        display: flex;
+        justify-content: center;
+        text-align: center;
+
+        h1, h6{
+            color: $white;
+        }
+
+        button{
+            cursor: pointer;
+            color: $white;
+            background-color: $pinkDark;
+            font-size: 1.3rem;
+            padding: .5rem 1rem;
+            border-radius: 8rem;
+
+
+            a{
+                color: $white;
+            }
+
+            &:hover{
+                letter-spacing: 1.01px;
+                background-color: $white;
+
+                a{
+                    color: $pinkDark;
+                }
+            }
+        }
+    }
+
+    div.row#main{
+        margin-top: 5rem;
+
+        div.elements{
+            margin-top: 1rem;
+            cursor: pointer;
+            background-color: $white;
+            -webkit-box-shadow: 0px 5px 13px 0px rgba(0,0,0,0.41); 
+            box-shadow: 0px 5px 13px 0px rgba(0,0,0,0.41);
+            padding: 1rem 3rem;
+            border-radius: 8px;
+
+            h5{
+                margin-top: 1rem;
+                color: $pinkDark;
+            }
+            i{
+                font-size: 1.5rem;
+                color: $white;
+                background-color: $pink;
+                height: 3rem;
+                line-height: 3rem;
+                width: 3rem;
+                border-radius: 50%;
+            }
+            span{
+                opacity: 0.8;
+                font-size: 0.9rem;
+            }
+
+            &:hover{
+                i{
+                    background-color: $pinkDark;
+                }
+
+                h5{
+                    color: $pink;
+                }
+            }
+        }
+    }
 }
 /* ---------- ../Home ---------- */
 
