@@ -11,7 +11,7 @@
   -o-transition: all 0.2s;
 }
 
-* section {
+* section, * footer {
   width: 100%;
   padding-right: 15px;
   padding-left: 15px;
@@ -27,13 +27,13 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #ff046f;
+  background: #0cccda;
+  border-radius: 10px;
 }
 
 /* ---------- End Scrollbar ---------- */
 body {
   background: #ca59ed !important;
-  z-index: 99999;
 }
 
 /* ---------- Navbar ---------- */
@@ -347,8 +347,13 @@ body {
 #cursos {
   background-color: #ffffff;
   text-align: center;
-  padding-bottom: 2rem;
-  padding-top: 2rem;
+  min-height: 90vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 #cursos div.row#main {
@@ -385,6 +390,7 @@ body {
 
 #cursos div.row div.elements {
   margin-top: 1.8rem;
+  margin-bottom: 1.8rem;
 }
 
 #cursos div.row div.elements > div {
@@ -423,4 +429,106 @@ body {
 }
 
 /* ---------- ../Cursos ---------- */
+/* ---------- Contato ---------- */
+#contato {
+  background-color: #333;
+  text-align: center;
+  padding-bottom: 2rem;
+  padding-top: 2rem;
+}
+
+#contato div.row#main {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  text-align: center;
+}
+
+#contato div.row#main h1 {
+  font-weight: 600;
+  color: #ff046f;
+  margin: 1rem 0 0 0;
+}
+
+#contato div.row#main h5 {
+  color: #f9f9f9;
+  opacity: 0.8;
+  margin-bottom: 1rem;
+}
+
+#contato div.row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+#contato div.row input, #contato div.row textarea {
+  font-size: 1.05rem;
+  display: block;
+  width: 100%;
+  color: #ff046f;
+  border: 2px solid #333;
+  padding: .5rem .7rem;
+  border-radius: 16px;
+  margin-top: .5rem;
+}
+
+#contato div.row input:focus, #contato div.row textarea:focus {
+  border: 2px solid #ff046f;
+}
+
+#contato div.row button {
+  cursor: pointer;
+  color: #ffffff;
+  background-color: #ff046f;
+  font-size: 1.3rem;
+  padding: .5rem 1rem;
+  border-radius: 8rem;
+  margin-top: 1rem;
+  display: block;
+  -webkit-box-shadow: 0px 5px 13px 0px rgba(0, 0, 0, 0.41);
+  box-shadow: 0px 5px 13px 0px rgba(0, 0, 0, 0.41);
+}
+
+#contato div.row button:hover {
+  background-color: #ffffff;
+  color: #ff046f !important;
+}
+
+/* ---------- ../Contato ---------- */
+/* ---------- Footer ---------- */
+#footer {
+  text-align: center;
+  background-color: #ffffff;
+  padding-bottom: 2rem;
+  padding-top: 2rem;
+  padding-left: 2rem;
+}
+
+#footer i {
+  border: 1px solid #d162fb;
+  color: #d162fb;
+  background-color: transparent;
+  font-size: 1.5rem;
+  height: 3rem;
+  line-height: 3rem;
+  border-radius: 50% !important;
+  width: 3rem;
+}
+
+#footer i:hover {
+  color: #ffffff;
+  background-color: #d162fb;
+}
+
+/* ---------- ../Footer ---------- */
 /*# sourceMappingURL=style.css.map */
