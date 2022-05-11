@@ -40,7 +40,7 @@ body {
 #navbar {
   position: -webkit-sticky;
   position: sticky;
-  top: 1rem;
+  top: 0;
   z-index: 999;
   -webkit-box-shadow: 0px 5px 13px 0px rgba(0, 0, 0, 0.41);
   box-shadow: 0px 5px 13px 0px rgba(0, 0, 0, 0.41);
@@ -94,15 +94,6 @@ body {
 #navbar .navbar-toggler {
   color: black;
   border: none !important;
-}
-
-#navbar .btn-outline-dark {
-  border: none !important;
-}
-
-#navbar .btn-outline-dark:hover {
-  color: #0eb582;
-  background: none !important;
 }
 
 /* ---------- ../Navbar ---------- */
@@ -202,15 +193,15 @@ body {
 }
 
 /* ---------- ../Home ---------- */
-/* ---------- About ---------- */
-#about {
+/* ---------- Sobre ---------- */
+#sobre {
   background-color: #ffffff;
   text-align: center;
   padding-bottom: 2rem;
   padding-top: 2rem;
 }
 
-#about div.row#main {
+#sobre div.row#main {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -220,18 +211,18 @@ body {
   text-align: center;
 }
 
-#about div.row#main h1 {
+#sobre div.row#main h1 {
   font-weight: 600;
   color: #ff046f;
   margin: 1rem 0 0 0;
 }
 
-#about div.row#main h5 {
+#sobre div.row#main h5 {
   opacity: 0.8;
   margin-bottom: 1rem;
 }
 
-#about div.row {
+#sobre div.row {
   text-align: justify;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -244,12 +235,12 @@ body {
           align-items: center;
 }
 
-#about div.row h2 {
+#sobre div.row h2 {
   font-weight: 600;
   color: #ff046f;
 }
 
-#about div.row button {
+#sobre div.row button {
   cursor: pointer;
   color: #ffffff;
   background-color: #ff046f;
@@ -262,18 +253,174 @@ body {
   box-shadow: 0px 5px 13px 0px rgba(0, 0, 0, 0.41);
 }
 
-#about div.row button a {
+#sobre div.row button a {
   color: #ffffff;
 }
 
-#about div.row button:hover {
+#sobre div.row button:hover {
   letter-spacing: 1.01px;
   background-color: #d162fb;
 }
 
-#about div.row button:hover a {
+#sobre div.row button:hover a {
   color: #ff046f;
 }
 
-/* ---------- ../About ---------- */
+/* ---------- ../Sobre ---------- */
+/* ---------- Professores ---------- */
+#professores {
+  background-color: #f9f9f9;
+  text-align: center;
+  min-height: 90vh;
+  padding-bottom: 5rem;
+  padding-top: 5rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+#professores div.row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  text-align: center;
+}
+
+#professores div.row h1 {
+  font-weight: 600;
+  color: #ff046f;
+  margin: 1rem 0 0 0;
+}
+
+#professores div.row h5 {
+  opacity: 0.8;
+  margin-bottom: 1rem;
+}
+
+#professores div.row div.elements {
+  margin-top: 1rem;
+}
+
+#professores div.row div.elements > div {
+  background-color: #ffffff;
+  -webkit-box-shadow: 0px 5px 13px 0px rgba(0, 0, 0, 0.41);
+  box-shadow: 0px 5px 13px 0px rgba(0, 0, 0, 0.41);
+  padding-bottom: 1.5rem;
+  padding-top: 1.5rem;
+}
+
+#professores div.row div.elements > div h5 {
+  margin-top: 0.5rem;
+  font-weight: bold;
+  margin-bottom: 0;
+  color: #ff046f !important;
+}
+
+#professores div.row div.elements > div h6 {
+  opacity: 0.8;
+}
+
+#professores div.row div.elements > div img {
+  height: 250px;
+}
+
+#professores div.row div.elements > div a {
+  font-size: 1.3rem;
+  color: #ff046f;
+}
+
+#professores div.row div.elements > div a:hover {
+  color: #d162fb;
+}
+
+/* ---------- ../Professores ---------- */
+/* ---------- Cursos ---------- */
+#cursos {
+  background-color: #ffffff;
+  text-align: center;
+  padding-bottom: 2rem;
+  padding-top: 2rem;
+}
+
+#cursos div.row#main {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  text-align: center;
+}
+
+#cursos div.row#main h1 {
+  font-weight: 600;
+  color: #ff046f;
+  margin: 1rem 0 0 0;
+}
+
+#cursos div.row#main h5 {
+  opacity: 0.8;
+  margin-bottom: 1rem;
+}
+
+#cursos div.row {
+  margin-top: 1rem;
+  text-align: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+#cursos div.row div.elements {
+  margin-top: 1.8rem;
+}
+
+#cursos div.row div.elements > div {
+  -webkit-box-shadow: 2px 2px 0px 2px #d162fb;
+  box-shadow: 2px 2px 0px 2px #d162fb;
+  border-radius: 5px;
+  border: 1px solid #d162fb;
+  padding-bottom: .5rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+#cursos div.row div.elements > div div.divForIcon {
+  margin-top: -5rem;
+  display: inline-block;
+}
+
+#cursos div.row div.elements > div div.divForIcon i {
+  color: #ffffff;
+  background-color: #ff046f;
+  font-size: 2rem;
+  height: 3rem;
+  line-height: 3rem;
+  border-radius: 50% !important;
+  width: 3rem;
+}
+
+#cursos div.row div.elements > div h5 {
+  margin-top: .5rem;
+  color: #d162fb;
+}
+
+#cursos div.row div.elements > div span {
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
+
+/* ---------- ../Cursos ---------- */
 /*# sourceMappingURL=style.css.map */

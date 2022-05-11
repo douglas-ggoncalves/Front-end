@@ -20,11 +20,11 @@
 }
 
 /* ---------- Variables ---------- */
-$green: #0eb582;
 $white: #ffffff;
 $pink: rgb(209, 98, 251);
 $pinkDark: rgb(255, 4, 111);
 $boxShadow: inset 5em 1em rgb(198, 59, 250); 
+$gray: rgb(249, 249, 249);
 /* ---------- End Variables ---------- */
 
 /* ---------- Scrollbar ---------- */
@@ -46,7 +46,7 @@ body{
 /* ---------- Navbar ---------- */
 #navbar {
     position: sticky;
-    top: 1rem;
+    top: 0;
     z-index: 999;
     -webkit-box-shadow: 0px 5px 13px 0px rgba(0,0,0,0.41); 
     box-shadow: 0px 5px 13px 0px rgba(0,0,0,0.41);
@@ -106,15 +106,6 @@ body{
         color: black;
         border: none !important;
     }
-
-    .btn-outline-dark {
-        border: none !important;
-
-        &:hover {
-            color: $green;
-            background: none !important;
-        }
-    }
 }
 /* ---------- ../Navbar ---------- */
 
@@ -124,7 +115,6 @@ body{
     border: 1px solid $pink;
     min-height: 90vh;
     padding-bottom: 3rem;
-
     background: linear-gradient(rgba(198, 59, 250,.8),rgba(198, 59, 250,.8)),
     url('../img/home.jpg');
     background-size: cover;
@@ -164,6 +154,7 @@ body{
 
     div.row#main{
         margin-top: 5rem;
+
         div.elements{
             margin-top: 1rem;
             cursor: pointer;
@@ -205,8 +196,8 @@ body{
 }
 /* ---------- ../Home ---------- */
 
-/* ---------- About ---------- */
-#about{
+/* ---------- Sobre ---------- */
+#sobre{
     background-color: $white;
     text-align: center;
     padding-bottom: 2rem;
@@ -266,7 +257,144 @@ body{
         }
     }
 }
-/* ---------- ../About ---------- */
+/* ---------- ../Sobre ---------- */
+
+/* ---------- Professores ---------- */
+#professores{
+    background-color: $gray;
+    text-align: center;
+    min-height: 90vh;
+    padding-bottom: 5rem;
+    padding-top: 5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    div.row{
+        display: flex;
+        justify-content: center;
+        text-align: center;
+
+        h1{
+            font-weight: 600;
+            color: $pinkDark;
+            margin: 1rem 0 0 0;
+        }
+
+        h5{
+            opacity: 0.8;
+            margin-bottom: 1rem;
+        }
+
+        div.elements{
+            margin-top: 1rem;
+
+            >div{
+                background-color: $white;
+                -webkit-box-shadow: 0px 5px 13px 0px rgba(0,0,0,0.41); 
+                box-shadow: 0px 5px 13px 0px rgba(0,0,0,0.41);
+                padding-bottom: 1.5rem;
+                padding-top: 1.5rem;
+                h5{
+                    margin-top: 0.5rem;
+                    font-weight: bold;
+                    margin-bottom: 0;
+                    color: $pinkDark !important;
+                }
+    
+                h6{
+                    opacity: 0.8;
+                }
+    
+                img{
+                    height: 250px;
+                }
+    
+                a{
+                    font-size: 1.3rem;
+                    color: $pinkDark;
+    
+                    &:hover{
+                        color: $pink;
+                    }
+                }
+            }
+        }
+    }
+}
+/* ---------- ../Professores ---------- */
+
+/* ---------- Cursos ---------- */
+#cursos{
+    background-color: $white;
+    text-align: center;
+    padding-bottom: 2rem;
+    padding-top: 2rem;
+   
+    div.row#main{
+        display: flex;
+        justify-content: center;
+        text-align: center;
+
+        h1{
+            font-weight: 600;
+            color: $pinkDark;
+            margin: 1rem 0 0 0;
+        }
+
+        h5{
+            opacity: 0.8;
+            margin-bottom: 1rem;
+        }
+    }
+
+    div.row{
+        margin-top: 1rem;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        div.elements{
+            margin-top: 1.8rem;
+
+            >div{
+                -webkit-box-shadow: 2px 2px 0px 2px $pink; 
+                box-shadow: 2px 2px 0px 2px $pink; 
+                border-radius: 5px;
+                border: 1px solid $pink;
+                padding-bottom: .5rem;
+                padding-left: 1rem;
+                padding-right: 1rem;
+
+                div.divForIcon{
+                    margin-top: -5rem;
+                    display: inline-block;
+
+                    i{
+                        color: $white;
+                        background-color: $pinkDark;
+                        font-size: 2rem;
+                        height: 3rem;
+                        line-height: 3rem;
+                        border-radius: 50% !important;
+
+                        width: 3rem;
+                    }
+                }
+    
+                h5{
+                    margin-top: .5rem;
+                    color: $pink;
+                }
+    
+                span{
+                    font-size: 0.9rem;
+                    opacity: 0.8;
+                }
+            }
+        }
+    }
+
+}
+/* ---------- ../Cursos ---------- */
 
 
 @media (min-width: 576px) { 
