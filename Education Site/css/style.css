@@ -231,6 +231,7 @@ footer .row button#insc:hover {
   padding-top: 1rem;
   border: 1px solid #0eb582;
   background-color: #f0fdfa;
+  min-height: 100%;
 }
 
 #home #sectionPopulares > .row .elements > div .modules {
@@ -917,6 +918,56 @@ footer .row button#insc:hover {
 #bodyContact #accordion span, #bodyContact #accordion2 span {
   opacity: 0.8;
   font-size: 0.9;
+}
+
+@media (max-width: 330px) {
+  #courses .elements {
+    display: none !important;
+  }
+}
+
+@media (max-width: 400px) {
+  #bannerHome a.carousel-control-prev div {
+    margin-left: 0.5rem !important;
+  }
+  #bannerHome .carousel-indicators {
+    display: none;
+  }
+  #bannerHome h3 {
+    font-size: 1.1rem;
+    margin-right: auto;
+  }
+  #bannerHome button {
+    font-size: 1rem;
+    padding: .575rem 0.35rem !important;
+  }
+  #about h3 {
+    font-size: 2rem !important;
+  }
+  #about #bannerAbout span {
+    font-size: 1.2rem !important;
+  }
+  #about #courses h4 {
+    font-size: 1.3rem;
+  }
+  #about #courses span {
+    font-size: 0.8rem !important;
+  }
+  #bodyCourses h3 {
+    font-size: 2rem !important;
+  }
+  #bodyCourses h4 {
+    font-size: 1.3rem;
+  }
+  #bodyCourses #bannerCourses span {
+    font-size: 1.2rem !important;
+  }
+  #bodyContact h3 {
+    font-size: 2rem !important;
+  }
+  #bodyContact #bannerContact span {
+    font-size: 1.2rem !important;
+  }
 }
 
 @media (min-width: 992px) {

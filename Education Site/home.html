@@ -1,319 +1,324 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- Style Sheet CSS -->
-    <link rel="stylesheet" href="css/style.css">
+  <!-- Style Sheet CSS -->
+  <link rel="stylesheet" href="css/style.css">
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="css/bootstrap.min.css">
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="css/bootstrap.min.css">
 
-    <!-- Normalize -->
-    <link rel="stylesheet" href="css/normalize.css">
+  <!-- Normalize -->
+  <link rel="stylesheet" href="css/normalize.css">
 
-    <!-- JavaScript -->
-    <script src="js/script.js"></script>
+  <!-- JavaScript -->
+  <script src="js/script.js"></script>
 
-    <!-- Font Awesome - Icons -->
-    <link href="font_awesome/css/all.css" rel="stylesheet">
+  <!-- Font Awesome - Icons -->
+  <link href="font_awesome/css/all.css" rel="stylesheet">
 
-    <!--[if lt IE 9]>
-		  <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
-	  <![endif]-->
+  <!--[if lt IE 9]>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
+  <![endif]-->
 
-    <title>Educa</title>
+  <title>Educa</title>
 </head>
 <body id="home">
-    <!-- Nav -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light" id="navbar">
-      <a class="navbar-brand ml-lg-5 pl-lg-5" href="#">
-        <i class="fa-solid fa-lightbulb"></i>
-        <span>Educa</span>
-      </a>
+  <!-- Nav -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light" id="navbar">
+    <a class="navbar-brand ml-lg-5 pl-lg-5" href="#">
+      <i class="fa-solid fa-lightbulb"></i>
+      <span>Educa</span>
+    </a>
 
-      <button class="btn btn-outline-dark order-lg-3 mr-lg-5 pr-lg-5" type="button">
-        <i class="fa-solid fa-user"></i>
-      </button>
+    <button class="btn btn-outline-dark order-lg-3 mr-lg-5 pr-lg-5" type="button">
+      <i class="fa-solid fa-user"></i>
+    </button>
+      
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#myNavbar" aria-controls="myNavbar" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+      
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="navbar-nav mr-auto mr-lg-0 ml-lg-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="#">Home</a>
+        </li>
+          
+        <li class="nav-item">
+          <a class="nav-link" href="sobre.html">Sobre</a>
+        </li>
+          
+        <li class="nav-item">
+          <a class="nav-link" href="cursos.html">Cursos</a>
+        </li>
+          
+        <li class="nav-item">
+          <a class="nav-link" href="contato.html">Contato</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <!-- ../Nav -->
+
+  <!-- Banner -->
+  <section class="container-fluid" id="bannerHome">
+    <div id="carouselIndicators" class="carousel slide" data-ride="carousel">
+      <ol class="carousel-indicators">
+        <li data-target="#carouselIndicators" data-slide-to="0" class="active"></li>
+        <li data-target="#carouselIndicators" data-slide-to="1"></li>
+        <li data-target="#carouselIndicators" data-slide-to="2"></li>
+      </ol>
+
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img class="d-block w-100 img-fluid" src="img/home-slide-1.jpg" alt="First slide">
+        </div>
+
+        <div class="carousel-item">
+          <img class="d-block w-100" src="img/home-slide-2.jpg" alt="Second slide">
+        </div>
         
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#myNavbar" aria-controls="myNavbar" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-        
-      <div class="collapse navbar-collapse" id="myNavbar">
-        <ul class="navbar-nav mr-auto mr-lg-0 ml-lg-auto">
-          <li class="nav-item">
-            <a class="nav-link" href="#">Home</a>
+        <div class="carousel-item">
+          <img class="d-block w-100" src="img/home-slide-3.jpg" alt="Third slide">
+        </div>
+      </div>
+
+      <a class="carousel-control-prev" href="#" role="button" data-slide="prev">
+        <div>
+          <h3 class="d-md-none">Os Melhores Cursos</h3>
+
+          <h3 class="d-none d-md-block">Os Melhores Cursos Você</h3>
+          <h3 class="d-none d-md-block">Encontra Aqui!</h3>
+
+          <span class="d-none d-lg-block">Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis, perferendis.</span>
+          <span class="d-none d-lg-block">Quidem ipsam exercitationem ducimus aspernatur adipisci obcaecati</span>
+          
+          <button class="myBtn">
+            Começar Agora
+          </button>
+        </div>
+      </a>
+    </div>
+  </section>
+  <!-- ../Banner -->
+
+  <!-- Matérias Populares -->
+  <section class="container-fluid" id="sectionPopulares">
+    <div class="row">
+      <h3>
+        Nossas Matérias Populares
+      </h3>
+    </div>
+
+    <div class="row mx-xl-5">
+      <div class="col-10 col-sm-4 col-md-3 col-xl-4 elements">
+        <div>
+          <img class="img-fluid" src="img/subject-icon-1.png" alt="">
+          <span>Design Grágico</span>
+          <span class="modules">10 Módulos</span>
+        </div>
+      </div>
+
+      <div class="col-10 col-sm-4 col-md-3 col-xl-4 elements">
+        <div>
+          <img class="img-fluid" src="img/subject-icon-2.png" alt="">
+          <span>Matemática</span>
+          <span class="modules">12 Módulos</span>
+        </div>
+      </div>
+      
+      <div class="col-10 col-sm-4 col-md-3 col-xl-4 elements">
+        <div>
+          <img class="img-fluid" src="img/subject-icon-3.png" alt="">
+          <span>Professora</span>
+          <span class="modules">21 Módulos</span>
+        </div>
+      </div>
+      
+      <div class="col-10 col-sm-4 col-md-3 col-xl-4 elements">
+        <div>
+          <img class="img-fluid" src="img/subject-icon-4.png" alt="">
+          <span>Desenvolvedor</span>
+          <span class="modules">16 Módulos</span>
+        </div>
+      </div>
+
+      <div class="col-10 col-sm-4 col-md-3 col-xl-4 elements">
+        <div>
+          <img class="img-fluid" src="img/subject-icon-5.png" alt="">
+          <span>Ciência</span>
+          <span class="modules">19 Módulos</span>
+        </div>
+      </div>
+      
+      <div class="col-10 col-sm-4 col-md-3 col-xl-4 elements">
+        <div>
+          <img class="img-fluid" src="img/subject-icon-6.png" alt="">
+          <span>Engenharia</span>
+          <span class="modules">22 Módulos</span>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- ../Matérias Populares -->
+
+  <!-- Cursos Populares -->
+  <section class="container-fluid" id="sectionCourses">
+    <div class="row">
+      <h3>
+        Nossos Cursos Populares
+      </h3>
+    </div>
+
+    <div class="row mx-lg-5">
+      <div class="col-12 col-md-6 col-lg-4">
+        <div class="elements">
+          <img class="img-fluid" src="img/course-1-1.png" alt="">
+          <h4>Desenvolvedor Web</h4>
+
+          <div class="absolute">
+            <div>
+              <h5>Desenvolvimento Web</h5>
+              <span>
+                Autem alias facilis corporis esse at quo, harum dolores quos labore deserunt illum repellendus adipisci Possimus.
+              </span>
+
+              <button class="myBtn">
+                Começar Agora
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-md-6 col-lg-4">
+        <div class="elements">
+            <img class="img-fluid" src="img/course-1-2.png" alt="">
+            <h4>Jogos Digitais</h4>
+
+            <div class="absolute">
+              <div>
+                <h5>Jogos Digitais</h5>
+                <span>
+                  Autem alias facilis corporis esse at quo, harum dolores quos labore deserunt illum repellendus adipisci Possimus.
+                </span>
+
+                <button class="myBtn">
+                  Começar Agora
+                </button>
+              </div>
+            </div>
+        </div>
+      </div>
+      <div class="col-12 col-md-6 col-lg-4">
+        <div class="elements">
+            <img class="img-fluid" src="img/course-1-3.png" alt="">
+            <h4>Ciência de dados</h4>
+
+            <div class="absolute">
+              <div>
+                <h5>Ciência de dados</h5>
+                <span>
+                  Autem alias facilis corporis esse at quo, harum dolores quos labore deserunt illum repellendus adipisci Possimus.
+                </span>
+
+                <button class="myBtn">
+                  Começar Agora
+                </button>
+              </div>
+            </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- ../Cursos Populares -->
+
+  <!-- Footer -->
+  <footer class="container-fluid">
+    <div class="row mx-md-5 text-md-center">
+      <div class="col-12 col-sm-6 col-md-4 col-xl-3">
+        <div>
+          <i class="fa-solid fa-lightbulb"></i>
+          <span>Educa</span>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi, voluptatem.</p>
+          <button>
+            <i class="fa-brands fa-facebook-f"></i>
+          </button>
+          <button>
+            <i class="fa-brands fa-twitter"></i>
+          </button>
+          <button>
+            <i class="fa-brands fa-instagram"></i>
+          </button>
+          <button>
+            <i class="fa-brands fa-linkedin"></i>
+          </button>
+        </div>
+      </div>
+
+      <div class="col-12 col-sm-6 col-md-4 col-xl-3">
+        <span>Links Rápidos</span>
+        <ul>
+          <li>
+            <a href="">Home</a>
           </li>
-            
-          <li class="nav-item">
-            <a class="nav-link" href="sobre.html">Sobre</a>
+          <li>
+            <a href="">Sobre</a>
           </li>
-            
-          <li class="nav-item">
-            <a class="nav-link" href="cursos.html">Cursos</a>
+          <li>
+            <a href="">Cursos</a>
           </li>
-            
-          <li class="nav-item">
-            <a class="nav-link" href="contato.html">Contato</a>
+          <li>
+            <a href="">Contato</a>
           </li>
         </ul>
       </div>
-    </nav>
-    <!-- ../Nav -->
 
-    <!-- Banner -->
-    <section class="container-fluid" id="bannerHome">
-      <div id="carouselIndicators" class="carousel slide" data-ride="carousel">
-        <ol class="carousel-indicators">
-          <li data-target="#carouselIndicators" data-slide-to="0" class="active"></li>
-          <li data-target="#carouselIndicators" data-slide-to="1"></li>
-          <li data-target="#carouselIndicators" data-slide-to="2"></li>
-        </ol>
-
-        <div class="carousel-inner">
-          <div class="carousel-item active">
-            <img class="d-block w-100 img-fluid" src="img/home-slide-1.jpg" alt="First slide">
-          </div>
-
-          <div class="carousel-item">
-            <img class="d-block w-100" src="img/home-slide-2.jpg" alt="Second slide">
-          </div>
-          
-          <div class="carousel-item">
-            <img class="d-block w-100" src="img/home-slide-3.jpg" alt="Third slide">
-          </div>
-        </div>
-
-        <a class="carousel-control-prev" href="#" role="button" data-slide="prev">
-          <div>
-            <h3 class="d-md-none">Os Melhores Cursos</h3>
-
-            <h3 class="d-none d-md-block">Os Melhores Cursos Você</h3>
-            <h3 class="d-none d-md-block">Encontra Aqui!</h3>
-  
-            <span class="d-none d-lg-block">Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis, perferendis.</span>
-            <span class="d-none d-lg-block">Quidem ipsam exercitationem ducimus aspernatur adipisci obcaecati</span>
-            
-            <button class="myBtn">
-              Começar Agora
-            </button>
-          </div>
-        </a>
-      </div>
-    </section>
-    <!-- ../Banner -->
-
-    <!-- Matérias Populares -->
-    <section class="container-fluid" id="sectionPopulares">
-      <div class="row">
-        <h3>
-          Nossas Matérias Populares
-        </h3>
+      <div class="col-12 col-sm-6 col-md-4 col-xl-3">
+        <span>Links Uteis</span>
+        <ul>
+          <li>
+            <a href="#home">Política</a>
+          </li>
+          <li>
+            <a href="#home">Perguntas</a>
+          </li>
+          <li>
+            <a href="#home">Centro de Ajuda</a>
+          </li>
+          <li>
+            <a href="#home">Enviar Feedback</a>
+          </li>
+          <li>
+            <a href="#home">Termos de Uso</a>
+          </li>
+        </ul>
       </div>
 
-      <div class="row mx-xl-5">
-        <div class="col-6 col-sm-4 col-md-3 col-xl-4 elements">
-          <div>
-            <img class="img-fluid" src="img/subject-icon-1.png" alt="">
-            <span>Design Grágico</span>
-            <span class="modules">10 Módulos</span>
-          </div>
-        </div>
-
-        <div class="col-6 col-sm-4 col-md-3 col-xl-4 elements">
-          <div>
-            <img class="img-fluid" src="img/subject-icon-2.png" alt="">
-            <span>Matemática</span>
-            <span class="modules">12 Módulos</span>
-          </div>
-        </div>
+      <div class="col-12 col-sm-6 col-md-4 col-xl-3">
+        <span>Boletim de Notícias</span>
+        <p>Inscreva-se Para Receber Nossas Atualizações</p>
+        <input type="email" placeholder="Informe o seu e-mail">
         
-        <div class="col-6 col-sm-4 col-md-3 col-xl-4 elements">
-          <div>
-            <img class="img-fluid" src="img/subject-icon-3.png" alt="">
-            <span>Professora</span>
-            <span class="modules">21 Módulos</span>
-          </div>
-        </div>
-        
-        <div class="col-6 col-sm-4 col-md-3 col-xl-4 elements">
-          <div>
-            <img class="img-fluid" src="img/subject-icon-4.png" alt="">
-            <span>Desenvolvedor</span>
-            <span class="modules">16 Módulos</span>
-          </div>
-        </div>
-
-        <div class="col-6 col-sm-4 col-md-3 col-xl-4 elements">
-          <div>
-            <img class="img-fluid" src="img/subject-icon-5.png" alt="">
-            <span>Ciência</span>
-            <span class="modules">19 Módulos</span>
-          </div>
-        </div>
-        
-        <div class="col-6 col-sm-4 col-md-3 col-xl-4 elements">
-          <div>
-            <img class="img-fluid" src="img/subject-icon-6.png" alt="">
-            <span>Engenharia</span>
-            <span class="modules">22 Módulos</span>
-          </div>
-        </div>
+        <button id="insc">
+          Inscrever-se
+        </button>
       </div>
-    </section>
-      <!-- ../Matérias Populares -->
+    </div>
+  </footer>
+  <!-- ../Footer -->
 
-      <section class="container-fluid" id="sectionCourses">
-        <div class="row">
-          <h3>
-            Nossos Cursos Populares
-          </h3>
-        </div>
-
-        <div class="row mx-lg-5">
-          <div class="col-12 col-md-6 col-lg-4">
-            <div class="elements">
-              <img class="img-fluid" src="img/course-1-1.png" alt="">
-              <h4>Desenvolvedor Web</h4>
-
-              <div class="absolute">
-                <div>
-                  <h5>Desenvolvimento Web</h5>
-                  <span>
-                    Autem alias facilis corporis esse at quo, harum dolores quos labore deserunt illum repellendus adipisci Possimus.
-                  </span>
-
-                  <button class="myBtn">
-                    Começar Agora
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-12 col-md-6 col-lg-4">
-            <div class="elements">
-                <img class="img-fluid" src="img/course-1-2.png" alt="">
-                <h4>Jogos Digitais</h4>
-
-                <div class="absolute">
-                  <div>
-                    <h5>Jogos Digitais</h5>
-                    <span>
-                      Autem alias facilis corporis esse at quo, harum dolores quos labore deserunt illum repellendus adipisci Possimus.
-                    </span>
-
-                    <button class="myBtn">
-                      Começar Agora
-                    </button>
-                  </div>
-                </div>
-            </div>
-          </div>
-          <div class="col-12 col-md-6 col-lg-4">
-            <div class="elements">
-                <img class="img-fluid" src="img/course-1-3.png" alt="">
-                <h4>Ciência de dados</h4>
-
-                <div class="absolute">
-                  <div>
-                    <h5>Ciência de dados</h5>
-                    <span>
-                      Autem alias facilis corporis esse at quo, harum dolores quos labore deserunt illum repellendus adipisci Possimus.
-                    </span>
-
-                    <button class="myBtn">
-                      Começar Agora
-                    </button>
-                  </div>
-                </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <footer class="container-fluid">
-        <div class="row mx-md-5 text-md-center">
-          <div class="col-12 col-sm-6 col-md-4 col-xl-3">
-            <div>
-              <i class="fa-solid fa-lightbulb"></i>
-              <span>Educa</span>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi, voluptatem.</p>
-              <button>
-                <i class="fa-brands fa-facebook-f"></i>
-              </button>
-              <button>
-                <i class="fa-brands fa-twitter"></i>
-              </button>
-              <button>
-                <i class="fa-brands fa-instagram"></i>
-              </button>
-              <button>
-                <i class="fa-brands fa-linkedin"></i>
-              </button>
-            </div>
-          </div>
-
-          <div class="col-12 col-sm-6 col-md-4 col-xl-3">
-            <span>Links Rápidos</span>
-            <ul>
-              <li>
-                <a href="">Home</a>
-              </li>
-              <li>
-                <a href="">Sobre</a>
-              </li>
-              <li>
-                <a href="">Cursos</a>
-              </li>
-              <li>
-                <a href="">Contato</a>
-              </li>
-            </ul>
-          </div>
-
-          <div class="col-12 col-sm-6 col-md-4 col-xl-3">
-            <span>Links Uteis</span>
-            <ul>
-              <li>
-                <a href="#home">Política</a>
-              </li>
-              <li>
-                <a href="#home">Perguntas</a>
-              </li>
-              <li>
-                <a href="#home">Centro de Ajuda</a>
-              </li>
-              <li>
-                <a href="#home">Enviar Feedback</a>
-              </li>
-              <li>
-                <a href="#home">Termos de Uso</a>
-              </li>
-            </ul>
-          </div>
-
-          <div class="col-12 col-sm-6 col-md-4 col-xl-3">
-            <span>Boletim de Notícias</span>
-            <p>Inscreva-se Para Receber Nossas Atualizações</p>
-            <input type="email" placeholder="Informe o seu e-mail">
-            
-            <button id="insc">
-              Inscrever-se
-            </button>
-          </div>
-        </div>
-      </footer>
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
-        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
-        crossorigin="anonymous"></script>
-    <script src="js/bootstrap.min.js"></script>
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+    integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+    crossorigin="anonymous"></script>
+  <script src="js/bootstrap.min.js"></script>
 </body>
 </html>

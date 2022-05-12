@@ -29,6 +29,7 @@ $black: rgba(11, 10, 10, 0.871);
 }
 /* ---------- End Scrollbar ---------- */
 
+// Navbar
 #navbar {
     position: sticky;
     top: 0;
@@ -231,6 +232,7 @@ footer{
                     padding-top: 1rem;
                     border: 1px solid $green;
                     background-color: $greenLight;
+                    min-height: 100%;
     
                     .modules{
                         opacity: 0.7;
@@ -848,9 +850,86 @@ footer{
             font-size: 0.9;
         }
     }
-
-    
 }
+
+@media (max-width: 330px) { 
+    #courses{
+        .elements{
+            display: none !important;
+        }
+    }
+}
+
+@media (max-width: 400px) { 
+    #bannerHome{
+        a.carousel-control-prev div{
+            margin-left: 0.5rem !important;
+        }
+
+        .carousel-indicators{
+            display: none;
+        }
+        h3{
+            font-size: 1.1rem;
+            margin-right: auto;
+        }
+
+        button{
+            font-size: 1rem;
+            padding: .575rem 0.35rem !important;
+        }
+    }
+
+    #about{
+        h3{
+            font-size: 2rem !important;
+        }
+
+        #bannerAbout{
+            span{
+                font-size: 1.2rem !important;
+            }
+        }
+
+        #courses{
+            h4{
+                font-size: 1.3rem;
+            }
+            span{
+                font-size: 0.8rem !important;
+            }
+        }
+    }
+
+    #bodyCourses{
+        h3{
+            font-size: 2rem !important;
+        }
+
+        h4{
+            font-size: 1.3rem;
+        }
+
+        #bannerCourses{
+            span{
+                font-size: 1.2rem !important;
+            } 
+        }
+    }
+
+    #bodyContact{
+        h3{
+            font-size: 2rem !important;
+        }
+
+        #bannerContact{
+            span{
+                font-size: 1.2rem !important;
+            }   
+        }
+    }
+}
+
 
 @media (min-width: 576px) { 
     
