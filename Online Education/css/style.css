@@ -22,13 +22,16 @@
 /* ---------- Variables ---------- */
 /* ---------- End Variables ---------- */
 /* ---------- Scrollbar ---------- */
+::-webkit-scrollbar-track {
+  background: #ffffff;
+}
+
 ::-webkit-scrollbar {
   width: 9px;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #0cccda;
-  border-radius: 10px;
+  background: #ff046f;
 }
 
 /* ---------- End Scrollbar ---------- */
@@ -511,7 +514,6 @@ body {
   background-color: #ffffff;
   padding-bottom: 2rem;
   padding-top: 2rem;
-  padding-left: 2rem;
 }
 
 #footer i {
@@ -531,4 +533,36 @@ body {
 }
 
 /* ---------- ../Footer ---------- */
+@media (max-width: 400px) {
+  body {
+    font-size: 1rem !important;
+  }
+  #navbar {
+    margin-left: 0;
+    margin-right: 0;
+    padding: 0.5rem 1rem;
+  }
+  #home button {
+    font-size: 1.1rem !important;
+  }
+  #sobre h2 {
+    font-size: 1.2rem;
+  }
+  #sobre h5 {
+    font-size: 1rem;
+  }
+  #sobre span {
+    font-size: 0.9rem;
+  }
+  #sobre button {
+    font-size: 1.1rem !important;
+  }
+  #contato button {
+    font-size: 1.1rem !important;
+  }
+  #footer div.row > div {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
 /*# sourceMappingURL=style.css.map */

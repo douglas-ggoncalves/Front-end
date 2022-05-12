@@ -20,8 +20,7 @@
 }
 
 /* ---------- Variables ---------- */
-$lightBlue: rgb(12, 204, 218);
-
+//$lightBlue: rgb(12, 204, 218);
 $white: #ffffff;
 $pink: rgb(209, 98, 251);
 $pinkDark: rgb(255, 4, 111);
@@ -31,13 +30,16 @@ $black: #333;
 /* ---------- End Variables ---------- */
 
 /* ---------- Scrollbar ---------- */
+::-webkit-scrollbar-track {
+    background: $white; 
+}
+
 ::-webkit-scrollbar {
     width: 9px;
 }
 
 ::-webkit-scrollbar-thumb {
-    background: $lightBlue;
-    border-radius: 10px;
+    background: $pinkDark;
 }
 /* ---------- End Scrollbar ---------- */
 
@@ -122,6 +124,7 @@ body{
     background-size: cover;
     display: flex;
     align-items: center;
+
     .row{
         display: flex;
         justify-content: center;
@@ -355,6 +358,7 @@ body{
         text-align: center;
         display: flex;
         justify-content: center;
+
         div.elements{
             margin-top: 1.8rem;
             margin-bottom: 1.8rem;
@@ -470,7 +474,6 @@ body{
     background-color: $white;
     padding-bottom: 2rem;
     padding-top: 2rem;
-    padding-left: 2rem;
     
         i{
             border: 1px solid $pink;
@@ -489,6 +492,60 @@ body{
         }
 }
 /* ---------- ../Footer ---------- */
+
+@media (max-width: 300px) { 
+}
+
+@media (max-width: 400px) { 
+    body{
+        font-size: 1rem !important;
+    }
+
+    #navbar{
+        margin-left: 0;
+        margin-right: 0;
+        padding: 0.5rem 1rem;
+    }
+
+    #home{
+        button{
+            font-size: 1.1rem !important;
+        }
+    }
+
+    #sobre{
+        h2{
+            font-size: 1.2rem;
+        }
+
+        h5{
+            font-size: 1rem;
+        }
+
+        span{
+            font-size: 0.9rem;
+        }
+
+        button{
+            font-size: 1.1rem !important;
+        }
+    }
+
+    #contato{
+        button{
+            font-size: 1.1rem !important;
+        }
+    }
+
+    #footer{
+        div.row{
+            >div{
+                padding-left: 0;
+                padding-right: 0;
+            }
+        }
+    }
+}
 
 @media (min-width: 576px) { 
     
