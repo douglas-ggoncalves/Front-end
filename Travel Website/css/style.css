@@ -219,7 +219,7 @@ nav .buttonNav {
 .videos {
     display: block;
     border-radius: 8px;
-    height: 300px;
+    max-height: 300px;
     max-width: 100%;
     margin: 0 auto;
 }
@@ -572,6 +572,15 @@ nav .buttonNav {
 }
 
 @media only screen and (min-width: 300px) {
+    div.blogsEPosts> div{
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    div.blogsEPosts span{
+        width: 100%;
+    }
+
     #baseboardDiv span {
         font-size: 1em;
     }
@@ -601,6 +610,18 @@ nav .buttonNav {
         font-size: 1.25em;
     }
 }
+
+@media only screen and (min-width: 400px) {
+    div.blogsEPosts> div{
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+    div.blogsEPosts span{
+        width: 80%;
+    }
+}
+
 
 @media only screen and (min-width: 600px) {
     #textBgTopOne {
