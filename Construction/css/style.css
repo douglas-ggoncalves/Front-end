@@ -732,6 +732,21 @@
   cursor: grab;
 }
 
+@media (max-width: 360px) {
+  #navbar div#buttons {
+    display: none;
+  }
+}
+
+@media (max-width: 400px) {
+  #sobre h5 {
+    font-size: 1.5rem !important;
+  }
+  #sobre h6 {
+    font-size: 0.8rem !important;
+  }
+}
+
 @media (min-width: 576px) {
   #blogs .row div.main {
     cursor: -webkit-grab;

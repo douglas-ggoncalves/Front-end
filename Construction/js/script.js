@@ -3,7 +3,6 @@ var largura;
 
 if(largura == undefined){
     largura = window.innerWidth;
-    console.log(largura)
     if(largura < 768) {
         var swiper = new Swiper(".mySwiper", {
             loop: true,
