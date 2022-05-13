@@ -28,6 +28,10 @@
   width: 8px;
 }
 
+body, html {
+  height: 100%;
+}
+
 /* ---------- Nav ---------- */
 nav {
   position: -webkit-sticky !important;
@@ -84,7 +88,7 @@ nav a:hover {
 #home {
   background: url("../img/home-bg.jpg") no-repeat center;
   text-align: center;
-  height: 92vh;
+  min-height: 92vh;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -290,6 +294,11 @@ nav a:hover {
 /* ---------- End Contact ---------- */
 /* ---------- Footer ---------- */
 #footer {
+  min-height: 10vh;
+  position: relative;
+  bottom: 0;
+  left: 0;
+  right: 0;
   background-color: #e7e8eb;
   padding-bottom: 1rem;
   padding-top: 1rem;

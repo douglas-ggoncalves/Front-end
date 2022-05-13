@@ -32,6 +32,10 @@ $blue: #00B8B8;
     width: 8px;
 }
 
+body, html{
+    height: 100%;
+}
+
 /* ---------- Nav ---------- */
 nav {
     position: sticky !important;
@@ -78,7 +82,7 @@ nav {
 #home{
     background: url('../img/home-bg.jpg') no-repeat  center;
     text-align: center;
-    height: 92vh;
+    min-height: 92vh;
     display: flex;
     align-items: center;
     >.row{
@@ -260,6 +264,11 @@ nav {
 
 /* ---------- Footer ---------- */
 #footer{
+    min-height: 10vh;
+    position: relative;
+    bottom: 0;
+    left: 0;
+    right: 0;
     background-color: $gray;
     padding-bottom: 1rem;
     padding-top: 1rem;
@@ -282,6 +291,9 @@ nav {
     }
 }
 /* ---------- End Footer ---------- */
+@media (max-width: 350px) { 
+   
+}
 
 @media (min-width: 576px) { 
     
