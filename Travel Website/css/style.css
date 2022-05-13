@@ -569,9 +569,29 @@ nav .buttonNav {
     #baseboardDiv span {
         font-size: 0.8em;
     }
+
+    div.blogsEPosts> div{
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    div.blogsEPosts span{
+        font-size: 0.9rem;
+        width: 100%;
+    }
+
+    div.blogsEPosts span a{
+        padding-left: 0;
+        padding-right: 0;
+    }
 }
 
 @media only screen and (min-width: 300px) {
+    .blogsEPosts .titleLinkBlog{
+        padding-left: 1px;
+        padding-right: 1px;
+    }
+
     div.blogsEPosts> div{
         padding-left: 0;
         padding-right: 0;
@@ -616,12 +636,7 @@ nav .buttonNav {
         padding-left: 15px;
         padding-right: 15px;
     }
-
-    div.blogsEPosts span{
-        width: 80%;
-    }
 }
-
 
 @media only screen and (min-width: 600px) {
     #textBgTopOne {

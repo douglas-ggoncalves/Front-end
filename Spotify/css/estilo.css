@@ -67,9 +67,7 @@ h1.text-white {
 .finalImages {
     transform: rotate(30deg);
     -ms-transform: rotate(30deg);
-    /* IE 9 */
     -webkit-transform: rotate(30deg);
-    /* Chrome, Safari, Opera */
 }
 
 ul li {
@@ -88,7 +86,7 @@ ul li a:hover {
 }
 
 a.nav-link {
-    font-size: 15px;
+    font-size: 1.25rem;
 }
 
 .footerImage {
@@ -113,7 +111,7 @@ a.nav-link {
     }
 
     #firstContainer a{
-        font-size: 1.05rem;
+        font-size: 1.2rem;
     }
 
     #footer a{
@@ -131,6 +129,9 @@ a.nav-link {
     .finalImages img {
         height: 400px;
     }
+    #firstContainer a{
+        font-size: 1.25rem;
+    }
 }
 
 @media (min-width: 1200px) {
@@ -146,10 +147,58 @@ a.nav-link {
     }
     
     #firstContainer a{
-        font-size: 1.08rem;
+        font-size: 1.25rem;
     }
 
     #footer a{
         font-size: 1.07rem;
     }
 }
+
+
+@media (max-width: 360px) { 
+    h1.text-white{
+        font-size: 1.7rem;
+    }
+
+    #footer >div{
+        border: 1px solid red;
+
+    }
+
+    div#divLogo{
+        border: 1px solid red;
+    }
+
+}
+
+@media (max-width: 450px) { 
+    #divImages img{
+        display: none;
+    }
+
+    #footer{
+        font-size: 0.7rem;
+    }
+
+    div.divHeight{
+        height: 25px !important;
+    }
+}
+/*
+@media (min-width: 576px) {
+    
+}
+
+@media (min-width: 768px) {
+    
+}
+
+@media (min-width: 992px) {
+   
+}
+
+@media (min-width: 1200px) {
+    
+}
+*/
