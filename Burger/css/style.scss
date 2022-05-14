@@ -277,7 +277,8 @@ header{
 
 /* Menu */
 #menu{
-    margin-top: 7.5rem;
+    margin-top: 2.5rem;
+    padding-top: 5rem;
     text-align: center;
     color: $white;
     >.row{
@@ -341,7 +342,8 @@ header{
 
 /* About */
 #about{
-    margin-top: 7.5rem;
+    margin-top: 2.5rem;
+    padding-top: 5rem;
     color: $white;
 
     >.row{
@@ -404,7 +406,8 @@ header{
 
 /* Reviews */
 #reviews{
-    margin-top: 7.5rem;
+    margin-top: 2.5rem;
+    padding-top: 5rem;
     text-align: center;
     color: $white;
     >.row{
@@ -451,7 +454,8 @@ header{
 
 /* Contact */
 #contact{
-    margin-top: 7.5rem;
+    margin-top: 2.5rem;
+    padding-top: 5rem;
     text-align: center;
     color: $white;
 
@@ -486,6 +490,10 @@ header{
                 width: 100%;
                 -webkit-box-shadow: 0px 0px 2px 1px rgba(255,255,255,0.7);
                 box-shadow: 0px 0px 2px 1px rgba(255,255,255,0.7);
+            }
+
+            span{
+                font-size: 0.7rem !important;
             }
 
             div{
@@ -530,7 +538,8 @@ header{
 
 /* Blog */
 #blog{
-    margin-top: 7.5rem;
+    margin-top: 2.5rem;
+    padding-top: 5rem;
     color: $white;
 
     >.row{
@@ -644,6 +653,18 @@ header{
 }
 /* End Blog */
 
+/* Footer */
+footer{
+    ul{
+        li{
+            margin: 0.75rem 0.1rem;
+        }
+    }
+}
+/* End Footer */
+
+
+
 @media (max-width: 280px) { 
     html{
         font-size: 65%;
@@ -651,8 +672,12 @@ header{
 }
 
 @media (min-width: 576px) { 
-
- }
+    #contact div.rowContent div.elements div{
+        span{
+            font-size: 1rem !important;
+        }
+    }
+}
 
 @media (min-width: 768px) { 
 
@@ -708,16 +733,17 @@ header{
                 justify-content: center;
                 li{
                     display: inline;
-                    margin: 5px;
+                    //margin: 5px;
                     padding-left: 0;
                     background: none;
     
                     a{
                         color: $white;
                         border: 1px solid rgba(255, 255, 255,0.6);
-                        padding: 0.2rem 1.5rem;
+                        padding: 0.2rem 1.5rem 0.4rem 1.5rem;
                         font-size: 1.5rem;
                         font-weight: lighter;
+                        line-height: 1.5rem !important;
     
                         &:hover{
                             background-color: $white;
@@ -841,9 +867,9 @@ header{
                     a{
                         color: $white;
                         border: 3px solid rgba(255, 255, 255,0.6);
-                        padding: 0.2rem 1.5rem;
                         font-size: 1.5rem;
                         font-weight: lighter;
+                        padding: 0.2rem 1.5rem 0.4rem 1.5rem;
     
                         &:hover{
                             background-color: $white;
