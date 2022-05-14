@@ -180,7 +180,7 @@ header #myNavBarRow .active {
 /* ---------- Resources ---------- */
 #resources {
   min-height: calc(90vh - 5rem);
-  margin-top: 5rem;
+  padding-top: 5rem;
 }
 
 #resources > .row {
@@ -265,6 +265,7 @@ header #myNavBarRow .active {
 #products {
   background-color: #eeeeee;
   min-height: 100vh;
+  padding-top: 5rem;
   text-align: center;
   font-family: 'Segoe UI', 'Open Sans', sans-serif;
 }
@@ -384,8 +385,7 @@ header #myNavBarRow .active {
   min-height: 100vh;
   text-align: center;
   font-family: 'Segoe UI', 'Open Sans', sans-serif;
-  padding-bottom: 2rem;
-  padding-top: 2rem;
+  padding-top: 5rem;
 }
 
 #FAQ > .row > div.texts {
@@ -465,6 +465,12 @@ footer div#final h3 {
 }
 
 /* ---------- End Footer ---------- */
+@media (max-width: 320px) {
+  * {
+    font-size: 0.9rem !important;
+  }
+}
+
 @media (max-width: 400px) {
   * {
     font-size: 0.9rem;

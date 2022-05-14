@@ -164,7 +164,7 @@ header{
 /* ---------- Resources ---------- */
 #resources {
     min-height: calc(90vh - 5rem);
-    margin-top: 5rem;
+    padding-top: 5rem;
     >.row {
         display: flex;
         justify-content: center;
@@ -236,12 +236,14 @@ header{
 #products {
     background-color: rgb(238, 238, 238);
     min-height: 100vh;
+    padding-top: 5rem;
     text-align: center;
     font-family: 'Segoe UI', 'Open Sans', sans-serif;
 
     >.row{
         padding-bottom: 1rem;
         padding-top: 1rem;
+
         div.elements >div {
             margin-top: 1rem;
             padding-bottom: 1rem;
@@ -346,8 +348,7 @@ header{
     min-height: 100vh;
     text-align: center;
     font-family: 'Segoe UI', 'Open Sans', sans-serif;
-    padding-bottom: 2rem;
-    padding-top: 2rem;
+    padding-top: 5rem;
 
     >.row{
         >div.texts{
@@ -372,7 +373,6 @@ header{
 /* ---------- End FAQ ---------- */
 
 /* ---------- Footer ---------- */
-
 footer {
     background-color: rgb(238, 238, 238);
     text-align: center;
@@ -420,6 +420,12 @@ footer {
     }
 }
 /* ---------- End Footer ---------- */
+
+@media (max-width: 320px) {
+    *{
+        font-size: 0.9rem !important;
+    }
+}
 
 
 @media (max-width: 400px) {
