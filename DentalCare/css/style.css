@@ -87,6 +87,7 @@ nav a:hover {
 /* ---------- Home ---------- */
 #home {
   background: url("../img/home-bg.jpg") no-repeat center;
+  background-size: cover;
   text-align: center;
   min-height: 92vh;
   display: -webkit-box;
@@ -142,13 +143,19 @@ nav a:hover {
 /* ---------- End About ---------- */
 /* ---------- Services ---------- */
 #services {
-  min-height: 92vh;
+  min-height: 100vh;
   background-color: #e7e8eb;
   padding-bottom: 1rem;
   padding-top: 1rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
-#services > .row {
+#services .row {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
@@ -221,13 +228,34 @@ nav a:hover {
 /* ---------- End Process ---------- */
 /* ---------- Reviews ---------- */
 #reviews {
-  min-height: 92vh;
   background-color: #e7e8eb;
   padding-bottom: 1rem;
   padding-top: 1rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
-#reviews > .row {
+#reviews > div {
+  text-align: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+#reviews .row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
@@ -275,10 +303,21 @@ nav a:hover {
 /* ---------- End Reviews ---------- */
 /* ---------- Contact ---------- */
 #contact {
-  min-height: 92vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding-bottom: 3rem;
+  padding-top: 3rem;
 }
 
-#contact > .row {
+#contact > div {
+  width: 100%;
+}
+
+#contact .row {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
