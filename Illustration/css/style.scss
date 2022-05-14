@@ -83,6 +83,7 @@ $borderRadius: 5px;
 
 /* ---------- Creative Section ---------- */
     #creativeSection{
+        
         .row {
             >div{
                 display: flex;
@@ -459,6 +460,7 @@ $borderRadius: 5px;
 
 /* ---------- Footer ---------- */
 #footer{
+    text-align: center;
     margin-top: 3rem;
 
     >.row{
