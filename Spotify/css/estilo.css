@@ -123,12 +123,15 @@ a.nav-link {
     h1.text-white {
         font-size: 4em;
     }
+
     img {
         height: 220px;
     }
+
     .finalImages img {
         height: 400px;
     }
+    
     #firstContainer a{
         font-size: 1.25rem;
     }
@@ -138,9 +141,11 @@ a.nav-link {
     h1.text-white {
         font-size: 6em;
     }
+
     img {
         height: 230px;
     }
+    
     .finalImages img {
         margin-top: 18px;
         height: 540px;
@@ -161,14 +166,7 @@ a.nav-link {
         font-size: 1.7rem;
     }
 
-    #footer >div{
-        border: 1px solid red;
-
-    }
-
-    div#divLogo{
-        border: 1px solid red;
-    }
+   
 
 }
 
@@ -184,21 +182,8 @@ a.nav-link {
     div.divHeight{
         height: 25px !important;
     }
-}
-/*
-@media (min-width: 576px) {
     
+    #divLogo img{
+        padding-left: 2rem;
+    }
 }
-
-@media (min-width: 768px) {
-    
-}
-
-@media (min-width: 992px) {
-   
-}
-
-@media (min-width: 1200px) {
-    
-}
-*/
