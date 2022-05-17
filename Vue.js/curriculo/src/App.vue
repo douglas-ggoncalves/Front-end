@@ -1,16 +1,16 @@
 <template>
-  <v-container class="grey lighten-5" :fluid="true">
-
+<v-theme-provider root>
+  <v-container class="" :fluid="true">
 
     <v-row class="mb-6" no-gutters>
       <v-col :md="2" style="height: 100vh;">
-      
-        <div style="height: 5vh">
+        <v-card height="5vh" >
           <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
-        </div>
+        </v-card>
+      
 
-        <v-card height="95vh" width="256" class="ml-auto" v-model="drawer" >
-          <v-navigation-drawer id="navegationBar" v-model="drawer" style="box-shadow: 0px 3px 1px -2px rgb(0 0 0 / 20%), 0px 2px 2px 0px rgb(0 0 0 / 14%), 0px 1px 5px 0px rgb(0 0 0 / 12%) !important;">
+        <v-card height="95vh" width="100%" class="ml-auto" v-model="drawer" > <!-- width="256" -->
+          <v-navigation-drawer id="navegationBar" v-model="drawer" style="border: 1px solid red;box-shadow: 0px 3px 1px -2px rgb(0 0 0 / 20%), 0px 2px 2px 0px rgb(0 0 0 / 14%), 0px 1px 5px 0px rgb(0 0 0 / 12%) !important; background: none !important">
             <v-list-item>
               <v-list-item-content>
                 <v-list-item-title class="text-h6">
@@ -32,7 +32,6 @@
                 v-for="item in items"
                 :key="item.title"
                 link>
-                <a :href="item.title">
 
                 <v-list-item-icon>
                   <v-icon>{{ item.icon }}</v-icon>
@@ -42,19 +41,19 @@
                   <v-list-item-title>{{ item.title }}</v-list-item-title>
                 </v-list-item-content>
                   
-                </a>
               </v-list-item>
             </v-list>
           </v-navigation-drawer>
         </v-card>
       </v-col>
 
-      <v-col :md="10" style="border: 1px solid black">
+      <v-col :md="10" style="border: 1px solid greenyellow">
         <router-view />
       </v-col>
     </v-row>
-
   </v-container>
+</v-theme-provider>
+
 </template>
 
 <script>
