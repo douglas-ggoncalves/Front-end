@@ -27,7 +27,7 @@
           </v-list>
         </v-navigation-drawer>
       </v-card>
-asd
+
       <v-main>
         <router-view />
       </v-main>
