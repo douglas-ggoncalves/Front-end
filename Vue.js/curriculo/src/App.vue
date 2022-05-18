@@ -22,7 +22,7 @@
               </v-list-item-content>
             </v-list-item>
         </v-navigation-drawer>
-      </v-card>
+      </v-card>asd
 
       <v-main>
         <router-view />
