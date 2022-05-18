@@ -1,0 +1,18 @@
+.container--fluid {
+  padding: 0 !important;
+}
+
+.v-sheet.v-card:not(.v-sheet--outlined) {
+  -webkit-box-shadow: none !important;
+          box-shadow: none !important;
+}
+
+a {
+  color: black;
+  text-decoration: none;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+/*# sourceMappingURL=style.css.map */
