@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    teste
+    
     </v-app>
 </template>
 
