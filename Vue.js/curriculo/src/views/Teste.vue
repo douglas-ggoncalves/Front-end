@@ -17,7 +17,7 @@
         height="90vh"
       ></v-card>
       <v-btn
-        color="primary"
+        color="secomndary" /* primary */
         @click="e6 = 2"
       >
         Continue
