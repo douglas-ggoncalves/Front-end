@@ -41,8 +41,8 @@
 
         <v-col :sm="10">
           <v-app app id="inspire" style="border: 1px solid red">
-            <v- dark flat>
-              <v-toolbar flat height="72">
+            <v- dark flat height="5vh">
+              <v-toolbar flat>
                 <v-switch
                   v-model="$vuetify.theme.dark"
                   inset

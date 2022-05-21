@@ -10,6 +10,19 @@
     border-radius: 0 !important;
 }
 
+.v-stepper__step{
+    padding: 0 !important;
+}
+
+.v-application--is-ltr .v-stepper--vertical .v-stepper__content{
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+header.v-sheet.theme--dark.v-toolbar.v-toolbar--flat{
+    height: 5vh !important;
+}
+
 a{
     color: black;
     text-decoration: none;
