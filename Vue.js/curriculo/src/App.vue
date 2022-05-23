@@ -1,46 +1,83 @@
 <template>
   <v-theme-provider root>
     <v-container class="" :fluid="true">
-      <v-row class="mb-6" no-gutters>
+      <v-app-bar elevation="4">
+        <v-app-bar-nav-icon @click="drawer = true"></v-app-bar-nav-icon>
 
-        <v-col :sm="2" style="height: 100vh">
-          <v-card height="5vh">
-            <v-app-bar-nav-icon
-              @click.stop="drawer = !drawer"
-            ></v-app-bar-nav-icon>
-          </v-card>
+        <v-toolbar-title>Douglas Gonçalves</v-toolbar-title>
+        <v-spacer></v-spacer>
 
-          <v-card height="95vh" width="256" class="">
-            <!-- width="256" -->
-            <v-navigation-drawer
-              id="navegationBar"
-              v-model="drawer"
-              permanent
-              style="
-                border: 1px solid red;
-                box-shadow: 0px 3px 1px -2px rgb(0 0 0 / 20%),
-                  0px 2px 2px 0px rgb(0 0 0 / 14%),
-                  0px 1px 5px 0px rgb(0 0 0 / 12%) !important;
-                background: none !important;
-              "
+        <v-tooltip bottom>
+          <template v-slot:activator="{ on, attrs }">
+            <v-btn icon v-bind="attrs" v-on="on" @click="selectView('Início')">
+              <v-icon>mdi-home</v-icon>
+            </v-btn>
+          </template>
+          <span>Início</span>
+        </v-tooltip>
+
+        <v-tooltip bottom>
+          <template v-slot:activator="{ on, attrs }">
+            <v-btn icon v-bind="attrs" v-on="on" @click="selectView('Sobre')">
+              <v-icon>mdi-account</v-icon>
+            </v-btn>
+          </template>
+          <span>Sobre</span>
+        </v-tooltip>
+
+        <v-tooltip bottom>
+          <template v-slot:activator="{ on, attrs }">
+            <v-btn icon v-bind="attrs" v-on="on" @click="selectView('Portfólio')">
+              <v-icon>mdi-briefcase</v-icon>
+            </v-btn>
+          </template>
+          <span>Portfólio</span>
+        </v-tooltip>
+
+        <v-tooltip bottom>
+          <template v-slot:activator="{ on, attrs }">
+            <v-btn icon v-bind="attrs" v-on="on" @click="selectView('Contato')">
+              <v-icon>mdi-message</v-icon>
+            </v-btn>
+          </template>
+          <span>Contato</span>
+        </v-tooltip>
+      </v-app-bar>
+
+      <v-navigation-drawer v-model="drawer" absolute temporary>
+
+        <v-list dense nav>
+          <div app id="divImage">
+          <img src="./assets/img/pic-1.png" alt="">
+
+          <span app>Douglas G.</span>
+        </div>
+
+          <v-list-item-group
+            v-model="group"
+            active-class="deep-purple--text text--accent-4"
+          >
+            <v-list-item
+              v-for="item in items"
+              :key="item.title"
+              @click="selectView(item.title)"
+              link
             >
-              <v-list dense nav>
-                <v-list-item v-for="item in items" :key="item.title" link>
-                  <v-list-item-icon>
-                    <v-icon>{{ item.icon }}</v-icon>
-                  </v-list-item-icon>
+              <v-list-item-icon>
+                <v-icon>{{ item.icon }}</v-icon>
+              </v-list-item-icon>
 
-                  <v-list-item-content>
-                    <v-list-item-title>{{ item.title }}</v-list-item-title>
-                  </v-list-item-content>
-                </v-list-item>
-              </v-list>
-            </v-navigation-drawer>
-          </v-card>
-        </v-col>
+              <v-list-item-content>
+                <v-list-item-title>{{ item.title }}</v-list-item-title>
+              </v-list-item-content>
+            </v-list-item>
+          </v-list-item-group>
+        </v-list>
+      </v-navigation-drawer>
 
-        <v-col :sm="10">
-          <v-app app id="inspire" style="border: 1px solid red">
+      <v-row class="mb-6" no-gutters>
+        <v-col :sm="12">
+          <v-app app id="inspire">
             <v- dark flat height="5vh">
               <v-toolbar flat>
                 <v-switch
@@ -52,7 +89,8 @@
                 ></v-switch>
               </v-toolbar>
             </v->
-            <router-view />
+
+            <Index :select="viewSelected" />
           </v-app>
         </v-col>
       </v-row>
@@ -63,6 +101,7 @@
 <script>
 import Vue from "vue";
 import Vuetify from "vuetify/lib";
+import Index from "./views/Index.vue";
 
 import "./assets/css/style.css";
 
@@ -71,15 +110,35 @@ export default {
   name: "App",
   data() {
     return {
-      drawer: true,
+      drawer: false,
       items: [
-        { title: "Home", icon: "mdi-home" },
+        { title: "Início", icon: "mdi-home" },
         { title: "Sobre", icon: "mdi-account" },
-        { title: "Portfolio", icon: "mdi-briefcase" },
+        { title: "Portfólio", icon: "mdi-briefcase" },
         { title: "Contato", icon: "mdi-message" },
       ],
       right: null,
+      viewSelected: "Início",
     };
+  },
+  methods: {
+    selectView(element) {
+      if (element == "Início") {
+        this.viewSelected = "Início";
+      }
+      if (element == "Sobre") {
+        this.viewSelected = "Sobre";
+      }
+      if (element == "Portfólio") {
+        this.viewSelected = "Portfólio";
+      }
+      if (element == "Contato") {
+        this.viewSelected = "Contato";
+      }
+    },
+  },
+  components: {
+    Index,
   },
 };
 </script>

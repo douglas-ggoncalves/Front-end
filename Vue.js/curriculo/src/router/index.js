@@ -7,8 +7,8 @@ Vue.use(VueRouter)
 
 const routes = [
   {
-    path: '/Dashboard',
-    name: 'Dashboard',
+    path: '/',
+    name: 'Index',
     component: Index
   },
   {
