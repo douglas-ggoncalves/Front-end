@@ -75,10 +75,10 @@
         </v-list>
       </v-navigation-drawer>
 
-      <v-row class="mb-6" no-gutters>
+      <v-row no-gutters id="asdsad" >
         <v-col :sm="12">
           <v-app app id="inspire">
-            <v- dark flat height="5vh">
+            <v- dark flat>
               <v-toolbar flat>
                 <v-switch
                   v-model="$vuetify.theme.dark"
@@ -89,8 +89,8 @@
                 ></v-switch>
               </v-toolbar>
             </v->
+            <Index :select="viewSelected" v-on:alterViewEmit="alterViewEmit($event)"/>
 
-            <Index :select="viewSelected" />
           </v-app>
         </v-col>
       </v-row>
@@ -104,7 +104,6 @@ import Vuetify from "vuetify/lib";
 import Index from "./views/Index.vue";
 
 import "./assets/css/style.css";
-
 Vue.use(Vuetify);
 export default {
   name: "App",
@@ -136,9 +135,19 @@ export default {
         this.viewSelected = "Contato";
       }
     },
+    alterViewEmit(element){
+      console.log(element)
+      this.viewSelected = "Sobre";
+    }
   },
   components: {
     Index,
   },
 };
 </script>
+
+
+<style lang="scss" scoped>
+ #asdsad{
+ }
+</style>

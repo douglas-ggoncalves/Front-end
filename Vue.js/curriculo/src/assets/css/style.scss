@@ -1,12 +1,124 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&family=Nunito+Sans:wght@300&family=PT+Serif&display=swap');
+
+/* Variables */
+$blue: #2196f3;
+$green: #06AA48;
+/* End Variables */
+
+/* ---------- Scrollbar ---------- */
+::-webkit-scrollbar {
+    width: 9px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: black;
+}
+/* ---------- End Scrollbar ---------- */
+
+div#content{
+    height: 100%;
+}
+
 .container--fluid{
     padding: 0 !important;
 }
 
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&family=Nunito+Sans:wght@300&family=PT+Serif&display=swap');
-
-body{
-    
+.v-sheet.v-card:not(.v-sheet--outlined){
+    box-shadow: none !important;
 }
+
+.v-application--wrap{
+    min-height: calc(100vh - 56px) !important;
+}
+
+#containerIndex{
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+#Início{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    padding: 0;
+    margin: 0;
+
+    h3 {
+        span.cursor {
+          display: inline-block;
+          margin-left: 3px;
+          width: 4px;
+          animation: cursorBlink 1s infinite;
+        }
+
+        span.cursor.typing {
+          animation: none;
+        }
+    }
+
+    button{
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: .3rem;
+    }
+
+    span#name{
+        font-weight: bold;
+    }
+
+    @keyframes cursorBlink {
+        49% { background-color: #fff; }
+        50% { background-color: transparent; }
+        99% { background-color: transparent; }
+    }
+}
+
+.theme--dark{
+    #content {
+        #Início{
+            span#name{
+                color: $blue !important;
+            }
+
+            h3 {
+                span.typed-text {
+                  color: $blue;
+                }
+
+                span.cursor {
+                    background-color:white;
+                }
+            }
+        }
+        
+    }
+}
+
+.theme--light{
+    #content {
+        #Início{
+            button{
+                background-color: $green !important;
+            }
+            span#name{
+                color: $green !important;
+            }
+
+            h3 {
+                span.typed-text {
+                  color: $green;
+                }
+
+                span.cursor {
+                    background-color:black;
+                }
+            }
+        }
+    }
+}
+
 
 #divImage{
     width: 100%;
@@ -25,10 +137,3 @@ body{
         font-size: 1.5rem;
     }
 }
-
-
-/* Index.vue */
-body{
-    color: white !important;
-}
-/* Index.vue */

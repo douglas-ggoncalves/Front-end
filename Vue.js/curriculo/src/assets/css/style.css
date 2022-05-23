@@ -1,6 +1,130 @@
+@charset "UTF-8";
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300&family=Nunito+Sans:wght@300&family=PT+Serif&display=swap");
+/* Variables */
+/* End Variables */
+/* ---------- Scrollbar ---------- */
+::-webkit-scrollbar {
+  width: 9px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: black;
+}
+
+/* ---------- End Scrollbar ---------- */
+div#content {
+  height: 100%;
+}
+
 .container--fluid {
   padding: 0 !important;
+}
+
+.v-sheet.v-card:not(.v-sheet--outlined) {
+  -webkit-box-shadow: none !important;
+          box-shadow: none !important;
+}
+
+.v-application--wrap {
+  min-height: calc(100vh - 56px) !important;
+}
+
+#containerIndex {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 100%;
+}
+
+#Início {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  text-align: center;
+  padding: 0;
+  margin: 0;
+}
+
+#Início h3 span.cursor {
+  display: inline-block;
+  margin-left: 3px;
+  width: 4px;
+  -webkit-animation: cursorBlink 1s infinite;
+          animation: cursorBlink 1s infinite;
+}
+
+#Início h3 span.cursor.typing {
+  -webkit-animation: none;
+          animation: none;
+}
+
+#Início button {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: .3rem;
+}
+
+#Início span#name {
+  font-weight: bold;
+}
+
+@-webkit-keyframes cursorBlink {
+  49% {
+    background-color: #fff;
+  }
+  50% {
+    background-color: transparent;
+  }
+  99% {
+    background-color: transparent;
+  }
+}
+
+@keyframes cursorBlink {
+  49% {
+    background-color: #fff;
+  }
+  50% {
+    background-color: transparent;
+  }
+  99% {
+    background-color: transparent;
+  }
+}
+
+.theme--dark #content #Início span#name {
+  color: #2196f3 !important;
+}
+
+.theme--dark #content #Início h3 span.typed-text {
+  color: #2196f3;
+}
+
+.theme--dark #content #Início h3 span.cursor {
+  background-color: white;
+}
+
+.theme--light #content #Início button {
+  background-color: #06AA48 !important;
+}
+
+.theme--light #content #Início span#name {
+  color: #06AA48 !important;
+}
+
+.theme--light #content #Início h3 span.typed-text {
+  color: #06AA48;
+}
+
+.theme--light #content #Início h3 span.cursor {
+  background-color: black;
 }
 
 #divImage {
@@ -20,11 +144,4 @@
   display: block;
   font-size: 1.5rem;
 }
-
-/* Index.vue */
-body {
-  color: white !important;
-}
-
-/* Index.vue */
 /*# sourceMappingURL=style.css.map */
