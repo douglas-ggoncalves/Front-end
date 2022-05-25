@@ -127,6 +127,19 @@ div#content {
   background-color: black;
 }
 
+/* Contato */
+#Contato {
+  border: 1px solid red;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  text-align: center;
+}
+
+/* End Contato */
 #divImage {
   width: 100%;
   text-align: center;

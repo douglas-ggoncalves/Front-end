@@ -145,9 +145,3 @@ export default {
   },
 };
 </script>
-
-
-<style lang="scss" scoped>
- #asdsad{
- }
-</style>
