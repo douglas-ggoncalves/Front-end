@@ -51,10 +51,14 @@
       </v-row>
     </v-container>
 
-    <v-container class="" :fluid="true" v-if="select == 'Contato'">
+    <v-container id="containerContato" :fluid="true" v-if="select == 'Contato'">
       <v-row id="Contato" no-gutters>
-        <v-col :sm="6">
+        
+        <v-col :cols="10" :sm="6">
           <form>
+            <h3>
+              Entre em contato comigo
+            </h3>
             <v-text-field
               v-model="name"
               :error-messages="nameErrors"
@@ -69,7 +73,6 @@
               :error-messages="emailErrors"
               label="E-mail"
               required
-              @input="$v.email.$touch()"
               @blur="$v.email.$touch()"
             ></v-text-field>
             
@@ -81,7 +84,7 @@
               required
             ></v-textarea>
 
-            <v-btn class="mx-auto" @click="submit"> Enviar Mensagem </v-btn>
+            <v-btn class="mx-auto" @click="submit()"> Enviar Mensagem </v-btn>
           </form>
         </v-col>
       </v-row>
@@ -159,6 +162,10 @@ export default {
         setTimeout(this.typeText, this.typingSpeed + 1000);
       }
     },
+    submit(){
+
+      alert("chegou")
+    }
   },
   props: {
     select: String,
