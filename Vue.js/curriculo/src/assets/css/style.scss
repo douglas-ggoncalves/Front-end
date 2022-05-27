@@ -33,7 +33,6 @@ $green: #06AA48;
         font-size: 1.5rem;
     }
 }
-
 /* End App.vue */
 
 div#content{
@@ -52,19 +51,22 @@ div#content{
     min-height: calc(100vh - 56px) !important;
 }
 
-#containerIndex, #containerContato, #containerSobre{
+#Início, #Contato, #Sobre{
     display: flex;
     align-items: center;
     text-align: center;
-    height: 100%;
+    min-height: 100%;
 }
 
+/* Início */
 #Início{
-    display: flex;
-    justify-content: center;
-    text-align: center;
-    padding: 0;
-    margin: 0;
+    >.row{
+        display: flex;
+        justify-content: center;
+        text-align: center;
+        padding: 0;
+        margin: 0;
+    }
 
     h3 {
         span.cursor {
@@ -96,7 +98,64 @@ div#content{
         99% { background-color: transparent; }
     }
 }
+/* End Início */
 
+/* Contato */
+#Contato{
+    >.row{
+        display: flex;
+        justify-content: center;
+        text-align: center;
+        padding-bottom: 1rem;
+        padding-top: 1rem;
+    }
+    
+    form > div{
+        padding-bottom: .5rem;
+        padding-top: .5rem;
+    }
+
+    h3{
+        margin-bottom: 1rem;
+    }
+}
+/* End Contato */
+
+/* Sobre */
+#Sobre{
+    text-align: center;
+
+    >.row{
+        display: flex;
+        justify-content: center;
+        padding-bottom: 1rem;
+        padding-top: 1rem;
+
+        .elements{
+            div.separate{
+                display: flex;
+                justify-content: center;
+                padding-bottom: .5rem;
+                padding-top: .5rem;
+                
+                >div{
+                    width: 50%; 
+                    display: inline-block; 
+                    margin-left: 1rem;
+                    margin-right: 1rem;
+
+                    p{
+                        margin-bottom: .3rem !important;
+                    }
+                }
+            }
+        }
+    }
+}
+/* End Sobre */
+
+
+/* Alter Theme*/
 .theme--dark{
     #content {
         #Início{
@@ -114,7 +173,6 @@ div#content{
                 }
             }
         }
-        
     }
 }
 
@@ -139,7 +197,7 @@ div#content{
             }
         }
 
-        #containerSobre{
+        #Sobre{
             .v-progress-linear__background.primary.accent-4{
                 background-color: $green !important;
                 border-color: $green !important;
@@ -158,59 +216,5 @@ div#content{
         }
     }
 }
-
-/* Contato */
-#Contato{
-    display: flex;
-    justify-content: center;
-    text-align: center;
-    padding-bottom: 1rem;
-    padding-top: 1rem;
-
-    form > div{
-        padding-bottom: .5rem;
-        padding-top: .5rem;
-    }
-
-    h3{
-        margin-bottom: 1rem;
-    }
-}
-/* End Contato */
-
-/* Sobre */
-#containerSobre{
-    text-align: center;
-    >.row{
-        display: flex;
-        justify-content: center;
-
-        .elements{
-            div.separate{
-                display: flex;
-                justify-content: center;
-                padding-bottom: .5rem;
-                padding-top: .5rem;
-                
-                >div{
-                    width: 50%; 
-                    display: inline-block; 
-                    margin-left: 1rem;
-                    margin-right: 1rem;
-
-                    p{
-                        
-                        margin-bottom: .3rem !important;
-                    }
-                }
-            }
-
-            
-        }
-    }
-}
-/* End Sobre */
-
-
-
+/* End Alter Theme */
 

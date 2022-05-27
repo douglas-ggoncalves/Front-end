@@ -1,12 +1,7 @@
 <template>
   <div id="content">
-    <v-container
-      class=""
-      :fluid="true"
-      v-if="select == 'Início'"
-      id="containerIndex"
-    >
-      <v-row id="Início" no-gutters>
+    <v-container :fluid="true" v-if="select == 'Início'" id="Início">
+      <v-row no-gutters>
         <v-col :cols="10">
           <div>
             <h2>Olá, meu nome é <span id="name">Douglas Gonçalves</span></h2>
@@ -29,8 +24,8 @@
       </v-row>
     </v-container>
 
-    <v-container id="containerSobre" :fluid="true" v-if="select == 'Sobre'">
-      <v-row class="mb-6" no-gutters>
+    <v-container id="Sobre" :fluid="true" v-if="select == 'Sobre'">
+      <v-row no-gutters>
         <v-col :cols="10" :md="8" :lg="6"> 
           <h3>Sobre mim</h3> 
 
@@ -38,7 +33,9 @@
           <span>
             Lorem ipsum dolor, sit amet consectetur adipisicing elit. Vel, repudiandae nihil. Excepturi, maxime voluptatem ex doloremque autem nostrum est distinctio pariatur incidunt impedit quam a quaerat quas eum dolorum veritatis.
           </span>
-          <hr>
+          <div style="border: 1px solid white; background-color: white">
+
+          </div>
 
           <p>Habilidades e Competências</p>
 
@@ -129,14 +126,14 @@
       </v-row>
     </v-container>
 
-    <v-container class="" :fluid="true" v-if="select == 'Portfólio'">
-      <v-row class="mb-6" no-gutters>
+    <v-container :fluid="true" v-if="select == 'Portfólio'">
+      <v-row no-gutters>
         <v-col :sm="12"> View da aba portfólio ainda não criada </v-col>
       </v-row>
     </v-container>
 
-    <v-container id="containerContato" :fluid="true" v-if="select == 'Contato'">
-      <v-row id="Contato" no-gutters>
+    <v-container id="Contato" :fluid="true" v-if="select == 'Contato'">
+      <v-row no-gutters>
         <v-col :cols="10" :sm="6">
           <form>
             <h3>
@@ -184,8 +181,8 @@ import { required, maxLength, email } from "vuelidate/lib/validators";
 import "../assets/js/scrypt.js";
 Vue.use(Vuetify);
 const gradients = [
-    ['#222']
-   ]
+  ['#222']
+]
 
 export default {
    
