@@ -15,6 +15,27 @@ $green: #06AA48;
 }
 /* ---------- End Scrollbar ---------- */
 
+/* App.vue */
+#divImage{
+    width: 100%;
+    text-align: center;
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+
+    img{
+        height: 150px;
+        width: 150px;
+        border-radius: 50%;
+    }
+
+    span{
+        display: block;
+        font-size: 1.5rem;
+    }
+}
+
+/* End App.vue */
+
 div#content{
     height: 100%;
 }
@@ -31,9 +52,10 @@ div#content{
     min-height: calc(100vh - 56px) !important;
 }
 
-#containerIndex, #containerContato{
+#containerIndex, #containerContato, #containerSobre{
     display: flex;
     align-items: center;
+    text-align: center;
     height: 100%;
 }
 
@@ -116,6 +138,24 @@ div#content{
                 }
             }
         }
+
+        #containerSobre{
+            .v-progress-linear__background.primary.accent-4{
+                background-color: $green !important;
+                border-color: $green !important;
+
+            }
+
+            div.v-progress-linear__determinate.primary.accent-4{
+                background-color: $green !important;
+                border-color: $green !important;
+            }
+
+            svg.primary--text{
+                color: $green !important;
+                caret-color: $green !important;
+            }
+        }
     }
 }
 
@@ -138,21 +178,39 @@ div#content{
 }
 /* End Contato */
 
-
-#divImage{
-    width: 100%;
+/* Sobre */
+#containerSobre{
     text-align: center;
-    margin-bottom: 1rem;
-    margin-top: 1rem;
+    >.row{
+        display: flex;
+        justify-content: center;
 
-    img{
-        height: 150px;
-        width: 150px;
-        border-radius: 50%;
-    }
+        .elements{
+            div.separate{
+                display: flex;
+                justify-content: center;
+                padding-bottom: .5rem;
+                padding-top: .5rem;
+                
+                >div{
+                    width: 50%; 
+                    display: inline-block; 
+                    margin-left: 1rem;
+                    margin-right: 1rem;
 
-    span{
-        display: block;
-        font-size: 1.5rem;
+                    p{
+                        
+                        margin-bottom: .3rem !important;
+                    }
+                }
+            }
+
+            
+        }
     }
 }
+/* End Sobre */
+
+
+
+

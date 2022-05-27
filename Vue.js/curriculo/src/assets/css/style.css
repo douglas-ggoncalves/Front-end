@@ -12,6 +12,26 @@
 }
 
 /* ---------- End Scrollbar ---------- */
+/* App.vue */
+#divImage {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+}
+
+#divImage img {
+  height: 150px;
+  width: 150px;
+  border-radius: 50%;
+}
+
+#divImage span {
+  display: block;
+  font-size: 1.5rem;
+}
+
+/* End App.vue */
 div#content {
   height: 100%;
 }
@@ -29,13 +49,14 @@ div#content {
   min-height: calc(100vh - 56px) !important;
 }
 
-#containerIndex, #containerContato {
+#containerIndex, #containerContato, #containerSobre {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  text-align: center;
   height: 100%;
 }
 
@@ -127,6 +148,21 @@ div#content {
   background-color: black;
 }
 
+.theme--light #content #containerSobre .v-progress-linear__background.primary.accent-4 {
+  background-color: #06AA48 !important;
+  border-color: #06AA48 !important;
+}
+
+.theme--light #content #containerSobre div.v-progress-linear__determinate.primary.accent-4 {
+  background-color: #06AA48 !important;
+  border-color: #06AA48 !important;
+}
+
+.theme--light #content #containerSobre svg.primary--text {
+  color: #06AA48 !important;
+  caret-color: #06AA48 !important;
+}
+
 /* Contato */
 #Contato {
   display: -webkit-box;
@@ -150,21 +186,41 @@ div#content {
 }
 
 /* End Contato */
-#divImage {
-  width: 100%;
+/* Sobre */
+#containerSobre {
   text-align: center;
-  margin-bottom: 1rem;
-  margin-top: 1rem;
 }
 
-#divImage img {
-  height: 150px;
-  width: 150px;
-  border-radius: 50%;
+#containerSobre > .row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
-#divImage span {
-  display: block;
-  font-size: 1.5rem;
+#containerSobre > .row .elements div.separate {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding-bottom: .5rem;
+  padding-top: .5rem;
 }
+
+#containerSobre > .row .elements div.separate > div {
+  width: 50%;
+  display: inline-block;
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+
+#containerSobre > .row .elements div.separate > div p {
+  margin-bottom: .3rem !important;
+}
+
+/* End Sobre */
 /*# sourceMappingURL=style.css.map */

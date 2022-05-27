@@ -7,7 +7,7 @@
       id="containerIndex"
     >
       <v-row id="Início" no-gutters>
-        <v-col :sm="6">
+        <v-col :cols="10">
           <div>
             <h2>Olá, meu nome é <span id="name">Douglas Gonçalves</span></h2>
           </div>
@@ -26,22 +26,106 @@
             </v-btn>
           </div>
         </v-col>
-        <!-- 
-        <v-col :sm="6">
-          <div class="container">
-            <h1>Coding is
-              <span class="typed-text">{{ typeValue }}</span>
-              <span class="cursor" :class="{'typing': typeStatus}">&nbsp;</span>
-            </h1>
-          </div>
-        </v-col>
-        -->
       </v-row>
     </v-container>
 
-    <v-container class="" :fluid="true" v-if="select == 'Sobre'">
+    <v-container id="containerSobre" :fluid="true" v-if="select == 'Sobre'">
       <v-row class="mb-6" no-gutters>
-        <v-col :sm="12"> View da aba sobre ainda não criada </v-col>
+        <v-col :cols="10" :md="8" :lg="6"> 
+          <h3>Sobre mim</h3> 
+
+          <p>Título...........</p>
+          <span>
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Vel, repudiandae nihil. Excepturi, maxime voluptatem ex doloremque autem nostrum est distinctio pariatur incidunt impedit quam a quaerat quas eum dolorum veritatis.
+          </span>
+          <hr>
+
+          <p>Habilidades e Competências</p>
+
+          <div class="elements text-left"> 
+
+            <div class="separate">
+              <div>
+                <p>Node.js (Express, Sequelize...)</p>
+                <v-progress-linear color="primary accent-4" value="85"></v-progress-linear>
+              </div>
+
+              <div>
+                <p>Vue.js (Router, Vuetify)</p>
+                <v-progress-linear color="primary accent-4" value="80"></v-progress-linear>
+              </div>
+            </div>
+            
+            <div class="separate">
+              <div>
+                <p>HTML 5</p>
+                <v-progress-linear color="primary accent-4" value="90"></v-progress-linear>
+              </div>
+
+              <div>
+                <p>CSS 3</p>
+                <v-progress-linear color="primary accent-4" value="90"></v-progress-linear>
+              </div>
+            </div>
+            
+            <div class="separate">
+              <div>
+                <p>SASS</p>
+                <v-progress-linear color="primary accent-4" value="90"></v-progress-linear>
+              </div>
+
+              <div>
+                <p>Bootstrap</p>
+                <v-progress-linear color="primary accent-4" value="90"></v-progress-linear>
+              </div>
+            </div>
+            
+            <div class="separate">
+              <div>
+                <p>JavaScript / ES6</p>
+                <v-progress-linear color="primary accent-4" value="70"></v-progress-linear>
+              </div>
+
+              <div>
+                <p>JQuery</p>
+                <v-progress-linear color="primary accent-4" value="70"></v-progress-linear>
+              </div>
+            </div>
+            
+            <div class="separate">
+              <div>
+                <p>MySQL / SQLServer</p>
+                <v-progress-linear color="primary accent-4" value="75"></v-progress-linear>
+              </div>
+
+              <div>
+                <p>Git</p>
+                <v-progress-linear color="primary accent-4" value="85"></v-progress-linear>
+              </div>
+            </div>
+          </div>
+          
+          <div>
+          <v-sparkline
+            :value="value"
+            :gradient="gradient"
+            :smooth="10 || false"
+            :padding="8"
+            :line-width="2"
+            :stroke-linecap="'round'"
+            :gradient-direction="'top'"
+            :fill="false"
+            :type="'trend'"
+            :auto-line-width="false"
+            auto-draw
+          ></v-sparkline>
+
+          <div>
+            <p style="font-style: italic;">"É sua determinação e persistência que farão de você uma pessoa de sucesso."</p>
+          </div>
+          </div>
+
+        </v-col>
       </v-row>
     </v-container>
 
@@ -53,7 +137,6 @@
 
     <v-container id="containerContato" :fluid="true" v-if="select == 'Contato'">
       <v-row id="Contato" no-gutters>
-        
         <v-col :cols="10" :sm="6">
           <form>
             <h3>
@@ -100,8 +183,12 @@ import { required, maxLength, email } from "vuelidate/lib/validators";
 
 import "../assets/js/scrypt.js";
 Vue.use(Vuetify);
+const gradients = [
+    ['#222']
+   ]
 
 export default {
+   
   mixins: [validationMixin],
   validations: {
     name: { required, maxLength: maxLength(100) },
@@ -115,6 +202,9 @@ export default {
   },
   data() {
     return {
+      gradient: gradients[5],
+      value: [0, 2, 5, 9, 5, 10, 3, 5, 0, 0, 1, 8, 2, 9, 0],
+      gradients,
       name: "",
       email: "",
       message: "",
