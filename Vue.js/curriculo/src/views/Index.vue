@@ -200,7 +200,7 @@ export default {
   data() {
     return {
       gradient: gradients[5],
-      value: [0, 2, 5, 9, 5, 10, 3, 5, 0, 0, 1, 8, 2, 9, 0],
+      value: [0, 2, 5, 9, 5, 10, 3, 5, 0, 0, 1, 8, 2, 9, 10],
       gradients,
       name: "",
       email: "",
