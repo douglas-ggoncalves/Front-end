@@ -11,6 +11,10 @@
   background: black;
 }
 
+::-webkit-scrollbar-track {
+  background-color: #1E1E1E;
+}
+
 /* ---------- End Scrollbar ---------- */
 /* App.vue */
 #divImage {
@@ -49,7 +53,7 @@ div#content {
   min-height: calc(100vh - 56px) !important;
 }
 
-#Início, #Contato, #Sobre {
+#content .container.container--fluid {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -161,26 +165,43 @@ div#content {
   padding-top: 1rem;
 }
 
-#Sobre > .row .elements div.separate {
+#Sobre > .row #elements {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+}
+
+#Sobre > .row #elements > div {
+  text-align: left;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  width: 50%;
+}
+
+#Sobre > .row #elements > div > div {
   padding-bottom: .5rem;
   padding-top: .5rem;
 }
 
-#Sobre > .row .elements div.separate > div {
-  width: 50%;
-  display: inline-block;
-  margin-left: 1rem;
-  margin-right: 1rem;
+#Sobre > .row #elements p {
+  margin-bottom: .3rem !important;
 }
 
-#Sobre > .row .elements div.separate > div p {
-  margin-bottom: .3rem !important;
+#Sobre > .row h3, #Sobre > .row h4 {
+  margin-top: 1rem;
+}
+
+#Sobre > .row span {
+  display: block;
+}
+
+#Sobre > .row span > a {
+  text-decoration: none;
+  text-align: center !important;
+  margin-left: auto;
 }
 
 /* End Sobre */

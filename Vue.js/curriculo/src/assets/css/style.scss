@@ -13,6 +13,10 @@ $green: #06AA48;
 ::-webkit-scrollbar-thumb {
     background: black;
 }
+
+::-webkit-scrollbar-track {
+    background-color: #1E1E1E;
+}
 /* ---------- End Scrollbar ---------- */
 
 /* App.vue */
@@ -51,7 +55,7 @@ div#content{
     min-height: calc(100vh - 56px) !important;
 }
 
-#Início, #Contato, #Sobre{
+#content .container.container--fluid {
     display: flex;
     align-items: center;
     text-align: center;
@@ -131,29 +135,44 @@ div#content{
         padding-bottom: 1rem;
         padding-top: 1rem;
 
-        .elements{
-            div.separate{
-                display: flex;
-                justify-content: center;
-                padding-bottom: .5rem;
-                padding-top: .5rem;
-                
-                >div{
-                    width: 50%; 
-                    display: inline-block; 
-                    margin-left: 1rem;
-                    margin-right: 1rem;
+        #elements{
+            display: flex;
+            justify-content: center;
 
-                    p{
-                        margin-bottom: .3rem !important;
-                    }
+            >div{
+                text-align: left;
+                margin-left: 1rem;
+                margin-right: 1rem;
+                width: 50%;
+
+                >div{
+                    padding-bottom: .5rem;
+                    padding-top: .5rem;
                 }
+            }
+
+            p{
+                margin-bottom: .3rem !important;
+            }
+        }
+        
+
+        h3, h4{
+            margin-top: 1rem;
+        }
+
+        span{
+            display: block;
+
+            >a{
+                text-decoration: none;
+                text-align: center !important;
+                margin-left: auto;
             }
         }
     }
 }
 /* End Sobre */
-
 
 /* Alter Theme*/
 .theme--dark{
@@ -218,3 +237,20 @@ div#content{
 }
 /* End Alter Theme */
 
+
+
+@media (min-width: 576px) { 
+    
+}
+
+@media (min-width: 768px) { 
+    
+}
+
+@media (min-width: 992px) { 
+    
+}
+
+@media (min-width: 1200px) { 
+    
+}

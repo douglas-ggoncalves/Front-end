@@ -14,11 +14,31 @@
               <span class="cursor" :class="{ typing: typeStatus }">&nbsp;</span>
             </h3>
 
-            Eu sou um desenvolvedor ...
-
-            <v-btn rounded color="primary" @click="alterViewEmit()">
+            <v-btn large rounded color="primary" @click="alterViewEmit()">
               Saiba Mais
             </v-btn>
+          </div>
+        </v-col>
+
+        <v-col class="mt-5 pt-5" :cols="6">
+          <div>
+            <v-sparkline
+              :value="value"
+              :gradient="gradient"
+              :smooth="10 || false"
+              :padding="8"
+              :line-width="2"
+              :stroke-linecap="'round'"
+              :gradient-direction="'top'"
+              :fill="false"
+              :type="'trend'"
+              :auto-line-width="false"
+              auto-draw
+            ></v-sparkline>
+
+            <div class="animate__animated animate__backInUp">
+              <p style="font-style: italic;">"É sua determinação e persistência que farão de você uma pessoa de sucesso."</p>
+            </div>
           </div>
         </v-col>
       </v-row>
@@ -29,45 +49,53 @@
         <v-col :cols="10" :md="8" :lg="6"> 
           <h3>Sobre mim</h3> 
 
-          <p>Título...........</p>
           <span>
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Vel, repudiandae nihil. Excepturi, maxime voluptatem ex doloremque autem nostrum est distinctio pariatur incidunt impedit quam a quaerat quas eum dolorum veritatis.
+            Um verdadeiro amante do conhecimento, sempre procurando aprender mais e compartilhar informações, tecnólogo em análise e desenvolvimento de sistemas (2019 - 2021), 
           </span>
-          <div style="border: 1px solid white; background-color: white">
 
-          </div>
+          <h4>Habilidades e Competências</h4>
+          <span>
+            Abaixo listo as tecnologias que tive a oportunidade de trabalhar até o momento.
+            <br> Meu Github é público, ativo e recebe toda a experiência que tenho como programador atualmente:
+            <a target="blank" href="https://github.com/douglas-ggoncalves">github.com/douglas-ggoncalves</a>
+          </span>
 
-          <p>Habilidades e Competências</p>
-
-          <div class="elements text-left"> 
-
-            <div class="separate">
+          <div id="elements">
+            <div class="animate__animated animate__fadeInLeft" id="dadLeft">
               <div>
-                <p>Node.js (Express, Sequelize...)</p>
+                <p>Node.js</p>
                 <v-progress-linear color="primary accent-4" value="85"></v-progress-linear>
               </div>
 
-              <div>
-                <p>Vue.js (Router, Vuetify)</p>
-                <v-progress-linear color="primary accent-4" value="80"></v-progress-linear>
-              </div>
-            </div>
-            
-            <div class="separate">
               <div>
                 <p>HTML 5</p>
                 <v-progress-linear color="primary accent-4" value="90"></v-progress-linear>
               </div>
 
               <div>
-                <p>CSS 3</p>
+                <p>SASS</p>
                 <v-progress-linear color="primary accent-4" value="90"></v-progress-linear>
               </div>
-            </div>
-            
-            <div class="separate">
+
               <div>
-                <p>SASS</p>
+                <p>JavaScript / ES6</p>
+                <v-progress-linear color="primary accent-4" value="70"></v-progress-linear>
+              </div>
+
+              <div>
+                <p>MySQL / SQLServer</p>
+                <v-progress-linear color="primary accent-4" value="75"></v-progress-linear>
+              </div>
+            </div>
+
+            <div class="animate__animated animate__fadeInRight" id="dadRight">
+              <div>
+                <p>Vue.js</p>
+                <v-progress-linear color="primary accent-4" value="80"></v-progress-linear>
+              </div>
+
+              <div>
+                <p>CSS 3</p>
                 <v-progress-linear color="primary accent-4" value="90"></v-progress-linear>
               </div>
 
@@ -75,24 +103,10 @@
                 <p>Bootstrap</p>
                 <v-progress-linear color="primary accent-4" value="90"></v-progress-linear>
               </div>
-            </div>
-            
-            <div class="separate">
-              <div>
-                <p>JavaScript / ES6</p>
-                <v-progress-linear color="primary accent-4" value="70"></v-progress-linear>
-              </div>
 
               <div>
                 <p>JQuery</p>
                 <v-progress-linear color="primary accent-4" value="70"></v-progress-linear>
-              </div>
-            </div>
-            
-            <div class="separate">
-              <div>
-                <p>MySQL / SQLServer</p>
-                <v-progress-linear color="primary accent-4" value="75"></v-progress-linear>
               </div>
 
               <div>
@@ -101,27 +115,9 @@
               </div>
             </div>
           </div>
+
+          <h4>Experiência Profissional</h4>
           
-          <div>
-          <v-sparkline
-            :value="value"
-            :gradient="gradient"
-            :smooth="10 || false"
-            :padding="8"
-            :line-width="2"
-            :stroke-linecap="'round'"
-            :gradient-direction="'top'"
-            :fill="false"
-            :type="'trend'"
-            :auto-line-width="false"
-            auto-draw
-          ></v-sparkline>
-
-          <div>
-            <p style="font-style: italic;">"É sua determinação e persistência que farão de você uma pessoa de sucesso."</p>
-          </div>
-          </div>
-
         </v-col>
       </v-row>
     </v-container>
@@ -179,6 +175,8 @@ import { validationMixin } from "vuelidate";
 import { required, maxLength, email } from "vuelidate/lib/validators";
 
 import "../assets/js/scrypt.js";
+import 'animate.css';
+
 Vue.use(Vuetify);
 const gradients = [
   ['#222']
@@ -212,7 +210,7 @@ export default {
       erasingSpeed: 100,
       newTextDelay: 2000,
       typeArrayIndex: 0,
-      charIndex: 0,
+      charIndex: 0
     };
   },
   methods: {
