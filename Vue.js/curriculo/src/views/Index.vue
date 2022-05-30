@@ -59,7 +59,6 @@
             <br> Meu Github é público, ativo e recebe toda a experiência que tenho como programador atualmente:
             <a target="blank" href="https://github.com/douglas-ggoncalves">github.com/douglas-ggoncalves</a>
           </span>
-
           <div id="elements">
             <div class="animate__animated animate__fadeInLeft" id="dadLeft">
               <div>
@@ -105,7 +104,7 @@
               </div>
 
               <div>
-                <p>JQuery</p>
+                <p>jQuery</p>
                 <v-progress-linear color="primary accent-4" value="70"></v-progress-linear>
               </div>
 
@@ -116,8 +115,8 @@
             </div>
           </div>
 
-          <h4>Experiência Profissional</h4>
-          
+          <h4 style="margin-top: 500px" class="mt-5">Experiência Profissional</h4>
+
         </v-col>
       </v-row>
     </v-container>
