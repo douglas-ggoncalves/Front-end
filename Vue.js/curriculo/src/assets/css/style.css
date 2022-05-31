@@ -36,6 +36,16 @@
 }
 
 /* End App.vue */
+/* Navigation-drawer */
+.theme--light .v-list .v-list-item--active .v-icon {
+  color: rgba(0, 0, 0, 0.54) !important;
+}
+
+.v-list-item--link:before {
+  background-color: transparent !important;
+}
+
+/* End Navigation-drawer*/
 div#content {
   height: 100%;
 }
@@ -216,6 +226,22 @@ div#content {
   background-color: white;
 }
 
+.theme--dark #content #containerContato .v-label.v-label--active-theme--dark.primary--text {
+  color: white !important;
+}
+
+.theme--dark #content #containerContato .v-input {
+  color: #06AA48 !important;
+}
+
+.theme--dark #content #containerContato .v-application .error--text {
+  color: #ff5252 !important;
+}
+
+.theme--dark #content #containerContato .v-label.v-label--active.primary--text {
+  color: #06AA48 !important;
+}
+
 .theme--light #content #containerInício button {
   background-color: #06AA48 !important;
 }
@@ -230,6 +256,11 @@ div#content {
 
 .theme--light #content #containerInício h3 span.cursor {
   background-color: black;
+}
+
+.theme--light #content #containerInício svg.primary--text {
+  color: #06AA48 !important;
+  caret-color: #06AA48 !important;
 }
 
 .theme--light #content #containerSobre .v-progress-linear__background.primary.accent-4 {

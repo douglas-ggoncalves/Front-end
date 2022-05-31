@@ -45,7 +45,6 @@
       </v-app-bar>
 
       <v-navigation-drawer v-model="drawer" absolute temporary>
-
         <v-list dense nav>
           <div app id="divImage">
           <img src="./assets/img/pic-1.png" alt="">
@@ -56,6 +55,7 @@
           <v-list-item-group
             v-model="group"
             active-class="deep-purple--text text--accent-4"
+            id="listItens"
           >
             <v-list-item
               v-for="item in items"
@@ -63,7 +63,6 @@
               :id="item.title"
               @click="selectView(item.title)"
               link
-              style="border: 1px solid red"
             >
               <v-list-item-icon>
                 <v-icon>{{ item.icon }}</v-icon>
@@ -77,7 +76,7 @@
         </v-list>
       </v-navigation-drawer>
 
-      <v-row no-gutters id="asdsad" >
+      <v-row no-gutters id="asdsad">
         <v-col :sm="12">
           <v-app app id="inspire">
             <v- dark flat>
@@ -138,8 +137,7 @@ export default {
       }
     },
     alterViewEmit(element){
-      console.log(element)
-      this.viewSelected = "Sobre";
+      this.viewSelected = element;
     }
   },
   components: {

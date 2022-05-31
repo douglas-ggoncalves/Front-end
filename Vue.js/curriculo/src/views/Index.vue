@@ -214,7 +214,7 @@ export default {
   },
   methods: {
     alterViewEmit() {
-      this.$emit("alterViewEmit", "Início");
+      this.$emit("alterViewEmit", "Sobre");
     },
     typeText() {
       if (this.charIndex < this.typeArray[this.typeArrayIndex].length) {

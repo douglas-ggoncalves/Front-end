@@ -39,6 +39,17 @@ $green: #06AA48;
 }
 /* End App.vue */
 
+/* Navigation-drawer */
+.theme--light .v-list .v-list-item--active .v-icon {
+    color: rgba(0, 0, 0, 0.54) !important;
+}
+
+.v-list-item--link:before{
+    background-color: transparent !important;
+}
+/* End Navigation-drawer*/
+
+
 div#content{
     height: 100%;
 }
@@ -192,6 +203,37 @@ div#content{
                 }
             }
         }
+
+        #containerContato{
+            .v-label.v-label--active-theme--dark.primary--text{
+                color: white !important;
+            }
+
+            
+
+            .v-input {
+                color: $green !important;
+            }
+
+            .v-input .error--text{ 
+                //color: orange !important;
+                //color: #ff5252 !important;
+                //color: greenyellow !important;
+                //caret-color:greenyellow !important;
+                //color: #ff5252 !important;
+            }
+
+            .v-application .error--text{
+                color: #ff5252 !important;
+            }
+            
+            
+
+           .v-label.v-label--active.primary--text{
+                color: $green !important;
+            }
+
+        }
     }
 }
 
@@ -214,6 +256,11 @@ div#content{
                     background-color:black;
                 }
             }
+
+            svg.primary--text{
+                color: $green !important;
+                caret-color: $green !important; 
+            }
         }
 
         #containerSobre{
@@ -233,6 +280,8 @@ div#content{
                 caret-color: $green !important;
             }
         }
+
+        
     }
 }
 /* End Alter Theme */
