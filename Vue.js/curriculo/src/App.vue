@@ -60,8 +60,10 @@
             <v-list-item
               v-for="item in items"
               :key="item.title"
+              :id="item.title"
               @click="selectView(item.title)"
               link
+              style="border: 1px solid red"
             >
               <v-list-item-icon>
                 <v-icon>{{ item.icon }}</v-icon>

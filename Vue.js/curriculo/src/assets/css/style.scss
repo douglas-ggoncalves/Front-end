@@ -62,8 +62,8 @@ div#content{
     min-height: 100%;
 }
 
-/* Início */
-#Início{
+/* containerInício */
+#containerInício{
     >.row{
         display: flex;
         justify-content: center;
@@ -102,10 +102,10 @@ div#content{
         99% { background-color: transparent; }
     }
 }
-/* End Início */
+/* End containerInício */
 
 /* Contato */
-#Contato{
+#containerContato{
     >.row{
         display: flex;
         justify-content: center;
@@ -126,14 +126,13 @@ div#content{
 /* End Contato */
 
 /* Sobre */
-#Sobre{
-    text-align: center;
-
+#containerSobre{
     >.row{
         display: flex;
         justify-content: center;
         padding-bottom: 1rem;
         padding-top: 1rem;
+        text-align: center;
 
         #elements{
             display: flex;
@@ -178,7 +177,7 @@ div#content{
 /* Alter Theme*/
 .theme--dark{
     #content {
-        #Início{
+        #containerInício{
             span#name{
                 color: $blue !important;
             }
@@ -198,7 +197,7 @@ div#content{
 
 .theme--light{
     #content {
-        #Início{
+        #containerInício{
             button{
                 background-color: $green !important;
             }
@@ -217,7 +216,7 @@ div#content{
             }
         }
 
-        #Sobre{
+        #containerSobre{
             .v-progress-linear__background.primary.accent-4{
                 background-color: $green !important;
                 border-color: $green !important;

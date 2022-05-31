@@ -64,8 +64,8 @@ div#content {
   min-height: 100%;
 }
 
-/* Início */
-#Início > .row {
+/* containerInício */
+#containerInício > .row {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -77,7 +77,7 @@ div#content {
   margin: 0;
 }
 
-#Início h3 span.cursor {
+#containerInício h3 span.cursor {
   display: inline-block;
   margin-left: 3px;
   width: 4px;
@@ -85,19 +85,19 @@ div#content {
           animation: cursorBlink 1s infinite;
 }
 
-#Início h3 span.cursor.typing {
+#containerInício h3 span.cursor.typing {
   -webkit-animation: none;
           animation: none;
 }
 
-#Início button {
+#containerInício button {
   display: block;
   margin-left: auto;
   margin-right: auto;
   margin-top: .3rem;
 }
 
-#Início span#name {
+#containerInício span#name {
   font-weight: bold;
 }
 
@@ -125,9 +125,9 @@ div#content {
   }
 }
 
-/* End Início */
+/* End containerInício */
 /* Contato */
-#Contato > .row {
+#containerContato > .row {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -139,22 +139,18 @@ div#content {
   padding-top: 1rem;
 }
 
-#Contato form > div {
+#containerContato form > div {
   padding-bottom: .5rem;
   padding-top: .5rem;
 }
 
-#Contato h3 {
+#containerContato h3 {
   margin-bottom: 1rem;
 }
 
 /* End Contato */
 /* Sobre */
-#Sobre {
-  text-align: center;
-}
-
-#Sobre > .row {
+#containerSobre > .row {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -163,9 +159,10 @@ div#content {
           justify-content: center;
   padding-bottom: 1rem;
   padding-top: 1rem;
+  text-align: center;
 }
 
-#Sobre > .row #elements {
+#containerSobre > .row #elements {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -175,31 +172,31 @@ div#content {
   margin-top: 1rem;
 }
 
-#Sobre > .row #elements > div {
+#containerSobre > .row #elements > div {
   text-align: left;
   margin-left: 1rem;
   margin-right: 1rem;
   width: 50%;
 }
 
-#Sobre > .row #elements > div > div {
+#containerSobre > .row #elements > div > div {
   padding-bottom: .5rem;
   padding-top: .5rem;
 }
 
-#Sobre > .row #elements p {
+#containerSobre > .row #elements p {
   margin-bottom: .3rem !important;
 }
 
-#Sobre > .row h3, #Sobre > .row h4 {
+#containerSobre > .row h3, #containerSobre > .row h4 {
   margin-top: 1rem;
 }
 
-#Sobre > .row span {
+#containerSobre > .row span {
   display: block;
 }
 
-#Sobre > .row span > a {
+#containerSobre > .row span > a {
   text-decoration: none;
   text-align: center !important;
   margin-left: auto;
@@ -207,45 +204,45 @@ div#content {
 
 /* End Sobre */
 /* Alter Theme*/
-.theme--dark #content #Início span#name {
+.theme--dark #content #containerInício span#name {
   color: #2196f3 !important;
 }
 
-.theme--dark #content #Início h3 span.typed-text {
+.theme--dark #content #containerInício h3 span.typed-text {
   color: #2196f3;
 }
 
-.theme--dark #content #Início h3 span.cursor {
+.theme--dark #content #containerInício h3 span.cursor {
   background-color: white;
 }
 
-.theme--light #content #Início button {
+.theme--light #content #containerInício button {
   background-color: #06AA48 !important;
 }
 
-.theme--light #content #Início span#name {
+.theme--light #content #containerInício span#name {
   color: #06AA48 !important;
 }
 
-.theme--light #content #Início h3 span.typed-text {
+.theme--light #content #containerInício h3 span.typed-text {
   color: #06AA48;
 }
 
-.theme--light #content #Início h3 span.cursor {
+.theme--light #content #containerInício h3 span.cursor {
   background-color: black;
 }
 
-.theme--light #content #Sobre .v-progress-linear__background.primary.accent-4 {
+.theme--light #content #containerSobre .v-progress-linear__background.primary.accent-4 {
   background-color: #06AA48 !important;
   border-color: #06AA48 !important;
 }
 
-.theme--light #content #Sobre div.v-progress-linear__determinate.primary.accent-4 {
+.theme--light #content #containerSobre div.v-progress-linear__determinate.primary.accent-4 {
   background-color: #06AA48 !important;
   border-color: #06AA48 !important;
 }
 
-.theme--light #content #Sobre svg.primary--text {
+.theme--light #content #containerSobre svg.primary--text {
   color: #06AA48 !important;
   caret-color: #06AA48 !important;
 }

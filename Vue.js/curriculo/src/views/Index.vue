@@ -1,6 +1,6 @@
 <template>
   <div id="content">
-    <v-container :fluid="true" v-if="select == 'Início'" id="Início">
+    <v-container :fluid="true" v-if="select == 'Início'" id="containerInício">
       <v-row no-gutters>
         <v-col :cols="10">
           <div>
@@ -44,7 +44,7 @@
       </v-row>
     </v-container>
 
-    <v-container id="Sobre" :fluid="true" v-if="select == 'Sobre'">
+    <v-container id="containerSobre" :fluid="true" v-if="select == 'Sobre'">
       <v-row no-gutters>
         <v-col :cols="10" :md="8" :lg="6"> 
           <h3>Sobre mim</h3> 
@@ -127,7 +127,7 @@
       </v-row>
     </v-container>
 
-    <v-container id="Contato" :fluid="true" v-if="select == 'Contato'">
+    <v-container id="containerContato" :fluid="true" v-if="select == 'Contato'">
       <v-row no-gutters>
         <v-col :cols="10" :sm="6">
           <form>
