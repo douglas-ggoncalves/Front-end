@@ -213,6 +213,39 @@ div#content {
 }
 
 /* End Sobre */
+/* Portfólio */
+#containerPort .v-card__title {
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+#containerPort .v-card__text {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+#containerPort .v-card__actions {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+#containerPort a {
+  text-decoration: none;
+  text-align: center !important;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* End Portfólio */
 /* Alter Theme*/
 .theme--dark #content #containerInício span#name {
   color: #2196f3 !important;
@@ -276,6 +309,10 @@ div#content {
 
 .theme--light #content #containerContato .primary--text {
   color: #06AA48 !important;
+}
+
+.theme--light #content #containerPort .v-card {
+  border: 1px solid rgba(0, 0, 0, 0.2);
 }
 
 /* End Alter Theme */

@@ -185,6 +185,32 @@ div#content{
 }
 /* End Sobre */
 
+/* Portfólio */
+#containerPort{
+    .v-card__title{
+        justify-content: center;
+    }
+    
+    .v-card__text{
+        display: flex;
+        justify-content: center;
+    }
+
+    .v-card__actions{
+        display: flex;
+        justify-content: center;
+    }
+
+    a{
+        text-decoration: none;
+        text-align: center !important;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+/* End Portfólio */
+
+
 /* Alter Theme*/
 .theme--dark{
     #content {
@@ -270,10 +296,15 @@ div#content{
             }
 
         }
+
+        #containerPort{
+            .v-card{
+                border: 1px solid rgba(0, 0, 0, 0.2);
+            }
+        }
     }
 }
 /* End Alter Theme */
-
 
 
 @media (min-width: 576px) { 

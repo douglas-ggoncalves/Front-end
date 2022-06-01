@@ -118,238 +118,59 @@
       </v-row>
     </v-container>
 
-    <v-container :fluid="true" v-if="select == 'Portfólio'">
+    <v-container id="containerPort" :fluid="true" v-if="select == 'Portfólio'">
       <v-row no-gutters>
-        <v-col :cols="12">
+        <span v-for="(project, index) in projects" :key="index">
+          <div>
+            {{ projects[index] }}
+          </div>
+        </span>
+
+    <v-col v-for="project in projects" :key="project.id" :cols="4">
+     <v-card class="mx-auto my-12" max-width="374">
+        <v-img
+          height="250"
+          src="https://cdn.vuetifyjs.com/images/cards/cooking.png"
+        ></v-img>
+
+    <v-card-title>{{ project.title }}</v-card-title>
+
+    <v-card-text>
+      <div>{{ project.description }}</div>
+    </v-card-text>
+
+    <v-divider class="mx-4"></v-divider>
+
+    <v-card-title>Tecnologias Usadas</v-card-title>
+
+
+    <v-card-text>
+      <v-chip-group
+        column
+      >
+
+        <v-tooltip v-for="tech in project.tech" :key="tech.id" bottom>
+          <template v-slot:activator="{ on, attrs }" >
+            <v-icon
+              :color="technologies[tech.id].color"
+              v-bind="attrs"
+              v-on="on"
+            >
+              mdi-{{technologies[tech.id].icon}}
+            </v-icon>
+          </template>
           
-  <span v-for="(project, index) in projects" :key="index">
-    <div>
-      {{ projects[index] }}
-    </div>
-  </span>
-
-     
-     <v-card
-    class="mx-auto my-12"
-    max-width="374"
-  >
-    <template slot="progress">
-      <v-progress-linear
-        color="deep-purple"
-        height="10"
-        indeterminate
-      ></v-progress-linear>
-    </template>
-
-    <v-img
-      height="250"
-      src="https://cdn.vuetifyjs.com/images/cards/cooking.png"
-    ></v-img>
-
-    <v-card-title>Cafe Badilico</v-card-title>
-
-    <v-card-text>
-      <v-row
-        align="center"
-        class="mx-0"
-      >
-        <v-rating
-          :value="4.5"
-          color="amber"
-          dense
-          half-increments
-          readonly
-          size="14"
-        ></v-rating>
-
-        <div class="grey--text ms-4">
-          4.5 (413)
-        </div>
-      </v-row>
-
-      <div class="my-4 text-subtitle-1">
-        $ • Italian, Cafe
-      </div>
-
-      <div>Small plates, salads & sandwiches - an intimate setting with 12 indoor seats plus patio seating.</div>
-    </v-card-text>
-
-    <v-divider class="mx-4"></v-divider>
-
-    <v-card-title>Tonight's availability</v-card-title>
-
-    <v-card-text>
-      <v-chip-group
-        active-class="deep-purple accent-4 white--text"
-        column
-      >
-        <v-chip>5:30PM</v-chip>
-
-        <v-chip>7:30PM</v-chip>
-
-        <v-chip>8:00PM</v-chip>
-
-        <v-chip>9:00PM</v-chip>
+          <span>{{ technologies[tech.id].desc  }}</span>
+          
+        </v-tooltip>
       </v-chip-group>
     </v-card-text>
 
-    <v-card-actions>
-      <v-btn
-        color="deep-purple lighten-2"
-        text
-      >
-        Reserve
-      </v-btn>
+    <v-card-actions color="deep-purple lighten-2">
+      <a target="blank" :href="project.link">Acessar Site</a>
     </v-card-actions>
   </v-card>
 
-       <v-card
-    class="mx-auto my-12"
-    max-width="374"
-  >
-    <template slot="progress">
-      <v-progress-linear
-        color="deep-purple"
-        height="10"
-        indeterminate
-      ></v-progress-linear>
-    </template>
-
-    <v-img
-      height="250"
-      src="https://cdn.vuetifyjs.com/images/cards/cooking.png"
-    ></v-img>
-
-    <v-card-title>Cafe Badilico</v-card-title>
-
-    <v-card-text>
-      <v-row
-        align="center"
-        class="mx-0"
-      >
-        <v-rating
-          :value="4.5"
-          color="amber"
-          dense
-          half-increments
-          readonly
-          size="14"
-        ></v-rating>
-
-        <div class="grey--text ms-4">
-          4.5 (413)
-        </div>
-      </v-row>
-
-      <div class="my-4 text-subtitle-1">
-        $ • Italian, Cafe
-      </div>
-
-      <div>Small plates, salads & sandwiches - an intimate setting with 12 indoor seats plus patio seating.</div>
-    </v-card-text>
-
-    <v-divider class="mx-4"></v-divider>
-
-    <v-card-title>Tonight's availability</v-card-title>
-
-    <v-card-text>
-      <v-chip-group
-        active-class="deep-purple accent-4 white--text"
-        column
-      >
-        <v-chip>5:30PM</v-chip>
-
-        <v-chip>7:30PM</v-chip>
-
-        <v-chip>8:00PM</v-chip>
-
-        <v-chip>9:00PM</v-chip>
-      </v-chip-group>
-    </v-card-text>
-
-    <v-card-actions>
-      <v-btn
-        color="deep-purple lighten-2"
-        text
-      >
-        Reserve
-      </v-btn>
-    </v-card-actions>
-  </v-card>
-
-       <v-card
-    class="mx-auto my-12"
-    max-width="374"
-  >
-    <template slot="progress">
-      <v-progress-linear
-        color="deep-purple"
-        height="10"
-        indeterminate
-      ></v-progress-linear>
-    </template>
-
-    <v-img
-      height="250"
-      src="https://cdn.vuetifyjs.com/images/cards/cooking.png"
-    ></v-img>
-
-    <v-card-title>Cafe Badilico</v-card-title>
-
-    <v-card-text>
-      <v-row
-        align="center"
-        class="mx-0"
-      >
-        <v-rating
-          :value="4.5"
-          color="amber"
-          dense
-          half-increments
-          readonly
-          size="14"
-        ></v-rating>
-
-        <div class="grey--text ms-4">
-          4.5 (413)
-        </div>
-      </v-row>
-
-      <div class="my-4 text-subtitle-1">
-        $ • Italian, Cafe
-      </div>
-
-      <div>Small plates, salads & sandwiches - an intimate setting with 12 indoor seats plus patio seating.</div>
-    </v-card-text>
-
-    <v-divider class="mx-4"></v-divider>
-
-    <v-card-title>Tonight's availability</v-card-title>
-
-    <v-card-text>
-      <v-chip-group
-        active-class="deep-purple accent-4 white--text"
-        column
-      >
-        <v-chip>5:30PM</v-chip>
-
-        <v-chip>7:30PM</v-chip>
-
-        <v-chip>8:00PM</v-chip>
-
-        <v-chip>9:00PM</v-chip>
-      </v-chip-group>
-    </v-card-text>
-
-    <v-card-actions>
-      <v-btn
-        color="deep-purple lighten-2"
-        text
-      >
-        Reserve
-      </v-btn>
-    </v-card-actions>
-  </v-card>
 
         </v-col>
       </v-row>
@@ -440,38 +261,94 @@ export default {
       charIndex: 0,
       projects: [
         {
-          id: 0,
+          id: 1,
           title: 'Título do primeiro projeto',
           image: '',
           link: 'https://douglas-ggoncalves.github.io/Front-end/Age%20Sport/',
-          descricao: '',
-          technologies: [
-            {
-              id: 0,
-              desc: 'HTML 5',
-              
-            },{
-              id: 1,
-              desc: 'CSS 3'
-            }
+          description: 'descrição projeto 1',
+          tech: [
+           { id: 0 }, { id: 1},
+           { id: 2 }, { id: 3},
+           { id: 4 }, { id: 5},
+           { id: 6 }, { id: 7}
+           , { id: 8}
           ]
         },
         {
-          id: 1,
+          id: 2,
           title: 'Título do segundo projeto',
           image: '',
-          link: 'https://douglas-ggoncalves.github.io/Front-end/Age%20Sport/',
-          descricao: '',
-          technologies: [
+          link: 'https://douglas-ggoncalves.github.io/Front-end/Burger/',
+          description: 'descrição projeto 2',
+          tech: [
             {
-              id: 0,
-              desc: 'Javascript',
-              
-            },{
-              id: 1,
-              desc: 'Bootstrap'
-            }
+             id: 2
+           }
           ]
+        },
+        {
+          id: 3,
+          title: 'Título do segundo projeto',
+          image: '',
+          link: 'https://douglas-ggoncalves.github.io/Front-end/Burger/',
+          description: 'descrição projeto 2',
+          tech: [
+            {
+             id: 2
+           }
+          ]
+        }
+      ],
+
+
+
+
+      technologies: [
+        {
+          id: 0,
+          desc: 'HTML 5',
+          icon: 'language-html5'
+        },
+        {
+          id: 1,
+          desc: 'CSS 3',
+          icon: 'language-css3'
+        },
+        {
+          id: 2,
+          desc: 'Bootstrap',
+          icon: 'bootstrap',
+          color: 'deep-purple'
+        },
+        {
+          id: 3,
+          desc: 'Javascript',
+          icon: 'language-javascript'
+        },
+        {
+          id: 4,
+          desc: 'Vue.js',
+          icon: 'vuejs'
+        },
+        {
+          id: 5,
+          desc: 'Sass',
+          icon: 'sass'
+        },
+        {
+          id: 6,
+          desc: 'Node.js',
+          icon: 'nodejs'
+        },
+        {
+          id: 7,
+          desc: 'SQLServer',
+          icon: 'microsoft-access'
+        },
+        {
+          id: 8,
+          desc: 'MySQL',
+          icon: 'database'
         }
       ]
     };
