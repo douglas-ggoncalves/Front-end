@@ -53,7 +53,7 @@
             Um verdadeiro amante do conhecimento, sempre procurando aprender mais e compartilhar informações, tecnólogo em análise e desenvolvimento de sistemas (2019 - 2021), 
           </span>
 
-          <h4>Habilidades e Competências</h4>
+          <h3>Habilidades e Competências</h3>
           <span>
             Abaixo listo as tecnologias que tive a oportunidade de trabalhar até o momento.
             <br> Meu Github é público, ativo e recebe toda a experiência que tenho como programador atualmente:
@@ -114,16 +114,244 @@
               </div>
             </div>
           </div>
-
-          <h4 style="margin-top: 500px" class="mt-5">Experiência Profissional</h4>
-
         </v-col>
       </v-row>
     </v-container>
 
     <v-container :fluid="true" v-if="select == 'Portfólio'">
       <v-row no-gutters>
-        <v-col :sm="12"> View da aba portfólio ainda não criada </v-col>
+        <v-col :cols="12">
+          
+  <span v-for="(project, index) in projects" :key="index">
+    <div>
+      {{ projects[index] }}
+    </div>
+  </span>
+
+     
+     <v-card
+    class="mx-auto my-12"
+    max-width="374"
+  >
+    <template slot="progress">
+      <v-progress-linear
+        color="deep-purple"
+        height="10"
+        indeterminate
+      ></v-progress-linear>
+    </template>
+
+    <v-img
+      height="250"
+      src="https://cdn.vuetifyjs.com/images/cards/cooking.png"
+    ></v-img>
+
+    <v-card-title>Cafe Badilico</v-card-title>
+
+    <v-card-text>
+      <v-row
+        align="center"
+        class="mx-0"
+      >
+        <v-rating
+          :value="4.5"
+          color="amber"
+          dense
+          half-increments
+          readonly
+          size="14"
+        ></v-rating>
+
+        <div class="grey--text ms-4">
+          4.5 (413)
+        </div>
+      </v-row>
+
+      <div class="my-4 text-subtitle-1">
+        $ • Italian, Cafe
+      </div>
+
+      <div>Small plates, salads & sandwiches - an intimate setting with 12 indoor seats plus patio seating.</div>
+    </v-card-text>
+
+    <v-divider class="mx-4"></v-divider>
+
+    <v-card-title>Tonight's availability</v-card-title>
+
+    <v-card-text>
+      <v-chip-group
+        active-class="deep-purple accent-4 white--text"
+        column
+      >
+        <v-chip>5:30PM</v-chip>
+
+        <v-chip>7:30PM</v-chip>
+
+        <v-chip>8:00PM</v-chip>
+
+        <v-chip>9:00PM</v-chip>
+      </v-chip-group>
+    </v-card-text>
+
+    <v-card-actions>
+      <v-btn
+        color="deep-purple lighten-2"
+        text
+      >
+        Reserve
+      </v-btn>
+    </v-card-actions>
+  </v-card>
+
+       <v-card
+    class="mx-auto my-12"
+    max-width="374"
+  >
+    <template slot="progress">
+      <v-progress-linear
+        color="deep-purple"
+        height="10"
+        indeterminate
+      ></v-progress-linear>
+    </template>
+
+    <v-img
+      height="250"
+      src="https://cdn.vuetifyjs.com/images/cards/cooking.png"
+    ></v-img>
+
+    <v-card-title>Cafe Badilico</v-card-title>
+
+    <v-card-text>
+      <v-row
+        align="center"
+        class="mx-0"
+      >
+        <v-rating
+          :value="4.5"
+          color="amber"
+          dense
+          half-increments
+          readonly
+          size="14"
+        ></v-rating>
+
+        <div class="grey--text ms-4">
+          4.5 (413)
+        </div>
+      </v-row>
+
+      <div class="my-4 text-subtitle-1">
+        $ • Italian, Cafe
+      </div>
+
+      <div>Small plates, salads & sandwiches - an intimate setting with 12 indoor seats plus patio seating.</div>
+    </v-card-text>
+
+    <v-divider class="mx-4"></v-divider>
+
+    <v-card-title>Tonight's availability</v-card-title>
+
+    <v-card-text>
+      <v-chip-group
+        active-class="deep-purple accent-4 white--text"
+        column
+      >
+        <v-chip>5:30PM</v-chip>
+
+        <v-chip>7:30PM</v-chip>
+
+        <v-chip>8:00PM</v-chip>
+
+        <v-chip>9:00PM</v-chip>
+      </v-chip-group>
+    </v-card-text>
+
+    <v-card-actions>
+      <v-btn
+        color="deep-purple lighten-2"
+        text
+      >
+        Reserve
+      </v-btn>
+    </v-card-actions>
+  </v-card>
+
+       <v-card
+    class="mx-auto my-12"
+    max-width="374"
+  >
+    <template slot="progress">
+      <v-progress-linear
+        color="deep-purple"
+        height="10"
+        indeterminate
+      ></v-progress-linear>
+    </template>
+
+    <v-img
+      height="250"
+      src="https://cdn.vuetifyjs.com/images/cards/cooking.png"
+    ></v-img>
+
+    <v-card-title>Cafe Badilico</v-card-title>
+
+    <v-card-text>
+      <v-row
+        align="center"
+        class="mx-0"
+      >
+        <v-rating
+          :value="4.5"
+          color="amber"
+          dense
+          half-increments
+          readonly
+          size="14"
+        ></v-rating>
+
+        <div class="grey--text ms-4">
+          4.5 (413)
+        </div>
+      </v-row>
+
+      <div class="my-4 text-subtitle-1">
+        $ • Italian, Cafe
+      </div>
+
+      <div>Small plates, salads & sandwiches - an intimate setting with 12 indoor seats plus patio seating.</div>
+    </v-card-text>
+
+    <v-divider class="mx-4"></v-divider>
+
+    <v-card-title>Tonight's availability</v-card-title>
+
+    <v-card-text>
+      <v-chip-group
+        active-class="deep-purple accent-4 white--text"
+        column
+      >
+        <v-chip>5:30PM</v-chip>
+
+        <v-chip>7:30PM</v-chip>
+
+        <v-chip>8:00PM</v-chip>
+
+        <v-chip>9:00PM</v-chip>
+      </v-chip-group>
+    </v-card-text>
+
+    <v-card-actions>
+      <v-btn
+        color="deep-purple lighten-2"
+        text
+      >
+        Reserve
+      </v-btn>
+    </v-card-actions>
+  </v-card>
+
+        </v-col>
       </v-row>
     </v-container>
 
@@ -209,7 +437,43 @@ export default {
       erasingSpeed: 100,
       newTextDelay: 2000,
       typeArrayIndex: 0,
-      charIndex: 0
+      charIndex: 0,
+      projects: [
+        {
+          id: 0,
+          title: 'Título do primeiro projeto',
+          image: '',
+          link: 'https://douglas-ggoncalves.github.io/Front-end/Age%20Sport/',
+          descricao: '',
+          technologies: [
+            {
+              id: 0,
+              desc: 'HTML 5',
+              
+            },{
+              id: 1,
+              desc: 'CSS 3'
+            }
+          ]
+        },
+        {
+          id: 1,
+          title: 'Título do segundo projeto',
+          image: '',
+          link: 'https://douglas-ggoncalves.github.io/Front-end/Age%20Sport/',
+          descricao: '',
+          technologies: [
+            {
+              id: 0,
+              desc: 'Javascript',
+              
+            },{
+              id: 1,
+              desc: 'Bootstrap'
+            }
+          ]
+        }
+      ]
     };
   },
   methods: {

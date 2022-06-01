@@ -230,18 +230,6 @@ div#content {
   color: white !important;
 }
 
-.theme--dark #content #containerContato .v-input {
-  color: #06AA48 !important;
-}
-
-.theme--dark #content #containerContato .v-application .error--text {
-  color: #ff5252 !important;
-}
-
-.theme--dark #content #containerContato .v-label.v-label--active.primary--text {
-  color: #06AA48 !important;
-}
-
 .theme--light #content #containerInício button {
   background-color: #06AA48 !important;
 }
@@ -276,6 +264,18 @@ div#content {
 .theme--light #content #containerSobre svg.primary--text {
   color: #06AA48 !important;
   caret-color: #06AA48 !important;
+}
+
+.theme--light #content #containerSobre a {
+  color: #06AA48 !important;
+}
+
+.theme--light #content #containerContato .v-label.v-label--active-theme--dark.primary--text {
+  color: white !important;
+}
+
+.theme--light #content #containerContato .primary--text {
+  color: #06AA48 !important;
 }
 
 /* End Alter Theme */

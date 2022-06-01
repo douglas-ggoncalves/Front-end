@@ -208,31 +208,6 @@ div#content{
             .v-label.v-label--active-theme--dark.primary--text{
                 color: white !important;
             }
-
-            
-
-            .v-input {
-                color: $green !important;
-            }
-
-            .v-input .error--text{ 
-                //color: orange !important;
-                //color: #ff5252 !important;
-                //color: greenyellow !important;
-                //caret-color:greenyellow !important;
-                //color: #ff5252 !important;
-            }
-
-            .v-application .error--text{
-                color: #ff5252 !important;
-            }
-            
-            
-
-           .v-label.v-label--active.primary--text{
-                color: $green !important;
-            }
-
         }
     }
 }
@@ -267,7 +242,6 @@ div#content{
             .v-progress-linear__background.primary.accent-4{
                 background-color: $green !important;
                 border-color: $green !important;
-
             }
 
             div.v-progress-linear__determinate.primary.accent-4{
@@ -279,9 +253,23 @@ div#content{
                 color: $green !important;
                 caret-color: $green !important;
             }
+
+            a{
+                color: $green !important;
+            }
         }
 
         
+        #containerContato{
+            .v-label.v-label--active-theme--dark.primary--text{
+                color: white !important;
+            }
+
+            .primary--text{
+                color: $green !important;
+            }
+
+        }
     }
 }
 /* End Alter Theme */
