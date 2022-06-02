@@ -210,7 +210,6 @@ div#content{
 }
 /* End Portfólio */
 
-
 /* Alter Theme*/
 .theme--dark{
     #content {
@@ -301,11 +300,14 @@ div#content{
             .v-card{
                 border: 1px solid rgba(0, 0, 0, 0.2);
             }
+
+            a{
+                color: $green !important;
+            }
         }
     }
 }
 /* End Alter Theme */
-
 
 @media (min-width: 576px) { 
     

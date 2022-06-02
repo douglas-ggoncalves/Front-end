@@ -315,5 +315,9 @@ div#content {
   border: 1px solid rgba(0, 0, 0, 0.2);
 }
 
+.theme--light #content #containerPort a {
+  color: #06AA48 !important;
+}
+
 /* End Alter Theme */
 /*# sourceMappingURL=style.css.map */

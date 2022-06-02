@@ -37,7 +37,10 @@
             ></v-sparkline>
 
             <div class="animate__animated animate__backInUp">
-              <p style="font-style: italic;">"É sua determinação e persistência que farão de você uma pessoa de sucesso."</p>
+              <p style="font-style: italic">
+                "É sua determinação e persistência que farão de você uma pessoa
+                de sucesso."
+              </p>
             </div>
           </div>
         </v-col>
@@ -46,71 +49,108 @@
 
     <v-container id="containerSobre" :fluid="true" v-if="select == 'Sobre'">
       <v-row no-gutters>
-        <v-col :cols="10" :md="8" :lg="6"> 
-          <h3>Sobre mim</h3> 
+        <v-col :cols="10" :md="8" :lg="6">
+          <h3>Sobre mim</h3>
 
           <span>
-            Um verdadeiro amante do conhecimento, sempre procurando aprender mais e compartilhar informações, tecnólogo em análise e desenvolvimento de sistemas (2019 - 2021), 
+            Um verdadeiro amante do conhecimento, sempre procurando aprender
+            mais e compartilhar informações, tecnólogo em análise e
+            desenvolvimento de sistemas (2019 - 2021),
           </span>
 
           <h3>Habilidades e Competências</h3>
           <span>
-            Abaixo listo as tecnologias que tive a oportunidade de trabalhar até o momento.
-            <br> Meu Github é público, ativo e recebe toda a experiência que tenho como programador atualmente:
-            <a target="blank" href="https://github.com/douglas-ggoncalves">github.com/douglas-ggoncalves</a>
+            Abaixo listo as tecnologias que tive a oportunidade de trabalhar até
+            o momento.
+            <br />
+            Meu Github é público, ativo e recebe toda a experiência que tenho
+            como programador atualmente:
+            <a target="blank" href="https://github.com/douglas-ggoncalves"
+              >github.com/douglas-ggoncalves</a
+            >
           </span>
           <div id="elements">
             <div class="animate__animated animate__fadeInLeft" id="dadLeft">
               <div>
                 <p>Node.js</p>
-                <v-progress-linear color="primary accent-4" value="85"></v-progress-linear>
+                <v-progress-linear
+                  color="primary accent-4"
+                  value="85"
+                ></v-progress-linear>
               </div>
 
               <div>
                 <p>HTML 5</p>
-                <v-progress-linear color="primary accent-4" value="90"></v-progress-linear>
+                <v-progress-linear
+                  color="primary accent-4"
+                  value="90"
+                ></v-progress-linear>
               </div>
 
               <div>
                 <p>SASS</p>
-                <v-progress-linear color="primary accent-4" value="90"></v-progress-linear>
+                <v-progress-linear
+                  color="primary accent-4"
+                  value="90"
+                ></v-progress-linear>
               </div>
 
               <div>
                 <p>JavaScript / ES6</p>
-                <v-progress-linear color="primary accent-4" value="70"></v-progress-linear>
+                <v-progress-linear
+                  color="primary accent-4"
+                  value="70"
+                ></v-progress-linear>
               </div>
 
               <div>
                 <p>MySQL / SQLServer</p>
-                <v-progress-linear color="primary accent-4" value="75"></v-progress-linear>
+                <v-progress-linear
+                  color="primary accent-4"
+                  value="75"
+                ></v-progress-linear>
               </div>
             </div>
 
             <div class="animate__animated animate__fadeInRight" id="dadRight">
               <div>
                 <p>Vue.js</p>
-                <v-progress-linear color="primary accent-4" value="80"></v-progress-linear>
+                <v-progress-linear
+                  color="primary accent-4"
+                  value="80"
+                ></v-progress-linear>
               </div>
 
               <div>
                 <p>CSS 3</p>
-                <v-progress-linear color="primary accent-4" value="90"></v-progress-linear>
+                <v-progress-linear
+                  color="primary accent-4"
+                  value="90"
+                ></v-progress-linear>
               </div>
 
               <div>
                 <p>Bootstrap</p>
-                <v-progress-linear color="primary accent-4" value="90"></v-progress-linear>
+                <v-progress-linear
+                  color="primary accent-4"
+                  value="90"
+                ></v-progress-linear>
               </div>
 
               <div>
                 <p>jQuery</p>
-                <v-progress-linear color="primary accent-4" value="70"></v-progress-linear>
+                <v-progress-linear
+                  color="primary accent-4"
+                  value="70"
+                ></v-progress-linear>
               </div>
 
               <div>
                 <p>Git</p>
-                <v-progress-linear color="primary accent-4" value="85"></v-progress-linear>
+                <v-progress-linear
+                  color="primary accent-4"
+                  value="85"
+                ></v-progress-linear>
               </div>
             </div>
           </div>
@@ -120,58 +160,46 @@
 
     <v-container id="containerPort" :fluid="true" v-if="select == 'Portfólio'">
       <v-row no-gutters>
-        <span v-for="(project, index) in projects" :key="index">
-          <div>
-            {{ projects[index] }}
-          </div>
-        </span>
+        <v-col v-for="project in projects" :key="project.id" :cols="4">
+          <v-card class="mx-auto my-12" max-width="374">
+            <v-img height="250" :src='"../assets/img/"+ project.title + ".png"'></v-img>
 
-    <v-col v-for="project in projects" :key="project.id" :cols="4">
-     <v-card class="mx-auto my-12" max-width="374">
-        <v-img
-          height="250"
-          src="https://cdn.vuetifyjs.com/images/cards/cooking.png"
-        ></v-img>
+            <v-card-title>{{ project.title }}</v-card-title>
 
-    <v-card-title>{{ project.title }}</v-card-title>
+            <v-card-text>
+              <div>{{ project.description }}</div>
+            </v-card-text>
 
-    <v-card-text>
-      <div>{{ project.description }}</div>
-    </v-card-text>
+            <v-divider class="mx-4"></v-divider>
 
-    <v-divider class="mx-4"></v-divider>
+            <v-card-title>Tecnologias Usadas</v-card-title>
 
-    <v-card-title>Tecnologias Usadas</v-card-title>
+            <v-card-text>
+              <v-chip-group column>
+                <v-tooltip
+                  v-for="(tech, index) in project.tech"
+                  :key="index"
+                  bottom
+                >
+                  <template v-slot:activator="{ on, attrs }">
+                    <v-icon
+                      :color="technologies[tech.code].color"
+                      v-bind="attrs"
+                      v-on="on"
+                    >
+                      mdi-{{ technologies[tech.code].icon }}
+                    </v-icon>
+                  </template>
 
+                  <span>{{ technologies[tech.code].desc }}</span>
+                </v-tooltip>
+              </v-chip-group>
+            </v-card-text>
 
-    <v-card-text>
-      <v-chip-group
-        column
-      >
-
-        <v-tooltip v-for="tech in project.tech" :key="tech.id" bottom>
-          <template v-slot:activator="{ on, attrs }" >
-            <v-icon
-              :color="technologies[tech.id].color"
-              v-bind="attrs"
-              v-on="on"
-            >
-              mdi-{{technologies[tech.id].icon}}
-            </v-icon>
-          </template>
-          
-          <span>{{ technologies[tech.id].desc  }}</span>
-          
-        </v-tooltip>
-      </v-chip-group>
-    </v-card-text>
-
-    <v-card-actions color="deep-purple lighten-2">
-      <a target="blank" :href="project.link">Acessar Site</a>
-    </v-card-actions>
-  </v-card>
-
-
+            <v-card-actions color="deep-purple lighten-2">
+              <a target="blank" :href="project.link">Acessar Site</a>
+            </v-card-actions>
+          </v-card>
         </v-col>
       </v-row>
     </v-container>
@@ -180,9 +208,7 @@
       <v-row no-gutters>
         <v-col :cols="10" :sm="6">
           <form>
-            <h3>
-              Entre em contato comigo
-            </h3>
+            <h3>Entre em contato comigo</h3>
             <v-text-field
               v-model="name"
               :error-messages="nameErrors"
@@ -199,7 +225,7 @@
               required
               @blur="$v.email.$touch()"
             ></v-text-field>
-            
+
             <v-textarea
               outlined
               v-model="message"
@@ -223,15 +249,12 @@ import { validationMixin } from "vuelidate";
 import { required, maxLength, email } from "vuelidate/lib/validators";
 
 import "../assets/js/scrypt.js";
-import 'animate.css';
+import "animate.css";
 
 Vue.use(Vuetify);
-const gradients = [
-  ['#222']
-]
+const gradients = [["#222"]];
 
 export default {
-   
   mixins: [validationMixin],
   validations: {
     name: { required, maxLength: maxLength(100) },
@@ -262,95 +285,95 @@ export default {
       projects: [
         {
           id: 1,
-          title: 'Título do primeiro projeto',
-          image: '',
-          link: 'https://douglas-ggoncalves.github.io/Front-end/Age%20Sport/',
-          description: 'descrição projeto 1',
+          title: "Age Sport",
+          image: "",
+          link: "https://douglas-ggoncalves.github.io/Front-end/Age%20Sport/",
+          description: "descrição projeto 1",
           tech: [
-           { id: 0 }, { id: 1},
-           { id: 2 }, { id: 3},
-           { id: 4 }, { id: 5},
-           { id: 6 }, { id: 7}
-           , { id: 8}
-          ]
+            { code: 0 },
+            { code: 1 },
+            { code: 2 },
+            { code: 3 },
+            { code: 4 },
+            { code: 5 },
+            { code: 6 },
+            { code: 7 },
+            { code: 8 },
+          ],
         },
         {
           id: 2,
-          title: 'Título do segundo projeto',
-          image: '',
-          link: 'https://douglas-ggoncalves.github.io/Front-end/Burger/',
-          description: 'descrição projeto 2',
+          title: "Age Sport",
+          image: "",
+          link: "https://douglas-ggoncalves.github.io/Front-end/Burger/",
+          description: "descrição projeto 2",
           tech: [
             {
-             id: 2
-           }
-          ]
+              code: 2,
+            },
+          ],
         },
         {
           id: 3,
-          title: 'Título do segundo projeto',
-          image: '',
-          link: 'https://douglas-ggoncalves.github.io/Front-end/Burger/',
-          description: 'descrição projeto 2',
+          title: "Age Sport",
+          image: "",
+          link: "https://douglas-ggoncalves.github.io/Front-end/Burger/",
+          description: "descrição projeto 3",
           tech: [
             {
-             id: 2
-           }
-          ]
-        }
+              code: 2,
+            },
+          ],
+        },
       ],
-
-
-
-
       technologies: [
         {
           id: 0,
-          desc: 'HTML 5',
-          icon: 'language-html5'
+          desc: "HTML 5",
+          icon: "language-html5",
         },
         {
           id: 1,
-          desc: 'CSS 3',
-          icon: 'language-css3'
+          desc: "CSS 3",
+          icon: "language-css3",
         },
         {
           id: 2,
-          desc: 'Bootstrap',
-          icon: 'bootstrap',
-          color: 'deep-purple'
+          desc: "Bootstrap",
+          icon: "bootstrap",
+          color: "deep-purple",
         },
         {
           id: 3,
-          desc: 'Javascript',
-          icon: 'language-javascript'
+          desc: "Javascript",
+          icon: "language-javascript",
         },
         {
           id: 4,
-          desc: 'Vue.js',
-          icon: 'vuejs'
+          desc: "Vue.js",
+          icon: "vuejs",
         },
         {
           id: 5,
-          desc: 'Sass',
-          icon: 'sass'
+          desc: "Sass",
+          icon: "sass",
         },
         {
           id: 6,
-          desc: 'Node.js',
-          icon: 'nodejs'
+          desc: "Node.js",
+          icon: "nodejs",
         },
         {
           id: 7,
-          desc: 'SQLServer',
-          icon: 'microsoft-access'
+          desc: "SQLServer",
+          icon: "microsoft-access",
         },
         {
           id: 8,
-          desc: 'MySQL',
-          icon: 'database'
-        }
-      ]
+          desc: "MySQL",
+          icon: "database",
+        },
+      ],
     };
   },
   methods: {
@@ -387,10 +410,9 @@ export default {
         setTimeout(this.typeText, this.typingSpeed + 1000);
       }
     },
-    submit(){
-
-      alert("chegou")
-    }
+    submit() {
+      alert("chegou");
+    },
   },
   props: {
     select: String,
@@ -413,7 +435,7 @@ export default {
       !this.$v.email.email && errors.push("Informe um e-mail válido");
       !this.$v.email.required && errors.push("O campo e-mail é Obrigatório");
       return errors;
-    }
+    },
   },
 };
 </script>
