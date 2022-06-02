@@ -159,10 +159,10 @@
     </v-container>
 
     <v-container id="containerPort" :fluid="true" v-if="select == 'Portfólio'">
-      <v-row no-gutters>
-        <v-col v-for="project in projects" :key="project.id" :cols="4">
-          <v-card class="mx-auto my-12" max-width="374">
-            <v-img height="267" :src='"../assets/img/"+ project.title + ".png"'></v-img>
+      <v-row class="px-sm-2 px-md-3 px-lg-3">
+        <v-col v-for="project in projects" :key="project.id" :cols="11" :sm="6" :md="5" :lg="4">
+          <v-card class="my-12" > <!-- max-width="374" -->
+            <v-img :src='"../assets/img/"+ project.title + ".png"'></v-img> <!-- height="267"  -->
 
             <v-card-title>{{ project.title }}</v-card-title>
 
@@ -197,7 +197,7 @@
             </v-card-text>
 
             <v-card-actions color="deep-purple lighten-2">
-              <a target="blank" :href="project.link">Acessar Site</a>
+              <a target="blank" :href="`https://douglas-ggoncalves.github.io/Front-end/${project.title}`">Acessar Site</a>
             </v-card-actions>
           </v-card>
         </v-col>
@@ -286,24 +286,22 @@ export default {
         {
           id: 1,
           title: "Age Sport",
-          link: "https://douglas-ggoncalves.github.io/Front-end/Age%20Sport/",
           description: "descrição projeto 1",
           tech: [
             { code: 0 },
             { code: 1 },
             { code: 2 },
             { code: 3 },
-            { code: 4 },
+            /*{ code: 4 },
             { code: 5 },
             { code: 6 },
             { code: 7 },
-            { code: 8 },
+            { code: 8 },*/
           ],
         },
         {
           id: 2,
           title: "BeatUp",
-          link: "https://douglas-ggoncalves.github.io/Front-end/Burger/",
           description: "descrição projeto 2",
           tech: [
             {
@@ -314,7 +312,36 @@ export default {
         {
           id: 3,
           title: "Burger",
-          link: "https://douglas-ggoncalves.github.io/Front-end/Burger/",
+          description: "descrição projeto 3",
+          tech: [
+            {
+              code: 2,
+            },
+          ],
+        },
+        {
+          id: 4,
+          title: "Coffee",
+          description: "descrição projeto 4",
+          tech: [
+            {
+              code: 2,
+            },
+          ],
+        },
+        {
+          id: 5,
+          title: "Construction",
+          description: "descrição projeto 3",
+          tech: [
+            {
+              code: 2,
+            },
+          ],
+        },
+        {
+          id: 6,
+          title: "DentalCare",
           description: "descrição projeto 3",
           tech: [
             {

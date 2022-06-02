@@ -214,6 +214,17 @@ div#content {
 
 /* End Sobre */
 /* Portfólio */
+#containerPort div.row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 100%;
+  border: 1px solid red;
+}
+
 #containerPort .v-card__title {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
