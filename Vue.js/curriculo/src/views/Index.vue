@@ -162,7 +162,7 @@
       <v-row no-gutters>
         <v-col v-for="project in projects" :key="project.id" :cols="4">
           <v-card class="mx-auto my-12" max-width="374">
-            <v-img height="250" :src='"../assets/img/"+ project.title + ".png"'></v-img>
+            <v-img height="267" :src='"../assets/img/"+ project.title + ".png"'></v-img>
 
             <v-card-title>{{ project.title }}</v-card-title>
 
@@ -286,7 +286,6 @@ export default {
         {
           id: 1,
           title: "Age Sport",
-          image: "",
           link: "https://douglas-ggoncalves.github.io/Front-end/Age%20Sport/",
           description: "descrição projeto 1",
           tech: [
@@ -303,8 +302,7 @@ export default {
         },
         {
           id: 2,
-          title: "Age Sport",
-          image: "",
+          title: "BeatUp",
           link: "https://douglas-ggoncalves.github.io/Front-end/Burger/",
           description: "descrição projeto 2",
           tech: [
@@ -315,8 +313,7 @@ export default {
         },
         {
           id: 3,
-          title: "Age Sport",
-          image: "",
+          title: "Burger",
           link: "https://douglas-ggoncalves.github.io/Front-end/Burger/",
           description: "descrição projeto 3",
           tech: [
