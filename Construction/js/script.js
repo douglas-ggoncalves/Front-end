@@ -59,7 +59,6 @@ if(largura == undefined){
     }   
 }
 
-
 window.addEventListener("resize", () => {
     largura = window.innerWidth;
     

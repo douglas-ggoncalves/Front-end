@@ -6,7 +6,6 @@
         <slide v-for="movie in movie.moviesPopular" :key="movie.id" @click="moreMetails(movie.id)">
           <div class="elements">
               <img :src="'https://image.tmdb.org/t/p/w500/' + movie.backdrop_path">
-              <h3>{{ movie.id }}</h3>
               <h3>{{ movie.title }}</h3>
               <h4>Data de lançamento: {{ movie.release_date }}</h4>
           </div>

@@ -191,8 +191,11 @@ div#content{
         display: flex;
         justify-content: center;
         width: 100%;
-border: 1px solid red;
+        padding-bottom: 2.5rem;
+        padding-top: 2.5rem;
+        background-color: #121212;
     }
+
     .v-card__title{
         justify-content: center;
     }
@@ -212,6 +215,7 @@ border: 1px solid red;
         text-align: center !important;
         margin-left: auto;
         margin-right: auto;
+        color: white;
     }
 }
 /* End Portfólio */
@@ -303,12 +307,15 @@ border: 1px solid red;
         }
 
         #containerPort{
+            div.row{
+                background-color: #FFFFFF;
+            }
             .v-card{
                 border: 1px solid rgba(0, 0, 0, 0.2);
             }
 
             a{
-                color: $green !important;
+                color: black !important;
             }
         }
     }

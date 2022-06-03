@@ -222,7 +222,9 @@ div#content {
       -ms-flex-pack: center;
           justify-content: center;
   width: 100%;
-  border: 1px solid red;
+  padding-bottom: 2.5rem;
+  padding-top: 2.5rem;
+  background-color: #121212;
 }
 
 #containerPort .v-card__title {
@@ -254,6 +256,7 @@ div#content {
   text-align: center !important;
   margin-left: auto;
   margin-right: auto;
+  color: white;
 }
 
 /* End Portfólio */
@@ -322,12 +325,16 @@ div#content {
   color: #06AA48 !important;
 }
 
+.theme--light #content #containerPort div.row {
+  background-color: #FFFFFF;
+}
+
 .theme--light #content #containerPort .v-card {
   border: 1px solid rgba(0, 0, 0, 0.2);
 }
 
 .theme--light #content #containerPort a {
-  color: #06AA48 !important;
+  color: black !important;
 }
 
 /* End Alter Theme */

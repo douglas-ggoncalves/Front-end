@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <h2>Pokedex</h2>
     <input type="text" placeholder="Buscar Pokemon" v-model="inputSearch" />
     <div v-for="pokemon in myFunction" :key="pokemon.url">
       <Pokemon :pokemon="pokemon" />
