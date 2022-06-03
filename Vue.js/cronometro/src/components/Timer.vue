@@ -5,7 +5,9 @@
     </h2>
 
     <button @click="initial()">Iniciar</button>
+
     <button @click="stop()">Parar</button>
+
     <button @click="reload()">Reiniciar</button>
   </div>
 </template>
