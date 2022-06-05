@@ -33,7 +33,7 @@
         <button @click="operator('/')">&divide;</button>
       </div>
 
-      <div class="elements" id="teste">
+      <div class="elements" id="buttonEqual">
         <button @click="operator('=')">=</button>
       </div>
     </div>
@@ -41,6 +41,7 @@
 </template>
 
 <script>
+import '../assets/css/style.css'
 export default {
   data() {
     return {
@@ -63,7 +64,7 @@ export default {
         this.input = 0;
       } else if (value == "+") {
         if(this.input.toString().includes('+')){
-          console.log('caiu no if')
+          console.log('já tem mais')
         } else{
           this.input += value;
         }
@@ -79,50 +80,3 @@ export default {
   },
 };
 </script>
-
-<style scoped>
-#main {
-  border: 1px solid red;
-}
-
-#main > div {
-  border: 1px solid rgb(185, 179, 179);
-  display: inline-block;
-  padding: 0.5rem;
-  -webkit-box-shadow: 2px 5px 11px -1px rgba(0, 0, 0, 0.87);
-  box-shadow: 2px 5px 11px -1px rgba(0, 0, 0, 0.87);
-}
-
-input {
-  text-align: right;
-  padding: 0.5rem;
-  background: none;
-  font-size: 1.5rem;
-  border: 1px solid rgb(185, 179, 179);
-}
-
-button {
-  cursor: pointer;
-  padding: 0.5rem 0.7rem;
-  width: 20%;
-  font-size: 1.2rem;
-  border: 1px solid rgb(185, 179, 179);
-}
-
-#operators {
-  display: flex;
-  justify-content: space-between;
-  margin: 0.7rem 0;
-}
-
-.elements {
-  display: flex;
-  justify-content: space-between;
-  margin: 0.7rem 0;
-}
-
-#teste button {
-  background-color: #4d90fe;
-  width: 100%;
-}
-</style>

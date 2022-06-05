@@ -199,7 +199,8 @@
             </v-card-text>
 
             <v-card-actions color="deep-purple lighten-2">
-              <a target="blank" :href="`https://douglas-ggoncalves.github.io/Front-end/${project.title}`">Acessar Site</a>
+              <a v-if="!project.link" target="blank" :href="`https://douglas-ggoncalves.github.io/Front-end/${project.title}`">Acessar Site</a>
+              <a v-if="project.link" target="blank" :href="`${project.link}`">Acessar Site</a>
             </v-card-actions>
           </v-card>
         </v-col>
@@ -411,6 +412,7 @@ export default {
           id: 14,
           title: "Cronômetro",
           description: "descrição projeto Cronômetro",
+          link: 'https://douglas-ggoncalves.github.io/Front-end/Vue.js/cronometro/dist',
           tech: [
             { code: 4}, { code: 1 }, 
           ],
@@ -419,6 +421,7 @@ export default {
           id: 15,
           title: "Pokedex",
           description: "descrição projeto Pokedex",
+          link: 'https://douglas-ggoncalves.github.io/Front-end/Vue.js/pokedex/dist',
           tech: [
             { code: 4}, { code: 1 }, { code: 10}
           ],
@@ -427,6 +430,7 @@ export default {
           id: 16,
           title: "Conversor de Moedas",
           description: "descrição projeto Conversor de Moedas",
+          link: 'https://douglas-ggoncalves.github.io/Front-end/Vue.js/conversor/dist',
           tech: [
             { code: 4}, { code: 1 }, { code: 10}
           ],
@@ -435,6 +439,7 @@ export default {
           id: 17,
           title: "Calculadora Não Finalizada",
           description: "descrição projeto Calculadora",
+          link: 'https://douglas-ggoncalves.github.io/Front-end/Vue.js/calculadora/dist',
           tech: [
            { code: 4}, { code: 1 }
           ],
@@ -443,6 +448,7 @@ export default {
           id: 18,
           title: "Cinemax Não Concluido",
           description: "descrição projeto Cinemax",
+          link: 'https://douglas-ggoncalves.github.io/Front-end/Vue.js/cinemax/dist',
           tech: [
             { code: 4}, { code: 1 }, { code: 10}
           ],
