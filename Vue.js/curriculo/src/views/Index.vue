@@ -457,10 +457,12 @@ export default {
           id: 19,
           title: "Sistema Maximus",
           description: "descrição projeto Maximus",
+          link: 'http://67.207.84.123:8080',
           tech: [
             { code: 4 }, { code: 6 },
             { code: 1 }, { code: 5 },
             { code: 2 }, { code: 7 },
+            { code: 11 }
           ],
         },
       ],
@@ -529,6 +531,18 @@ export default {
           id: 10,
           desc: "API",
           icon: "api",
+          color: "orange",
+        },
+        {
+          id: 11,
+          desc: "Digital Ocean",
+          icon: "digital-ocean",
+          color: "blue",
+        },
+        {
+          id: 12,
+          desc: "AWS",
+          icon: "aws",
           color: "orange",
         },
         
