@@ -227,39 +227,8 @@
     <v-container id="containerContato" :fluid="true" v-if="select == 'Contato'">
       <v-row no-gutters>
         <v-col :cols="10" :sm="6">
-          <form>
-            <h3>Entre em contato comigo</h3>
-            <v-text-field
-              v-model="name"
-              :error-messages="nameErrors"
-              label="Nome/Razão Social"
-              required
-              @input="$v.name.$touch()"
-              @blur="$v.name.$touch()"
-            ></v-text-field>
-
-            <v-text-field
-              v-model="email"
-              :error-messages="emailErrors"
-              label="E-mail"
-              required
-              @blur="$v.email.$touch()"
-            ></v-text-field>
-
-            <v-textarea
-              outlined
-              v-model="message"
-              value=""
-              label="Informe uma mensagem"
-              required
-            ></v-textarea>
-
-            <v-btn class="mx-auto" @click="submit()"> Enviar Mensagem </v-btn>
-          </form>
-          
-          <div class="mt-3">
-            <hr>
-            <h3 style="margin-bottom: .3rem">Links Úteis</h3>
+          <h3>Entre em contato comigo</h3>
+          <div>
             <v-tooltip bottom>
               <template v-slot:activator="{ on, attrs }">
                 <a target="blank" href="https://github.com/douglas-ggoncalves">
@@ -304,6 +273,39 @@
               <span>Entre em contato comigo por E-mail</span>
             </v-tooltip>
           </div>
+
+          <form>
+
+          <h3>Fique à vontade para enviar sua mensagem</h3>
+            <v-text-field
+              v-model="name"
+              :error-messages="nameErrors"
+              label="Nome/Razão Social"
+              required
+              @input="$v.name.$touch()"
+              @blur="$v.name.$touch()"
+            ></v-text-field>
+
+            <v-text-field
+              v-model="email"
+              :error-messages="emailErrors"
+              label="E-mail"
+              required
+              @blur="$v.email.$touch()"
+            ></v-text-field>
+
+            <v-textarea
+              outlined
+              v-model="message"
+              value=""
+              label="Informe uma mensagem"
+              required
+            ></v-textarea>
+
+            <v-btn class="mx-auto" @click="submit()"> Enviar Mensagem </v-btn>
+          </form>
+          
+          
         </v-col>
       </v-row>
     </v-container>

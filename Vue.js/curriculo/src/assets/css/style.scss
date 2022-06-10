@@ -128,13 +128,19 @@ div#content{
         padding-top: 1rem;
     }
     
-    form > div{
-        padding-bottom: .5rem;
-        padding-top: .5rem;
-    }
+    form {
+        >div{
+            padding-bottom: .5rem;
+            padding-top: .5rem;
+        }
+
+        h3{
+            margin-top: 5rem;
+        }
+    } 
 
     h3{
-        margin-bottom: 1rem;
+        margin-bottom: .3rem;
     }
 
     a{
