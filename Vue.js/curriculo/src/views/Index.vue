@@ -64,10 +64,8 @@
             o momento.
             <br />
             Meu Github é público, ativo e recebe toda a experiência que tenho
-            como programador atualmente:
-            <a target="blank" href="https://github.com/douglas-ggoncalves"
-              >github.com/douglas-ggoncalves</a
-            >
+            como desenvolvedor atualmente:
+            <a target="blank" href="https://github.com/douglas-ggoncalves">github.com/douglas-ggoncalves</a>
           </span>
           <div id="elements">
             <div class="animate__animated animate__fadeInLeft" id="dadLeft">
@@ -259,7 +257,7 @@
                   </v-icon>
                 </a>
               </template>
-              <span>Entre em contato comigo por E-mail</span>
+              <span>Entre em contato comigo por e-mail</span>
             </v-tooltip>
 
             <v-tooltip bottom>
@@ -270,7 +268,7 @@
                   </v-icon>
                 </a>
               </template>
-              <span>Entre em contato comigo por E-mail</span>
+              <span>Entre em contato comigo por e-mail</span>
             </v-tooltip>
           </div>
 

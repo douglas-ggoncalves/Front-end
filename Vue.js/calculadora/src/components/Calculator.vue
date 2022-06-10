@@ -65,6 +65,7 @@ export default {
       } else if (value == "+") {
         if(this.input.toString().includes('+')){
           console.log('já tem mais')
+          this.input = eval(this.input)
         } else{
           this.input += value;
         }
