@@ -137,6 +137,15 @@ div#content {
 
 /* End containerInício */
 /* Contato */
+#containerContato {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
 #containerContato > .row {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -156,6 +165,23 @@ div#content {
 
 #containerContato h3 {
   margin-bottom: 1rem;
+}
+
+#containerContato a {
+  margin-left: .3rem;
+  margin-right: .3rem;
+  color: transparent;
+}
+
+#containerContato hr {
+  margin: 3rem auto .5rem;
+  width: 50%;
+  border: 3px solid white none;
+  border-bottom: none;
+}
+
+#containerContato .theme--dark.v-btn-toggle:not(.v-btn-toggle--group) {
+  background: transparent !important;
 }
 
 /* End Contato */

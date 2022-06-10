@@ -1,6 +1,6 @@
 <template>
     <div>
-        
+        <h3>testadoooooooooo</h3>
     </div>
 </template>
 
@@ -10,6 +10,14 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
+    div{
+        border: 10px solid white;
 
+        
+    }
+
+    h3{
+        color: white;
+    }
 </style>

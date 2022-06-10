@@ -160,9 +160,18 @@
 
     <v-container id="containerPort" :fluid="true" v-if="select == 'Portfólio'">
       <v-row class="px-sm-2 px-md-3 px-lg-3">
-        <v-col v-for="project in projects" :key="project.id" :cols="11" :sm="6" :md="5" :lg="4">
-          <v-card class="" > <!-- max-width="374" -->
-            <v-img :src='"../assets/img/"+ project.title + ".png"'></v-img> <!-- height="267"  -->
+        <v-col
+          v-for="project in projects"
+          :key="project.id"
+          :cols="11"
+          :sm="6"
+          :md="5"
+          :lg="4"
+        >
+          <v-card class="">
+            <!-- max-width="374" -->
+            <v-img :src='"../assets/img/"+ project.title + ".png"'></v-img> 
+            <!-- height="267"  -->
 
             <v-card-title>{{ project.title }}</v-card-title>
 
@@ -174,7 +183,7 @@
 
             <v-divider class="mx-4"></v-divider>
 
-            <v-card-title>Tecnologias Usadas</v-card-title>
+            <v-card-title>Ferramentas Usadas</v-card-title>
 
             <v-card-text>
               <v-chip-group column>
@@ -184,6 +193,7 @@
                   bottom
                 >
                   <template v-slot:activator="{ on, attrs }">
+                    
                     <v-icon
                       :color="technologies[tech.code].color"
                       v-bind="attrs"
@@ -199,8 +209,15 @@
             </v-card-text>
 
             <v-card-actions color="deep-purple lighten-2">
-              <a v-if="!project.link" target="blank" :href="`https://douglas-ggoncalves.github.io/Front-end/${project.title}`">Acessar Site</a>
-              <a v-if="project.link" target="blank" :href="`${project.link}`">Acessar Site</a>
+              <a
+                v-if="!project.link"
+                target="blank"
+                :href="`https://douglas-ggoncalves.github.io/Front-end/${project.title}`"
+                >Acessar Site</a
+              >
+              <a v-if="project.link" target="blank" :href="`${project.link}`"
+                >Acessar Site</a
+              >
             </v-card-actions>
           </v-card>
         </v-col>
@@ -239,6 +256,54 @@
 
             <v-btn class="mx-auto" @click="submit()"> Enviar Mensagem </v-btn>
           </form>
+          
+          <div class="mt-3">
+            <hr>
+            <h3 style="margin-bottom: .3rem">Links Úteis</h3>
+            <v-tooltip bottom>
+              <template v-slot:activator="{ on, attrs }">
+                <a target="blank" href="https://github.com/douglas-ggoncalves">
+                  <v-icon color="purple" v-bind="attrs" v-on="on">
+                    mdi-github
+                  </v-icon>
+                </a>
+              </template>
+              <span>Visite minha página no Github</span>
+            </v-tooltip>
+
+            <v-tooltip bottom>
+              <template v-slot:activator="{ on, attrs }">
+                <a target="blank" href="https://api.whatsapp.com/send?phone=5562993751777&text=Olá">
+                  <v-icon color="green" v-bind="attrs" v-on="on">
+                    mdi-whatsapp
+                  </v-icon>
+                </a>
+              </template>
+              <span>Entre em contato comigo pelo Whatsapp</span>
+            </v-tooltip>
+
+            <v-tooltip bottom>
+              <template v-slot:activator="{ on, attrs }">
+                <a target="blank" href="mailto:douglasrnn62@gmail.com">
+                  <v-icon color="red" v-bind="attrs" v-on="on">
+                    mdi-gmail
+                  </v-icon>
+                </a>
+              </template>
+              <span>Entre em contato comigo por E-mail</span>
+            </v-tooltip>
+
+            <v-tooltip bottom>
+              <template v-slot:activator="{ on, attrs }">
+                <a target="blank" href="mailto:douglasdepaula10@hotmail.com">
+                  <v-icon color="blue" v-bind="attrs" v-on="on">
+                    mdi-microsoft-outlook
+                  </v-icon>
+                </a>
+              </template>
+              <span>Entre em contato comigo por E-mail</span>
+            </v-tooltip>
+          </div>
         </v-col>
       </v-row>
     </v-container>
@@ -253,6 +318,7 @@ import { required, maxLength, email } from "vuelidate/lib/validators";
 
 import "../assets/js/scrypt.js";
 import "animate.css";
+//import axios from "axios";
 
 Vue.use(Vuetify);
 const gradients = [["#222"]];
@@ -290,19 +356,19 @@ export default {
           id: 1,
           title: "Age Sport",
           description: "descrição projeto Age Sport",
-          tech: [
-            { code: 0 }, { code: 1 },
-            { code: 2 }, { code: 3 },
-          ],
+          tech: [{ code: 0 }, { code: 1 }, { code: 2 }, { code: 3 }],
         },
         {
           id: 2,
           title: "BeatUp",
           description: "descrição projeto BeatUp",
           tech: [
-            { code: 0 }, { code: 1 },
-            { code: 5 }, { code: 2 },
-            { code: 3 }, { code: 9 }
+            { code: 0 },
+            { code: 1 },
+            { code: 5 },
+            { code: 2 },
+            { code: 3 },
+            { code: 9 },
           ],
         },
         {
@@ -310,9 +376,12 @@ export default {
           title: "Burger",
           description: "descrição projeto Burger",
           tech: [
-            { code: 0 }, { code: 1 },
-            { code: 5 }, { code: 2 },
-            { code: 3 }, { code: 9 }
+            { code: 0 },
+            { code: 1 },
+            { code: 5 },
+            { code: 2 },
+            { code: 3 },
+            { code: 9 },
           ],
         },
         {
@@ -320,9 +389,12 @@ export default {
           title: "Coffee",
           description: "descrição projeto Coffee",
           tech: [
-            { code: 0 }, { code: 1 },
-            { code: 5 }, { code: 2 },
-            { code: 3 }, { code: 9 }
+            { code: 0 },
+            { code: 1 },
+            { code: 5 },
+            { code: 2 },
+            { code: 3 },
+            { code: 9 },
           ],
         },
         {
@@ -330,139 +402,115 @@ export default {
           title: "Construction",
           description: "descrição projeto Construction",
           tech: [
-            { code: 0 }, { code: 1 },
-            { code: 5 }, { code: 2 },
-            { code: 3 }
+            { code: 0 },
+            { code: 1 },
+            { code: 5 },
+            { code: 2 },
+            { code: 3 },
           ],
         },
         {
           id: 6,
           title: "DentalCare",
           description: "descrição projeto DentalCare",
-          tech: [
-            { code: 0 }, { code: 1 },
-            { code: 5 }, { code: 2 }
-          ],
+          tech: [{ code: 0 }, { code: 1 }, { code: 5 }, { code: 2 }],
         },
         {
           id: 7,
           title: "Education Site",
           description: "descrição projeto Education Site",
           tech: [
-            { code: 0 }, { code: 1 },
-            { code: 5 }, { code: 2 },
-            { code: 3 }
+            { code: 0 },
+            { code: 1 },
+            { code: 5 },
+            { code: 2 },
+            { code: 3 },
           ],
         },
         {
           id: 8,
           title: "Finans",
           description: "descrição projeto Finans",
-          tech: [
-            { code: 0 }, { code: 1 }, 
-            { code: 2 }
-          ],
+          tech: [{ code: 0 }, { code: 1 }, { code: 2 }],
         },
         {
           id: 9,
           title: "Illustration",
           description: "descrição projeto Illustration",
-          tech: [
-            { code: 0 }, { code: 1 }, 
-            { code: 5 }, { code: 2 }
-          ],
+          tech: [{ code: 0 }, { code: 1 }, { code: 5 }, { code: 2 }],
         },
         {
           id: 10,
           title: "Maximus",
           description: "descrição projeto Maximus",
-          tech: [
-            { code: 0 }, { code: 1 }, 
-            { code: 2 }
-          ],
+          tech: [{ code: 0 }, { code: 1 }, { code: 2 }],
         },
         {
           id: 11,
           title: "Online Education",
           description: "descrição projeto Online Education",
-          tech: [
-            { code: 0 }, { code: 1 }, 
-            { code: 5 }, { code: 2 }
-          ],
+          tech: [{ code: 0 }, { code: 1 }, { code: 5 }, { code: 2 }],
         },
         {
           id: 12,
           title: "Spotify",
           description: "descrição projeto Spotify",
-          tech: [
-            { code: 0 }, { code: 1 }, 
-            { code: 2 }
-          ],
+          tech: [{ code: 0 }, { code: 1 }, { code: 2 }],
         },
         {
           id: 13,
           title: "Travel Website",
           description: "descrição projeto Travel Website",
-          tech: [
-            { code: 0 }, { code: 1 }, 
-            { code: 2 }
-          ],
+          tech: [{ code: 0 }, { code: 1 }, { code: 2 }],
         },
         {
           id: 14,
           title: "Cronômetro",
           description: "descrição projeto Cronômetro",
-          link: 'https://douglas-ggoncalves.github.io/Front-end/Vue.js/cronometro/dist',
-          tech: [
-            { code: 4}, { code: 1 }, 
-          ],
+          link: "https://douglas-ggoncalves.github.io/Front-end/Vue.js/cronometro/dist",
+          tech: [{ code: 4 }, { code: 1 }],
         },
         {
           id: 15,
           title: "Pokedex",
           description: "descrição projeto Pokedex",
-          link: 'https://douglas-ggoncalves.github.io/Front-end/Vue.js/pokedex/dist',
-          tech: [
-            { code: 4}, { code: 1 }, { code: 10}
-          ],
+          link: "https://douglas-ggoncalves.github.io/Front-end/Vue.js/pokedex/dist",
+          tech: [{ code: 4 }, { code: 1 }, { code: 10 }],
         },
         {
           id: 16,
           title: "Conversor de Moedas",
           description: "descrição projeto Conversor de Moedas",
-          link: 'https://douglas-ggoncalves.github.io/Front-end/Vue.js/conversor/dist',
-          tech: [
-            { code: 4}, { code: 1 }, { code: 10}
-          ],
+          link: "https://douglas-ggoncalves.github.io/Front-end/Vue.js/conversor/dist",
+          tech: [{ code: 4 }, { code: 1 }, { code: 10 }],
         },
         {
           id: 17,
           title: "Calculadora Não Finalizada",
           description: "descrição projeto Calculadora",
-          link: 'https://douglas-ggoncalves.github.io/Front-end/Vue.js/calculadora/dist',
-          tech: [
-           { code: 4}, { code: 1 }
-          ],
+          link: "https://douglas-ggoncalves.github.io/Front-end/Vue.js/calculadora/dist",
+          tech: [{ code: 4 }, { code: 1 }],
         },
         {
           id: 18,
           title: "Cinemax Não Concluido",
           description: "descrição projeto Cinemax",
-          link: 'https://douglas-ggoncalves.github.io/Front-end/Vue.js/cinemax/dist',
-          tech: [
-            { code: 4}, { code: 1 }, { code: 10}
-          ],
+          link: "https://douglas-ggoncalves.github.io/Front-end/Vue.js/cinemax/dist",
+          tech: [{ code: 4 }, { code: 1 }, { code: 10 }],
         },
         {
           id: 19,
           title: "Sistema Maximus",
           description: "descrição projeto Maximus",
-          link: 'http://67.207.84.123:8080',
+          link: "http://67.207.84.123:8080",
           tech: [
-            { code: 4 }, { code: 6 },
-            { code: 1 }, { code: 5 },
-            { code: 2 }, { code: 7 },
-            { code: 11 }
+            { code: 4 },
+            { code: 6 },
+            { code: 1 },
+            { code: 5 },
+            { code: 2 },
+            { code: 7 },
+            { code: 11 },
           ],
         },
       ],
@@ -545,7 +593,6 @@ export default {
           icon: "aws",
           color: "orange",
         },
-        
       ],
     };
   },
@@ -585,6 +632,16 @@ export default {
     },
     submit() {
       alert("chegou");
+      /*
+      axios
+        .get("http://67.207.84.123/posts")
+        .then((res) => {
+          console.log("resposta " + res.data);
+        })
+        .catch(() => {
+          console.log("ocorreu um erro");
+        });
+        */
     },
   },
   props: {
