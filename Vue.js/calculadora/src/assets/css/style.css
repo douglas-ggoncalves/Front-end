@@ -51,7 +51,7 @@ body {
   margin: 0.7rem 0;
 }
 
-#main button {
+#main > div .elements > button {
   cursor: pointer;
   padding: 0.5rem 0.7rem;
   width: 20%;
@@ -59,7 +59,7 @@ body {
   border: 1px solid #b9b3b3;
 }
 
-#main div#buttonEqual button {
+#main > div .elements#buttonEqual button {
   background-color: #4d90fe;
   width: 100%;
 }

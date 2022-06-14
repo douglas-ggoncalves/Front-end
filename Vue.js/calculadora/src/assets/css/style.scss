@@ -33,20 +33,20 @@ body{
             display: flex;
             justify-content: space-between;
             margin: 0.7rem 0;
+
+            > button {
+                cursor: pointer;
+                padding: 0.5rem 0.7rem;
+                width: 20%;
+                font-size: 1.2rem;
+                border: 1px solid rgb(185, 179, 179);
+            }
         }
-    }
 
-    button {
-        cursor: pointer;
-        padding: 0.5rem 0.7rem;
-        width: 20%;
-        font-size: 1.2rem;
-        border: 1px solid rgb(185, 179, 179);
-    }
-
-    div#buttonEqual button {
-        background-color: #4d90fe;
-        width: 100%;
+        .elements#buttonEqual button {
+            background-color: #4d90fe;
+            width: 100%;
+        }
     }
 }
 
