@@ -486,7 +486,7 @@ export default {
         },
         {
           id: 17,
-          title: "Calculadora Não Finalizada",
+          title: "Calculadora",
           description: "descrição projeto Calculadora",
           link: "https://douglas-ggoncalves.github.io/Front-end/Vue.js/calculadora/dist",
           tech: [{ code: 4 }, { code: 1 }],
