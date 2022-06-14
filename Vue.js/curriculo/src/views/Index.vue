@@ -97,7 +97,7 @@
                 <p>JavaScript / ES6</p>
                 <v-progress-linear
                   color="primary accent-4"
-                  value="70"
+                  value="85"
                 ></v-progress-linear>
               </div>
 
@@ -513,6 +513,24 @@ export default {
             { code: 11 },
           ],
         },
+        {
+          id: 20,
+          title: "Mata Mosquito",
+          description: "descrição projeto Mata Mosquito",
+          tech: [{ code: 0 }, { code: 1 }, { code: 3 }],
+        },
+        {
+          id: 21,
+          title: "Realiza",
+          description: "descrição projeto Realiza",
+          tech: [{ code: 13 }, { code: 6 }, { code: 1 }, { code: 3 }, { code: 8 }],
+        },
+        {
+          id: 22,
+          title: "Guia Perguntas",
+          description: "descrição projeto Guia Perguntas",
+          tech: [{ code: 13 }, { code: 6 }, { code: 1 }, { code: 5 }, { code: 3 }, { code: 8 }],
+        },
       ],
       technologies: [
         {
@@ -592,6 +610,18 @@ export default {
           desc: "AWS",
           icon: "aws",
           color: "orange",
+        },
+        {
+          id: 13,
+          desc: "EJS",
+          icon: "webpack",
+          color: "green", 
+        },
+        {
+          id: 14,
+          desc: "Express",
+          icon: "flash",
+          color: "green", 
         },
       ],
     };
