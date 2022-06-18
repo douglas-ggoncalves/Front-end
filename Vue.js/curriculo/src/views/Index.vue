@@ -159,25 +159,17 @@
     <v-container id="containerPort" :fluid="true" v-if="select == 'Portfólio'">
       <v-row class="px-sm-2 px-md-3 px-lg-3">
         <v-col
-          v-for="project in projects"
-          :key="project.id"
+          v-for="(project, index) in projects"
+          :key="index"
           :cols="11"
           :sm="6"
           :md="5"
           :lg="4"
         >
           <v-card class="">
-            <!-- max-width="374" -->
             <v-img :src='"../assets/img/"+ project.title + ".png"'></v-img> 
-            <!-- height="267"  -->
 
             <v-card-title>{{ project.title }}</v-card-title>
-
-            <!--
-              <v-card-text>
-                <div>{{ project.description }}</div>
-              </v-card-text>
-            -->
 
             <v-divider class="mx-4"></v-divider>
 
@@ -316,7 +308,7 @@ import Vuetify from "vuetify/lib";
 import { validationMixin } from "vuelidate";
 import { required, maxLength, email } from "vuelidate/lib/validators";
 
-import "../assets/js/scrypt.js";
+import js from "../assets/js/scrypt.js";
 import "animate.css";
 //import axios from "axios";
 
@@ -351,279 +343,8 @@ export default {
       newTextDelay: 2000,
       typeArrayIndex: 0,
       charIndex: 0,
-      projects: [
-        {
-          id: 1,
-          title: "Age Sport",
-          description: "descrição projeto Age Sport",
-          tech: [{ code: 0 }, { code: 1 }, { code: 2 }, { code: 3 }],
-        },
-        {
-          id: 2,
-          title: "BeatUp",
-          description: "descrição projeto BeatUp",
-          tech: [
-            { code: 0 },
-            { code: 1 },
-            { code: 5 },
-            { code: 2 },
-            { code: 3 },
-            { code: 9 },
-          ],
-        },
-        {
-          id: 3,
-          title: "Burger",
-          description: "descrição projeto Burger",
-          tech: [
-            { code: 0 },
-            { code: 1 },
-            { code: 5 },
-            { code: 2 },
-            { code: 3 },
-            { code: 9 },
-          ],
-        },
-        {
-          id: 4,
-          title: "Coffee",
-          description: "descrição projeto Coffee",
-          tech: [
-            { code: 0 },
-            { code: 1 },
-            { code: 5 },
-            { code: 2 },
-            { code: 3 },
-            { code: 9 },
-          ],
-        },
-        {
-          id: 5,
-          title: "Construction",
-          description: "descrição projeto Construction",
-          tech: [
-            { code: 0 },
-            { code: 1 },
-            { code: 5 },
-            { code: 2 },
-            { code: 3 },
-          ],
-        },
-        {
-          id: 6,
-          title: "DentalCare",
-          description: "descrição projeto DentalCare",
-          tech: [{ code: 0 }, { code: 1 }, { code: 5 }, { code: 2 }],
-        },
-        {
-          id: 7,
-          title: "Education Site",
-          description: "descrição projeto Education Site",
-          tech: [
-            { code: 0 },
-            { code: 1 },
-            { code: 5 },
-            { code: 2 },
-            { code: 3 },
-          ],
-        },
-        {
-          id: 8,
-          title: "Finans",
-          description: "descrição projeto Finans",
-          tech: [{ code: 0 }, { code: 1 }, { code: 2 }],
-        },
-        {
-          id: 9,
-          title: "Illustration",
-          description: "descrição projeto Illustration",
-          tech: [{ code: 0 }, { code: 1 }, { code: 5 }, { code: 2 }],
-        },
-        {
-          id: 10,
-          title: "Maximus",
-          description: "descrição projeto Maximus",
-          tech: [{ code: 0 }, { code: 1 }, { code: 2 }],
-        },
-        {
-          id: 11,
-          title: "Online Education",
-          description: "descrição projeto Online Education",
-          tech: [{ code: 0 }, { code: 1 }, { code: 5 }, { code: 2 }],
-        },
-        {
-          id: 12,
-          title: "Spotify",
-          description: "descrição projeto Spotify",
-          tech: [{ code: 0 }, { code: 1 }, { code: 2 }],
-        },
-        {
-          id: 13,
-          title: "Travel Website",
-          description: "descrição projeto Travel Website",
-          tech: [{ code: 0 }, { code: 1 }, { code: 2 }],
-        },
-        {
-          id: 14,
-          title: "Cronômetro",
-          description: "descrição projeto Cronômetro",
-          link: "https://douglas-ggoncalves.github.io/Front-end/Vue.js/cronometro/dist",
-          tech: [{ code: 4 }, { code: 1 }],
-        },
-        {
-          id: 15,
-          title: "Pokedex",
-          description: "descrição projeto Pokedex",
-          link: "https://douglas-ggoncalves.github.io/Front-end/Vue.js/pokedex/dist",
-          tech: [{ code: 4 }, { code: 1 }, { code: 10 }],
-        },
-        {
-          id: 16,
-          title: "Conversor de Moedas",
-          description: "descrição projeto Conversor de Moedas",
-          link: "https://douglas-ggoncalves.github.io/Front-end/Vue.js/conversor/dist",
-          tech: [{ code: 4 }, { code: 1 }, { code: 10 }],
-        },
-        {
-          id: 17,
-          title: "Calculadora",
-          description: "descrição projeto Calculadora",
-          link: "https://douglas-ggoncalves.github.io/Front-end/Vue.js/calculadora/dist",
-          tech: [{ code: 4 }, { code: 1 }],
-        },
-        {
-          id: 18,
-          title: "Cinemax Não Concluido",
-          description: "descrição projeto Cinemax",
-          link: "https://douglas-ggoncalves.github.io/Front-end/Vue.js/cinemax/dist",
-          tech: [{ code: 4 }, { code: 1 }, { code: 10 }],
-        },
-        {
-          id: 19,
-          title: "Sistema Maximus",
-          description: "descrição projeto Maximus",
-          link: "http://67.207.84.123:8080",
-          tech: [
-            { code: 4 },
-            { code: 6 },
-            { code: 1 },
-            { code: 5 },
-            { code: 2 },
-            { code: 7 },
-            { code: 11 },
-          ],
-        },
-        {
-          id: 20,
-          title: "Mata Mosquito",
-          description: "descrição projeto Mata Mosquito",
-          tech: [{ code: 0 }, { code: 1 }, { code: 3 }],
-        },
-        {
-          id: 21,
-          title: "Realiza",
-          description: "descrição projeto Realiza",
-          tech: [{ code: 13 }, { code: 6 }, { code: 1 }, { code: 3 }, { code: 8 }],
-        },
-        {
-          id: 22,
-          title: "Guia Perguntas",
-          description: "descrição projeto Guia Perguntas",
-          tech: [{ code: 13 }, { code: 6 }, { code: 1 }, { code: 5 }, { code: 3 }, { code: 8 }],
-        },
-      ],
-      technologies: [
-        {
-          id: 0,
-          desc: "HTML 5",
-          icon: "language-html5",
-          color: "red",
-        },
-        {
-          id: 1,
-          desc: "CSS 3",
-          icon: "language-css3",
-          color: "blue",
-        },
-        {
-          id: 2,
-          desc: "Bootstrap",
-          icon: "bootstrap",
-          color: "deep-purple",
-        },
-        {
-          id: 3,
-          desc: "Javascript",
-          icon: "language-javascript",
-          color: "yellow",
-        },
-        {
-          id: 4,
-          desc: "Vue.js",
-          icon: "vuejs",
-          color: "green",
-        },
-        {
-          id: 5,
-          desc: "Sass",
-          icon: "sass",
-          color: "pink",
-        },
-        {
-          id: 6,
-          desc: "Node.js",
-          icon: "nodejs",
-          color: "green",
-        },
-        {
-          id: 7,
-          desc: "SQLServer",
-          icon: "microsoft-access",
-          color: "deep-orange",
-        },
-        {
-          id: 8,
-          desc: "MySQL",
-          icon: "database",
-          color: "blue-grey",
-        },
-        {
-          id: 9,
-          desc: "jQuery",
-          icon: "jquery",
-          color: "light-blue",
-        },
-        {
-          id: 10,
-          desc: "API",
-          icon: "api",
-          color: "orange",
-        },
-        {
-          id: 11,
-          desc: "Digital Ocean",
-          icon: "digital-ocean",
-          color: "blue",
-        },
-        {
-          id: 12,
-          desc: "AWS",
-          icon: "aws",
-          color: "orange",
-        },
-        {
-          id: 13,
-          desc: "EJS",
-          icon: "webpack",
-          color: "green", 
-        },
-        {
-          id: 14,
-          desc: "Express",
-          icon: "flash",
-          color: "yellow", 
-        },
-      ],
+      projects: [],
+      technologies: [],
     };
   },
   methods: {
@@ -678,6 +399,9 @@ export default {
     select: String,
   },
   created() {
+    console.log(js)
+    this.projects = js.projects;
+    this.technologies = js.technologies;
     setTimeout(this.typeText, this.newTextDelay + 200);
   },
   computed: {
