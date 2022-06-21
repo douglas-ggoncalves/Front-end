@@ -200,13 +200,17 @@
 
             <v-card-actions color="deep-purple lighten-2">
               <a
-                v-if="!project.link"
+                v-if="!project.link && !project.doc"
                 target="blank"
                 :href="`https://douglas-ggoncalves.github.io/Front-end/${project.title}`"
                 >Acessar Site</a
               >
-              <a v-if="project.link" target="blank" :href="`${project.link}`"
+              <a v-if="project.link && !project.doc" target="blank" :href="`${project.link}`"
                 >Acessar Site</a
+              >
+
+              <a v-if="project.doc" target="blank" :href="`${project.doc}`"
+                >Acessar Documentação</a
               >
             </v-card-actions>
           </v-card>
@@ -265,10 +269,54 @@
           </div>
 
           <form>
+            <v-dialog
+              v-model="dialogLoading"
+              hide-overlay
+              persistent
+              width="300"
+            >
+              <v-card
+                color="black"
+                dark
+              >
+                <v-card-text class="pt-2">
+                  Por favor aguarde
+                  <v-progress-linear
+                    indeterminate
+                    color="white"
+                    class="mb-0 mt-5"
+                  ></v-progress-linear>
+                </v-card-text>
+              </v-card>
+            </v-dialog>
+
+            <v-dialog v-model="dialog" persistent max-width="290" >
+            <v-card>
+              <v-card-title class="text-h5">
+                Recebi seu contato
+              </v-card-title>
+
+              <v-card-text>
+                Vou te retornar o mais breve possível.
+              </v-card-text>
+
+              <v-card-actions>
+                <v-spacer></v-spacer>
+                <v-btn color="green darken-1" text @click="dialog = false">
+                  Confirmar
+                </v-btn>
+              </v-card-actions>
+            </v-card>
+          </v-dialog>
 
           <h3>Fique à vontade para enviar sua mensagem</h3>
+            <v-alert v-if="errorAlert" type="error">
+              Todos os campos abaixo devem ser corretamente preenchidos.
+            </v-alert>
+
             <v-text-field
               v-model="name"
+              value=""
               :error-messages="nameErrors"
               label="Nome/Razão Social"
               required
@@ -293,9 +341,8 @@
             ></v-textarea>
 
             <v-btn class="mx-auto" @click="submit()"> Enviar Mensagem </v-btn>
+            
           </form>
-          
-          
         </v-col>
       </v-row>
     </v-container>
@@ -307,10 +354,9 @@ import Vue from "vue";
 import Vuetify from "vuetify/lib";
 import { validationMixin } from "vuelidate";
 import { required, maxLength, email } from "vuelidate/lib/validators";
-
 import js from "../assets/js/scrypt.js";
 import "animate.css";
-//import axios from "axios";
+import emailjs from '@emailjs/browser';
 
 Vue.use(Vuetify);
 const gradients = [["#222"]];
@@ -319,13 +365,7 @@ export default {
   mixins: [validationMixin],
   validations: {
     name: { required, maxLength: maxLength(100) },
-    email: { required, email },
-    select: { required },
-    checkbox: {
-      checked(val) {
-        return val;
-      },
-    },
+    email: { required, email }
   },
   data() {
     return {
@@ -345,6 +385,9 @@ export default {
       charIndex: 0,
       projects: [],
       technologies: [],
+      dialog: false,
+      dialogLoading: false,
+      errorAlert: false
     };
   },
   methods: {
@@ -382,24 +425,33 @@ export default {
       }
     },
     submit() {
-      alert("chegou");
-      /*
-      axios
-        .get("http://67.207.84.123/posts")
-        .then((res) => {
-          console.log("resposta " + res.data);
+      this.errorAlert = false;
+      this.$v.name.$touch();
+      this.$v.email.$touch();
+
+      if(!this.$v.name.$error && !this.$v.name.$error && this.message != "" && !this.$v.email.$error && !this.$v.email.$invalid) {
+        this.dialogLoading = true;
+        emailjs.send("service_9lvidxf","template_6mgonib",{
+          from_name: this.name,
+          message: this.message,
+          reply_to: this.email,
+        }, "POSv9ZHRx2ZrZatua").then(() => {
+          this.name = '';
+          this.email = '';
+          this.message = '';
+          this.$v.$reset();
+          this.dialogLoading = false;
+          this.dialog = true;
         })
-        .catch(() => {
-          console.log("ocorreu um erro");
-        });
-        */
-    },
+      } else{
+        this.errorAlert = true;
+      }
+    }
   },
   props: {
     select: String,
   },
   created() {
-    console.log(js)
     this.projects = js.projects;
     this.technologies = js.technologies;
     setTimeout(this.typeText, this.newTextDelay + 200);
@@ -419,7 +471,8 @@ export default {
       !this.$v.email.email && errors.push("Informe um e-mail válido");
       !this.$v.email.required && errors.push("O campo e-mail é Obrigatório");
       return errors;
-    },
+    }
   },
 };
+
 </script>

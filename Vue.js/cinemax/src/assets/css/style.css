@@ -1,0 +1,86 @@
+body {
+  background-color: #333333 !important;
+}
+
+* {
+  font-family: "Source Sans Pro", Arial, sans-serif;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 7px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: none;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #b9b3b3;
+  border-radius: 8px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #999696;
+}
+
+#main {
+  color: white;
+  text-align: center;
+}
+
+#main #main .elements {
+  cursor: pointer;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  margin-right: 0.5rem;
+  margin-bottom: 0;
+}
+
+#main .elements div {
+  position: relative;
+}
+
+#main .elements div > button {
+  position: absolute;
+  right: 0;
+  padding: 0 !important;
+  background-color: white;
+  margin: 0.3rem;
+  border: 2px solid #94ad6e;
+  height: 2rem;
+  font-size: 1.05rem;
+  width: 2rem;
+  border-radius: 50%;
+}
+
+#main h2 {
+  margin: 3rem 0 1rem 2rem;
+}
+
+#main h3 {
+  margin-top: .5rem;
+}
+
+#main .VueCarousel-dot-container {
+  margin-top: 0 !important;
+  margin-bottom: 1rem;
+}
+
+#main .VueCarousel-dot-container button.VueCarousel-dot--active {
+  outline: none !important;
+  background-color: #29d9d5 !important;
+}
+
+#main .vm--modal {
+  overflow-y: scroll;
+  height: 150vh !important;
+  width: 100vh !important;
+  bottom: 2rem !important;
+  top: 2rem !important;
+}
+/*# sourceMappingURL=style.css.map */

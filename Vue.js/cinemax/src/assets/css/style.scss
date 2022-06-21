@@ -1,0 +1,87 @@
+body{
+    background-color: rgb(51, 51, 51) !important;
+}
+
+*{
+    font-family: "Source Sans Pro", Arial, sans-serif;
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+    height: 7px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: none;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: rgb(185, 179, 179);
+    border-radius: 8px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgb(153, 150, 150);
+}
+
+$blue: rgb(41, 217, 213);
+
+#main {
+    color: white;
+    text-align: center;
+
+    #main .elements {
+        cursor: pointer;
+        flex-grow: 1;
+        margin-right: 0.5rem;
+        margin-bottom: 0;
+    }
+
+    .elements div {
+        position: relative;
+
+        >button {
+            position: absolute;
+            right: 0;
+            padding: 0 !important;
+            background-color: white;
+            margin: 0.3rem;
+            border: 2px solid rgb(148, 173, 110);
+            height: 2rem;
+            font-size: 1.05rem;
+            width: 2rem;
+            border-radius: 50%;
+        }
+    }
+    
+    h2 {
+        margin: 3rem 0 1rem 2rem;
+    }
+
+    h3{
+        margin-top: .5rem;
+    }
+    
+    .VueCarousel-dot-container {
+        margin-top: 0 !important;
+        margin-bottom: 1rem;
+
+        button.VueCarousel-dot--active{
+            outline: none !important;
+            background-color: $blue !important;
+        }
+    }
+    
+    .vm--modal {
+        overflow-y: scroll;
+        height: 150vh !important;
+        width: 100vh !important;
+        bottom: 2rem !important;
+        top: 2rem !important;
+    }
+}
+
+

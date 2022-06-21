@@ -16,9 +16,9 @@
 </template>
 
 <script>
-import Movie from "./components/Movie.vue";
 import axios from "axios";
-//import Vue from 'vue'
+import Movie from "./components/Movie.vue";
+import  "./assets/css/style.css";
 
 export default {
   name: "App",

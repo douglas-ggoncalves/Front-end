@@ -19,11 +19,11 @@ data.projects = [
     { title: "Conversor de Moedas", link: "https://douglas-ggoncalves.github.io/Front-end/Vue.js/conversor/dist", tech: [{ code: 4 }, { code: 1 }, { code: 10 }] },
     { title: "Calculadora", link: "https://douglas-ggoncalves.github.io/Front-end/Vue.js/calculadora/dist", tech: [{ code: 4 }, { code: 1 }] },
     { title: "Cinemax Não Concluido", link: "https://douglas-ggoncalves.github.io/Front-end/Vue.js/cinemax/dist", tech: [{ code: 4 }, { code: 1 }, { code: 10 }] },
-    { title: "Sistema Maximus", link: "http://67.207.84.123:8080", tech: [{ code: 4 }, { code: 6 }, { code: 1 }, { code: 5 }, { code: 2 }, { code: 7 }, { code: 11 }] },
+    { title: "Sistema Maximus", doc: "https://github.com/douglas-ggoncalves/Full-Stack/tree/main/Sistema%20Maximus", tech: [{ code: 4 }, { code: 6 }, { code: 1 }, { code: 5 }, { code: 2 }, { code: 7 }, { code: 11 }] },
     { title: "Mata Mosquito", tech: [{ code: 0 }, { code: 1 }, { code: 3 }] },
-    { title: "Realiza", tech: [{ code: 13 }, { code: 6 }, { code: 1 }, { code: 3 }, { code: 8 }] },
+    { title: "Realiza Assessoria", tech: [{ code: 13 }, { code: 6 }, { code: 1 }, { code: 3 }, { code: 8 }] },
     { title: "Guia Perguntas", tech: [{ code: 13 }, { code: 6 }, { code: 1 }, { code: 5 }, { code: 3 }, { code: 8 }] },
-    { title: "API de Usuários", tech: [{ code: 4 }, { code: 6 }, { code: 8 }, { code: 10 }, { code: 15 }] },
+    { title: "API de Usuários", doc: "https://github.com/douglas-ggoncalves/Full-Stack/tree/main/API%20de%20Usuarios", tech: [{ code: 4 }, { code: 6 }, { code: 8 }, { code: 10 }, { code: 15 }] },
 ]
 
 data.technologies = [
