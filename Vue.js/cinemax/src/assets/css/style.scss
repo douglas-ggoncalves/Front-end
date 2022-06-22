@@ -33,16 +33,38 @@ $blue: rgb(41, 217, 213);
     color: white;
     text-align: center;
 
-    #main .elements {
+    .elements {
+        position: relative;
+        overflow: hidden;
+        background-size: cover;
         cursor: pointer;
         flex-grow: 1;
-        margin-right: 0.5rem;
+        margin-left: 0.25rem;
+        margin-right: 0.25rem;
         margin-bottom: 0;
+        height: 569px;
+        
+        img{
+            -moz-transition: all 0.5s;
+            -webkit-transition: all 0.5s;
+            transition: all 0.5s;
+            height: 100%;
+            width: 100%;
+        }
+
+        &:hover{
+            img{
+                -moz-transform: scale(1.2);
+                -webkit-transform: scale(1.2);
+                transform: scale(1.2);
+            }
+        }
     }
 
     .elements div {
         position: relative;
-
+        height: 100%;
+        
         >button {
             position: absolute;
             right: 0;

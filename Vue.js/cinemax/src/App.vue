@@ -19,14 +19,19 @@
 import axios from "axios";
 import Movie from "./components/Movie.vue";
 import  "./assets/css/style.css";
+import _ from "lodash";
 
 export default {
   name: "App",
-  
   data() {
     return {
       apiV3Auth: "d6f0ef55abc9bbf18dbe5089523aad16",
+      minDate: '',
+      maxDate: '',
+      aux: [],
+      auxTop: [],
       movie: {
+        filmesEmCartaz: [],
         moviesPopular: [],
         moviesTopRated: [],
         moviesUpcoming: []
@@ -37,6 +42,23 @@ export default {
     Movie,
   },
   async created(){
+
+    for(var a=1; a <= 67; a++) {
+      await axios.get(`https://api.themoviedb.org/3/movie/now_playing?api_key=${this.apiV3Auth}&language=pt-BR&page=${a}`).then(res=> {
+        this.minDate = res.data.dates.minimum;
+        this.maxDate = res.data.dates.maximum;
+
+        res.data.results.forEach(element => {
+         if(new Date(element.release_date) > new Date(this.minDate)){
+          if(element.backdrop_path != null && element.popularity > '100'){
+            this.aux.push(element)
+          }
+         }
+        })
+      })
+    }
+    this.movie.filmesEmCartaz = _.orderBy(this.aux, ['popularity'], ['desc'])
+
     for(var i=1; i<=10; i++) {
       await axios.get(`https://api.themoviedb.org/3/movie/popular?api_key=${this.apiV3Auth}&language=pt-BR&page=${i}`).then(res=> {
         res.data.results.forEach(element => {
@@ -50,13 +72,14 @@ export default {
     for(var x=1; x <= 50; x++) {
       await axios.get(`https://api.themoviedb.org/3/movie/top_rated?api_key=${this.apiV3Auth}&language=pt-BR&page=${x}`).then(res=> {
         res.data.results.forEach(element => {
-          if(element.vote_average > 8.5){
-            this.movie.moviesTopRated.push(element)
+          if(element.vote_average > 8.0){
+            this.auxTop.push(element)
           }
         })
-       
       })
     }
+    this.movie.moviesTopRated = _.orderBy(this.aux, ['vote_average'], ['desc'])
+
 
     var millisecondsInOneDay = 86400000;
     let today = Math.round(new Date() / millisecondsInOneDay);
@@ -87,6 +110,8 @@ export default {
         })
       })
     }
+
+    
   }
 };
 </script>

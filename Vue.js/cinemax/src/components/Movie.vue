@@ -1,12 +1,22 @@
 <template>
   <div id="main">
     <div class="data text-center">
+      <h2>Filmes em Cartaz</h2>
+      <carousel :loop="true" :autoplayTimeout="5000" autoplay :perPageCustom="[[768, 3], [1024, 5]]">
+        <slide v-for="(movie, index) in movie.filmesEmCartaz" :key="index" @click="moreMetails(movie.id)">
+          <div class="elements">
+            <img :src="'https://image.tmdb.org/t/p/w500/' + movie.poster_path">
+          </div>
+        </slide>
+      </carousel>
+    </div>
+
+    <div class="data text-center">
       <h2>Filmes Populares</h2>
-      <carousel :loop="true" autoplay :per-page="3">
+      <carousel :perPageCustom="[[768, 3], [1024, 5]]">
         <slide v-for="movie in movie.moviesPopular" :key="movie.id" @click="moreMetails(movie.id)">
           <div class="elements">
-            <img :src="'https://image.tmdb.org/t/p/w500/' + movie.backdrop_path">
-            <h3>{{ movie.title }}</h3>
+            <img class="img-fluid" :src="'https://image.tmdb.org/t/p/w500/' + movie.poster_path">
           </div>
         </slide>
       </carousel>
@@ -14,17 +24,14 @@
     
     <div class="data text-center">
       <h2>Filmes Mais Bem Avaliados</h2>
-      <carousel :per-page="3">
+      <carousel :perPageCustom="[[768, 3], [1024, 5]]">
         <slide v-for="movie in movie.moviesTopRated" :key="movie.id" @click="moreMetails(movie.id)">
           <div class="elements">
             <div>
-              <img :src="'https://image.tmdb.org/t/p/w500/' + movie.backdrop_path">
+              <img :src="'https://image.tmdb.org/t/p/w500/' + movie.poster_path">
               <button>
                 {{ movie.vote_average }}
               </button>
-              <h3>{{ movie.id }}</h3>
-
-              <h3>{{ movie.title }}</h3>
             </div>
           </div>
         </slide>
@@ -33,15 +40,12 @@
 
     <div class="data text-center">
       <h2>Filmes Recentemente Lançados</h2>
-      <carousel :per-page="3">
+      <carousel :perPageCustom="[[768, 3], [1024, 5]]">
         <slide v-for="movie in movie.moviesUpcoming" :key="movie.id" @click="moreMetails(movie.id)">
           <div class="elements">
             <span >
-              <img :src="'https://image.tmdb.org/t/p/w500/' + movie.backdrop_path">
+              <img :src="'https://image.tmdb.org/t/p/w500/' + movie.poster_path ">
               <h3>{{ movie.id }}</h3>
-
-              <h3>{{ movie.title }}</h3>
-              <h4>{{ movie.release_date }}</h4>
             </span>
           </div>
         </slide>
@@ -94,8 +98,6 @@ export default {
   methods: {
     async moreMetails(id){
       await axios.get(`https://api.themoviedb.org/3/movie/${id}?api_key=${this.apiV3Auth}&language=pt-BR`).then(res =>{
-        //console.log(res.data.title)
-        //console.log(res.data.backdrop_path)
         this.moviePhotoBanner = 'https://image.tmdb.org/t/p/w500' + res.data.poster_path
         this.moviePhotoBack = 'https://image.tmdb.org/t/p/w500' + res.data.backdrop_path
       }).catch(err => {
