@@ -32,6 +32,12 @@ body {
   text-align: center;
 }
 
+#main .container-fluid {
+  background-size: cover;
+  min-height: 500px;
+  opacity: 0.5;
+}
+
 #main .elements {
   position: relative;
   overflow: hidden;
@@ -100,5 +106,89 @@ body {
   width: 100vh !important;
   bottom: 2rem !important;
   top: 2rem !important;
+}
+
+#movie {
+  color: white;
+  text-align: left;
+}
+
+#movie .container-fluid {
+  min-height: 500px;
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+#movie .container-fluid div#background {
+  opacity: 0.15;
+  min-height: 500px;
+  background-size: cover;
+  position: absolute;
+  left: 0;
+  width: 100%;
+}
+
+#movie .container-fluid img {
+  margin-left: 2rem;
+  border-radius: 1.15rem;
+  max-height: 470px;
+  position: relative;
+}
+
+#movie .container-fluid div#content {
+  padding: 1rem;
+  border: 1px solid red;
+}
+
+#movie .container-fluid div#content h1 {
+  font-weight: bolder;
+}
+
+#movie .container-fluid div#content #years {
+  display: inline-block;
+}
+
+#movie .container-fluid div#content #years > span {
+  border-radius: 0.1rem;
+  font-size: 1.1rem;
+  font-weight: bold;
+  padding: .5rem;
+}
+
+#movie .container-fluid div#content #years span.isGreen {
+  background-color: #00963d;
+}
+
+#movie .container-fluid div#content #years span.isBlue {
+  background-color: #007fcb;
+}
+
+#movie .container-fluid div#content #years span.isYellow {
+  background-color: #fdc403;
+}
+
+#movie .container-fluid div#content #years span.isOrange {
+  background-color: #ff7803;
+}
+
+#movie .container-fluid div#content #years span.isRed {
+  background-color: #ff2121;
+}
+
+#movie .container-fluid div#content #years span.isBlack {
+  background-color: #14130a;
+}
+
+#movie .container-fluid div#content div#sinopse {
+  margin-top: 3rem;
+}
+
+#movie .container-fluid div#content div#sinopse h6 {
+  opacity: 0.7;
 }
 /*# sourceMappingURL=style.css.map */
