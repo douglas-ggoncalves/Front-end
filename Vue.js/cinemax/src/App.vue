@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <nav>
-      <router-link to="/Index">
+      <router-link to="/">
         <h3>Cinemax</h3>
       </router-link>
     </nav>

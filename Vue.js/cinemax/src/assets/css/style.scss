@@ -115,7 +115,7 @@ $blue: rgb(41, 217, 213);
     color: white;
     text-align: left;
 
-    .container-fluid{
+    #banner{
         min-height: 500px;
         position: relative;
         display: flex;
@@ -129,66 +129,133 @@ $blue: rgb(41, 217, 213);
             left: 0;
             width: 100%;
         }
+
+        >.row{
+            display: flex;
+            align-items: center;
+            min-height: 500px;
         
-        img{
-            margin-left: 2rem;
-            border-radius: 1.15rem;
-            max-height: 470px;
-            position: relative;
+            img{
+                border-radius: 1.15rem;
+                max-height: 470px;
+                position: relative;
+            }
+
+            div#content{
+                padding: 1rem;
+                
+                h1{
+                    font-weight: bolder;
+                }
+
+                #years{
+                    display: inline-block;
+
+                    >span{
+                        border-radius: 0.1rem;
+                        font-size: 1.1rem;
+                        font-weight: bold;
+                        padding: .5rem;
+                    }
+
+                    span.isGreen{
+                        background-color: rgb(0, 150, 61);
+                    }
+
+                    span.isBlue{
+                        background-color: rgb(0, 127, 203);
+                    }
+
+                    span.isYellow{
+                        background-color: rgb(253, 196, 3);
+                    }
+                    
+                    span.isOrange{
+                        background-color: rgb(255, 120, 3);
+                    }
+
+                    span.isRed{
+                        background-color: rgb(255, 33, 33);
+                    }
+                    
+                    span.isBlack{
+                        background-color: rgb(20, 19, 10);
+                    }
+
+                }
+
+                div#sinopse{
+                    margin-top: 3rem;
+                    
+                    h6{
+                        opacity: 0.7;
+                    }
+                }
+            }
+        }
+    }
+
+    #media{
+        margin-top: 1rem;
+
+        h4{
+            margin-left: .5rem;
+            font-weight: bolder;
         }
 
-        div#content{
-            padding: 1rem;
-            border: 1px solid red;
-            
-            h1{
-                font-weight: bolder;
-            }
+        button{
+            color: white;
+            border: none;
+            margin-left: .5rem;
+            margin-right: .5rem;
+            background: transparent;
+            -moz-transition: all 0.5s;
+            -webkit-transition: all 0.5s;
+            transition: all 0.5s;
 
-            #years{
-                display: inline-block;
-
-                >span{
-                    border-radius: 0.1rem;
-                    font-size: 1.1rem;
-                    font-weight: bold;
-                    padding: .5rem;
-                }
-
-                span.isGreen{
-                    background-color: rgb(0, 150, 61);
-                }
-
-                span.isBlue{
-                    background-color: rgb(0, 127, 203);
-                }
-
-                span.isYellow{
-                    background-color: rgb(253, 196, 3);
-                }
-                
-                span.isOrange{
-                    background-color: rgb(255, 120, 3);
-                }
-
-                span.isRed{
-                    background-color: rgb(255, 33, 33);
-                }
-                
-                span.isBlack{
-                    background-color: rgb(20, 19, 10);
-                }
-
-            }
-
-            div#sinopse{
-                margin-top: 3rem;
-                h6{
-                    opacity: 0.7;
-                }
+            &:hover{
+                color: $blue;
             }
         }
     }
 }
 
+
+@media (max-width: 400px) { 
+    
+}
+
+@media (min-width: 576px) { 
+
+}
+
+@media (min-width: 768px) { 
+    
+}
+
+@media (min-width: 992px) { 
+    
+}
+
+@media (min-width: 1200px) { 
+    
+}
+
+@media (min-width: 1400px) { 
+    #movie {
+        #banner{
+            min-height: 550px;
+
+            div#background{
+                min-height: 550px;
+            }
+
+            >.row{
+                img{
+                    max-height: 500px;
+                }
+            }
+        }
+    }
+}
 

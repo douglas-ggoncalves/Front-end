@@ -113,7 +113,7 @@ body {
   text-align: left;
 }
 
-#movie .container-fluid {
+#movie #banner {
   min-height: 500px;
   position: relative;
   display: -webkit-box;
@@ -124,7 +124,7 @@ body {
           align-items: center;
 }
 
-#movie .container-fluid div#background {
+#movie #banner div#background {
   opacity: 0.15;
   min-height: 500px;
   background-size: cover;
@@ -133,62 +133,105 @@ body {
   width: 100%;
 }
 
-#movie .container-fluid img {
-  margin-left: 2rem;
+#movie #banner > .row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  min-height: 500px;
+}
+
+#movie #banner > .row img {
   border-radius: 1.15rem;
   max-height: 470px;
   position: relative;
 }
 
-#movie .container-fluid div#content {
+#movie #banner > .row div#content {
   padding: 1rem;
-  border: 1px solid red;
 }
 
-#movie .container-fluid div#content h1 {
+#movie #banner > .row div#content h1 {
   font-weight: bolder;
 }
 
-#movie .container-fluid div#content #years {
+#movie #banner > .row div#content #years {
   display: inline-block;
 }
 
-#movie .container-fluid div#content #years > span {
+#movie #banner > .row div#content #years > span {
   border-radius: 0.1rem;
   font-size: 1.1rem;
   font-weight: bold;
   padding: .5rem;
 }
 
-#movie .container-fluid div#content #years span.isGreen {
+#movie #banner > .row div#content #years span.isGreen {
   background-color: #00963d;
 }
 
-#movie .container-fluid div#content #years span.isBlue {
+#movie #banner > .row div#content #years span.isBlue {
   background-color: #007fcb;
 }
 
-#movie .container-fluid div#content #years span.isYellow {
+#movie #banner > .row div#content #years span.isYellow {
   background-color: #fdc403;
 }
 
-#movie .container-fluid div#content #years span.isOrange {
+#movie #banner > .row div#content #years span.isOrange {
   background-color: #ff7803;
 }
 
-#movie .container-fluid div#content #years span.isRed {
+#movie #banner > .row div#content #years span.isRed {
   background-color: #ff2121;
 }
 
-#movie .container-fluid div#content #years span.isBlack {
+#movie #banner > .row div#content #years span.isBlack {
   background-color: #14130a;
 }
 
-#movie .container-fluid div#content div#sinopse {
+#movie #banner > .row div#content div#sinopse {
   margin-top: 3rem;
 }
 
-#movie .container-fluid div#content div#sinopse h6 {
+#movie #banner > .row div#content div#sinopse h6 {
   opacity: 0.7;
+}
+
+#movie #media {
+  margin-top: 1rem;
+}
+
+#movie #media h4 {
+  margin-left: .5rem;
+  font-weight: bolder;
+}
+
+#movie #media button {
+  color: white;
+  border: none;
+  margin-left: .5rem;
+  margin-right: .5rem;
+  background: transparent;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+}
+
+#movie #media button:hover {
+  color: #29d9d5;
+}
+
+@media (min-width: 1400px) {
+  #movie #banner {
+    min-height: 550px;
+  }
+  #movie #banner div#background {
+    min-height: 550px;
+  }
+  #movie #banner > .row img {
+    max-height: 500px;
+  }
 }
 /*# sourceMappingURL=style.css.map */

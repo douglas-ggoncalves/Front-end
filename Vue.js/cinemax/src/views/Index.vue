@@ -15,7 +15,7 @@
       <h2>Filmes Populares</h2>
       <carousel :perPageCustom="[[768, 3], [1024, 5]]">
         <slide v-for="movie in movie.moviesPopular" :key="movie.id">
-          <a :href="movie.id">
+          <a :href="'filme/'+movie.id">
             <div class="elements">
               <img class="img-fluid" :src="'https://image.tmdb.org/t/p/w500/' + movie.poster_path">
             </div>
