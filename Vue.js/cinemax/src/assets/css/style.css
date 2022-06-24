@@ -83,6 +83,7 @@ body {
 }
 
 #main h2 {
+  font-weight: bolder;
   margin: 3rem 0 1rem 2rem;
 }
 
@@ -204,12 +205,20 @@ body {
   margin-top: 1rem;
 }
 
+#movie #media > .row {
+  width: 100%;
+}
+
 #movie #media h4 {
   margin-left: .5rem;
   font-weight: bolder;
 }
 
-#movie #media button {
+#movie #media button:focus-visible {
+  outline: none;
+}
+
+#movie #media button.select {
   color: white;
   border: none;
   margin-left: .5rem;
@@ -217,10 +226,68 @@ body {
   background: transparent;
   -webkit-transition: all 0.5s;
   transition: all 0.5s;
+  border-bottom: 1px solid transparent;
 }
 
-#movie #media button:hover {
+#movie #media button.select:hover {
   color: #29d9d5;
+}
+
+#movie #media button.select.btnActive {
+  color: #29d9d5;
+  border-bottom: 1px solid #29d9d5;
+}
+
+#movie #media div.VueCarousel {
+  margin-top: 1.5rem;
+}
+
+#movie #media div.VueCarousel .VueCarousel-dot-container {
+  margin-top: 0 !important;
+  margin-bottom: 1rem;
+}
+
+#movie #media div.VueCarousel .VueCarousel-dot-container button.VueCarousel-dot--active {
+  outline: none !important;
+  background-color: #29d9d5 !important;
+}
+
+#movie #media div.VueCarousel button.VueCarousel-dot {
+  width: 10px !important;
+  height: 10px !important;
+}
+
+#movie #media div.VueCarousel a {
+  width: 100% !important;
+  text-decoration: none;
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+  font-weight: lighter;
+}
+
+#movie #media div.VueCarousel a img {
+  width: 98%;
+}
+
+#movie #media div.VueCarousel a div {
+  color: white;
+  display: none;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding-bottom: .5rem;
+  padding-top: .5rem;
+  width: 98%;
+  background: rgba(0, 0, 0, 0.6);
+}
+
+#movie #media div.VueCarousel a:hover div {
+  display: block;
 }
 
 @media (min-width: 1400px) {

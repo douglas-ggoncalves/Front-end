@@ -45,27 +45,64 @@
     </div>
 
     <div class="container-fluid" id="media">
-      <div class="row px-xl-3" style="border: 1px solid red">
+      <div class="row px-xl-3">
         <h4>Midia</h4>
 
         <div>
-          <button>Mais Populares</button>
-          <button>Vídeos</button>
-          <button>Imagens de fundo</button>
-          <button>Pôsteres</button>
+          <button class="select" @click="videoShow = true; imageShow = false; posterShow = false" :class="{btnActive: videoShow}">Vídeos {{ this.movieVideos.length }}</button>
+          <button class="select" @click="videoShow = false; imageShow = true;  posterShow = false" :class="{btnActive: imageShow}">Imagens {{ this.movieImages.length }}</button>
+          <button class="select" @click="videoShow = false; imageShow = false; posterShow = true" :class="{btnActive: posterShow}">Pôsteres {{ this.moviePoster.length }}</button>
         </div>
 
-        <carousel :paginationEnabled="false" v-if="videoShow">
-          <slide v-for="movie in this.movie.releases.countries" :key="movie.id">
-            <a :href="'filme/'+movie.id">
-              <div class="elements">
-                <img class="img-fluid" :src="'https://image.tmdb.org/t/p/w500/' + movie.poster_path">
+        <carousel :paginationEnabled="true" :perPageCustom="[[100, 1], [728, 2],[1200, 3]]" v-if="videoShow">
+          <slide v-for="movie in this.movieVideos" :key="movie.id" class="text-center">
+            <iframe width="93%" height="315" :src="`https://www.youtube.com/embed/${movie.key}?controls=1`" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+            <div>
+              <h3>
+                {{ movie.name }}
+              </h3>
+            </div>
+          </slide>
+      </carousel>
+          
+        <carousel :paginationEnabled="true" :perPageCustom="[[100, 1], [728, 2],[1024, 3]]" v-if="imageShow"> <!-- :perPage="3"  -->
+          <slide v-for="img in this.movieImages" :key="img.file_path" class="text-center">
+            <a target="blank" :href="`https://www.themoviedb.org/t/p/original/${img.file_path}`">
+              <img :src="'https://image.tmdb.org/t/p/w500/' + img.file_path">
+
+              <div>
+                Acessar imagem
               </div>
             </a>
           </slide>
-      </carousel>
+        </carousel>
+        
+        <carousel :paginationEnabled="true" :perPageCustom="[[100, 1], [728, 2],[1024, 3]]" v-if="posterShow"> <!-- :perPage="3"  -->
+          <slide v-for="post in this.moviePoster" :key="post.file_path" class="text-center">
+            <a target="blank" :href="`https://www.themoviedb.org/t/p/original/${post.file_path}`">
+              <img style="max-height: 520px" :src="'https://image.tmdb.org/t/p/w500/' + post.file_path">
+              <div>
+                Acessar pôster
+              </div>
+            </a>
+          </slide>
+        </carousel>
+      </div>
 
+      <div class="row px-xl-3 mt-5">
+        <h4>Filmes similares</h4>
 
+        <carousel :perPageCustom="[[768, 3], [1024, 5]]">
+          <slide v-for="movie in movieSimilar" :key="movie.file_path" class="text-center">
+            <a :href="movie.id">
+              <img style="max-height: 400px" class="img-fluid" :src="'https://image.tmdb.org/t/p/w500/' + movie.poster_path">
+              <div>
+                {{ movie.title }}
+              </div>
+            </a>
+          </slide>
+        </carousel>
       </div>
     </div>
 
@@ -84,6 +121,12 @@ export default {
       apiV3Auth: "",
       movieCert: '',
       videoShow: false,
+      movieVideos: [],
+      imageShow: true,
+      movieImages: [],
+      posterShow: false,
+      moviePoster: [],
+      movieSimilar: [],
       movie: {}
     }
   },
@@ -94,10 +137,48 @@ export default {
     }).catch(err => {
       console.log(err)
     })
-      var x = _.find(this.movie.releases.countries, function(movie) { return movie.iso_3166_1 == 'BR'; })
-      this.movieCert = x
-      console.log(x);
+    var x = _.find(this.movie.releases.countries, function(movie) { return movie.iso_3166_1 == 'BR'; })
+    this.movieCert = x
+
+    await axios.get(`https://api.themoviedb.org/3/movie/${this.$route.params.id}/videos?api_key=${this.apiV3Auth}&language=pt-BR`)
+    .then(res => {
+      this.movieVideos = res.data.results;
+    }).catch(err => {
+      console.log(err)
+    })
     
+    await axios.get(`https://api.themoviedb.org/3/movie/${this.$route.params.id}/images?api_key=${this.apiV3Auth}`)
+    .then(res => {
+      this.movieImages = res.data.backdrops;
+    }).catch(err => {
+      console.log(err)
+    })
+    
+    await axios.get(`https://api.themoviedb.org/3/movie/${this.$route.params.id}/images?api_key=${this.apiV3Auth}`)
+    .then(res => {
+      res.data.posters.forEach(element => {
+        if(element.iso_639_1 == 'pt'){
+          this.moviePoster.push(element)
+        }
+      })
+    }).catch(err => {
+      console.log(err)
+    })
+
+    await axios.get(`https://api.themoviedb.org/3/movie/${this.$route.params.id}/similar?api_key=${this.apiV3Auth}&language=pt-BR`)
+    .then(res => {
+
+      res.data.results.forEach(element => {
+        if(element.poster_path != null){
+          this.movieSimilar.push(element)
+        }
+      })
+    }).catch(err => {
+      console.log(err)
+    })
+  
+    
+
   },
   filters: {
     minutesForHours(value){

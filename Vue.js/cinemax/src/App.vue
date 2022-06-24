@@ -1,9 +1,10 @@
 <template>
   <div id="app">
-    <nav>
-      <router-link to="/">
-        <h3>Cinemax</h3>
-      </router-link>
+    <nav class="col-1 col-lg-5 d-flex justify-content-end">
+      <router-link class="mr-auto" style="margin-right: auto" to="/"> <h3>Cinemax</h3> </router-link>
+      
+      <router-link to="/">Filmes</router-link>
+      <router-link to="/">Séries</router-link>
     </nav>
 
     <!--<input type="text" placeholder="Digite o nome do filme" />
@@ -35,6 +36,8 @@ export default {
 
 nav {
   width: 100%;
+    align-items: center;
+
   padding: 0.5rem;
   background-color: black;
   margin-bottom: 1.5rem;
@@ -75,7 +78,17 @@ input {
 }
 
 a{
+  color: white;
+  display: inline-block;
+  font-size: 1.25rem;
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+  font-weight: 500;
   text-decoration: none;
+}
+
+a:hover{
+  color: rgb(41, 217, 213);
 }
 
 </style>

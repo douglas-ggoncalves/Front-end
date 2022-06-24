@@ -2,18 +2,30 @@
   <div id="main">
    <div class="data text-center">
       <h2>Filmes em Cartaz</h2>
-      <carousel :loop="true" :autoplayTimeout="5000" autoplay :perPageCustom="[[768, 3], [1024, 5]]">
+      <button v-if="this.movie.filmesEmCartaz.length == 0" class="btn btn-dark" type="button" disabled>
+        <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+        <span class="sr-only"> Buscando os dados...</span>
+      </button>
+
+      <carousel :loop="true" :autoplayTimeout="5000" autoplay :perPageCustom="[[0, 1], [400, 2], [768, 3], [1024, 5]]">
         <slide v-for="(movie, index) in movie.filmesEmCartaz" :key="index">
-          <div class="elements">
-            <img :src="'https://image.tmdb.org/t/p/w500/' + movie.poster_path">
-          </div>
+          <a :href="'filme/'+movie.id">
+            <div class="elements">
+              <img :src="'https://image.tmdb.org/t/p/w500/' + movie.poster_path">
+            </div>
+          </a>
         </slide>
       </carousel>
     </div>
 
     <div class="data text-center">
       <h2>Filmes Populares</h2>
-      <carousel :perPageCustom="[[768, 3], [1024, 5]]">
+      <button v-if="this.movie.moviesPopular.length == 0" class="btn btn-dark" type="button" disabled>
+        <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+        <span class="sr-only"> Buscando os dados...</span>
+      </button>
+
+      <carousel :perPageCustom="[[0, 1], [400, 2], [768, 3], [1024, 5]]">
         <slide v-for="movie in movie.moviesPopular" :key="movie.id">
           <a :href="'filme/'+movie.id">
             <div class="elements">
@@ -26,30 +38,44 @@
     
     <div class="data text-center">
       <h2>Filmes Mais Bem Avaliados</h2>
-      <carousel :perPageCustom="[[768, 3], [1024, 5]]">
+      <button v-if="this.movie.moviesTopRated.length == 0" class="btn btn-dark" type="button" disabled>
+        <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+        <span class="sr-only"> Buscando os dados...</span>
+      </button>
+
+      <carousel :perPageCustom="[[0, 1], [400, 2], [768, 3], [1024, 5]]">
         <slide v-for="movie in movie.moviesTopRated" :key="movie.id">
-          <div class="elements">
-            <div>
-              <img :src="'https://image.tmdb.org/t/p/w500/' + movie.poster_path">
-              <button>
-                {{ movie.vote_average }}
-              </button>
+          <a :href="'filme/'+movie.id">
+            <div class="elements">
+              <div>
+                <img :src="'https://image.tmdb.org/t/p/w500/' + movie.poster_path">
+                <button>
+                  {{ movie.vote_average }}
+                </button>
+              </div>
             </div>
-          </div>
+          </a>
         </slide>
       </carousel>
     </div>
 
     <div class="data text-center">
       <h2>Filmes Recentemente Lançados</h2>
-      <carousel :perPageCustom="[[768, 3], [1024, 5]]">
+      <button v-if="this.movie.moviesUpcoming.length == 0" class="btn btn-dark" type="button" disabled>
+        <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+        <span class="sr-only"> Buscando os dados...</span>
+      </button>
+
+      <carousel :perPageCustom="[[0, 1], [400, 2], [768, 3], [1024, 5]]">
         <slide v-for="movie in movie.moviesUpcoming" :key="movie.id">
-          <div class="elements">
-            <span >
-              <img :src="'https://image.tmdb.org/t/p/w500/' + movie.poster_path ">
-              <h3>{{ movie.id }}</h3>
-            </span>
-          </div>
+          <a :href="'filme/'+movie.id">
+            <div class="elements">
+              <span >
+                <img :src="'https://image.tmdb.org/t/p/w500/' + movie.poster_path ">
+                <h3>{{ movie.id }}</h3>
+              </span>
+            </div>
+          </a>
         </slide>
       </carousel>
     </div>
@@ -73,6 +99,7 @@ Vue.use(VueCarousel);
 export default {
   data() {
     return {
+      myResponsive: [[0, 1], [400, 2], [768, 3], [1024, 5]],
       apiV3Auth: "",
       minDate: '',
       maxDate: '',
@@ -121,13 +148,13 @@ export default {
     for(var x=1; x <= 50; x++) {
       await axios.get(`https://api.themoviedb.org/3/movie/top_rated?api_key=${this.apiV3Auth}&language=pt-BR&page=${x}`).then(res=> {
         res.data.results.forEach(element => {
-          if(element.vote_average > 8.0){
+          if(element.vote_average > 8.4){
             this.auxTop.push(element)
           }
         })
       })
     }
-    this.movie.moviesTopRated = _.orderBy(this.aux, ['vote_average'], ['desc'])
+    this.movie.moviesTopRated = _.orderBy(this.auxTop, ['vote_average'], ['desc'])
 
     var millisecondsInOneDay = 86400000;
     let today = Math.round(new Date() / millisecondsInOneDay);

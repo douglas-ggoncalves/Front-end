@@ -85,6 +85,7 @@ $blue: rgb(41, 217, 213);
     }
     
     h2 {
+        font-weight: bolder;
         margin: 3rem 0 1rem 2rem;
     }
 
@@ -198,12 +199,20 @@ $blue: rgb(41, 217, 213);
     #media{
         margin-top: 1rem;
 
+        >.row{
+            width: 100%;
+        }
+
         h4{
             margin-left: .5rem;
             font-weight: bolder;
         }
 
-        button{
+        button:focus-visible{
+            outline: none;
+        }
+
+        button.select{
             color: white;
             border: none;
             margin-left: .5rem;
@@ -212,11 +221,74 @@ $blue: rgb(41, 217, 213);
             -moz-transition: all 0.5s;
             -webkit-transition: all 0.5s;
             transition: all 0.5s;
+            border-bottom: 1px solid transparent;
 
             &:hover{
                 color: $blue;
             }
         }
+
+        button.select.btnActive{
+            color: $blue;
+            border-bottom: 1px solid $blue;
+        }
+
+        div.VueCarousel{
+            margin-top: 1.5rem;
+
+            .VueCarousel-dot-container {
+                margin-top: 0 !important;
+                margin-bottom: 1rem;
+        
+                button.VueCarousel-dot--active{
+                    outline: none !important;
+                    background-color: $blue !important;
+                }
+            }
+    
+            button.VueCarousel-dot{
+                width: 10px !important;
+                height: 10px !important;
+            }
+
+            a{
+                width: 100% !important;
+                text-decoration: none;
+                position: relative;
+                display: flex;
+                -moz-transition: all 0.5s;
+                -webkit-transition: all 0.5s;
+                transition: all 0.5s;
+                font-weight: lighter;
+
+                img{
+                    width: 98%;   
+                }
+
+                div{
+                    color: white;
+                    display: none;
+                    position: absolute;
+                    left: 0;
+                    right: 0;
+                    bottom: 0;
+                    padding-bottom: .5rem;
+                    padding-top: .5rem;
+                    width: 98%;
+                    background: rgba(0, 0, 0, 0.6);
+                }
+
+                &:hover{
+                    div{
+                        display: block;
+                    }
+                }
+            }
+
+            
+        }
+
+        
     }
 }
 
