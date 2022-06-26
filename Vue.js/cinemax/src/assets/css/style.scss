@@ -29,6 +29,80 @@ body{
 
 $blue: rgb(41, 217, 213);
 
+#index{
+    color: white;
+
+    div.data{
+        padding-left: .5rem;
+        padding-right: .5rem;
+        margin-bottom: 1rem;
+        margin-top: 1rem;
+
+        div#title{
+            display: flex;
+            align-items: center;
+            margin-bottom: .3rem;
+        }
+
+        h2 {
+            display: inline;
+            font-weight: bolder;
+            line-height: 1;
+        }
+
+        button:focus{
+            box-shadow: none !important;
+            outline: none;
+        }
+
+        button{
+            margin-left: .5rem;
+            margin-right: .5rem;
+        }
+        
+
+        .elements {
+            position: relative;
+            overflow: hidden;
+            background-size: cover;
+            cursor: pointer;
+            flex-grow: 1;
+            margin-left: 0.25rem;
+            margin-right: 0.25rem;
+            margin-bottom: 0;
+            height: 500px;
+            
+            img{
+                -moz-transition: all 0.5s;
+                -webkit-transition: all 0.5s;
+                transition: all 0.5s;
+                height: 100%;
+                width: 100%;
+            }
+    
+            &:hover{
+                img{
+                    -moz-transform: scale(1.2);
+                    -webkit-transform: scale(1.2);
+                    transform: scale(1.2);
+                }
+            }
+        }
+    
+        .VueCarousel-dot-container {
+            margin-top: 0 !important;
+            margin-bottom: 1rem;
+    
+            button.VueCarousel-dot--active{
+                outline: none !important;
+                background-color: $blue !important;
+            }
+        }
+    }
+
+    
+}
+
 #main {
     color: white;
     text-align: center;
@@ -112,7 +186,8 @@ $blue: rgb(41, 217, 213);
     }
 }
 
-#movie {
+/* Section Movie */
+#movie, #serie {
     color: white;
     text-align: left;
 
@@ -121,11 +196,12 @@ $blue: rgb(41, 217, 213);
         position: relative;
         display: flex;
         align-items: center;
-
+        
         div#background{
             opacity: 0.15;
             min-height: 500px;
             background-size: cover;
+            background: u;
             position: absolute;
             left: 0;
             width: 100%;
@@ -284,13 +360,10 @@ $blue: rgb(41, 217, 213);
                     }
                 }
             }
-
-            
         }
-
-        
     }
 }
+/* End Movie */
 
 
 @media (max-width: 400px) { 

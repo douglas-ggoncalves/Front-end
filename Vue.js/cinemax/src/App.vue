@@ -3,7 +3,8 @@
     <nav class="col-1 col-lg-5 d-flex justify-content-end">
       <router-link class="mr-auto" style="margin-right: auto" to="/"> <h3>Cinemax</h3> </router-link>
       
-      <router-link to="/">Filmes</router-link>
+      <router-link to="/">Página Inicial</router-link>
+      <router-link to="/filmes">Filmes</router-link>
       <router-link to="/">Séries</router-link>
     </nav>
 
@@ -32,19 +33,29 @@ export default {
 <style scoped>
 #app {
   text-align: center;
+
+  -moz-transition: all 0.5s;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
 }
 
 nav {
   width: 100%;
-    align-items: center;
-
-  padding: 0.5rem;
+  display: flex;
+  align-items: center;
+  padding: 0.8rem;
   background-color: black;
   margin-bottom: 1.5rem;
+
 }
 
 h3 {
   color: rgb(248, 244, 244);
+  margin-bottom: 0;
+}
+
+h3:hover {
+  color: rgb(41, 217, 213);
 }
 
 button {

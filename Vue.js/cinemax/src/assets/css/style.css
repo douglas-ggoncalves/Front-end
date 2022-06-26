@@ -27,6 +27,80 @@ body {
   background: #999696;
 }
 
+#index {
+  color: white;
+}
+
+#index div.data {
+  padding-left: .5rem;
+  padding-right: .5rem;
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+}
+
+#index div.data div#title {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-bottom: .3rem;
+}
+
+#index div.data h2 {
+  display: inline;
+  font-weight: bolder;
+  line-height: 1;
+}
+
+#index div.data button:focus {
+  -webkit-box-shadow: none !important;
+          box-shadow: none !important;
+  outline: none;
+}
+
+#index div.data button {
+  margin-left: .5rem;
+  margin-right: .5rem;
+}
+
+#index div.data .elements {
+  position: relative;
+  overflow: hidden;
+  background-size: cover;
+  cursor: pointer;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  margin-left: 0.25rem;
+  margin-right: 0.25rem;
+  margin-bottom: 0;
+  height: 500px;
+}
+
+#index div.data .elements img {
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+  height: 100%;
+  width: 100%;
+}
+
+#index div.data .elements:hover img {
+  -webkit-transform: scale(1.2);
+  transform: scale(1.2);
+}
+
+#index div.data .VueCarousel-dot-container {
+  margin-top: 0 !important;
+  margin-bottom: 1rem;
+}
+
+#index div.data .VueCarousel-dot-container button.VueCarousel-dot--active {
+  outline: none !important;
+  background-color: #29d9d5 !important;
+}
+
 #main {
   color: white;
   text-align: center;
@@ -109,12 +183,13 @@ body {
   top: 2rem !important;
 }
 
-#movie {
+/* Section Movie */
+#movie, #serie {
   color: white;
   text-align: left;
 }
 
-#movie #banner {
+#movie #banner, #serie #banner {
   min-height: 500px;
   position: relative;
   display: -webkit-box;
@@ -125,16 +200,17 @@ body {
           align-items: center;
 }
 
-#movie #banner div#background {
+#movie #banner div#background, #serie #banner div#background {
   opacity: 0.15;
   min-height: 500px;
   background-size: cover;
+  background: u;
   position: absolute;
   left: 0;
   width: 100%;
 }
 
-#movie #banner > .row {
+#movie #banner > .row, #serie #banner > .row {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -144,81 +220,81 @@ body {
   min-height: 500px;
 }
 
-#movie #banner > .row img {
+#movie #banner > .row img, #serie #banner > .row img {
   border-radius: 1.15rem;
   max-height: 470px;
   position: relative;
 }
 
-#movie #banner > .row div#content {
+#movie #banner > .row div#content, #serie #banner > .row div#content {
   padding: 1rem;
 }
 
-#movie #banner > .row div#content h1 {
+#movie #banner > .row div#content h1, #serie #banner > .row div#content h1 {
   font-weight: bolder;
 }
 
-#movie #banner > .row div#content #years {
+#movie #banner > .row div#content #years, #serie #banner > .row div#content #years {
   display: inline-block;
 }
 
-#movie #banner > .row div#content #years > span {
+#movie #banner > .row div#content #years > span, #serie #banner > .row div#content #years > span {
   border-radius: 0.1rem;
   font-size: 1.1rem;
   font-weight: bold;
   padding: .5rem;
 }
 
-#movie #banner > .row div#content #years span.isGreen {
+#movie #banner > .row div#content #years span.isGreen, #serie #banner > .row div#content #years span.isGreen {
   background-color: #00963d;
 }
 
-#movie #banner > .row div#content #years span.isBlue {
+#movie #banner > .row div#content #years span.isBlue, #serie #banner > .row div#content #years span.isBlue {
   background-color: #007fcb;
 }
 
-#movie #banner > .row div#content #years span.isYellow {
+#movie #banner > .row div#content #years span.isYellow, #serie #banner > .row div#content #years span.isYellow {
   background-color: #fdc403;
 }
 
-#movie #banner > .row div#content #years span.isOrange {
+#movie #banner > .row div#content #years span.isOrange, #serie #banner > .row div#content #years span.isOrange {
   background-color: #ff7803;
 }
 
-#movie #banner > .row div#content #years span.isRed {
+#movie #banner > .row div#content #years span.isRed, #serie #banner > .row div#content #years span.isRed {
   background-color: #ff2121;
 }
 
-#movie #banner > .row div#content #years span.isBlack {
+#movie #banner > .row div#content #years span.isBlack, #serie #banner > .row div#content #years span.isBlack {
   background-color: #14130a;
 }
 
-#movie #banner > .row div#content div#sinopse {
+#movie #banner > .row div#content div#sinopse, #serie #banner > .row div#content div#sinopse {
   margin-top: 3rem;
 }
 
-#movie #banner > .row div#content div#sinopse h6 {
+#movie #banner > .row div#content div#sinopse h6, #serie #banner > .row div#content div#sinopse h6 {
   opacity: 0.7;
 }
 
-#movie #media {
+#movie #media, #serie #media {
   margin-top: 1rem;
 }
 
-#movie #media > .row {
+#movie #media > .row, #serie #media > .row {
   width: 100%;
 }
 
-#movie #media h4 {
+#movie #media h4, #serie #media h4 {
   margin-left: .5rem;
   font-weight: bolder;
 }
 
-#movie #media button:focus-visible {
+#movie #media button:focus-visible, #serie #media button:focus-visible {
   outline: none;
 }
 
-#movie #media button.select {
+#movie #media button.select, #serie #media button.select {
   color: white;
   border: none;
   margin-left: .5rem;
@@ -229,35 +305,35 @@ body {
   border-bottom: 1px solid transparent;
 }
 
-#movie #media button.select:hover {
+#movie #media button.select:hover, #serie #media button.select:hover {
   color: #29d9d5;
 }
 
-#movie #media button.select.btnActive {
+#movie #media button.select.btnActive, #serie #media button.select.btnActive {
   color: #29d9d5;
   border-bottom: 1px solid #29d9d5;
 }
 
-#movie #media div.VueCarousel {
+#movie #media div.VueCarousel, #serie #media div.VueCarousel {
   margin-top: 1.5rem;
 }
 
-#movie #media div.VueCarousel .VueCarousel-dot-container {
+#movie #media div.VueCarousel .VueCarousel-dot-container, #serie #media div.VueCarousel .VueCarousel-dot-container {
   margin-top: 0 !important;
   margin-bottom: 1rem;
 }
 
-#movie #media div.VueCarousel .VueCarousel-dot-container button.VueCarousel-dot--active {
+#movie #media div.VueCarousel .VueCarousel-dot-container button.VueCarousel-dot--active, #serie #media div.VueCarousel .VueCarousel-dot-container button.VueCarousel-dot--active {
   outline: none !important;
   background-color: #29d9d5 !important;
 }
 
-#movie #media div.VueCarousel button.VueCarousel-dot {
+#movie #media div.VueCarousel button.VueCarousel-dot, #serie #media div.VueCarousel button.VueCarousel-dot {
   width: 10px !important;
   height: 10px !important;
 }
 
-#movie #media div.VueCarousel a {
+#movie #media div.VueCarousel a, #serie #media div.VueCarousel a {
   width: 100% !important;
   text-decoration: none;
   position: relative;
@@ -269,11 +345,11 @@ body {
   font-weight: lighter;
 }
 
-#movie #media div.VueCarousel a img {
+#movie #media div.VueCarousel a img, #serie #media div.VueCarousel a img {
   width: 98%;
 }
 
-#movie #media div.VueCarousel a div {
+#movie #media div.VueCarousel a div, #serie #media div.VueCarousel a div {
   color: white;
   display: none;
   position: absolute;
@@ -286,10 +362,11 @@ body {
   background: rgba(0, 0, 0, 0.6);
 }
 
-#movie #media div.VueCarousel a:hover div {
+#movie #media div.VueCarousel a:hover div, #serie #media div.VueCarousel a:hover div {
   display: block;
 }
 
+/* End Movie */
 @media (min-width: 1400px) {
   #movie #banner {
     min-height: 550px;

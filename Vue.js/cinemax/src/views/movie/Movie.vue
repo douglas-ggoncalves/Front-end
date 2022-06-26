@@ -3,6 +3,9 @@
     <div class="container-fluid" id="banner">
       <div class="row px-xl-3">
         <div class="d-none d-md-block" id="background" :style="{'background-image': `url(https://image.tmdb.org/t/p/w500/${movie.backdrop_path}`}"/>
+      </div>
+
+      <div class="row px-xl-3" style="z-index: 5;">
 
         <div class="col-12 col-md-4 col-xl-3 d-flex justify-content-center">
           <img :src="'https://image.tmdb.org/t/p/w500/' + movie.poster_path">
@@ -46,6 +49,27 @@
 
     <div class="container-fluid" id="media">
       <div class="row px-xl-3">
+        <h4>Atores</h4>
+        <carousel :paginationEnabled="true" :perPageCustom="[[100, 1], [728, 2],[1024, 5]]">
+          <slide v-for="pers in this.listElenc" :key="pers.profile_path" class="text-center">
+            <a target="blank" :href="`https://www.themoviedb.org/t/p/original/${pers.profile_path}`">
+              <img :src="'https://image.tmdb.org/t/p/w500/' + pers.profile_path">
+
+              <div>
+                Ver perfil
+              </div>
+            </a>
+            <h6>
+              {{ pers.name }}
+            </h6>
+            Personagens: {{ pers.character }}
+
+          </slide>
+        </carousel>
+      </div>
+
+
+      <div class="row px-xl-3">
         <h4>Midia</h4>
 
         <div>
@@ -64,7 +88,7 @@
               </h3>
             </div>
           </slide>
-      </carousel>
+        </carousel>
           
         <carousel :paginationEnabled="true" :perPageCustom="[[100, 1], [728, 2],[1024, 3]]" v-if="imageShow"> <!-- :perPage="3"  -->
           <slide v-for="img in this.movieImages" :key="img.file_path" class="text-center">
@@ -91,7 +115,7 @@
       </div>
 
       <div class="row px-xl-3 mt-5">
-        <h4>Filmes similares</h4>
+        <h4 style="margin-bottom: 0; line-height: 1;">Filmes similares</h4>
 
         <carousel :perPageCustom="[[768, 3], [1024, 5]]">
           <slide v-for="movie in movieSimilar" :key="movie.file_path" class="text-center">
@@ -105,7 +129,6 @@
         </carousel>
       </div>
     </div>
-
   </div>
 </template>
 
@@ -127,6 +150,7 @@ export default {
       posterShow: false,
       moviePoster: [],
       movieSimilar: [],
+      listElenc: [],
       movie: {}
     }
   },
@@ -134,6 +158,7 @@ export default {
     this.apiV3Auth = script.apiV3Auth
     await axios.get(`https://api.themoviedb.org/3/movie/${this.$route.params.id}?api_key=${this.apiV3Auth}&language=pt-BR&append_to_response=releases`).then(res=> {
       this.movie = res.data
+      console.log(res.data)
     }).catch(err => {
       console.log(err)
     })
@@ -167,7 +192,6 @@ export default {
 
     await axios.get(`https://api.themoviedb.org/3/movie/${this.$route.params.id}/similar?api_key=${this.apiV3Auth}&language=pt-BR`)
     .then(res => {
-
       res.data.results.forEach(element => {
         if(element.poster_path != null){
           this.movieSimilar.push(element)
@@ -176,8 +200,19 @@ export default {
     }).catch(err => {
       console.log(err)
     })
-  
-    
+
+    await axios.get(`https://api.themoviedb.org/3/movie/${this.$route.params.id}/credits?api_key=${this.apiV3Auth}&language=pt-BR`)
+    .then(res => {
+      res.data.cast.forEach(element => {
+        if(element.known_for_department == 'Acting' && element.profile_path != null){
+          this.listElenc.push(element)
+        }
+      }
+      )
+
+    }).catch(err => {
+      console.log(err)
+    })
 
   },
   filters: {
