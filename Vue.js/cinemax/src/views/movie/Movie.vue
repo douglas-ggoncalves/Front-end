@@ -49,20 +49,25 @@
 
     <div class="container-fluid" id="media">
       <div class="row px-xl-3">
-        <h4>Atores</h4>
-        <carousel :paginationEnabled="true" :perPageCustom="[[100, 1], [728, 2],[1024, 5]]">
-          <slide v-for="pers in this.listElenc" :key="pers.profile_path" class="text-center">
-            <a target="blank" :href="`https://www.themoviedb.org/t/p/original/${pers.profile_path}`">
-              <img :src="'https://image.tmdb.org/t/p/w500/' + pers.profile_path">
+        <h4>Atores Principais</h4>
+        <carousel class="mt-0" :paginationEnabled="true" :perPageCustom="[[100, 2], [728, 2],[1024, 6]]">
+          <slide v-for="pers in this.listElenc" :key="pers.profile_path" class="text-center ">
+            <div class="elenc">
+              <a target="_blank" :href="`/pessoa/${pers.id}`">
+                <img :src="'https://image.tmdb.org/t/p/w500/' + pers.profile_path">
 
-              <div>
-                Ver perfil
-              </div>
-            </a>
-            <h6>
-              {{ pers.name }}
-            </h6>
-            Personagens: {{ pers.character }}
+                <div>
+                  Ver perfil
+                </div>
+              </a>
+              <h5>
+                {{ pers.name }}
+              </h5>
+              <hr>
+              <span>
+                {{ pers.character }}
+              </span>
+            </div>
 
           </slide>
         </carousel>
@@ -78,7 +83,7 @@
           <button class="select" @click="videoShow = false; imageShow = false; posterShow = true" :class="{btnActive: posterShow}">Pôsteres {{ this.moviePoster.length }}</button>
         </div>
 
-        <carousel :paginationEnabled="true" :perPageCustom="[[100, 1], [728, 2],[1200, 3]]" v-if="videoShow">
+        <carousel class="mt-0" :paginationEnabled="true" :perPageCustom="[[100, 1], [728, 2],[1200, 3]]" v-if="videoShow">
           <slide v-for="movie in this.movieVideos" :key="movie.id" class="text-center">
             <iframe width="93%" height="315" :src="`https://www.youtube.com/embed/${movie.key}?controls=1`" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
@@ -92,7 +97,7 @@
           
         <carousel :paginationEnabled="true" :perPageCustom="[[100, 1], [728, 2],[1024, 3]]" v-if="imageShow"> <!-- :perPage="3"  -->
           <slide v-for="img in this.movieImages" :key="img.file_path" class="text-center">
-            <a target="blank" :href="`https://www.themoviedb.org/t/p/original/${img.file_path}`">
+            <a target="_blank" :href="`https://www.themoviedb.org/t/p/original/${img.file_path}`">
               <img :src="'https://image.tmdb.org/t/p/w500/' + img.file_path">
 
               <div>
@@ -104,7 +109,7 @@
         
         <carousel :paginationEnabled="true" :perPageCustom="[[100, 1], [728, 2],[1024, 3]]" v-if="posterShow"> <!-- :perPage="3"  -->
           <slide v-for="post in this.moviePoster" :key="post.file_path" class="text-center">
-            <a target="blank" :href="`https://www.themoviedb.org/t/p/original/${post.file_path}`">
+            <a target="_blank" :href="`https://www.themoviedb.org/t/p/original/${post.file_path}`">
               <img style="max-height: 520px" :src="'https://image.tmdb.org/t/p/w500/' + post.file_path">
               <div>
                 Acessar pôster
@@ -158,7 +163,6 @@ export default {
     this.apiV3Auth = script.apiV3Auth
     await axios.get(`https://api.themoviedb.org/3/movie/${this.$route.params.id}?api_key=${this.apiV3Auth}&language=pt-BR&append_to_response=releases`).then(res=> {
       this.movie = res.data
-      console.log(res.data)
     }).catch(err => {
       console.log(err)
     })
@@ -204,12 +208,13 @@ export default {
     await axios.get(`https://api.themoviedb.org/3/movie/${this.$route.params.id}/credits?api_key=${this.apiV3Auth}&language=pt-BR`)
     .then(res => {
       res.data.cast.forEach(element => {
-        if(element.known_for_department == 'Acting' && element.profile_path != null){
-          this.listElenc.push(element)
+        if(this.listElenc.length <= 15){
+          if(element.known_for_department == 'Acting' && element.profile_path != null){
+            this.listElenc.push(element)
+          }
         }
       }
-      )
-
+    )
     }).catch(err => {
       console.log(err)
     })

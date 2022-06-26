@@ -91,6 +91,11 @@ body {
   transform: scale(1.2);
 }
 
+#index div.data button.VueCarousel-dot {
+  margin-top: 5px !important;
+  margin-bottom: 1rem;
+}
+
 #index div.data .VueCarousel-dot-container {
   margin-top: 0 !important;
   margin-bottom: 1rem;
@@ -183,7 +188,7 @@ body {
   top: 2rem !important;
 }
 
-/* Section Movie */
+/* Section Movie and Serie */
 #movie, #serie {
   color: white;
   text-align: left;
@@ -285,55 +290,54 @@ body {
   width: 100%;
 }
 
-#movie #media h4, #serie #media h4 {
-  margin-left: .5rem;
+#movie #media > .row h4, #serie #media > .row h4 {
   font-weight: bolder;
 }
 
-#movie #media button:focus-visible, #serie #media button:focus-visible {
+#movie #media > .row button:focus-visible, #serie #media > .row button:focus-visible {
   outline: none;
 }
 
-#movie #media button.select, #serie #media button.select {
+#movie #media > .row button.select, #serie #media > .row button.select {
   color: white;
   border: none;
-  margin-left: .5rem;
-  margin-right: .5rem;
+  margin-right: .9rem;
   background: transparent;
   -webkit-transition: all 0.5s;
   transition: all 0.5s;
   border-bottom: 1px solid transparent;
+  padding: 0;
 }
 
-#movie #media button.select:hover, #serie #media button.select:hover {
+#movie #media > .row button.select:hover, #serie #media > .row button.select:hover {
   color: #29d9d5;
 }
 
-#movie #media button.select.btnActive, #serie #media button.select.btnActive {
+#movie #media > .row button.select.btnActive, #serie #media > .row button.select.btnActive {
   color: #29d9d5;
   border-bottom: 1px solid #29d9d5;
 }
 
-#movie #media div.VueCarousel, #serie #media div.VueCarousel {
-  margin-top: 1.5rem;
+#movie #media > .row div.VueCarousel, #serie #media > .row div.VueCarousel {
+  margin-top: .65rem;
 }
 
-#movie #media div.VueCarousel .VueCarousel-dot-container, #serie #media div.VueCarousel .VueCarousel-dot-container {
+#movie #media > .row div.VueCarousel .VueCarousel-dot-container, #serie #media > .row div.VueCarousel .VueCarousel-dot-container {
   margin-top: 0 !important;
   margin-bottom: 1rem;
 }
 
-#movie #media div.VueCarousel .VueCarousel-dot-container button.VueCarousel-dot--active, #serie #media div.VueCarousel .VueCarousel-dot-container button.VueCarousel-dot--active {
+#movie #media > .row div.VueCarousel .VueCarousel-dot-container button.VueCarousel-dot--active, #serie #media > .row div.VueCarousel .VueCarousel-dot-container button.VueCarousel-dot--active {
   outline: none !important;
   background-color: #29d9d5 !important;
 }
 
-#movie #media div.VueCarousel button.VueCarousel-dot, #serie #media div.VueCarousel button.VueCarousel-dot {
+#movie #media > .row div.VueCarousel button.VueCarousel-dot, #serie #media > .row div.VueCarousel button.VueCarousel-dot {
   width: 10px !important;
   height: 10px !important;
 }
 
-#movie #media div.VueCarousel a, #serie #media div.VueCarousel a {
+#movie #media > .row div.VueCarousel a, #serie #media > .row div.VueCarousel a {
   width: 100% !important;
   text-decoration: none;
   position: relative;
@@ -345,11 +349,11 @@ body {
   font-weight: lighter;
 }
 
-#movie #media div.VueCarousel a img, #serie #media div.VueCarousel a img {
+#movie #media > .row div.VueCarousel a img, #serie #media > .row div.VueCarousel a img {
   width: 98%;
 }
 
-#movie #media div.VueCarousel a div, #serie #media div.VueCarousel a div {
+#movie #media > .row div.VueCarousel a div, #serie #media > .row div.VueCarousel a div {
   color: white;
   display: none;
   position: absolute;
@@ -362,11 +366,170 @@ body {
   background: rgba(0, 0, 0, 0.6);
 }
 
-#movie #media div.VueCarousel a:hover div, #serie #media div.VueCarousel a:hover div {
+#movie #media > .row div.VueCarousel a:hover div, #serie #media > .row div.VueCarousel a:hover div {
   display: block;
 }
 
-/* End Movie */
+#movie #media > .row div.elenc, #serie #media > .row div.elenc {
+  padding-bottom: .3rem;
+  padding-top: .3rem;
+  margin-right: 5px;
+  height: 100%;
+  border: 1px solid rgba(250, 250, 250, 0.45);
+}
+
+#movie #media > .row div.elenc hr, #serie #media > .row div.elenc hr {
+  margin-left: auto;
+  margin-right: auto;
+  width: 75%;
+}
+
+#movie #media > .row div.elenc h5, #serie #media > .row div.elenc h5 {
+  font-weight: bold;
+  margin-top: .5rem;
+}
+
+#movie #media > .row div.elenc img, #serie #media > .row div.elenc img {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* End Section Movie and Serie */
+/* Section Person */
+#person {
+  color: white;
+  text-align: left;
+}
+
+#person .container-fluid div.row div#colLeft {
+  margin-bottom: 2rem;
+}
+
+#person .container-fluid div.row div#colLeft hr {
+  width: 75%;
+  color: #29d9d5;
+}
+
+#person .container-fluid div.row div#colLeft img {
+  border: 2px solid #29d9d5;
+  border-radius: 12px;
+  max-height: 320px;
+}
+
+#person .container-fluid div.row div#colLeft a {
+  display: inline !important;
+  font-size: 1.5rem;
+  color: white;
+  margin-right: .5rem;
+  text-decoration: none;
+  margin-top: .5rem;
+}
+
+#person .container-fluid div.row div#colLeft a:hover {
+  color: #29d9d5;
+}
+
+#person .container-fluid div.row ul.timeline {
+  list-style-type: none;
+  position: relative;
+}
+
+#person .container-fluid div.row ul.timeline a {
+  color: #29d9d5;
+}
+
+#person .container-fluid div.row ul.timeline a, #person .container-fluid div.row ul.timeline p {
+  display: inline;
+  margin-right: .5rem;
+}
+
+#person .container-fluid div.row ul.timeline:before {
+  content: ' ';
+  background: #d4d9df;
+  display: inline-block;
+  position: absolute;
+  left: 29px;
+  width: 2px;
+  height: 100%;
+  z-index: 400;
+}
+
+#person .container-fluid div.row ul.timeline > li {
+  margin: 20px 0;
+  padding-left: 20px;
+}
+
+#person .container-fluid div.row ul.timeline > li:before {
+  content: ' ';
+  background-color: #333333;
+  display: inline-block;
+  position: absolute;
+  border-radius: 50%;
+  border: 3px solid #29d9d5;
+  left: 20px;
+  width: 20px;
+  height: 20px;
+  z-index: 400;
+}
+
+#person .container-fluid div.row h2 {
+  font-weight: bolder;
+}
+
+#person .container-fluid div.row h4, #person .container-fluid div.row h5 {
+  margin-top: 1rem;
+  font-weight: bolder;
+}
+
+#person .container-fluid div.row a {
+  width: 100% !important;
+  text-decoration: none;
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+  font-weight: lighter;
+}
+
+#person .container-fluid div.row a img {
+  width: 98%;
+}
+
+#person .container-fluid div.row a div {
+  color: white;
+  display: none;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding-bottom: .5rem;
+  padding-top: .5rem;
+  width: 98%;
+  background: rgba(0, 0, 0, 0.6);
+}
+
+#person .container-fluid div.row a:hover div {
+  display: block;
+}
+
+#person .container-fluid div.row button.VueCarousel-dot {
+  margin-top: 5px !important;
+  margin-bottom: 1rem;
+}
+
+#person .container-fluid div.row .VueCarousel-dot-container {
+  margin-top: 0 !important;
+  margin-bottom: 1rem;
+}
+
+#person .container-fluid div.row .VueCarousel-dot-container button.VueCarousel-dot--active {
+  outline: none !important;
+  background-color: #29d9d5 !important;
+}
+
+/* End Section Person */
 @media (min-width: 1400px) {
   #movie #banner {
     min-height: 550px;
@@ -376,6 +539,9 @@ body {
   }
   #movie #banner > .row img {
     max-height: 500px;
+  }
+  #person .container-fluid div.row div#colLeft img {
+    max-height: 450px;
   }
 }
 /*# sourceMappingURL=style.css.map */

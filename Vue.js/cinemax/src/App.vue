@@ -45,8 +45,7 @@ nav {
   align-items: center;
   padding: 0.8rem;
   background-color: black;
-  margin-bottom: 1.5rem;
-
+  margin-bottom: 2.5rem;
 }
 
 h3 {

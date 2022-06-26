@@ -28,7 +28,7 @@
 
       <carousel :loop="true" :autoplayTimeout="5000" autoplay :perPageCustom="[[0, 1], [400, 2], [768, 3], [1024, 5]]" v-show="viewMoviePopular">
         <slide v-for="(data, index) in data.arrayMoviesPopular" :key="index">
-          <a target="blank" :href="'filme/'+data.id">
+          <a target="_blank" :href="'filme/'+data.id">
             <div class="elements">
               <img :src="'https://image.tmdb.org/t/p/w500/' + data.poster_path">
             </div>
@@ -42,7 +42,7 @@
       </button>
       <carousel :loop="true" :autoplayTimeout="5000" autoplay :perPageCustom="[[0, 1], [400, 2], [768, 3], [1024, 5]]" v-show="!viewMoviePopular">
         <slide v-for="(data, index) in data.arraySeriesPopular" :key="index">
-          <a target="blank" :href="'serie/'+data.id">
+          <a target="_blank" :href="'serie/'+data.id">
             <div class="elements">
               <img :src="'https://image.tmdb.org/t/p/w500/' + data.poster_path">
             </div>
@@ -138,8 +138,6 @@ export default {
       })
     }
     this.data.arrayMoviesInPoster = _.orderBy(this.aux, ['popularity'], ['desc'])
-
-
   }
 };
 </script>

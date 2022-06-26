@@ -69,7 +69,7 @@
           
         <carousel :paginationEnabled="true" :perPageCustom="[[100, 1], [728, 2],[1024, 3]]" v-if="imageShow"> <!-- :perPage="3"  -->
           <slide v-for="img in this.serieImages" :key="img.file_path" class="text-center">
-            <a target="blank" :href="`https://www.theseriedb.org/t/p/original/${img.file_path}`">
+            <a target="_blank" :href="`https://www.themoviedb.org/t/p/original/${img.file_path}`">
               <img :src="'https://image.tmdb.org/t/p/w500/' + img.file_path">
 
               <div>
@@ -81,7 +81,7 @@
         
         <carousel :paginationEnabled="true" :perPageCustom="[[100, 1], [728, 2],[1024, 3]]" v-if="posterShow"> <!-- :perPage="3"  -->
           <slide v-for="post in this.seriePoster" :key="post.file_path" class="text-center">
-            <a target="blank" :href="`https://www.theseriedb.org/t/p/original/${post.file_path}`">
+            <a target="__blank" :href="`https://www.themoviedb.org/t/p/original/${post.file_path}`">
               <img style="max-height: 520px" :src="'https://image.tmdb.org/t/p/w500/' + post.file_path">
               <div>
                 Acessar pôster
