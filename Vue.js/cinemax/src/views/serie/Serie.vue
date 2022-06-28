@@ -1,22 +1,24 @@
 <template>
   <div id="serie">
     <div class="container-fluid" id="banner">
-        <div class="row px-xl-3">
-            <div class="d-none d-md-block" id="background" :style="{'background-image': `url(https://image.tmdb.org/t/p/w500/${serie.backdrop_path}`}"/>
-        </div>
-    
-        <div class="row px-xl-3" style="z-index: 5;">
+      <!-- 
+      <div class="row px-xl-3">
+        <div class="d-none d-md-block" id="background" :style="{'background-image': `url(https://image.tmdb.org/t/p/w500/${serie.backdrop_path}`}"/>
+      </div>
+      -->
+
+      <div class="row px-xl-3" style="z-index: 5;">
+        <div class="d-none d-md-block" id="background" :style="{'background-image': `url(https://image.tmdb.org/t/p/w500/${serie.backdrop_path}`}"/>
 
         <div class="col-12 col-md-4 col-xl-3 d-flex justify-content-center">
           <img :src="'https://image.tmdb.org/t/p/w500/' + serie.poster_path">
         </div>
 
-        <div class="col-12 col-md-8 col-xl-7 d-flex justify-content-center">
+        <div class="col-12 col-md-8 col-xl-7"> 
           <div id="content">
             <h1>{{ serie.name }} <span style="font-size: 1.3rem">{{ serie.first_air_date | convertDate }}</span></h1>
 
-            <div>
-              <div id="years">
+              <div id="years" v-if="this.serieCert.rating != '' && this.serieCert.rating != null">
                 <span :class="{ 
                 isGreen: this.serieCert.rating == 'L', 
                 isBlue: this.serieCert.rating == '10',
@@ -28,17 +30,18 @@
                   {{ this.serieCert.rating }}
                 </span>
               </div>
-
               
               <span v-for="(serieGenres, index) in serie.genres" :key="index">
                 {{ serieGenres.name }}<span v-if="serie.genres.length > index + 1">,</span>
               </span>
-            </div>
 
             <div id="sinopse">
               <h6>{{ serie.tagline }}</h6>
               <h3>Sinopse</h3>
               {{ serie.overview }}
+              <span v-if="serie.overview == null || serie.overview == ''">
+                Esta série não possui sinopse.
+              </span>
             </div>
           </div>
         </div>
@@ -46,6 +49,30 @@
     </div>
 
     <div class="container-fluid" id="media">
+      <div class="row px-xl-3">
+        <h4>Atores Principais</h4>
+        <carousel class="mt-0" :paginationEnabled="true" :perPageCustom="[[100, 2], [728, 2],[1024, 6]]">
+          <slide v-for="pers in this.listElenc" :key="pers.profile_path" class="text-center ">
+            <div class="elenc">
+              <a target="_blank" :href="`/pessoa/${pers.id}`">
+                <img :src="'https://image.tmdb.org/t/p/w500/' + pers.profile_path">
+
+                <div>
+                  Ver perfil
+                </div>
+              </a>
+              <h5>
+                {{ pers.name }}
+              </h5>
+              <hr>
+              <span>
+                {{ pers.character }}
+              </span>
+            </div>
+          </slide>
+        </carousel>
+      </div>
+      
       <div class="row px-xl-3">
         <h4>Midia</h4>
 
@@ -65,7 +92,7 @@
               </h3>
             </div>
           </slide>
-      </carousel>
+        </carousel>
           
         <carousel :paginationEnabled="true" :perPageCustom="[[100, 1], [728, 2],[1024, 3]]" v-if="imageShow"> <!-- :perPage="3"  -->
           <slide v-for="img in this.serieImages" :key="img.file_path" class="text-center">
@@ -128,6 +155,7 @@ export default {
       posterShow: false,
       seriePoster: [],
       serieSimilar: [],
+      listElenc: [],
       serie: {}
     }
   },
@@ -174,7 +202,6 @@ export default {
 
     await axios.get(`https://api.themoviedb.org/3/tv/${this.$route.params.id}/recommendations?api_key=${this.apiV3Auth}&language=pt-BR`)
     .then(res => {
-
       res.data.results.forEach(element => {
         if(element.poster_path != null){
           this.serieSimilar.push(element)
@@ -183,14 +210,27 @@ export default {
     }).catch(err => {
       console.log(err)
     })
-  
-    
 
+    await axios.get(`https://api.themoviedb.org/3/tv/${this.$route.params.id}/credits?api_key=${this.apiV3Auth}&language=pt-BR`)
+    .then(res => {
+      res.data.cast.forEach(element => {
+        if(this.listElenc.length <= 15){
+          if(element.known_for_department == 'Acting' && element.profile_path != null){
+            this.listElenc.push(element)
+          }
+        }
+      }
+    )
+    }).catch(err => {
+      console.log(err)
+    })
+    this.listElenc = _.orderBy(this.listElenc, ['popularity'], ['desc'])
+  
   },
   filters: {
     convertDate(value){
-        var string = value.split('-');
-        return `( ${string[0]} )` ; 
+      var string = value.split('-');
+      return `( ${string[0]} )`; 
     }
   }
 }

@@ -4,6 +4,7 @@ import Index from '../views/Index.vue'
 import Movie from '../views/movie/Movie.vue'
 import Movies from '../views/movie/Movies.vue'
 import Serie from '../views/serie/Serie.vue'
+import Series from '../views/serie/Series.vue'
 import Person from '../views/person/Person.vue'
 
 Vue.use(VueRouter)
@@ -28,6 +29,11 @@ const routes = [
     path: '/filme/:id',
     name: 'Movie',
     component: Movie
+  },
+  {
+    path: '/series',
+    name: 'Series',
+    component: Series
   },
   {
     path: '/serie/:id',

@@ -1,6 +1,6 @@
 <template>
   <div id="main">
-   <div class="data text-center">
+    <div class="data text-center">
       <h2>Filmes em Cartaz</h2>
       <button v-if="this.movie.filmesEmCartaz.length == 0" class="btn btn-dark" type="button" disabled>
         <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
@@ -70,7 +70,7 @@
         <slide v-for="movie in movie.moviesUpcoming" :key="movie.id">
           <a :href="'filme/'+movie.id">
             <div class="elements">
-              <span >
+              <span>
                 <img :src="'https://image.tmdb.org/t/p/w500/' + movie.poster_path ">
                 <h3>{{ movie.id }}</h3>
               </span>
@@ -79,9 +79,7 @@
         </slide>
       </carousel>
     </div>
-  
   </div>
-   
 </template>
 
 <script>

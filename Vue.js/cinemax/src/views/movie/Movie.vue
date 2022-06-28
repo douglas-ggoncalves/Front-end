@@ -1,22 +1,20 @@
 <template>
   <div id="movie">
     <div class="container-fluid" id="banner">
-      <div class="row px-xl-3">
-        <div class="d-none d-md-block" id="background" :style="{'background-image': `url(https://image.tmdb.org/t/p/w500/${movie.backdrop_path}`}"/>
-      </div>
 
       <div class="row px-xl-3" style="z-index: 5;">
+        <div class="d-none d-md-block" id="background" :style="{'background-image': `url(https://image.tmdb.org/t/p/w500/${movie.backdrop_path}`}"/>
 
         <div class="col-12 col-md-4 col-xl-3 d-flex justify-content-center">
           <img :src="'https://image.tmdb.org/t/p/w500/' + movie.poster_path">
         </div>
 
-        <div class="col-12 col-md-8 col-xl-7 d-flex justify-content-center">
+        <div class="col-12 col-md-8 col-xl-7">
           <div id="content">
             <h1>{{ movie.title }}</h1>
 
             <div>
-              <div id="years">
+              <div id="years" v-if="this.movieCert.certification != '' && this.movieCert.certification != null">
                 <span :class="{ 
                 isGreen: this.movieCert.certification == 'L', 
                 isBlue: this.movieCert.certification == '10',
@@ -29,18 +27,26 @@
                 </span>
               </div>
 
-              {{ movie.release_date | convertDate }} | 
+              <span v-if="movie.release_date != null && movie.release_date != '' && movie.release_date != '0'">
+                {{ movie.release_date | convertDate }} | 
+              </span>
               <span v-for="(movieGenres, index) in movie.genres" :key="index">
                 {{ movieGenres.name }}<span v-if="movie.genres.length > index + 1">,</span>
               </span>
+              <span v-if="movie.runtime != 0 && movie.runtime != ''">
               | 
               {{ movie.runtime | minutesForHours }}
+              </span>
+              
             </div>
 
             <div id="sinopse">
               <h6>{{ movie.tagline }}</h6>
               <h3>Sinopse</h3>
               {{ movie.overview }}
+              <span v-if="movie.overview == null || movie.overview == ''">
+                Este Filme não possui sinopse.
+              </span>
             </div>
           </div>
         </div>
@@ -68,11 +74,9 @@
                 {{ pers.character }}
               </span>
             </div>
-
           </slide>
         </carousel>
       </div>
-
 
       <div class="row px-xl-3">
         <h4>Midia</h4>
@@ -218,6 +222,7 @@ export default {
     }).catch(err => {
       console.log(err)
     })
+    this.listElenc = _.orderBy(this.listElenc, ['popularity'], ['desc'])
 
   },
   filters: {

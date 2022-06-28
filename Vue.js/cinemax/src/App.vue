@@ -1,19 +1,38 @@
 <template>
   <div id="app">
-    <nav class="col-1 col-lg-5 d-flex justify-content-end">
-      <router-link class="mr-auto" style="margin-right: auto" to="/"> <h3>Cinemax</h3> </router-link>
-      
-      <router-link to="/">Página Inicial</router-link>
-      <router-link to="/filmes">Filmes</router-link>
-      <router-link to="/">Séries</router-link>
+    <nav class="navbar navbar-dark bg-dark">
+      <div class="container-fluid">
+        <router-link class="mr-auto" style="margin-right: auto" to="/"> <h3>Cinemax</h3> </router-link>
+        <button class="navbar-toggler ml-auto" @click="viewCollapse()" style="margin-left: auto" type="button">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div id="divCollapse">
+          <router-link to="/">Página Inicial</router-link>
+          <router-link to="/filmes">Filmes</router-link>
+          <router-link to="/series">Séries</router-link>
+          <router-link to="/">Pessoas</router-link>
+        </div>
+      </div>
     </nav>
 
-    <!--<input type="text" placeholder="Digite o nome do filme" />
-      <button>
-        Buscar
-      </button>
-      <hr>
-    -->
+    <div id="navbarToggleExternalContent" v-if="collapseView">
+      <div class="bg-dark">
+        <ul>
+          <li>
+            <router-link to="/">Página Inicial</router-link>
+          </li>
+          <li>
+            <router-link to="/filmes">Filmes</router-link>
+          </li>
+          <li>
+            <router-link to="/">Séries</router-link>
+          </li>
+          <li>
+            <router-link to="/">Pessoas</router-link>
+          </li>
+        </ul>
+      </div>
+    </div>
     <router-view/>
   </div>
 </template>
@@ -24,7 +43,17 @@ import  "./assets/css/style.css";
 export default {
   data(){
     return{
-      
+      collapseView: false
+    }
+  },
+  methods:{
+    viewCollapse(){
+      if(this.collapseView){
+        this.collapseView = false;
+      }
+      else if(!this.collapseView){
+        this.collapseView = true;
+      }
     }
   }
 };
@@ -33,7 +62,6 @@ export default {
 <style scoped>
 #app {
   text-align: center;
-
   -moz-transition: all 0.5s;
   -webkit-transition: all 0.5s;
   transition: all 0.5s;
@@ -45,7 +73,6 @@ nav {
   align-items: center;
   padding: 0.8rem;
   background-color: black;
-  margin-bottom: 2.5rem;
 }
 
 h3 {
@@ -57,18 +84,21 @@ h3:hover {
   color: rgb(41, 217, 213);
 }
 
-button {
+button.navbar-toggler:focus, :focus-visible{
   outline: none;
-  border-radius: 20px;
-  margin-left: 0.3rem;
-  padding: .5rem 1rem;
-  color: #b1a9a9;
-  border: 1px solid #b1a9a9;
-  background-color: white;
+  box-shadow: none;
 }
 
-button:hover {
-  background-color: rgb(226, 220, 220);
+@media (min-width: 768px) { 
+  button.navbar-toggler, #navbarToggleExternalContent{
+    display: none;
+  }
+}
+
+@media (max-width: 768px) { 
+  #divCollapse{
+    display: none;
+  }
 }
 
 hr {
@@ -77,14 +107,23 @@ hr {
   margin-right: auto;
 }
 
-input {
-  padding:8px 50px 8px 20px;
-  width: 50%;
-  font-size: 1.05rem;
-  border-top:1px solid #b1a9a9 !important;
-  border: 3px solid #b1a9a9;
-  border-radius:20px;
-  outline:none;
+.bg-dark{
+  padding-bottom: 1rem;
+  padding-top: 1rem;
+}
+
+#navbarToggleExternalContent .bg-dark{
+  padding-top: 0;
+}
+
+ul {
+  text-align: left !important;
+  padding-left: 0.8rem;
+  margin-left: 0.8rem;
+}
+
+ul li {
+  display: block !important;
 }
 
 a{

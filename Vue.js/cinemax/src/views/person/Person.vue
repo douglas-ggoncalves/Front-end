@@ -1,5 +1,7 @@
 <template>
   <div id="person">
+
+
     <div class="container-fluid">
         <div class="row">
             <div class="col-12 col-md-3" id="colLeft">
@@ -43,6 +45,7 @@
                 <h2>{{ this.person.name }}</h2>
 
                 <h4>Biografia</h4>
+                
                 <span v-if="this.person.biography != null && this.person.biography != ''">
                     {{ this.person.biography }}
                 </span>
@@ -52,7 +55,7 @@
 
                 <h4>Conhecido por</h4>
                 <carousel :perPageCustom="[[768, 3], [1024, 5]]">
-                    <slide  v-for="(part) in participationFiltred" :key="part.id" class="text-center">
+                    <slide v-for="(part) in participationFiltred" :key="part.id" class="text-center">
                         <span>
                             <a v-if="part.media_type == 'movie'" target="ablank" :href="`/filme/${part.id}`">
                                 <img style="max-height: 400px" class="img-fluid" :src="'https://image.tmdb.org/t/p/w500/' + part.poster_path">
@@ -64,11 +67,10 @@
                             <a v-else target="ablank" :href="`/serie/${part.id}`">
                                 <img style="max-height: 400px" class="img-fluid" :src="'https://image.tmdb.org/t/p/w500/' + part.poster_path">
                                 <div>
-                                    {{ part.name }}
+                                    {{ part.title }}
                                 </div>
                             </a>
                         </span>
-                        
                     </slide>
                 </carousel>
 
@@ -84,8 +86,8 @@
                         </span>
                         
                         <span v-else>
-                            <a target="_blank" :href="`/serie/${part.id}`">{{ part.name }}</a>
-                            <span>{{ part.first_air_date | convertDate }}</span>
+                            <a target="_blank" :href="`/serie/${part.id}`">{{ part.title }}</a>
+                            <span>{{ part.release_date | convertDate }}</span>
                             <span v-if="part.character != undefined && part.character != ''">
                                 como {{ part.character }}
                             </span>
@@ -112,6 +114,9 @@ export default {
       networksId: [],
       participation:[],
       participationFiltred:[],
+      testeeee: [
+        
+      ],
     }
   },
   async created(){
@@ -134,8 +139,16 @@ export default {
     await axios.get(`https://api.themoviedb.org/3/person/${this.$route.params.id}/combined_credits?api_key=${this.apiV3Auth}&language=pt-BR&append_to_response=releases`)
     .then(res => {
         res.data.cast.forEach(element => {
-            if(element.poster_path != null && element.poster_path != ''){
-                this.participation.push(element)
+            var existPostInArray = _.find(this.participation, function(part) { return part.poster_path == element.poster_path})
+            if(!existPostInArray){
+                if(element.poster_path != null && element.poster_path != ''){
+                    if(element.media_type == 'movie'){
+                        this.participation.push({id: element.id, title: element.title, release_date: element.release_date, character: element.character, media_type: 'movie', popularity: element.popularity, poster_path: element.poster_path})
+                    }
+                    else if(element.media_type == 'tv'){
+                        this.participation.push({id: element.id, title: element.name, release_date: element.first_air_date, character: element.character, media_type: 'tv', poster_path: element.poster_path})
+                    }
+                }
             }
         });
 
@@ -143,18 +156,26 @@ export default {
             var existPostInArray = _.find(this.participation, function(part) { return part.poster_path == element.poster_path})
             if(!existPostInArray){
                 if(element.poster_path != null && element.poster_path != ''){
-                    this.participation.push(element)
+                    if(element.media_type == 'movie'){
+                        this.participation.push({id: element.id, title: element.title, release_date: element.release_date, character: element.character, media_type: 'movie', popularity: element.popularity, poster_path: element.poster_path})
+                    }
+                    else if(element.media_type == 'tv'){
+                        this.participation.push({id: element.id, title: element.name, release_date: element.first_air_date, character: element.character, media_type: 'tv', poster_path: element.poster_path})
+                    }
                 }
             }
         });
     }).catch(err => {
         console.log(err)
     })
+    //console.log(this.participation)
 
     this.participationFiltred = _.orderBy(this.participation, ['popularity'], ['desc'])
     this.participationFiltred = _.slice(this.participationFiltred, [0], [10])
     this.participation = _.orderBy(this.participation, ['release_date'], ['desc'])
-    this.participation = _.orderBy(this.participation, ['first_air_date'], ['desc'])
+    //this.participation = _.orderBy(this.participation, ['first_air_date'], ['desc'])
+
+  
   },
   filters: {
     convertDate(value){
@@ -168,7 +189,6 @@ export default {
         var currentDate = new Date();
         var anoAtual = currentDate.getFullYear();
         var string = value.split('-');
-
         var age = anoAtual - string[0];
         var currentMonth =  currentDate.getMonth() + 1; 
 
