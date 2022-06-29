@@ -400,6 +400,7 @@ body {
 #person {
   color: white;
   text-align: left;
+  margin-top: 1.5rem;
 }
 
 #person .container-fluid div.row div#colLeft {
@@ -531,6 +532,89 @@ body {
 }
 
 /* End Section Person */
+/* Persons */
+#persons {
+  text-align: center;
+  margin-top: 1rem;
+}
+
+#persons div.row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+#persons div.row div.elements {
+  margin-bottom: 1rem;
+}
+
+#persons div.row div.elements div.first {
+  overflow: hidden;
+  background-size: cover;
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+}
+
+#persons div.row div.elements div.first img {
+  height: auto;
+  max-width: 100%;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+}
+
+#persons div.row div.elements div.first:hover img {
+  -webkit-transform: scale(1.2);
+  transform: scale(1.2);
+}
+
+#persons div.row div.elements div.second {
+  background-color: #212529;
+  border-bottom-left-radius: 6px;
+  border-bottom-right-radius: 6px;
+  padding-bottom: .3rem;
+  padding-top: .3rem;
+}
+
+#persons div.row div.elements div.second a {
+  font-size: 1.25rem;
+  text-decoration: none;
+  color: white;
+  padding-bottom: .3rem;
+  padding-top: .3rem;
+  font-weight: bolder;
+}
+
+#persons div.row div.elements div.second a:hover {
+  color: #29d9d5;
+}
+
+#persons div.row nav {
+  margin-top: 1rem;
+  color: red !important;
+}
+
+#persons div.row nav li.disabled {
+  opacity: 0.6;
+  background-color: transparent;
+}
+
+#persons div.row nav li a {
+  color: white;
+  background-color: transparent;
+}
+
+#persons div.row nav li a:hover {
+  background-color: #212529;
+}
+
+#persons div.row nav li a.selected {
+  background-color: #29d9d5;
+}
+
+/* End Section Persons */
 @media (min-width: 1400px) {
   #movie #banner {
     min-height: 550px;

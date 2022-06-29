@@ -6,6 +6,7 @@ import Movies from '../views/movie/Movies.vue'
 import Serie from '../views/serie/Serie.vue'
 import Series from '../views/serie/Series.vue'
 import Person from '../views/person/Person.vue'
+import Persons from '../views/person/Persons.vue'
 
 Vue.use(VueRouter)
 
@@ -44,6 +45,11 @@ const routes = [
     path: '/pessoa/:id',
     name: 'Person',
     component: Person
+  },
+  {
+    path: '/pessoa&page=:id',
+    name: 'Persons',
+    component: Persons
   },
 ]
 

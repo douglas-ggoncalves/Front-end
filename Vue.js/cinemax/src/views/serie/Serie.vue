@@ -1,12 +1,6 @@
 <template>
   <div id="serie">
     <div class="container-fluid" id="banner">
-      <!-- 
-      <div class="row px-xl-3">
-        <div class="d-none d-md-block" id="background" :style="{'background-image': `url(https://image.tmdb.org/t/p/w500/${serie.backdrop_path}`}"/>
-      </div>
-      -->
-
       <div class="row px-xl-3" style="z-index: 5;">
         <div class="d-none d-md-block" id="background" :style="{'background-image': `url(https://image.tmdb.org/t/p/w500/${serie.backdrop_path}`}"/>
 
@@ -133,7 +127,6 @@
         </carousel>
       </div>
     </div>
-
   </div>
 </template>
 

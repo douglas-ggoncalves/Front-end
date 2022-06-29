@@ -42,9 +42,44 @@
     </div>
 
     <div class="data text-center">
-      <h2>Novos arrays...</h2>
-    </div>
+      <h2>No Ar Hoje</h2>
+      <button v-if="this.serie.seriesInAiring.length == 0" class="btn btn-dark" type="button" disabled>
+        <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+        <span class="sr-only"> Buscando os dados...</span>
+      </button>
 
+      <carousel :perPageCustom="[[0, 1], [400, 2], [768, 3], [1024, 5]]">
+        <slide v-for="serie in serie.seriesInAiring" :key="serie.id">
+          <a :href="'serie/'+serie.id">
+            <div class="elements">
+              <div>
+                <img :src="'https://image.tmdb.org/t/p/w500/' + serie.poster_path">
+              </div>
+            </div>
+          </a>
+        </slide>
+      </carousel>
+    </div>
+    
+    <div class="data text-center">
+      <h2>Atualmente No Ar</h2>
+      <button v-if="this.serie.seriesOnAir.length == 0" class="btn btn-dark" type="button" disabled>
+        <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+        <span class="sr-only"> Buscando os dados...</span>
+      </button>
+
+      <carousel :perPageCustom="[[0, 1], [400, 2], [768, 3], [1024, 5]]">
+        <slide v-for="serie in serie.seriesOnAir" :key="serie.id">
+          <a :href="'serie/'+serie.id">
+            <div class="elements">
+              <div>
+                <img :src="'https://image.tmdb.org/t/p/w500/' + serie.poster_path">
+              </div>
+            </div>
+          </a>
+        </slide>
+      </carousel>
+    </div>
   </div>
 </template>
 
@@ -69,6 +104,8 @@ export default {
       serie:{
         seriesPopular: [],
         seriesTopRated: [],
+        seriesInAiring: [],
+        seriesOnAir: [],
       }
     };
   },
@@ -89,7 +126,7 @@ export default {
         res.data.results.forEach(element => {
           if(element.vote_average > 8.4 && element.poster_path != null){
             if(element.original_language == 'en' || element.original_language == 'pt'){
-                this.auxTop.push(element)
+              this.auxTop.push(element)
             }
           }
         })
@@ -97,7 +134,27 @@ export default {
     }
     this.serie.seriesTopRated = _.orderBy(this.auxTop, ['vote_average'], ['desc'])
 
-   
+    for(var y=1; y<=10; y++) {
+      await axios.get(`https://api.themoviedb.org/3/tv/airing_today?api_key=${this.apiV3Auth}&language=pt-BR&page=${y}`).then(res=> {
+        res.data.results.forEach(element => {
+          if(element.popularity > 800 && element.poster_path != null){
+            this.serie.seriesInAiring.push(element)
+          }
+        })
+      });
+    }
+    
+    for(var w=1; w<=10; w++) {
+      await axios.get(`https://api.themoviedb.org/3/tv/on_the_air?api_key=${this.apiV3Auth}&language=pt-BR&page=${w}`).then(res=> {
+        res.data.results.forEach(element => {
+          if(element.poster_path != null){
+            if(element.original_language == 'en' || element.original_language == 'pt'){
+              this.serie.seriesOnAir.push(element)
+            }
+          }
+        })
+      });
+    }
   }
 };
 </script>

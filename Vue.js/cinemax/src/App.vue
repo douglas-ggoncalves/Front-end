@@ -10,7 +10,7 @@
           <router-link to="/">Página Inicial</router-link>
           <router-link to="/filmes">Filmes</router-link>
           <router-link to="/series">Séries</router-link>
-          <router-link to="/">Pessoas</router-link>
+          <router-link to="/pessoa&page=1">Pessoas</router-link>
         </div>
       </div>
     </nav>

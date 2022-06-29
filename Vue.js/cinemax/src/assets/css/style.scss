@@ -399,7 +399,7 @@ $blue: rgb(41, 217, 213);
 #person{
     color: white;
     text-align: left;
-
+    margin-top: 1.5rem;
     .container-fluid{
         div.row{
             div#colLeft{
@@ -529,6 +529,90 @@ $blue: rgb(41, 217, 213);
     }
 }
 /* End Section Person */
+
+/* Persons */
+#persons{
+    text-align: center;
+    margin-top: 1rem;
+    div.row{
+        display: flex;
+        justify-content: center;
+
+        div.elements{
+            margin-bottom: 1rem;
+
+            div.first{
+                overflow: hidden;
+                background-size: cover;
+                border-top-left-radius: 6px;
+                border-top-right-radius: 6px;
+
+                img{
+                    height: auto;
+                    //max-height: 340px;
+                    max-width: 100%;
+                    -moz-transition: all 0.5s;
+                    -webkit-transition: all 0.5s;
+                    transition: all 0.5s;
+                }
+
+                &:hover{
+                    img{
+                        -moz-transform: scale(1.2);
+                        -webkit-transform: scale(1.2);
+                        transform: scale(1.2);
+                    }
+                }
+            }
+            div.second{
+                background-color: #212529;
+                border-bottom-left-radius: 6px;
+                border-bottom-right-radius: 6px;
+                padding-bottom: .3rem;
+                padding-top: .3rem;
+
+                a{
+                    font-size: 1.25rem;
+                    text-decoration: none;
+                    color: white;
+                    padding-bottom: .3rem;
+                    padding-top: .3rem;
+                    font-weight: bolder;
+                    
+                    &:hover{
+                        color: $blue;
+                    }
+                }
+            }
+        }
+
+        nav{
+            margin-top: 1rem;
+            color: red !important;
+
+            li.disabled{
+                opacity: 0.6;
+                background-color: transparent;
+            }
+
+            li{
+                a{
+                    color: white;
+                    background-color: transparent;
+
+                    &:hover{
+                        background-color: #212529;
+                    }
+                }
+
+                a.selected{
+                    background-color: $blue;
+                }
+            }
+        }
+    }
+}
+/* End Section Persons */
 
 @media (max-width: 400px) { 
     
