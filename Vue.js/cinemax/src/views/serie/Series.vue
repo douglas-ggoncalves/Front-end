@@ -7,7 +7,7 @@
         <span class="sr-only"> Buscando os dados...</span>
       </button>
 
-      <carousel :loop="true" :autoplayTimeout="5000" autoplay :perPageCustom="[[0, 1], [400, 2], [768, 3], [1024, 5]]">
+      <carousel :loop="true" :resistanceCoef="1" :autoplayTimeout="5000" autoplay :perPageCustom="[[0, 1], [400, 2], [768, 3], [1024, 5]]">
         <slide v-for="serie in serie.seriesPopular" :key="serie.id">
           <a :href="'serie/'+serie.id">
             <div class="elements">
@@ -25,7 +25,7 @@
         <span class="sr-only"> Buscando os dados...</span>
       </button>
 
-      <carousel :perPageCustom="[[0, 1], [400, 2], [768, 3], [1024, 5]]">
+      <carousel :loop="true" :autoplayTimeout="5000" autoplay :perPageCustom="[[0, 1], [400, 2], [768, 3], [1024, 5]]">
         <slide v-for="serie in serie.seriesTopRated" :key="serie.id">
           <a :href="'serie/'+serie.id">
             <div class="elements">
@@ -48,7 +48,7 @@
         <span class="sr-only"> Buscando os dados...</span>
       </button>
 
-      <carousel :perPageCustom="[[0, 1], [400, 2], [768, 3], [1024, 5]]">
+      <carousel :loop="true" :autoplayTimeout="5000" autoplay :perPageCustom="[[0, 1], [400, 2], [768, 3], [1024, 5]]">
         <slide v-for="serie in serie.seriesInAiring" :key="serie.id">
           <a :href="'serie/'+serie.id">
             <div class="elements">
@@ -68,7 +68,7 @@
         <span class="sr-only"> Buscando os dados...</span>
       </button>
 
-      <carousel :perPageCustom="[[0, 1], [400, 2], [768, 3], [1024, 5]]">
+      <carousel :loop="true" :autoplayTimeout="5000" autoplay :perPageCustom="[[0, 1], [400, 2], [768, 3], [1024, 5]]">
         <slide v-for="serie in serie.seriesOnAir" :key="serie.id">
           <a :href="'serie/'+serie.id">
             <div class="elements">
@@ -86,20 +86,17 @@
 <script>
 import axios from "axios";
 import Vue from 'vue';
-import Multiselect from 'vue-multiselect'
 import VueCarousel from 'vue-carousel';
 import  "../../assets/css/style.css";
 import  script from "../../assets/js/script.js";
 import _ from "lodash";
 
-Vue.component('multiselect', Multiselect)
 Vue.use(VueCarousel);
 
 export default {
   data() {
     return {
       apiV3Auth: "",
-      aux: [],
       auxTop: [],
       serie:{
         seriesPopular: [],

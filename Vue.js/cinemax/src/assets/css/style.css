@@ -27,6 +27,21 @@ body {
   background: #999696;
 }
 
+button.VueCarousel-navigation-button.VueCarousel-navigation-prev {
+  color: #29d9d5;
+  border: 1px solid red !important;
+}
+
+.spanSpec a {
+  text-decoration: none;
+  font-size: 1.15rem;
+  color: white;
+}
+
+.spanSpec a:hover {
+  color: #29d9d5;
+}
+
 #index {
   color: white;
 }
@@ -163,7 +178,7 @@ body {
 
 #main h2 {
   font-weight: bolder;
-  margin: 3rem 0 1rem 2rem;
+  margin: 3rem 1rem 1rem 1rem;
 }
 
 #main h3 {
@@ -232,10 +247,6 @@ body {
   position: relative;
 }
 
-#movie #banner > .row div#content, #serie #banner > .row div#content {
-  padding: 1rem;
-}
-
 #movie #banner > .row div#content h1, #serie #banner > .row div#content h1 {
   font-weight: bolder;
 }
@@ -285,10 +296,14 @@ body {
 
 #movie #media, #serie #media {
   margin-top: 1rem;
+  padding: 0;
+  width: 100%;
+  margin: 0;
 }
 
 #movie #media > .row, #serie #media > .row {
   width: 100%;
+  margin: 0;
 }
 
 #movie #media > .row h4, #serie #media > .row h4 {
@@ -374,7 +389,8 @@ body {
 #movie #media > .row div.elenc, #serie #media > .row div.elenc {
   padding-bottom: .3rem;
   padding-top: .3rem;
-  margin-right: 5px;
+  margin-left: 2.5px;
+  margin-right: 2.5px;
   height: 100%;
   border: 1px solid rgba(250, 250, 250, 0.45);
 }
@@ -422,7 +438,8 @@ body {
   display: inline !important;
   font-size: 1.5rem;
   color: white;
-  margin-right: .5rem;
+  margin-left: .25rem;
+  margin-right: .25rem;
   text-decoration: none;
   margin-top: .5rem;
 }
@@ -483,20 +500,25 @@ body {
   font-weight: bolder;
 }
 
+#person .container-fluid div.row div.VueCarousel a {
+  padding-left: .25rem;
+  padding-right: .25rem;
+}
+
 #person .container-fluid div.row a {
-  width: 100% !important;
-  text-decoration: none;
-  position: relative;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  width: 100% !important;
+  text-decoration: none;
+  position: relative;
   -webkit-transition: all 0.5s;
   transition: all 0.5s;
   font-weight: lighter;
 }
 
 #person .container-fluid div.row a img {
-  width: 98%;
+  width: 100%;
 }
 
 #person .container-fluid div.row a div {
@@ -508,7 +530,7 @@ body {
   bottom: 0;
   padding-bottom: .5rem;
   padding-top: .5rem;
-  width: 98%;
+  width: 100%;
   background: rgba(0, 0, 0, 0.6);
 }
 
@@ -615,6 +637,33 @@ body {
 }
 
 /* End Section Persons */
+@media (max-width: 350px) {
+  #media .VueCarousel-dot {
+    padding: 3px !important;
+  }
+}
+
+@media (max-width: 850px) {
+  div.VueCarousel-dot-container {
+    display: none !important;
+  }
+  #media div.VueCarousel-dot-container {
+    display: block !important;
+  }
+  #person div.VueCarousel-dot-container {
+    display: block !important;
+  }
+  div.VueCarousel {
+    margin-bottom: 2rem;
+  }
+}
+
+@media (min-width: 768px) {
+  #movie #banner > .row div#content, #serie #banner > .row div#content {
+    padding: 1rem !important;
+  }
+}
+
 @media (min-width: 1400px) {
   #movie #banner {
     min-height: 550px;

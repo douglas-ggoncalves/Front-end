@@ -36,8 +36,6 @@
                 </ul>
             </nav>
         </div>
-
-        
     </div>
   </div>
 </template>
@@ -45,13 +43,10 @@
 <script>
 import axios from "axios";
 import Vue from 'vue';
-import Multiselect from 'vue-multiselect'
 import VueCarousel from 'vue-carousel';
 import  "../../assets/css/style.css";
 import  script from "../../assets/js/script.js";
-//import _ from "lodash";
 
-Vue.component('multiselect', Multiselect)
 Vue.use(VueCarousel);
 
 export default {
@@ -78,7 +73,6 @@ export default {
                 }
             })
         }).catch(() =>{
-            //this.$router.push({name: 'Persons', params: { id: '14' }}) 
             this.$router.push({ redirect: window.location.href = '/pessoa&page=1' });
         })
     }

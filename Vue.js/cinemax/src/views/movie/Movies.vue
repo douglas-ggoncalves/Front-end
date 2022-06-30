@@ -25,7 +25,7 @@
         <span class="sr-only"> Buscando os dados...</span>
       </button>
 
-      <carousel :perPageCustom="[[0, 1], [400, 2], [768, 3], [1024, 5]]">
+      <carousel :loop="true" :autoplayTimeout="5000" autoplay :perPageCustom="[[0, 1], [400, 2], [768, 3], [1024, 5]]">
         <slide v-for="movie in movie.moviesPopular" :key="movie.id">
           <a :href="'filme/'+movie.id">
             <div class="elements">
@@ -43,7 +43,7 @@
         <span class="sr-only"> Buscando os dados...</span>
       </button>
 
-      <carousel :perPageCustom="[[0, 1], [400, 2], [768, 3], [1024, 5]]">
+      <carousel :loop="true" :autoplayTimeout="5000" autoplay :perPageCustom="[[0, 1], [400, 2], [768, 3], [1024, 5]]">
         <slide v-for="movie in movie.moviesTopRated" :key="movie.id">
           <a :href="'filme/'+movie.id">
             <div class="elements">
@@ -66,7 +66,7 @@
         <span class="sr-only"> Buscando os dados...</span>
       </button>
 
-      <carousel :perPageCustom="[[0, 1], [400, 2], [768, 3], [1024, 5]]">
+      <carousel :loop="true" :autoplayTimeout="5000" autoplay :perPageCustom="[[0, 1], [400, 2], [768, 3], [1024, 5]]">
         <slide v-for="movie in movie.moviesUpcoming" :key="movie.id">
           <a :href="'filme/'+movie.id">
             <div class="elements">
@@ -85,19 +85,16 @@
 <script>
 import axios from "axios";
 import Vue from 'vue';
-import Multiselect from 'vue-multiselect'
 import VueCarousel from 'vue-carousel';
 import  "../../assets/css/style.css";
 import  script from "../../assets/js/script.js";
 import _ from "lodash";
 
-Vue.component('multiselect', Multiselect)
 Vue.use(VueCarousel);
 
 export default {
   data() {
     return {
-      myResponsive: [[0, 1], [400, 2], [768, 3], [1024, 5]],
       apiV3Auth: "",
       minDate: '',
       maxDate: '',
@@ -110,9 +107,6 @@ export default {
         moviesUpcoming: []
       },
     };
-  },
-  methods: {
-    
   },
   async created(){
     this.apiV3Auth = script.apiV3Auth;
@@ -158,10 +152,6 @@ export default {
     let today = Math.round(new Date() / millisecondsInOneDay);
     var parts;
     var mydate;
-    var split;
-    var split1;
-    var split2;
-    var split3;
   
     for(var z=1; z <= 10; z++) {
       await axios.get(`https://api.themoviedb.org/3/movie/upcoming?api_key=${this.apiV3Auth}&language=pt-BR&page=${z}`).then(res=> {
@@ -171,11 +161,6 @@ export default {
             mydate = Math.round(new Date(parts[0], parts[1] - 1, parts[2]) / millisecondsInOneDay)
             if(element.backdrop_path != null){
               if((mydate - today) < 30 && (mydate - today) > 0){
-                split = element.release_date.split("-")
-                split1 = split[0]
-                split2 = split[1]
-                split3 = split[2]
-                element.release_date = `${split3}-${split2}-${split1}` 
                 this.movie.moviesUpcoming.push(element)
               }
             }

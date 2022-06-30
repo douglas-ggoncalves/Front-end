@@ -3,7 +3,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-12 col-md-3" id="colLeft">
-                <img :src="`https://image.tmdb.org/t/p/w500/${this.person.profile_path}`" alt="Imagem">
+                <img style="" :src="`https://image.tmdb.org/t/p/w500/${this.person.profile_path}`" alt="Imagem">
                 <div>
                     <h4>Informações pessoais</h4>
                     <a target="_blank" v-if="this.networksId.facebook_id != null && this.networksId.facebook_id != ''" :href="`https://facebook.com/${this.networksId.facebook_id}`">
@@ -54,21 +54,19 @@
                 <h4>Conhecido por</h4>
                 <carousel :perPageCustom="[[768, 3], [1024, 5]]">
                     <slide v-for="(part) in participationFiltred" :key="part.id" class="text-center">
-                        <span>
-                            <a v-if="part.media_type == 'movie'" target="ablank" :href="`/filme/${part.id}`">
-                                <img style="max-height: 400px" class="img-fluid" :src="'https://image.tmdb.org/t/p/w500/' + part.poster_path">
-                                <div>
-                                    {{ part.title }}
-                                </div>
-                            </a>
+                        <a v-if="part.media_type == 'movie'" target="ablank" :href="`/filme/${part.id}`">
+                            <img style="max-height: 400px" class="img-fluid" :src="'https://image.tmdb.org/t/p/w500/' + part.poster_path">
+                            <div>
+                                {{ part.title }}
+                            </div>
+                        </a>
 
-                            <a v-else target="ablank" :href="`/serie/${part.id}`">
-                                <img style="max-height: 400px" class="img-fluid" :src="'https://image.tmdb.org/t/p/w500/' + part.poster_path">
-                                <div>
-                                    {{ part.title }}
-                                </div>
-                            </a>
-                        </span>
+                        <a v-else target="ablank" :href="`/serie/${part.id}`">
+                            <img style="max-height: 400px" class="img-fluid" :src="'https://image.tmdb.org/t/p/w500/' + part.poster_path">
+                            <div>
+                                {{ part.title }}
+                            </div>
+                        </a>
                     </slide>
                 </carousel>
 
@@ -112,9 +110,6 @@ export default {
       networksId: [],
       participation:[],
       participationFiltred:[],
-      testeeee: [
-        
-      ],
     }
   },
   async created(){
@@ -166,13 +161,10 @@ export default {
     }).catch(err => {
         console.log(err)
     })
-    //console.log(this.participation)
 
     this.participationFiltred = _.orderBy(this.participation, ['popularity'], ['desc'])
     this.participationFiltred = _.slice(this.participationFiltred, [0], [10])
     this.participation = _.orderBy(this.participation, ['release_date'], ['desc'])
-    //this.participation = _.orderBy(this.participation, ['first_air_date'], ['desc'])
-
   
   },
   filters: {

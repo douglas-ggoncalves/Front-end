@@ -25,10 +25,10 @@
             <router-link to="/filmes">Filmes</router-link>
           </li>
           <li>
-            <router-link to="/">Séries</router-link>
+            <router-link to="/series">Séries</router-link>
           </li>
           <li>
-            <router-link to="/">Pessoas</router-link>
+            <router-link to="/pessoa&page=1">Pessoas</router-link>
           </li>
         </ul>
       </div>

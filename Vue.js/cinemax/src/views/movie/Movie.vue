@@ -5,7 +5,7 @@
       <div class="row px-xl-3" style="z-index: 5;">
         <div class="d-none d-md-block" id="background" :style="{'background-image': `url(https://image.tmdb.org/t/p/w500/${movie.backdrop_path}`}"/>
 
-        <div class="col-12 col-md-4 col-xl-3 d-flex justify-content-center">
+        <div class="col-12 col-md-4 col-xl-3 d-flex justify-content-center py-3">
           <img :src="'https://image.tmdb.org/t/p/w500/' + movie.poster_path">
         </div>
 
@@ -55,8 +55,8 @@
 
     <div class="container-fluid" id="media">
       <div class="row px-xl-3">
-        <h4>Atores Principais</h4>
-        <carousel class="mt-0" :paginationEnabled="true" :perPageCustom="[[100, 2], [728, 2],[1024, 6]]">
+        <h4 class="mt-3">Atores Principais</h4>
+        <carousel class="mt-0" :paginationEnabled="true" :perPageCustom="[[100, 2], [728, 3], [1024, 6]]">
           <slide v-for="pers in this.listElenc" :key="pers.profile_path" class="text-center ">
             <div class="elenc">
               <a target="_blank" :href="`/pessoa/${pers.id}`">
@@ -123,7 +123,7 @@
         </carousel>
       </div>
 
-      <div class="row px-xl-3 mt-5">
+      <div class="row px-xl-3">
         <h4 style="margin-bottom: 0; line-height: 1;">Filmes similares</h4>
 
         <carousel :perPageCustom="[[768, 3], [1024, 5]]">
