@@ -1,13 +1,14 @@
 <template>
   <div id="main">
-    <div class="data text-center">
+    <div class="data">
       <h2>Filmes em Cartaz</h2>
       <button v-if="this.movie.filmesEmCartaz.length == 0" class="btn btn-dark" type="button" disabled>
         <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
         <span class="sr-only"> Buscando os dados...</span>
       </button>
 
-      <carousel :loop="true" :autoplayTimeout="5000" autoplay :perPageCustom="[[0, 1], [400, 2], [768, 3], [1024, 5]]">
+      <carousel navigationEnabled :navigationPrevLabel="'<'" :navigationNextLabel="'>'" :loop="true" :autoplayTimeout="5000" autoplay 
+      :perPageCustom="[[0, 1], [600, 2], [768, 3], [1024, 4], [1200, 5]]">
         <slide v-for="(movie, index) in movie.filmesEmCartaz" :key="index">
           <a :href="'filme/'+movie.id">
             <div class="elements">
@@ -18,14 +19,15 @@
       </carousel>
     </div>
 
-    <div class="data text-center">
+    <div class="data">
       <h2>Filmes Populares</h2>
       <button v-if="this.movie.moviesPopular.length == 0" class="btn btn-dark" type="button" disabled>
         <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
         <span class="sr-only"> Buscando os dados...</span>
       </button>
 
-      <carousel :loop="true" :autoplayTimeout="5000" autoplay :perPageCustom="[[0, 1], [400, 2], [768, 3], [1024, 5]]">
+      <carousel navigationEnabled :navigationPrevLabel="'<'" :navigationNextLabel="'>'" :loop="true" :autoplayTimeout="5000" autoplay 
+      :perPageCustom="[[0, 1], [600, 2], [768, 3], [1024, 4], [1200, 5]]">
         <slide v-for="movie in movie.moviesPopular" :key="movie.id">
           <a :href="'filme/'+movie.id">
             <div class="elements">
@@ -36,14 +38,15 @@
       </carousel>
     </div>
     
-    <div class="data text-center">
+    <div class="data">
       <h2>Filmes Mais Bem Avaliados</h2>
       <button v-if="this.movie.moviesTopRated.length == 0" class="btn btn-dark" type="button" disabled>
         <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
         <span class="sr-only"> Buscando os dados...</span>
       </button>
 
-      <carousel :loop="true" :autoplayTimeout="5000" autoplay :perPageCustom="[[0, 1], [400, 2], [768, 3], [1024, 5]]">
+      <carousel navigationEnabled :navigationPrevLabel="'<'" :navigationNextLabel="'>'" :loop="true" :autoplayTimeout="5000" autoplay 
+      :perPageCustom="[[0, 1], [600, 2], [768, 3], [1024, 4], [1200, 5]]">
         <slide v-for="movie in movie.moviesTopRated" :key="movie.id">
           <a :href="'filme/'+movie.id">
             <div class="elements">
@@ -59,14 +62,15 @@
       </carousel>
     </div>
 
-    <div class="data text-center">
-      <h2>Filmes Recentemente Lançados</h2>
+    <div class="data">
+      <h2>Filmes Recém Lançados</h2>
       <button v-if="this.movie.moviesUpcoming.length == 0" class="btn btn-dark" type="button" disabled>
         <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
         <span class="sr-only"> Buscando os dados...</span>
       </button>
 
-      <carousel :loop="true" :autoplayTimeout="5000" autoplay :perPageCustom="[[0, 1], [400, 2], [768, 3], [1024, 5]]">
+      <carousel navigationEnabled :navigationPrevLabel="'<'" :navigationNextLabel="'>'" :loop="true" :autoplayTimeout="5000" autoplay 
+      :perPageCustom="[[0, 1], [600, 2], [768, 3], [1024, 4], [1200, 5]]">
         <slide v-for="movie in movie.moviesUpcoming" :key="movie.id">
           <a :href="'filme/'+movie.id">
             <div class="elements">
@@ -97,7 +101,6 @@ export default {
     return {
       apiV3Auth: "",
       minDate: '',
-      maxDate: '',
       aux: [],
       auxTop: [],
       movie: {
@@ -114,7 +117,6 @@ export default {
     for(var a=1; a <= 67; a++) {
       await axios.get(`https://api.themoviedb.org/3/movie/now_playing?api_key=${this.apiV3Auth}&language=pt-BR&page=${a}`).then(res=> {
         this.minDate = res.data.dates.minimum;
-        this.maxDate = res.data.dates.maximum;
 
         res.data.results.forEach(element => {
          if(new Date(element.release_date) > new Date(this.minDate)){
@@ -159,7 +161,7 @@ export default {
           if(element.original_language == 'en' || element.original_language == 'pt'){
             parts = element.release_date.split('-');
             mydate = Math.round(new Date(parts[0], parts[1] - 1, parts[2]) / millisecondsInOneDay)
-            if(element.backdrop_path != null){
+            if(element.poster_path != null){
               if((mydate - today) < 30 && (mydate - today) > 0){
                 this.movie.moviesUpcoming.push(element)
               }

@@ -29,109 +29,92 @@ body{
 
 $blue: rgb(41, 217, 213);
 
-button.VueCarousel-navigation-button.VueCarousel-navigation-prev{
-    color: $blue;
-    border: 1px solid red !important;
+h2{
+    padding-left: 2.9rem;
 }
 
-.spanSpec{
-    a{
-        text-decoration: none;
-        font-size: 1.15rem;
-        color: white;
+div.data{
+    color: white;
+    padding-left: .25rem;
+    padding-right: .25rem;
+    margin-bottom: 1rem;
+    margin-top: 1.5rem;
+
+    div#title{
+        display: flex;
+        align-items: center;
+        margin-bottom: .3rem;
+    }
+
+    h2 {
+        display: inline;
+        font-weight: bolder;
+        line-height: 1;
+    }
+
+    button:focus{
+        box-shadow: none !important;
+        outline: none;
+    }
+
+    button{
+        margin-left: .5rem;
+        margin-right: .5rem;
+    }
+
+    .elements {
+        position: relative;
+        overflow: hidden;
+        background-size: cover;
+        cursor: pointer;
+        flex-grow: 1;
+        margin-left: 0.25rem;
+        margin-right: 0.25rem;
+        margin-bottom: 0;
+        height: 500px;
+        
+        img{
+            -moz-transition: all 0.5s;
+            -webkit-transition: all 0.5s;
+            transition: all 0.5s;
+            height: 100%;
+            width: 100%;
+        }
 
         &:hover{
-            color: $blue;
+            img{
+                -moz-transform: scale(1.2);
+                -webkit-transform: scale(1.2);
+                transform: scale(1.2);
+            }
         }
     }
-}
 
-#index{
-    color: white;
-
-    div.data{
-        padding-left: .5rem;
-        padding-right: .5rem;
+    button.VueCarousel-dot{
+        margin-top: 5px !important;
         margin-bottom: 1rem;
-        margin-top: 1rem;
+    }
 
-        div#title{
-            display: flex;
-            align-items: center;
-            margin-bottom: .3rem;
-        }
+    .VueCarousel-dot-container {
+        margin-top: 0 !important;
+        margin-bottom: 1rem;
 
-        h2 {
-            display: inline;
-            font-weight: bolder;
-            line-height: 1;
+        button.VueCarousel-dot--active{
+            outline: none !important;
+            background-color: $blue !important;
         }
-
-        button:focus{
-            box-shadow: none !important;
-            outline: none;
-        }
-
-        button{
-            margin-left: .5rem;
-            margin-right: .5rem;
-        }
-        
-
-        .elements {
-            position: relative;
-            overflow: hidden;
-            background-size: cover;
-            cursor: pointer;
-            flex-grow: 1;
-            margin-left: 0.25rem;
-            margin-right: 0.25rem;
-            margin-bottom: 0;
-            height: 500px;
-            
-            img{
-                -moz-transition: all 0.5s;
-                -webkit-transition: all 0.5s;
-                transition: all 0.5s;
-                height: 100%;
-                width: 100%;
-            }
-    
-            &:hover{
-                img{
-                    -moz-transform: scale(1.2);
-                    -webkit-transform: scale(1.2);
-                    transform: scale(1.2);
-                }
-            }
-        }
-
-        button.VueCarousel-dot{
-            margin-top: 5px !important;
-            margin-bottom: 1rem;
-        }
-    
-        .VueCarousel-dot-container {
-            margin-top: 0 !important;
-            margin-bottom: 1rem;
-    
-            button.VueCarousel-dot--active{
-                outline: none !important;
-                background-color: $blue !important;
-            }
-        }
-    }    
-}
+    }
+}    
 
 #main {
     color: white;
-    text-align: center;
 
     .container-fluid{
         background-size: cover;
         min-height: 500px;
         opacity: 0.5;
     }
+    
     .elements {
         position: relative;
         overflow: hidden;
@@ -180,8 +163,6 @@ button.VueCarousel-navigation-button.VueCarousel-navigation-prev{
     
     h2 {
         font-weight: bolder;
-        margin: 3rem 1rem 1rem 1rem;
-
     }
 
     h3{
@@ -642,6 +623,32 @@ button.VueCarousel-navigation-button.VueCarousel-navigation-prev{
     }
 }
 /* End Section Persons */
+.VueCarousel-navigation-button[data-v-453ad8cd]:focus {
+    outline: none !important;
+}
+
+
+div.data{
+    h2{
+        margin-bottom: 0 !important;
+    }
+    
+    div.VueCarousel{
+        padding: 0 2.9rem;
+    }
+    
+    button.VueCarousel-navigation-button.VueCarousel-navigation-prev{
+        color: $blue;
+        margin-left: 3rem !important;
+        font-size: 3.3rem;
+    }
+    
+    button.VueCarousel-navigation-button.VueCarousel-navigation-next{
+        color: $blue;
+        margin-right: 3rem !important;
+        font-size: 3.3rem;
+    }
+}
 
 @media (max-width: 350px) { 
     #media .VueCarousel-dot{
@@ -664,10 +671,37 @@ button.VueCarousel-navigation-button.VueCarousel-navigation-prev{
     div.VueCarousel{
         margin-bottom: 2rem;
     }
+
 }
 
-@media (min-width: 576px) { 
-    
+@media (max-width: 576px) { 
+    //////////////////////////////////////////////////////////////////////////
+    div.data{
+        div#title{
+            h2{
+                font-size: 1.2rem !important;
+            }
+        }
+
+        h2{
+            padding-left: 0.3rem !important;   
+        }
+        div.VueCarousel{
+            padding: 0 0;
+        }
+        
+        button.VueCarousel-navigation-button.VueCarousel-navigation-prev{
+            color: $blue;
+            margin-left: 3rem !important;
+            font-size: 3.3rem;
+        }
+        
+        button.VueCarousel-navigation-button.VueCarousel-navigation-next{
+            color: $blue;
+            margin-right: 3rem !important;
+            font-size: 3.3rem;
+        }
+    }
 }
 
 @media (min-width: 768px) { 

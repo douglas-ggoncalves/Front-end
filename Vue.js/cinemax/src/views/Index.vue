@@ -1,82 +1,73 @@
 <template>
-  <div id="index">
-    <div class="data">
-      <div id="title">
-        <h2>Os Mais Populares</h2>
-        
-        <button type="button" class="btn position-relative" 
-        :class="{'btn-light': viewMoviePopular,'btn-outline-light': !viewMoviePopular}" @click="viewMoviePopular = true; viewSeriePopular = false;">
-            Filmes
-          <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-primary">
-            {{ this.data.arrayMoviesPopular.length }}
-          </span>
-        </button>
-        
-        <button type="button" class="btn position-relative"
-        :class="{'btn-light': !viewMoviePopular,'btn-outline-light': viewMoviePopular}" @click="viewMoviePopular = false; viewSeriePopular = true;">
-            Séries
-          <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-primary">
-            {{ this.data.arraySeriesPopular.length }}
-          </span>
-        </button>
-      </div>
-
-      <button v-if="this.data.arrayMoviesPopular.length == 0 && viewMoviePopular" class="btn btn-dark" type="button" disabled>
-        <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
-        <span class="sr-only"> Buscando os dados...</span>
+  <div class="data">
+    <div id="title">
+      <h2>Os Mais Populares</h2>
+      
+      <button type="button" class="btn position-relative" 
+      :class="{'btn-light': viewMoviePopular,'btn-outline-light': !viewMoviePopular}" @click="viewMoviePopular = true; viewSeriePopular = false;">
+          Filmes
+        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-primary">
+          {{ this.data.arrayMoviesPopular.length }}
+        </span>
       </button>
-
-      <carousel navigationEnabled :loop="true" :autoplayTimeout="5000" autoplay :perPageCustom="[[0, 1], [400, 2], [768, 3], [1024, 5]]" v-show="viewMoviePopular">
-        <slide v-for="(data, index) in data.arrayMoviesPopular" :key="index">
-          <span class="spanSpec">
-            <div class="elements">
-              <img :src="'https://image.tmdb.org/t/p/w500/' + data.poster_path">
-            </div>
-            <a :href="'filme/'+data.id">
-              {{data.title}}
-            </a>
-          </span>
-          <!--
-          <a target="_blank" :href="'filme/'+data.id">
-            <div class="elements">
-              <img :src="'https://image.tmdb.org/t/p/w500/' + data.poster_path">
-            </div>
-          </a>
-          
-            -->
-        </slide>
-      </carousel>
-        
-      <button v-if="this.data.arraySeriesPopular.length == 0 && !viewMoviePopular" class="btn btn-dark" type="button" disabled>
-        <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
-        <span class="sr-only"> Buscando os dados...</span>
+      
+      <button type="button" class="btn position-relative"
+      :class="{'btn-light': !viewMoviePopular,'btn-outline-light': viewMoviePopular}" @click="viewMoviePopular = false; viewSeriePopular = true;">
+          Séries
+        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-primary">
+          {{ this.data.arraySeriesPopular.length }}
+        </span>
       </button>
-      <carousel :loop="true" :autoplayTimeout="5000" autoplay :perPageCustom="[[0, 1], [400, 2], [768, 3], [1024, 5]]" v-show="!viewMoviePopular">
-        <slide v-for="(data, index) in data.arraySeriesPopular" :key="index">
-          <a target="_blank" :href="'serie/'+data.id">
-            <div class="elements">
-              <img :src="'https://image.tmdb.org/t/p/w500/' + data.poster_path">
-            </div>
-          </a>
-        </slide>
-      </carousel>
-
-      <h2>Filmes em Cartaz</h2>
-      <button :loop="true" :autoplayTimeout="5000" autoplay  v-if="this.data.arrayMoviesInPoster.length == 0" class="btn btn-dark" type="button" disabled>
-        <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
-        <span class="sr-only"> Buscando os dados...</span>
-      </button>
-
-      <carousel :loop="true" :autoplayTimeout="5000" autoplay :perPageCustom="[[0, 1], [400, 2], [768, 3], [1024, 5]]">
-        <slide v-for="(movie, index) in data.arrayMoviesInPoster" :key="index">
-          <a :href="'filme/'+movie.id">
-            <div class="elements">
-              <img :src="'https://image.tmdb.org/t/p/w500/' + movie.poster_path">
-            </div>
-          </a>
-        </slide>
-      </carousel>
     </div>
+
+    <button v-if="this.data.arrayMoviesPopular.length == 0 && viewMoviePopular" class="btn btn-dark" type="button" disabled>
+      <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+      <span class="sr-only"> Buscando os dados...</span>
+    </button>
+
+    <carousel navigationEnabled :navigationPrevLabel="'<'" :navigationNextLabel="'>'" :loop="true" :autoplayTimeout="5000" autoplay 
+      :perPageCustom="[[0, 1], [600, 2], [768, 3], [1024, 4], [1200, 5]]" v-show="viewMoviePopular"
+      style="max-width: 100%">
+      <slide v-for="(data, index) in data.arrayMoviesPopular" :key="index">
+        <a :href="'filme/'+data.id">
+          <div class="elements">
+            <img :src="'https://image.tmdb.org/t/p/w500/' + data.poster_path">
+          </div>
+        </a>
+      </slide>
+    </carousel>
+      
+    <button v-if="this.data.arraySeriesPopular.length == 0 && !viewMoviePopular" class="btn btn-dark" type="button" disabled>
+      <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+      <span class="sr-only"> Buscando os dados...</span>
+    </button>
+    <carousel navigationEnabled :navigationPrevLabel="'<'" :navigationNextLabel="'>'" :loop="true" :autoplayTimeout="5000" autoplay 
+      :perPageCustom="[[0, 1], [600, 2], [768, 3], [1024, 4], [1200, 5]]" v-show="!viewMoviePopular">
+      <slide v-for="(data, index) in data.arraySeriesPopular" :key="index">
+        <a :href="'serie/'+data.id">
+          <div class="elements">
+            <img :src="'https://image.tmdb.org/t/p/w500/' + data.poster_path">
+          </div>
+        </a>
+      </slide>
+    </carousel>
+    
+    <h2>Filmes em Cartaz</h2>
+    <button :loop="true" :autoplayTimeout="5000" autoplay  v-if="this.data.arrayMoviesInPoster.length == 0" class="btn btn-dark" type="button" disabled>
+      <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+      <span class="sr-only"> Buscando os dados...</span>
+    </button>
+
+    <carousel navigationEnabled :navigationPrevLabel="'<'" :navigationNextLabel="'>'" :loop="true" :autoplayTimeout="5000" autoplay 
+      :perPageCustom="[[0, 1], [600, 2], [768, 3], [1024, 4], [1200, 5]]">
+      <slide v-for="(movie, index) in data.arrayMoviesInPoster" :key="index">
+        <a :href="'filme/'+movie.id">
+          <div class="elements">
+            <img :src="'https://image.tmdb.org/t/p/w500/' + movie.poster_path">
+          </div>
+        </a>
+      </slide>
+    </carousel>
   </div>
 </template>
 

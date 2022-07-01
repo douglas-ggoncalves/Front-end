@@ -54,9 +54,9 @@
     </div>
 
     <div class="container-fluid" id="media">
-      <div class="row px-xl-3">
-        <h4 class="mt-3">Atores Principais</h4>
-        <carousel class="mt-0" :paginationEnabled="true" :perPageCustom="[[100, 2], [728, 3], [1024, 6]]">
+      <div class="row">
+        <h4>Atores Principais</h4>
+        <carousel class="mt-0" :paginationEnabled="true" :perPageCustom="[[100, 2], [728, 2],[1024, 6]]"  >
           <slide v-for="pers in this.listElenc" :key="pers.profile_path" class="text-center ">
             <div class="elenc">
               <a target="_blank" :href="`/pessoa/${pers.id}`">
@@ -123,7 +123,7 @@
         </carousel>
       </div>
 
-      <div class="row px-xl-3">
+      <div class="row px-xl-3 mt-5">
         <h4 style="margin-bottom: 0; line-height: 1;">Filmes similares</h4>
 
         <carousel :perPageCustom="[[768, 3], [1024, 5]]">

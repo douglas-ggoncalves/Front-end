@@ -61,7 +61,6 @@ export default {
 
 <style scoped>
 #app {
-  text-align: center;
   -moz-transition: all 0.5s;
   -webkit-transition: all 0.5s;
   transition: all 0.5s;

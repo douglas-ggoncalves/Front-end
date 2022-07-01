@@ -27,33 +27,19 @@ body {
   background: #999696;
 }
 
-button.VueCarousel-navigation-button.VueCarousel-navigation-prev {
-  color: #29d9d5;
-  border: 1px solid red !important;
+h2 {
+  padding-left: 2.9rem;
 }
 
-.spanSpec a {
-  text-decoration: none;
-  font-size: 1.15rem;
+div.data {
   color: white;
-}
-
-.spanSpec a:hover {
-  color: #29d9d5;
-}
-
-#index {
-  color: white;
-}
-
-#index div.data {
-  padding-left: .5rem;
-  padding-right: .5rem;
+  padding-left: .25rem;
+  padding-right: .25rem;
   margin-bottom: 1rem;
-  margin-top: 1rem;
+  margin-top: 1.5rem;
 }
 
-#index div.data div#title {
+div.data div#title {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -63,24 +49,24 @@ button.VueCarousel-navigation-button.VueCarousel-navigation-prev {
   margin-bottom: .3rem;
 }
 
-#index div.data h2 {
+div.data h2 {
   display: inline;
   font-weight: bolder;
   line-height: 1;
 }
 
-#index div.data button:focus {
+div.data button:focus {
   -webkit-box-shadow: none !important;
           box-shadow: none !important;
   outline: none;
 }
 
-#index div.data button {
+div.data button {
   margin-left: .5rem;
   margin-right: .5rem;
 }
 
-#index div.data .elements {
+div.data .elements {
   position: relative;
   overflow: hidden;
   background-size: cover;
@@ -94,36 +80,35 @@ button.VueCarousel-navigation-button.VueCarousel-navigation-prev {
   height: 500px;
 }
 
-#index div.data .elements img {
+div.data .elements img {
   -webkit-transition: all 0.5s;
   transition: all 0.5s;
   height: 100%;
   width: 100%;
 }
 
-#index div.data .elements:hover img {
+div.data .elements:hover img {
   -webkit-transform: scale(1.2);
   transform: scale(1.2);
 }
 
-#index div.data button.VueCarousel-dot {
+div.data button.VueCarousel-dot {
   margin-top: 5px !important;
   margin-bottom: 1rem;
 }
 
-#index div.data .VueCarousel-dot-container {
+div.data .VueCarousel-dot-container {
   margin-top: 0 !important;
   margin-bottom: 1rem;
 }
 
-#index div.data .VueCarousel-dot-container button.VueCarousel-dot--active {
+div.data .VueCarousel-dot-container button.VueCarousel-dot--active {
   outline: none !important;
   background-color: #29d9d5 !important;
 }
 
 #main {
   color: white;
-  text-align: center;
 }
 
 #main .container-fluid {
@@ -178,7 +163,6 @@ button.VueCarousel-navigation-button.VueCarousel-navigation-prev {
 
 #main h2 {
   font-weight: bolder;
-  margin: 3rem 1rem 1rem 1rem;
 }
 
 #main h3 {
@@ -637,6 +621,30 @@ button.VueCarousel-navigation-button.VueCarousel-navigation-prev {
 }
 
 /* End Section Persons */
+.VueCarousel-navigation-button[data-v-453ad8cd]:focus {
+  outline: none !important;
+}
+
+div.data h2 {
+  margin-bottom: 0 !important;
+}
+
+div.data div.VueCarousel {
+  padding: 0 2.9rem;
+}
+
+div.data button.VueCarousel-navigation-button.VueCarousel-navigation-prev {
+  color: #29d9d5;
+  margin-left: 3rem !important;
+  font-size: 3.3rem;
+}
+
+div.data button.VueCarousel-navigation-button.VueCarousel-navigation-next {
+  color: #29d9d5;
+  margin-right: 3rem !important;
+  font-size: 3.3rem;
+}
+
 @media (max-width: 350px) {
   #media .VueCarousel-dot {
     padding: 3px !important;
@@ -655,6 +663,28 @@ button.VueCarousel-navigation-button.VueCarousel-navigation-prev {
   }
   div.VueCarousel {
     margin-bottom: 2rem;
+  }
+}
+
+@media (max-width: 576px) {
+  div.data div#title h2 {
+    font-size: 1.2rem !important;
+  }
+  div.data h2 {
+    padding-left: 0.3rem !important;
+  }
+  div.data div.VueCarousel {
+    padding: 0 0;
+  }
+  div.data button.VueCarousel-navigation-button.VueCarousel-navigation-prev {
+    color: #29d9d5;
+    margin-left: 3rem !important;
+    font-size: 3.3rem;
+  }
+  div.data button.VueCarousel-navigation-button.VueCarousel-navigation-next {
+    color: #29d9d5;
+    margin-right: 3rem !important;
+    font-size: 3.3rem;
   }
 }
 
