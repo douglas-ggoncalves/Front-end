@@ -1,13 +1,14 @@
 <template>
   <div id="main">
-    <div class="data text-center">
+    <div class="data">
       <h2>Séries Populares</h2>
       <button v-if="this.serie.seriesPopular.length == 0" class="btn btn-dark" type="button" disabled>
         <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
         <span class="sr-only"> Buscando os dados...</span>
       </button>
 
-      <carousel :loop="true" :resistanceCoef="1" :autoplayTimeout="5000" autoplay :perPageCustom="[[0, 1], [400, 2], [768, 3], [1024, 5]]">
+      <carousel navigationEnabled :navigationPrevLabel="'<'" :navigationNextLabel="'>'" :loop="true" :autoplayTimeout="5000" autoplay 
+      :perPageCustom="[[0, 1], [600, 2], [768, 3], [1024, 4], [1200, 5]]">
         <slide v-for="serie in serie.seriesPopular" :key="serie.id">
           <a :href="'serie/'+serie.id">
             <div class="elements">
@@ -18,14 +19,15 @@
       </carousel>
     </div>
     
-    <div class="data text-center">
+    <div class="data">
       <h2>Séries Bem Avaliadas</h2>
       <button v-if="this.serie.seriesTopRated.length == 0" class="btn btn-dark" type="button" disabled>
         <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
         <span class="sr-only"> Buscando os dados...</span>
       </button>
 
-      <carousel :loop="true" :autoplayTimeout="5000" autoplay :perPageCustom="[[0, 1], [400, 2], [768, 3], [1024, 5]]">
+      <carousel navigationEnabled :navigationPrevLabel="'<'" :navigationNextLabel="'>'" :loop="true" :autoplayTimeout="5000" autoplay 
+      :perPageCustom="[[0, 1], [600, 2], [768, 3], [1024, 4], [1200, 5]]">
         <slide v-for="serie in serie.seriesTopRated" :key="serie.id">
           <a :href="'serie/'+serie.id">
             <div class="elements">
@@ -41,14 +43,15 @@
       </carousel>
     </div>
 
-    <div class="data text-center">
+    <div class="data">
       <h2>No Ar Hoje</h2>
       <button v-if="this.serie.seriesInAiring.length == 0" class="btn btn-dark" type="button" disabled>
         <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
         <span class="sr-only"> Buscando os dados...</span>
       </button>
 
-      <carousel :loop="true" :autoplayTimeout="5000" autoplay :perPageCustom="[[0, 1], [400, 2], [768, 3], [1024, 5]]">
+      <carousel  navigationEnabled :navigationPrevLabel="'<'" :navigationNextLabel="'>'" :loop="true" :autoplayTimeout="5000" autoplay 
+      :perPageCustom="[[0, 1], [600, 2], [768, 3], [1024, 4], [1200, 5]]">
         <slide v-for="serie in serie.seriesInAiring" :key="serie.id">
           <a :href="'serie/'+serie.id">
             <div class="elements">
@@ -61,14 +64,15 @@
       </carousel>
     </div>
     
-    <div class="data text-center">
+    <div class="data">
       <h2>Atualmente No Ar</h2>
       <button v-if="this.serie.seriesOnAir.length == 0" class="btn btn-dark" type="button" disabled>
         <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
         <span class="sr-only"> Buscando os dados...</span>
       </button>
 
-      <carousel :loop="true" :autoplayTimeout="5000" autoplay :perPageCustom="[[0, 1], [400, 2], [768, 3], [1024, 5]]">
+      <carousel navigationEnabled :navigationPrevLabel="'<'" :navigationNextLabel="'>'" :loop="true" :autoplayTimeout="5000" autoplay 
+      :perPageCustom="[[0, 1], [600, 2], [768, 3], [1024, 4], [1200, 5]]">
         <slide v-for="serie in serie.seriesOnAir" :key="serie.id">
           <a :href="'serie/'+serie.id">
             <div class="elements">

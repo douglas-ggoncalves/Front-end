@@ -40,7 +40,7 @@
             </div>
             
             <div class="col-12 offset-md-1 col-md-6 offset-lg-0 col-lg-9">
-                <h2>{{ this.person.name }}</h2>
+                <h2 style="padding-left: 0 !important">{{ this.person.name }}</h2>
 
                 <h4>Biografia</h4>
                 

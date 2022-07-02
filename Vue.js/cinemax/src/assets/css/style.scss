@@ -30,8 +30,10 @@ body{
 $blue: rgb(41, 217, 213);
 
 h2{
-    padding-left: 2.9rem;
+    padding-left: 2.9rem !important;
 }
+
+
 
 div.data{
     color: white;
@@ -276,8 +278,8 @@ div.data{
     }
 
     #media{
-        margin-top: 1rem;
-        padding: 0;
+        margin-top: 2rem;
+        padding-top: 1rem;
         width: 100%;
         margin: 0;
 
@@ -285,8 +287,41 @@ div.data{
             width: 100%;
             margin: 0;
 
+            div.elements {
+                position: relative;
+                overflow: hidden;
+                background-size: cover;
+                cursor: pointer;
+                flex-grow: 1;
+                margin-left: 0.25rem;
+                margin-right: 0.25rem;
+                margin-bottom: 0;
+                max-height: 400px;
+
+                img{
+                    -moz-transition: all 0.5s;
+                    -webkit-transition: all 0.5s;
+                    transition: all 0.5s;
+                    max-height: 400px;
+                    width: 100%;
+                }
+        
+                &:hover{
+                    img{
+                        -moz-transform: scale(1.2);
+                        -webkit-transform: scale(1.2);
+                        transform: scale(1.2);
+                    }
+                }
+            }
+
+            div#divButtons{
+                padding-left: 2.9rem;
+            }
+            
             h4{
                 font-weight: bolder;
+                padding-left: 2.9rem;
             }
 
             button:focus-visible{
@@ -343,53 +378,43 @@ div.data{
                     font-weight: lighter;
     
                     img{
-                        width: 98%;   
-                    }
-    
-                    div{
-                        color: white;
-                        display: none;
-                        position: absolute;
-                        left: 0;
-                        right: 0;
-                        bottom: 0;
-                        padding-bottom: .5rem;
-                        padding-top: .5rem;
-                        width: 98%;
-                        background: rgba(0, 0, 0, 0.6);
-                    }
-    
-                    &:hover{
-                        div{
-                            display: block;
-                        }
+                        width: 100%;
                     }
                 }
             }
+        }
 
-            div.elenc{
-                padding-bottom: .3rem;
-                padding-top: .3rem;
-                margin-left: 2.5px;
-                margin-right: 2.5px;
+        div#rowElenc{
+            padding-bottom: .3rem;
+            padding-top: .3rem;
+            margin-left: 2.5px;
+            margin-right: 2.5px;
+            height: 100%;
+
+            a{
+                display: block !important;
                 height: 100%;
-                border: 1px solid rgba(250, 250, 250, 0.45);
-    
-                hr{
-                    margin-left: auto;
-                    margin-right: auto;
-                    width: 75%;
-                }
+                color: white;
 
-                h5{
-                    font-weight: bold;
-                    margin-top: .5rem;
+                &:hover{
+                    color: $blue;
                 }
+            }
 
-                img{
-                    margin-left: auto;
-                    margin-right: auto;
-                }
+            hr{
+                margin-left: auto;
+                margin-right: auto;
+                width: 75%;
+            }
+
+            h5{
+                font-weight: bold;
+                margin-top: .5rem;
+            }
+
+            img{
+                margin-left: auto;
+                margin-right: auto;
             }
         }
     }
@@ -627,8 +652,7 @@ div.data{
     outline: none !important;
 }
 
-
-div.data{
+div.data, div#movie, div#serie{
     h2{
         margin-bottom: 0 !important;
     }
@@ -654,14 +678,14 @@ div.data{
     #media .VueCarousel-dot{
         padding: 3px !important;
     }
+
+    #movie #banner > .row img, #serie #banner > .row img{
+        max-height: 380px;
+    }
 }
 @media (max-width: 850px) { 
     div.VueCarousel-dot-container{
         display: none !important;
-    }
-    
-    #media div.VueCarousel-dot-container{
-        display: block !important;
     }
     
     #person div.VueCarousel-dot-container{
@@ -671,12 +695,19 @@ div.data{
     div.VueCarousel{
         margin-bottom: 2rem;
     }
-
 }
 
 @media (max-width: 576px) { 
     //////////////////////////////////////////////////////////////////////////
-    div.data{
+    #media{
+        h4{
+            padding-left: 0.3rem !important;   
+        }
+        div#divButtons{
+            padding-left: 0.3rem !important;   
+        }
+    }
+    div.data, div#movie, div#serie{
         div#title{
             h2{
                 font-size: 1.2rem !important;
@@ -702,6 +733,8 @@ div.data{
             font-size: 3.3rem;
         }
     }
+
+    
 }
 
 @media (min-width: 768px) { 

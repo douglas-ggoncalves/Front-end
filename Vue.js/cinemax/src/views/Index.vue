@@ -58,7 +58,7 @@
       <span class="sr-only"> Buscando os dados...</span>
     </button>
 
-    <carousel navigationEnabled :navigationPrevLabel="'<'" :navigationNextLabel="'>'" :loop="true" :autoplayTimeout="5000" autoplay 
+    <carousel navigationEnabled :navigationPrevLabel="'<'" :navigationNextLabel="'>'" :loop="true" 
       :perPageCustom="[[0, 1], [600, 2], [768, 3], [1024, 4], [1200, 5]]">
       <slide v-for="(movie, index) in data.arrayMoviesInPoster" :key="index">
         <a :href="'filme/'+movie.id">
