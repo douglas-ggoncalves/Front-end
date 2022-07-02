@@ -33,8 +33,6 @@ h2{
     padding-left: 2.9rem !important;
 }
 
-
-
 div.data{
     color: white;
     padding-left: .25rem;
@@ -62,6 +60,52 @@ div.data{
     button{
         margin-left: .5rem;
         margin-right: .5rem;
+    }
+
+    .divElenc{
+        margin-left: 0.25rem;
+        margin-right: 0.25rem;
+        div.first{
+            overflow: hidden;
+            background-size: cover;
+            border-top-left-radius: 6px;
+            border-top-right-radius: 6px;
+        
+            img{
+                height: auto;
+                max-width: 100%;
+                -moz-transition: all 0.5s;
+                -webkit-transition: all 0.5s;
+                transition: all 0.5s;
+            }
+        
+            &:hover{
+                img{
+                    -moz-transform: scale(1.2);
+                    -webkit-transform: scale(1.2);
+                    transform: scale(1.2);
+                }
+            }
+        }
+        div.second{
+            background-color: #212529;
+            border-bottom-left-radius: 6px;
+            border-bottom-right-radius: 6px;
+            padding-bottom: .3rem;
+            padding-top: .3rem;
+            a{
+                font-size: 1.25rem;
+                text-decoration: none;
+                color: white;
+                padding-bottom: .3rem;
+                padding-top: .3rem;
+                font-weight: bolder;
+                
+                &:hover{
+                    color: $blue;
+                }
+            }
+        }
     }
 
     .elements {
@@ -263,7 +307,6 @@ div.data{
                     span.isBlack{
                         background-color: rgb(20, 19, 10);
                     }
-
                 }
 
                 div#sinopse{
@@ -648,6 +691,8 @@ div.data{
     }
 }
 /* End Section Persons */
+
+
 .VueCarousel-navigation-button[data-v-453ad8cd]:focus {
     outline: none !important;
 }
@@ -683,6 +728,7 @@ div.data, div#movie, div#serie{
         max-height: 380px;
     }
 }
+
 @media (max-width: 850px) { 
     div.VueCarousel-dot-container{
         display: none !important;
@@ -698,7 +744,6 @@ div.data, div#movie, div#serie{
 }
 
 @media (max-width: 576px) { 
-    //////////////////////////////////////////////////////////////////////////
     #media{
         h4{
             padding-left: 0.3rem !important;   
@@ -707,6 +752,7 @@ div.data, div#movie, div#serie{
             padding-left: 0.3rem !important;   
         }
     }
+
     div.data, div#movie, div#serie{
         div#title{
             h2{
@@ -733,8 +779,6 @@ div.data, div#movie, div#serie{
             font-size: 3.3rem;
         }
     }
-
-    
 }
 
 @media (min-width: 768px) { 
@@ -784,7 +828,6 @@ div.data, div#movie, div#serie{
                 }
             }
         }
-    }
-    
+    }   
 }
 

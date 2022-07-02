@@ -8,7 +8,7 @@
       </button>
 
       <carousel navigationEnabled :navigationPrevLabel="'<'" :navigationNextLabel="'>'" :loop="true" :autoplayTimeout="5000" autoplay 
-      :perPageCustom="[[0, 1], [600, 2], [768, 3], [1024, 4], [1200, 5]]">
+      :perPageCustom="[[0, 1], [450, 2], [768, 3], [1024, 4], [1200, 5]]">
         <slide v-for="serie in serie.seriesPopular" :key="serie.id">
           <a :href="'serie/'+serie.id">
             <div class="elements">
@@ -27,7 +27,7 @@
       </button>
 
       <carousel navigationEnabled :navigationPrevLabel="'<'" :navigationNextLabel="'>'" :loop="true" :autoplayTimeout="5000" autoplay 
-      :perPageCustom="[[0, 1], [600, 2], [768, 3], [1024, 4], [1200, 5]]">
+      :perPageCustom="[[0, 1], [450, 2], [768, 3], [1024, 4], [1200, 5]]">
         <slide v-for="serie in serie.seriesTopRated" :key="serie.id">
           <a :href="'serie/'+serie.id">
             <div class="elements">
@@ -51,7 +51,7 @@
       </button>
 
       <carousel  navigationEnabled :navigationPrevLabel="'<'" :navigationNextLabel="'>'" :loop="true" :autoplayTimeout="5000" autoplay 
-      :perPageCustom="[[0, 1], [600, 2], [768, 3], [1024, 4], [1200, 5]]">
+      :perPageCustom="[[0, 1], [450, 2], [768, 3], [1024, 4], [1200, 5]]">
         <slide v-for="serie in serie.seriesInAiring" :key="serie.id">
           <a :href="'serie/'+serie.id">
             <div class="elements">
@@ -72,7 +72,7 @@
       </button>
 
       <carousel navigationEnabled :navigationPrevLabel="'<'" :navigationNextLabel="'>'" :loop="true" :autoplayTimeout="5000" autoplay 
-      :perPageCustom="[[0, 1], [600, 2], [768, 3], [1024, 4], [1200, 5]]">
+      :perPageCustom="[[0, 1], [450, 2], [768, 3], [1024, 4], [1200, 5]]">
         <slide v-for="serie in serie.seriesOnAir" :key="serie.id">
           <a :href="'serie/'+serie.id">
             <div class="elements">

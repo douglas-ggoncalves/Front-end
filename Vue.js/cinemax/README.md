@@ -1,24 +1,5 @@
-# cinemax
+# Sistema para consumo da API The Movie Database (TMDB), essa é uma API externa que disponibiliza dados de filmes, séries e atores. 
+Esse projeto foi criado com o intuito de consumir uma API Rest que eu criei.
 
-## Project setup
-```
-npm install
-```
-
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+## A aplicação se encontra hospedada no link abaixo.
+[Acessar Aplicação](https://themoviedb-cinemax.netlify.app)

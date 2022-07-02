@@ -26,10 +26,10 @@
     </button>
 
     <carousel navigationEnabled :navigationPrevLabel="'<'" :navigationNextLabel="'>'" :loop="true" :autoplayTimeout="5000" autoplay 
-      :perPageCustom="[[0, 1], [600, 2], [768, 3], [1024, 4], [1200, 5]]" v-show="viewMoviePopular"
+      :perPageCustom="[[0, 1], [450, 2], [768, 3], [1024, 4], [1200, 5]]" v-show="viewMoviePopular"
       style="max-width: 100%">
       <slide v-for="(data, index) in data.arrayMoviesPopular" :key="index">
-        <a :href="'filme/'+data.id">
+        <a :href="'/filme/'+data.id">
           <div class="elements">
             <img :src="'https://image.tmdb.org/t/p/w500/' + data.poster_path">
           </div>
@@ -42,9 +42,9 @@
       <span class="sr-only"> Buscando os dados...</span>
     </button>
     <carousel navigationEnabled :navigationPrevLabel="'<'" :navigationNextLabel="'>'" :loop="true" :autoplayTimeout="5000" autoplay 
-      :perPageCustom="[[0, 1], [600, 2], [768, 3], [1024, 4], [1200, 5]]" v-show="!viewMoviePopular">
+      :perPageCustom="[[0, 1], [450, 2], [768, 3], [1024, 4], [1200, 5]]" v-show="!viewMoviePopular">
       <slide v-for="(data, index) in data.arraySeriesPopular" :key="index">
-        <a :href="'serie/'+data.id">
+        <a :href="'/serie/'+data.id">
           <div class="elements">
             <img :src="'https://image.tmdb.org/t/p/w500/' + data.poster_path">
           </div>
@@ -53,19 +53,51 @@
     </carousel>
     
     <h2>Filmes em Cartaz</h2>
-    <button :loop="true" :autoplayTimeout="5000" autoplay  v-if="this.data.arrayMoviesInPoster.length == 0" class="btn btn-dark" type="button" disabled>
+    <button :loop="true" :autoplayTimeout="5000" autoplay  v-if="data.arrayMoviesInPoster.length == 0" class="btn btn-dark" type="button" disabled>
       <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
       <span class="sr-only"> Buscando os dados...</span>
     </button>
 
     <carousel navigationEnabled :navigationPrevLabel="'<'" :navigationNextLabel="'>'" :loop="true" 
-      :perPageCustom="[[0, 1], [600, 2], [768, 3], [1024, 4], [1200, 5]]">
+      :perPageCustom="[[0, 1], [450, 2], [768, 3], [1024, 4], [1200, 5]]">
       <slide v-for="(movie, index) in data.arrayMoviesInPoster" :key="index">
-        <a :href="'filme/'+movie.id">
+        <a :href="'/filme/'+movie.id">
           <div class="elements">
             <img :src="'https://image.tmdb.org/t/p/w500/' + movie.poster_path">
           </div>
         </a>
+      </slide>
+    </carousel>
+
+    <h2>Séries No Ar Hoje</h2>
+    <carousel navigationEnabled :navigationPrevLabel="'<'" :navigationNextLabel="'>'" :loop="true" 
+      :perPageCustom="[[0, 1], [450, 2], [768, 3], [1024, 4], [1200, 5]]">
+      <slide v-for="(serie, index) in data.arraySeriesInAiring" :key="index">
+        <a :href="'/serie/'+serie.id">
+          <div class="elements">
+            <img :src="'https://image.tmdb.org/t/p/w500/' + serie.poster_path">
+          </div>
+        </a>
+      </slide>
+    </carousel>
+
+    <h2>Pessoas Conhecidas</h2>
+    <carousel navigationEnabled :navigationPrevLabel="'<'" :navigationNextLabel="'>'" :loop="true" 
+      :perPageCustom="[[0, 1], [450, 2], [768, 3], [1024, 4], [1300, 5]]">
+      
+      <slide v-for="(u, index) in data.users" :key="index">
+        <div class="divElenc">
+          <div class="first">
+            <a :href="`/pessoa/${u.id}`">
+              <img :src="`https://image.tmdb.org/t/p/w500/${u.profile_path}`" alt="">
+            </a>
+          </div>
+          <div class="second text-center">
+            <a :href="`/pessoa/${u.id}`">
+              {{ u.name }}
+            </a>
+          </div>
+        </div>
       </slide>
     </carousel>
   </div>
@@ -93,6 +125,8 @@ export default {
         arrayMoviesPopular: [],
         arraySeriesPopular: [],
         arrayMoviesInPoster: [],
+        arraySeriesInAiring: [],
+        users: []
       },
     };
   },
@@ -136,6 +170,26 @@ export default {
       })
     }
     this.data.arrayMoviesInPoster = _.orderBy(this.aux, ['popularity'], ['desc'])
+
+    for(var s=1; s<=10; s++) {
+      await axios.get(`https://api.themoviedb.org/3/tv/airing_today?api_key=${this.apiV3Auth}&language=pt-BR&page=${s}`).then(res=> {
+        res.data.results.forEach(element => {
+          if(element.poster_path != null){
+            if(element.original_language == 'en' || element.original_language == 'pt'){
+              this.data.arraySeriesInAiring.push(element)
+            }
+          }
+        })
+      });
+    }
+    
+    await axios.get(`https://api.themoviedb.org/3/person/popular?api_key=${this.apiV3Auth}&language=pt-BR&page=1`).then(res=> {
+      res.data.results.forEach(element => {
+        if(element.profile_path != null && element.profile_path != ''){
+          this.data.users.push(element)
+        }
+      })
+    });
   }
 };
 </script>

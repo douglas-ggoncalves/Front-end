@@ -66,6 +66,51 @@ div.data button {
   margin-right: .5rem;
 }
 
+div.data .divElenc {
+  margin-left: 0.25rem;
+  margin-right: 0.25rem;
+}
+
+div.data .divElenc div.first {
+  overflow: hidden;
+  background-size: cover;
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+}
+
+div.data .divElenc div.first img {
+  height: auto;
+  max-width: 100%;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+}
+
+div.data .divElenc div.first:hover img {
+  -webkit-transform: scale(1.2);
+  transform: scale(1.2);
+}
+
+div.data .divElenc div.second {
+  background-color: #212529;
+  border-bottom-left-radius: 6px;
+  border-bottom-right-radius: 6px;
+  padding-bottom: .3rem;
+  padding-top: .3rem;
+}
+
+div.data .divElenc div.second a {
+  font-size: 1.25rem;
+  text-decoration: none;
+  color: white;
+  padding-bottom: .3rem;
+  padding-top: .3rem;
+  font-weight: bolder;
+}
+
+div.data .divElenc div.second a:hover {
+  color: #29d9d5;
+}
+
 div.data .elements {
   position: relative;
   overflow: hidden;

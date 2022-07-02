@@ -8,7 +8,7 @@
       </button>
 
       <carousel navigationEnabled :navigationPrevLabel="'<'" :navigationNextLabel="'>'" :loop="true" :autoplayTimeout="5000" autoplay 
-      :perPageCustom="[[0, 1], [600, 2], [768, 3], [1024, 4], [1200, 5]]">
+      :perPageCustom="[[0, 1], [450, 2], [768, 3], [1024, 4], [1200, 5]]">
         <slide v-for="(movie, index) in movie.filmesEmCartaz" :key="index">
           <a :href="'filme/'+movie.id">
             <div class="elements">
@@ -27,7 +27,7 @@
       </button>
 
       <carousel navigationEnabled :navigationPrevLabel="'<'" :navigationNextLabel="'>'" :loop="true" :autoplayTimeout="5000" autoplay 
-      :perPageCustom="[[0, 1], [600, 2], [768, 3], [1024, 4], [1200, 5]]">
+      :perPageCustom="[[0, 1], [450, 2], [768, 3], [1024, 4], [1200, 5]]">
         <slide v-for="movie in movie.moviesPopular" :key="movie.id">
           <a :href="'filme/'+movie.id">
             <div class="elements">
@@ -46,7 +46,7 @@
       </button>
 
       <carousel navigationEnabled :navigationPrevLabel="'<'" :navigationNextLabel="'>'" :loop="true" :autoplayTimeout="5000" autoplay 
-      :perPageCustom="[[0, 1], [600, 2], [768, 3], [1024, 4], [1200, 5]]">
+      :perPageCustom="[[0, 1], [450, 2], [768, 3], [1024, 4], [1200, 5]]">
         <slide v-for="movie in movie.moviesTopRated" :key="movie.id">
           <a :href="'filme/'+movie.id">
             <div class="elements">
@@ -70,7 +70,7 @@
       </button>
 
       <carousel navigationEnabled :navigationPrevLabel="'<'" :navigationNextLabel="'>'" :loop="true" :autoplayTimeout="5000" autoplay 
-      :perPageCustom="[[0, 1], [600, 2], [768, 3], [1024, 4], [1200, 5]]">
+      :perPageCustom="[[0, 1], [450, 2], [768, 3], [1024, 4], [1200, 5]]">
         <slide v-for="movie in movie.moviesUpcoming" :key="movie.id">
           <a :href="'filme/'+movie.id">
             <div class="elements">

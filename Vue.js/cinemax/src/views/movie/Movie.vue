@@ -168,6 +168,7 @@ export default {
   },
   async created(){
     this.apiV3Auth = script.apiV3Auth
+    console.log("console " + this.$route.params.id)
     await axios.get(`https://api.themoviedb.org/3/movie/${this.$route.params.id}?api_key=${this.apiV3Auth}&language=pt-BR&append_to_response=releases`).then(res=> {
       this.movie = res.data
     }).catch(err => {

@@ -44,9 +44,9 @@
 
     <div class="container-fluid" id="media">
       <div class="row" id="rowElenc">
-        <h4>Atores Principais</h4>
+        <h4>Pessoas Conhecidas</h4>
         <carousel class="mt-0" navigationEnabled :navigationPrevLabel="'<'" :navigationNextLabel="'>'" :loop="true" 
-          :autoplayTimeout="5000" autoplay  :perPageCustom="[[0, 1], [450, 2], [768, 3], [1024, 4], [1300, 5]]">
+          :autoplayTimeout="5000" autoplay :perPageCustom="[[0, 1], [450, 2], [768, 3], [1024, 4], [1300, 5]]">
           <slide v-for="pers in this.listElenc" :key="pers.profile_path" class="text-center ">
             <a class="text-center" target="_blank" :href="`/pessoa/${pers.id}`">
               <div class="elements">
