@@ -1,4 +1,4 @@
-# blog
+# dashboard
 
 ## Project setup
 ```

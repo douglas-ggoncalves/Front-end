@@ -18,8 +18,8 @@ data.projects = [
     { title: "Pokedex", link: "https://douglas-ggoncalves.github.io/Front-end/Vue.js/pokedex/dist", tech: [{ code: 4 }, { code: 1 }, { code: 10 }] },
     { title: "Conversor de Moedas", link: "https://douglas-ggoncalves.github.io/Front-end/Vue.js/conversor/dist", tech: [{ code: 4 }, { code: 1 }, { code: 10 }] },
     { title: "Calculadora", link: "https://douglas-ggoncalves.github.io/Front-end/Vue.js/calculadora/dist", tech: [{ code: 4 }, { code: 1 }] },
-    { title: "Cinemax Não Concluido", link: "https://douglas-ggoncalves.github.io/Front-end/Vue.js/cinemax/dist", tech: [{ code: 4 }, { code: 1 }, { code: 10 }] },
-    { title: "Sistema Maximus", doc: "https://github.com/douglas-ggoncalves/Full-Stack/tree/main/Sistema%20Maximus", tech: [{ code: 4 }, { code: 6 }, { code: 1 }, { code: 5 }, { code: 2 }, { code: 7 }, { code: 11 }] },
+    { title: "Cinemax", link: "https://themoviedb-cinemax.netlify.app/", tech: [{ code: 4 }, { code: 1 }, { code: 2 }, { code: 5 }, { code: 10 }, { code: 16 }] },
+    { title: "Sistema Maximus", doc: "https://github.com/douglas-ggoncalves/Full-Stack/tree/main/Sistema%20Maximus/backnode#readme", tech: [{ code: 4 }, { code: 6 }, { code: 1 }, { code: 5 }, { code: 2 }, { code: 7 }, { code: 16 }] },
     { title: "Mata Mosquito", tech: [{ code: 0 }, { code: 1 }, { code: 3 }] },
     { title: "Realiza Assessoria", tech: [{ code: 13 }, { code: 6 }, { code: 1 }, { code: 3 }, { code: 8 }] },
     { title: "Guia Perguntas", tech: [{ code: 13 }, { code: 6 }, { code: 1 }, { code: 5 }, { code: 3 }, { code: 8 }] },
@@ -43,6 +43,7 @@ data.technologies = [
     { desc: "EJS", icon: "webpack", color: "green" },
     { desc: "Express", icon: "flash", color: "yellow" },
     { desc: "Bulma CSS", icon: "bulma", color: "green accent-2" },
+    { desc: "Vue Router", icon: "vuejs", color: "green" }
 ]
 
 module.exports = data

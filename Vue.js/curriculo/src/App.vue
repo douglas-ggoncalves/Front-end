@@ -46,11 +46,13 @@
 
       <v-navigation-drawer v-model="drawer" absolute temporary>
         <v-list dense nav>
-          <div app id="divImage">
-          <img src="./assets/img/pic-1.png" alt="">
 
-          <span app>Douglas G.</span>
-        </div>
+          <div id="divImage" style="">
+            <div app>
+              <span>DG</span>
+            </div>
+            <hr>
+          </div>
 
           <v-list-item-group
             active-class="deep-purple--text text--accent-4"
