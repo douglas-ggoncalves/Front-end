@@ -1,17 +1,19 @@
 <template>
   <v-app>
-    <v-row class="d-flex justify-center">
-      <v-col :cols="7">
-        <h3>Lista de Tarefas</h3>
+    <v-container>
+      <v-row class="d-flex justify-center py-5">
+        <v-col class="pl-0" :cols="10" :md="7">
+          <h3>Lista de Tarefas</h3>
+          <v-alert v-show="error" type="error">O campo logo abaixo não pode ser vazio.</v-alert>
+          <v-text-field v-model="message" @keydown="error = false" @keyup.enter="addTask()" label="Descrição da Tarefa"></v-text-field>
+          <v-btn depressed color="info" @click="addTask($event)">Adicionar</v-btn>
+        </v-col>
 
-        <v-alert v-show="error" type="error">O campo logo a baixo não pode ser vazio.</v-alert>
-        <v-text-field v-model="message" @keypress="error = false" label="Descrição da Tarefa"></v-text-field>
-        <v-btn depressed color="info" @click="addTask()">Adicionar</v-btn>
-      </v-col>
-      <v-col v-for="task in tasks" :key="task.id" :cols="7" class="itens">
-        <Tasks :task="task" @deleteThisTask="destroyTask($event)"/>
-      </v-col>
-    </v-row>
+        <v-col v-for="task in tasks" :key="task.id" :cols="10" :md="7" class="itens">
+          <Tasks :task="task" @deleteThisTask="destroyTask($event)" @updateThisTask="updateTask()" @cancelUp="cancelUpdate()"/>
+        </v-col>
+      </v-row>
+    </v-container>
   </v-app>
 </template>
 
@@ -24,38 +26,17 @@ export default {
     return {
       message: '',
       error: false,
-      tasks: [
-        {
-          id: 1,
-          descricao: 'Acordar Cedo',
-          checked: true
-        }, {
-          id: 2,
-          descricao: 'Caminhar',
-          checked: false
-        }, {
-          id: 3,
-          descricao: 'Estudar',
-          checked: false
-        }, {
-          id: 4,
-          descricao: 'Trabalhar',
-          checked: false
-        }, 
-        {
-          id: 5,
-          descricao: 'Trabalharrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrraaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaasdaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa adas',
-          checked: false
-        }
-      ]
+      tasks: []
     }
   },
   components: {
     Tasks
-  }, methods: {
+  }, 
+  methods: {
     addTask: function(){
       if(this.message.trim() != '') {
         this.tasks.push({ id: Date.now(), descricao: this.message, checked: false })
+        localStorage.setItem("tasks", JSON.stringify(this.tasks));
         this.message = '';
       } else {
         this.error = true;
@@ -66,7 +47,16 @@ export default {
       var id = $event.idTask
       var novoArray = this.tasks.filter(element => element.id != id)
       this.tasks = novoArray;
+      localStorage.setItem("tasks", JSON.stringify(this.tasks));
+    },
+    updateTask(){
+      localStorage.setItem("tasks", JSON.stringify(this.tasks));
+    },
+    cancelUpdate(){
+      this.tasks = JSON.parse(localStorage.getItem('tasks'))
     }
+  }, created(){
+    //this.tasks = JSON.parse(localStorage.getItem('tasks'))
   }
 }
 </script>
@@ -76,7 +66,15 @@ export default {
   word-break: break-all;
   margin-bottom: .5rem;
   margin-top: .5rem;
+  padding-bottom: 1.5rem;
+  padding-top: 1.5rem;
   background-color: #f4f4f4;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
 }
 
+h3{
+  margin-top: 1rem;
+}
 </style>
