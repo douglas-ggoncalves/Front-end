@@ -1,16 +1,18 @@
 <template>
-  <div id="app">
-    <h3>Lista de Tarefas</h3>
-    <div id="firstDiv">
-      <input v-model="message" placeholder="Adicionar Tarefa">
-      <button @click="addTask()">Adicionar Tarefa</button>
-      <hr>
-    </div>
+  <v-app>
+    <v-row class="d-flex justify-center">
+      <v-col :cols="7">
+        <h3>Lista de Tarefas</h3>
 
-    <div v-for="task in tasks" :key="task.id">
-      <Tasks :task="task" @deleteThisTask="destroyTask($event)"/>
-    </div>
-  </div>
+        <v-alert v-show="error" type="error">O campo logo a baixo não pode ser vazio.</v-alert>
+        <v-text-field v-model="message" @keypress="error = false" label="Descrição da Tarefa"></v-text-field>
+        <v-btn depressed color="info" @click="addTask()">Adicionar</v-btn>
+      </v-col>
+      <v-col v-for="task in tasks" :key="task.id" :cols="7" class="itens">
+        <Tasks :task="task" @deleteThisTask="destroyTask($event)"/>
+      </v-col>
+    </v-row>
+  </v-app>
 </template>
 
 <script>
@@ -21,6 +23,7 @@ export default {
   data() {
     return {
       message: '',
+      error: false,
       tasks: [
         {
           id: 1,
@@ -38,6 +41,11 @@ export default {
           id: 4,
           descricao: 'Trabalhar',
           checked: false
+        }, 
+        {
+          id: 5,
+          descricao: 'Trabalharrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrraaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaasdaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa adas',
+          checked: false
         }
       ]
     }
@@ -50,7 +58,7 @@ export default {
         this.tasks.push({ id: Date.now(), descricao: this.message, checked: false })
         this.message = '';
       } else {
-        alert("Valor inválido, preencha o campo adicionar tarefa antes de adicionar");
+        this.error = true;
         this.message = '';
       }
     }, 
@@ -64,36 +72,11 @@ export default {
 </script>
 
 <style scoped>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+.itens{
+  word-break: break-all;
+  margin-bottom: .5rem;
+  margin-top: .5rem;
+  background-color: #f4f4f4;
 }
 
-#app #firstDiv{
-  margin: .5rem .3rem;
-}
-
-input{
-  margin: .5rem .1rem;
-  height: 100% !important;
-  padding: .4em .7rem;
-}
-
-hr{
-  width: 50%;
-  margin-bottom: 1.5rem
-}
-
-button {
-  cursor: pointer;
-  outline: none;
-  border: none;
-  padding: .5rem .7rem;
-  color: white;
-  background-color: #18ad22;
-}
 </style>

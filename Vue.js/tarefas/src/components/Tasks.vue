@@ -1,24 +1,44 @@
 <template>
-  <div>
-    <span :class="{'checked': task.checked}" v-if="editOn">{{ task.descricao }}</span>
-    <input v-else v-model="task.descricao">
+    <div>
+        <span :class="{'checked': task.checked}" v-if="editOn">{{ task.descricao }}</span>
+        <input v-else v-model="task.descricao">
 
-    <button v-show="editOn" @click="edit()">
-        <i class="fas fa-edit"></i>
-    </button>
+        <v-tooltip color="warning" bottom v-show="editOn">
+            <template v-slot:activator="{ on, attrs }">
+                <v-icon color="warning" dark v-bind="attrs" v-on="on" @click="edit()" style="cursor: pointer">
+                    mdi-pencil
+                </v-icon>
+            </template>
+            <span>Editar</span>
+        </v-tooltip>
 
-    <button v-show="editOn == false" @click="save()">
-        <i class="fas fa-save"></i>
-    </button>
+        <v-tooltip v-show="editOn == false" color="primary" bottom>
+            <template v-slot:activator="{ on, attrs }">
+                <v-icon v-show="editOn == false" color="primary" dark v-bind="attrs" v-on="on" @click="save()" style="cursor: pointer">
+                    mdi-content-save
+                </v-icon>
+            </template>
+            <span>Salvar</span>
+        </v-tooltip>
 
-    <button @click="destroy()">
-        <i class="fas fa-trash-alt"></i>
-    </button>
-
-    <button v-show="editOn" @click="check()">
-        <i class="fas fa-check"></i>
-    </button>
-  </div>
+        <v-tooltip color="red" bottom>
+            <template v-slot:activator="{ on, attrs }">
+                <v-icon @click="destroy()" color="error" dark v-bind="attrs" v-on="on" style="cursor: pointer">
+                    mdi-delete
+                </v-icon>
+            </template>
+            <span>Excluir</span>
+        </v-tooltip>
+        
+        <v-tooltip v-show="editOn" color="success" bottom>
+            <template v-slot:activator="{ on, attrs }">
+                <v-icon v-show="editOn" color="success" dark v-bind="attrs" v-on="on" @click="check()" style="cursor: pointer">
+                    mdi-check
+                </v-icon>
+            </template>
+            <span>Concluir</span>
+        </v-tooltip>
+    </div>
 </template>
 
 <script>
@@ -60,29 +80,6 @@ export default {
 </script>
 
 <style scoped>
-div{
-  display: block;
-  margin: .5rem 0;
-  color: #2c3e50;
-}
-
-button {
-    cursor: pointer;
-    outline: none;
-    border: none;
-    background: none;
-    padding: 0;
-    margin: 0 .2rem
-}
-
-i{
-    font-size: 10.5rem
-}
-
-span, input{
-    font-size: 1.1rem;
-    color: #2c3e50;
-}
 
 .checked{
     text-decoration: line-through; 
