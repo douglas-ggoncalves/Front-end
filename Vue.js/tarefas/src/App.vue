@@ -35,28 +35,47 @@ export default {
   methods: {
     addTask: function(){
       if(this.message.trim() != '') {
-        this.tasks.push({ id: Date.now(), descricao: this.message, checked: false })
-        localStorage.setItem("tasks", JSON.stringify(this.tasks));
-        this.message = '';
+        if(window) {
+          if(this.tasks != null){
+            if(this.tasks.length > 0){
+              this.tasks.push({ id: Date.now(), descricao: this.message, checked: false })
+            } else{
+              this.tasks[0] = {id: Date.now(), descricao: this.message, checked: false}
+            }
+          } else{
+            this.tasks = [{id: Date.now(), descricao: this.message, checked: false}]
+          }
+          
+          localStorage.setItem("tasks", JSON.stringify(this.tasks));
+          this.message = '';
+        }
       } else {
         this.error = true;
         this.message = '';
       }
     }, 
     destroyTask($event){
-      var id = $event.idTask
-      var novoArray = this.tasks.filter(element => element.id != id)
-      this.tasks = novoArray;
-      localStorage.setItem("tasks", JSON.stringify(this.tasks));
+      if(window) {
+        var id = $event.idTask
+        var novoArray = this.tasks.filter(element => element.id != id)
+        this.tasks = novoArray;
+        localStorage.setItem("tasks", JSON.stringify(this.tasks));
+      }
     },
     updateTask(){
-      localStorage.setItem("tasks", JSON.stringify(this.tasks));
+      if(window) {
+        localStorage.setItem("tasks", JSON.stringify(this.tasks));
+      }
     },
     cancelUpdate(){
-      this.tasks = JSON.parse(localStorage.getItem('tasks'))
+      if(window) {
+        this.tasks = JSON.parse(localStorage.getItem('tasks'))
+      }
     }
   }, created(){
-    //this.tasks = JSON.parse(localStorage.getItem('tasks'))
+    if(window) {
+      this.tasks = JSON.parse(localStorage.getItem('tasks'))
+    } 
   }
 }
 </script>
