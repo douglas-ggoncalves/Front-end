@@ -24,6 +24,8 @@ data.projects = [
     { title: "Realiza Assessoria", tech: [{ code: 13 }, { code: 6 }, { code: 1 }, { code: 3 }, { code: 8 }] },
     { title: "Guia Perguntas", tech: [{ code: 13 }, { code: 6 }, { code: 1 }, { code: 5 }, { code: 3 }, { code: 8 }] },
     { title: "API de Usuários", doc: "https://github.com/douglas-ggoncalves/Full-Stack/tree/main/API%20de%20Usuarios", tech: [{ code: 4 }, { code: 6 }, { code: 8 }, { code: 10 }, { code: 15 }] },
+    { title: "Lista de Tarefas", link: "https://douglas-ggoncalves.github.io/Front-end/Vue.js/tarefas/dist", tech: [{ code: 4 }, { code: 1 }, { code: 17 }] },
+
 ]
 
 data.technologies = [
@@ -43,7 +45,8 @@ data.technologies = [
     { desc: "EJS", icon: "webpack", color: "green" },
     { desc: "Express", icon: "flash", color: "yellow" },
     { desc: "Bulma CSS", icon: "bulma", color: "green accent-2" },
-    { desc: "Vue Router", icon: "vuejs", color: "green" }
+    { desc: "Vue Router", icon: "vuejs", color: "green" },
+    { desc: "Vuetify", icon: "vuetify", color: "blue lighten-2" },
 ]
 
 module.exports = data

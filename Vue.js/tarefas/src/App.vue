@@ -4,6 +4,7 @@
       <v-row class="d-flex justify-center py-5">
         <v-col class="pl-0" :cols="10" :md="7">
           <h3>Lista de Tarefas</h3>
+          
           <v-alert v-show="error" type="error">O campo logo abaixo não pode ser vazio.</v-alert>
           <v-text-field v-model="message" @keydown="error = false" @keyup.enter="addTask()" label="Descrição da Tarefa"></v-text-field>
           <v-btn depressed color="info" @click="addTask($event)">Adicionar</v-btn>
