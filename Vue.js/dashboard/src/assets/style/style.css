@@ -1,0 +1,53 @@
+.homeView div.row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin-top: .5rem;
+}
+
+.homeView div.row .col > div.elements {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  cursor: pointer;
+  border: 1px solid rgba(200, 185, 185, 0.5);
+  padding: 1.5rem 1.25rem;
+  border-radius: 16px;
+}
+
+.homeView div.row .col > div.elements div.left span.value {
+  font-weight: bold;
+}
+
+.homeView div.row .col > div.elements div.right {
+  margin-left: auto;
+}
+
+.homeView div.row .col > div.elements div.right span i {
+  color: white;
+  border-radius: 50%;
+  padding: .5rem;
+}
+
+.homeView div.row .col > div.elements div.right span i.iGreen {
+  background-color: #3b963b;
+}
+
+.homeView div.row .col > div.elements div.right span i.iRed {
+  background-color: #dc0c0c;
+}
+
+.homeView div.row .col > div.elements div.right span i.iBlue {
+  background-color: #2196f3;
+}
+
+.homeView div.row .col > div.elements div.right span i.iOrange {
+  background-color: #f78302;
+}
+/*# sourceMappingURL=style.css.map */

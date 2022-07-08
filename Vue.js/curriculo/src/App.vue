@@ -77,7 +77,7 @@
         </v-list>
       </v-navigation-drawer>
 
-      <v-row no-gutters id="asdsad">
+      <v-row no-gutters>
         <v-col :sm="12">
           <v-app app id="inspire">
             <v- dark flat>
@@ -92,7 +92,6 @@
               </v-toolbar>
             </v->
             <Index :select="viewSelected" v-on:alterViewEmit="alterViewEmit($event)"/>
-
           </v-app>
         </v-col>
       </v-row>

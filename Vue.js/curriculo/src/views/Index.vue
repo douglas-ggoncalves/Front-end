@@ -183,7 +183,6 @@
                   bottom
                 >
                   <template v-slot:activator="{ on, attrs }">
-                    
                     <v-icon
                       :color="technologies[tech.code].color"
                       v-bind="attrs"
@@ -291,23 +290,23 @@
             </v-dialog>
 
             <v-dialog v-model="dialog" persistent max-width="290" >
-            <v-card>
-              <v-card-title class="text-h5">
-                Recebi seu contato
-              </v-card-title>
+              <v-card>
+                <v-card-title class="text-h5">
+                  Recebi seu contato
+                </v-card-title>
 
-              <v-card-text>
-                Vou te retornar o mais breve possível.
-              </v-card-text>
+                <v-card-text>
+                  Vou te retornar o mais breve possível.
+                </v-card-text>
 
-              <v-card-actions>
-                <v-spacer></v-spacer>
-                <v-btn color="green darken-1" text @click="dialog = false">
-                  Confirmar
-                </v-btn>
-              </v-card-actions>
-            </v-card>
-          </v-dialog>
+                <v-card-actions>
+                  <v-spacer></v-spacer>
+                  <v-btn color="green darken-1" text @click="dialog = false">
+                    Confirmar
+                  </v-btn>
+                </v-card-actions>
+              </v-card>
+            </v-dialog>
 
           <h3>Fique à vontade para enviar sua mensagem</h3>
             <v-alert v-if="errorAlert" type="error">
