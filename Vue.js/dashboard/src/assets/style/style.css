@@ -19,6 +19,8 @@
   border: 1px solid rgba(200, 185, 185, 0.5);
   padding: 1.5rem 1.25rem;
   border-radius: 16px;
+  -webkit-box-shadow: 2px 2px 6px -4px rgba(0, 0, 0, 0.9);
+  box-shadow: 2px 2px 6px -4px rgba(0, 0, 0, 0.9);
 }
 
 .homeView div.row .col > div.elements div.left span.value {
@@ -49,5 +51,32 @@
 
 .homeView div.row .col > div.elements div.right span i.iOrange {
   background-color: #f78302;
+}
+
+.homeView .reports {
+  margin-top: 1.5rem !important;
+}
+
+.homeView .reports div.col {
+  min-height: 50vh;
+}
+
+.homeView .reports div.col div.dash {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-align: center;
+  height: 100%;
+  border: 1px solid rgba(200, 185, 185, 0.5);
+  padding: 1.5rem 1.25rem;
+  border-radius: 16px;
+  -webkit-box-shadow: 2px 2px 6px -4px rgba(0, 0, 0, 0.9);
+  box-shadow: 2px 2px 6px -4px rgba(0, 0, 0, 0.9);
 }
 /*# sourceMappingURL=style.css.map */
