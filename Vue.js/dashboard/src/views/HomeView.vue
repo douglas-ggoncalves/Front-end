@@ -29,8 +29,55 @@
     </v-row>
 
     <v-row class="reports">
+      <v-dialog v-model="dialog" persistent max-width="600px">
+        <v-card>
+          <v-card-title>
+            <span class="text-h5">Nova Receita</span>
+          </v-card-title>
+
+          <v-card-text>
+            <v-container>
+              <v-row>
+                <v-col cols="12">
+                  <v-text-field label="Informe o Valor *" hint="informe a descrição desejada" required> 
+                    <v-icon slot="prepend">
+                      mdi-cash-multiple
+                    </v-icon>
+                  </v-text-field>
+                </v-col>
+
+                <v-col cols="12">
+                  <v-text-field label="Descrição" type="text" hint="informe a descrição desejada" required>
+                    <v-icon slot="prepend">
+                      mdi-file
+                    </v-icon>
+                  </v-text-field>
+                </v-col>
+                <v-col cols="12">
+                  <v-select :items="[this.allFormsPagt[1].categories[0].title, this.allFormsPagt[1].categories[1].title
+                  , this.allFormsPagt[1].categories[2].title,
+                  , this.allFormsPagt[1].categories[3].title]" label="Categoria *" required>
+                  <v-icon slot="prepend">
+                    mdi-label
+                  </v-icon></v-select>
+                </v-col>
+              </v-row>
+            </v-container>
+            <small>* indica campo obrigatório</small>
+          </v-card-text>
+          <v-card-actions>
+            <v-spacer></v-spacer>
+            <v-btn color="blue darken-1" text @click="dialog = false">Cancelar</v-btn>
+            <v-btn color="blue darken-1" text @click="newRec()">Cadastrar</v-btn>
+          </v-card-actions>
+        </v-card>
+      </v-dialog>
+
       <v-col :cols="6">
+            <v-btn color="blue darken-1" text @click="newRec()">Cadastrar</v-btn>
+
         <h4>Receitas por Categoria</h4>
+        {{ this.allFormsPagt[1].data }}
         <div class="dash">
           <div v-if="!hasRec">
             <v-icon>mdi-chart-donut</v-icon>
@@ -39,9 +86,16 @@
               Você ainda não possui receitas.
             </h5>
           </div>
+
           <div v-if="hasRec">
             <apexchart width="380" type="donut" :options="optionsDonutRec" :series="seriesDonutRec"></apexchart>
           </div>
+        </div>
+
+        <div>
+         <v-btn class="ma-2" rounded color="success" @click="dialog = true">
+            Cadastrar Receita
+          </v-btn>
         </div>
       </v-col>
     </v-row>
@@ -59,11 +113,15 @@ Vue.component('apexchart', VueApexCharts)
 export default {
   data(){
     return {
+      dialog: false,
       allFormsPagt:[],
-      totalRecSalary: 0,
-      totalRecInvest: 0,
-      totalRecEmp: 0,
-      totalRecOut: 0,
+      dataRec: {
+        totalRecSalary: 0,
+        totalRecInvest: 0,
+        totalRecEmp: 0,
+        totalRecOut: 0,
+      },
+      
       hasRec: false,
       optionsDonutRec: {
         labels: []
@@ -81,9 +139,9 @@ export default {
       {idDategory: 0, value: 55.56}, 
       {idDategory: 1, value: 14.56}, 
       {idDategory: 2, value: 4.46},
+     /*{idDategory: 2, value: 8.46},
       {idDategory: 3, value: 12.00},
-
-      /*{idDategory: 1, value: 4.46},
+      {idDategory: 1, value: 4.46},
       {idDategory: 2, value: 4.46},
       {idDategory: 3, value: 4.46},*/
     ]
@@ -92,63 +150,105 @@ export default {
       this.hasRec = true
 
       if(element.idDategory == 0){
-        this.totalRecSalary += element.value
-        if(this.totalRecSalary > 0){
-          this.seriesDonutRec = [this.totalRecSalary]
-        }
+        this.dataRec.totalRecSalary += element.value
       }
+
       if(element.idDategory == 1){
-        this.totalRecInvest += element.value
-        if(this.totalRecInvest > 0){
-          this.seriesDonutRec.push(element.value)
-        }
+        this.dataRec.totalRecInvest += element.value
+        
       }
       if(element.idDategory == 2){
-        this.totalRecEmp += element.value
-        if(this.totalRecEmp > 0){
-          this.seriesDonutRec.push(element.value)
-        }
+        this.dataRec.totalRecEmp += element.value
       }
       if(element.idDategory == 3){
-        this.totalRecOut += element.value
-        if(this.totalRecOut > 0){
-          this.seriesDonutRec.push(element.value)
-        }
+        this.dataRec.totalRecOut += element.value
       }
     })
 
+    if(this.dataRec.totalRecSalary > 0){
+      if(this.seriesDonutRec.length == 0){
+        this.seriesDonutRec = [this.dataRec.totalRecSalary]
+      } else{
+        this.seriesDonutRec.push(this.dataRec.totalRecSalary)
+      }
+    }
+
+    if(this.dataRec.totalRecEmp > 0){
+      if(this.seriesDonutRec.length == 0){
+        this.seriesDonutRec = [this.dataRec.totalRecEmp]
+      } else{
+        this.seriesDonutRec.push(this.dataRec.totalRecEmp)
+      }
+    }
+
+    if(this.dataRec.totalRecInvest > 0){
+      if(this.seriesDonutRec.length == 0){
+        this.seriesDonutRec = [this.dataRec.totalRecInvest]
+      } else{
+        this.seriesDonutRec.push(this.dataRec.totalRecInvest)
+      }
+    }
+
+    if(this.dataRec.totalRecOut > 0){
+      if(this.seriesDonutRec.length == 0){
+        this.seriesDonutRec = [this.dataRec.totalRecOut]
+      } else{
+        this.seriesDonutRec.push(this.dataRec.totalRecOut)
+      }
+    }
+
     scrypt.recCategories.forEach(element => {
       if(element.title == 'Salário'){
-        if(this.totalRecSalary > 0){
-          this.optionsDonutRec.labels.push(element.title)
+        if(this.dataRec.totalRecSalary > 0){
+          if(this.optionsDonutRec.labels.length == 0){
+            this.optionsDonutRec.labels = [element.title]
+          } else{
+            this.optionsDonutRec.labels.push(element.title)
+          }
         }
       }
 
       if(element.title == 'Investimentos'){
-        if(this.totalRecInvest > 0){
-          this.optionsDonutRec.labels.push(element.title)
+        if(this.dataRec.totalRecInvest > 0){
+          if(this.optionsDonutRec.labels.length == 0){
+            this.optionsDonutRec.labels = [element.title]
+          } else{
+            this.optionsDonutRec.labels.push(element.title)
+          }
         }
       }
       
       if(element.title == 'Empréstimos'){
-        if(this.totalRecEmp > 0){
-          this.optionsDonutRec.labels.push(element.title)
+        if(this.dataRec.totalRecEmp > 0){
+          if(this.optionsDonutRec.labels.length == 0){
+            this.optionsDonutRec.labels = [element.title]
+          } else{
+            this.optionsDonutRec.labels.push(element.title)
+          }
         }
       }
       
       if(element.title == 'Outros'){
-        if(this.totalRecOut > 0){
-          this.optionsDonutRec.labels.push(element.title)
+        if(this.dataRec.totalRecOut > 0){
+          if(this.optionsDonutRec.labels.length == 0){
+            this.optionsDonutRec.labels = [element.title]
+          } else{
+            this.optionsDonutRec.labels.push(element.title)
+          }
         }
       }
 
     })
-      console.log(this.optionsDonutRec)
-      console.log(this.seriesDonutRec)
-
       
     //this.seriesDonutRec = [this.totalRecSalary, this.totalRecInvest, this.totalRecEmp, this.totalRecOut]
     /* Fim Receitas */
+  },
+  methods:{
+    newRec(){
+      //Vue.set(this.series, 0, {data: newData})
+      var test = this.allFormsPagt[1].data.push({idDategory: 0, value: 25.46})
+      Vue.set(this.allFormsPagt[1], 0, {data: test})
+    }
   }
 }
 </script>
