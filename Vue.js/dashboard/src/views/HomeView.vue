@@ -39,7 +39,7 @@
             <v-container>
               <v-row>
                 <v-col cols="12">
-                  <v-text-field label="Informe o Valor *" hint="informe a descrição desejada" required> 
+                  <v-text-field v-model="dataRec.newRecValue" label="Informe o Valor *" hint="informe a descrição desejada" required> 
                     <v-icon slot="prepend">
                       mdi-cash-multiple
                     </v-icon>
@@ -54,7 +54,7 @@
                   </v-text-field>
                 </v-col>
                 <v-col cols="12">
-                  <v-select :items="[this.allFormsPagt[1].categories[0].title, this.allFormsPagt[1].categories[1].title
+                  <v-select v-model="dataRec.newRecSelect" :items="[this.allFormsPagt[1].categories[0].title, this.allFormsPagt[1].categories[1].title
                   , this.allFormsPagt[1].categories[2].title,
                   , this.allFormsPagt[1].categories[3].title]" label="Categoria *" required>
                   <v-icon slot="prepend">
@@ -74,12 +74,11 @@
       </v-dialog>
 
       <v-col :cols="6">
-            <v-btn color="blue darken-1" text @click="newRec()">Cadastrar</v-btn>
+        <v-btn color="blue darken-1" text @click="newRec()">Cadastrar</v-btn>
 
         <h4>Receitas por Categoria</h4>
-        {{ this.allFormsPagt[1].data }}
         <div class="dash">
-          <div v-if="!hasRec">
+          <div v-if="!dataRec.hasRec">
             <v-icon>mdi-chart-donut</v-icon>
             <br>
             <h5>
@@ -87,7 +86,7 @@
             </h5>
           </div>
 
-          <div v-if="hasRec">
+          <div v-if="dataRec.hasRec">
             <apexchart width="380" type="donut" :options="optionsDonutRec" :series="seriesDonutRec"></apexchart>
           </div>
         </div>
@@ -120,9 +119,11 @@ export default {
         totalRecInvest: 0,
         totalRecEmp: 0,
         totalRecOut: 0,
+        newRecValue: 0,
+        newRecSelect: '',
+        hasRec: false,
       },
       
-      hasRec: false,
       optionsDonutRec: {
         labels: []
       },
@@ -136,10 +137,10 @@ export default {
     this.allFormsPagt[1].categories = scrypt.recCategories;
     
     this.allFormsPagt[1].data = [
-      {idDategory: 0, value: 55.56}, 
+      /*{idDategory: 0, value: 55.56}, 
       {idDategory: 1, value: 14.56}, 
       {idDategory: 2, value: 4.46},
-     /*{idDategory: 2, value: 8.46},
+     {idDategory: 2, value: 8.46},
       {idDategory: 3, value: 12.00},
       {idDategory: 1, value: 4.46},
       {idDategory: 2, value: 4.46},
@@ -147,7 +148,7 @@ export default {
     ]
 
     this.allFormsPagt[1].data.forEach(element => {
-      this.hasRec = true
+      this.dataRec.hasRec = true
 
       if(element.idDategory == 0){
         this.dataRec.totalRecSalary += element.value
@@ -245,9 +246,23 @@ export default {
   },
   methods:{
     newRec(){
-      //Vue.set(this.series, 0, {data: newData})
-      var test = this.allFormsPagt[1].data.push({idDategory: 0, value: 25.46})
-      Vue.set(this.allFormsPagt[1], 0, {data: test})
+      console.log(parseFloat(this.dataRec.newRecValue))
+      console.log(this.dataRec.totalRecSalary)
+      
+      this.dataRec.hasRec = true
+
+      if(this.dataRec.newRecSelect == 'Salário'){
+        this.dataRec.totalRecSalary += parseFloat(this.dataRec.newRecValue);
+        if(this.seriesDonutRec.length == 0){
+          this.seriesDonutRec = [this.dataRec.totalRecSalary]
+        } else{
+          //this.seriesDonutRec.push(this.dataRec.totalRecSalary)
+          Vue.set(this.seriesDonutRec, 0, this.dataRec.totalRecSalary)
+        }
+      }
+
+     // this.dataRec.totalRecSalary += 1.00
+     // Vue.set(this.seriesDonutRec, 0, this.dataRec.totalRecSalary)
     }
   }
 }

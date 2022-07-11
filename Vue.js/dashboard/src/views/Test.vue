@@ -45,11 +45,14 @@ export default {
   },
   methods:{
     teste(){
+      const teste = [1,2,3]
       const newData = this.series[0].data.map(() => {
         return Math.floor(Math.random() * (90 - 20 + 1)) + 20
       })
       
       Vue.set(this.series, 0, {data: newData})
+      console.log(newData)
+      console.log(teste)
     }
   }
 }
