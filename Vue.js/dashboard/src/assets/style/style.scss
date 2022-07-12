@@ -57,6 +57,7 @@ $boxShadow: 2px 2px 6px -4px rgba(0,0,0,0.9);
 
     .reports{
         margin-top: 1.5rem !important;
+        
         div.col{
             min-height: 50vh;
 
@@ -74,5 +75,39 @@ $boxShadow: 2px 2px 6px -4px rgba(0,0,0,0.9);
             }
         }
     }
+
+    .apexcharts-legend-series{
+    // display: none;
+    }
+
+    #apexDonutRec.one{
+        .apexcharts-legend-series{
+            //display: none;
+            &:nth-child(1){ display:none; }
+          }
+    }
+    
+    #apexDonutRec.two{
+        .apexcharts-legend-series{
+            //display: none;
+            &:nth-child(2){ display:none; }
+          }
+    }
+
+    #apexDonutRec.three{
+        .apexcharts-legend-series{
+            //display: none;
+            &:nth-child(3){ display:none; }
+          }
+    }
+    
+    #apexDonutRec.four{
+        .apexcharts-legend-series{
+          // display: none;
+            &:nth-child(4){ display:none; }
+          }
+    }
+   
     
 }
+

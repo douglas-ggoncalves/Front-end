@@ -87,7 +87,7 @@
           </div>
 
           <div v-if="dataRec.hasRec">
-            <apexchart width="380" type="donut" :options="optionsDonutRec" :series="seriesDonutRec"></apexchart>
+            <apexchart class="" id="apexDonutRec" width="380" type="donut" :options="options" :series="series" :showForZeroSeries="false" ></apexchart>
           </div>
         </div>
 
@@ -115,6 +115,7 @@ export default {
       dialog: false,
       allFormsPagt:[],
       dataRec: {
+        indexs:[],
         totalRecSalary: 0,
         totalRecInvest: 0,
         totalRecEmp: 0,
@@ -122,148 +123,78 @@ export default {
         newRecValue: 0,
         newRecSelect: '',
         hasRec: false,
+
       },
-      
-      optionsDonutRec: {
-        labels: []
-      },
-      seriesDonutRec: [],
+      options: {
+        showForZeroSeries: false,
+        formatter: function (val) {
+          return val + "%"
+        },
+          labels: ['Salário', 'Investimentos', 'Empréstimos', 'Outros'],
+        },
+        series: [],
     }
   },
   created(){
     this.allFormsPagt = scrypt.allFormsPagt;
-
     /* Receitas */
     this.allFormsPagt[1].categories = scrypt.recCategories;
     
     this.allFormsPagt[1].data = [
-      /*{idDategory: 0, value: 55.56}, 
+      {idDategory: 0, value: 7.56}, 
+      {idDategory: 1, value: 14.56}, 
       {idDategory: 1, value: 14.56}, 
       {idDategory: 2, value: 4.46},
-     {idDategory: 2, value: 8.46},
-      {idDategory: 3, value: 12.00},
+      {idDategory: 2, value: 8.46},
+      /*{idDategory: 3, value: 12.00},
       {idDategory: 1, value: 4.46},
       {idDategory: 2, value: 4.46},
-      {idDategory: 3, value: 4.46},*/
+      {idDategory: 3, value: 4.46}*/
     ]
 
     this.allFormsPagt[1].data.forEach(element => {
       this.dataRec.hasRec = true
 
       if(element.idDategory == 0){
-        this.dataRec.totalRecSalary += element.value
+        this.dataRec.totalRecSalary = parseFloat((this.dataRec.totalRecSalary + element.value).toFixed(2)); 
       }
 
       if(element.idDategory == 1){
-        this.dataRec.totalRecInvest += element.value
-        
+        this.dataRec.totalRecInvest = parseFloat((this.dataRec.totalRecInvest + element.value).toFixed(2)); 
       }
+
       if(element.idDategory == 2){
-        this.dataRec.totalRecEmp += element.value
+        this.dataRec.totalRecEmp = parseFloat((this.dataRec.totalRecEmp + element.value).toFixed(2)); 
       }
       if(element.idDategory == 3){
-        this.dataRec.totalRecOut += element.value
+        this.dataRec.totalRecOut = parseFloat((this.dataRec.totalRecOut + element.value).toFixed(2)); 
       }
     })
 
-    if(this.dataRec.totalRecSalary > 0){
-      if(this.seriesDonutRec.length == 0){
-        this.seriesDonutRec = [this.dataRec.totalRecSalary]
-      } else{
-        this.seriesDonutRec.push(this.dataRec.totalRecSalary)
-      }
-    }
-
-    if(this.dataRec.totalRecEmp > 0){
-      if(this.seriesDonutRec.length == 0){
-        this.seriesDonutRec = [this.dataRec.totalRecEmp]
-      } else{
-        this.seriesDonutRec.push(this.dataRec.totalRecEmp)
-      }
-    }
-
-    if(this.dataRec.totalRecInvest > 0){
-      if(this.seriesDonutRec.length == 0){
-        this.seriesDonutRec = [this.dataRec.totalRecInvest]
-      } else{
-        this.seriesDonutRec.push(this.dataRec.totalRecInvest)
-      }
-    }
-
-    if(this.dataRec.totalRecOut > 0){
-      if(this.seriesDonutRec.length == 0){
-        this.seriesDonutRec = [this.dataRec.totalRecOut]
-      } else{
-        this.seriesDonutRec.push(this.dataRec.totalRecOut)
-      }
-    }
-
-    scrypt.recCategories.forEach(element => {
-      if(element.title == 'Salário'){
-        if(this.dataRec.totalRecSalary > 0){
-          if(this.optionsDonutRec.labels.length == 0){
-            this.optionsDonutRec.labels = [element.title]
-          } else{
-            this.optionsDonutRec.labels.push(element.title)
-          }
-        }
-      }
-
-      if(element.title == 'Investimentos'){
-        if(this.dataRec.totalRecInvest > 0){
-          if(this.optionsDonutRec.labels.length == 0){
-            this.optionsDonutRec.labels = [element.title]
-          } else{
-            this.optionsDonutRec.labels.push(element.title)
-          }
-        }
-      }
-      
-      if(element.title == 'Empréstimos'){
-        if(this.dataRec.totalRecEmp > 0){
-          if(this.optionsDonutRec.labels.length == 0){
-            this.optionsDonutRec.labels = [element.title]
-          } else{
-            this.optionsDonutRec.labels.push(element.title)
-          }
-        }
-      }
-      
-      if(element.title == 'Outros'){
-        if(this.dataRec.totalRecOut > 0){
-          if(this.optionsDonutRec.labels.length == 0){
-            this.optionsDonutRec.labels = [element.title]
-          } else{
-            this.optionsDonutRec.labels.push(element.title)
-          }
-        }
-      }
-
-    })
-      
-    //this.seriesDonutRec = [this.totalRecSalary, this.totalRecInvest, this.totalRecEmp, this.totalRecOut]
+    this.series = [this.dataRec.totalRecSalary, this.dataRec.totalRecInvest, this.dataRec.totalRecEmp, this.dataRec.totalRecOut]
     /* Fim Receitas */
+  },
+  mounted(){
+    if(this.dataRec.totalRecSalary == 0){
+      document.getElementById("apexDonutRec").classList.add("one")
+    }
+    if(this.dataRec.totalRecInvest == 0){
+      document.getElementById("apexDonutRec").classList.add("two")
+    }
+    if(this.dataRec.totalRecEmp == 0){
+      document.getElementById("apexDonutRec").classList.add("three")
+    }
+    if(this.dataRec.totalRecOut == 0){
+      document.getElementById("apexDonutRec").classList.add("four")
+    }
   },
   methods:{
     newRec(){
-      console.log(parseFloat(this.dataRec.newRecValue))
-      console.log(this.dataRec.totalRecSalary)
-      
       this.dataRec.hasRec = true
-
-      if(this.dataRec.newRecSelect == 'Salário'){
-        this.dataRec.totalRecSalary += parseFloat(this.dataRec.newRecValue);
-        if(this.seriesDonutRec.length == 0){
-          this.seriesDonutRec = [this.dataRec.totalRecSalary]
-        } else{
-          //this.seriesDonutRec.push(this.dataRec.totalRecSalary)
-          Vue.set(this.seriesDonutRec, 0, this.dataRec.totalRecSalary)
-        }
-      }
-
-     // this.dataRec.totalRecSalary += 1.00
-     // Vue.set(this.seriesDonutRec, 0, this.dataRec.totalRecSalary)
+      
+      Vue.set(this.series, 0, parseFloat(this.dataRec.newRecValue) + this.dataRec.totalRecSalary)
     }
   }
 }
 </script>
+
