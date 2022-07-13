@@ -1,7 +1,7 @@
 <template>
   <v-container class="homeView">
     <v-row>
-      <v-col v-for="form in allFormsPagt" :key="form.id" :cols="3">
+      <v-col class="col" v-for="form in allFormsPagt" :key="form.id" :cols="10" :sm="6" :lg="3">
         <v-tooltip bottom>
           <template v-slot:activator="{ on, attrs }">
             <div class="elements" v-bind="attrs" v-on="on">
@@ -73,11 +73,10 @@
         </v-card>
       </v-dialog>
 
-      <v-col :cols="6">
-        <v-btn color="blue darken-1" text @click="newRec()">Cadastrar</v-btn>
-
+      <v-col class="dash" :cols="12" :sm="8" :md="6">
         <h4>Receitas por Categoria</h4>
-        <div class="dash">
+        {{ this.allFormsPagt[1].data }}
+        <div id="first">
           <div v-if="!dataRec.hasRec">
             <v-icon>mdi-chart-donut</v-icon>
             <br>
@@ -87,7 +86,7 @@
           </div>
 
           <div v-if="dataRec.hasRec">
-            <apexchart class="" id="apexDonutRec" width="380" type="donut" :options="options" :series="series" :showForZeroSeries="false" ></apexchart>
+            <apexchart class="" id="apexDonutRec" width="380" type="donut" :options="dataRec.optionsDonut" :series="dataRec.series"></apexchart>
           </div>
         </div>
 
@@ -103,9 +102,9 @@
 
 <script>
 import Vue from 'vue'
+import scrypt from "../assets/js/scrypt.js"
 import VueApexCharts from 'vue-apexcharts'
 import "../assets/style/style.css"
-import scrypt from "../assets/js/scrypt.js"
 Vue.use(VueApexCharts)
 Vue.component('apexchart', VueApexCharts)
 
@@ -122,17 +121,23 @@ export default {
         totalRecOut: 0,
         newRecValue: 0,
         newRecSelect: '',
-        hasRec: false,
 
-      },
-      options: {
-        showForZeroSeries: false,
-        formatter: function (val) {
-          return val + "%"
-        },
+        hasRec: false,
+        optionsDonut: {
+          show: true,
+          showForZeroSeries: false,
+          formatter: function (val) {
+            return val + "%"
+          },
+          legend:{
+            position: 'bottom',
+          },
           labels: ['Salário', 'Investimentos', 'Empréstimos', 'Outros'],
         },
         series: [],
+
+      },
+      
     }
   },
   created(){
@@ -141,15 +146,16 @@ export default {
     this.allFormsPagt[1].categories = scrypt.recCategories;
     
     this.allFormsPagt[1].data = [
-      {idDategory: 0, value: 7.56}, 
-      {idDategory: 1, value: 14.56}, 
-      {idDategory: 1, value: 14.56}, 
-      {idDategory: 2, value: 4.46},
-      {idDategory: 2, value: 8.46},
-      /*{idDategory: 3, value: 12.00},
-      {idDategory: 1, value: 4.46},
-      {idDategory: 2, value: 4.46},
-      {idDategory: 3, value: 4.46}*/
+      {idDategory: 0, desc:'teste', value: 7.56}, 
+      {idDategory: 1, desc:'teste 2', value: 14.56}, 
+      {idDategory: 1, desc:'teste 3', value: 14.56}, 
+      {idDategory: 2, desc:'teste 4', value: 4.46},
+      {idDategory: 2, desc:'teste 5', value: 8.46},
+      {idDategory: 3, desc:'teste 6', value: 12.00},
+      /*{idDategory: 3, desc:'teste 7', value: 12.00},
+      {idDategory: 1, desc:'teste 8', value: 4.46},
+      {idDategory: 2, desc:'teste 9', value: 4.46},
+       */
     ]
 
     this.allFormsPagt[1].data.forEach(element => {
@@ -171,30 +177,65 @@ export default {
       }
     })
 
-    this.series = [this.dataRec.totalRecSalary, this.dataRec.totalRecInvest, this.dataRec.totalRecEmp, this.dataRec.totalRecOut]
+    this.dataRec.series = [this.dataRec.totalRecSalary, this.dataRec.totalRecInvest, this.dataRec.totalRecEmp, this.dataRec.totalRecOut]
     /* Fim Receitas */
   },
   mounted(){
-    if(this.dataRec.totalRecSalary == 0){
-      document.getElementById("apexDonutRec").classList.add("one")
-    }
-    if(this.dataRec.totalRecInvest == 0){
-      document.getElementById("apexDonutRec").classList.add("two")
-    }
-    if(this.dataRec.totalRecEmp == 0){
-      document.getElementById("apexDonutRec").classList.add("three")
-    }
-    if(this.dataRec.totalRecOut == 0){
-      document.getElementById("apexDonutRec").classList.add("four")
+    var elementExist = document.getElementById("apexDonutRec")
+    if(elementExist){
+      if(this.dataRec.totalRecSalary != 0){
+        console.log("if 1")
+        document.getElementById("apexDonutRec").classList.add("one")
+      }
+      if(this.dataRec.totalRecInvest != 0){
+        console.log("if 2")
+        document.getElementById("apexDonutRec").classList.add("two")
+      }
+      if(this.dataRec.totalRecEmp != 0){
+        console.log("if 3")
+        document.getElementById("apexDonutRec").classList.add("three")
+      }
+      if(this.dataRec.totalRecOut != 0){
+        console.log("if 4")
+        document.getElementById("apexDonutRec").classList.add("four")
+      }
     }
   },
   methods:{
     newRec(){
       this.dataRec.hasRec = true
+      var elementExist = document.getElementById("apexDonutRec")
+
+      if(this.dataRec.newRecSelect == 'Salário'){
+        this.dataRec.totalRecSalary = parseFloat((this.dataRec.totalRecSalary + parseFloat(this.dataRec.newRecValue)).toFixed(2)); 
+        Vue.set(this.dataRec.series, 0, this.dataRec.totalRecSalary)
+      }
       
-      Vue.set(this.series, 0, parseFloat(this.dataRec.newRecValue) + this.dataRec.totalRecSalary)
+      if(this.dataRec.newRecSelect == 'Investimentos'){
+        this.dataRec.totalRecInvest = parseFloat((this.dataRec.totalRecInvest + parseFloat(this.dataRec.newRecValue)).toFixed(2)); 
+        Vue.set(this.dataRec.series, 1, this.dataRec.totalRecInvest)
+      }
+      
+      if(this.dataRec.newRecSelect == 'Empréstimos'){
+        this.dataRec.totalRecEmp = parseFloat((this.dataRec.totalRecEmp + parseFloat(this.dataRec.newRecValue)).toFixed(2)); 
+        Vue.set(this.dataRec.series, 2, this.dataRec.totalRecEmp)
+      }
+      
+      if(this.dataRec.newRecSelect == 'Outros'){
+        this.dataRec.totalRecOut = parseFloat((this.dataRec.totalRecOut + parseFloat(this.dataRec.newRecValue)).toFixed(2)); 
+        Vue.set(this.dataRec.series, 3, this.dataRec.totalRecOut)
+      }
+
+      if(elementExist){
+        if(this.dataRec.totalRecSalary != 0) document.getElementById("apexDonutRec").classList.add("one")
+        if(this.dataRec.totalRecInvest != 0) document.getElementById("apexDonutRec").classList.add("two")
+        if(this.dataRec.totalRecEmp != 0) document.getElementById("apexDonutRec").classList.add("three")
+        if(this.dataRec.totalRecOut != 0) document.getElementById("apexDonutRec").classList.add("four")
+      }
     }
   }
 }
+
+
 </script>
 

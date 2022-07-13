@@ -57,11 +57,7 @@
   margin-top: 1.5rem !important;
 }
 
-.homeView .reports div.col {
-  min-height: 50vh;
-}
-
-.homeView .reports div.col div.dash {
+.homeView .reports div.dash > div#first {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -80,19 +76,29 @@
   box-shadow: 2px 2px 6px -4px rgba(0, 0, 0, 0.9);
 }
 
-.homeView #apexDonutRec.one .apexcharts-legend-series:nth-child(1) {
+.homeView #apexDonutRec .apexcharts-legend-series {
   display: none;
+}
+
+.homeView #apexDonutRec.one .apexcharts-legend-series:nth-child(1) {
+  display: revert;
 }
 
 .homeView #apexDonutRec.two .apexcharts-legend-series:nth-child(2) {
-  display: none;
+  display: revert;
 }
 
 .homeView #apexDonutRec.three .apexcharts-legend-series:nth-child(3) {
-  display: none;
+  display: revert;
 }
 
 .homeView #apexDonutRec.four .apexcharts-legend-series:nth-child(4) {
-  display: none;
+  display: revert;
+}
+
+@media (max-width: 356px) {
+  #apexDonutRec .apexcharts-legend-series {
+    display: none !important;
+  }
 }
 /*# sourceMappingURL=style.css.map */
