@@ -1,5 +1,14 @@
 <template>
   <v-container class="homeView">
+    <v-snackbar top min-width="50%" color="success" v-model="dataRec.snackbarNewRec" :timeout="5000">
+      Receita cadastrada com sucesso
+
+      <template v-slot:action="{ attrs }">
+        <v-btn color="white" text v-bind="attrs" @click="snackbar = false">
+          Fechar
+        </v-btn>
+      </template>
+    </v-snackbar>
     <v-row>
       <v-col class="col" v-for="form in allFormsPagt" :key="form.id" :cols="10" :sm="6" :lg="3">
         <v-tooltip bottom>
@@ -38,8 +47,9 @@
           <v-card-text>
             <v-container>
               <v-row>
+                {{ this.dataRec.newRecValue }}
                 <v-col cols="12">
-                  <v-text-field v-model="dataRec.newRecValue" label="Informe o Valor *" hint="informe a descrição desejada" required> 
+                  <v-text-field v-model="dataRec.newRecValue" v-money="money" label="Informe o Valor *" hint="informe a descrição desejada" required> 
                     <v-icon slot="prepend">
                       mdi-cash-multiple
                     </v-icon>
@@ -64,12 +74,11 @@
               </v-row>
             </v-container>
             <small>* indica campo obrigatório</small>
-          </v-card-text>
-          <v-card-actions>
             <v-spacer></v-spacer>
-            <v-btn color="blue darken-1" text @click="dialog = false">Cancelar</v-btn>
-            <v-btn color="blue darken-1" text @click="newRec()">Cadastrar</v-btn>
-          </v-card-actions>
+            <v-btn class="ma-1" color="error" @click="dialog = false">Cancelar</v-btn>
+            <v-btn class="ma-1" color="primary" @click="newRec()">Salvar</v-btn>
+            <v-btn class="ma-1"  color="success darken-1" @click="newRec(true)">Salvar e continuar cadastrando</v-btn>
+          </v-card-text>
         </v-card>
       </v-dialog>
 
@@ -104,13 +113,26 @@
 import Vue from 'vue'
 import scrypt from "../assets/js/scrypt.js"
 import VueApexCharts from 'vue-apexcharts'
+
 import "../assets/style/style.css"
+import money from  'vuejs-money'
+
+Vue.use(money)
+
 Vue.use(VueApexCharts)
 Vue.component('apexchart', VueApexCharts)
-
 export default {
   data(){
     return {
+      price: 123.45,
+        money: {
+          decimal: ',',
+          thousands: '.',
+          prefix: 'R$ ',
+          //suffix: ' #',
+          precision: 2,
+          masked: false /* doesn't work with directive */
+        },
       dialog: false,
       allFormsPagt:[],
       dataRec: {
@@ -119,9 +141,8 @@ export default {
         totalRecInvest: 0,
         totalRecEmp: 0,
         totalRecOut: 0,
-        newRecValue: 0,
+        newRecValue: '0',
         newRecSelect: '',
-
         hasRec: false,
         optionsDonut: {
           show: true,
@@ -130,12 +151,12 @@ export default {
             return val + "%"
           },
           legend:{
-            position: 'bottom',
+            position: 'bottom'
           },
-          labels: ['Salário', 'Investimentos', 'Empréstimos', 'Outros'],
+          labels: ['Salário', 'Investimentos', 'Empréstimos', 'Outros']
         },
         series: [],
-
+        snackbarNewRec: false,
       },
       
     }
@@ -146,16 +167,16 @@ export default {
     this.allFormsPagt[1].categories = scrypt.recCategories;
     
     this.allFormsPagt[1].data = [
-      {idDategory: 0, desc:'teste', value: 7.56}, 
-      {idDategory: 1, desc:'teste 2', value: 14.56}, 
+//      {idDategory: 0, desc:'teste', value: 0.56}, 
+      /*{idDategory: 1, desc:'teste 2', value: 14.56}, 
       {idDategory: 1, desc:'teste 3', value: 14.56}, 
       {idDategory: 2, desc:'teste 4', value: 4.46},
       {idDategory: 2, desc:'teste 5', value: 8.46},
       {idDategory: 3, desc:'teste 6', value: 12.00},
-      /*{idDategory: 3, desc:'teste 7', value: 12.00},
+      {idDategory: 3, desc:'teste 7', value: 12.00},
       {idDategory: 1, desc:'teste 8', value: 4.46},
       {idDategory: 2, desc:'teste 9', value: 4.46},
-       */
+      */
     ]
 
     this.allFormsPagt[1].data.forEach(element => {
@@ -184,53 +205,63 @@ export default {
     var elementExist = document.getElementById("apexDonutRec")
     if(elementExist){
       if(this.dataRec.totalRecSalary != 0){
-        console.log("if 1")
         document.getElementById("apexDonutRec").classList.add("one")
       }
       if(this.dataRec.totalRecInvest != 0){
-        console.log("if 2")
         document.getElementById("apexDonutRec").classList.add("two")
       }
       if(this.dataRec.totalRecEmp != 0){
-        console.log("if 3")
         document.getElementById("apexDonutRec").classList.add("three")
       }
       if(this.dataRec.totalRecOut != 0){
-        console.log("if 4")
         document.getElementById("apexDonutRec").classList.add("four")
       }
     }
   },
   methods:{
-    newRec(){
-      this.dataRec.hasRec = true
-      var elementExist = document.getElementById("apexDonutRec")
+    newRec(continueSave){
+      if(this.dataRec.newRecValue == 'R$ 0,00' ){
+        alert("o valor está zerado " + parseFloat(this.dataRec.newRecValue.substring(3)).toPrecision(2))
+        console.log(Math.round(parseFloat(this.dataRec.newRecValue.substring(3))))
+      } else if(this.dataRec.newRecSelect == ""){
+        alert("selecione uma categoria ")
+      } else{
+        this.dataRec.hasRec = true
+        var elementExist = document.getElementById("apexDonutRec")
 
-      if(this.dataRec.newRecSelect == 'Salário'){
-        this.dataRec.totalRecSalary = parseFloat((this.dataRec.totalRecSalary + parseFloat(this.dataRec.newRecValue)).toFixed(2)); 
-        Vue.set(this.dataRec.series, 0, this.dataRec.totalRecSalary)
-      }
-      
-      if(this.dataRec.newRecSelect == 'Investimentos'){
-        this.dataRec.totalRecInvest = parseFloat((this.dataRec.totalRecInvest + parseFloat(this.dataRec.newRecValue)).toFixed(2)); 
-        Vue.set(this.dataRec.series, 1, this.dataRec.totalRecInvest)
-      }
-      
-      if(this.dataRec.newRecSelect == 'Empréstimos'){
-        this.dataRec.totalRecEmp = parseFloat((this.dataRec.totalRecEmp + parseFloat(this.dataRec.newRecValue)).toFixed(2)); 
-        Vue.set(this.dataRec.series, 2, this.dataRec.totalRecEmp)
-      }
-      
-      if(this.dataRec.newRecSelect == 'Outros'){
-        this.dataRec.totalRecOut = parseFloat((this.dataRec.totalRecOut + parseFloat(this.dataRec.newRecValue)).toFixed(2)); 
-        Vue.set(this.dataRec.series, 3, this.dataRec.totalRecOut)
-      }
+        if(this.dataRec.newRecSelect == 'Salário'){
+          this.dataRec.totalRecSalary = parseFloat(this.dataRec.totalRecSalary + parseFloat(this.dataRec.newRecValue.replace("R$ ", "").replace(",", ".")));
+          Vue.set(this.dataRec.series, 0, parseFloat(this.dataRec.totalRecSalary).toFixed(2))
+        }
+        
+        if(this.dataRec.newRecSelect == 'Investimentos'){
+          this.dataRec.totalRecInvest = parseFloat(this.dataRec.totalRecInvest + parseFloat(this.dataRec.newRecValue.replace("R$ ", "").replace(",", "."))); 
+          Vue.set(this.dataRec.series, 1, parseFloat(this.dataRec.totalRecInvest).toFixed(2))
+        }
+        
+        if(this.dataRec.newRecSelect == 'Empréstimos'){
+          this.dataRec.totalRecEmp = parseFloat(this.dataRec.totalRecEmp + parseFloat(this.dataRec.newRecValue.replace("R$ ", "").replace(",", "."))); 
+          Vue.set(this.dataRec.series, 2, parseFloat(this.dataRec.totalRecEmp).toFixed(2))
+        }
+        
+        if(this.dataRec.newRecSelect == 'Outros'){
+          this.dataRec.totalRecOut = parseFloat(this.dataRec.totalRecOut + parseFloat(this.dataRec.newRecValue.replace("R$ ", "").replace(",", "."))); 
+          Vue.set(this.dataRec.series, 3, parseFloat(this.dataRec.totalRecOut).toFixed(2))
+        }
 
-      if(elementExist){
-        if(this.dataRec.totalRecSalary != 0) document.getElementById("apexDonutRec").classList.add("one")
-        if(this.dataRec.totalRecInvest != 0) document.getElementById("apexDonutRec").classList.add("two")
-        if(this.dataRec.totalRecEmp != 0) document.getElementById("apexDonutRec").classList.add("three")
-        if(this.dataRec.totalRecOut != 0) document.getElementById("apexDonutRec").classList.add("four")
+        if(elementExist){
+          if(this.dataRec.totalRecSalary != 0) document.getElementById("apexDonutRec").classList.add("one")
+          if(this.dataRec.totalRecInvest != 0) document.getElementById("apexDonutRec").classList.add("two")
+          if(this.dataRec.totalRecEmp != 0) document.getElementById("apexDonutRec").classList.add("three")
+          if(this.dataRec.totalRecOut != 0) document.getElementById("apexDonutRec").classList.add("four")
+        }
+
+        this.dataRec.newRecValue = 0
+        this.dataRec.snackbarNewRec = true;
+
+        if(!continueSave){
+          this.dialog = false;
+        }
       }
     }
   }
