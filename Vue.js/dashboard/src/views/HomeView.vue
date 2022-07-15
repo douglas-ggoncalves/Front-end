@@ -47,7 +47,6 @@
           <v-card-text>
             <v-container>
               <v-row>
-                {{ this.dataRec.newRecValue }}
                 <v-col cols="12">
                   <v-text-field v-model="dataRec.newRecValue" v-money="money" label="Informe o Valor *" hint="informe a descrição desejada" required> 
                     <v-icon slot="prepend">
@@ -57,7 +56,7 @@
                 </v-col>
 
                 <v-col cols="12">
-                  <v-text-field label="Descrição" type="text" hint="informe a descrição desejada" required>
+                  <v-text-field v-model="dataRec.newRecDesc" label="Descrição" type="text" hint="informe a descrição desejada" required>
                     <v-icon slot="prepend">
                       mdi-file
                     </v-icon>
@@ -82,9 +81,22 @@
         </v-card>
       </v-dialog>
 
+      <v-dialog v-model="this.dataRec.error" persistent transition="dialog-bottom-transition" max-width="600" style="z-index: 10000;">
+        <v-card>
+          <v-toolbar color="error" dark>Ocorreu um erro</v-toolbar>
+          <v-card-text>
+            <div class="text-h4 pa-12">{{ dataRec.msgError }}</div>
+          </v-card-text>
+          <v-card-actions class="justify-end">
+            <v-btn color="error" block @click="dataRec.error = false">Fechar</v-btn>
+          </v-card-actions>
+        </v-card>
+      </v-dialog>
+
       <v-col class="dash" :cols="12" :sm="8" :md="6">
         <h4>Receitas por Categoria</h4>
         {{ this.allFormsPagt[1].data }}
+        
         <div id="first">
           <div v-if="!dataRec.hasRec">
             <v-icon>mdi-chart-donut</v-icon>
@@ -143,7 +155,10 @@ export default {
         totalRecOut: 0,
         newRecValue: '0',
         newRecSelect: '',
+        newRecDesc: '',
         hasRec: false,
+        error: false,
+        msgError: 'teste',
         optionsDonut: {
           show: true,
           showForZeroSeries: false,
@@ -164,39 +179,33 @@ export default {
   created(){
     this.allFormsPagt = scrypt.allFormsPagt;
     /* Receitas */
-    this.allFormsPagt[1].categories = scrypt.recCategories;
     
-    this.allFormsPagt[1].data = [
-//      {idDategory: 0, desc:'teste', value: 0.56}, 
-      /*{idDategory: 1, desc:'teste 2', value: 14.56}, 
-      {idDategory: 1, desc:'teste 3', value: 14.56}, 
-      {idDategory: 2, desc:'teste 4', value: 4.46},
-      {idDategory: 2, desc:'teste 5', value: 8.46},
-      {idDategory: 3, desc:'teste 6', value: 12.00},
-      {idDategory: 3, desc:'teste 7', value: 12.00},
-      {idDategory: 1, desc:'teste 8', value: 4.46},
-      {idDategory: 2, desc:'teste 9', value: 4.46},
-      */
-    ]
+    /*this.allFormsPagt[1].data = [
+      {idRec: 1, idDategory: 0, desc:'teste', value: 0.56}, 
+    ]*/
 
-    this.allFormsPagt[1].data.forEach(element => {
-      this.dataRec.hasRec = true
+    if(window) {
+      this.allFormsPagt[1].data = JSON.parse(localStorage.getItem('dataRec'))
+    } 
 
-      if(element.idDategory == 0){
-        this.dataRec.totalRecSalary = parseFloat((this.dataRec.totalRecSalary + element.value).toFixed(2)); 
-      }
+    if(this.allFormsPagt[1].data != null){
+      this.allFormsPagt[1].data.forEach(element => {
+        this.dataRec.hasRec = true
 
-      if(element.idDategory == 1){
-        this.dataRec.totalRecInvest = parseFloat((this.dataRec.totalRecInvest + element.value).toFixed(2)); 
-      }
-
-      if(element.idDategory == 2){
-        this.dataRec.totalRecEmp = parseFloat((this.dataRec.totalRecEmp + element.value).toFixed(2)); 
-      }
-      if(element.idDategory == 3){
-        this.dataRec.totalRecOut = parseFloat((this.dataRec.totalRecOut + element.value).toFixed(2)); 
-      }
-    })
+        if(element.idDategory == 0){
+          this.dataRec.totalRecSalary = parseFloat(this.dataRec.totalRecSalary + parseFloat(element.value)); 
+        }
+        if(element.idDategory == 1){
+          this.dataRec.totalRecInvest = parseFloat(this.dataRec.totalRecInvest + parseFloat(element.value)); 
+        }
+        if(element.idDategory == 2){
+          this.dataRec.totalRecEmp = parseFloat(this.dataRec.totalRecEmp + parseFloat(element.value)); 
+        }
+        if(element.idDategory == 3){
+          this.dataRec.totalRecOut = parseFloat(this.dataRec.totalRecOut + parseFloat(element.value)); 
+        }
+      })
+    }
 
     this.dataRec.series = [this.dataRec.totalRecSalary, this.dataRec.totalRecInvest, this.dataRec.totalRecEmp, this.dataRec.totalRecOut]
     /* Fim Receitas */
@@ -220,23 +229,44 @@ export default {
   },
   methods:{
     newRec(continueSave){
+
       if(this.dataRec.newRecValue == 'R$ 0,00' ){
-        alert("o valor está zerado " + parseFloat(this.dataRec.newRecValue.substring(3)).toPrecision(2))
-        console.log(Math.round(parseFloat(this.dataRec.newRecValue.substring(3))))
+        this.dataRec.error = true;
+        this.dataRec.msgError = 'Não é possivel cadastrar uma receita com valor zerado';
       } else if(this.dataRec.newRecSelect == ""){
-        alert("selecione uma categoria ")
+        this.dataRec.error = true;
+        this.dataRec.msgError = 'Não é possivel cadastrar uma receita sem categoria';
       } else{
         this.dataRec.hasRec = true
         var elementExist = document.getElementById("apexDonutRec")
+        console.log(this.dataRec.series)
+        console.log(this.dataRec.series[0])
+        console.log(this.dataRec.series[1])
+        console.log(this.dataRec.series[2])
 
         if(this.dataRec.newRecSelect == 'Salário'){
           this.dataRec.totalRecSalary = parseFloat(this.dataRec.totalRecSalary + parseFloat(this.dataRec.newRecValue.replace("R$ ", "").replace(",", ".")));
-          Vue.set(this.dataRec.series, 0, parseFloat(this.dataRec.totalRecSalary).toFixed(2))
+          /*
+          if(this.allFormsPagt[1].data == null){
+            this.allFormsPagt[1].data = [{idRec: 1, idDategory: 0, desc: this.dataRec.newRecDesc, value: parseFloat(this.dataRec.totalRecSalary).toFixed(2)}]
+          } else{
+            this.allFormsPagt[1].data.push({idRec: (this.allFormsPagt[1].data.length+1), idDategory: 0, desc: this.dataRec.newRecDesc, value: parseFloat(this.dataRec.newRecValue.replace("R$ ", "").replace(",", "."))})
+          }
+          localStorage.setItem("dataRec", JSON.stringify(this.allFormsPagt[1].data));
+          */
+          Vue.set(this.dataRec.series, 0, parseFloat(this.dataRec.totalRecSalary))
+
         }
         
         if(this.dataRec.newRecSelect == 'Investimentos'){
-          this.dataRec.totalRecInvest = parseFloat(this.dataRec.totalRecInvest + parseFloat(this.dataRec.newRecValue.replace("R$ ", "").replace(",", "."))); 
-          Vue.set(this.dataRec.series, 1, parseFloat(this.dataRec.totalRecInvest).toFixed(2))
+          this.dataRec.totalRecInvest = parseFloat(this.dataRec.totalRecInvest + parseFloat(this.dataRec.newRecValue.replace("R$ ", "").replace(",", "."))).toFixed(2); 
+/*          if(this.allFormsPagt[1].data == null){
+            this.allFormsPagt[1].data = [{idRec: 1, idDategory: 1, desc: this.dataRec.newRecDesc, value: parseFloat(this.dataRec.totalRecInvest).toFixed(2)}]
+          } else{
+            this.allFormsPagt[1].data.push({idRec: (this.allFormsPagt[1].data.length+1), idDategory: 1, desc: this.dataRec.newRecDesc, value: parseFloat(this.dataRec.newRecValue.replace("R$ ", "").replace(",", "."))})
+          }
+          localStorage.setItem("dataRec", JSON.stringify(this.allFormsPagt[1].data));*/
+          Vue.set(this.dataRec.series, 1, parseFloat(this.dataRec.totalRecInvest))
         }
         
         if(this.dataRec.newRecSelect == 'Empréstimos'){
@@ -257,6 +287,8 @@ export default {
         }
 
         this.dataRec.newRecValue = 0
+        this.dataRec.newRecSelect = ''
+        this.dataRec.newRecDesc = ''
         this.dataRec.snackbarNewRec = true;
 
         if(!continueSave){
