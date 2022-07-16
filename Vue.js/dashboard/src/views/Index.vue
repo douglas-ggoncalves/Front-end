@@ -11,17 +11,20 @@
     </v-snackbar>
     <v-row>
       <v-col class="col" v-for="form in allFormsPagt" :key="form.id" :cols="10" :sm="6" :lg="3">
+
         <v-tooltip bottom>
+
           <template v-slot:activator="{ on, attrs }">
+
             <div class="elements" v-bind="attrs" v-on="on">
+              <a href="#" style="">
+
               <div class="left">
                 <span>{{ form.title }}</span>
                 <br>
-                <span v-if="form.title == 'Receitas'" class="value">R$ {{ dataRec.totalRecSalary + dataRec.totalRecInvest + dataRec.totalRecEmp + dataRec.totalRecOut | toBrl }}</span>
+                <span v-if="form.title == 'Saldo Atual'" class="value">R$ {{ dataRec.totalRecSalary + dataRec.totalRecInvest + dataRec.totalRecEmp + dataRec.totalRecOut | toBrl }}</span>
+                <span v-else-if="form.title == 'Receitas'" class="value">R$ {{ dataRec.totalRecSalary + dataRec.totalRecInvest + dataRec.totalRecEmp + dataRec.totalRecOut | toBrl }}</span>
                 <span v-else class="value">R$ 00,00</span>
-                <div>
-                  
-                </div>
               </div>
               
               <div class="right">
@@ -33,11 +36,15 @@
                   iOrange: form.title == 'Cartão de crédito',}">{{ form.icon }}</v-icon>
                 </span>
               </div>
+              </a>
+
             </div>
-            
+
           </template>
           <span>{{ form.desc }}</span>
+
         </v-tooltip>
+
       </v-col>
     </v-row>
 
@@ -162,7 +169,11 @@ export default {
         hasRec: false,
         error: false,
         msgError: 'teste',
+        
         optionsDonut: {
+           tooltip: {
+            enabled: true,
+          },
           show: true,
           showForZeroSeries: false,
           formatter: function (val) {
@@ -171,7 +182,7 @@ export default {
           legend:{
             position: 'bottom'
           },
-          labels: ['Salário', 'Investimentos', 'Empréstimos', 'Outros']
+          labels: ['Salário', 'Investimentos', 'Empréstimos', 'Outros'],
         },
         series: [],
         snackbarNewRec: false,
