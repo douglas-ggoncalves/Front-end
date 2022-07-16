@@ -17,7 +17,11 @@
               <div class="left">
                 <span>{{ form.title }}</span>
                 <br>
-                <span class="value">R$ 00,00</span>
+                <span v-if="form.title == 'Receitas'" class="value">R$ {{ dataRec.totalRecSalary + dataRec.totalRecInvest + dataRec.totalRecEmp + dataRec.totalRecOut | toBrl }}</span>
+                <span v-else class="value">R$ 00,00</span>
+                <div>
+                  
+                </div>
               </div>
               
               <div class="right">
@@ -95,7 +99,6 @@
 
       <v-col class="dash" :cols="12" :sm="8" :md="6">
         <h4>Receitas por Categoria</h4>
-        {{ this.allFormsPagt[1].data }}
         
         <div id="first">
           <div v-if="!dataRec.hasRec">
@@ -180,9 +183,11 @@ export default {
     this.allFormsPagt = scrypt.allFormsPagt;
     /* Receitas */
     
-    /*this.allFormsPagt[1].data = [
+    /*
+    this.allFormsPagt[1].data = [
       {idRec: 1, idDategory: 0, desc:'teste', value: 0.56}, 
-    ]*/
+    ]
+    */
 
     if(window) {
       this.allFormsPagt[1].data = JSON.parse(localStorage.getItem('dataRec'))
@@ -193,16 +198,16 @@ export default {
         this.dataRec.hasRec = true
 
         if(element.idDategory == 0){
-          this.dataRec.totalRecSalary = parseFloat(this.dataRec.totalRecSalary + parseFloat(element.value)); 
+          this.dataRec.totalRecSalary = this.round(this.dataRec.totalRecSalary, element.value)
         }
         if(element.idDategory == 1){
-          this.dataRec.totalRecInvest = parseFloat(this.dataRec.totalRecInvest + parseFloat(element.value)); 
+          this.dataRec.totalRecInvest = this.round(this.dataRec.totalRecInvest, element.value)
         }
         if(element.idDategory == 2){
-          this.dataRec.totalRecEmp = parseFloat(this.dataRec.totalRecEmp + parseFloat(element.value)); 
+          this.dataRec.totalRecEmp = this.round(this.dataRec.totalRecEmp, element.value)
         }
         if(element.idDategory == 3){
-          this.dataRec.totalRecOut = parseFloat(this.dataRec.totalRecOut + parseFloat(element.value)); 
+          this.dataRec.totalRecOut = this.round(this.dataRec.totalRecOut, element.value)
         }
       })
     }
@@ -228,6 +233,7 @@ export default {
     }
   },
   methods:{
+    
     newRec(continueSave){
 
       if(this.dataRec.newRecValue == 'R$ 0,00' ){
@@ -239,44 +245,53 @@ export default {
       } else{
         this.dataRec.hasRec = true
         var elementExist = document.getElementById("apexDonutRec")
-        console.log(this.dataRec.series)
-        console.log(this.dataRec.series[0])
-        console.log(this.dataRec.series[1])
-        console.log(this.dataRec.series[2])
 
         if(this.dataRec.newRecSelect == 'Salário'){
-          this.dataRec.totalRecSalary = parseFloat(this.dataRec.totalRecSalary + parseFloat(this.dataRec.newRecValue.replace("R$ ", "").replace(",", ".")));
-          /*
+          this.dataRec.totalRecSalary = this.round(this.dataRec.totalRecSalary, this.dataRec.newRecValue.replace("R$ ", "").replace(",", "."));
+          
           if(this.allFormsPagt[1].data == null){
-            this.allFormsPagt[1].data = [{idRec: 1, idDategory: 0, desc: this.dataRec.newRecDesc, value: parseFloat(this.dataRec.totalRecSalary).toFixed(2)}]
+            this.allFormsPagt[1].data = [{idRec: 1, idDategory: 0, desc: this.dataRec.newRecDesc, value: this.dataRec.totalRecSalary}]
           } else{
-            this.allFormsPagt[1].data.push({idRec: (this.allFormsPagt[1].data.length+1), idDategory: 0, desc: this.dataRec.newRecDesc, value: parseFloat(this.dataRec.newRecValue.replace("R$ ", "").replace(",", "."))})
+            this.allFormsPagt[1].data.push({idRec: (this.allFormsPagt[1].data.length+1), idDategory: 0, desc: this.dataRec.newRecDesc, value: this.round(this.dataRec.newRecValue.replace("R$ ", "").replace(",", "."))})
           }
           localStorage.setItem("dataRec", JSON.stringify(this.allFormsPagt[1].data));
-          */
-          Vue.set(this.dataRec.series, 0, parseFloat(this.dataRec.totalRecSalary))
-
+          Vue.set(this.dataRec.series, 0, this.dataRec.totalRecSalary)
         }
         
         if(this.dataRec.newRecSelect == 'Investimentos'){
-          this.dataRec.totalRecInvest = parseFloat(this.dataRec.totalRecInvest + parseFloat(this.dataRec.newRecValue.replace("R$ ", "").replace(",", "."))).toFixed(2); 
-/*          if(this.allFormsPagt[1].data == null){
-            this.allFormsPagt[1].data = [{idRec: 1, idDategory: 1, desc: this.dataRec.newRecDesc, value: parseFloat(this.dataRec.totalRecInvest).toFixed(2)}]
+          this.dataRec.totalRecInvest = this.round(this.dataRec.totalRecInvest, this.dataRec.newRecValue.replace("R$ ", "").replace(",", "."));
+
+          if(this.allFormsPagt[1].data == null){
+            this.allFormsPagt[1].data = [{idRec: 1, idDategory: 1, desc: this.dataRec.newRecDesc, value: this.dataRec.totalRecInvest}]
           } else{
-            this.allFormsPagt[1].data.push({idRec: (this.allFormsPagt[1].data.length+1), idDategory: 1, desc: this.dataRec.newRecDesc, value: parseFloat(this.dataRec.newRecValue.replace("R$ ", "").replace(",", "."))})
+            this.allFormsPagt[1].data.push({idRec: (this.allFormsPagt[1].data.length+1), idDategory: 1, desc: this.dataRec.newRecDesc, value: this.round(this.dataRec.newRecValue.replace("R$ ", "").replace(",", "."))})
           }
-          localStorage.setItem("dataRec", JSON.stringify(this.allFormsPagt[1].data));*/
-          Vue.set(this.dataRec.series, 1, parseFloat(this.dataRec.totalRecInvest))
+          localStorage.setItem("dataRec", JSON.stringify(this.allFormsPagt[1].data));
+          Vue.set(this.dataRec.series, 1, this.dataRec.totalRecInvest)
         }
         
         if(this.dataRec.newRecSelect == 'Empréstimos'){
-          this.dataRec.totalRecEmp = parseFloat(this.dataRec.totalRecEmp + parseFloat(this.dataRec.newRecValue.replace("R$ ", "").replace(",", "."))); 
-          Vue.set(this.dataRec.series, 2, parseFloat(this.dataRec.totalRecEmp).toFixed(2))
+          this.dataRec.totalRecEmp = this.round(this.dataRec.totalRecEmp, this.dataRec.newRecValue.replace("R$ ", "").replace(",", "."));
+
+          if(this.allFormsPagt[1].data == null){
+            this.allFormsPagt[1].data = [{idRec: 1, idDategory: 2, desc: this.dataRec.newRecDesc, value: this.dataRec.totalRecEmp}]
+          } else{
+            this.allFormsPagt[1].data.push({idRec: (this.allFormsPagt[1].data.length+1), idDategory: 2, desc: this.dataRec.newRecDesc, value: this.round(this.dataRec.newRecValue.replace("R$ ", "").replace(",", "."))})
+          }
+          localStorage.setItem("dataRec", JSON.stringify(this.allFormsPagt[1].data));
+          Vue.set(this.dataRec.series, 2, this.dataRec.totalRecEmp)
         }
         
         if(this.dataRec.newRecSelect == 'Outros'){
-          this.dataRec.totalRecOut = parseFloat(this.dataRec.totalRecOut + parseFloat(this.dataRec.newRecValue.replace("R$ ", "").replace(",", "."))); 
-          Vue.set(this.dataRec.series, 3, parseFloat(this.dataRec.totalRecOut).toFixed(2))
+          this.dataRec.totalRecOut = this.round(this.dataRec.totalRecOut, this.dataRec.newRecValue.replace("R$ ", "").replace(",", "."));
+
+          if(this.allFormsPagt[1].data == null){
+            this.allFormsPagt[1].data = [{idRec: 1, idDategory: 3, desc: this.dataRec.newRecDesc, value: this.dataRec.totalRecOut}]
+          } else{
+            this.allFormsPagt[1].data.push({idRec: (this.allFormsPagt[1].data.length+1), idDategory: 3, desc: this.dataRec.newRecDesc, value: this.round(this.dataRec.newRecValue.replace("R$ ", "").replace(",", "."))})
+          }
+          localStorage.setItem("dataRec", JSON.stringify(this.allFormsPagt[1].data));
+          Vue.set(this.dataRec.series, 3, this.dataRec.totalRecOut)
         }
 
         if(elementExist){
@@ -295,6 +310,20 @@ export default {
           this.dialog = false;
         }
       }
+    },
+    round(num, num2){
+      if(num2){
+        return (Math.round((num + parseFloat(num2)) * 100) / 100);
+      }
+
+      if(!num2){
+        return (Math.round(num * 100) / 100);
+      }
+    }
+  },
+  filters: {
+    toBrl(value){
+      return (Math.round(value * 100) / 100).toFixed(2).replace(".",",");
     }
   }
 }
