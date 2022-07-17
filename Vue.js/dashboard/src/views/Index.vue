@@ -11,13 +11,10 @@
     </v-snackbar>
     <v-row>
       <v-col class="col" v-for="form in allFormsPagt" :key="form.id" :cols="10" :sm="6" :lg="3">
-
         <v-tooltip bottom>
-
           <template v-slot:activator="{ on, attrs }">
-
             <div class="elements" v-bind="attrs" v-on="on">
-              <a href="#" style="">
+              <a :href="`transacoes/${form.slug}`" style="">
 
               <div class="left">
                 <span>{{ form.title }}</span>
@@ -37,14 +34,10 @@
                 </span>
               </div>
               </a>
-
             </div>
-
           </template>
           <span>{{ form.desc }}</span>
-
         </v-tooltip>
-
       </v-col>
     </v-row>
 
@@ -59,27 +52,16 @@
             <v-container>
               <v-row>
                 <v-col cols="12">
-                  <v-text-field v-model="dataRec.newRecValue" v-money="money" label="Informe o Valor *" hint="informe a descrição desejada" required> 
-                    <v-icon slot="prepend">
-                      mdi-cash-multiple
-                    </v-icon>
-                  </v-text-field>
+                  <v-text-field :prepend-inner-icon="'mdi-cash-multiple'" v-model="dataRec.newRecValue" v-money="money" label="Informe o Valor *" hint="informe a descrição desejada" required/> 
                 </v-col>
 
                 <v-col cols="12">
-                  <v-text-field v-model="dataRec.newRecDesc" label="Descrição" type="text" hint="informe a descrição desejada" required>
-                    <v-icon slot="prepend">
-                      mdi-file
-                    </v-icon>
-                  </v-text-field>
+                  <v-text-field :prepend-inner-icon="'mdi-file'" v-model="dataRec.newRecDesc" label="Descrição" type="text" hint="informe a descrição desejada" required/>
                 </v-col>
                 <v-col cols="12">
-                  <v-select v-model="dataRec.newRecSelect" :items="[this.allFormsPagt[1].categories[0].title, this.allFormsPagt[1].categories[1].title
-                  , this.allFormsPagt[1].categories[2].title,
-                  , this.allFormsPagt[1].categories[3].title]" label="Categoria *" required>
-                  <v-icon slot="prepend">
-                    mdi-label
-                  </v-icon></v-select>
+                  <v-select :prepend-inner-icon="'mdi-label'" v-model="dataRec.newRecSelect" :items="[this.allFormsPagt[1].categories[0].title, this.allFormsPagt[1].categories[1].title, 
+                    this.allFormsPagt[1].categories[2].title, this.allFormsPagt[1].categories[3].title]" label="Categoria *" required>
+                  </v-select>
                 </v-col>
               </v-row>
             </v-container>
@@ -147,14 +129,13 @@ export default {
   data(){
     return {
       price: 123.45,
-        money: {
-          decimal: ',',
-          thousands: '.',
-          prefix: 'R$ ',
-          //suffix: ' #',
-          precision: 2,
-          masked: false /* doesn't work with directive */
-        },
+      money: {
+        decimal: ',',
+        thousands: '.',
+        prefix: 'R$ ',
+        precision: 2,
+        masked: false
+      },
       dialog: false,
       allFormsPagt:[],
       dataRec: {
@@ -171,7 +152,7 @@ export default {
         msgError: 'teste',
         
         optionsDonut: {
-           tooltip: {
+          tooltip: {
             enabled: true,
           },
           show: true,
@@ -187,7 +168,6 @@ export default {
         series: [],
         snackbarNewRec: false,
       },
-      
     }
   },
   created(){
@@ -244,9 +224,7 @@ export default {
     }
   },
   methods:{
-    
     newRec(continueSave){
-
       if(this.dataRec.newRecValue == 'R$ 0,00' ){
         this.dataRec.error = true;
         this.dataRec.msgError = 'Não é possivel cadastrar uma receita com valor zerado';
@@ -261,9 +239,9 @@ export default {
           this.dataRec.totalRecSalary = this.round(this.dataRec.totalRecSalary, this.dataRec.newRecValue.replace("R$ ", "").replace(",", "."));
           
           if(this.allFormsPagt[1].data == null){
-            this.allFormsPagt[1].data = [{idRec: 1, idDategory: 0, desc: this.dataRec.newRecDesc, value: this.dataRec.totalRecSalary}]
+            this.allFormsPagt[1].data = [{idRec: Date.now(), idDategory: 0, desc: this.dataRec.newRecDesc, value: this.dataRec.totalRecSalary}]
           } else{
-            this.allFormsPagt[1].data.push({idRec: (this.allFormsPagt[1].data.length+1), idDategory: 0, desc: this.dataRec.newRecDesc, value: this.round(this.dataRec.newRecValue.replace("R$ ", "").replace(",", "."))})
+            this.allFormsPagt[1].data.push({idRec: Date.now(), idDategory: 0, desc: this.dataRec.newRecDesc, value: this.round(this.dataRec.newRecValue.replace("R$ ", "").replace(",", "."))})
           }
           localStorage.setItem("dataRec", JSON.stringify(this.allFormsPagt[1].data));
           Vue.set(this.dataRec.series, 0, this.dataRec.totalRecSalary)
@@ -273,9 +251,9 @@ export default {
           this.dataRec.totalRecInvest = this.round(this.dataRec.totalRecInvest, this.dataRec.newRecValue.replace("R$ ", "").replace(",", "."));
 
           if(this.allFormsPagt[1].data == null){
-            this.allFormsPagt[1].data = [{idRec: 1, idDategory: 1, desc: this.dataRec.newRecDesc, value: this.dataRec.totalRecInvest}]
+            this.allFormsPagt[1].data = [{idRec: Date.now(), idDategory: 1, desc: this.dataRec.newRecDesc, value: this.dataRec.totalRecInvest}]
           } else{
-            this.allFormsPagt[1].data.push({idRec: (this.allFormsPagt[1].data.length+1), idDategory: 1, desc: this.dataRec.newRecDesc, value: this.round(this.dataRec.newRecValue.replace("R$ ", "").replace(",", "."))})
+            this.allFormsPagt[1].data.push({idRec: Date.now(), idDategory: 1, desc: this.dataRec.newRecDesc, value: this.round(this.dataRec.newRecValue.replace("R$ ", "").replace(",", "."))})
           }
           localStorage.setItem("dataRec", JSON.stringify(this.allFormsPagt[1].data));
           Vue.set(this.dataRec.series, 1, this.dataRec.totalRecInvest)
@@ -285,9 +263,9 @@ export default {
           this.dataRec.totalRecEmp = this.round(this.dataRec.totalRecEmp, this.dataRec.newRecValue.replace("R$ ", "").replace(",", "."));
 
           if(this.allFormsPagt[1].data == null){
-            this.allFormsPagt[1].data = [{idRec: 1, idDategory: 2, desc: this.dataRec.newRecDesc, value: this.dataRec.totalRecEmp}]
+            this.allFormsPagt[1].data = [{idRec: Date.now(), idDategory: 2, desc: this.dataRec.newRecDesc, value: this.dataRec.totalRecEmp}]
           } else{
-            this.allFormsPagt[1].data.push({idRec: (this.allFormsPagt[1].data.length+1), idDategory: 2, desc: this.dataRec.newRecDesc, value: this.round(this.dataRec.newRecValue.replace("R$ ", "").replace(",", "."))})
+            this.allFormsPagt[1].data.push({idRec: Date.now(), idDategory: 2, desc: this.dataRec.newRecDesc, value: this.round(this.dataRec.newRecValue.replace("R$ ", "").replace(",", "."))})
           }
           localStorage.setItem("dataRec", JSON.stringify(this.allFormsPagt[1].data));
           Vue.set(this.dataRec.series, 2, this.dataRec.totalRecEmp)
@@ -297,9 +275,9 @@ export default {
           this.dataRec.totalRecOut = this.round(this.dataRec.totalRecOut, this.dataRec.newRecValue.replace("R$ ", "").replace(",", "."));
 
           if(this.allFormsPagt[1].data == null){
-            this.allFormsPagt[1].data = [{idRec: 1, idDategory: 3, desc: this.dataRec.newRecDesc, value: this.dataRec.totalRecOut}]
+            this.allFormsPagt[1].data = [{idRec: Date.now(), idDategory: 3, desc: this.dataRec.newRecDesc, value: this.dataRec.totalRecOut}]
           } else{
-            this.allFormsPagt[1].data.push({idRec: (this.allFormsPagt[1].data.length+1), idDategory: 3, desc: this.dataRec.newRecDesc, value: this.round(this.dataRec.newRecValue.replace("R$ ", "").replace(",", "."))})
+            this.allFormsPagt[1].data.push({idRec: Date.now(), idDategory: 3, desc: this.dataRec.newRecDesc, value: this.round(this.dataRec.newRecValue.replace("R$ ", "").replace(",", "."))})
           }
           localStorage.setItem("dataRec", JSON.stringify(this.allFormsPagt[1].data));
           Vue.set(this.dataRec.series, 3, this.dataRec.totalRecOut)

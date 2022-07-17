@@ -9,32 +9,46 @@
         </v-btn>
       </template>
     </v-snackbar>
+
     <v-row>
-      <v-col class="col" v-for="form in allFormsPagt" :key="form.id" :cols="10" :sm="6" :lg="3">
+      <v-col class="col" :cols="9">
+        {{ allFormsPagt[1].data }}
+      </v-col>
+      <v-col class="col" :cols="9">
+        <v-card>
+          <v-card-title>
+            Receitas
+            <v-spacer></v-spacer>
+            <v-text-field v-model="search2" append-icon="mdi-magnify" label="Pesquisar" single-line hide-details></v-text-field>
+          </v-card-title>
+          <v-data-table :no-data-text="'Não há dados'" :no-results-text="'Nenhum resultado encontrado'" 
+          :footer-props="{'items-per-page-text':'Itens por página', pageText: '{0}-{1} de {2}', 'items-per-page-all-text':'Todos'}"
+          :headers="headers2" :items="desserts2" :search="search2"></v-data-table>
+        </v-card>
+      </v-col>
+      
+      <v-col class="col" :cols="3">
         <v-tooltip bottom>
           <template v-slot:activator="{ on, attrs }">
             <div class="elements" v-bind="attrs" v-on="on">
+              <a :href="`#`">
+
               <div class="left">
-                <span>{{ form.title }}</span>
+                <span>Receitas</span>
                 <br>
-                <span v-if="form.title == 'Saldo Atual'" class="value">R$ {{ dataRec.totalRecSalary + dataRec.totalRecInvest + dataRec.totalRecEmp + dataRec.totalRecOut | toBrl }}</span>
-                <span v-else-if="form.title == 'Receitas'" class="value">R$ {{ dataRec.totalRecSalary + dataRec.totalRecInvest + dataRec.totalRecEmp + dataRec.totalRecOut | toBrl }}</span>
-                <span v-else class="value">R$ 00,00</span>
+                
+                <span class="value">R$ {{ dataRec.totalRecSalary + dataRec.totalRecInvest + dataRec.totalRecEmp + dataRec.totalRecOut | toBrl }}</span>
               </div>
               
               <div class="right">
-                <span>
-                  <v-icon :class="{
-                  iGreen: form.title == 'Receitas',
-                  iRed: form.title == 'Despesas',
-                  iBlue: form.title == 'Saldo Atual',
-                  iOrange: form.title == 'Cartão de crédito',}">{{ form.icon }}</v-icon>
+               <span>
+                  <v-icon class="iGreen">mdi-arrow-up</v-icon>
                 </span>
               </div>
+              </a>
             </div>
-            
           </template>
-          <span>{{ form.desc }}</span>
+          <span>descrição</span>
         </v-tooltip>
       </v-col>
     </v-row>
@@ -96,7 +110,7 @@
       </v-dialog>
 
       <v-col class="dash" :cols="12" :sm="8" :md="6">
-        <h4>Receitas por Categoria recs vue</h4>
+        <h4>Receitas por Categoria</h4>
         
         <div id="first">
           <div v-if="!dataRec.hasRec">
@@ -129,7 +143,6 @@ import VueApexCharts from 'vue-apexcharts'
 
 import "../../assets/style/style.css"
 import money from  'vuejs-money'
-
 Vue.use(money)
 
 Vue.use(VueApexCharts)
@@ -137,15 +150,33 @@ Vue.component('apexchart', VueApexCharts)
 export default {
   data(){
     return {
-      price: 123.45,
-        money: {
-          decimal: ',',
-          thousands: '.',
-          prefix: 'R$ ',
-          //suffix: ' #',
-          precision: 2,
-          masked: false /* doesn't work with directive */
+      search2: '',
+      headers2: [
+        { text: 'Descrição', align: 'start', value: 'desc'},
+        { text: 'Categoria', value: 'idDategory'},
+        { text: 'Valor', value: 'value' },
+      ],
+      desserts2: [
+        /*
+        {
+          name: 'Frozen Yogurt',
+          value: 6.0,
         },
+        {
+          name: 'Ice cream sandwich',
+          value: 9.0,
+        },
+        */
+      ],
+
+      price: 123.45,
+      money: {
+        decimal: ',',
+        thousands: '.',
+        prefix: 'R$ ',
+        precision: 2,
+        masked: false
+      },
       dialog: false,
       allFormsPagt:[],
       dataRec: {
@@ -159,10 +190,10 @@ export default {
         newRecDesc: '',
         hasRec: false,
         error: false,
-        msgError: 'teste',
+        msgError: '',
         
         optionsDonut: {
-           tooltip: {
+          tooltip: {
             enabled: true,
           },
           show: true,
@@ -178,7 +209,6 @@ export default {
         series: [],
         snackbarNewRec: false,
       },
-      
     }
   },
   created(){
@@ -211,7 +241,10 @@ export default {
         if(element.idDategory == 3){
           this.dataRec.totalRecOut = this.round(this.dataRec.totalRecOut, element.value)
         }
+
+        //this.desserts2.push({name: element.desc, value: element.value})
       })
+      this.desserts2 = this.allFormsPagt[1].data
     }
 
     this.dataRec.series = [this.dataRec.totalRecSalary, this.dataRec.totalRecInvest, this.dataRec.totalRecEmp, this.dataRec.totalRecOut]
@@ -235,9 +268,7 @@ export default {
     }
   },
   methods:{
-    
     newRec(continueSave){
-
       if(this.dataRec.newRecValue == 'R$ 0,00' ){
         this.dataRec.error = true;
         this.dataRec.msgError = 'Não é possivel cadastrar uma receita com valor zerado';
@@ -252,9 +283,9 @@ export default {
           this.dataRec.totalRecSalary = this.round(this.dataRec.totalRecSalary, this.dataRec.newRecValue.replace("R$ ", "").replace(",", "."));
           
           if(this.allFormsPagt[1].data == null){
-            this.allFormsPagt[1].data = [{idRec: 1, idDategory: 0, desc: this.dataRec.newRecDesc, value: this.dataRec.totalRecSalary}]
+            this.allFormsPagt[1].data = [{idRec: Date.now(), idDategory: 0, desc: this.dataRec.newRecDesc, value: this.dataRec.totalRecSalary}]
           } else{
-            this.allFormsPagt[1].data.push({idRec: (this.allFormsPagt[1].data.length+1), idDategory: 0, desc: this.dataRec.newRecDesc, value: this.round(this.dataRec.newRecValue.replace("R$ ", "").replace(",", "."))})
+            this.allFormsPagt[1].data.push({idRec: Date.now(), idDategory: 0, desc: this.dataRec.newRecDesc, value: this.round(this.dataRec.newRecValue.replace("R$ ", "").replace(",", "."))})
           }
           localStorage.setItem("dataRec", JSON.stringify(this.allFormsPagt[1].data));
           Vue.set(this.dataRec.series, 0, this.dataRec.totalRecSalary)
@@ -264,9 +295,9 @@ export default {
           this.dataRec.totalRecInvest = this.round(this.dataRec.totalRecInvest, this.dataRec.newRecValue.replace("R$ ", "").replace(",", "."));
 
           if(this.allFormsPagt[1].data == null){
-            this.allFormsPagt[1].data = [{idRec: 1, idDategory: 1, desc: this.dataRec.newRecDesc, value: this.dataRec.totalRecInvest}]
+            this.allFormsPagt[1].data = [{idRec: Date.now(), idDategory: 1, desc: this.dataRec.newRecDesc, value: this.dataRec.totalRecInvest}]
           } else{
-            this.allFormsPagt[1].data.push({idRec: (this.allFormsPagt[1].data.length+1), idDategory: 1, desc: this.dataRec.newRecDesc, value: this.round(this.dataRec.newRecValue.replace("R$ ", "").replace(",", "."))})
+            this.allFormsPagt[1].data.push({idRec: Date.now(), idDategory: 1, desc: this.dataRec.newRecDesc, value: this.round(this.dataRec.newRecValue.replace("R$ ", "").replace(",", "."))})
           }
           localStorage.setItem("dataRec", JSON.stringify(this.allFormsPagt[1].data));
           Vue.set(this.dataRec.series, 1, this.dataRec.totalRecInvest)
@@ -276,9 +307,9 @@ export default {
           this.dataRec.totalRecEmp = this.round(this.dataRec.totalRecEmp, this.dataRec.newRecValue.replace("R$ ", "").replace(",", "."));
 
           if(this.allFormsPagt[1].data == null){
-            this.allFormsPagt[1].data = [{idRec: 1, idDategory: 2, desc: this.dataRec.newRecDesc, value: this.dataRec.totalRecEmp}]
+            this.allFormsPagt[1].data = [{idRec: Date.now(), idDategory: 2, desc: this.dataRec.newRecDesc, value: this.dataRec.totalRecEmp}]
           } else{
-            this.allFormsPagt[1].data.push({idRec: (this.allFormsPagt[1].data.length+1), idDategory: 2, desc: this.dataRec.newRecDesc, value: this.round(this.dataRec.newRecValue.replace("R$ ", "").replace(",", "."))})
+            this.allFormsPagt[1].data.push({idRec: Date.now(), idDategory: 2, desc: this.dataRec.newRecDesc, value: this.round(this.dataRec.newRecValue.replace("R$ ", "").replace(",", "."))})
           }
           localStorage.setItem("dataRec", JSON.stringify(this.allFormsPagt[1].data));
           Vue.set(this.dataRec.series, 2, this.dataRec.totalRecEmp)
@@ -288,9 +319,9 @@ export default {
           this.dataRec.totalRecOut = this.round(this.dataRec.totalRecOut, this.dataRec.newRecValue.replace("R$ ", "").replace(",", "."));
 
           if(this.allFormsPagt[1].data == null){
-            this.allFormsPagt[1].data = [{idRec: 1, idDategory: 3, desc: this.dataRec.newRecDesc, value: this.dataRec.totalRecOut}]
+            this.allFormsPagt[1].data = [{idRec: Date.now(), idDategory: 3, desc: this.dataRec.newRecDesc, value: this.dataRec.totalRecOut}]
           } else{
-            this.allFormsPagt[1].data.push({idRec: (this.allFormsPagt[1].data.length+1), idDategory: 3, desc: this.dataRec.newRecDesc, value: this.round(this.dataRec.newRecValue.replace("R$ ", "").replace(",", "."))})
+            this.allFormsPagt[1].data.push({idRec: Date.now(), idDategory: 3, desc: this.dataRec.newRecDesc, value: this.round(this.dataRec.newRecValue.replace("R$ ", "").replace(",", "."))})
           }
           localStorage.setItem("dataRec", JSON.stringify(this.allFormsPagt[1].data));
           Vue.set(this.dataRec.series, 3, this.dataRec.totalRecOut)
@@ -329,7 +360,5 @@ export default {
     }
   }
 }
-
-
 </script>
 
