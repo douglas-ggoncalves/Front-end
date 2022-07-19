@@ -52,7 +52,7 @@
             <v-container>
               <v-row>
                 <v-col cols="12">
-                  <v-text-field :prepend-inner-icon="'mdi-cash-multiple'" v-model="dataRec.newRecValue" v-money="money" label="Informe o Valor *" hint="informe a descrição desejada" required/> 
+                  <v-text-field :prepend-inner-icon="'mdi-cash-multiple'" v-model="dataRec.newRecValue" v-money="money" label="Informe o Valor *" hint="informe o valor desejado" required/> 
                 </v-col>
 
                 <v-col cols="12">
@@ -236,6 +236,8 @@ export default {
         var elementExist = document.getElementById("apexDonutRec")
 
         if(this.dataRec.newRecSelect == 'Salário'){
+          if(this.dataRec.newRecDesc.trim() == '') this.dataRec.newRecDesc = 'Salário'
+
           this.dataRec.totalRecSalary = this.round(this.dataRec.totalRecSalary, this.dataRec.newRecValue.replace("R$ ", "").replace(",", "."));
           
           if(this.allFormsPagt[1].data == null){
@@ -248,6 +250,8 @@ export default {
         }
         
         if(this.dataRec.newRecSelect == 'Investimentos'){
+          if(this.dataRec.newRecDesc.trim() == '') this.dataRec.newRecDesc = 'Investimentos'
+
           this.dataRec.totalRecInvest = this.round(this.dataRec.totalRecInvest, this.dataRec.newRecValue.replace("R$ ", "").replace(",", "."));
 
           if(this.allFormsPagt[1].data == null){
@@ -260,6 +264,8 @@ export default {
         }
         
         if(this.dataRec.newRecSelect == 'Empréstimos'){
+          if(this.dataRec.newRecDesc.trim() == '') this.dataRec.newRecDesc = 'Empréstimos'
+
           this.dataRec.totalRecEmp = this.round(this.dataRec.totalRecEmp, this.dataRec.newRecValue.replace("R$ ", "").replace(",", "."));
 
           if(this.allFormsPagt[1].data == null){
@@ -272,6 +278,8 @@ export default {
         }
         
         if(this.dataRec.newRecSelect == 'Outros'){
+          if(this.dataRec.newRecDesc.trim() == '') this.dataRec.newRecDesc = 'Outros'
+
           this.dataRec.totalRecOut = this.round(this.dataRec.totalRecOut, this.dataRec.newRecValue.replace("R$ ", "").replace(",", "."));
 
           if(this.allFormsPagt[1].data == null){

@@ -1,7 +1,7 @@
 <template>
   <v-container class="homeView">
     <v-snackbar top min-width="50%" color="success" v-model="dataRec.snackbarNewRec" :timeout="5000">
-      Receita cadastrada com sucesso
+      Receita excluída com sucesso
 
       <template v-slot:action="{ attrs }">
         <v-btn color="white" text v-bind="attrs" @click="snackbar = false">
@@ -11,6 +11,52 @@
     </v-snackbar>
 
     <v-row>
+      <v-dialog v-model="dialogEdit" max-width="500px">
+        <v-card>
+          <v-card-title>
+            <span class="text-h5">Editar Receita</span>
+          </v-card-title>
+
+          <v-card-text>
+            <v-container>
+              <v-row>
+                 <v-col cols="12">
+                  <v-text-field :prepend-inner-icon="'mdi-cash-multiple'" v-model="editedItem.value" v-money="money" label="Informe o Valor *"  hint="informe o valor desejado"></v-text-field>
+                </v-col>
+
+                <v-col cols="12">
+                  <v-text-field :prepend-inner-icon="'mdi-file'" v-model="editedItem.desc" label="Descrição" hint="informe a descrição desejada"></v-text-field>
+                </v-col>
+               
+                <v-col cols="12">
+                  <v-select :prepend-inner-icon="'mdi-label'" v-model="editedItem.idDategory" 
+                    :items="[this.allFormsPagt[1].categories[0].title, this.allFormsPagt[1].categories[1].title, 
+                    this.allFormsPagt[1].categories[2].title, this.allFormsPagt[1].categories[3].title]" label="Categoria *" required>
+                  </v-select>
+                </v-col>
+              </v-row>
+            </v-container>
+          </v-card-text>
+
+          <v-card-actions>
+            <v-spacer></v-spacer>
+            <v-btn color="blue darken-1" text @click="dialogEdit = false">Cancelar</v-btn>
+            <v-btn color="blue darken-1" text @click="saveEdit()">Salvar</v-btn>
+          </v-card-actions>
+        </v-card>
+      </v-dialog>
+
+      <v-dialog v-model="dialogDelete" max-width="600px">
+        <v-card>
+          <v-card-title class="text-h5">Tem certeza de que deseja excluir esta receita?</v-card-title>
+          <v-card-actions>
+            <v-spacer></v-spacer>
+            <v-btn color="blue darken-1" text @click="dialogDelete = false">Cancelar</v-btn>
+            <v-btn color="blue darken-1" text @click="deleteItemConfirm()">OK</v-btn>
+            <v-spacer></v-spacer>
+          </v-card-actions>
+        </v-card>
+      </v-dialog>
       <v-col class="col" :cols="9">
         {{ allFormsPagt[1].data }}
       </v-col>
@@ -23,7 +69,17 @@
           </v-card-title>
           <v-data-table :no-data-text="'Não há dados'" :no-results-text="'Nenhum resultado encontrado'" 
           :footer-props="{'items-per-page-text':'Itens por página', pageText: '{0}-{1} de {2}', 'items-per-page-all-text':'Todos'}"
-          :headers="headers2" :items="desserts2" :search="search2"></v-data-table>
+          :headers="headers2" :items="desserts2" :search="search2">
+
+            <template v-slot:[`item.action`]="{ item }"> 
+              <v-icon small class="mr-2" @click="editItem(item)">
+                mdi-pencil
+              </v-icon>
+              <v-icon small @click="deleteItem(item)">
+                mdi-delete
+              </v-icon>
+            </template>
+          </v-data-table>
         </v-card>
       </v-col>
       
@@ -155,20 +211,9 @@ export default {
         { text: 'Descrição', align: 'start', value: 'desc'},
         { text: 'Categoria', value: 'idDategory'},
         { text: 'Valor', value: 'value' },
+        { text: 'Ações', value: 'action', sortable: false }
       ],
-      desserts2: [
-        /*
-        {
-          name: 'Frozen Yogurt',
-          value: 6.0,
-        },
-        {
-          name: 'Ice cream sandwich',
-          value: 9.0,
-        },
-        */
-      ],
-
+      desserts2: [],
       price: 123.45,
       money: {
         decimal: ',',
@@ -178,7 +223,14 @@ export default {
         masked: false
       },
       dialog: false,
+      dialogEdit: false,
+      dialogDelete: false,
       allFormsPagt:[],
+      editedItem: {
+        desc: '',
+        idDategory: 'Outros',
+        value: '',
+      },
       dataRec: {
         indexs:[],
         totalRecSalary: 0,
@@ -191,7 +243,6 @@ export default {
         hasRec: false,
         error: false,
         msgError: '',
-        
         optionsDonut: {
           tooltip: {
             enabled: true,
@@ -214,12 +265,6 @@ export default {
   created(){
     this.allFormsPagt = scrypt.allFormsPagt;
     /* Receitas */
-    
-    /*
-    this.allFormsPagt[1].data = [
-      {idRec: 1, idDategory: 0, desc:'teste', value: 0.56}, 
-    ]
-    */
 
     if(window) {
       this.allFormsPagt[1].data = JSON.parse(localStorage.getItem('dataRec'))
@@ -228,23 +273,33 @@ export default {
     if(this.allFormsPagt[1].data != null){
       this.allFormsPagt[1].data.forEach(element => {
         this.dataRec.hasRec = true
+        //console.log(element.idRec)
 
         if(element.idDategory == 0){
           this.dataRec.totalRecSalary = this.round(this.dataRec.totalRecSalary, element.value)
+          if(this.desserts2.length == 0) this.desserts2 = [{idRec: element.idRec, desc: element.desc, idDategory: 'Salário', value: this.toBrl(element.value)}]
+          else this.desserts2.push({idRec: element.idRec, desc: element.desc, idDategory: 'Salário', value: this.toBrl(element.value)})
         }
         if(element.idDategory == 1){
           this.dataRec.totalRecInvest = this.round(this.dataRec.totalRecInvest, element.value)
+          if(this.desserts2.length == 0) this.desserts2 = [{idRec: element.idRec, desc: element.desc, idDategory: 'Investimentos', value: this.toBrl(element.value)}]
+          else this.desserts2.push({idRec: element.idRec, desc: element.desc, idDategory: 'Investimentos', value: this.toBrl(element.value)})
         }
         if(element.idDategory == 2){
           this.dataRec.totalRecEmp = this.round(this.dataRec.totalRecEmp, element.value)
+          if(this.desserts2.length == 0) this.desserts2 = [{idRec: element.idRec, desc: element.desc, idDategory: 'Empréstimos', value: this.toBrl(element.value)}]
+          else this.desserts2.push({idRec: element.idRec, desc: element.desc, idDategory: 'Empréstimos', value: this.toBrl(element.value)})
         }
         if(element.idDategory == 3){
           this.dataRec.totalRecOut = this.round(this.dataRec.totalRecOut, element.value)
+          if(this.desserts2.length == 0) this.desserts2 = [{idRec: element.idRec, desc: element.desc, idDategory: 'Outros', value: this.toBrl(element.value)}]
+          else this.desserts2.push({idRec: element.idRec, desc: element.desc, idDategory: 'Outros', value: this.toBrl(element.value)})
         }
 
-        //this.desserts2.push({name: element.desc, value: element.value})
+        //this.desserts2.push({desc: element.desc, idDategory: 'Salário', value: this.toBrl(element.value)})
+      
       })
-      this.desserts2 = this.allFormsPagt[1].data
+     // this.desserts2 = this.allFormsPagt[1].data
     }
 
     this.dataRec.series = [this.dataRec.totalRecSalary, this.dataRec.totalRecInvest, this.dataRec.totalRecEmp, this.dataRec.totalRecOut]
@@ -344,6 +399,34 @@ export default {
         }
       }
     },
+    editItem(item){
+      this.editedItem.id = item.idRec;
+      this.editedItem.desc = item.desc;
+      this.editedItem.value = item.value;
+      this.editedItem.idDategory = item.idDategory;
+      this.dialogEdit = true;
+    },
+    deleteItem(item){
+      console.log(item)
+      this.dialogDelete = true;
+      this.editedItem.id = item.idRec;
+      this.editedItem.desc = item.desc;
+      this.editedItem.value = item.value;
+      this.editedItem.idDategory = item.idDategory;
+    },
+    deleteItemConfirm(){
+      console.log("item " + this.editedItem.id)
+      console.log(this.allFormsPagt[1].data.filter(element => element.idRec != this.editedItem.id))
+      this.allFormsPagt[1].data = this.allFormsPagt[1].data.filter(element => element.idRec != this.editedItem.id)
+
+      this.dataRec.snackbarNewRec = true;
+    },
+    saveEdit(){
+      console.log(this.editedItem.desc)
+      console.log(this.editedItem.value)
+      console.log(this.editedItem.idDategory)
+      console.log(this.allFormsPagt[1].data.filter(element => element.idRec == this.editedItem.id) )
+    },
     round(num, num2){
       if(num2){
         return (Math.round((num + parseFloat(num2)) * 100) / 100);
@@ -352,6 +435,9 @@ export default {
       if(!num2){
         return (Math.round(num * 100) / 100);
       }
+    },
+    toBrl(value){
+      return (Math.round(value * 100) / 100).toFixed(2);
     }
   },
   filters: {
