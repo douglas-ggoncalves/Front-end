@@ -57,9 +57,7 @@
           </v-card-actions>
         </v-card>
       </v-dialog>
-      <v-col class="col" :cols="9">
-        {{ allFormsPagt[1].data }}
-      </v-col>
+    
       <v-col class="col" :cols="9">
         <v-card>
           <v-card-title>
@@ -228,7 +226,7 @@ export default {
       allFormsPagt:[],
       editedItem: {
         desc: '',
-        idDategory: 'Outros',
+        idDategory: '',
         value: '',
       },
       dataRec: {
@@ -270,36 +268,11 @@ export default {
       this.allFormsPagt[1].data = JSON.parse(localStorage.getItem('dataRec'))
     } 
 
+
+
     if(this.allFormsPagt[1].data != null){
-      this.allFormsPagt[1].data.forEach(element => {
-        this.dataRec.hasRec = true
-        //console.log(element.idRec)
-
-        if(element.idDategory == 0){
-          this.dataRec.totalRecSalary = this.round(this.dataRec.totalRecSalary, element.value)
-          if(this.desserts2.length == 0) this.desserts2 = [{idRec: element.idRec, desc: element.desc, idDategory: 'Salário', value: this.toBrl(element.value)}]
-          else this.desserts2.push({idRec: element.idRec, desc: element.desc, idDategory: 'Salário', value: this.toBrl(element.value)})
-        }
-        if(element.idDategory == 1){
-          this.dataRec.totalRecInvest = this.round(this.dataRec.totalRecInvest, element.value)
-          if(this.desserts2.length == 0) this.desserts2 = [{idRec: element.idRec, desc: element.desc, idDategory: 'Investimentos', value: this.toBrl(element.value)}]
-          else this.desserts2.push({idRec: element.idRec, desc: element.desc, idDategory: 'Investimentos', value: this.toBrl(element.value)})
-        }
-        if(element.idDategory == 2){
-          this.dataRec.totalRecEmp = this.round(this.dataRec.totalRecEmp, element.value)
-          if(this.desserts2.length == 0) this.desserts2 = [{idRec: element.idRec, desc: element.desc, idDategory: 'Empréstimos', value: this.toBrl(element.value)}]
-          else this.desserts2.push({idRec: element.idRec, desc: element.desc, idDategory: 'Empréstimos', value: this.toBrl(element.value)})
-        }
-        if(element.idDategory == 3){
-          this.dataRec.totalRecOut = this.round(this.dataRec.totalRecOut, element.value)
-          if(this.desserts2.length == 0) this.desserts2 = [{idRec: element.idRec, desc: element.desc, idDategory: 'Outros', value: this.toBrl(element.value)}]
-          else this.desserts2.push({idRec: element.idRec, desc: element.desc, idDategory: 'Outros', value: this.toBrl(element.value)})
-        }
-
-        //this.desserts2.push({desc: element.desc, idDategory: 'Salário', value: this.toBrl(element.value)})
+      this.alterIdTitle();
       
-      })
-     // this.desserts2 = this.allFormsPagt[1].data
     }
 
     this.dataRec.series = [this.dataRec.totalRecSalary, this.dataRec.totalRecInvest, this.dataRec.totalRecEmp, this.dataRec.totalRecOut]
@@ -407,7 +380,6 @@ export default {
       this.dialogEdit = true;
     },
     deleteItem(item){
-      console.log(item)
       this.dialogDelete = true;
       this.editedItem.id = item.idRec;
       this.editedItem.desc = item.desc;
@@ -415,10 +387,29 @@ export default {
       this.editedItem.idDategory = item.idDategory;
     },
     deleteItemConfirm(){
-      console.log("item " + this.editedItem.id)
-      console.log(this.allFormsPagt[1].data.filter(element => element.idRec != this.editedItem.id))
-      this.allFormsPagt[1].data = this.allFormsPagt[1].data.filter(element => element.idRec != this.editedItem.id)
+      var elementExist = document.getElementById("apexDonutRec")
+      var arr = this.allFormsPagt[1].data.filter(element => element.idRec != this.editedItem.id)
+      this.allFormsPagt[1].data = arr
+      this.desserts2 = []
+      this.alterIdTitle()
+      this.dialogDelete = false;
 
+      Vue.set(this.dataRec.series, 0, (this.dataRec.totalRecSalary))
+      Vue.set(this.dataRec.series, 1, (this.dataRec.totalRecInvest))
+      Vue.set(this.dataRec.series, 2, (this.dataRec.totalRecEmp))
+      Vue.set(this.dataRec.series, 3, (this.dataRec.totalRecOut))
+
+      if(this.dataRec.series[0] == 0 && this.dataRec.series[1] == 0 && this.dataRec.series[2] == 0 && this.dataRec.series[3] == 0){
+        this.dataRec.hasRec = false
+      }
+
+      if(elementExist){
+        if(this.dataRec.totalRecSalary == 0) document.getElementById("apexDonutRec").classList.remove("one")
+        if(this.dataRec.totalRecInvest == 0) document.getElementById("apexDonutRec").classList.remove("two")
+        if(this.dataRec.totalRecEmp == 0) document.getElementById("apexDonutRec").classList.remove("three")
+        if(this.dataRec.totalRecOut == 0) document.getElementById("apexDonutRec").classList.remove("four")
+      }
+      localStorage.setItem("dataRec", JSON.stringify(this.allFormsPagt[1].data));
       this.dataRec.snackbarNewRec = true;
     },
     saveEdit(){
@@ -438,6 +429,37 @@ export default {
     },
     toBrl(value){
       return (Math.round(value * 100) / 100).toFixed(2);
+    },
+    alterIdTitle(){
+    this.dataRec.totalRecSalary = 0;
+    this.dataRec.totalRecInvest = 0;
+    this.dataRec.totalRecEmp = 0;
+    this.dataRec.totalRecOut = 0;
+    this.desserts2 = [];
+
+    this.allFormsPagt[1].data.forEach(element => {
+      this.dataRec.hasRec = true
+      if(element.idDategory == 0){
+        this.dataRec.totalRecSalary = this.round(this.dataRec.totalRecSalary, element.value)
+        if(this.desserts2.length == 0) this.desserts2 = [{idRec: element.idRec, desc: element.desc, idDategory: 'Salário', value: this.toBrl(element.value)}]
+        else this.desserts2.push({idRec: element.idRec, desc: element.desc, idDategory: 'Salário', value: this.toBrl(element.value)})
+      }
+      if(element.idDategory == 1){
+        this.dataRec.totalRecInvest = this.round(this.dataRec.totalRecInvest, element.value)
+        if(this.desserts2.length == 0) this.desserts2 = [{idRec: element.idRec, desc: element.desc, idDategory: 'Investimentos', value: this.toBrl(element.value)}]
+        else this.desserts2.push({idRec: element.idRec, desc: element.desc, idDategory: 'Investimentos', value: this.toBrl(element.value)})
+      }
+      if(element.idDategory == 2){
+        this.dataRec.totalRecEmp = this.round(this.dataRec.totalRecEmp, element.value)
+        if(this.desserts2.length == 0) this.desserts2 = [{idRec: element.idRec, desc: element.desc, idDategory: 'Empréstimos', value: this.toBrl(element.value)}]
+        else this.desserts2.push({idRec: element.idRec, desc: element.desc, idDategory: 'Empréstimos', value: this.toBrl(element.value)})
+      }
+      if(element.idDategory == 3){
+        this.dataRec.totalRecOut = this.round(this.dataRec.totalRecOut, element.value)
+        if(this.desserts2.length == 0) this.desserts2 = [{idRec: element.idRec, desc: element.desc, idDategory: 'Outros', value: this.toBrl(element.value)}]
+        else this.desserts2.push({idRec: element.idRec, desc: element.desc, idDategory: 'Outros', value: this.toBrl(element.value)})
+      }
+    })
     }
   },
   filters: {
