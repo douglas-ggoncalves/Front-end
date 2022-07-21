@@ -1,8 +1,8 @@
 <template>
   <v-container class="homeView">
     <v-snackbar top min-width="50%" color="success" v-model="dataRec.snackbarNewRec" :timeout="5000">
-      Receita excluída com sucesso
-
+      
+      {{ this.dataRec.msgSuccess }}
       <template v-slot:action="{ attrs }">
         <v-btn color="white" text v-bind="attrs" @click="snackbar = false">
           Fechar
@@ -241,6 +241,7 @@ export default {
         hasRec: false,
         error: false,
         msgError: '',
+        msgSuccess: '',
         optionsDonut: {
           tooltip: {
             enabled: true,
@@ -263,16 +264,12 @@ export default {
   created(){
     this.allFormsPagt = scrypt.allFormsPagt;
     /* Receitas */
-
     if(window) {
       this.allFormsPagt[1].data = JSON.parse(localStorage.getItem('dataRec'))
     } 
 
-
-
     if(this.allFormsPagt[1].data != null){
       this.alterIdTitle();
-      
     }
 
     this.dataRec.series = [this.dataRec.totalRecSalary, this.dataRec.totalRecInvest, this.dataRec.totalRecEmp, this.dataRec.totalRecOut]
@@ -410,13 +407,42 @@ export default {
         if(this.dataRec.totalRecOut == 0) document.getElementById("apexDonutRec").classList.remove("four")
       }
       localStorage.setItem("dataRec", JSON.stringify(this.allFormsPagt[1].data));
+      this.dataRec.msgSuccess = 'Receita excluída com sucesso'
       this.dataRec.snackbarNewRec = true;
     },
     saveEdit(){
-      console.log(this.editedItem.desc)
-      console.log(this.editedItem.value)
-      console.log(this.editedItem.idDategory)
-      console.log(this.allFormsPagt[1].data.filter(element => element.idRec == this.editedItem.id) )
+      if(this.editedItem.value == 'R$ 0,00' ){
+        this.dataRec.error = true;
+        this.dataRec.msgError = 'Não é possivel cadastrar uma receita com valor zerado';
+      } else{
+        var elementIndex;
+        this.allFormsPagt[1].data.forEach((element, index) => {
+          if(element.idRec == this.editedItem.id){
+            elementIndex = index
+          }
+        })
+
+        this.allFormsPagt[1].data[elementIndex].desc = this.editedItem.desc
+        this.allFormsPagt[1].data[elementIndex].idDategory = this.editedItem.idDategory
+        if(this.allFormsPagt[1].data[elementIndex].desc.trim() == '') this.allFormsPagt[1].data[elementIndex].desc = this.allFormsPagt[1].data[elementIndex].idDategory
+
+        if(this.allFormsPagt[1].data[elementIndex].idDategory == 'Salário') this.allFormsPagt[1].data[elementIndex].idDategory = 0
+        if(this.allFormsPagt[1].data[elementIndex].idDategory == 'Investimentos') this.allFormsPagt[1].data[elementIndex].idDategory = 1
+        if(this.allFormsPagt[1].data[elementIndex].idDategory == 'Empréstimos') this.allFormsPagt[1].data[elementIndex].idDategory = 2
+        if(this.allFormsPagt[1].data[elementIndex].idDategory == 'Outros') this.allFormsPagt[1].data[elementIndex].idDategory = 3
+        this.allFormsPagt[1].data[elementIndex].value = this.round(this.editedItem.value.replace("R$ ", "").replace(",", ".")) 
+
+        this.alterIdTitle()
+        Vue.set(this.dataRec.series, 0, (this.dataRec.totalRecSalary))
+        Vue.set(this.dataRec.series, 1, (this.dataRec.totalRecInvest))
+        Vue.set(this.dataRec.series, 2, (this.dataRec.totalRecEmp))
+        Vue.set(this.dataRec.series, 3, (this.dataRec.totalRecOut))
+        localStorage.setItem("dataRec", JSON.stringify(this.allFormsPagt[1].data));
+        this.dialogEdit = false;
+        this.dataRec.msgSuccess = 'Receita editada com sucesso'
+        this.dataRec.snackbarNewRec = true;
+      }
+      
     },
     round(num, num2){
       if(num2){
