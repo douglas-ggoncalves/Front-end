@@ -82,6 +82,12 @@
       </v-col>
       
       <v-col class="col" :cols="3">
+        <div>
+         <v-btn class="mb-2" rounded  color="success" @click="dialog = true">
+            Nova Receita
+          </v-btn>
+        </div>
+
         <v-tooltip bottom>
           <template v-slot:activator="{ on, attrs }">
             <div class="elements" v-bind="attrs" v-on="on">
@@ -118,27 +124,16 @@
             <v-container>
               <v-row>
                 <v-col cols="12">
-                  <v-text-field v-model="dataRec.newRecValue" v-money="money" label="Informe o Valor *" hint="informe a descrição desejada" required> 
-                    <v-icon slot="prepend">
-                      mdi-cash-multiple
-                    </v-icon>
-                  </v-text-field>
+                  <v-text-field :prepend-inner-icon="'mdi-cash-multiple'" v-model="dataRec.newRecValue" v-money="money" label="Informe o Valor *" hint="informe o valor desejado" required/> 
                 </v-col>
 
                 <v-col cols="12">
-                  <v-text-field v-model="dataRec.newRecDesc" label="Descrição" type="text" hint="informe a descrição desejada" required>
-                    <v-icon slot="prepend">
-                      mdi-file
-                    </v-icon>
-                  </v-text-field>
+                  <v-text-field :prepend-inner-icon="'mdi-file'" v-model="dataRec.newRecDesc" label="Descrição" type="text" hint="informe a descrição desejada" required/>
                 </v-col>
                 <v-col cols="12">
-                  <v-select v-model="dataRec.newRecSelect" :items="[this.allFormsPagt[1].categories[0].title, this.allFormsPagt[1].categories[1].title
-                  , this.allFormsPagt[1].categories[2].title,
-                  , this.allFormsPagt[1].categories[3].title]" label="Categoria *" required>
-                  <v-icon slot="prepend">
-                    mdi-label
-                  </v-icon></v-select>
+                  <v-select :prepend-inner-icon="'mdi-label'" v-model="dataRec.newRecSelect" :items="[this.allFormsPagt[1].categories[0].title, this.allFormsPagt[1].categories[1].title, 
+                    this.allFormsPagt[1].categories[2].title, this.allFormsPagt[1].categories[3].title]" label="Categoria *" required>
+                  </v-select>
                 </v-col>
               </v-row>
             </v-container>
@@ -305,6 +300,8 @@ export default {
         var elementExist = document.getElementById("apexDonutRec")
 
         if(this.dataRec.newRecSelect == 'Salário'){
+          if(this.dataRec.newRecDesc.trim() == '') this.dataRec.newRecDesc = 'Salário'
+
           this.dataRec.totalRecSalary = this.round(this.dataRec.totalRecSalary, this.dataRec.newRecValue.replace("R$ ", "").replace(",", "."));
           
           if(this.allFormsPagt[1].data == null){
@@ -317,6 +314,8 @@ export default {
         }
         
         if(this.dataRec.newRecSelect == 'Investimentos'){
+          if(this.dataRec.newRecDesc.trim() == '') this.dataRec.newRecDesc = 'Investimentos'
+
           this.dataRec.totalRecInvest = this.round(this.dataRec.totalRecInvest, this.dataRec.newRecValue.replace("R$ ", "").replace(",", "."));
 
           if(this.allFormsPagt[1].data == null){
@@ -329,6 +328,8 @@ export default {
         }
         
         if(this.dataRec.newRecSelect == 'Empréstimos'){
+          if(this.dataRec.newRecDesc.trim() == '') this.dataRec.newRecDesc = 'Empréstimos'
+
           this.dataRec.totalRecEmp = this.round(this.dataRec.totalRecEmp, this.dataRec.newRecValue.replace("R$ ", "").replace(",", "."));
 
           if(this.allFormsPagt[1].data == null){
@@ -341,6 +342,8 @@ export default {
         }
         
         if(this.dataRec.newRecSelect == 'Outros'){
+          if(this.dataRec.newRecDesc.trim() == '') this.dataRec.newRecDesc = 'Outros'
+
           this.dataRec.totalRecOut = this.round(this.dataRec.totalRecOut, this.dataRec.newRecValue.replace("R$ ", "").replace(",", "."));
 
           if(this.allFormsPagt[1].data == null){
@@ -363,7 +366,7 @@ export default {
         this.dataRec.newRecSelect = ''
         this.dataRec.newRecDesc = ''
         this.dataRec.snackbarNewRec = true;
-
+        this.dataRec.msgSuccess = 'Receita cadastrada com sucesso'
         if(!continueSave){
           this.dialog = false;
         }

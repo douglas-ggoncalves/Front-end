@@ -105,7 +105,7 @@
 
         <div>
          <v-btn class="ma-2" rounded color="success" @click="dialog = true">
-            Cadastrar Receita
+            Nova Receita
           </v-btn>
         </div>
       </v-col>

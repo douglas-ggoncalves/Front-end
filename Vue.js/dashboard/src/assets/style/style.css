@@ -1,3 +1,8 @@
+td.text-start #text {
+  word-break: break-all;
+  max-width: 100%;
+}
+
 .homeView div.row {
   display: -webkit-box;
   display: -ms-flexbox;

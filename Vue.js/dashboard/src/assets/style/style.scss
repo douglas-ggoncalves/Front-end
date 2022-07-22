@@ -1,6 +1,14 @@
 $border: 1px solid rgba(200, 185, 185, 0.5);
 $boxShadow: 2px 2px 6px -4px rgba(0,0,0,0.9);
 
+td.text-start{
+    #text{
+        word-break: break-all;
+        max-width: 100%;
+    }
+
+}
+
 .homeView{
     div.row{
         display: flex;
@@ -12,7 +20,6 @@ $boxShadow: 2px 2px 6px -4px rgba(0,0,0,0.9);
                 display: flex;
                 align-items: center;
                 cursor: pointer;
-                
 
                 a{
                     display: flex;
