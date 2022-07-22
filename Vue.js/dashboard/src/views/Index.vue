@@ -88,7 +88,7 @@
 
       <v-col class="dash" :cols="12" :sm="8" :md="6">
         <h4>Receitas por Categoria</h4>
-        
+        <Calendar />
         <div id="first">
           <div v-if="!dataRec.hasRec">
             <v-icon>mdi-chart-donut</v-icon>
@@ -117,7 +117,7 @@
 import Vue from 'vue'
 import scrypt from "../assets/js/scrypt.js"
 import VueApexCharts from 'vue-apexcharts'
-
+import Calendar from '../components/Calendar'
 import "../assets/style/style.css"
 import money from  'vuejs-money'
 
@@ -126,6 +126,9 @@ Vue.use(money)
 Vue.use(VueApexCharts)
 Vue.component('apexchart', VueApexCharts)
 export default {
+  components:{
+    Calendar
+  },
   data(){
     return {
       price: 123.45,

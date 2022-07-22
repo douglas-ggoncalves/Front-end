@@ -366,6 +366,7 @@ export default {
         this.dataRec.newRecSelect = ''
         this.dataRec.newRecDesc = ''
         this.dataRec.snackbarNewRec = true;
+        this.alterIdTitle()
         this.dataRec.msgSuccess = 'Receita cadastrada com sucesso'
         if(!continueSave){
           this.dialog = false;
