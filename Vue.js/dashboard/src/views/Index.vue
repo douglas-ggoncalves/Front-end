@@ -58,11 +58,18 @@
                 <v-col cols="12">
                   <v-text-field :prepend-inner-icon="'mdi-file'" v-model="dataRec.newRecDesc" label="Descrição" type="text" hint="informe a descrição desejada" required/>
                 </v-col>
+
+                <v-col cols="12">
+                  <Calendar @deleteThisTask="destroyTask($event)" />
+                </v-col>
+
+
                 <v-col cols="12">
                   <v-select :prepend-inner-icon="'mdi-label'" v-model="dataRec.newRecSelect" :items="[this.allFormsPagt[1].categories[0].title, this.allFormsPagt[1].categories[1].title, 
                     this.allFormsPagt[1].categories[2].title, this.allFormsPagt[1].categories[3].title]" label="Categoria *" required>
                   </v-select>
                 </v-col>
+
               </v-row>
             </v-container>
             <small>* indica campo obrigatório</small>
@@ -88,7 +95,9 @@
 
       <v-col class="dash" :cols="12" :sm="8" :md="6">
         <h4>Receitas por Categoria</h4>
-        <Calendar />
+        <br><br>
+        {{ this.allFormsPagt[1].data }}
+
         <div id="first">
           <div v-if="!dataRec.hasRec">
             <v-icon>mdi-chart-donut</v-icon>
@@ -131,6 +140,7 @@ export default {
   },
   data(){
     return {
+      dateCalendar: '',
       price: 123.45,
       money: {
         decimal: ',',
@@ -319,6 +329,11 @@ export default {
       if(!num2){
         return (Math.round(num * 100) / 100);
       }
+    },
+    destroyTask($event){
+      console.log($event)
+      this.dateCalendar = $event.pimba;
+      console.log(this.dateCalendar)
     }
   },
   filters: {
