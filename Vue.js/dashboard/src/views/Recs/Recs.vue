@@ -1,5 +1,5 @@
 <template>
-  <v-container class="homeView">
+  <v-container fluid class="homeView" >
     <v-snackbar top min-width="50%" color="success" v-model="dataRec.snackbarNewRec" :timeout="5000">
       
       {{ this.dataRec.msgSuccess }}
@@ -10,7 +10,7 @@
       </template>
     </v-snackbar>
 
-    <v-row>
+    <v-row class="px-md-10">
       <v-dialog v-model="dialogEdit" max-width="500px">
         <v-card>
           <v-card-title>
@@ -20,16 +20,27 @@
           <v-card-text>
             <v-container>
               <v-row>
-                 <v-col cols="12">
+                <v-col cols="12">
                   <v-text-field :prepend-inner-icon="'mdi-cash-multiple'" v-model="editedItem.value" v-money="money" label="Informe o Valor *"  hint="informe o valor desejado"></v-text-field>
                 </v-col>
 
                 <v-col cols="12">
                   <v-text-field :prepend-inner-icon="'mdi-file'" v-model="editedItem.desc" label="Descrição" hint="informe a descrição desejada"></v-text-field>
                 </v-col>
+
+                <v-col cols="12">
+                  <v-menu ref="menu1" v-model="menu1" :close-on-content-click="false" transition="scale-transition" offset-y max-width="290px" min-width="auto">
+                    <template v-slot:activator="{ on, attrs }">
+                      <v-text-field v-model="editedItem.dateFormatted" readonly :prepend-inner-icon="'mdi-calendar'" label="Informe a Data *" 
+                      hint="informe a data desejada" v-bind="attrs" @blur="editedItem.date = parseDate(editedItem.dateFormatted)" v-on="on" ></v-text-field>
+                    </template>
+                    
+                    <v-date-picker v-model="editedItem.date" no-title @input="menu1 = false" locale="pt"></v-date-picker>
+                  </v-menu>
+                </v-col>
                
                 <v-col cols="12">
-                  <v-select :prepend-inner-icon="'mdi-label'" v-model="editedItem.idDategory" 
+                  <v-select :prepend-inner-icon="'mdi-label'" v-model="editedItem.idCategory" 
                     :items="[this.allFormsPagt[1].categories[0].title, this.allFormsPagt[1].categories[1].title, 
                     this.allFormsPagt[1].categories[2].title, this.allFormsPagt[1].categories[3].title]" label="Categoria *" required>
                   </v-select>
@@ -58,7 +69,7 @@
         </v-card>
       </v-dialog>
     
-      <v-col class="col" :cols="9">
+      <v-col class="col" :cols="12" :md="9">
         <v-card>
           <v-card-title>
             Receitas
@@ -66,8 +77,17 @@
             <v-text-field v-model="search2" append-icon="mdi-magnify" label="Pesquisar" single-line hide-details></v-text-field>
           </v-card-title>
           <v-data-table :no-data-text="'Não há dados'" :no-results-text="'Nenhum resultado encontrado'" 
+          :header-props="{'sortByText': 'Ordenar por'}"
           :footer-props="{'items-per-page-text':'Itens por página', pageText: '{0}-{1} de {2}', 'items-per-page-all-text':'Todos'}"
           :headers="headers2" :items="desserts2" :search="search2">
+
+            <template v-slot:[`item.value`]="{ item }">
+              <span title="">R$ {{ item.value | toBrl }}</span>
+            </template>
+
+            <template v-slot:[`item.date`]="{ item }">
+              <span>{{ new Date(item.date.replace("-",',')).toLocaleString() | toDate }}</span>
+            </template>
 
             <template v-slot:[`item.action`]="{ item }"> 
               <v-icon small class="mr-2" @click="editItem(item)">
@@ -81,35 +101,66 @@
         </v-card>
       </v-col>
       
-      <v-col class="col" :cols="3">
+      <v-col class="col" :cols="12" :md="3">
         <div>
          <v-btn class="mb-2" rounded  color="success" @click="dialog = true">
             Nova Receita
           </v-btn>
         </div>
-
+        
         <v-tooltip bottom>
           <template v-slot:activator="{ on, attrs }">
             <div class="elements" v-bind="attrs" v-on="on">
               <a :href="`#`">
-
-              <div class="left">
-                <span>Receitas</span>
-                <br>
+                <div class="left">
+                  <span>Receitas</span>
+                  <br>
+                  
+                  <span class="value">R$ {{ dataRec.totalRecSalary + dataRec.totalRecInvest + dataRec.totalRecEmp + dataRec.totalRecOut | toBrl }}</span>
+                </div>
                 
-                <span class="value">R$ {{ dataRec.totalRecSalary + dataRec.totalRecInvest + dataRec.totalRecEmp + dataRec.totalRecOut | toBrl }}</span>
-              </div>
-              
-              <div class="right">
-               <span>
-                  <v-icon class="iGreen">mdi-arrow-up</v-icon>
-                </span>
-              </div>
+                <div class="right">
+                <span>
+                    <v-icon class="iGreen">mdi-arrow-up</v-icon>
+                  </span>
+                </div>
               </a>
             </div>
           </template>
           <span>descrição</span>
         </v-tooltip>
+
+        <v-row>
+          <v-col :cols="12">
+            <v-menu ref="menu1" v-model="menuFilterInit" :close-on-content-click="false" transition="scale-transition" offset-y max-width="290px" min-width="auto">
+              <template v-slot:activator="{ on, attrs }">
+                <v-text-field v-model="dateFilterFormattedInit" readonly :prepend-inner-icon="'mdi-calendar'" label="Período Inicial" 
+                hint="informe a data desejada" v-bind="attrs" @blur="dateFilterInit = parseDate(dateFilterFormattedInit)" v-on="on" ></v-text-field>
+              </template>
+              
+              <v-date-picker v-model="dateFilterInit" no-title @input="menuFilterInit = false" locale="pt"></v-date-picker>
+            </v-menu>
+          </v-col>
+          <v-col :cols="12">
+            <v-menu ref="menu1" v-model="menuFilterFinal" :close-on-content-click="false" transition="scale-transition" offset-y max-width="290px" min-width="auto">
+              <template v-slot:activator="{ on, attrs }">
+                <v-text-field v-model="dateFilterFormattedFinal" readonly :prepend-inner-icon="'mdi-calendar'" label="Período Final" 
+                hint="informe a data desejada" v-bind="attrs" @blur="dateFilterFinal = parseDate(dateFilterFormattedFinal)" v-on="on" ></v-text-field>
+              </template>
+              
+              <v-date-picker v-model="dateFilterFinal" no-title @input="menuFilterFinal = false" locale="pt"></v-date-picker>
+            </v-menu>
+          </v-col>
+        </v-row>
+      
+        
+        <v-btn class="ma-1" color="primary" @click="filterByDate()">
+          Filtrar
+        </v-btn>
+        
+        <v-btn class="ma-1" color="primary" @click="clearDateFilter()">
+          Limpar Filtro
+        </v-btn>
       </v-col>
     </v-row>
 
@@ -130,6 +181,17 @@
                 <v-col cols="12">
                   <v-text-field :prepend-inner-icon="'mdi-file'" v-model="dataRec.newRecDesc" label="Descrição" type="text" hint="informe a descrição desejada" required/>
                 </v-col>
+
+                <v-col cols="12">
+                  <v-menu ref="menu1" v-model="menu1" :close-on-content-click="false" transition="scale-transition" offset-y max-width="290px" min-width="auto">
+                    <template v-slot:activator="{ on, attrs }">
+                      <v-text-field v-model="dateFormatted" readonly :prepend-inner-icon="'mdi-calendar'" label="Informe a Data *" hint="informe a data desejada" v-bind="attrs" @blur="date = parseDate(dateFormatted)" v-on="on" ></v-text-field>
+                    </template>
+                    
+                    <v-date-picker v-model="date" no-title @input="menu1 = false" locale="pt"></v-date-picker>
+                  </v-menu>
+                </v-col>
+
                 <v-col cols="12">
                   <v-select :prepend-inner-icon="'mdi-label'" v-model="dataRec.newRecSelect" :items="[this.allFormsPagt[1].categories[0].title, this.allFormsPagt[1].categories[1].title, 
                     this.allFormsPagt[1].categories[2].title, this.allFormsPagt[1].categories[3].title]" label="Categoria *" required>
@@ -157,8 +219,8 @@
           </v-card-actions>
         </v-card>
       </v-dialog>
-
-      <v-col class="dash" :cols="12" :sm="8" :md="6">
+ 
+      <v-col class="dash" :cols="12" :md="6">
         <h4>Receitas por Categoria</h4>
         
         <div id="first">
@@ -199,11 +261,21 @@ Vue.component('apexchart', VueApexCharts)
 export default {
   data(){
     return {
+      dateFilterInit: '',
+      dateFilterFormattedInit: '',
+      menuFilterInit: false,
+      dateFilterFinal: '',
+      dateFilterFormattedFinal: '',
+      menuFilterFinal: false,
+      date: (new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().substr(0, 10),
+      dateFormatted: this.formatDate((new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().substr(0, 10)),
+      menu1: false,
       search2: '',
       headers2: [
         { text: 'Descrição', align: 'start', value: 'desc'},
-        { text: 'Categoria', value: 'idDategory'},
+        { text: 'Categoria', value: 'idCategory'},
         { text: 'Valor', value: 'value' },
+        { text: 'Data', value: 'date' },
         { text: 'Ações', value: 'action', sortable: false }
       ],
       desserts2: [],
@@ -221,8 +293,10 @@ export default {
       allFormsPagt:[],
       editedItem: {
         desc: '',
-        idDategory: '',
+        idCategory: '',
         value: '',
+        date: '',
+        dateEdit: '',
       },
       dataRec: {
         indexs:[],
@@ -264,7 +338,7 @@ export default {
     } 
 
     if(this.allFormsPagt[1].data != null){
-      this.alterIdTitle();
+      this.configData();
     }
 
     this.dataRec.series = [this.dataRec.totalRecSalary, this.dataRec.totalRecInvest, this.dataRec.totalRecEmp, this.dataRec.totalRecOut]
@@ -288,6 +362,56 @@ export default {
     }
   },
   methods:{
+    filterByDate(){
+      if(this.dateFilterInit == '' || this.dateFilterFinal == ''){
+        this.dataRec.error = true;
+        this.dataRec.msgError = 'Preencha os campos data inicial e final antes de filtrar';
+      } else if(this.dateFilterFinal >= this.dateFilterInit){
+        var elementExist = document.getElementById("apexDonutRec")
+        this.configData(true);
+        Vue.set(this.dataRec.series, 0, (this.dataRec.totalRecSalary))
+        Vue.set(this.dataRec.series, 1, (this.dataRec.totalRecInvest))
+        Vue.set(this.dataRec.series, 2, (this.dataRec.totalRecEmp))
+        Vue.set(this.dataRec.series, 3, (this.dataRec.totalRecOut))
+
+        if(this.dataRec.series[0] == 0 && this.dataRec.series[1] == 0 && this.dataRec.series[2] == 0 && this.dataRec.series[3] == 0){
+          this.dataRec.hasRec = false
+        }
+
+        if(elementExist){
+          if(this.dataRec.totalRecSalary == 0) document.getElementById("apexDonutRec").classList.remove("one")
+          if(this.dataRec.totalRecInvest == 0) document.getElementById("apexDonutRec").classList.remove("two")
+          if(this.dataRec.totalRecEmp == 0) document.getElementById("apexDonutRec").classList.remove("three")
+          if(this.dataRec.totalRecOut == 0) document.getElementById("apexDonutRec").classList.remove("four")
+        }
+      } else {
+        this.dataRec.error = true;
+        this.dataRec.msgError = 'A data inicial deve ser menor ou igual a data final';
+      }
+    },
+    clearDateFilter(){
+      this.dateFilterInit = ''
+      this.dateFilterFinal = ''
+      this.dateFilterFormattedInit = ''
+      this.dateFilterFormattedFinal = ''
+      var elementExist = document.getElementById("apexDonutRec")
+      this.configData();
+      Vue.set(this.dataRec.series, 0, (this.dataRec.totalRecSalary))
+      Vue.set(this.dataRec.series, 1, (this.dataRec.totalRecInvest))
+      Vue.set(this.dataRec.series, 2, (this.dataRec.totalRecEmp))
+      Vue.set(this.dataRec.series, 3, (this.dataRec.totalRecOut))
+
+      if(this.dataRec.series[0] == 0 && this.dataRec.series[1] == 0 && this.dataRec.series[2] == 0 && this.dataRec.series[3] == 0){
+        this.dataRec.hasRec = false
+      }
+
+      if(elementExist){
+        if(this.dataRec.totalRecSalary == 0) document.getElementById("apexDonutRec").classList.remove("one")
+        if(this.dataRec.totalRecInvest == 0) document.getElementById("apexDonutRec").classList.remove("two")
+        if(this.dataRec.totalRecEmp == 0) document.getElementById("apexDonutRec").classList.remove("three")
+        if(this.dataRec.totalRecOut == 0) document.getElementById("apexDonutRec").classList.remove("four")
+      }
+    },
     newRec(continueSave){
       if(this.dataRec.newRecValue == 'R$ 0,00' ){
         this.dataRec.error = true;
@@ -299,61 +423,7 @@ export default {
         this.dataRec.hasRec = true
         var elementExist = document.getElementById("apexDonutRec")
 
-        if(this.dataRec.newRecSelect == 'Salário'){
-          if(this.dataRec.newRecDesc.trim() == '') this.dataRec.newRecDesc = 'Salário'
-
-          this.dataRec.totalRecSalary = this.round(this.dataRec.totalRecSalary, this.dataRec.newRecValue.replace("R$ ", "").replace(",", "."));
-          
-          if(this.allFormsPagt[1].data == null){
-            this.allFormsPagt[1].data = [{idRec: Date.now(), idDategory: 0, desc: this.dataRec.newRecDesc, value: this.dataRec.totalRecSalary}]
-          } else{
-            this.allFormsPagt[1].data.push({idRec: Date.now(), idDategory: 0, desc: this.dataRec.newRecDesc, value: this.round(this.dataRec.newRecValue.replace("R$ ", "").replace(",", "."))})
-          }
-          localStorage.setItem("dataRec", JSON.stringify(this.allFormsPagt[1].data));
-          Vue.set(this.dataRec.series, 0, this.dataRec.totalRecSalary)
-        }
-        
-        if(this.dataRec.newRecSelect == 'Investimentos'){
-          if(this.dataRec.newRecDesc.trim() == '') this.dataRec.newRecDesc = 'Investimentos'
-
-          this.dataRec.totalRecInvest = this.round(this.dataRec.totalRecInvest, this.dataRec.newRecValue.replace("R$ ", "").replace(",", "."));
-
-          if(this.allFormsPagt[1].data == null){
-            this.allFormsPagt[1].data = [{idRec: Date.now(), idDategory: 1, desc: this.dataRec.newRecDesc, value: this.dataRec.totalRecInvest}]
-          } else{
-            this.allFormsPagt[1].data.push({idRec: Date.now(), idDategory: 1, desc: this.dataRec.newRecDesc, value: this.round(this.dataRec.newRecValue.replace("R$ ", "").replace(",", "."))})
-          }
-          localStorage.setItem("dataRec", JSON.stringify(this.allFormsPagt[1].data));
-          Vue.set(this.dataRec.series, 1, this.dataRec.totalRecInvest)
-        }
-        
-        if(this.dataRec.newRecSelect == 'Empréstimos'){
-          if(this.dataRec.newRecDesc.trim() == '') this.dataRec.newRecDesc = 'Empréstimos'
-
-          this.dataRec.totalRecEmp = this.round(this.dataRec.totalRecEmp, this.dataRec.newRecValue.replace("R$ ", "").replace(",", "."));
-
-          if(this.allFormsPagt[1].data == null){
-            this.allFormsPagt[1].data = [{idRec: Date.now(), idDategory: 2, desc: this.dataRec.newRecDesc, value: this.dataRec.totalRecEmp}]
-          } else{
-            this.allFormsPagt[1].data.push({idRec: Date.now(), idDategory: 2, desc: this.dataRec.newRecDesc, value: this.round(this.dataRec.newRecValue.replace("R$ ", "").replace(",", "."))})
-          }
-          localStorage.setItem("dataRec", JSON.stringify(this.allFormsPagt[1].data));
-          Vue.set(this.dataRec.series, 2, this.dataRec.totalRecEmp)
-        }
-        
-        if(this.dataRec.newRecSelect == 'Outros'){
-          if(this.dataRec.newRecDesc.trim() == '') this.dataRec.newRecDesc = 'Outros'
-
-          this.dataRec.totalRecOut = this.round(this.dataRec.totalRecOut, this.dataRec.newRecValue.replace("R$ ", "").replace(",", "."));
-
-          if(this.allFormsPagt[1].data == null){
-            this.allFormsPagt[1].data = [{idRec: Date.now(), idDategory: 3, desc: this.dataRec.newRecDesc, value: this.dataRec.totalRecOut}]
-          } else{
-            this.allFormsPagt[1].data.push({idRec: Date.now(), idDategory: 3, desc: this.dataRec.newRecDesc, value: this.round(this.dataRec.newRecValue.replace("R$ ", "").replace(",", "."))})
-          }
-          localStorage.setItem("dataRec", JSON.stringify(this.allFormsPagt[1].data));
-          Vue.set(this.dataRec.series, 3, this.dataRec.totalRecOut)
-        }
+        this.generateData();
 
         if(elementExist){
           if(this.dataRec.totalRecSalary != 0) document.getElementById("apexDonutRec").classList.add("one")
@@ -366,18 +436,78 @@ export default {
         this.dataRec.newRecSelect = ''
         this.dataRec.newRecDesc = ''
         this.dataRec.snackbarNewRec = true;
-        this.alterIdTitle()
+        this.configData()
         this.dataRec.msgSuccess = 'Receita cadastrada com sucesso'
         if(!continueSave){
           this.dialog = false;
         }
       }
     },
+    generateData(){
+      if(this.dataRec.newRecSelect == 'Salário'){
+        if(this.dataRec.newRecDesc.trim() == '') this.dataRec.newRecDesc = 'Salário'
+
+        this.dataRec.totalRecSalary = this.round(this.dataRec.totalRecSalary, this.dataRec.newRecValue.replace("R$ ", "").replace(",", "."));
+        
+        if(this.allFormsPagt[1].data == null){
+          this.allFormsPagt[1].data = [{idRec: Date.now(), idCategory: 0, desc: this.dataRec.newRecDesc, date: this.date, value: this.dataRec.totalRecSalary}]
+        } else{
+          this.allFormsPagt[1].data.push({idRec: Date.now(), idCategory: 0, desc: this.dataRec.newRecDesc, date: this.date, value: this.round(this.dataRec.newRecValue.replace("R$ ", "").replace(",", "."))})
+        }
+        localStorage.setItem("dataRec", JSON.stringify(this.allFormsPagt[1].data));
+        Vue.set(this.dataRec.series, 0, this.dataRec.totalRecSalary)
+      }
+      
+      if(this.dataRec.newRecSelect == 'Investimentos'){
+        if(this.dataRec.newRecDesc.trim() == '') this.dataRec.newRecDesc = 'Investimentos'
+
+        this.dataRec.totalRecInvest = this.round(this.dataRec.totalRecInvest, this.dataRec.newRecValue.replace("R$ ", "").replace(",", "."));
+
+        if(this.allFormsPagt[1].data == null){
+          this.allFormsPagt[1].data = [{idRec: Date.now(), idCategory: 1, desc: this.dataRec.newRecDesc, date: this.date, value: this.dataRec.totalRecInvest}]
+        } else{
+          this.allFormsPagt[1].data.push({idRec: Date.now(), idCategory: 1, desc: this.dataRec.newRecDesc, date: this.date, value: this.round(this.dataRec.newRecValue.replace("R$ ", "").replace(",", "."))})
+        }
+        localStorage.setItem("dataRec", JSON.stringify(this.allFormsPagt[1].data));
+        Vue.set(this.dataRec.series, 1, this.dataRec.totalRecInvest)
+      }
+      
+      if(this.dataRec.newRecSelect == 'Empréstimos'){
+        if(this.dataRec.newRecDesc.trim() == '') this.dataRec.newRecDesc = 'Empréstimos'
+
+        this.dataRec.totalRecEmp = this.round(this.dataRec.totalRecEmp, this.dataRec.newRecValue.replace("R$ ", "").replace(",", "."));
+
+        if(this.allFormsPagt[1].data == null){
+          this.allFormsPagt[1].data = [{idRec: Date.now(), idCategory: 2, desc: this.dataRec.newRecDesc, date: this.date, value: this.dataRec.totalRecEmp}]
+        } else{
+          this.allFormsPagt[1].data.push({idRec: Date.now(), idCategory: 2, desc: this.dataRec.newRecDesc, date: this.date, value: this.round(this.dataRec.newRecValue.replace("R$ ", "").replace(",", "."))})
+        }
+        localStorage.setItem("dataRec", JSON.stringify(this.allFormsPagt[1].data));
+        Vue.set(this.dataRec.series, 2, this.dataRec.totalRecEmp)
+      }
+      
+      if(this.dataRec.newRecSelect == 'Outros'){
+        if(this.dataRec.newRecDesc.trim() == '') this.dataRec.newRecDesc = 'Outros'
+
+        this.dataRec.totalRecOut = this.round(this.dataRec.totalRecOut, this.dataRec.newRecValue.replace("R$ ", "").replace(",", "."));
+
+        if(this.allFormsPagt[1].data == null){
+          this.allFormsPagt[1].data = [{idRec: Date.now(), idCategory: 3, desc: this.dataRec.newRecDesc, date: this.date, value: this.dataRec.totalRecOut}]
+        } else{
+          this.allFormsPagt[1].data.push({idRec: Date.now(), idCategory: 3, desc: this.dataRec.newRecDesc, date: this.date, value: this.round(this.dataRec.newRecValue.replace("R$ ", "").replace(",", "."))})
+        }
+        localStorage.setItem("dataRec", JSON.stringify(this.allFormsPagt[1].data));
+        Vue.set(this.dataRec.series, 3, this.dataRec.totalRecOut)
+      }
+    },
     editItem(item){
       this.editedItem.id = item.idRec;
       this.editedItem.desc = item.desc;
       this.editedItem.value = item.value;
-      this.editedItem.idDategory = item.idDategory;
+      this.editedItem.date = item.date;
+      this.editedItem.dateFormatted = this.formatDate(this.editedItem.date);
+      this.editedItem.idCategory = item.idCategory;
+
       this.dialogEdit = true;
     },
     deleteItem(item){
@@ -385,14 +515,14 @@ export default {
       this.editedItem.id = item.idRec;
       this.editedItem.desc = item.desc;
       this.editedItem.value = item.value;
-      this.editedItem.idDategory = item.idDategory;
+      this.editedItem.idCategory = item.idCategory;
     },
     deleteItemConfirm(){
       var elementExist = document.getElementById("apexDonutRec")
       var arr = this.allFormsPagt[1].data.filter(element => element.idRec != this.editedItem.id)
       this.allFormsPagt[1].data = arr
       this.desserts2 = []
-      this.alterIdTitle()
+      this.configData()
       this.dialogDelete = false;
 
       Vue.set(this.dataRec.series, 0, (this.dataRec.totalRecSalary))
@@ -427,16 +557,17 @@ export default {
         })
 
         this.allFormsPagt[1].data[elementIndex].desc = this.editedItem.desc
-        this.allFormsPagt[1].data[elementIndex].idDategory = this.editedItem.idDategory
-        if(this.allFormsPagt[1].data[elementIndex].desc.trim() == '') this.allFormsPagt[1].data[elementIndex].desc = this.allFormsPagt[1].data[elementIndex].idDategory
+        this.allFormsPagt[1].data[elementIndex].idCategory = this.editedItem.idCategory
+        if(this.allFormsPagt[1].data[elementIndex].desc.trim() == '') this.allFormsPagt[1].data[elementIndex].desc = this.allFormsPagt[1].data[elementIndex].idCategory
 
-        if(this.allFormsPagt[1].data[elementIndex].idDategory == 'Salário') this.allFormsPagt[1].data[elementIndex].idDategory = 0
-        if(this.allFormsPagt[1].data[elementIndex].idDategory == 'Investimentos') this.allFormsPagt[1].data[elementIndex].idDategory = 1
-        if(this.allFormsPagt[1].data[elementIndex].idDategory == 'Empréstimos') this.allFormsPagt[1].data[elementIndex].idDategory = 2
-        if(this.allFormsPagt[1].data[elementIndex].idDategory == 'Outros') this.allFormsPagt[1].data[elementIndex].idDategory = 3
+        if(this.allFormsPagt[1].data[elementIndex].idCategory == 'Salário') this.allFormsPagt[1].data[elementIndex].idCategory = 0
+        if(this.allFormsPagt[1].data[elementIndex].idCategory == 'Investimentos') this.allFormsPagt[1].data[elementIndex].idCategory = 1
+        if(this.allFormsPagt[1].data[elementIndex].idCategory == 'Empréstimos') this.allFormsPagt[1].data[elementIndex].idCategory = 2
+        if(this.allFormsPagt[1].data[elementIndex].idCategory == 'Outros') this.allFormsPagt[1].data[elementIndex].idCategory = 3
         this.allFormsPagt[1].data[elementIndex].value = this.round(this.editedItem.value.replace("R$ ", "").replace(",", ".")) 
+        this.allFormsPagt[1].data[elementIndex].date = this.editedItem.date;
 
-        this.alterIdTitle()
+        this.configData()
         Vue.set(this.dataRec.series, 0, (this.dataRec.totalRecSalary))
         Vue.set(this.dataRec.series, 1, (this.dataRec.totalRecInvest))
         Vue.set(this.dataRec.series, 2, (this.dataRec.totalRecEmp))
@@ -460,7 +591,7 @@ export default {
     toBrl(value){
       return (Math.round(value * 100) / 100).toFixed(2);
     },
-    alterIdTitle(){
+    configData(filterOn){
     this.dataRec.totalRecSalary = 0;
     this.dataRec.totalRecInvest = 0;
     this.dataRec.totalRecEmp = 0;
@@ -469,34 +600,100 @@ export default {
 
     this.allFormsPagt[1].data.forEach(element => {
       this.dataRec.hasRec = true
-      if(element.idDategory == 0){
-        this.dataRec.totalRecSalary = this.round(this.dataRec.totalRecSalary, element.value)
-        if(this.desserts2.length == 0) this.desserts2 = [{idRec: element.idRec, desc: element.desc, idDategory: 'Salário', value: this.toBrl(element.value)}]
-        else this.desserts2.push({idRec: element.idRec, desc: element.desc, idDategory: 'Salário', value: this.toBrl(element.value)})
+
+      if(filterOn){
+        if(element.date >= this.dateFilterInit && element.date <= this.dateFilterFinal){
+        if(element.idCategory == 0){
+          this.dataRec.totalRecSalary = this.round(this.dataRec.totalRecSalary, element.value)
+          if(this.desserts2.length == 0) this.desserts2 = [{idRec: element.idRec, desc: element.desc, idCategory: 'Salário', date: element.date, value: this.toBrl(element.value)}]
+          else this.desserts2.push({idRec: element.idRec, desc: element.desc, idCategory: 'Salário', date: element.date, value: this.toBrl(element.value)})
+        }
+        if(element.idCategory == 1){
+          this.dataRec.totalRecInvest = this.round(this.dataRec.totalRecInvest, element.value)
+          if(this.desserts2.length == 0) this.desserts2 = [{idRec: element.idRec, desc: element.desc, idCategory: 'Investimentos', date: element.date, value: this.toBrl(element.value)}]
+          else this.desserts2.push({idRec: element.idRec, desc: element.desc, idCategory: 'Investimentos', date: element.date,value: this.toBrl(element.value)})
+        }
+        if(element.idCategory == 2){
+          this.dataRec.totalRecEmp = this.round(this.dataRec.totalRecEmp, element.value)
+          if(this.desserts2.length == 0) this.desserts2 = [{idRec: element.idRec, desc: element.desc, idCategory: 'Empréstimos', date: element.date,value: this.toBrl(element.value)}]
+          else this.desserts2.push({idRec: element.idRec, desc: element.desc, idCategory: 'Empréstimos', date: element.date, value: this.toBrl(element.value)})
+        }
+        if(element.idCategory == 3){
+          this.dataRec.totalRecOut = this.round(this.dataRec.totalRecOut, element.value)
+          if(this.desserts2.length == 0) this.desserts2 = [{idRec: element.idRec, desc: element.desc, idCategory: 'Outros', date: element.date, value: this.toBrl(element.value)}]
+          else this.desserts2.push({idRec: element.idRec, desc: element.desc, idCategory: 'Outros', date: element.date, value: this.toBrl(element.value)})
+        }
+        }
+
       }
-      if(element.idDategory == 1){
-        this.dataRec.totalRecInvest = this.round(this.dataRec.totalRecInvest, element.value)
-        if(this.desserts2.length == 0) this.desserts2 = [{idRec: element.idRec, desc: element.desc, idDategory: 'Investimentos', value: this.toBrl(element.value)}]
-        else this.desserts2.push({idRec: element.idRec, desc: element.desc, idDategory: 'Investimentos', value: this.toBrl(element.value)})
+
+      else{
+        if(element.idCategory == 0){
+          this.dataRec.totalRecSalary = this.round(this.dataRec.totalRecSalary, element.value)
+          if(this.desserts2.length == 0) this.desserts2 = [{idRec: element.idRec, desc: element.desc, idCategory: 'Salário', date: element.date, value: this.toBrl(element.value)}]
+          else this.desserts2.push({idRec: element.idRec, desc: element.desc, idCategory: 'Salário', date: element.date, value: this.toBrl(element.value)})
+        }
+        if(element.idCategory == 1){
+          this.dataRec.totalRecInvest = this.round(this.dataRec.totalRecInvest, element.value)
+          if(this.desserts2.length == 0) this.desserts2 = [{idRec: element.idRec, desc: element.desc, idCategory: 'Investimentos', date: element.date, value: this.toBrl(element.value)}]
+          else this.desserts2.push({idRec: element.idRec, desc: element.desc, idCategory: 'Investimentos', date: element.date,value: this.toBrl(element.value)})
+        }
+        if(element.idCategory == 2){
+          this.dataRec.totalRecEmp = this.round(this.dataRec.totalRecEmp, element.value)
+          if(this.desserts2.length == 0) this.desserts2 = [{idRec: element.idRec, desc: element.desc, idCategory: 'Empréstimos', date: element.date,value: this.toBrl(element.value)}]
+          else this.desserts2.push({idRec: element.idRec, desc: element.desc, idCategory: 'Empréstimos', date: element.date, value: this.toBrl(element.value)})
+        }
+        if(element.idCategory == 3){
+          this.dataRec.totalRecOut = this.round(this.dataRec.totalRecOut, element.value)
+          if(this.desserts2.length == 0) this.desserts2 = [{idRec: element.idRec, desc: element.desc, idCategory: 'Outros', date: element.date, value: this.toBrl(element.value)}]
+          else this.desserts2.push({idRec: element.idRec, desc: element.desc, idCategory: 'Outros', date: element.date, value: this.toBrl(element.value)})
+        }
       }
-      if(element.idDategory == 2){
-        this.dataRec.totalRecEmp = this.round(this.dataRec.totalRecEmp, element.value)
-        if(this.desserts2.length == 0) this.desserts2 = [{idRec: element.idRec, desc: element.desc, idDategory: 'Empréstimos', value: this.toBrl(element.value)}]
-        else this.desserts2.push({idRec: element.idRec, desc: element.desc, idDategory: 'Empréstimos', value: this.toBrl(element.value)})
-      }
-      if(element.idDategory == 3){
-        this.dataRec.totalRecOut = this.round(this.dataRec.totalRecOut, element.value)
-        if(this.desserts2.length == 0) this.desserts2 = [{idRec: element.idRec, desc: element.desc, idDategory: 'Outros', value: this.toBrl(element.value)}]
-        else this.desserts2.push({idRec: element.idRec, desc: element.desc, idDategory: 'Outros', value: this.toBrl(element.value)})
-      }
+
+
+
     })
-    }
+    },
+    formatDate (date) {
+      if (!date) return null
+
+      const [year, month, day] = date.split('-')
+      return `${day}/${month}/${year}`
+    },
+    parseDate (date) {
+      if (!date) return null
+
+      const [day, month, year] = date.split('/')
+      return `${year}-${month.padStart(2, '0')}-${day.padStart(2, '0')}`
+    },
   },
   filters: {
     toBrl(value){
       return (Math.round(value * 100) / 100).toFixed(2).replace(".",",");
+    },
+    toDate(value){
+      return value.substr(0, 10)
     }
-  }
+  },
+  computed: {
+    computedDateFormatted () {
+      return this.formatDate(this.date)
+    },
+  },
+  watch: {
+    date () {
+      this.dateFormatted = this.formatDate(this.date);
+    },
+    'editedItem.date'(){
+      this.editedItem.dateFormatted = this.formatDate(this.editedItem.date);
+    },
+    dateFilterInit(){
+      this.dateFilterFormattedInit = this.formatDate(this.dateFilterInit);
+    },
+    dateFilterFinal(){
+      this.dateFilterFormattedFinal = this.formatDate(this.dateFilterFinal);
+    },
+  },
 }
 </script>
 

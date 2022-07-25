@@ -60,9 +60,14 @@
                 </v-col>
 
                 <v-col cols="12">
-                  <Calendar @deleteThisTask="destroyTask($event)" />
+                  <v-menu ref="menu1" v-model="menu1" :close-on-content-click="false" transition="scale-transition" offset-y max-width="290px" min-width="auto">
+                    <template v-slot:activator="{ on, attrs }">
+                      <v-text-field v-model="dateFormatted" readonly :prepend-inner-icon="'mdi-calendar'" label="Informe a Data *" hint="informe a data desejada" v-bind="attrs" @blur="date = parseDate(dateFormatted)" v-on="on" ></v-text-field>
+                    </template>
+                    
+                    <v-date-picker v-model="date" no-title @input="menu1 = false" locale="pt"></v-date-picker>
+                  </v-menu>
                 </v-col>
-
 
                 <v-col cols="12">
                   <v-select :prepend-inner-icon="'mdi-label'" v-model="dataRec.newRecSelect" :items="[this.allFormsPagt[1].categories[0].title, this.allFormsPagt[1].categories[1].title, 
@@ -95,8 +100,6 @@
 
       <v-col class="dash" :cols="12" :sm="8" :md="6">
         <h4>Receitas por Categoria</h4>
-        <br><br>
-        {{ this.allFormsPagt[1].data }}
 
         <div id="first">
           <div v-if="!dataRec.hasRec">
@@ -126,7 +129,7 @@
 import Vue from 'vue'
 import scrypt from "../assets/js/scrypt.js"
 import VueApexCharts from 'vue-apexcharts'
-import Calendar from '../components/Calendar'
+
 import "../assets/style/style.css"
 import money from  'vuejs-money'
 
@@ -135,11 +138,11 @@ Vue.use(money)
 Vue.use(VueApexCharts)
 Vue.component('apexchart', VueApexCharts)
 export default {
-  components:{
-    Calendar
-  },
   data(){
     return {
+      date: (new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().substr(0, 10),
+      dateFormatted: this.formatDate((new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().substr(0, 10)),
+      menu1: false,
       dateCalendar: '',
       price: 123.45,
       money: {
@@ -162,7 +165,7 @@ export default {
         newRecDesc: '',
         hasRec: false,
         error: false,
-        msgError: 'teste',
+        msgError: '',
         
         optionsDonut: {
           tooltip: {
@@ -189,7 +192,7 @@ export default {
     
     /*
     this.allFormsPagt[1].data = [
-      {idRec: 1, idDategory: 0, desc:'teste', value: 0.56}, 
+      {idRec: 1, idCategory: 0, desc:'teste', value: 0.56}, 
     ]
     */
 
@@ -201,16 +204,16 @@ export default {
       this.allFormsPagt[1].data.forEach(element => {
         this.dataRec.hasRec = true
 
-        if(element.idDategory == 0){
+        if(element.idCategory == 0){
           this.dataRec.totalRecSalary = this.round(this.dataRec.totalRecSalary, element.value)
         }
-        if(element.idDategory == 1){
+        if(element.idCategory == 1){
           this.dataRec.totalRecInvest = this.round(this.dataRec.totalRecInvest, element.value)
         }
-        if(element.idDategory == 2){
+        if(element.idCategory == 2){
           this.dataRec.totalRecEmp = this.round(this.dataRec.totalRecEmp, element.value)
         }
-        if(element.idDategory == 3){
+        if(element.idCategory == 3){
           this.dataRec.totalRecOut = this.round(this.dataRec.totalRecOut, element.value)
         }
       })
@@ -248,61 +251,7 @@ export default {
         this.dataRec.hasRec = true
         var elementExist = document.getElementById("apexDonutRec")
 
-        if(this.dataRec.newRecSelect == 'Salário'){
-          if(this.dataRec.newRecDesc.trim() == '') this.dataRec.newRecDesc = 'Salário'
-
-          this.dataRec.totalRecSalary = this.round(this.dataRec.totalRecSalary, this.dataRec.newRecValue.replace("R$ ", "").replace(",", "."));
-          
-          if(this.allFormsPagt[1].data == null){
-            this.allFormsPagt[1].data = [{idRec: Date.now(), idDategory: 0, desc: this.dataRec.newRecDesc, value: this.dataRec.totalRecSalary}]
-          } else{
-            this.allFormsPagt[1].data.push({idRec: Date.now(), idDategory: 0, desc: this.dataRec.newRecDesc, value: this.round(this.dataRec.newRecValue.replace("R$ ", "").replace(",", "."))})
-          }
-          localStorage.setItem("dataRec", JSON.stringify(this.allFormsPagt[1].data));
-          Vue.set(this.dataRec.series, 0, this.dataRec.totalRecSalary)
-        }
-        
-        if(this.dataRec.newRecSelect == 'Investimentos'){
-          if(this.dataRec.newRecDesc.trim() == '') this.dataRec.newRecDesc = 'Investimentos'
-
-          this.dataRec.totalRecInvest = this.round(this.dataRec.totalRecInvest, this.dataRec.newRecValue.replace("R$ ", "").replace(",", "."));
-
-          if(this.allFormsPagt[1].data == null){
-            this.allFormsPagt[1].data = [{idRec: Date.now(), idDategory: 1, desc: this.dataRec.newRecDesc, value: this.dataRec.totalRecInvest}]
-          } else{
-            this.allFormsPagt[1].data.push({idRec: Date.now(), idDategory: 1, desc: this.dataRec.newRecDesc, value: this.round(this.dataRec.newRecValue.replace("R$ ", "").replace(",", "."))})
-          }
-          localStorage.setItem("dataRec", JSON.stringify(this.allFormsPagt[1].data));
-          Vue.set(this.dataRec.series, 1, this.dataRec.totalRecInvest)
-        }
-        
-        if(this.dataRec.newRecSelect == 'Empréstimos'){
-          if(this.dataRec.newRecDesc.trim() == '') this.dataRec.newRecDesc = 'Empréstimos'
-
-          this.dataRec.totalRecEmp = this.round(this.dataRec.totalRecEmp, this.dataRec.newRecValue.replace("R$ ", "").replace(",", "."));
-
-          if(this.allFormsPagt[1].data == null){
-            this.allFormsPagt[1].data = [{idRec: Date.now(), idDategory: 2, desc: this.dataRec.newRecDesc, value: this.dataRec.totalRecEmp}]
-          } else{
-            this.allFormsPagt[1].data.push({idRec: Date.now(), idDategory: 2, desc: this.dataRec.newRecDesc, value: this.round(this.dataRec.newRecValue.replace("R$ ", "").replace(",", "."))})
-          }
-          localStorage.setItem("dataRec", JSON.stringify(this.allFormsPagt[1].data));
-          Vue.set(this.dataRec.series, 2, this.dataRec.totalRecEmp)
-        }
-        
-        if(this.dataRec.newRecSelect == 'Outros'){
-          if(this.dataRec.newRecDesc.trim() == '') this.dataRec.newRecDesc = 'Outros'
-
-          this.dataRec.totalRecOut = this.round(this.dataRec.totalRecOut, this.dataRec.newRecValue.replace("R$ ", "").replace(",", "."));
-
-          if(this.allFormsPagt[1].data == null){
-            this.allFormsPagt[1].data = [{idRec: Date.now(), idDategory: 3, desc: this.dataRec.newRecDesc, value: this.dataRec.totalRecOut}]
-          } else{
-            this.allFormsPagt[1].data.push({idRec: Date.now(), idDategory: 3, desc: this.dataRec.newRecDesc, value: this.round(this.dataRec.newRecValue.replace("R$ ", "").replace(",", "."))})
-          }
-          localStorage.setItem("dataRec", JSON.stringify(this.allFormsPagt[1].data));
-          Vue.set(this.dataRec.series, 3, this.dataRec.totalRecOut)
-        }
+        this.generateData();
 
         if(elementExist){
           if(this.dataRec.totalRecSalary != 0) document.getElementById("apexDonutRec").classList.add("one")
@@ -321,6 +270,63 @@ export default {
         }
       }
     },
+    generateData(){
+      if(this.dataRec.newRecSelect == 'Salário'){
+        if(this.dataRec.newRecDesc.trim() == '') this.dataRec.newRecDesc = 'Salário'
+
+        this.dataRec.totalRecSalary = this.round(this.dataRec.totalRecSalary, this.dataRec.newRecValue.replace("R$ ", "").replace(",", "."));
+        
+        if(this.allFormsPagt[1].data == null){
+          this.allFormsPagt[1].data = [{idRec: Date.now(), idCategory: 0, desc: this.dataRec.newRecDesc, date: this.date, value: this.dataRec.totalRecSalary}]
+        } else{
+          this.allFormsPagt[1].data.push({idRec: Date.now(), idCategory: 0, desc: this.dataRec.newRecDesc, date: this.date, value: this.round(this.dataRec.newRecValue.replace("R$ ", "").replace(",", "."))})
+        }
+        localStorage.setItem("dataRec", JSON.stringify(this.allFormsPagt[1].data));
+        Vue.set(this.dataRec.series, 0, this.dataRec.totalRecSalary)
+      }
+      
+      if(this.dataRec.newRecSelect == 'Investimentos'){
+        if(this.dataRec.newRecDesc.trim() == '') this.dataRec.newRecDesc = 'Investimentos'
+
+        this.dataRec.totalRecInvest = this.round(this.dataRec.totalRecInvest, this.dataRec.newRecValue.replace("R$ ", "").replace(",", "."));
+
+        if(this.allFormsPagt[1].data == null){
+          this.allFormsPagt[1].data = [{idRec: Date.now(), idCategory: 1, desc: this.dataRec.newRecDesc, date: this.date, value: this.dataRec.totalRecInvest}]
+        } else{
+          this.allFormsPagt[1].data.push({idRec: Date.now(), idCategory: 1, desc: this.dataRec.newRecDesc, date: this.date, value: this.round(this.dataRec.newRecValue.replace("R$ ", "").replace(",", "."))})
+        }
+        localStorage.setItem("dataRec", JSON.stringify(this.allFormsPagt[1].data));
+        Vue.set(this.dataRec.series, 1, this.dataRec.totalRecInvest)
+      }
+      
+      if(this.dataRec.newRecSelect == 'Empréstimos'){
+        if(this.dataRec.newRecDesc.trim() == '') this.dataRec.newRecDesc = 'Empréstimos'
+
+        this.dataRec.totalRecEmp = this.round(this.dataRec.totalRecEmp, this.dataRec.newRecValue.replace("R$ ", "").replace(",", "."));
+
+        if(this.allFormsPagt[1].data == null){
+          this.allFormsPagt[1].data = [{idRec: Date.now(), idCategory: 2, desc: this.dataRec.newRecDesc, date: this.date, value: this.dataRec.totalRecEmp}]
+        } else{
+          this.allFormsPagt[1].data.push({idRec: Date.now(), idCategory: 2, desc: this.dataRec.newRecDesc, date: this.date, value: this.round(this.dataRec.newRecValue.replace("R$ ", "").replace(",", "."))})
+        }
+        localStorage.setItem("dataRec", JSON.stringify(this.allFormsPagt[1].data));
+        Vue.set(this.dataRec.series, 2, this.dataRec.totalRecEmp)
+      }
+      
+      if(this.dataRec.newRecSelect == 'Outros'){
+        if(this.dataRec.newRecDesc.trim() == '') this.dataRec.newRecDesc = 'Outros'
+
+        this.dataRec.totalRecOut = this.round(this.dataRec.totalRecOut, this.dataRec.newRecValue.replace("R$ ", "").replace(",", "."));
+
+        if(this.allFormsPagt[1].data == null){
+          this.allFormsPagt[1].data = [{idRec: Date.now(), idCategory: 3, desc: this.dataRec.newRecDesc, date: this.date, value: this.dataRec.totalRecOut}]
+        } else{
+          this.allFormsPagt[1].data.push({idRec: Date.now(), idCategory: 3, desc: this.dataRec.newRecDesc, date: this.date, value: this.round(this.dataRec.newRecValue.replace("R$ ", "").replace(",", "."))})
+        }
+        localStorage.setItem("dataRec", JSON.stringify(this.allFormsPagt[1].data));
+        Vue.set(this.dataRec.series, 3, this.dataRec.totalRecOut)
+      }
+    },
     round(num, num2){
       if(num2){
         return (Math.round((num + parseFloat(num2)) * 100) / 100);
@@ -330,17 +336,34 @@ export default {
         return (Math.round(num * 100) / 100);
       }
     },
-    destroyTask($event){
-      console.log($event)
-      this.dateCalendar = $event.pimba;
-      console.log(this.dateCalendar)
-    }
+    formatDate (date) {
+      if (!date) return null
+
+      const [year, month, day] = date.split('-')
+      return `${day}/${month}/${year}`
+    },
+    parseDate (date) {
+      if (!date) return null
+
+      const [day, month, year] = date.split('/')
+      return `${year}-${month.padStart(2, '0')}-${day.padStart(2, '0')}`
+    },
   },
   filters: {
     toBrl(value){
       return (Math.round(value * 100) / 100).toFixed(2).replace(".",",");
     }
-  }
+  },
+  computed: {
+    computedDateFormatted () {
+      return this.formatDate(this.date)
+    },
+  },
+  watch: {
+    date () {
+      this.dateFormatted = this.formatDate(this.date)
+    },
+  },
 }
 
 
