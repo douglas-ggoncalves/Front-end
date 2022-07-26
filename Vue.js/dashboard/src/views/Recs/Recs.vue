@@ -263,8 +263,8 @@ export default {
       dateFilterInit: '',
       dateFilterFormattedInit: '',
       menuFilterInit: false,
-      dateFilterFinal: '',
-      dateFilterFormattedFinal: '',
+      dateFilterFinal: (new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().substr(0, 10),
+      dateFilterFormattedFinal: this.formatDate((new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().substr(0, 10)),
       menuFilterFinal: false,
       date: (new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().substr(0, 10),
       dateFormatted: this.formatDate((new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().substr(0, 10)),
@@ -601,8 +601,24 @@ export default {
     this.dataRec.totalRecEmp = 0;
     this.dataRec.totalRecOut = 0;
     this.desserts2 = [];
-
+    var minDate;
+    var maxDate;
+    
     this.allFormsPagt[1].data.forEach(element => {
+      if(minDate == undefined){
+        minDate = element.date
+      } else{
+        if(element.date < minDate){
+          minDate = element.date
+        }
+      }
+      if(maxDate == undefined){
+        maxDate = element.date
+      } else{
+        if(element.date > maxDate){
+          maxDate = element.date
+        }
+      }
       this.dataRec.hasRec = true
 
       if(filterOn){
@@ -652,6 +668,10 @@ export default {
         }
       }
     })
+     this.dateFilterInit = minDate;
+      this.dateFilterFormattedInit =  this.formatDate(this.dateFilterInit);
+    
+   
     },
     formatDate (date) {
       if (!date) return null
