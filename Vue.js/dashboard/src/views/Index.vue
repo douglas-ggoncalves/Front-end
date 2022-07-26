@@ -274,12 +274,12 @@ export default {
       if(this.dataRec.newRecSelect == 'Salário'){
         if(this.dataRec.newRecDesc.trim() == '') this.dataRec.newRecDesc = 'Salário'
 
-        this.dataRec.totalRecSalary = this.round(this.dataRec.totalRecSalary, this.dataRec.newRecValue.replace("R$ ", "").replace(",", "."));
+        this.dataRec.totalRecSalary = this.round(this.dataRec.totalRecSalary, this.convertMoneyFloat(this.dataRec.newRecValue));
         
         if(this.allFormsPagt[1].data == null){
           this.allFormsPagt[1].data = [{idRec: Date.now(), idCategory: 0, desc: this.dataRec.newRecDesc, date: this.date, value: this.dataRec.totalRecSalary}]
         } else{
-          this.allFormsPagt[1].data.push({idRec: Date.now(), idCategory: 0, desc: this.dataRec.newRecDesc, date: this.date, value: this.round(this.dataRec.newRecValue.replace("R$ ", "").replace(",", "."))})
+          this.allFormsPagt[1].data.push({idRec: Date.now(), idCategory: 0, desc: this.dataRec.newRecDesc, date: this.date, value: this.convertMoneyFloat(this.dataRec.newRecValue)})
         }
         localStorage.setItem("dataRec", JSON.stringify(this.allFormsPagt[1].data));
         Vue.set(this.dataRec.series, 0, this.dataRec.totalRecSalary)
@@ -288,12 +288,12 @@ export default {
       if(this.dataRec.newRecSelect == 'Investimentos'){
         if(this.dataRec.newRecDesc.trim() == '') this.dataRec.newRecDesc = 'Investimentos'
 
-        this.dataRec.totalRecInvest = this.round(this.dataRec.totalRecInvest, this.dataRec.newRecValue.replace("R$ ", "").replace(",", "."));
+        this.dataRec.totalRecInvest = this.round(this.dataRec.totalRecInvest, this.convertMoneyFloat(this.dataRec.newRecValue));
 
         if(this.allFormsPagt[1].data == null){
           this.allFormsPagt[1].data = [{idRec: Date.now(), idCategory: 1, desc: this.dataRec.newRecDesc, date: this.date, value: this.dataRec.totalRecInvest}]
         } else{
-          this.allFormsPagt[1].data.push({idRec: Date.now(), idCategory: 1, desc: this.dataRec.newRecDesc, date: this.date, value: this.round(this.dataRec.newRecValue.replace("R$ ", "").replace(",", "."))})
+          this.allFormsPagt[1].data.push({idRec: Date.now(), idCategory: 1, desc: this.dataRec.newRecDesc, date: this.date, value: this.convertMoneyFloat(this.dataRec.newRecValue)})
         }
         localStorage.setItem("dataRec", JSON.stringify(this.allFormsPagt[1].data));
         Vue.set(this.dataRec.series, 1, this.dataRec.totalRecInvest)
@@ -302,12 +302,12 @@ export default {
       if(this.dataRec.newRecSelect == 'Empréstimos'){
         if(this.dataRec.newRecDesc.trim() == '') this.dataRec.newRecDesc = 'Empréstimos'
 
-        this.dataRec.totalRecEmp = this.round(this.dataRec.totalRecEmp, this.dataRec.newRecValue.replace("R$ ", "").replace(",", "."));
+        this.dataRec.totalRecEmp = this.round(this.dataRec.totalRecEmp, this.convertMoneyFloat(this.dataRec.newRecValue));
 
         if(this.allFormsPagt[1].data == null){
           this.allFormsPagt[1].data = [{idRec: Date.now(), idCategory: 2, desc: this.dataRec.newRecDesc, date: this.date, value: this.dataRec.totalRecEmp}]
         } else{
-          this.allFormsPagt[1].data.push({idRec: Date.now(), idCategory: 2, desc: this.dataRec.newRecDesc, date: this.date, value: this.round(this.dataRec.newRecValue.replace("R$ ", "").replace(",", "."))})
+          this.allFormsPagt[1].data.push({idRec: Date.now(), idCategory: 2, desc: this.dataRec.newRecDesc, date: this.date, value: this.convertMoneyFloat(this.dataRec.newRecValue)})
         }
         localStorage.setItem("dataRec", JSON.stringify(this.allFormsPagt[1].data));
         Vue.set(this.dataRec.series, 2, this.dataRec.totalRecEmp)
@@ -316,12 +316,12 @@ export default {
       if(this.dataRec.newRecSelect == 'Outros'){
         if(this.dataRec.newRecDesc.trim() == '') this.dataRec.newRecDesc = 'Outros'
 
-        this.dataRec.totalRecOut = this.round(this.dataRec.totalRecOut, this.dataRec.newRecValue.replace("R$ ", "").replace(",", "."));
+        this.dataRec.totalRecOut = this.round(this.dataRec.totalRecOut, this.convertMoneyFloat(this.dataRec.newRecValue));
 
         if(this.allFormsPagt[1].data == null){
           this.allFormsPagt[1].data = [{idRec: Date.now(), idCategory: 3, desc: this.dataRec.newRecDesc, date: this.date, value: this.dataRec.totalRecOut}]
         } else{
-          this.allFormsPagt[1].data.push({idRec: Date.now(), idCategory: 3, desc: this.dataRec.newRecDesc, date: this.date, value: this.round(this.dataRec.newRecValue.replace("R$ ", "").replace(",", "."))})
+          this.allFormsPagt[1].data.push({idRec: Date.now(), idCategory: 3, desc: this.dataRec.newRecDesc, date: this.date, value: this.convertMoneyFloat(this.dataRec.newRecValue)})
         }
         localStorage.setItem("dataRec", JSON.stringify(this.allFormsPagt[1].data));
         Vue.set(this.dataRec.series, 3, this.dataRec.totalRecOut)
@@ -335,6 +335,17 @@ export default {
       if(!num2){
         return (Math.round(num * 100) / 100);
       }
+    },
+    convertMoneyFloat(value){
+      if(value === ""){
+        value =  0;
+      }else{
+        value = value.replace("R$ ", "")
+        value = value.replace(".","");
+        value = value.replace(",",".");
+        value = parseFloat(value);
+      }
+      return value;
     },
     formatDate (date) {
       if (!date) return null
