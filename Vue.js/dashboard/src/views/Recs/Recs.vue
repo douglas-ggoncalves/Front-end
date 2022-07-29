@@ -263,8 +263,8 @@ export default {
       dateFilterInit: '',
       dateFilterFormattedInit: '',
       menuFilterInit: false,
-      dateFilterFinal: (new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().substr(0, 10),
-      dateFilterFormattedFinal: this.formatDate((new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().substr(0, 10)),
+      dateFilterFinal: '',
+      dateFilterFormattedFinal: '',
       menuFilterFinal: false,
       date: (new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().substr(0, 10),
       dateFormatted: this.formatDate((new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().substr(0, 10)),
@@ -313,6 +313,11 @@ export default {
         optionsDonut: {
           tooltip: {
             enabled: true,
+             y: {
+              formatter: function (val) {
+                return 'R$ ' + (Math.round(val * 100) / 100).toFixed(2).replace(".",",");
+              }
+            }
           },
           show: true,
           showForZeroSeries: false,
@@ -372,7 +377,6 @@ export default {
         Vue.set(this.dataRec.series, 1, (this.dataRec.totalRecInvest))
         Vue.set(this.dataRec.series, 2, (this.dataRec.totalRecEmp))
         Vue.set(this.dataRec.series, 3, (this.dataRec.totalRecOut))
-
         if(this.dataRec.series[0] == 0 && this.dataRec.series[1] == 0 && this.dataRec.series[2] == 0 && this.dataRec.series[3] == 0){
           this.dataRec.hasRec = false
         }
@@ -434,7 +438,8 @@ export default {
         this.dataRec.newRecSelect = ''
         this.dataRec.newRecDesc = ''
         this.dataRec.snackbarNewRec = true;
-        this.configData()
+        this.configData();
+
         this.dataRec.msgSuccess = 'Receita cadastrada com sucesso'
         if(!continueSave){
           this.dialog = false;
@@ -560,7 +565,7 @@ export default {
         this.allFormsPagt[1].data[elementIndex].value = this.round(this.convertMoneyFloat(this.editedItem.value)) 
         this.allFormsPagt[1].data[elementIndex].date = this.editedItem.date;
           
-        this.configData()
+        this.configData();
         Vue.set(this.dataRec.series, 0, (this.dataRec.totalRecSalary))
         Vue.set(this.dataRec.series, 1, (this.dataRec.totalRecInvest))
         Vue.set(this.dataRec.series, 2, (this.dataRec.totalRecEmp))
@@ -596,32 +601,17 @@ export default {
       return (Math.round(value * 100) / 100).toFixed(2);
     },
     configData(filterOn){
+      console.log(filterOn)
     this.dataRec.totalRecSalary = 0;
     this.dataRec.totalRecInvest = 0;
     this.dataRec.totalRecEmp = 0;
     this.dataRec.totalRecOut = 0;
     this.desserts2 = [];
-    var minDate;
-    var maxDate;
     
     this.allFormsPagt[1].data.forEach(element => {
-      if(minDate == undefined){
-        minDate = element.date
-      } else{
-        if(element.date < minDate){
-          minDate = element.date
-        }
-      }
-      if(maxDate == undefined){
-        maxDate = element.date
-      } else{
-        if(element.date > maxDate){
-          maxDate = element.date
-        }
-      }
       this.dataRec.hasRec = true
 
-      if(filterOn){
+      if(this.dateFilterInit != undefined && this.dateFilterInit != '' && this.dateFilterFinal != undefined && this.dateFilterFinal != ''){
         if(element.date >= this.dateFilterInit && element.date <= this.dateFilterFinal){
           if(element.idCategory == 0){
             this.dataRec.totalRecSalary = this.round(this.dataRec.totalRecSalary, element.value)
@@ -644,8 +634,7 @@ export default {
             else this.desserts2.push({idRec: element.idRec, desc: element.desc, idCategory: 'Outros', date: element.date, value: this.toBrl(element.value)})
           }
         }
-      }
-      else{
+      } else{
         if(element.idCategory == 0){
           this.dataRec.totalRecSalary = this.round(this.dataRec.totalRecSalary, element.value)
           if(this.desserts2.length == 0) this.desserts2 = [{idRec: element.idRec, desc: element.desc, idCategory: 'Salário', date: element.date, value: this.toBrl(element.value)}]
@@ -668,10 +657,7 @@ export default {
         }
       }
     })
-     this.dateFilterInit = minDate;
-      this.dateFilterFormattedInit =  this.formatDate(this.dateFilterInit);
     
-   
     },
     formatDate (date) {
       if (!date) return null

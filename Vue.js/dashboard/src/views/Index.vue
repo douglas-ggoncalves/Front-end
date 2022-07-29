@@ -170,6 +170,11 @@ export default {
         optionsDonut: {
           tooltip: {
             enabled: true,
+            y: {
+              formatter: function (val) {
+                return 'R$ ' + (Math.round(val * 100) / 100).toFixed(2).replace(".",",");
+              }
+            }
           },
           show: true,
           showForZeroSeries: false,
