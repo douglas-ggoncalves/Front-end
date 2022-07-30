@@ -29,13 +29,13 @@
                 </v-col>
 
                 <v-col cols="12">
-                  <v-menu ref="menu1" v-model="menu1" :close-on-content-click="false" transition="scale-transition" offset-y max-width="290px" min-width="auto">
+                  <v-menu ref="menu2" v-model="menu2" :close-on-content-click="false" transition="scale-transition" offset-y max-width="290px" min-width="auto">
                     <template v-slot:activator="{ on, attrs }">
                       <v-text-field v-model="editedItem.dateFormatted" readonly :prepend-inner-icon="'mdi-calendar'" label="Informe a Data *" 
                       hint="informe a data desejada" v-bind="attrs" @blur="editedItem.date = parseDate(editedItem.dateFormatted)" v-on="on" ></v-text-field>
                     </template>
                     
-                    <v-date-picker v-model="editedItem.date" no-title @input="menu1 = false" locale="pt"></v-date-picker>
+                    <v-date-picker v-model="editedItem.date" no-title @input="menu2 = false" locale="pt"></v-date-picker>
                   </v-menu>
                 </v-col>
                
@@ -120,19 +120,19 @@
                 </div>
                 
                 <div class="right">
-                <span>
+                  <span>
                     <v-icon class="iGreen">mdi-arrow-up</v-icon>
                   </span>
                 </div>
               </a>
             </div>
           </template>
-          <span>descrição</span>
+          <span>Valor total de suas receitas</span>
         </v-tooltip>
 
         <v-row>
           <v-col :cols="12">
-            <v-menu ref="menu1" v-model="menuFilterInit" :close-on-content-click="false" transition="scale-transition" offset-y max-width="290px" min-width="auto">
+            <v-menu ref="menuFilterInit" v-model="menuFilterInit" :close-on-content-click="false" transition="scale-transition" offset-y max-width="290px" min-width="auto">
               <template v-slot:activator="{ on, attrs }">
                 <v-text-field v-model="dateFilterFormattedInit" readonly :prepend-inner-icon="'mdi-calendar'" label="Período Inicial" 
                 hint="informe a data desejada" v-bind="attrs" @blur="dateFilterInit = parseDate(dateFilterFormattedInit)" v-on="on" ></v-text-field>
@@ -142,7 +142,7 @@
             </v-menu>
           </v-col>
           <v-col :cols="12">
-            <v-menu ref="menu1" v-model="menuFilterFinal" :close-on-content-click="false" transition="scale-transition" offset-y max-width="290px" min-width="auto">
+            <v-menu ref="menuFilterFinal" v-model="menuFilterFinal" :close-on-content-click="false" transition="scale-transition" offset-y max-width="290px" min-width="auto">
               <template v-slot:activator="{ on, attrs }">
                 <v-text-field v-model="dateFilterFormattedFinal" readonly :prepend-inner-icon="'mdi-calendar'" label="Período Final" 
                 hint="informe a data desejada" v-bind="attrs" @blur="dateFilterFinal = parseDate(dateFilterFormattedFinal)" v-on="on" ></v-text-field>
@@ -232,8 +232,35 @@
           </div>
 
           <div v-if="dataRec.hasRec">
-            <apexchart class="" id="apexDonutRec" width="380" type="donut" :options="dataRec.optionsDonut" :series="dataRec.series"></apexchart>
+            <apexchart class="" id="apexDonutRec" width="380" type="donut" :options="dataRec.optionsDonut" :series="dataRec.seriesDonut"></apexchart>
           </div>
+          
+          
+        </div>
+
+        <div>
+         <v-btn class="ma-2" rounded color="success" @click="dialog = true">
+            Cadastrar Receita
+          </v-btn>
+        </div>
+      </v-col>
+      <v-col class="dash" :cols="12" :md="6">
+        <h4>Receitas por Ano</h4>
+        
+        <div id="first">
+          <div v-if="!dataRec.hasRec">
+            <v-icon>mdi-chart-donut</v-icon>
+            <br>
+            <h5>
+              Você ainda não possui receitas.
+            </h5>
+          </div>
+
+          <div v-if="dataRec.hasRec">
+            <apexchart width="500" type="line" :options="dataRec.optionsLine" :series="dataRec.seriesLine"></apexchart>
+          </div>
+          
+          
         </div>
 
         <div>
@@ -269,6 +296,7 @@ export default {
       date: (new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().substr(0, 10),
       dateFormatted: this.formatDate((new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().substr(0, 10)),
       menu1: false,
+      menu2: false,
       search2: '',
       headers2: [
         { text: 'Descrição', align: 'start', value: 'desc'},
@@ -329,7 +357,34 @@ export default {
           },
           labels: ['Salário', 'Investimentos', 'Empréstimos', 'Outros'],
         },
-        series: [],
+        seriesDonut: [],
+        optionsLine: {
+          chart: {
+            defaultLocale: 'pt-br',
+            locales: [{
+              name: 'pt-br',
+              options: {
+                toolbar: {
+                  selectionZoom: 'Selecionar Zoom',
+                  zoomIn: 'Mais Zoom',
+                  zoomOut: 'Reduzir Zoom',
+                  pan: 'Panorâmico',
+                  reset: 'Resetar Zoom',
+                }
+              }
+            }]
+          },
+          markers: {
+            size: [4,7],
+          },
+          xaxis: {
+            categories: ['JAN', 'FEV', 'MAR', 'ABR', 'MAIO', 'JUN', 'JUL', 'AGO', 'SET', 'OUT', 'NOV', 'DEZ']
+          }
+      },
+      seriesLine: [{
+        name: 'series-1',
+        data: [30, 40, 45, 50, 35, 14, 70, 49, 60, 70, 91, 20]
+      }],
         snackbarNewRec: false,
       },
     }
@@ -345,7 +400,7 @@ export default {
       this.configData();
     }
 
-    this.dataRec.series = [this.dataRec.totalRecSalary, this.dataRec.totalRecInvest, this.dataRec.totalRecEmp, this.dataRec.totalRecOut]
+    this.dataRec.seriesDonut = [this.dataRec.totalRecSalary, this.dataRec.totalRecInvest, this.dataRec.totalRecEmp, this.dataRec.totalRecOut]
     /* Fim Receitas */
   },
   mounted(){
@@ -372,12 +427,12 @@ export default {
         this.dataRec.msgError = 'Preencha os campos data inicial e final antes de filtrar';
       } else if(this.dateFilterFinal >= this.dateFilterInit){
         var elementExist = document.getElementById("apexDonutRec")
-        this.configData(true);
-        Vue.set(this.dataRec.series, 0, (this.dataRec.totalRecSalary))
-        Vue.set(this.dataRec.series, 1, (this.dataRec.totalRecInvest))
-        Vue.set(this.dataRec.series, 2, (this.dataRec.totalRecEmp))
-        Vue.set(this.dataRec.series, 3, (this.dataRec.totalRecOut))
-        if(this.dataRec.series[0] == 0 && this.dataRec.series[1] == 0 && this.dataRec.series[2] == 0 && this.dataRec.series[3] == 0){
+        this.configData();
+        Vue.set(this.dataRec.seriesDonut, 0, (this.dataRec.totalRecSalary))
+        Vue.set(this.dataRec.seriesDonut, 1, (this.dataRec.totalRecInvest))
+        Vue.set(this.dataRec.seriesDonut, 2, (this.dataRec.totalRecEmp))
+        Vue.set(this.dataRec.seriesDonut, 3, (this.dataRec.totalRecOut))
+        if(this.dataRec.seriesDonut[0] == 0 && this.dataRec.seriesDonut[1] == 0 && this.dataRec.seriesDonut[2] == 0 && this.dataRec.seriesDonut[3] == 0){
           this.dataRec.hasRec = false
         }
 
@@ -399,12 +454,12 @@ export default {
       this.dateFilterFormattedFinal = ''
       var elementExist = document.getElementById("apexDonutRec")
       this.configData();
-      Vue.set(this.dataRec.series, 0, (this.dataRec.totalRecSalary))
-      Vue.set(this.dataRec.series, 1, (this.dataRec.totalRecInvest))
-      Vue.set(this.dataRec.series, 2, (this.dataRec.totalRecEmp))
-      Vue.set(this.dataRec.series, 3, (this.dataRec.totalRecOut))
+      Vue.set(this.dataRec.seriesDonut, 0, (this.dataRec.totalRecSalary))
+      Vue.set(this.dataRec.seriesDonut, 1, (this.dataRec.totalRecInvest))
+      Vue.set(this.dataRec.seriesDonut, 2, (this.dataRec.totalRecEmp))
+      Vue.set(this.dataRec.seriesDonut, 3, (this.dataRec.totalRecOut))
 
-      if(this.dataRec.series[0] == 0 && this.dataRec.series[1] == 0 && this.dataRec.series[2] == 0 && this.dataRec.series[3] == 0){
+      if(this.dataRec.seriesDonut[0] == 0 && this.dataRec.seriesDonut[1] == 0 && this.dataRec.seriesDonut[2] == 0 && this.dataRec.seriesDonut[3] == 0){
         this.dataRec.hasRec = false
       }
 
@@ -449,19 +504,36 @@ export default {
     generateData(){
       if(this.dataRec.newRecSelect == 'Salário'){
         if(this.dataRec.newRecDesc.trim() == '') this.dataRec.newRecDesc = 'Salário'
-        this.dataRec.totalRecSalary = this.round(this.dataRec.totalRecSalary, this.convertMoneyFloat(this.dataRec.newRecValue));
+
+          if(this.dateFilterInit == undefined || this.dateFilterInit == '' || this.dateFilterFinal == undefined || this.dateFilterFinal == ''){
+            this.dataRec.totalRecSalary = this.round(this.dataRec.totalRecSalary, this.convertMoneyFloat(this.dataRec.newRecValue));
+          } else{
+            if(this.date >= this.dateFilterInit && this.date <= this.dateFilterFinal){
+              this.dataRec.totalRecSalary = this.round(this.dataRec.totalRecSalary, this.convertMoneyFloat(this.dataRec.newRecValue));
+            }
+          }
+            
         if(this.allFormsPagt[1].data == null){
           this.allFormsPagt[1].data = [{idRec: Date.now(), idCategory: 0, desc: this.dataRec.newRecDesc, date: this.date, value: this.dataRec.totalRecSalary}]
         } else{
           this.allFormsPagt[1].data.push({idRec: Date.now(), idCategory: 0, desc: this.dataRec.newRecDesc, date: this.date, value: this.convertMoneyFloat(this.dataRec.newRecValue)})
         }
         localStorage.setItem("dataRec", JSON.stringify(this.allFormsPagt[1].data));
-        Vue.set(this.dataRec.series, 0, this.dataRec.totalRecSalary)
+
+        Vue.set(this.dataRec.seriesDonut, 0, this.dataRec.totalRecSalary)
       }
+        
+      
       
       if(this.dataRec.newRecSelect == 'Investimentos'){
         if(this.dataRec.newRecDesc.trim() == '') this.dataRec.newRecDesc = 'Investimentos'
-        this.dataRec.totalRecInvest = this.round(this.dataRec.totalRecInvest, this.convertMoneyFloat(this.dataRec.newRecValue));
+          if(this.dateFilterInit == undefined || this.dateFilterInit == '' || this.dateFilterFinal == undefined || this.dateFilterFinal == ''){
+            this.dataRec.totalRecInvest = this.round(this.dataRec.totalRecInvest, this.convertMoneyFloat(this.dataRec.newRecValue));
+          } else {
+            if(this.date >= this.dateFilterInit && this.date <= this.dateFilterFinal){
+              this.dataRec.totalRecInvest = this.round(this.dataRec.totalRecInvest, this.convertMoneyFloat(this.dataRec.newRecValue));
+            }
+          }
 
         if(this.allFormsPagt[1].data == null){
           this.allFormsPagt[1].data = [{idRec: Date.now(), idCategory: 1, desc: this.dataRec.newRecDesc, date: this.date, value: this.dataRec.totalRecInvest}]
@@ -469,12 +541,18 @@ export default {
           this.allFormsPagt[1].data.push({idRec: Date.now(), idCategory: 1, desc: this.dataRec.newRecDesc, date: this.date, value: this.convertMoneyFloat(this.dataRec.newRecValue)})
         }
         localStorage.setItem("dataRec", JSON.stringify(this.allFormsPagt[1].data));
-        Vue.set(this.dataRec.series, 1, this.dataRec.totalRecInvest)
+        Vue.set(this.dataRec.seriesDonut, 1, this.dataRec.totalRecInvest)
       }
       
       if(this.dataRec.newRecSelect == 'Empréstimos'){
         if(this.dataRec.newRecDesc.trim() == '') this.dataRec.newRecDesc = 'Empréstimos'
-        this.dataRec.totalRecEmp = this.round(this.dataRec.totalRecEmp, this.convertMoneyFloat(this.dataRec.newRecValue));
+          if(this.dateFilterInit == undefined || this.dateFilterInit == '' || this.dateFilterFinal == undefined || this.dateFilterFinal == ''){
+            this.dataRec.totalRecEmp = this.round(this.dataRec.totalRecEmp, this.convertMoneyFloat(this.dataRec.newRecValue));
+          } else {
+            if(this.date >= this.dateFilterInit && this.date <= this.dateFilterFinal){
+              this.dataRec.totalRecEmp = this.round(this.dataRec.totalRecEmp, this.convertMoneyFloat(this.dataRec.newRecValue));
+            }
+          }
 
         if(this.allFormsPagt[1].data == null){
           this.allFormsPagt[1].data = [{idRec: Date.now(), idCategory: 2, desc: this.dataRec.newRecDesc, date: this.date, value: this.dataRec.totalRecEmp}]
@@ -482,12 +560,18 @@ export default {
           this.allFormsPagt[1].data.push({idRec: Date.now(), idCategory: 2, desc: this.dataRec.newRecDesc, date: this.date, value: this.convertMoneyFloat(this.dataRec.newRecValue)})
         }
         localStorage.setItem("dataRec", JSON.stringify(this.allFormsPagt[1].data));
-        Vue.set(this.dataRec.series, 2, this.dataRec.totalRecEmp)
+        Vue.set(this.dataRec.seriesDonut, 2, this.dataRec.totalRecEmp)
       }
       
       if(this.dataRec.newRecSelect == 'Outros'){
         if(this.dataRec.newRecDesc.trim() == '') this.dataRec.newRecDesc = 'Outros'
-        this.dataRec.totalRecOut = this.round(this.dataRec.totalRecOut, this.convertMoneyFloat(this.dataRec.newRecValue));
+          if(this.dateFilterInit == undefined || this.dateFilterInit == '' || this.dateFilterFinal == undefined || this.dateFilterFinal == ''){
+            this.dataRec.totalRecOut = this.round(this.dataRec.totalRecOut, this.convertMoneyFloat(this.dataRec.newRecValue));
+          } else{
+            if(this.date >= this.dateFilterInit && this.date <= this.dateFilterFinal){
+              this.dataRec.totalRecOut = this.round(this.dataRec.totalRecOut, this.convertMoneyFloat(this.dataRec.newRecValue));
+            }
+          }
 
         if(this.allFormsPagt[1].data == null){
           this.allFormsPagt[1].data = [{idRec: Date.now(), idCategory: 3, desc: this.dataRec.newRecDesc, date: this.date, value: this.dataRec.totalRecOut}]
@@ -495,7 +579,7 @@ export default {
           this.allFormsPagt[1].data.push({idRec: Date.now(), idCategory: 3, desc: this.dataRec.newRecDesc, date: this.date, value: this.convertMoneyFloat(this.dataRec.newRecValue)})
         }
         localStorage.setItem("dataRec", JSON.stringify(this.allFormsPagt[1].data));
-        Vue.set(this.dataRec.series, 3, this.dataRec.totalRecOut)
+        Vue.set(this.dataRec.seriesDonut, 3, this.dataRec.totalRecOut)
       }
     },
     editItem(item){
@@ -523,12 +607,12 @@ export default {
       this.configData()
       this.dialogDelete = false;
 
-      Vue.set(this.dataRec.series, 0, (this.dataRec.totalRecSalary))
-      Vue.set(this.dataRec.series, 1, (this.dataRec.totalRecInvest))
-      Vue.set(this.dataRec.series, 2, (this.dataRec.totalRecEmp))
-      Vue.set(this.dataRec.series, 3, (this.dataRec.totalRecOut))
+      Vue.set(this.dataRec.seriesDonut, 0, (this.dataRec.totalRecSalary))
+      Vue.set(this.dataRec.seriesDonut, 1, (this.dataRec.totalRecInvest))
+      Vue.set(this.dataRec.seriesDonut, 2, (this.dataRec.totalRecEmp))
+      Vue.set(this.dataRec.seriesDonut, 3, (this.dataRec.totalRecOut))
 
-      if(this.dataRec.series[0] == 0 && this.dataRec.series[1] == 0 && this.dataRec.series[2] == 0 && this.dataRec.series[3] == 0){
+      if(this.dataRec.seriesDonut[0] == 0 && this.dataRec.seriesDonut[1] == 0 && this.dataRec.seriesDonut[2] == 0 && this.dataRec.seriesDonut[3] == 0){
         this.dataRec.hasRec = false
       }
 
@@ -566,10 +650,10 @@ export default {
         this.allFormsPagt[1].data[elementIndex].date = this.editedItem.date;
           
         this.configData();
-        Vue.set(this.dataRec.series, 0, (this.dataRec.totalRecSalary))
-        Vue.set(this.dataRec.series, 1, (this.dataRec.totalRecInvest))
-        Vue.set(this.dataRec.series, 2, (this.dataRec.totalRecEmp))
-        Vue.set(this.dataRec.series, 3, (this.dataRec.totalRecOut))
+        Vue.set(this.dataRec.seriesDonut, 0, (this.dataRec.totalRecSalary))
+        Vue.set(this.dataRec.seriesDonut, 1, (this.dataRec.totalRecInvest))
+        Vue.set(this.dataRec.seriesDonut, 2, (this.dataRec.totalRecEmp))
+        Vue.set(this.dataRec.seriesDonut, 3, (this.dataRec.totalRecOut))
         localStorage.setItem("dataRec", JSON.stringify(this.allFormsPagt[1].data));
         this.dialogEdit = false;
         this.dataRec.msgSuccess = 'Receita editada com sucesso'
@@ -600,8 +684,7 @@ export default {
     toBrl(value){
       return (Math.round(value * 100) / 100).toFixed(2);
     },
-    configData(filterOn){
-      console.log(filterOn)
+    configData(){
     this.dataRec.totalRecSalary = 0;
     this.dataRec.totalRecInvest = 0;
     this.dataRec.totalRecEmp = 0;
@@ -657,7 +740,7 @@ export default {
         }
       }
     })
-    
+    console.log('Consoleeeeeeeeee ' + this.dataRec.totalRecSalary)
     },
     formatDate (date) {
       if (!date) return null

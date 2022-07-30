@@ -166,7 +166,6 @@ export default {
         hasRec: false,
         error: false,
         msgError: '',
-        
         optionsDonut: {
           tooltip: {
             enabled: true,
