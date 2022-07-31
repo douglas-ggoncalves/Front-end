@@ -93,6 +93,11 @@ td.text-start {
   margin-top: 1.5rem !important;
 }
 
+.homeView .reports div.dash {
+  width: 100%;
+  margin-bottom: 1.5rem;
+}
+
 .homeView .reports div.dash > div#first {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -106,10 +111,25 @@ td.text-start {
   text-align: center;
   height: 100%;
   border: 1px solid rgba(200, 185, 185, 0.5);
-  padding: 1.5rem 1.25rem;
   border-radius: 16px;
   -webkit-box-shadow: 2px 2px 6px -4px rgba(0, 0, 0, 0.9);
   box-shadow: 2px 2px 6px -4px rgba(0, 0, 0, 0.9);
+}
+
+.homeView .reports div.dash > div#first div.divDash {
+  padding: 1.5rem 1.25rem;
+  width: 100%;
+}
+
+.homeView .reports div.dash > div#first div.divDash #apexchart > div {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.homeView .reports div.dash > div#first .v-input {
+  max-width: 70% !important;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .homeView #apexDonutRec .apexcharts-legend-series {
@@ -135,6 +155,15 @@ td.text-start {
 @media (max-width: 356px) {
   #apexDonutRec .apexcharts-legend-series {
     display: none !important;
+  }
+  div.divDash {
+    padding: 0 !important;
+  }
+}
+
+@media (min-width: 576px) {
+  .reports {
+    margin-top: 1.5rem !important;
   }
 }
 /*# sourceMappingURL=style.css.map */

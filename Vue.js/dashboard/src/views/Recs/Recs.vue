@@ -132,7 +132,7 @@
 
         <v-row>
           <v-col :cols="12">
-            <v-menu ref="menuFilterInit" v-model="menuFilterInit" :close-on-content-click="false" transition="scale-transition" offset-y max-width="290px" min-width="auto">
+            <v-menu style="z-index: 13" ref="menuFilterInit" v-model="menuFilterInit" :close-on-content-click="false" transition="scale-transition" offset-y max-width="290px" min-width="auto">
               <template v-slot:activator="{ on, attrs }">
                 <v-text-field v-model="dateFilterFormattedInit" readonly :prepend-inner-icon="'mdi-calendar'" label="Período Inicial" 
                 hint="informe a data desejada" v-bind="attrs" @blur="dateFilterInit = parseDate(dateFilterFormattedInit)" v-on="on" ></v-text-field>
@@ -142,7 +142,7 @@
             </v-menu>
           </v-col>
           <v-col :cols="12">
-            <v-menu ref="menuFilterFinal" v-model="menuFilterFinal" :close-on-content-click="false" transition="scale-transition" offset-y max-width="290px" min-width="auto">
+            <v-menu style="z-index: 13" ref="menuFilterFinal" v-model="menuFilterFinal" :close-on-content-click="false" transition="scale-transition" offset-y max-width="290px" min-width="auto">
               <template v-slot:activator="{ on, attrs }">
                 <v-text-field v-model="dateFilterFormattedFinal" readonly :prepend-inner-icon="'mdi-calendar'" label="Período Final" 
                 hint="informe a data desejada" v-bind="attrs" @blur="dateFilterFinal = parseDate(dateFilterFormattedFinal)" v-on="on" ></v-text-field>
@@ -219,7 +219,7 @@
         </v-card>
       </v-dialog>
  
-      <v-col class="dash" :cols="12" :md="6">
+      <v-col class="dash" :cols="12" :md="6" :lg="5">
         <h4>Receitas por Categoria</h4>
         
         <div id="first">
@@ -231,20 +231,13 @@
             </h5>
           </div>
 
-          <div v-if="dataRec.hasRec">
-            <apexchart class="" id="apexDonutRec" width="380" type="donut" :options="dataRec.optionsDonut" :series="dataRec.seriesDonut"></apexchart>
+          <div class="divDash" v-if="dataRec.hasRec">
+            <apexchart class="" id="apexDonutRec" type="donut" :options="dataRec.optionsDonut" :series="dataRec.seriesDonut"></apexchart>
           </div>
-          
-          
-        </div>
-
-        <div>
-         <v-btn class="ma-2" rounded color="success" @click="dialog = true">
-            Cadastrar Receita
-          </v-btn>
         </div>
       </v-col>
-      <v-col class="dash" :cols="12" :md="6">
+      
+      <v-col class="dash" :cols="12" :md="6" :lg="5">
         <h4>Receitas por Ano</h4>
         
         <div id="first">
@@ -256,17 +249,10 @@
             </h5>
           </div>
 
-          <div v-if="dataRec.hasRec">
-            <apexchart width="500" type="line" :options="dataRec.optionsLine" :series="dataRec.seriesLine"></apexchart>
+          <div class="divDash" v-if="dataRec.hasRec">
+              <v-select style="z-index: 12;" v-model="yearSelected" :items="arrayYears" menu-props="auto" label="Select" hide-details :prepend-inner-icon="'mdi-calendar-range'" single-line/>
+              <apexchart id="" type="line" :options="dataRec.optionsLine" :series="dataRec.seriesLine"></apexchart>
           </div>
-          
-          
-        </div>
-
-        <div>
-         <v-btn class="ma-2" rounded color="success" @click="dialog = true">
-            Cadastrar Receita
-          </v-btn>
         </div>
       </v-col>
     </v-row>
@@ -287,6 +273,9 @@ Vue.component('apexchart', VueApexCharts)
 export default {
   data(){
     return {
+      yearSelected: '',
+      arrayYears: [],
+      picker: 2022,
       dateFilterInit: '',
       dateFilterFormattedInit: '',
       menuFilterInit: false,
@@ -338,6 +327,8 @@ export default {
         error: false,
         msgError: '',
         msgSuccess: '',
+        snackbarNewRec: false,
+        seriesDonut: [],
         optionsDonut: {
           tooltip: {
             enabled: true,
@@ -357,8 +348,20 @@ export default {
           },
           labels: ['Salário', 'Investimentos', 'Empréstimos', 'Outros'],
         },
-        seriesDonut: [],
         optionsLine: {
+          tooltip: {
+            enabled: true,
+             y: {
+              formatter: function (val) {
+                return 'R$ ' + (Math.round(val * 100) / 100).toFixed(2).replace(".",",");
+              },
+              title: {
+                formatter : function(){
+                  return 'Total:'
+                } 
+              }
+            }
+          },
           chart: {
             defaultLocale: 'pt-br',
             locales: [{
@@ -378,14 +381,14 @@ export default {
             size: [4,7],
           },
           xaxis: {
-            categories: ['JAN', 'FEV', 'MAR', 'ABR', 'MAIO', 'JUN', 'JUL', 'AGO', 'SET', 'OUT', 'NOV', 'DEZ']
+            categories: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'],
           }
-      },
-      seriesLine: [{
-        name: 'series-1',
-        data: [30, 40, 45, 50, 35, 14, 70, 49, 60, 70, 91, 20]
-      }],
-        snackbarNewRec: false,
+        },
+        seriesLine: [{
+          name: 'Total',
+          data: []
+        }],
+        
       },
     }
   },
@@ -396,8 +399,11 @@ export default {
       this.allFormsPagt[1].data = JSON.parse(localStorage.getItem('dataRec'))
     } 
 
+    
+    this.createArrayData();
     if(this.allFormsPagt[1].data != null){
       this.configData();
+      this.configDataLine(this.yearSelected);
     }
 
     this.dataRec.seriesDonut = [this.dataRec.totalRecSalary, this.dataRec.totalRecInvest, this.dataRec.totalRecEmp, this.dataRec.totalRecOut]
@@ -421,6 +427,80 @@ export default {
     }
   },
   methods:{
+    /*addValueForLine(month, value){
+      //console.log("chegou aqui month " + month + ' value ' + value)
+      
+      var some = this.dataRec.seriesLine.data[month] += value
+      //Vue.set(this.dataRec.seriesLine.data, month, (some))
+    },*/
+
+    configDataLine(date){
+      var jan = 0;
+      var fev = 0;
+      var mar = 0;
+      var abr = 0;
+      var may = 0;
+      var jun = 0;
+      var jul = 0;
+      var aug = 0;
+      var set = 0;
+      var out = 0;
+      var nov = 0;
+      var dez = 0;
+
+      this.allFormsPagt[1].data.forEach(element => {
+        var [year, month] = element.date.split('-')
+        if(year == date){
+          if(month == '01'){
+            jan += element.value
+          } else if(month == '02'){
+            fev += element.value;
+          } else if(month == '03'){
+            mar += element.value;
+          } else if(month == '04'){
+            abr += element.value;
+          } else if(month == '05'){
+            may += element.value;
+          } else if(month == '06'){
+            jun += element.value;
+          } else if(month == '07'){
+            jul += element.value;
+          } else if(month == '08'){
+            aug += element.value;
+          } else if(month == '09'){
+            set += element.value;
+          } else if(month == '10'){
+            out += element.value;
+          } else if(month == '11'){
+            nov += element.value;
+          } else if(month == '12'){
+            dez += element.value;
+          }
+        }
+      })
+
+      var newData = [jan, fev, mar, abr, may, jun, jul, aug, set, out, nov, dez]
+
+      this.dataRec.seriesLine = [{
+        data: newData
+      }]
+
+     
+    },
+    createArrayData(){
+      var currentYear = (new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().substr(0, 10).split('-')[0]
+      this.yearSelected = parseInt(currentYear)
+
+      var minYear = parseInt(currentYear) - 100;
+      var maxYear = parseInt(currentYear) + 100;
+      for(var x = minYear; x <= maxYear; x++){
+        if(this.arrayYears == []){
+          this.arrayYears = x
+        } else{
+          this.arrayYears.push(x)
+        }
+      }
+    },
     filterByDate(){
       if(this.dateFilterInit == '' || this.dateFilterFinal == ''){
         this.dataRec.error = true;
@@ -494,6 +574,7 @@ export default {
         this.dataRec.newRecDesc = ''
         this.dataRec.snackbarNewRec = true;
         this.configData();
+        this.configDataLine(this.yearSelected);
 
         this.dataRec.msgSuccess = 'Receita cadastrada com sucesso'
         if(!continueSave){
@@ -523,8 +604,6 @@ export default {
         Vue.set(this.dataRec.seriesDonut, 0, this.dataRec.totalRecSalary)
       }
         
-      
-      
       if(this.dataRec.newRecSelect == 'Investimentos'){
         if(this.dataRec.newRecDesc.trim() == '') this.dataRec.newRecDesc = 'Investimentos'
           if(this.dateFilterInit == undefined || this.dateFilterInit == '' || this.dateFilterFinal == undefined || this.dateFilterFinal == ''){
@@ -605,6 +684,7 @@ export default {
       this.allFormsPagt[1].data = arr
       this.desserts2 = []
       this.configData()
+      this.configDataLine(this.yearSelected);
       this.dialogDelete = false;
 
       Vue.set(this.dataRec.seriesDonut, 0, (this.dataRec.totalRecSalary))
@@ -650,6 +730,7 @@ export default {
         this.allFormsPagt[1].data[elementIndex].date = this.editedItem.date;
           
         this.configData();
+        this.configDataLine(this.yearSelected);
         Vue.set(this.dataRec.seriesDonut, 0, (this.dataRec.totalRecSalary))
         Vue.set(this.dataRec.seriesDonut, 1, (this.dataRec.totalRecInvest))
         Vue.set(this.dataRec.seriesDonut, 2, (this.dataRec.totalRecEmp))
@@ -659,7 +740,6 @@ export default {
         this.dataRec.msgSuccess = 'Receita editada com sucesso'
         this.dataRec.snackbarNewRec = true;
       }
-      
     },
     round(num, num2){
       if(num2){
@@ -740,7 +820,6 @@ export default {
         }
       }
     })
-    console.log('Consoleeeeeeeeee ' + this.dataRec.totalRecSalary)
     },
     formatDate (date) {
       if (!date) return null
@@ -767,6 +846,7 @@ export default {
     computedDateFormatted () {
       return this.formatDate(this.date)
     },
+    
   },
   watch: {
     date () {
@@ -781,6 +861,9 @@ export default {
     dateFilterFinal(){
       this.dateFilterFormattedFinal = this.formatDate(this.dateFilterFinal);
     },
+    yearSelected(){
+      this.configDataLine(this.yearSelected)
+    }
   },
 }
 </script>

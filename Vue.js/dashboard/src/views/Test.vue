@@ -1,63 +1,64 @@
 <template>
-  <v-container>
-   <v-row class="mt-5 pt-5" align="center">
-      <v-col class="d-flex justify-center" :cols="12">
-        <apexchart width="500" type="bar" :options="options" :series="series"></apexchart>
-      </v-col>
-
-      <v-col class="d-flex justify-center" :cols="12">
-        <v-btn color="primary" @click="teste()">
-          Primary
-        </v-btn>
-      </v-col>
-    </v-row>
-  </v-container>
+   <div class="app">
+     <apexchart width="550" type="line" :options="chartOptions" :series="dataRec.series"></apexchart>
+     <div>
+       <button @click="updateChart">Update!</button>
+    </div>
+   </div>
 
 </template>
 
 <script>
+
 import Vue from 'vue'
 import VueApexCharts from 'vue-apexcharts'
+
 Vue.use(VueApexCharts)
 Vue.component('apexchart', VueApexCharts)
-
 export default {
   data(){
     return {
-      options: {
+      chartOptions: {
         chart: {
-          id: 'vuechart-example'
+          id: 'vuechart-example',
         },
         xaxis: {
-          categories: [1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000]
-        }
+          categories: [1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998],
+        },
       },
-      series: [
-      {
-        name: 'Entradas',
-        data: [30, 40, 45, 50, 49, 60, 70, 91, 92, 24]
-      },
-      {
-        name: 'Saídas',
-        data: [30, 40, 45, 50, 49, 60, 70, 91, 92, 97]
-      }],
+      dataRec: {
+        series: [{
+          name: 'series-1',
+          data: [30, 40, 45, 50, 49, 60, 70, 81]
+        }]
+      }
+      
     }
   },
-  methods:{
-    teste(){
-      const teste = [1,2,3]
+  methods: {
+    updateChart() {
+   /*   const max = 90;
+      const min = 20;
       const newData = this.series[0].data.map(() => {
-        return Math.floor(Math.random() * (90 - 20 + 1)) + 20
+        return Math.floor(Math.random() * (max - min + 1)) + min
       })
-      
-      Vue.set(this.series, 0, {data: newData})
+*/
+      var newData = [20, 7, 9, 8, 13, 18, 9, 2]
       console.log(newData)
-      console.log(teste)
+      console.log(this.dataRec.series[0].data)
+
+
+      const colors = ['#008FFB', '#00E396', '#FEB019', '#FF4560', '#775DD0']
+
+      // Make sure to update the whole options config and not just a single property to allow the Vue watch catch the change.
+      this.chartOptions = {
+        colors: [colors[Math.floor(Math.random()*colors.length)]]
+      };
+      // In the same way, update the series option
+      this.dataRec.series = [{
+        data: newData
+      }]
     }
   }
 }
 </script>
-
-<style>
-
-</style>

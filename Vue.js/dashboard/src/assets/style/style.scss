@@ -90,6 +90,8 @@ td.text-start{
         margin-top: 1.5rem !important;
 
         div.dash{
+            width: 100%;
+            margin-bottom: 1.5rem;
             >div#first{
                 display: flex;
                 justify-content: center;
@@ -97,13 +99,30 @@ td.text-start{
                 text-align: center;
                 height: 100%;
                 border: $border;
-                padding: 1.5rem 1.25rem;
                 border-radius: 16px;
                 -webkit-box-shadow: $boxShadow;
                 box-shadow: $boxShadow;
+
+                div.divDash{
+                    padding: 1.5rem 1.25rem;
+                    width: 100%;
+                    #apexchart{
+                        >div{
+                           margin-left: auto;
+                           margin-right: auto;
+                        }
+                    }
+                }
+
+                .v-input{
+                    max-width: 70% !important;
+                    margin-left: auto;
+                    margin-right: auto;
+                }
             }
         }
     }
+
 
     #apexDonutRec{
         .apexcharts-legend-series{
@@ -133,8 +152,6 @@ td.text-start{
             &:nth-child(4){ display:revert; }
         }
     }
-   
-    
 }
 
 @media (max-width: 356px) { 
@@ -143,10 +160,20 @@ td.text-start{
             display: none !important;
         }
     }
+    div.divDash{
+        padding: 0 !important;
+    }
+}
+
+@media (max-width: 356px) { 
+   
 }
 
 @media (min-width: 576px) { 
-    
+    .reports{
+        margin-top: 1.5rem !important;
+
+    }
 }
 
 @media (min-width: 768px) { 
@@ -158,5 +185,5 @@ td.text-start{
 }
 
 @media (min-width: 1200px) { 
-    
+   
 }
