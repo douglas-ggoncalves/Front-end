@@ -1,5 +1,5 @@
 <template>
-  <v-container class="homeView">
+  <v-container fluid class="homeView">
     <v-snackbar top min-width="50%" color="success" v-model="dataRec.snackbarNewRec" :timeout="5000">
       Receita cadastrada com sucesso
 
@@ -15,24 +15,23 @@
           <template v-slot:activator="{ on, attrs }">
             <div class="elements" v-bind="attrs" v-on="on">
               <a :href="`transacoes/${form.slug}`" style="">
-
-              <div class="left">
-                <span>{{ form.title }}</span>
-                <br>
-                <span v-if="form.title == 'Saldo Atual'" class="value">R$ {{ dataRec.totalRecSalary + dataRec.totalRecInvest + dataRec.totalRecEmp + dataRec.totalRecOut | toBrl }}</span>
-                <span v-else-if="form.title == 'Receitas'" class="value">R$ {{ dataRec.totalRecSalary + dataRec.totalRecInvest + dataRec.totalRecEmp + dataRec.totalRecOut | toBrl }}</span>
-                <span v-else class="value">R$ 00,00</span>
-              </div>
-              
-              <div class="right">
-                <span>
-                  <v-icon :class="{
-                  iGreen: form.title == 'Receitas',
-                  iRed: form.title == 'Despesas',
-                  iBlue: form.title == 'Saldo Atual',
-                  iOrange: form.title == 'Cartão de crédito',}">{{ form.icon }}</v-icon>
-                </span>
-              </div>
+                <div class="left">
+                  <span>{{ form.title }}</span>
+                  <br>
+                  <span v-if="form.title == 'Saldo Atual'" class="value">R$ {{ dataRec.totalRecSalary + dataRec.totalRecInvest + dataRec.totalRecEmp + dataRec.totalRecOut | toBrl }}</span>
+                  <span v-else-if="form.title == 'Receitas'" class="value">R$ {{ dataRec.totalRecSalary + dataRec.totalRecInvest + dataRec.totalRecEmp + dataRec.totalRecOut | toBrl }}</span>
+                  <span v-else class="value">R$ 00,00</span>
+                </div>
+                
+                <div class="right">
+                  <span>
+                    <v-icon :class="{
+                    iGreen: form.title == 'Receitas',
+                    iRed: form.title == 'Despesas',
+                    iBlue: form.title == 'Saldo Atual',
+                    iOrange: form.title == 'Cartão de crédito',}">{{ form.icon }}</v-icon>
+                  </span>
+                </div>
               </a>
             </div>
           </template>
@@ -98,7 +97,7 @@
         </v-card>
       </v-dialog>
 
-      <v-col class="dash" :cols="12" :sm="8" :md="6">
+      <v-col class="dash" :cols="12" :sm="8" :md="6" :lg="4">
         <h4>Receitas por Categoria</h4>
 
         <div id="first">
@@ -110,15 +109,9 @@
             </h5>
           </div>
 
-          <div v-if="dataRec.hasRec">
-            <apexchart class="" id="apexDonutRec" width="380" type="donut" :options="dataRec.optionsDonut" :series="dataRec.series"></apexchart>
+          <div class="divDash"  v-if="dataRec.hasRec">
+            <apexchart class="" id="apexDonutRec" type="donut" :options="dataRec.optionsDonut" :series="dataRec.series"></apexchart>
           </div>
-        </div>
-
-        <div>
-         <v-btn class="ma-2" rounded color="success" @click="dialog = true">
-            Nova Receita
-          </v-btn>
         </div>
       </v-col>
     </v-row>

@@ -1,5 +1,5 @@
 <template>
-  <v-container fluid class="homeView" >
+  <v-container fluid class="homeView">
     <v-snackbar top min-width="50%" color="success" v-model="dataRec.snackbarNewRec" :timeout="5000">
       
       {{ this.dataRec.msgSuccess }}
@@ -10,7 +10,7 @@
       </template>
     </v-snackbar>
 
-    <v-row class="px-md-10">
+    <v-row class="">
       <v-dialog v-model="dialogEdit" max-width="500px">
         <v-card>
           <v-card-title>
@@ -69,7 +69,7 @@
         </v-card>
       </v-dialog>
     
-      <v-col class="col" :cols="12" :md="9">
+      <v-col class="col" :cols="12" :md="8">
         <v-card>
           <v-card-title>
             Receitas
@@ -77,12 +77,21 @@
             <v-text-field v-model="search2" append-icon="mdi-magnify" label="Pesquisar" single-line hide-details></v-text-field>
           </v-card-title>
           <v-data-table :no-data-text="'Não há dados'" :no-results-text="'Nenhum resultado encontrado'" 
-          :header-props="{'sortByText': 'Ordenar por'}"
-          :footer-props="{'items-per-page-text':'Itens por página', pageText: '{0}-{1} de {2}', 'items-per-page-all-text':'Todos'}"
-          :headers="headers2" :items="desserts2" :search="search2">
+          :header-props="{'sortByText': 'Ordenar por'}" :footer-props="{'items-per-page-text':'Itens por página', 
+          pageText: '{0}-{1} de {2}', 'items-per-page-all-text':'Todos'}" :headers="headers2" :items="desserts2" 
+          :search="search2" :custom-filter="filterData">
+
+            <template v-slot:[`item.desc`]="{ item }">
+              <v-tooltip :color="'rgb(0, 0, 0)'" :max-width="220" bottom>
+                <template v-slot:activator="{ on, attrs }">
+                  <span v-bind="attrs" v-on="on" style="">{{ item.desc }}</span>
+                </template> 
+                <span>{{ item.desc }}</span>
+              </v-tooltip>
+            </template>
 
             <template v-slot:[`item.value`]="{ item }">
-              <span title="">R$ {{ item.value | toBrl }}</span>
+              <span>{{ item.value | toBrl }}</span>
             </template>
 
             <template v-slot:[`item.date`]="{ item }">
@@ -101,7 +110,7 @@
         </v-card>
       </v-col>
       
-      <v-col class="col" :cols="12" :md="3">
+      <v-col class="col" :cols="12" :md="4" :lg="3">
         <div>
          <v-btn class="mb-2" rounded  color="success" @click="dialog = true">
             Nova Receita
@@ -219,7 +228,7 @@
         </v-card>
       </v-dialog>
  
-      <v-col class="dash" :cols="12" :md="6" :lg="5">
+      <v-col class="dash" :cols="12" :sm="8" :md="6" :lg="4">
         <h4>Receitas por Categoria</h4>
         
         <div id="first">
@@ -237,7 +246,7 @@
         </div>
       </v-col>
       
-      <v-col class="dash" :cols="12" :md="6" :lg="5">
+      <v-col class="dash" :cols="12" :sm="8" :md="6" :lg="4">
         <h4>Receitas por Ano</h4>
         
         <div id="first">
@@ -250,10 +259,117 @@
           </div>
 
           <div class="divDash" v-if="dataRec.hasRec">
-              <v-select style="z-index: 12;" v-model="yearSelected" :items="arrayYears" menu-props="auto" label="Select" hide-details :prepend-inner-icon="'mdi-calendar-range'" single-line/>
-              <apexchart id="" type="line" :options="dataRec.optionsLine" :series="dataRec.seriesLine"></apexchart>
+            <v-select style="z-index: 12;" v-model="yearSelected" :items="arrayYears" menu-props="auto" label="Select" hide-details :prepend-inner-icon="'mdi-calendar-range'" single-line/>
+            <apexchart type="line" :options="dataRec.optionsLine" :series="dataRec.seriesLine"></apexchart>
           </div>
         </div>
+      </v-col>
+
+      <v-col class="dash" :cols="12" :lg="3">
+        <h4>Dados Gerais</h4>
+        <v-row class="mt-0">
+          <v-col class="pt-0" :cols="12" :md="6" :lg="12">
+            <v-tooltip bottom>
+              <template v-slot:activator="{ on, attrs }">
+                <div class="elements" v-bind="attrs" v-on="on">
+                  <span>
+                    <div class="left">
+                      <span style="font-weight: bold;">Quantidade de Receitas</span>
+                      <br>
+                      <span>{{ allFormsPagt[1].data.length }}</span>
+                    </div>
+                    
+                    <div class="right">
+                      <span>
+                        <v-icon class="iGreen">mdi-arrow-up</v-icon>
+                      </span>
+                    </div>
+                  </span>
+                </div>
+              </template>
+              <span>Quantidade de Receitas Informadas</span>
+            </v-tooltip>
+          </v-col>
+
+          <v-col class="pt-0" :cols="12" :md="6" :lg="12">
+            <div id="arrayMov">
+              <span>
+                <h3>
+                  Últimas movimentações criadas
+                </h3>
+
+                <div style="text-align: center" v-if="!dataRec.hasRec">
+                  <v-icon>mdi-chart-donut</v-icon>
+                  <br>
+                  <h5>
+                    Você ainda não possui receitas.
+                  </h5>
+                </div>
+
+
+                <div v-if="allFormsPagt[1].data[allFormsPagt[1].data.length -1]" class="data">
+                  <div>
+                    <div class="divLeft">
+                      <v-tooltip :color="'rgb(0, 0, 0)'" :max-width="220" bottom>
+                        <template v-slot:activator="{ on, attrs }">
+                          <span v-bind="attrs" v-on="on">{{ allFormsPagt[1].data[allFormsPagt[1].data.length -1].desc }}</span> <br>
+                        </template>
+                        <span>{{ allFormsPagt[1].data[allFormsPagt[1].data.length -1].desc }}</span>
+                      </v-tooltip>
+                      <span>{{ formatDate(allFormsPagt[1].data[allFormsPagt[1].data.length -1].date) }}</span>
+                    </div>
+
+                    <div class="divRight">
+                      <span>
+                        R$ {{ allFormsPagt[1].data[allFormsPagt[1].data.length -1].value | toBrl }}
+                      </span>
+                    </div>
+                  </div>
+                </div>
+                
+                <div v-if="allFormsPagt[1].data[allFormsPagt[1].data.length -2]" class="data">
+                  <div>
+                    <div class="divLeft">
+                      <v-tooltip :color="'rgb(0, 0, 0)'" :max-width="220" bottom>
+                        <template v-slot:activator="{ on, attrs }">
+                          <span v-bind="attrs" v-on="on">{{ allFormsPagt[1].data[allFormsPagt[1].data.length -2].desc }}</span> <br>
+                        </template>
+                        <span>{{ allFormsPagt[1].data[allFormsPagt[1].data.length -2].desc }}</span>
+                      </v-tooltip>
+                      <span>{{ formatDate(allFormsPagt[1].data[allFormsPagt[1].data.length -2].date) }}</span>
+                    </div>
+
+                    <div class="divRight">
+                      <span>
+                        R$ {{ allFormsPagt[1].data[allFormsPagt[1].data.length -2].value | toBrl }}
+                      </span>
+                    </div>
+                  </div>
+                </div>
+                
+                <div v-if="allFormsPagt[1].data[allFormsPagt[1].data.length -3]" class="data">
+                  <div>
+                    <div class="divLeft">
+                      <v-tooltip :color="'rgb(0, 0, 0)'" :max-width="220" bottom>
+                        <template v-slot:activator="{ on, attrs }">
+                          <span v-bind="attrs" v-on="on">{{ allFormsPagt[1].data[allFormsPagt[1].data.length -3].desc }}</span> <br>
+                        </template>
+                        <span>{{ allFormsPagt[1].data[allFormsPagt[1].data.length -3].desc }}</span>
+                      </v-tooltip>
+                      <span>{{ formatDate(allFormsPagt[1].data[allFormsPagt[1].data.length -3].date) }}</span>
+                    </div>
+
+                    <div class="divRight">
+                      <span>
+                        R$ {{ allFormsPagt[1].data[allFormsPagt[1].data.length -3].value | toBrl }}
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </span>
+            </div>
+          </v-col>
+        </v-row>
       </v-col>
     </v-row>
   </v-container>
@@ -273,6 +389,7 @@ Vue.component('apexchart', VueApexCharts)
 export default {
   data(){
     return {
+      qntRec: 0,
       yearSelected: '',
       arrayYears: [],
       picker: 2022,
@@ -290,7 +407,7 @@ export default {
       headers2: [
         { text: 'Descrição', align: 'start', value: 'desc'},
         { text: 'Categoria', value: 'idCategory'},
-        { text: 'Valor', value: 'value' },
+        { text: 'Valor', value: 'value' , searchable: false},
         { text: 'Data', value: 'date' },
         { text: 'Ações', value: 'action', sortable: false }
       ],
@@ -427,13 +544,13 @@ export default {
     }
   },
   methods:{
-    /*addValueForLine(month, value){
-      //console.log("chegou aqui month " + month + ' value ' + value)
-      
-      var some = this.dataRec.seriesLine.data[month] += value
-      //Vue.set(this.dataRec.seriesLine.data, month, (some))
-    },*/
-
+    filterData (value, search2) {
+      return  value != null &&
+        search2 != null &&
+        typeof value === 'string' &&
+        (value.toString().replace(".", ",").toLowerCase().indexOf(search2.toLowerCase()) !== -1 || 
+        value.toString().replace(",", ".").toLowerCase().indexOf(search2.toLowerCase()) !== -1)
+    },
     configDataLine(date){
       var jan = 0;
       var fev = 0;
@@ -452,29 +569,29 @@ export default {
         var [year, month] = element.date.split('-')
         if(year == date){
           if(month == '01'){
-            jan += element.value
+            jan = this.round(jan, element.value)
           } else if(month == '02'){
-            fev += element.value;
+            fev = this.round(fev, element.value)
           } else if(month == '03'){
-            mar += element.value;
+            mar = this.round(mar, element.value)
           } else if(month == '04'){
-            abr += element.value;
+            abr = this.round(abr, element.value)
           } else if(month == '05'){
-            may += element.value;
+            may = this.round(may, element.value)
           } else if(month == '06'){
-            jun += element.value;
+            jun = this.round(jun, element.value)
           } else if(month == '07'){
-            jul += element.value;
+            jul = this.round(jul, element.value)
           } else if(month == '08'){
-            aug += element.value;
+            aug = this.round(aug, element.value)
           } else if(month == '09'){
-            set += element.value;
+            set = this.round(set, element.value)
           } else if(month == '10'){
-            out += element.value;
+            out = this.round(out, element.value)
           } else if(month == '11'){
-            nov += element.value;
+            nov = this.round(nov, element.value)
           } else if(month == '12'){
-            dez += element.value;
+            dez = this.round(dez, element.value)
           }
         }
       })
@@ -484,8 +601,6 @@ export default {
       this.dataRec.seriesLine = [{
         data: newData
       }]
-
-     
     },
     createArrayData(){
       var currentYear = (new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().substr(0, 10).split('-')[0]
@@ -765,17 +880,39 @@ export default {
       return (Math.round(value * 100) / 100).toFixed(2);
     },
     configData(){
-    this.dataRec.totalRecSalary = 0;
-    this.dataRec.totalRecInvest = 0;
-    this.dataRec.totalRecEmp = 0;
-    this.dataRec.totalRecOut = 0;
-    this.desserts2 = [];
-    
-    this.allFormsPagt[1].data.forEach(element => {
-      this.dataRec.hasRec = true
+      this.dataRec.totalRecSalary = 0;
+      this.dataRec.totalRecInvest = 0;
+      this.dataRec.totalRecEmp = 0;
+      this.dataRec.totalRecOut = 0;
+      this.desserts2 = [];
+      
+      this.allFormsPagt[1].data.forEach(element => {
+        this.dataRec.hasRec = true
 
-      if(this.dateFilterInit != undefined && this.dateFilterInit != '' && this.dateFilterFinal != undefined && this.dateFilterFinal != ''){
-        if(element.date >= this.dateFilterInit && element.date <= this.dateFilterFinal){
+        if(this.dateFilterInit != undefined && this.dateFilterInit != '' && this.dateFilterFinal != undefined && this.dateFilterFinal != ''){
+          if(element.date >= this.dateFilterInit && element.date <= this.dateFilterFinal){
+            if(element.idCategory == 0){
+              this.dataRec.totalRecSalary = this.round(this.dataRec.totalRecSalary, element.value)
+              if(this.desserts2.length == 0) this.desserts2 = [{idRec: element.idRec, desc: element.desc, idCategory: 'Salário', date: element.date, value: this.toBrl(element.value)}]
+              else this.desserts2.push({idRec: element.idRec, desc: element.desc, idCategory: 'Salário', date: element.date, value: this.toBrl(element.value)})
+            }
+            if(element.idCategory == 1){
+              this.dataRec.totalRecInvest = this.round(this.dataRec.totalRecInvest, element.value)
+              if(this.desserts2.length == 0) this.desserts2 = [{idRec: element.idRec, desc: element.desc, idCategory: 'Investimentos', date: element.date, value: this.toBrl(element.value)}]
+              else this.desserts2.push({idRec: element.idRec, desc: element.desc, idCategory: 'Investimentos', date: element.date,value: this.toBrl(element.value)})
+            }
+            if(element.idCategory == 2){
+              this.dataRec.totalRecEmp = this.round(this.dataRec.totalRecEmp, element.value)
+              if(this.desserts2.length == 0) this.desserts2 = [{idRec: element.idRec, desc: element.desc, idCategory: 'Empréstimos', date: element.date,value: this.toBrl(element.value)}]
+              else this.desserts2.push({idRec: element.idRec, desc: element.desc, idCategory: 'Empréstimos', date: element.date, value: this.toBrl(element.value)})
+            }
+            if(element.idCategory == 3){
+              this.dataRec.totalRecOut = this.round(this.dataRec.totalRecOut, element.value)
+              if(this.desserts2.length == 0) this.desserts2 = [{idRec: element.idRec, desc: element.desc, idCategory: 'Outros', date: element.date, value: this.toBrl(element.value)}]
+              else this.desserts2.push({idRec: element.idRec, desc: element.desc, idCategory: 'Outros', date: element.date, value: this.toBrl(element.value)})
+            }
+          }
+        } else{
           if(element.idCategory == 0){
             this.dataRec.totalRecSalary = this.round(this.dataRec.totalRecSalary, element.value)
             if(this.desserts2.length == 0) this.desserts2 = [{idRec: element.idRec, desc: element.desc, idCategory: 'Salário', date: element.date, value: this.toBrl(element.value)}]
@@ -797,29 +934,7 @@ export default {
             else this.desserts2.push({idRec: element.idRec, desc: element.desc, idCategory: 'Outros', date: element.date, value: this.toBrl(element.value)})
           }
         }
-      } else{
-        if(element.idCategory == 0){
-          this.dataRec.totalRecSalary = this.round(this.dataRec.totalRecSalary, element.value)
-          if(this.desserts2.length == 0) this.desserts2 = [{idRec: element.idRec, desc: element.desc, idCategory: 'Salário', date: element.date, value: this.toBrl(element.value)}]
-          else this.desserts2.push({idRec: element.idRec, desc: element.desc, idCategory: 'Salário', date: element.date, value: this.toBrl(element.value)})
-        }
-        if(element.idCategory == 1){
-          this.dataRec.totalRecInvest = this.round(this.dataRec.totalRecInvest, element.value)
-          if(this.desserts2.length == 0) this.desserts2 = [{idRec: element.idRec, desc: element.desc, idCategory: 'Investimentos', date: element.date, value: this.toBrl(element.value)}]
-          else this.desserts2.push({idRec: element.idRec, desc: element.desc, idCategory: 'Investimentos', date: element.date,value: this.toBrl(element.value)})
-        }
-        if(element.idCategory == 2){
-          this.dataRec.totalRecEmp = this.round(this.dataRec.totalRecEmp, element.value)
-          if(this.desserts2.length == 0) this.desserts2 = [{idRec: element.idRec, desc: element.desc, idCategory: 'Empréstimos', date: element.date,value: this.toBrl(element.value)}]
-          else this.desserts2.push({idRec: element.idRec, desc: element.desc, idCategory: 'Empréstimos', date: element.date, value: this.toBrl(element.value)})
-        }
-        if(element.idCategory == 3){
-          this.dataRec.totalRecOut = this.round(this.dataRec.totalRecOut, element.value)
-          if(this.desserts2.length == 0) this.desserts2 = [{idRec: element.idRec, desc: element.desc, idCategory: 'Outros', date: element.date, value: this.toBrl(element.value)}]
-          else this.desserts2.push({idRec: element.idRec, desc: element.desc, idCategory: 'Outros', date: element.date, value: this.toBrl(element.value)})
-        }
-      }
-    })
+      })
     },
     formatDate (date) {
       if (!date) return null
@@ -863,7 +978,8 @@ export default {
     },
     yearSelected(){
       this.configDataLine(this.yearSelected)
-    }
+    },
+  
   },
 }
 </script>

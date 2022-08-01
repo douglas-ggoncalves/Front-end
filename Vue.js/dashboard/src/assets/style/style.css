@@ -3,13 +3,33 @@ html {
   margin: 0;
 }
 
+a {
+  text-decoration: none;
+}
+
+.v-navigation-drawer--bottom.v-navigation-drawer--is-mobile {
+  min-width: 256px !important;
+  top: 0 !important;
+  bottom: 0 !important;
+  max-height: 100% !important;
+}
+
 body {
   padding: 0;
   margin: 0;
 }
 
 td.text-start {
-  max-width: 220px;
+  border: 1px solid 0;
+  max-width: 190px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+td.text-start span {
+  display: inline-block;
+  max-width: 100%;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -98,6 +118,122 @@ td.text-start {
   margin-bottom: 1.5rem;
 }
 
+.homeView .reports div.dash div#arrayMov {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.homeView .reports div.dash div#arrayMov > span {
+  border: 1px solid rgba(200, 185, 185, 0.5);
+  border-radius: 16px;
+  -webkit-box-shadow: 2px 2px 6px -4px rgba(0, 0, 0, 0.9);
+  width: 100%;
+  padding: 1.5rem 1.25rem;
+  box-shadow: 2px 2px 6px -4px rgba(0, 0, 0, 0.9);
+}
+
+.homeView .reports div.dash div#arrayMov > span h3 {
+  margin-bottom: 1.5rem;
+}
+
+.homeView .reports div.dash div#arrayMov > span div.data {
+  border-bottom: 1px solid rgba(200, 185, 185, 0.9);
+  margin-bottom: 1.3rem;
+}
+
+.homeView .reports div.dash div#arrayMov > span div.data > div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.homeView .reports div.dash div#arrayMov > span div.data > div div.divLeft {
+  float: left;
+  max-width: 220px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.homeView .reports div.dash div#arrayMov > span div.data > div div.divLeft span {
+  display: inline-block;
+  max-width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.homeView .reports div.dash div#arrayMov > span div.data > div div.divRight {
+  margin-left: auto;
+}
+
+.homeView .reports div.dash div.elements {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  cursor: pointer;
+  margin-bottom: .7rem;
+}
+
+.homeView .reports div.dash div.elements > span {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 100%;
+  width: 100%;
+  text-decoration: none;
+  color: black;
+  padding: 1.5rem 1.25rem;
+  border-radius: 16px;
+  border: 1px solid rgba(200, 185, 185, 0.5);
+  border-radius: 16px;
+  -webkit-box-shadow: 2px 2px 6px -4px rgba(0, 0, 0, 0.9);
+  box-shadow: 2px 2px 6px -4px rgba(0, 0, 0, 0.9);
+}
+
+.homeView .reports div.dash div.elements > span:hover {
+  -webkit-box-shadow: 2px 2px 6px -4px rgba(0, 0, 0, 0.9);
+          box-shadow: 2px 2px 6px -4px rgba(0, 0, 0, 0.9);
+}
+
+.homeView .reports div.dash div.elements div.left {
+  text-align: left;
+}
+
+.homeView .reports div.dash div.elements div.left span.value {
+  font-weight: bold;
+}
+
+.homeView .reports div.dash div.elements div.right {
+  margin-left: auto;
+}
+
+.homeView .reports div.dash div.elements div.right span i {
+  color: white;
+  border-radius: 50%;
+  padding: .5rem;
+}
+
+.homeView .reports div.dash div.elements div.right span i.iGreen {
+  background-color: #3b963b;
+}
+
 .homeView .reports div.dash > div#first {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -114,6 +250,8 @@ td.text-start {
   border-radius: 16px;
   -webkit-box-shadow: 2px 2px 6px -4px rgba(0, 0, 0, 0.9);
   box-shadow: 2px 2px 6px -4px rgba(0, 0, 0, 0.9);
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .homeView .reports div.dash > div#first div.divDash {
@@ -158,6 +296,10 @@ td.text-start {
   }
   div.divDash {
     padding: 0 !important;
+  }
+  .v-navigation-drawer--bottom.v-navigation-drawer--is-mobile {
+    max-width: 200px !important;
+    min-width: 200px !important;
   }
 }
 
