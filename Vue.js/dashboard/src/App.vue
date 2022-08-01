@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <v-app-bar app color="primary" style="z-index: 201" dark>
+    <v-app-bar app color="primary" style="z-index: 203;" dark>
       <div class="d-flex align-center">
         <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
       </div>
@@ -8,7 +8,7 @@
       <v-spacer></v-spacer>
     </v-app-bar>
 
-    <v-navigation-drawer v-model="drawer" absolute bottom temporary style="z-index: 202; top: 0; width: 256px; height: 100%;">
+    <v-navigation-drawer v-model="drawer" fixed top bottom temporary style="z-index: 204; height:100vh">
       <v-list nav dense>
         <v-list-item-group v-model="group" active-class="deep-purple--text text--accent-4">   
 
