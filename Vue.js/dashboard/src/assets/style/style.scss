@@ -217,8 +217,8 @@ td.text-start{
 
             >div#first{
                 display: flex;
-                justify-content: center;
                 align-items: center;
+                justify-content: center;
                 text-align: center;
                 height: 100%;
                 border: $border;
@@ -229,10 +229,31 @@ td.text-start{
                 margin-right: auto;
 
                 div.divDash{
+                    margin-bottom: auto !important;
+                    margin-top: auto !important;
                     padding: 1.5rem 1.25rem;
-                    width: 100%;
+                    max-width: 100%;
+                    min-width: 100%;
+
+                    #apexDonutRec{
+                        max-width: 100%;
+                    }
+
+                    .apexcharts-canvas{
+                        width: 100% !important;
+                    }
+
+                    foreignObject{
+                        width: 100%;
+                        
+                    }
+
+                    svg{
+                        max-width: 100%;
+                    }
 
                     #apexchart{
+                        max-height: 100% !important;
                         >div{
                            margin-left: auto;
                            margin-right: auto;

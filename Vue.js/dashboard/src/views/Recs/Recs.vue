@@ -276,7 +276,8 @@
                     <div class="left">
                       <span style="font-weight: bold;">Quantidade de Receitas</span>
                       <br>
-                      <span>{{ allFormsPagt[1].data.length }}</span>
+                      <span v-if="allFormsPagt[1].data != null">{{ allFormsPagt[1].data.length }}</span>
+                      
                     </div>
                     
                     <div class="right">
@@ -306,8 +307,7 @@
                   </h5>
                 </div>
 
-
-                <div v-if="allFormsPagt[1].data[allFormsPagt[1].data.length -1]" class="data">
+                <div v-if="allFormsPagt[1].data != null && allFormsPagt[1].data[allFormsPagt[1].data.length -1]" class="data">
                   <div>
                     <div class="divLeft">
                       <v-tooltip :color="'rgb(0, 0, 0)'" :max-width="220" bottom>
@@ -327,7 +327,7 @@
                   </div>
                 </div>
                 
-                <div v-if="allFormsPagt[1].data[allFormsPagt[1].data.length -2]" class="data">
+                <div v-if="allFormsPagt[1].data != null && allFormsPagt[1].data[allFormsPagt[1].data.length -2]" class="data">
                   <div>
                     <div class="divLeft">
                       <v-tooltip :color="'rgb(0, 0, 0)'" :max-width="220" bottom>
@@ -347,7 +347,7 @@
                   </div>
                 </div>
                 
-                <div v-if="allFormsPagt[1].data[allFormsPagt[1].data.length -3]" class="data">
+                <div v-if="allFormsPagt[1].data != null && allFormsPagt[1].data[allFormsPagt[1].data.length -3]" class="data">
                   <div>
                     <div class="divLeft">
                       <v-tooltip :color="'rgb(0, 0, 0)'" :max-width="220" bottom>
@@ -447,6 +447,9 @@ export default {
         snackbarNewRec: false,
         seriesDonut: [],
         optionsDonut: {
+          chart: {
+            width: '100%'
+          },
           tooltip: {
             enabled: true,
              y: {
@@ -480,6 +483,7 @@ export default {
             }
           },
           chart: {
+            width: '100%',
             defaultLocale: 'pt-br',
             locales: [{
               name: 'pt-br',
@@ -512,15 +516,15 @@ export default {
   created(){
     this.allFormsPagt = scrypt.allFormsPagt;
     /* Receitas */
+
     if(window) {
       this.allFormsPagt[1].data = JSON.parse(localStorage.getItem('dataRec'))
-    } 
 
-    
-    this.createArrayData();
-    if(this.allFormsPagt[1].data != null){
-      this.configData();
-      this.configDataLine(this.yearSelected);
+      this.createArrayData();
+      if(this.allFormsPagt[1].data != null){
+        this.configData();
+        this.configDataLine(this.yearSelected);
+      }
     }
 
     this.dataRec.seriesDonut = [this.dataRec.totalRecSalary, this.dataRec.totalRecInvest, this.dataRec.totalRecEmp, this.dataRec.totalRecOut]
@@ -565,36 +569,38 @@ export default {
       var nov = 0;
       var dez = 0;
 
-      this.allFormsPagt[1].data.forEach(element => {
-        var [year, month] = element.date.split('-')
-        if(year == date){
-          if(month == '01'){
-            jan = this.round(jan, element.value)
-          } else if(month == '02'){
-            fev = this.round(fev, element.value)
-          } else if(month == '03'){
-            mar = this.round(mar, element.value)
-          } else if(month == '04'){
-            abr = this.round(abr, element.value)
-          } else if(month == '05'){
-            may = this.round(may, element.value)
-          } else if(month == '06'){
-            jun = this.round(jun, element.value)
-          } else if(month == '07'){
-            jul = this.round(jul, element.value)
-          } else if(month == '08'){
-            aug = this.round(aug, element.value)
-          } else if(month == '09'){
-            set = this.round(set, element.value)
-          } else if(month == '10'){
-            out = this.round(out, element.value)
-          } else if(month == '11'){
-            nov = this.round(nov, element.value)
-          } else if(month == '12'){
-            dez = this.round(dez, element.value)
+      if(this.allFormsPagt[1].data != null){
+        this.allFormsPagt[1].data.forEach(element => {
+          var [year, month] = element.date.split('-')
+          if(year == date){
+            if(month == '01'){
+              jan = this.round(jan, element.value)
+            } else if(month == '02'){
+              fev = this.round(fev, element.value)
+            } else if(month == '03'){
+              mar = this.round(mar, element.value)
+            } else if(month == '04'){
+              abr = this.round(abr, element.value)
+            } else if(month == '05'){
+              may = this.round(may, element.value)
+            } else if(month == '06'){
+              jun = this.round(jun, element.value)
+            } else if(month == '07'){
+              jul = this.round(jul, element.value)
+            } else if(month == '08'){
+              aug = this.round(aug, element.value)
+            } else if(month == '09'){
+              set = this.round(set, element.value)
+            } else if(month == '10'){
+              out = this.round(out, element.value)
+            } else if(month == '11'){
+              nov = this.round(nov, element.value)
+            } else if(month == '12'){
+              dez = this.round(dez, element.value)
+            }
           }
-        }
-      })
+        })
+      }
 
       var newData = [jan, fev, mar, abr, may, jun, jul, aug, set, out, nov, dez]
 
@@ -714,8 +720,9 @@ export default {
         } else{
           this.allFormsPagt[1].data.push({idRec: Date.now(), idCategory: 0, desc: this.dataRec.newRecDesc, date: this.date, value: this.convertMoneyFloat(this.dataRec.newRecValue)})
         }
-        localStorage.setItem("dataRec", JSON.stringify(this.allFormsPagt[1].data));
-
+        if(window) {
+          localStorage.setItem("dataRec", JSON.stringify(this.allFormsPagt[1].data));
+        }
         Vue.set(this.dataRec.seriesDonut, 0, this.dataRec.totalRecSalary)
       }
         
@@ -734,7 +741,9 @@ export default {
         } else{
           this.allFormsPagt[1].data.push({idRec: Date.now(), idCategory: 1, desc: this.dataRec.newRecDesc, date: this.date, value: this.convertMoneyFloat(this.dataRec.newRecValue)})
         }
-        localStorage.setItem("dataRec", JSON.stringify(this.allFormsPagt[1].data));
+        if(window) {
+          localStorage.setItem("dataRec", JSON.stringify(this.allFormsPagt[1].data));
+        }
         Vue.set(this.dataRec.seriesDonut, 1, this.dataRec.totalRecInvest)
       }
       
@@ -753,7 +762,9 @@ export default {
         } else{
           this.allFormsPagt[1].data.push({idRec: Date.now(), idCategory: 2, desc: this.dataRec.newRecDesc, date: this.date, value: this.convertMoneyFloat(this.dataRec.newRecValue)})
         }
-        localStorage.setItem("dataRec", JSON.stringify(this.allFormsPagt[1].data));
+        if(window) {
+          localStorage.setItem("dataRec", JSON.stringify(this.allFormsPagt[1].data));
+        }
         Vue.set(this.dataRec.seriesDonut, 2, this.dataRec.totalRecEmp)
       }
       
@@ -772,7 +783,9 @@ export default {
         } else{
           this.allFormsPagt[1].data.push({idRec: Date.now(), idCategory: 3, desc: this.dataRec.newRecDesc, date: this.date, value: this.convertMoneyFloat(this.dataRec.newRecValue)})
         }
-        localStorage.setItem("dataRec", JSON.stringify(this.allFormsPagt[1].data));
+        if(window) {
+          localStorage.setItem("dataRec", JSON.stringify(this.allFormsPagt[1].data));
+        }
         Vue.set(this.dataRec.seriesDonut, 3, this.dataRec.totalRecOut)
       }
     },
@@ -817,7 +830,9 @@ export default {
         if(this.dataRec.totalRecEmp == 0) document.getElementById("apexDonutRec").classList.remove("three")
         if(this.dataRec.totalRecOut == 0) document.getElementById("apexDonutRec").classList.remove("four")
       }
-      localStorage.setItem("dataRec", JSON.stringify(this.allFormsPagt[1].data));
+      if(window) {
+        localStorage.setItem("dataRec", JSON.stringify(this.allFormsPagt[1].data));
+      }
       this.dataRec.msgSuccess = 'Receita excluída com sucesso'
       this.dataRec.snackbarNewRec = true;
     },
@@ -827,11 +842,13 @@ export default {
         this.dataRec.msgError = 'Não é possivel cadastrar uma receita com valor zerado';
       } else{
         var elementIndex;
-        this.allFormsPagt[1].data.forEach((element, index) => {
-          if(element.idRec == this.editedItem.id){
-            elementIndex = index
-          }
-        })
+        if(this.allFormsPagt[1].data != null){
+          this.allFormsPagt[1].data.forEach((element, index) => {
+            if(element.idRec == this.editedItem.id){
+              elementIndex = index
+            }
+          })
+        }
 
         this.allFormsPagt[1].data[elementIndex].desc = this.editedItem.desc
         this.allFormsPagt[1].data[elementIndex].idCategory = this.editedItem.idCategory
@@ -850,7 +867,9 @@ export default {
         Vue.set(this.dataRec.seriesDonut, 1, (this.dataRec.totalRecInvest))
         Vue.set(this.dataRec.seriesDonut, 2, (this.dataRec.totalRecEmp))
         Vue.set(this.dataRec.seriesDonut, 3, (this.dataRec.totalRecOut))
-        localStorage.setItem("dataRec", JSON.stringify(this.allFormsPagt[1].data));
+        if(window) {
+          localStorage.setItem("dataRec", JSON.stringify(this.allFormsPagt[1].data));
+        }
         this.dialogEdit = false;
         this.dataRec.msgSuccess = 'Receita editada com sucesso'
         this.dataRec.snackbarNewRec = true;
@@ -886,11 +905,34 @@ export default {
       this.dataRec.totalRecOut = 0;
       this.desserts2 = [];
       
-      this.allFormsPagt[1].data.forEach(element => {
-        this.dataRec.hasRec = true
+      if(this.allFormsPagt[1].data != null){
+        this.allFormsPagt[1].data.forEach(element => {
+          this.dataRec.hasRec = true
 
-        if(this.dateFilterInit != undefined && this.dateFilterInit != '' && this.dateFilterFinal != undefined && this.dateFilterFinal != ''){
-          if(element.date >= this.dateFilterInit && element.date <= this.dateFilterFinal){
+          if(this.dateFilterInit != undefined && this.dateFilterInit != '' && this.dateFilterFinal != undefined && this.dateFilterFinal != ''){
+            if(element.date >= this.dateFilterInit && element.date <= this.dateFilterFinal){
+              if(element.idCategory == 0){
+                this.dataRec.totalRecSalary = this.round(this.dataRec.totalRecSalary, element.value)
+                if(this.desserts2.length == 0) this.desserts2 = [{idRec: element.idRec, desc: element.desc, idCategory: 'Salário', date: element.date, value: this.toBrl(element.value)}]
+                else this.desserts2.push({idRec: element.idRec, desc: element.desc, idCategory: 'Salário', date: element.date, value: this.toBrl(element.value)})
+              }
+              if(element.idCategory == 1){
+                this.dataRec.totalRecInvest = this.round(this.dataRec.totalRecInvest, element.value)
+                if(this.desserts2.length == 0) this.desserts2 = [{idRec: element.idRec, desc: element.desc, idCategory: 'Investimentos', date: element.date, value: this.toBrl(element.value)}]
+                else this.desserts2.push({idRec: element.idRec, desc: element.desc, idCategory: 'Investimentos', date: element.date,value: this.toBrl(element.value)})
+              }
+              if(element.idCategory == 2){
+                this.dataRec.totalRecEmp = this.round(this.dataRec.totalRecEmp, element.value)
+                if(this.desserts2.length == 0) this.desserts2 = [{idRec: element.idRec, desc: element.desc, idCategory: 'Empréstimos', date: element.date,value: this.toBrl(element.value)}]
+                else this.desserts2.push({idRec: element.idRec, desc: element.desc, idCategory: 'Empréstimos', date: element.date, value: this.toBrl(element.value)})
+              }
+              if(element.idCategory == 3){
+                this.dataRec.totalRecOut = this.round(this.dataRec.totalRecOut, element.value)
+                if(this.desserts2.length == 0) this.desserts2 = [{idRec: element.idRec, desc: element.desc, idCategory: 'Outros', date: element.date, value: this.toBrl(element.value)}]
+                else this.desserts2.push({idRec: element.idRec, desc: element.desc, idCategory: 'Outros', date: element.date, value: this.toBrl(element.value)})
+              }
+            }
+          } else{
             if(element.idCategory == 0){
               this.dataRec.totalRecSalary = this.round(this.dataRec.totalRecSalary, element.value)
               if(this.desserts2.length == 0) this.desserts2 = [{idRec: element.idRec, desc: element.desc, idCategory: 'Salário', date: element.date, value: this.toBrl(element.value)}]
@@ -912,29 +954,8 @@ export default {
               else this.desserts2.push({idRec: element.idRec, desc: element.desc, idCategory: 'Outros', date: element.date, value: this.toBrl(element.value)})
             }
           }
-        } else{
-          if(element.idCategory == 0){
-            this.dataRec.totalRecSalary = this.round(this.dataRec.totalRecSalary, element.value)
-            if(this.desserts2.length == 0) this.desserts2 = [{idRec: element.idRec, desc: element.desc, idCategory: 'Salário', date: element.date, value: this.toBrl(element.value)}]
-            else this.desserts2.push({idRec: element.idRec, desc: element.desc, idCategory: 'Salário', date: element.date, value: this.toBrl(element.value)})
-          }
-          if(element.idCategory == 1){
-            this.dataRec.totalRecInvest = this.round(this.dataRec.totalRecInvest, element.value)
-            if(this.desserts2.length == 0) this.desserts2 = [{idRec: element.idRec, desc: element.desc, idCategory: 'Investimentos', date: element.date, value: this.toBrl(element.value)}]
-            else this.desserts2.push({idRec: element.idRec, desc: element.desc, idCategory: 'Investimentos', date: element.date,value: this.toBrl(element.value)})
-          }
-          if(element.idCategory == 2){
-            this.dataRec.totalRecEmp = this.round(this.dataRec.totalRecEmp, element.value)
-            if(this.desserts2.length == 0) this.desserts2 = [{idRec: element.idRec, desc: element.desc, idCategory: 'Empréstimos', date: element.date,value: this.toBrl(element.value)}]
-            else this.desserts2.push({idRec: element.idRec, desc: element.desc, idCategory: 'Empréstimos', date: element.date, value: this.toBrl(element.value)})
-          }
-          if(element.idCategory == 3){
-            this.dataRec.totalRecOut = this.round(this.dataRec.totalRecOut, element.value)
-            if(this.desserts2.length == 0) this.desserts2 = [{idRec: element.idRec, desc: element.desc, idCategory: 'Outros', date: element.date, value: this.toBrl(element.value)}]
-            else this.desserts2.push({idRec: element.idRec, desc: element.desc, idCategory: 'Outros', date: element.date, value: this.toBrl(element.value)})
-          }
-        }
-      })
+        })
+      }
     },
     formatDate (date) {
       if (!date) return null

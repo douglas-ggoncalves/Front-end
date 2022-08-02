@@ -109,8 +109,9 @@
             </h5>
           </div>
 
-          <div class="divDash"  v-if="dataRec.hasRec">
-            <apexchart class="" id="apexDonutRec" type="donut" :options="dataRec.optionsDonut" :series="dataRec.series"></apexchart>
+          <div class="divDash" v-if="dataRec.hasRec">
+            <apexchart class="" id="apexDonutRec" 
+            type="donut" :options="dataRec.optionsDonut" :series="dataRec.series"></apexchart>
           </div>
         </div>
       </v-col>
@@ -160,6 +161,9 @@ export default {
         error: false,
         msgError: '',
         optionsDonut: {
+          chart: {
+            width: '100%'
+          },
           tooltip: {
             enabled: true,
             y: {
@@ -195,29 +199,32 @@ export default {
 
     if(window) {
       this.allFormsPagt[1].data = JSON.parse(localStorage.getItem('dataRec'))
+
+      if(this.allFormsPagt[1].data != null){
+        this.allFormsPagt[1].data.forEach(element => {
+          this.dataRec.hasRec = true
+
+          if(element.idCategory == 0){
+            this.dataRec.totalRecSalary = this.round(this.dataRec.totalRecSalary, element.value)
+          }
+          if(element.idCategory == 1){
+            this.dataRec.totalRecInvest = this.round(this.dataRec.totalRecInvest, element.value)
+          }
+          if(element.idCategory == 2){
+            this.dataRec.totalRecEmp = this.round(this.dataRec.totalRecEmp, element.value)
+          }
+          if(element.idCategory == 3){
+            this.dataRec.totalRecOut = this.round(this.dataRec.totalRecOut, element.value)
+          }
+        })
+      }
+
+      this.dataRec.series = [this.dataRec.totalRecSalary, this.dataRec.totalRecInvest, this.dataRec.totalRecEmp, this.dataRec.totalRecOut]
+      /* Fim Receitas */
+
     } 
 
-    if(this.allFormsPagt[1].data != null){
-      this.allFormsPagt[1].data.forEach(element => {
-        this.dataRec.hasRec = true
-
-        if(element.idCategory == 0){
-          this.dataRec.totalRecSalary = this.round(this.dataRec.totalRecSalary, element.value)
-        }
-        if(element.idCategory == 1){
-          this.dataRec.totalRecInvest = this.round(this.dataRec.totalRecInvest, element.value)
-        }
-        if(element.idCategory == 2){
-          this.dataRec.totalRecEmp = this.round(this.dataRec.totalRecEmp, element.value)
-        }
-        if(element.idCategory == 3){
-          this.dataRec.totalRecOut = this.round(this.dataRec.totalRecOut, element.value)
-        }
-      })
-    }
-
-    this.dataRec.series = [this.dataRec.totalRecSalary, this.dataRec.totalRecInvest, this.dataRec.totalRecEmp, this.dataRec.totalRecOut]
-    /* Fim Receitas */
+    
   },
   mounted(){
     var elementExist = document.getElementById("apexDonutRec")
