@@ -110,8 +110,7 @@
           </div>
 
           <div class="divDash" v-if="dataRec.hasRec">
-            <apexchart class="" id="apexDonutRec" 
-            type="donut" :options="dataRec.optionsDonut" :series="dataRec.series"></apexchart>
+            <apexchart class="" :width="width" id="apexDonutRec" type="donut" :options="dataRec.optionsDonut" :series="dataRec.series"></apexchart>
           </div>
         </div>
       </v-col>
@@ -134,11 +133,12 @@ Vue.component('apexchart', VueApexCharts)
 export default {
   data(){
     return {
+      width: 0,
       date: (new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().substr(0, 10),
       dateFormatted: this.formatDate((new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().substr(0, 10)),
       menu1: false,
       dateCalendar: '',
-      price: 123.45,
+      //price: 123.45,
       money: {
         decimal: ',',
         thousands: '.',
@@ -161,9 +161,6 @@ export default {
         error: false,
         msgError: '',
         optionsDonut: {
-          chart: {
-            width: '100%'
-          },
           tooltip: {
             enabled: true,
             y: {
@@ -189,6 +186,7 @@ export default {
   },
   created(){
     this.allFormsPagt = scrypt.allFormsPagt;
+
     /* Receitas */
     
     /*
@@ -218,13 +216,10 @@ export default {
           }
         })
       }
-
       this.dataRec.series = [this.dataRec.totalRecSalary, this.dataRec.totalRecInvest, this.dataRec.totalRecEmp, this.dataRec.totalRecOut]
+      this.configWidthDash()
       /* Fim Receitas */
-
     } 
-
-    
   },
   mounted(){
     var elementExist = document.getElementById("apexDonutRec")
@@ -244,6 +239,29 @@ export default {
     }
   },
   methods:{
+    configWidthDash(){
+      if(window.innerWidth < 300 ){
+        this.width = 250;
+      } else if(window.innerWidth >= 320 && window.innerWidth <= 400 ){
+        this.width = 300;
+      } else if(window.innerWidth > 400 && window.innerWidth <= 500 ){
+        this.width = 350
+      } else if(window.innerWidth > 500){
+        this.width = 380
+      }
+      
+      window.addEventListener("resize", () => {
+        if(window.innerWidth < 300 ){
+          this.width = 250;
+        } else if(window.innerWidth >= 320 && window.innerWidth <= 400 ){
+          this.width = 300;
+        } else if(window.innerWidth > 400 && window.innerWidth <= 500 ){
+          this.width = 350
+        } else if(window.innerWidth > 500){
+          this.width = 380
+        }
+      })
+    },
     newRec(continueSave){
       if(this.dataRec.newRecValue == 'R$ 0,00' ){
         this.dataRec.error = true;

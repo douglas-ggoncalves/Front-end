@@ -241,7 +241,7 @@
           </div>
 
           <div class="divDash" v-if="dataRec.hasRec">
-            <apexchart class="" id="apexDonutRec" type="donut" :options="dataRec.optionsDonut" :series="dataRec.seriesDonut"></apexchart>
+            <apexchart class="" :width="width" id="apexDonutRec" type="donut" :options="dataRec.optionsDonut" :series="dataRec.seriesDonut"></apexchart>
           </div>
         </div>
       </v-col>
@@ -260,7 +260,7 @@
 
           <div class="divDash" v-if="dataRec.hasRec">
             <v-select style="z-index: 12;" v-model="yearSelected" :items="arrayYears" menu-props="auto" label="Select" hide-details :prepend-inner-icon="'mdi-calendar-range'" single-line/>
-            <apexchart type="line" :options="dataRec.optionsLine" :series="dataRec.seriesLine"></apexchart>
+            <apexchart type="line" :width="width" :options="dataRec.optionsLine" :series="dataRec.seriesLine"></apexchart>
           </div>
         </div>
       </v-col>
@@ -389,7 +389,7 @@ Vue.component('apexchart', VueApexCharts)
 export default {
   data(){
     return {
-      qntRec: 0,
+      width: 0,
       yearSelected: '',
       arrayYears: [],
       picker: 2022,
@@ -412,7 +412,7 @@ export default {
         { text: 'Ações', value: 'action', sortable: false }
       ],
       desserts2: [],
-      price: 123.45,
+      //price: 123.45,
       money: {
         decimal: ',',
         thousands: '.',
@@ -447,9 +447,6 @@ export default {
         snackbarNewRec: false,
         seriesDonut: [],
         optionsDonut: {
-          chart: {
-            width: '100%'
-          },
           tooltip: {
             enabled: true,
              y: {
@@ -483,7 +480,6 @@ export default {
             }
           },
           chart: {
-            width: '100%',
             defaultLocale: 'pt-br',
             locales: [{
               name: 'pt-br',
@@ -496,7 +492,23 @@ export default {
                   reset: 'Resetar Zoom',
                 }
               }
-            }]
+            }],
+            toolbar: {
+              export: {
+                csv: {
+                  filename: 'Receitas por ano',
+                  columnDelimiter: ';',
+                  headerCategory: 'Mês',
+                  //headerValue: 'Teste 2',
+                },
+                svg:{
+                  filename: 'Receitas por ano',
+                },
+                png:{
+                  filename: 'Receitas por ano',
+                }
+              }
+            },
           },
           markers: {
             size: [4,7],
@@ -525,9 +537,10 @@ export default {
         this.configData();
         this.configDataLine(this.yearSelected);
       }
+  
+      this.dataRec.seriesDonut = [this.dataRec.totalRecSalary, this.dataRec.totalRecInvest, this.dataRec.totalRecEmp, this.dataRec.totalRecOut]
+      this.configWidthDash()
     }
-
-    this.dataRec.seriesDonut = [this.dataRec.totalRecSalary, this.dataRec.totalRecInvest, this.dataRec.totalRecEmp, this.dataRec.totalRecOut]
     /* Fim Receitas */
   },
   mounted(){
@@ -548,6 +561,29 @@ export default {
     }
   },
   methods:{
+    configWidthDash(){
+      if(window.innerWidth < 300){
+        this.width = 250;
+      } else if(window.innerWidth >= 320 && window.innerWidth <= 400){
+        this.width = 300;
+      } else if(window.innerWidth > 400 && window.innerWidth <= 500){
+        this.width = 350
+      } else if(window.innerWidth > 500){
+        this.width = 380
+      }
+      
+      window.addEventListener("resize", () => {
+        if(window.innerWidth < 300){
+          this.width = 250;
+        } else if(window.innerWidth >= 320 && window.innerWidth <= 400){
+          this.width = 300;
+        } else if(window.innerWidth > 400 && window.innerWidth <= 500){
+          this.width = 350
+        } else if(window.innerWidth > 500){
+          this.width = 380
+        }
+      })
+    },
     filterData (value, search2) {
       return  value != null &&
         search2 != null &&
@@ -605,6 +641,7 @@ export default {
       var newData = [jan, fev, mar, abr, may, jun, jul, aug, set, out, nov, dez]
 
       this.dataRec.seriesLine = [{
+        name: 'Total',
         data: newData
       }]
     },

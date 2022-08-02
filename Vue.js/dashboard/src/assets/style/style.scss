@@ -223,34 +223,17 @@ td.text-start{
                 height: 100%;
                 border: $border;
                 border-radius: 16px;
+                max-width: 100%;
                 -webkit-box-shadow: $boxShadow;
                 box-shadow: $boxShadow;
                 margin-left: auto;
                 margin-right: auto;
 
                 div.divDash{
+                    text-align: center;
                     margin-bottom: auto !important;
                     margin-top: auto !important;
                     padding: 1.5rem 1.25rem;
-                    max-width: 100%;
-                    min-width: 100%;
-
-                    #apexDonutRec{
-                        max-width: 100%;
-                    }
-
-                    .apexcharts-canvas{
-                        width: 100% !important;
-                    }
-
-                    foreignObject{
-                        width: 100%;
-                        
-                    }
-
-                    svg{
-                        max-width: 100%;
-                    }
 
                     #apexchart{
                         max-height: 100% !important;
