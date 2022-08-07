@@ -187,14 +187,6 @@ export default {
   created(){
     this.allFormsPagt = scrypt.allFormsPagt;
 
-    /* Receitas */
-    
-    /*
-    this.allFormsPagt[1].data = [
-      {idRec: 1, idCategory: 0, desc:'teste', value: 0.56}, 
-    ]
-    */
-
     if(window) {
       this.allFormsPagt[1].data = JSON.parse(localStorage.getItem('dataRec'))
 
@@ -218,7 +210,6 @@ export default {
       }
       this.dataRec.series = [this.dataRec.totalRecSalary, this.dataRec.totalRecInvest, this.dataRec.totalRecEmp, this.dataRec.totalRecOut]
       this.configWidthDash()
-      /* Fim Receitas */
     } 
   },
   mounted(){
@@ -240,25 +231,29 @@ export default {
   },
   methods:{
     configWidthDash(){
-      if(window.innerWidth < 300 ){
+      if(window.innerWidth < 320){
         this.width = 250;
-      } else if(window.innerWidth >= 320 && window.innerWidth <= 400 ){
+      } else if(window.innerWidth >= 320 && window.innerWidth <= 400){
         this.width = 300;
-      } else if(window.innerWidth > 400 && window.innerWidth <= 500 ){
-        this.width = 350
-      } else if(window.innerWidth > 500){
-        this.width = 380
+      } else if(window.innerWidth > 400 && window.innerWidth <= 500){
+        this.width = 340;
+      } else if(window.innerWidth > 500 && window.innerWidth <= 1600){
+        this.width = 380;
+      } else if(window.innerWidth > 1600){
+        this.width = 470;
       }
       
       window.addEventListener("resize", () => {
-        if(window.innerWidth < 300 ){
+        if(window.innerWidth < 320){
           this.width = 250;
-        } else if(window.innerWidth >= 320 && window.innerWidth <= 400 ){
+        } else if(window.innerWidth >= 320 && window.innerWidth <= 400){
           this.width = 300;
-        } else if(window.innerWidth > 400 && window.innerWidth <= 500 ){
-          this.width = 350
-        } else if(window.innerWidth > 500){
-          this.width = 380
+        } else if(window.innerWidth > 400 && window.innerWidth <= 500){
+          this.width = 340;
+        } else if(window.innerWidth > 500 && window.innerWidth <= 1600){
+          this.width = 380;
+        } else if(window.innerWidth > 1600){
+          this.width = 470;
         }
       })
     },

@@ -1,8 +1,8 @@
 <template>
   <v-container fluid class="homeView">
-    <v-snackbar top min-width="50%" color="success" v-model="dataRec.snackbarNewRec" :timeout="5000">
+    <v-snackbar top min-width="50%" color="success" v-model="dataExp.snackbarNewExp" :timeout="5000">
       
-      {{ this.dataRec.msgSuccess }}
+      {{ this.dataExp.msgSuccess }}
       <template v-slot:action="{ attrs }">
         <v-btn color="white" text v-bind="attrs" @click="snackbar = false">
           Fechar
@@ -14,7 +14,7 @@
       <v-dialog v-model="dialogEdit" max-width="500px">
         <v-card>
           <v-card-title>
-            <span class="text-h5">Editar Receita</span>
+            <span class="text-h5">Editar Despesa</span>
           </v-card-title>
 
           <v-card-text>
@@ -41,8 +41,8 @@
                
                 <v-col cols="12">
                   <v-select :prepend-inner-icon="'mdi-label'" v-model="editedItem.idCategory" 
-                    :items="[this.allFormsPagt[1].categories[0].title, this.allFormsPagt[1].categories[1].title, 
-                    this.allFormsPagt[1].categories[2].title, this.allFormsPagt[1].categories[3].title]" label="Categoria *" required>
+                    :items="[this.allFormsPagt[2].categories[0].title, this.allFormsPagt[2].categories[1].title, 
+                    this.allFormsPagt[2].categories[2].title, this.allFormsPagt[2].categories[3].title]" label="Categoria *" required>
                   </v-select>
                 </v-col>
               </v-row>
@@ -59,7 +59,7 @@
 
       <v-dialog v-model="dialogDelete" max-width="600px">
         <v-card>
-          <v-card-title class="text-h5">Tem certeza de que deseja excluir esta receita?</v-card-title>
+          <v-card-title class="text-h5">Tem certeza de que deseja excluir esta despesa?</v-card-title>
           <v-card-actions>
             <v-spacer></v-spacer>
             <v-btn color="blue darken-1" text @click="dialogDelete = false">Cancelar</v-btn>
@@ -72,7 +72,7 @@
       <v-col class="col" :cols="12" :md="8">
         <v-card>
           <v-card-title>
-            Receitas
+            Despesas
             <v-spacer></v-spacer>
             <v-text-field v-model="search2" append-icon="mdi-magnify" label="Pesquisar" single-line hide-details></v-text-field>
           </v-card-title>
@@ -113,7 +113,7 @@
       <v-col class="col" :cols="12" :md="4" :lg="3">
         <div>
          <v-btn class="mb-2" rounded  color="success" @click="dialog = true">
-            Nova Receita
+            Nova Despesa
           </v-btn>
         </div>
         
@@ -122,10 +122,10 @@
             <div class="elements" v-bind="attrs" v-on="on">
               <a :href="`#`">
                 <div class="left">
-                  <span>Receitas</span>
+                  <span>Despesas</span>
                   <br>
                   
-                  <span class="value">R$ {{ dataRec.totalRecSalary + dataRec.totalRecInvest + dataRec.totalRecEmp + dataRec.totalRecOut | toBrl }}</span>
+                  <span class="value">R$ {{ dataExp.totalExpSalary + dataExp.totalExpInvest + dataExp.totalExpEmp + dataExp.totalExpOut | toBrl }}</span>
                 </div>
                 
                 <div class="right">
@@ -136,7 +136,7 @@
               </a>
             </div>
           </template>
-          <span>Valor total de suas receitas</span>
+          <span>Valor total de suas despesas</span>
         </v-tooltip>
 
         <v-row>
@@ -176,18 +176,18 @@
       <v-dialog v-model="dialog" persistent max-width="600px">
         <v-card>
           <v-card-title>
-            <span class="text-h5">Nova Receita</span>
+            <span class="text-h5">Nova Despesa</span>
           </v-card-title>
 
           <v-card-text>
             <v-container>
               <v-row>
                 <v-col cols="12">
-                  <v-text-field :prepend-inner-icon="'mdi-cash-multiple'" v-model="dataRec.newRecValue" v-money="money" label="Informe o Valor *" hint="informe o valor desejado" required/> 
+                  <v-text-field :prepend-inner-icon="'mdi-cash-multiple'" v-model="dataExp.newExpValue" v-money="money" label="Informe o Valor *" hint="informe o valor desejado" required/> 
                 </v-col>
 
                 <v-col cols="12">
-                  <v-text-field :prepend-inner-icon="'mdi-file'" v-model="dataRec.newRecDesc" label="Descrição" type="text" hint="informe a descrição desejada" required/>
+                  <v-text-field :prepend-inner-icon="'mdi-file'" v-model="dataExp.newExpDesc" label="Descrição" type="text" hint="informe a descrição desejada" required/>
                 </v-col>
 
                 <v-col cols="12">
@@ -201,8 +201,8 @@
                 </v-col>
 
                 <v-col cols="12">
-                  <v-select :prepend-inner-icon="'mdi-label'" v-model="dataRec.newRecSelect" :items="[this.allFormsPagt[1].categories[0].title, this.allFormsPagt[1].categories[1].title, 
-                    this.allFormsPagt[1].categories[2].title, this.allFormsPagt[1].categories[3].title]" label="Categoria *" required>
+                  <v-select :prepend-inner-icon="'mdi-label'" v-model="dataExp.newExpSelect" :items="[this.allFormsPagt[2].categories[0].title, this.allFormsPagt[2].categories[1].title, 
+                    this.allFormsPagt[2].categories[2].title, this.allFormsPagt[2].categories[3].title]" label="Categoria *" required>
                   </v-select>
                 </v-col>
               </v-row>
@@ -210,57 +210,57 @@
             <small>* indica campo obrigatório</small>
             <v-spacer></v-spacer>
             <v-btn class="ma-1" color="error" @click="dialog = false">Cancelar</v-btn>
-            <v-btn class="ma-1" color="primary" @click="newRec()">Salvar</v-btn>
-            <v-btn class="ma-1"  color="success darken-1" @click="newRec(true)">Salvar e continuar cadastrando</v-btn>
+            <v-btn class="ma-1" color="primary" @click="newExp()">Salvar</v-btn>
+            <v-btn class="ma-1"  color="success darken-1" @click="newExp(true)">Salvar e continuar cadastrando</v-btn>
           </v-card-text>
         </v-card>
       </v-dialog>
 
-      <v-dialog v-model="this.dataRec.error" persistent transition="dialog-bottom-transition" max-width="600" style="z-index: 10000;">
+      <v-dialog v-model="this.dataExp.error" persistent transition="dialog-bottom-transition" max-width="600" style="z-index: 10000;">
         <v-card>
           <v-toolbar color="error" dark>Ocorreu um erro</v-toolbar>
           <v-card-text>
-            <div class="text-h4 pa-12">{{ dataRec.msgError }}</div>
+            <div class="text-h4 pa-12">{{ dataExp.msgError }}</div>
           </v-card-text>
           <v-card-actions class="justify-end">
-            <v-btn color="error" block @click="dataRec.error = false">Fechar</v-btn>
+            <v-btn color="error" block @click="dataExp.error = false">Fechar</v-btn>
           </v-card-actions>
         </v-card>
       </v-dialog>
  
       <v-col class="dash" :cols="12" :sm="8" :md="6" :lg="4">
-        <h4>Receitas por Categoria</h4>
+        <h4>Despesas por Categoria</h4>
         
         <div id="first">
-          <div v-if="!dataRec.hasRec">
+          <div v-if="!dataExp.hasExp">
             <v-icon>mdi-chart-donut</v-icon>
             <br>
             <h5>
-              Você ainda não possui receitas.
+              Você ainda não possui despesas.
             </h5>
           </div>
 
-          <div class="divDash" v-if="dataRec.hasRec">
-            <apexchart class="" :width="width" id="apexDonutRec" type="donut" :options="dataRec.optionsDonut" :series="dataRec.seriesDonut"></apexchart>
+          <div class="divDash" v-if="dataExp.hasExp">
+            <apexchart class="" :width="width" id="apexDonutExp" type="donut" :options="dataExp.optionsDonut" :series="dataExp.seriesDonut"></apexchart>
           </div>
         </div>
       </v-col>
       
       <v-col class="dash" :cols="12" :sm="8" :md="6" :lg="4">
-        <h4>Receitas por Ano</h4>
+        <h4>Despesas por Ano</h4>
         
         <div id="first">
-          <div v-if="!dataRec.hasRec">
+          <div v-if="!dataExp.hasExp">
             <v-icon>mdi-chart-donut</v-icon>
             <br>
             <h5>
-              Você ainda não possui receitas.
+              Você ainda não possui despesas.
             </h5>
           </div>
 
-          <div class="divDash" v-if="dataRec.hasRec">
+          <div class="divDash" v-if="dataExp.hasExp">
             <v-select style="z-index: 12;" v-model="yearSelected" :items="arrayYears" menu-props="auto" label="Select" hide-details :prepend-inner-icon="'mdi-calendar-range'" single-line/>
-            <apexchart type="line" :width="width" :options="dataRec.optionsLine" :series="dataRec.seriesLine"></apexchart>
+            <apexchart type="line" :width="width" :options="dataExp.optionsLine" :series="dataExp.seriesLine"></apexchart>
           </div>
         </div>
       </v-col>
@@ -274,9 +274,9 @@
                 <div class="elements" v-bind="attrs" v-on="on">
                   <span>
                     <div class="left">
-                      <span style="font-weight: bold;">Quantidade de Receitas</span>
+                      <span style="font-weight: bold;">Quantidade de Despesas</span>
                       <br>
-                      <span v-if="allFormsPagt[1].data != null">{{ allFormsPagt[1].data.length }}</span>
+                      <span v-if="allFormsPagt[2].data != null">{{ allFormsPagt[2].data.length }}</span>
                       
                     </div>
                     
@@ -288,7 +288,7 @@
                   </span>
                 </div>
               </template>
-              <span>Quantidade de Receitas Informadas</span>
+              <span>Quantidade de Despesas Informadas</span>
             </v-tooltip>
           </v-col>
 
@@ -299,69 +299,69 @@
                   Últimas movimentações criadas
                 </h3>
 
-                <div style="text-align: center" v-if="!dataRec.hasRec">
+                <div style="text-align: center" v-if="!dataExp.hasExp">
                   <v-icon>mdi-chart-donut</v-icon>
                   <br>
                   <h5>
-                    Você ainda não possui receitas.
+                    Você ainda não possui despesas.
                   </h5>
                 </div>
 
-                <div v-if="allFormsPagt[1].data != null && allFormsPagt[1].data[allFormsPagt[1].data.length -1]" class="data">
+                <div v-if="allFormsPagt[2].data != null && allFormsPagt[2].data[allFormsPagt[2].data.length -1]" class="data">
                   <div>
                     <div class="divLeft">
                       <v-tooltip :color="'rgb(0, 0, 0)'" :max-width="220" bottom>
                         <template v-slot:activator="{ on, attrs }">
-                          <span v-bind="attrs" v-on="on">{{ allFormsPagt[1].data[allFormsPagt[1].data.length -1].desc }}</span> <br>
+                          <span v-bind="attrs" v-on="on">{{ allFormsPagt[2].data[allFormsPagt[2].data.length -1].desc }}</span> <br>
                         </template>
-                        <span>{{ allFormsPagt[1].data[allFormsPagt[1].data.length -1].desc }}</span>
+                        <span>{{ allFormsPagt[2].data[allFormsPagt[2].data.length -1].desc }}</span>
                       </v-tooltip>
-                      <span>{{ formatDate(allFormsPagt[1].data[allFormsPagt[1].data.length -1].date) }}</span>
+                      <span>{{ formatDate(allFormsPagt[2].data[allFormsPagt[2].data.length -1].date) }}</span>
                     </div>
 
                     <div class="divRight">
                       <span>
-                        R$ {{ allFormsPagt[1].data[allFormsPagt[1].data.length -1].value | toBrl }}
+                        R$ {{ allFormsPagt[2].data[allFormsPagt[2].data.length -1].value | toBrl }}
                       </span>
                     </div>
                   </div>
                 </div>
                 
-                <div v-if="allFormsPagt[1].data != null && allFormsPagt[1].data[allFormsPagt[1].data.length -2]" class="data">
+                <div v-if="allFormsPagt[2].data != null && allFormsPagt[2].data[allFormsPagt[2].data.length -2]" class="data">
                   <div>
                     <div class="divLeft">
                       <v-tooltip :color="'rgb(0, 0, 0)'" :max-width="220" bottom>
                         <template v-slot:activator="{ on, attrs }">
-                          <span v-bind="attrs" v-on="on">{{ allFormsPagt[1].data[allFormsPagt[1].data.length -2].desc }}</span> <br>
+                          <span v-bind="attrs" v-on="on">{{ allFormsPagt[2].data[allFormsPagt[2].data.length -2].desc }}</span> <br>
                         </template>
-                        <span>{{ allFormsPagt[1].data[allFormsPagt[1].data.length -2].desc }}</span>
+                        <span>{{ allFormsPagt[2].data[allFormsPagt[2].data.length -2].desc }}</span>
                       </v-tooltip>
-                      <span>{{ formatDate(allFormsPagt[1].data[allFormsPagt[1].data.length -2].date) }}</span>
+                      <span>{{ formatDate(allFormsPagt[2].data[allFormsPagt[2].data.length -2].date) }}</span>
                     </div>
 
                     <div class="divRight">
                       <span>
-                        R$ {{ allFormsPagt[1].data[allFormsPagt[1].data.length -2].value | toBrl }}
+                        R$ {{ allFormsPagt[2].data[allFormsPagt[2].data.length -2].value | toBrl }}
                       </span>
                     </div>
                   </div>
                 </div>
                 
-                <div v-if="allFormsPagt[1].data != null && allFormsPagt[1].data[allFormsPagt[1].data.length -3]" class="data">
+                <div v-if="allFormsPagt[2].data != null && allFormsPagt[2].data[allFormsPagt[2].data.length -3]" class="data">
                   <div>
                     <div class="divLeft">
                       <v-tooltip :color="'rgb(0, 0, 0)'" :max-width="220" bottom>
                         <template v-slot:activator="{ on, attrs }">
-                          <span v-bind="attrs" v-on="on">{{ allFormsPagt[1].data[allFormsPagt[1].data.length -3].desc }}</span> <br>
+                          <span v-bind="attrs" v-on="on">{{ allFormsPagt[2].data[allFormsPagt[2].data.length -3].desc }}</span> <br>
                         </template>
-                        <span>{{ allFormsPagt[1].data[allFormsPagt[1].data.length -3].desc }}</span>
+                        <span>{{ allFormsPagt[2].data[allFormsPagt[2].data.length -3].desc }}</span>
                       </v-tooltip>
-                      <span>{{ formatDate(allFormsPagt[1].data[allFormsPagt[1].data.length -3].date) }}</span>
+                      <span>{{ formatDate(allFormsPagt[2].data[allFormsPagt[2].data.length -3].date) }}</span>
                     </div>
 
                     <div class="divRight">
                       <span>
-                        R$ {{ allFormsPagt[1].data[allFormsPagt[1].data.length -3].value | toBrl }}
+                        R$ {{ allFormsPagt[2].data[allFormsPagt[2].data.length -3].value | toBrl }}
                       </span>
                     </div>
                   </div>
@@ -377,7 +377,7 @@
 
 <script>
 import Vue from 'vue'
-import scrypt from "../../assets/js/scrypt.js"
+import scrypt from "../../assets/js/scryptExp.js"
 import VueApexCharts from 'vue-apexcharts'
 
 import "../../assets/style/style.css"
@@ -412,7 +412,6 @@ export default {
         { text: 'Ações', value: 'action', sortable: false }
       ],
       desserts2: [],
-      //price: 123.45,
       money: {
         decimal: ',',
         thousands: '.',
@@ -431,20 +430,20 @@ export default {
         date: '',
         dateEdit: '',
       },
-      dataRec: {
+      dataExp: {
         indexs:[],
-        totalRecSalary: 0,
-        totalRecInvest: 0,
-        totalRecEmp: 0,
-        totalRecOut: 0,
-        newRecValue: '0',
-        newRecSelect: '',
-        newRecDesc: '',
-        hasRec: false,
+        totalExpSalary: 0,
+        totalExpInvest: 0,
+        totalExpEmp: 0,
+        totalExpOut: 0,
+        newExpValue: '0',
+        newExpSelect: '',
+        newExpDesc: '',
+        hasExp: false,
         error: false,
         msgError: '',
         msgSuccess: '',
-        snackbarNewRec: false,
+        snackbarNewExp: false,
         seriesDonut: [],
         optionsDonut: {
           tooltip: {
@@ -463,7 +462,7 @@ export default {
           legend:{
             position: 'bottom'
           },
-          labels: ['Salário', 'Investimentos', 'Empréstimos', 'Outros'],
+          labels: ['Casa', 'Educação', 'Eletrônicos', 'Outros'],
         },
         optionsLine: {
           tooltip: {
@@ -496,16 +495,15 @@ export default {
             toolbar: {
               export: {
                 csv: {
-                  filename: 'Receitas por ano',
+                  filename: 'Despesas por ano',
                   columnDelimiter: ';',
                   headerCategory: 'Mês',
-                  //headerValue: 'Teste 2',
                 },
                 svg:{
-                  filename: 'Receitas por ano',
+                  filename: 'Despesas por ano',
                 },
                 png:{
-                  filename: 'Receitas por ano',
+                  filename: 'Despesas por ano',
                 }
               }
             },
@@ -527,51 +525,49 @@ export default {
   },
   created(){
     this.allFormsPagt = scrypt.allFormsPagt;
-    /* Receitas */
 
     if(window) {
-      this.allFormsPagt[1].data = JSON.parse(localStorage.getItem('dataRec'))
+      this.allFormsPagt[2].data = JSON.parse(localStorage.getItem('dataExp'))
 
       this.createArrayData();
-      if(this.allFormsPagt[1].data != null){
+      if(this.allFormsPagt[2].data != null){
         this.configData();
         this.configDataLine(this.yearSelected);
       }
   
-      this.dataRec.seriesDonut = [this.dataRec.totalRecSalary, this.dataRec.totalRecInvest, this.dataRec.totalRecEmp, this.dataRec.totalRecOut]
+      this.dataExp.seriesDonut = [this.dataExp.totalExpSalary, this.dataExp.totalExpInvest, this.dataExp.totalExpEmp, this.dataExp.totalExpOut]
       this.configWidthDash()
     }
-    /* Fim Receitas */
   },
   mounted(){
     this.configShowDonut();
   },
   methods:{
     configShowDonut(){
-      var elementExist = document.getElementById("apexDonutRec")  
+      var elementExist = document.getElementById("apexDonutExp")  
       if(elementExist){
-        if(this.dataRec.totalRecSalary != 0){
-          document.getElementById("apexDonutRec").classList.add("one")
+        if(this.dataExp.totalExpSalary != 0){
+          document.getElementById("apexDonutExp").classList.add("one")
         } else{
-          document.getElementById("apexDonutRec").classList.remove("one")
+          document.getElementById("apexDonutExp").classList.remove("one")
         }
 
-        if(this.dataRec.totalRecInvest != 0){
-          document.getElementById("apexDonutRec").classList.add("two")
+        if(this.dataExp.totalExpInvest != 0){
+          document.getElementById("apexDonutExp").classList.add("two")
         } else{
-          document.getElementById("apexDonutRec").classList.remove("two")
+          document.getElementById("apexDonutExp").classList.remove("two")
         }
 
-        if(this.dataRec.totalRecEmp != 0){
-          document.getElementById("apexDonutRec").classList.add("three")
+        if(this.dataExp.totalExpEmp != 0){
+          document.getElementById("apexDonutExp").classList.add("three")
         } else{
-          document.getElementById("apexDonutRec").classList.remove("three")
+          document.getElementById("apexDonutExp").classList.remove("three")
         }
         
-        if(this.dataRec.totalRecOut != 0){
-          document.getElementById("apexDonutRec").classList.add("four")
+        if(this.dataExp.totalExpOut != 0){
+          document.getElementById("apexDonutExp").classList.add("four")
         } else{
-          document.getElementById("apexDonutRec").classList.remove("four")
+          document.getElementById("apexDonutExp").classList.remove("four")
         }
       }
     },
@@ -623,8 +619,8 @@ export default {
       var nov = 0;
       var dez = 0;
 
-      if(this.allFormsPagt[1].data != null){
-        this.allFormsPagt[1].data.forEach(element => {
+      if(this.allFormsPagt[2].data != null){
+        this.allFormsPagt[2].data.forEach(element => {
           var [year, month] = element.date.split('-')
           if(year == date){
             if(month == '01'){
@@ -658,7 +654,7 @@ export default {
 
       var newData = [jan, fev, mar, abr, may, jun, jul, aug, set, out, nov, dez]
 
-      this.dataRec.seriesLine = [{
+      this.dataExp.seriesLine = [{
         name: 'Total',
         data: newData
       }]
@@ -677,30 +673,28 @@ export default {
         }
       }
     },
+    setValuesSeries(){
+      Vue.set(this.dataExp.seriesDonut, 0, (this.dataExp.totalExpSalary))
+      Vue.set(this.dataExp.seriesDonut, 1, (this.dataExp.totalExpInvest))
+      Vue.set(this.dataExp.seriesDonut, 2, (this.dataExp.totalExpEmp))
+      Vue.set(this.dataExp.seriesDonut, 3, (this.dataExp.totalExpOut))
+
+      if(this.dataExp.seriesDonut[0] == 0 && this.dataExp.seriesDonut[1] == 0 && this.dataExp.seriesDonut[2] == 0 && this.dataExp.seriesDonut[3] == 0){
+        this.dataExp.hasExp = false
+      }
+    },
     filterByDate(){
       if(this.dateFilterInit == '' || this.dateFilterFinal == ''){
-        this.dataRec.error = true;
-        this.dataRec.msgError = 'Preencha os campos data inicial e final antes de filtrar';
+        this.dataExp.error = true;
+        this.dataExp.msgError = 'Preencha os campos data inicial e final antes de filtrar';
       } else if(this.dateFilterFinal >= this.dateFilterInit){
-        var elementExist = document.getElementById("apexDonutRec")
         this.configData();
-        Vue.set(this.dataRec.seriesDonut, 0, (this.dataRec.totalRecSalary))
-        Vue.set(this.dataRec.seriesDonut, 1, (this.dataRec.totalRecInvest))
-        Vue.set(this.dataRec.seriesDonut, 2, (this.dataRec.totalRecEmp))
-        Vue.set(this.dataRec.seriesDonut, 3, (this.dataRec.totalRecOut))
-        if(this.dataRec.seriesDonut[0] == 0 && this.dataRec.seriesDonut[1] == 0 && this.dataRec.seriesDonut[2] == 0 && this.dataRec.seriesDonut[3] == 0){
-          this.dataRec.hasRec = false
-        }
-
-        if(elementExist){
-          if(this.dataRec.totalRecSalary == 0) document.getElementById("apexDonutRec").classList.remove("one")
-          if(this.dataRec.totalRecInvest == 0) document.getElementById("apexDonutRec").classList.remove("two")
-          if(this.dataRec.totalRecEmp == 0) document.getElementById("apexDonutRec").classList.remove("three")
-          if(this.dataRec.totalRecOut == 0) document.getElementById("apexDonutRec").classList.remove("four")
-        }
+        this.setValuesSeries();
+       
+        this.configShowDonut();
       } else {
-        this.dataRec.error = true;
-        this.dataRec.msgError = 'A data inicial deve ser menor ou igual a data final';
+        this.dataExp.error = true;
+        this.dataExp.msgError = 'A data inicial deve ser menor ou igual a data final';
       }
     },
     clearDateFilter(){
@@ -708,145 +702,123 @@ export default {
       this.dateFilterFinal = ''
       this.dateFilterFormattedInit = ''
       this.dateFilterFormattedFinal = ''
-      var elementExist = document.getElementById("apexDonutRec")
       this.configData();
-      Vue.set(this.dataRec.seriesDonut, 0, (this.dataRec.totalRecSalary))
-      Vue.set(this.dataRec.seriesDonut, 1, (this.dataRec.totalRecInvest))
-      Vue.set(this.dataRec.seriesDonut, 2, (this.dataRec.totalRecEmp))
-      Vue.set(this.dataRec.seriesDonut, 3, (this.dataRec.totalRecOut))
-
-      if(this.dataRec.seriesDonut[0] == 0 && this.dataRec.seriesDonut[1] == 0 && this.dataRec.seriesDonut[2] == 0 && this.dataRec.seriesDonut[3] == 0){
-        this.dataRec.hasRec = false
-      }
-
-      if(elementExist){
-        if(this.dataRec.totalRecSalary == 0) document.getElementById("apexDonutRec").classList.remove("one")
-        if(this.dataRec.totalRecInvest == 0) document.getElementById("apexDonutRec").classList.remove("two")
-        if(this.dataRec.totalRecEmp == 0) document.getElementById("apexDonutRec").classList.remove("three")
-        if(this.dataRec.totalRecOut == 0) document.getElementById("apexDonutRec").classList.remove("four")
-      }
+      this.setValuesSeries();
+      this.configShowDonut();
     },
-    newRec(continueSave){
-      if(this.dataRec.newRecValue == 'R$ 0,00' ){
-        this.dataRec.error = true;
-        this.dataRec.msgError = 'Não é possivel cadastrar uma receita com valor zerado';
-      } else if(this.dataRec.newRecSelect == ""){
-        this.dataRec.error = true;
-        this.dataRec.msgError = 'Não é possivel cadastrar uma receita sem categoria';
+    newExp(continueSave){
+      if(this.dataExp.newExpValue == 'R$ 0,00' ){
+        this.dataExp.error = true;
+        this.dataExp.msgError = 'Não é possivel cadastrar uma despesa com valor zerado';
+      } else if(this.dataExp.newExpSelect == ""){
+        this.dataExp.error = true;
+        this.dataExp.msgError = 'Não é possivel cadastrar uma despesa sem categoria';
       } else{
-        this.dataRec.hasRec = true
-        var elementExist = document.getElementById("apexDonutRec")
+        this.dataExp.hasExp = true
         this.generateData();
 
-        if(elementExist){
-          if(this.dataRec.totalRecSalary != 0) document.getElementById("apexDonutRec").classList.add("one")
-          if(this.dataRec.totalRecInvest != 0) document.getElementById("apexDonutRec").classList.add("two")
-          if(this.dataRec.totalRecEmp != 0) document.getElementById("apexDonutRec").classList.add("three")
-          if(this.dataRec.totalRecOut != 0) document.getElementById("apexDonutRec").classList.add("four")
-        }
-
-        this.dataRec.newRecValue = 0
-        this.dataRec.newRecSelect = ''
-        this.dataRec.newRecDesc = ''
-        this.dataRec.snackbarNewRec = true;
+        this.dataExp.newExpValue = 0
+        this.dataExp.newExpSelect = ''
+        this.dataExp.newExpDesc = ''
+        this.dataExp.snackbarNewExp = true;
         this.configData();
         this.configDataLine(this.yearSelected);
         this.configShowDonut();
-        
-        this.dataRec.msgSuccess = 'Receita cadastrada com sucesso'
+
+        this.dataExp.msgSuccess = 'Despesa cadastrada com sucesso'
         if(!continueSave){
           this.dialog = false;
         }
       }
     },
     generateData(){
-      if(this.dataRec.newRecSelect == 'Salário'){
-        if(this.dataRec.newRecDesc.trim() == '') this.dataRec.newRecDesc = 'Salário'
+      if(this.dataExp.newExpSelect == 'Casa'){
+        if(this.dataExp.newExpDesc.trim() == '') this.dataExp.newExpDesc = 'Casa'
 
           if(this.dateFilterInit == undefined || this.dateFilterInit == '' || this.dateFilterFinal == undefined || this.dateFilterFinal == ''){
-            this.dataRec.totalRecSalary = this.round(this.dataRec.totalRecSalary, this.convertMoneyFloat(this.dataRec.newRecValue));
+            this.dataExp.totalExpSalary = this.round(this.dataExp.totalExpSalary, this.convertMoneyFloat(this.dataExp.newExpValue));
           } else{
             if(this.date >= this.dateFilterInit && this.date <= this.dateFilterFinal){
-              this.dataRec.totalRecSalary = this.round(this.dataRec.totalRecSalary, this.convertMoneyFloat(this.dataRec.newRecValue));
+              this.dataExp.totalExpSalary = this.round(this.dataExp.totalExpSalary, this.convertMoneyFloat(this.dataExp.newExpValue));
             }
           }
             
-        if(this.allFormsPagt[1].data == null){
-          this.allFormsPagt[1].data = [{idRec: Date.now(), idCategory: 0, desc: this.dataRec.newRecDesc, date: this.date, value: this.dataRec.totalRecSalary}]
+        if(this.allFormsPagt[2].data == null){
+          this.allFormsPagt[2].data = [{idExp: Date.now(), idCategory: 0, desc: this.dataExp.newExpDesc, date: this.date, value: this.dataExp.totalExpSalary}]
         } else{
-          this.allFormsPagt[1].data.push({idRec: Date.now(), idCategory: 0, desc: this.dataRec.newRecDesc, date: this.date, value: this.convertMoneyFloat(this.dataRec.newRecValue)})
+          this.allFormsPagt[2].data.push({idExp: Date.now(), idCategory: 0, desc: this.dataExp.newExpDesc, date: this.date, value: this.convertMoneyFloat(this.dataExp.newExpValue)})
         }
         if(window) {
-          localStorage.setItem("dataRec", JSON.stringify(this.allFormsPagt[1].data));
+          localStorage.setItem("dataExp", JSON.stringify(this.allFormsPagt[2].data));
         }
-        Vue.set(this.dataRec.seriesDonut, 0, this.dataRec.totalRecSalary)
+        Vue.set(this.dataExp.seriesDonut, 0, this.dataExp.totalExpSalary)
       }
         
-      if(this.dataRec.newRecSelect == 'Investimentos'){
-        if(this.dataRec.newRecDesc.trim() == '') this.dataRec.newRecDesc = 'Investimentos'
+      if(this.dataExp.newExpSelect == 'Educação'){
+        if(this.dataExp.newExpDesc.trim() == '') this.dataExp.newExpDesc = 'Educação'
           if(this.dateFilterInit == undefined || this.dateFilterInit == '' || this.dateFilterFinal == undefined || this.dateFilterFinal == ''){
-            this.dataRec.totalRecInvest = this.round(this.dataRec.totalRecInvest, this.convertMoneyFloat(this.dataRec.newRecValue));
+            this.dataExp.totalExpInvest = this.round(this.dataExp.totalExpInvest, this.convertMoneyFloat(this.dataExp.newExpValue));
           } else {
             if(this.date >= this.dateFilterInit && this.date <= this.dateFilterFinal){
-              this.dataRec.totalRecInvest = this.round(this.dataRec.totalRecInvest, this.convertMoneyFloat(this.dataRec.newRecValue));
+              this.dataExp.totalExpInvest = this.round(this.dataExp.totalExpInvest, this.convertMoneyFloat(this.dataExp.newExpValue));
             }
           }
 
-        if(this.allFormsPagt[1].data == null){
-          this.allFormsPagt[1].data = [{idRec: Date.now(), idCategory: 1, desc: this.dataRec.newRecDesc, date: this.date, value: this.dataRec.totalRecInvest}]
+        if(this.allFormsPagt[2].data == null){
+          this.allFormsPagt[2].data = [{idExp: Date.now(), idCategory: 1, desc: this.dataExp.newExpDesc, date: this.date, value: this.dataExp.totalExpInvest}]
         } else{
-          this.allFormsPagt[1].data.push({idRec: Date.now(), idCategory: 1, desc: this.dataRec.newRecDesc, date: this.date, value: this.convertMoneyFloat(this.dataRec.newRecValue)})
+          this.allFormsPagt[2].data.push({idExp: Date.now(), idCategory: 1, desc: this.dataExp.newExpDesc, date: this.date, value: this.convertMoneyFloat(this.dataExp.newExpValue)})
         }
         if(window) {
-          localStorage.setItem("dataRec", JSON.stringify(this.allFormsPagt[1].data));
+          localStorage.setItem("dataExp", JSON.stringify(this.allFormsPagt[2].data));
         }
-        Vue.set(this.dataRec.seriesDonut, 1, this.dataRec.totalRecInvest)
+        Vue.set(this.dataExp.seriesDonut, 1, this.dataExp.totalExpInvest)
       }
       
-      if(this.dataRec.newRecSelect == 'Empréstimos'){
-        if(this.dataRec.newRecDesc.trim() == '') this.dataRec.newRecDesc = 'Empréstimos'
+      if(this.dataExp.newExpSelect == 'Eletrônicos'){
+        if(this.dataExp.newExpDesc.trim() == '') this.dataExp.newExpDesc = 'Eletrônicos'
           if(this.dateFilterInit == undefined || this.dateFilterInit == '' || this.dateFilterFinal == undefined || this.dateFilterFinal == ''){
-            this.dataRec.totalRecEmp = this.round(this.dataRec.totalRecEmp, this.convertMoneyFloat(this.dataRec.newRecValue));
+            this.dataExp.totalExpEmp = this.round(this.dataExp.totalExpEmp, this.convertMoneyFloat(this.dataExp.newExpValue));
           } else {
             if(this.date >= this.dateFilterInit && this.date <= this.dateFilterFinal){
-              this.dataRec.totalRecEmp = this.round(this.dataRec.totalRecEmp, this.convertMoneyFloat(this.dataRec.newRecValue));
+              this.dataExp.totalExpEmp = this.round(this.dataExp.totalExpEmp, this.convertMoneyFloat(this.dataExp.newExpValue));
             }
           }
 
-        if(this.allFormsPagt[1].data == null){
-          this.allFormsPagt[1].data = [{idRec: Date.now(), idCategory: 2, desc: this.dataRec.newRecDesc, date: this.date, value: this.dataRec.totalRecEmp}]
+        if(this.allFormsPagt[2].data == null){
+          this.allFormsPagt[2].data = [{idExp: Date.now(), idCategory: 2, desc: this.dataExp.newExpDesc, date: this.date, value: this.dataExp.totalExpEmp}]
         } else{
-          this.allFormsPagt[1].data.push({idRec: Date.now(), idCategory: 2, desc: this.dataRec.newRecDesc, date: this.date, value: this.convertMoneyFloat(this.dataRec.newRecValue)})
+          this.allFormsPagt[2].data.push({idExp: Date.now(), idCategory: 2, desc: this.dataExp.newExpDesc, date: this.date, value: this.convertMoneyFloat(this.dataExp.newExpValue)})
         }
         if(window) {
-          localStorage.setItem("dataRec", JSON.stringify(this.allFormsPagt[1].data));
+          localStorage.setItem("dataExp", JSON.stringify(this.allFormsPagt[2].data));
         }
-        Vue.set(this.dataRec.seriesDonut, 2, this.dataRec.totalRecEmp)
+        Vue.set(this.dataExp.seriesDonut, 2, this.dataExp.totalExpEmp)
       }
       
-      if(this.dataRec.newRecSelect == 'Outros'){
-        if(this.dataRec.newRecDesc.trim() == '') this.dataRec.newRecDesc = 'Outros'
+      if(this.dataExp.newExpSelect == 'Outros'){
+        if(this.dataExp.newExpDesc.trim() == '') this.dataExp.newExpDesc = 'Outros'
           if(this.dateFilterInit == undefined || this.dateFilterInit == '' || this.dateFilterFinal == undefined || this.dateFilterFinal == ''){
-            this.dataRec.totalRecOut = this.round(this.dataRec.totalRecOut, this.convertMoneyFloat(this.dataRec.newRecValue));
+            this.dataExp.totalExpOut = this.round(this.dataExp.totalExpOut, this.convertMoneyFloat(this.dataExp.newExpValue));
           } else{
             if(this.date >= this.dateFilterInit && this.date <= this.dateFilterFinal){
-              this.dataRec.totalRecOut = this.round(this.dataRec.totalRecOut, this.convertMoneyFloat(this.dataRec.newRecValue));
+              this.dataExp.totalExpOut = this.round(this.dataExp.totalExpOut, this.convertMoneyFloat(this.dataExp.newExpValue));
             }
           }
 
-        if(this.allFormsPagt[1].data == null){
-          this.allFormsPagt[1].data = [{idRec: Date.now(), idCategory: 3, desc: this.dataRec.newRecDesc, date: this.date, value: this.dataRec.totalRecOut}]
+        if(this.allFormsPagt[2].data == null){
+          this.allFormsPagt[2].data = [{idExp: Date.now(), idCategory: 3, desc: this.dataExp.newExpDesc, date: this.date, value: this.dataExp.totalExpOut}]
         } else{
-          this.allFormsPagt[1].data.push({idRec: Date.now(), idCategory: 3, desc: this.dataRec.newRecDesc, date: this.date, value: this.convertMoneyFloat(this.dataRec.newRecValue)})
+          this.allFormsPagt[2].data.push({idExp: Date.now(), idCategory: 3, desc: this.dataExp.newExpDesc, date: this.date, value: this.convertMoneyFloat(this.dataExp.newExpValue)})
         }
         if(window) {
-          localStorage.setItem("dataRec", JSON.stringify(this.allFormsPagt[1].data));
+          localStorage.setItem("dataExp", JSON.stringify(this.allFormsPagt[2].data));
         }
-        Vue.set(this.dataRec.seriesDonut, 3, this.dataRec.totalRecOut)
+        Vue.set(this.dataExp.seriesDonut, 3, this.dataExp.totalExpOut)
       }
     },
     editItem(item){
-      this.editedItem.id = item.idRec;
+      this.editedItem.id = item.idExp;
       this.editedItem.desc = item.desc.trim();
       this.editedItem.value = item.value;
       this.editedItem.date = item.date;
@@ -857,96 +829,85 @@ export default {
     },
     deleteItem(item){
       this.dialogDelete = true;
-      this.editedItem.id = item.idRec;
+      this.editedItem.id = item.idExp;
       this.editedItem.desc = item.desc;
       this.editedItem.value = item.value;
       this.editedItem.idCategory = item.idCategory;
     },
     deleteItemConfirm(){
-      var arr = this.allFormsPagt[1].data.filter(element => element.idRec != this.editedItem.id)
-      this.allFormsPagt[1].data = arr
+      var arr = this.allFormsPagt[2].data.filter(element => element.idExp != this.editedItem.id)
+      this.allFormsPagt[2].data = arr
       this.desserts2 = []
       this.configData()
       this.configDataLine(this.yearSelected);
       this.dialogDelete = false;
-
-      Vue.set(this.dataRec.seriesDonut, 0, (this.dataRec.totalRecSalary))
-      Vue.set(this.dataRec.seriesDonut, 1, (this.dataRec.totalRecInvest))
-      Vue.set(this.dataRec.seriesDonut, 2, (this.dataRec.totalRecEmp))
-      Vue.set(this.dataRec.seriesDonut, 3, (this.dataRec.totalRecOut))
-
-      if(this.dataRec.seriesDonut[0] == 0 && this.dataRec.seriesDonut[1] == 0 && this.dataRec.seriesDonut[2] == 0 && this.dataRec.seriesDonut[3] == 0){
-        this.dataRec.hasRec = false
-      }
-
+      this.setValuesSeries();
       this.configShowDonut();
       if(window) {
-        localStorage.setItem("dataRec", JSON.stringify(this.allFormsPagt[1].data));
+        localStorage.setItem("dataExp", JSON.stringify(this.allFormsPagt[2].data));
       }
-      this.dataRec.msgSuccess = 'Receita excluída com sucesso'
-      this.dataRec.snackbarNewRec = true;
+      this.dataExp.msgSuccess = 'Despesa excluída com sucesso'
+      this.dataExp.snackbarNewExp = true;
     },
     saveEdit(){
       if(this.editedItem.value == 'R$ 0,00' ){
-        this.dataRec.error = true;
-        this.dataRec.msgError = 'Não é possivel salvar uma despesa com valor zerado';
+        this.dataExp.error = true;
+        this.dataExp.msgError = 'Não é possivel salvar uma despesa com valor zerado';
       } else{
         var elementIndex;
-        if(this.allFormsPagt[1].data != null){
-          this.allFormsPagt[1].data.forEach((element, index) => {
-            if(element.idRec == this.editedItem.id){
+        if(this.allFormsPagt[2].data != null){
+          this.allFormsPagt[2].data.forEach((element, index) => {
+            if(element.idExp == this.editedItem.id){
               elementIndex = index
             }
           })
         }
+        
+        this.allFormsPagt[2].data[elementIndex].desc = this.editedItem.desc
+        this.allFormsPagt[2].data[elementIndex].idCategory = this.editedItem.idCategory
+        if(this.allFormsPagt[2].data[elementIndex].desc.trim() == '') this.allFormsPagt[2].data[elementIndex].desc = this.allFormsPagt[2].data[elementIndex].idCategory
 
-        this.allFormsPagt[1].data[elementIndex].desc = this.editedItem.desc
-        this.allFormsPagt[1].data[elementIndex].idCategory = this.editedItem.idCategory
-        if(this.allFormsPagt[1].data[elementIndex].desc.trim() == '') this.allFormsPagt[1].data[elementIndex].desc = this.allFormsPagt[1].data[elementIndex].idCategory
-
-        if(this.allFormsPagt[1].data[elementIndex].idCategory == 'Salário'){
-          if(this.editedItem.desc.trim() == 'Investimentos' || this.editedItem.desc.trim() == 'Empréstimos' || this.editedItem.desc.trim() == 'Outros'){
-            this.allFormsPagt[1].data[elementIndex].desc = 'Salário'
+        if(this.allFormsPagt[2].data[elementIndex].idCategory == 'Casa') {
+          if(this.editedItem.desc.trim() == 'Educação' || this.editedItem.desc.trim() == 'Eletrônicos' || this.editedItem.desc.trim() == 'Outros'){
+            this.allFormsPagt[2].data[elementIndex].desc = 'Casa'
           }
-          this.allFormsPagt[1].data[elementIndex].idCategory = 0
-        } 
-
-        if(this.allFormsPagt[1].data[elementIndex].idCategory == 'Investimentos'){
-          if(this.editedItem.desc.trim() == 'Salário' || this.editedItem.desc.trim() == 'Empréstimos' || this.editedItem.desc.trim() == 'Outros'){
-            this.allFormsPagt[1].data[elementIndex].desc = 'Investimentos'
-          }
-          this.allFormsPagt[1].data[elementIndex].idCategory = 1
-        } 
-
-        if(this.allFormsPagt[1].data[elementIndex].idCategory == 'Empréstimos') {
-          if(this.editedItem.desc.trim() == 'Salário' || this.editedItem.desc.trim() == 'Investimentos' || this.editedItem.desc.trim() == 'Outros'){
-            this.allFormsPagt[1].data[elementIndex].desc = 'Empréstimos'
-          }
-          this.allFormsPagt[1].data[elementIndex].idCategory = 2
+          this.allFormsPagt[2].data[elementIndex].idCategory = 0;
         }
-        if(this.allFormsPagt[1].data[elementIndex].idCategory == 'Outros'){
-          if(this.editedItem.desc.trim() == 'Salário' || this.editedItem.desc.trim() == 'Investimentos' || this.editedItem.desc.trim() == 'Empréstimos'){
-            this.allFormsPagt[1].data[elementIndex].desc = 'Outros'
+
+        if(this.allFormsPagt[2].data[elementIndex].idCategory == 'Educação'){
+          if(this.editedItem.desc.trim() == 'Casa' || this.editedItem.desc.trim() == 'Eletrônicos' || this.editedItem.desc.trim() == 'Outros'){
+            this.allFormsPagt[2].data[elementIndex].desc = 'Educação'
           }
-          this.allFormsPagt[1].data[elementIndex].idCategory = 3
+          this.allFormsPagt[2].data[elementIndex].idCategory = 1
         } 
-        this.allFormsPagt[1].data[elementIndex].value = this.round(this.convertMoneyFloat(this.editedItem.value)) 
-        this.allFormsPagt[1].data[elementIndex].date = this.editedItem.date;
+
+        if(this.allFormsPagt[2].data[elementIndex].idCategory == 'Eletrônicos'){
+          if(this.editedItem.desc.trim() == 'Casa' || this.editedItem.desc.trim() == 'Educação' || this.editedItem.desc.trim() == 'Outros'){
+            this.allFormsPagt[2].data[elementIndex].desc = 'Eletrônicos'
+          }
+          this.allFormsPagt[2].data[elementIndex].idCategory = 2
+        } 
+        
+        if(this.allFormsPagt[2].data[elementIndex].idCategory == 'Outros'){
+          if(this.editedItem.desc.trim() == 'Casa' || this.editedItem.desc.trim() == 'Educação' || this.editedItem.desc.trim() == 'Eletrônicos'){
+            this.allFormsPagt[2].data[elementIndex].desc = 'Outros'
+          }
+          this.allFormsPagt[2].data[elementIndex].idCategory = 3
+        }
+        this.allFormsPagt[2].data[elementIndex].value = this.round(this.convertMoneyFloat(this.editedItem.value)) 
+        this.allFormsPagt[2].data[elementIndex].date = this.editedItem.date;
           
         this.configData();
         this.configDataLine(this.yearSelected);
         this.configShowDonut();
-        Vue.set(this.dataRec.seriesDonut, 0, (this.dataRec.totalRecSalary))
-        Vue.set(this.dataRec.seriesDonut, 1, (this.dataRec.totalRecInvest))
-        Vue.set(this.dataRec.seriesDonut, 2, (this.dataRec.totalRecEmp))
-        Vue.set(this.dataRec.seriesDonut, 3, (this.dataRec.totalRecOut))
-
+        this.setValuesSeries();
+        
         if(window) {
-          localStorage.setItem("dataRec", JSON.stringify(this.allFormsPagt[1].data));
+          localStorage.setItem("dataExp", JSON.stringify(this.allFormsPagt[2].data));
         }
         this.dialogEdit = false;
-        this.dataRec.msgSuccess = 'Receita editada com sucesso'
-        this.dataRec.snackbarNewRec = true;
+        this.dataExp.msgSuccess = 'Despesa editada com sucesso'
+        this.dataExp.snackbarNewExp = true;
       }
     },
     round(num, num2){
@@ -973,59 +934,59 @@ export default {
       return (Math.round(value * 100) / 100).toFixed(2);
     },
     configData(){
-      this.dataRec.totalRecSalary = 0;
-      this.dataRec.totalRecInvest = 0;
-      this.dataRec.totalRecEmp = 0;
-      this.dataRec.totalRecOut = 0;
+      this.dataExp.totalExpSalary = 0;
+      this.dataExp.totalExpInvest = 0;
+      this.dataExp.totalExpEmp = 0;
+      this.dataExp.totalExpOut = 0;
       this.desserts2 = [];
       
-      if(this.allFormsPagt[1].data != null){
-        this.allFormsPagt[1].data.forEach(element => {
-          this.dataRec.hasRec = true
+      if(this.allFormsPagt[2].data != null){
+        this.allFormsPagt[2].data.forEach(element => {
+          this.dataExp.hasExp = true
 
           if(this.dateFilterInit != undefined && this.dateFilterInit != '' && this.dateFilterFinal != undefined && this.dateFilterFinal != ''){
             if(element.date >= this.dateFilterInit && element.date <= this.dateFilterFinal){
               if(element.idCategory == 0){
-                this.dataRec.totalRecSalary = this.round(this.dataRec.totalRecSalary, element.value)
-                if(this.desserts2.length == 0) this.desserts2 = [{idRec: element.idRec, desc: element.desc, idCategory: 'Salário', date: element.date, value: this.toBrl(element.value)}]
-                else this.desserts2.push({idRec: element.idRec, desc: element.desc, idCategory: 'Salário', date: element.date, value: this.toBrl(element.value)})
+                this.dataExp.totalExpSalary = this.round(this.dataExp.totalExpSalary, element.value)
+                if(this.desserts2.length == 0) this.desserts2 = [{idExp: element.idExp, desc: element.desc, idCategory: 'Casa', date: element.date, value: this.toBrl(element.value)}]
+                else this.desserts2.push({idExp: element.idExp, desc: element.desc, idCategory: 'Casa', date: element.date, value: this.toBrl(element.value)})
               }
               if(element.idCategory == 1){
-                this.dataRec.totalRecInvest = this.round(this.dataRec.totalRecInvest, element.value)
-                if(this.desserts2.length == 0) this.desserts2 = [{idRec: element.idRec, desc: element.desc, idCategory: 'Investimentos', date: element.date, value: this.toBrl(element.value)}]
-                else this.desserts2.push({idRec: element.idRec, desc: element.desc, idCategory: 'Investimentos', date: element.date,value: this.toBrl(element.value)})
+                this.dataExp.totalExpInvest = this.round(this.dataExp.totalExpInvest, element.value)
+                if(this.desserts2.length == 0) this.desserts2 = [{idExp: element.idExp, desc: element.desc, idCategory: 'Educação', date: element.date, value: this.toBrl(element.value)}]
+                else this.desserts2.push({idExp: element.idExp, desc: element.desc, idCategory: 'Educação', date: element.date,value: this.toBrl(element.value)})
               }
               if(element.idCategory == 2){
-                this.dataRec.totalRecEmp = this.round(this.dataRec.totalRecEmp, element.value)
-                if(this.desserts2.length == 0) this.desserts2 = [{idRec: element.idRec, desc: element.desc, idCategory: 'Empréstimos', date: element.date,value: this.toBrl(element.value)}]
-                else this.desserts2.push({idRec: element.idRec, desc: element.desc, idCategory: 'Empréstimos', date: element.date, value: this.toBrl(element.value)})
+                this.dataExp.totalExpEmp = this.round(this.dataExp.totalExpEmp, element.value)
+                if(this.desserts2.length == 0) this.desserts2 = [{idExp: element.idExp, desc: element.desc, idCategory: 'Eletrônicos', date: element.date,value: this.toBrl(element.value)}]
+                else this.desserts2.push({idExp: element.idExp, desc: element.desc, idCategory: 'Eletrônicos', date: element.date, value: this.toBrl(element.value)})
               }
               if(element.idCategory == 3){
-                this.dataRec.totalRecOut = this.round(this.dataRec.totalRecOut, element.value)
-                if(this.desserts2.length == 0) this.desserts2 = [{idRec: element.idRec, desc: element.desc, idCategory: 'Outros', date: element.date, value: this.toBrl(element.value)}]
-                else this.desserts2.push({idRec: element.idRec, desc: element.desc, idCategory: 'Outros', date: element.date, value: this.toBrl(element.value)})
+                this.dataExp.totalExpOut = this.round(this.dataExp.totalExpOut, element.value)
+                if(this.desserts2.length == 0) this.desserts2 = [{idExp: element.idExp, desc: element.desc, idCategory: 'Outros', date: element.date, value: this.toBrl(element.value)}]
+                else this.desserts2.push({idExp: element.idExp, desc: element.desc, idCategory: 'Outros', date: element.date, value: this.toBrl(element.value)})
               }
             }
           } else{
             if(element.idCategory == 0){
-              this.dataRec.totalRecSalary = this.round(this.dataRec.totalRecSalary, element.value)
-              if(this.desserts2.length == 0) this.desserts2 = [{idRec: element.idRec, desc: element.desc, idCategory: 'Salário', date: element.date, value: this.toBrl(element.value)}]
-              else this.desserts2.push({idRec: element.idRec, desc: element.desc, idCategory: 'Salário', date: element.date, value: this.toBrl(element.value)})
+              this.dataExp.totalExpSalary = this.round(this.dataExp.totalExpSalary, element.value)
+              if(this.desserts2.length == 0) this.desserts2 = [{idExp: element.idExp, desc: element.desc, idCategory: 'Casa', date: element.date, value: this.toBrl(element.value)}]
+              else this.desserts2.push({idExp: element.idExp, desc: element.desc, idCategory: 'Casa', date: element.date, value: this.toBrl(element.value)})
             }
             if(element.idCategory == 1){
-              this.dataRec.totalRecInvest = this.round(this.dataRec.totalRecInvest, element.value)
-              if(this.desserts2.length == 0) this.desserts2 = [{idRec: element.idRec, desc: element.desc, idCategory: 'Investimentos', date: element.date, value: this.toBrl(element.value)}]
-              else this.desserts2.push({idRec: element.idRec, desc: element.desc, idCategory: 'Investimentos', date: element.date,value: this.toBrl(element.value)})
+              this.dataExp.totalExpInvest = this.round(this.dataExp.totalExpInvest, element.value)
+              if(this.desserts2.length == 0) this.desserts2 = [{idExp: element.idExp, desc: element.desc, idCategory: 'Educação', date: element.date, value: this.toBrl(element.value)}]
+              else this.desserts2.push({idExp: element.idExp, desc: element.desc, idCategory: 'Educação', date: element.date,value: this.toBrl(element.value)})
             }
             if(element.idCategory == 2){
-              this.dataRec.totalRecEmp = this.round(this.dataRec.totalRecEmp, element.value)
-              if(this.desserts2.length == 0) this.desserts2 = [{idRec: element.idRec, desc: element.desc, idCategory: 'Empréstimos', date: element.date,value: this.toBrl(element.value)}]
-              else this.desserts2.push({idRec: element.idRec, desc: element.desc, idCategory: 'Empréstimos', date: element.date, value: this.toBrl(element.value)})
+              this.dataExp.totalExpEmp = this.round(this.dataExp.totalExpEmp, element.value)
+              if(this.desserts2.length == 0) this.desserts2 = [{idExp: element.idExp, desc: element.desc, idCategory: 'Eletrônicos', date: element.date,value: this.toBrl(element.value)}]
+              else this.desserts2.push({idExp: element.idExp, desc: element.desc, idCategory: 'Eletrônicos', date: element.date, value: this.toBrl(element.value)})
             }
             if(element.idCategory == 3){
-              this.dataRec.totalRecOut = this.round(this.dataRec.totalRecOut, element.value)
-              if(this.desserts2.length == 0) this.desserts2 = [{idRec: element.idRec, desc: element.desc, idCategory: 'Outros', date: element.date, value: this.toBrl(element.value)}]
-              else this.desserts2.push({idRec: element.idRec, desc: element.desc, idCategory: 'Outros', date: element.date, value: this.toBrl(element.value)})
+              this.dataExp.totalExpOut = this.round(this.dataExp.totalExpOut, element.value)
+              if(this.desserts2.length == 0) this.desserts2 = [{idExp: element.idExp, desc: element.desc, idCategory: 'Outros', date: element.date, value: this.toBrl(element.value)}]
+              else this.desserts2.push({idExp: element.idExp, desc: element.desc, idCategory: 'Outros', date: element.date, value: this.toBrl(element.value)})
             }
           }
         })

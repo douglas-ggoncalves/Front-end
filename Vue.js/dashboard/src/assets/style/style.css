@@ -279,28 +279,28 @@ td.text-start span {
   margin-right: auto;
 }
 
-.homeView #apexDonutRec .apexcharts-legend-series {
+.homeView #apexDonutRec .apexcharts-legend-series, .homeView #apexDonutExp .apexcharts-legend-series {
   display: none;
 }
 
-.homeView #apexDonutRec.one .apexcharts-legend-series:nth-child(1) {
+.homeView #apexDonutRec.one .apexcharts-legend-series:nth-child(1), .homeView #apexDonutExp.one .apexcharts-legend-series:nth-child(1) {
   display: revert;
 }
 
-.homeView #apexDonutRec.two .apexcharts-legend-series:nth-child(2) {
+.homeView #apexDonutRec.two .apexcharts-legend-series:nth-child(2), .homeView #apexDonutExp.two .apexcharts-legend-series:nth-child(2) {
   display: revert;
 }
 
-.homeView #apexDonutRec.three .apexcharts-legend-series:nth-child(3) {
+.homeView #apexDonutRec.three .apexcharts-legend-series:nth-child(3), .homeView #apexDonutExp.three .apexcharts-legend-series:nth-child(3) {
   display: revert;
 }
 
-.homeView #apexDonutRec.four .apexcharts-legend-series:nth-child(4) {
+.homeView #apexDonutRec.four .apexcharts-legend-series:nth-child(4), .homeView #apexDonutExp.four .apexcharts-legend-series:nth-child(4) {
   display: revert;
 }
 
 @media (max-width: 356px) {
-  #apexDonutRec .apexcharts-legend-series {
+  #apexDonutRec .apexcharts-legend-series, #apexDonutExp .apexcharts-legend-series {
     display: none !important;
   }
   div.divDash {

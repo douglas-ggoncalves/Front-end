@@ -253,31 +253,30 @@ td.text-start{
         }
     }
 
-
-    #apexDonutRec{
+    #apexDonutRec, #apexDonutExp{
         .apexcharts-legend-series{
             display: none;
         }
     }
-    #apexDonutRec.one{
+    #apexDonutRec.one, #apexDonutExp.one{
         .apexcharts-legend-series{
             &:nth-child(1){ display:revert; }
         }
     }
     
-    #apexDonutRec.two{
+    #apexDonutRec.two, #apexDonutExp.two{
         .apexcharts-legend-series{
             &:nth-child(2){ display:revert; }
         }
     }
 
-    #apexDonutRec.three{
+    #apexDonutRec.three, #apexDonutExp.three{
         .apexcharts-legend-series{
             &:nth-child(3){ display:revert; }
         }
     }
     
-    #apexDonutRec.four{
+    #apexDonutRec.four, #apexDonutExp.four{
         .apexcharts-legend-series{
             &:nth-child(4){ display:revert; }
         }
@@ -286,7 +285,7 @@ td.text-start{
 
 
 @media (max-width: 356px) { 
-    #apexDonutRec{
+    #apexDonutRec, #apexDonutExp{
         .apexcharts-legend-series{
             display: none !important;
         }
