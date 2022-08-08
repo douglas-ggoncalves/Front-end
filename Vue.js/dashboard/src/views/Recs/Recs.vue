@@ -277,7 +277,7 @@
                       <span style="font-weight: bold;">Quantidade de Receitas</span>
                       <br>
                       <span v-if="allFormsPagt[1].data != null">{{ allFormsPagt[1].data.length }}</span>
-                      
+                      <span v-if="allFormsPagt[1].data == null">0</span>
                     </div>
                     
                     <div class="right">

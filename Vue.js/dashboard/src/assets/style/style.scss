@@ -281,8 +281,44 @@ td.text-start{
             &:nth-child(4){ display:revert; }
         }
     }
+    
+    #apexDonutExp.five{
+        .apexcharts-legend-series{
+            &:nth-child(5){ display:revert; }
+        }
+    }
+    
+    #apexDonutExp.six{
+        .apexcharts-legend-series{
+            &:nth-child(6){ display:revert; }
+        }
+    }
+    
+    #apexDonutExp.seven{
+        .apexcharts-legend-series{
+            &:nth-child(7){ display:revert; }
+        }
+    }
+    
+    #apexDonutExp.eight{
+        .apexcharts-legend-series{
+            &:nth-child(8){ display:revert; }
+        }
+    }
+    
+    #apexDonutExp.nine{
+        .apexcharts-legend-series{
+            &:nth-child(9){ display:revert; }
+        }
+    }
+    
 }
 
+#apexDonutExp {
+    div.apexcharts-legend{
+        padding-top: 2rem;
+    }
+}
 
 @media (max-width: 356px) { 
     #apexDonutRec, #apexDonutExp{
@@ -301,8 +337,18 @@ td.text-start{
     }
 }
 
-@media (max-width: 356px) { 
-   
+@media (max-width: 576px) { 
+    #apexDonutRec, #apexDonutExp{
+        .apexcharts-legend-series{
+            display: none !important;
+        }
+    }
+
+    #apexDonutExp {
+        .apexcharts-legend {
+            display: none !important;
+        }
+    }
 }
 
 @media (min-width: 576px) { 
@@ -320,5 +366,4 @@ td.text-start{
 }
 
 @media (min-width: 1200px) { 
-    
 }

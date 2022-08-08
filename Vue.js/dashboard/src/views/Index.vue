@@ -1,5 +1,5 @@
 <template>
-  <v-container fluid class="homeView">
+  <v-container fluid class="homeView px-10">
     <v-snackbar top min-width="50%" color="success" v-model="dataRec.snackbarNewRec" :timeout="5000">
       Receita cadastrada com sucesso
 
@@ -10,7 +10,7 @@
       </template>
     </v-snackbar>
     <v-row>
-      <v-col class="col" v-for="form in allFormsPagt" :key="form.id" :cols="10" :sm="6" :lg="3">
+      <v-col class="col" v-for="form in allFormsPagt" :key="form.id" :cols="10" :sm="6" :lg="4">
         <v-tooltip bottom>
           <template v-slot:activator="{ on, attrs }">
             <div class="elements" v-bind="attrs" v-on="on">
@@ -18,9 +18,9 @@
                 <div class="left">
                   <span>{{ form.title }}</span>
                   <br>
-                  <span v-if="form.title == 'Saldo Atual'" class="value">R$ {{ dataRec.totalRecSalary + dataRec.totalRecInvest + dataRec.totalRecEmp + dataRec.totalRecOut | toBrl }}</span>
-                  <span v-else-if="form.title == 'Receitas'" class="value">R$ {{ dataRec.totalRecSalary + dataRec.totalRecInvest + dataRec.totalRecEmp + dataRec.totalRecOut | toBrl }}</span>
-                  <span v-else class="value">R$ 00,00</span>
+                  <span v-if="form.title == 'Saldo Atual'" class="value">R$ {{ someAll() }}</span>
+                  <span v-else-if="form.title == 'Receitas'" class="value">R$ {{ calcRec() }}</span>
+                  <span v-else class="value">R$ {{ calcExp() }}</span>
                 </div>
                 
                 <div class="right">
@@ -97,7 +97,7 @@
         </v-card>
       </v-dialog>
 
-      <v-col class="dash" :cols="12" :sm="8" :md="6" :lg="4">
+      <v-col class="dash" :cols="12" :sm="8" :md="6">
         <h4>Receitas por Categoria</h4>
 
         <div id="first">
@@ -111,6 +111,24 @@
 
           <div class="divDash" v-if="dataRec.hasRec">
             <apexchart class="" :width="width" id="apexDonutRec" type="donut" :options="dataRec.optionsDonut" :series="dataRec.series"></apexchart>
+          </div>
+        </div>
+      </v-col>
+
+      <v-col class="dash" :cols="12" :sm="8" :md="6">
+        <h4>Despesas por Categoria</h4>
+        
+        <div id="first">
+          <div v-if="!dataExp.hasExp">
+            <v-icon>mdi-chart-donut</v-icon>
+            <br>
+            <h5>
+              Você ainda não possui despesas.
+            </h5>
+          </div>
+
+          <div class="divDash" v-if="dataExp.hasExp">
+            <apexchart class="" :width="widthDonut" id="apexDonutExp" type="donut" :options="dataExp.optionsDonut" :series="dataExp.seriesDonut"></apexchart>
           </div>
         </div>
       </v-col>
@@ -134,11 +152,11 @@ export default {
   data(){
     return {
       width: 0,
+      widthDonut: 0,
       date: (new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().substr(0, 10),
       dateFormatted: this.formatDate((new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().substr(0, 10)),
       menu1: false,
       dateCalendar: '',
-      //price: 123.45,
       money: {
         decimal: ',',
         thousands: '.',
@@ -148,6 +166,52 @@ export default {
       },
       dialog: false,
       allFormsPagt:[],
+      dataExp: {
+        totalExpHouse: 0,
+        totalExpInvestEduc: 0,
+        totalExpInvestElet: 0,
+        totalExpLaz: 0,
+        totalExpOut: 0,
+        totalExpRest: 0,
+        totalExpSau: 0,
+        totalExpServ: 0,
+        totalExpSup: 0,
+        newExpValue: '0',
+        newExpSelect: '',
+        newExpDesc: '',
+        hasExp: false,
+        error: false,
+        msgError: '',
+        msgSuccess: '',
+        snackbarNewExp: false,
+        seriesDonut: [],
+        optionsDonut: {
+          chart: {
+            redrawOnWindowResize: false,
+            redrawOnParentResize: false
+          },
+          colors: 
+            ['#2E93fA', '#66DA26', '#546E7A', '#986CDF', '#FF9800', '#29D9D5', '#FFC107', '#FF0000', '#000000']
+          ,
+          tooltip: {
+            enabled: true,
+             y: {
+              formatter: function (val) {
+                return 'R$ ' + (Math.round(val * 100) / 100).toFixed(2).replace(".",",");
+              }
+            }
+          },
+          show: true,
+          showForZeroSeries: false,
+          formatter: function (val) {
+            return val + "%"
+          },
+          legend:{
+            position: 'bottom'
+          },
+          labels: ['Casa', 'Educação', 'Eletrônicos', 'Lazer', 'Outros', 'Restaurante', 'Saúde', 'Serviços', 'Supermercado'],
+        }
+      },
       dataRec: {
         indexs:[],
         totalRecSalary: 0,
@@ -189,6 +253,7 @@ export default {
 
     if(window) {
       this.allFormsPagt[1].data = JSON.parse(localStorage.getItem('dataRec'))
+      this.allFormsPagt[2].data = JSON.parse(localStorage.getItem('dataExp'))
 
       if(this.allFormsPagt[1].data != null){
         this.allFormsPagt[1].data.forEach(element => {
@@ -208,52 +273,61 @@ export default {
           }
         })
       }
+
+      if(this.allFormsPagt[2].data != null){
+        this.configDataExp();
+      }
       this.dataRec.series = [this.dataRec.totalRecSalary, this.dataRec.totalRecInvest, this.dataRec.totalRecEmp, this.dataRec.totalRecOut]
-      this.configWidthDash()
+
+      this.dataExp.seriesDonut = [this.dataExp.totalExpHouse, this.dataExp.totalExpInvestEduc, this.dataExp.totalExpInvestElet, this.dataExp.totalExpLaz, this.dataExp.totalExpOut,
+       this.dataExp.totalExpRest, this.dataExp.totalExpSau, this.dataExp.totalExpServ, this.dataExp.totalExpSup]
+      this.configWidthDash();
     } 
   },
   mounted(){
-    var elementExist = document.getElementById("apexDonutRec")
-    if(elementExist){
-      if(this.dataRec.totalRecSalary != 0){
-        document.getElementById("apexDonutRec").classList.add("one")
-      }
-      if(this.dataRec.totalRecInvest != 0){
-        document.getElementById("apexDonutRec").classList.add("two")
-      }
-      if(this.dataRec.totalRecEmp != 0){
-        document.getElementById("apexDonutRec").classList.add("three")
-      }
-      if(this.dataRec.totalRecOut != 0){
-        document.getElementById("apexDonutRec").classList.add("four")
-      }
-    }
+    this.configShowDonut();
   },
   methods:{
     configWidthDash(){
       if(window.innerWidth < 320){
         this.width = 250;
+        this.widthDonut = 250;
       } else if(window.innerWidth >= 320 && window.innerWidth <= 400){
         this.width = 300;
+        this.widthDonut = 319;
       } else if(window.innerWidth > 400 && window.innerWidth <= 500){
         this.width = 340;
-      } else if(window.innerWidth > 500 && window.innerWidth <= 1600){
+        this.widthDonut = 360;
+      } else if(window.innerWidth > 500 && window.innerWidth <= 1263){
         this.width = 380;
+        this.widthDonut = 450;
+      } else if(window.innerWidth > 1263 && window.innerWidth <= 1600){
+        this.width = 380;
+        this.widthDonut = 420;
       } else if(window.innerWidth > 1600){
         this.width = 470;
+        this.widthDonut = 550;
       }
-      
+
       window.addEventListener("resize", () => {
         if(window.innerWidth < 320){
           this.width = 250;
+          this.widthDonut = 250;
         } else if(window.innerWidth >= 320 && window.innerWidth <= 400){
           this.width = 300;
+          this.widthDonut = 319;
         } else if(window.innerWidth > 400 && window.innerWidth <= 500){
           this.width = 340;
-        } else if(window.innerWidth > 500 && window.innerWidth <= 1600){
+          this.widthDonut = 360;
+        } else if(window.innerWidth > 500 && window.innerWidth <= 1263){
           this.width = 380;
+          this.widthDonut = 450;
+        } else if(window.innerWidth > 1263 && window.innerWidth <= 1600){
+          this.width = 380;
+          this.widthDonut = 420;
         } else if(window.innerWidth > 1600){
           this.width = 470;
+          this.widthDonut = 550;
         }
       })
     },
@@ -353,6 +427,78 @@ export default {
         return (Math.round(num * 100) / 100);
       }
     },
+    configShowDonut(){
+      var elementExist = document.getElementById("apexDonutExp")
+
+      if(elementExist){
+        if(this.dataExp.totalExpHouse != 0){
+          document.getElementById("apexDonutExp").classList.add("one")
+        } else{
+          document.getElementById("apexDonutExp").classList.remove("one")
+        }
+
+        if(this.dataExp.totalExpInvestEduc != 0){
+          document.getElementById("apexDonutExp").classList.add("two")
+        } else{
+          document.getElementById("apexDonutExp").classList.remove("two")
+        }
+
+        if(this.dataExp.totalExpInvestElet != 0){
+          document.getElementById("apexDonutExp").classList.add("three")
+        } else{
+          document.getElementById("apexDonutExp").classList.remove("three")
+        }
+        
+        if(this.dataExp.totalExpLaz != 0){
+          document.getElementById("apexDonutExp").classList.add("four")
+        } else{
+          document.getElementById("apexDonutExp").classList.remove("four")
+        }
+        
+        if(this.dataExp.totalExpOut != 0){
+          document.getElementById("apexDonutExp").classList.add("five")
+        } else{
+          document.getElementById("apexDonutExp").classList.remove("five")
+        }
+
+        if(this.dataExp.totalExpRest != 0){
+          document.getElementById("apexDonutExp").classList.add("six")
+        } else{
+          document.getElementById("apexDonutExp").classList.remove("six")
+        }
+
+        if(this.dataExp.totalExpSau != 0){
+          document.getElementById("apexDonutExp").classList.add("seven")
+        } else{
+          document.getElementById("apexDonutExp").classList.remove("seven")
+        }
+
+        if(this.dataExp.totalExpServ != 0){
+          document.getElementById("apexDonutExp").classList.add("eight")
+        } else{
+          document.getElementById("apexDonutExp").classList.remove("eight")
+        }
+
+        if(this.dataExp.totalExpSup != 0){
+          document.getElementById("apexDonutExp").classList.add("nine")
+        } else{
+          document.getElementById("apexDonutExp").classList.remove("nine")
+        }
+
+        if(this.dataRec.totalRecSalary != 0){
+          document.getElementById("apexDonutRec").classList.add("one")
+        }
+        if(this.dataRec.totalRecInvest != 0){
+          document.getElementById("apexDonutRec").classList.add("two")
+        }
+        if(this.dataRec.totalRecEmp != 0){
+          document.getElementById("apexDonutRec").classList.add("three")
+        }
+        if(this.dataRec.totalRecOut != 0){
+          document.getElementById("apexDonutRec").classList.add("four")
+        }
+      }
+    },
     convertMoneyFloat(value){
       if(value === ""){
         value =  0;
@@ -363,6 +509,108 @@ export default {
         value = parseFloat(value);
       }
       return value;
+    },
+    configDataExp(){
+      this.dataExp.totalExpHouse = 0;
+      this.dataExp.totalExpInvestEduc = 0;
+      this.dataExp.totalExpInvestElet = 0;
+      this.dataExp.totalExpLaz = 0;
+      this.dataExp.totalExpOut = 0;
+      this.dataExp.totalExpRest = 0;
+      this.dataExp.totalExpSau = 0;
+      this.dataExp.totalExpServ = 0;
+      this.dataExp.totalExpSup = 0;
+
+      if(this.allFormsPagt[2].data != null){
+        this.allFormsPagt[2].data.forEach(element => {
+          this.dataExp.hasExp = true
+
+          if(this.dateFilterInit != undefined && this.dateFilterInit != '' && this.dateFilterFinal != undefined && this.dateFilterFinal != ''){
+            if(element.date >= this.dateFilterInit && element.date <= this.dateFilterFinal){
+              if(element.idCategory == 0){
+                this.dataExp.totalExpHouse = this.round(this.dataExp.totalExpHouse, element.value)
+              }
+              if(element.idCategory == 1){
+                this.dataExp.totalExpInvestEduc = this.round(this.dataExp.totalExpInvestEduc, element.value)
+              }
+              if(element.idCategory == 2){
+                this.dataExp.totalExpInvestElet = this.round(this.dataExp.totalExpInvestElet, element.value)
+              }
+              if(element.idCategory == 3){
+                this.dataExp.totalExpLaz = this.round(this.dataExp.totalExpLaz, element.value)
+              }
+              
+              if(element.idCategory == 4){
+                this.dataExp.totalExpOut = this.round(this.dataExp.totalExpOut, element.value)
+              }
+
+              if(element.idCategory == 5){ 
+                this.dataExp.totalExpRest = this.round(this.dataExp.totalExpRest, element.value)
+              }
+
+              if(element.idCategory == 6){ 
+                this.dataExp.totalExpSau = this.round(this.dataExp.totalExpSau, element.value)
+              }
+
+              if(element.idCategory == 7){ 
+                this.dataExp.totalExpServ = this.round(this.dataExp.totalExpServ, element.value)
+              }
+
+              if(element.idCategory == 8){
+                this.dataExp.totalExpSup = this.round(this.dataExp.totalExpSup, element.value)
+              }
+            }
+          } else{
+            if(element.idCategory == 0){
+              this.dataExp.totalExpHouse = this.round(this.dataExp.totalExpHouse, element.value)
+            }
+            if(element.idCategory == 1){
+              this.dataExp.totalExpInvestEduc = this.round(this.dataExp.totalExpInvestEduc, element.value)
+            }
+            if(element.idCategory == 2){
+              this.dataExp.totalExpInvestElet = this.round(this.dataExp.totalExpInvestElet, element.value)
+            }
+            if(element.idCategory == 3){ 
+              this.dataExp.totalExpLaz = this.round(this.dataExp.totalExpLaz, element.value)
+            }
+            
+            if(element.idCategory == 4){ 
+              this.dataExp.totalExpOut = this.round(this.dataExp.totalExpOut, element.value)
+            }
+            
+            if(element.idCategory == 5){ 
+              this.dataExp.totalExpRest = this.round(this.dataExp.totalExpRest, element.value)
+            }
+            
+            if(element.idCategory == 6){ 
+              this.dataExp.totalExpSau = this.round(this.dataExp.totalExpSau, element.value) 
+            }
+
+            if(element.idCategory == 7){ 
+              this.dataExp.totalExpServ = this.round(this.dataExp.totalExpServ, element.value)
+            }
+
+            if(element.idCategory == 8){ 
+              this.dataExp.totalExpSup = this.round(this.dataExp.totalExpSup, element.value)
+            }
+          }
+        })
+      }
+    },
+    someAll(){
+      var rec = this.dataRec.totalRecSalary + this.dataRec.totalRecInvest + this.dataRec.totalRecEmp + this.dataRec.totalRecOut;
+      var exp = this.dataExp.totalExpHouse + this.dataExp.totalExpInvestEduc + this.dataExp.totalExpInvestElet + this.dataExp.totalExpLaz + this.dataExp.totalExpOut
+      + this.dataExp.totalExpRest + this.dataExp.totalExpSau + this.dataExp.totalExpServ + this.dataExp.totalExpSup;
+        return (Math.round((rec - exp) * 100) / 100).toFixed(2).replace(".",","); 
+    },
+    calcRec(){
+      var value = this.dataRec.totalRecSalary + this.dataRec.totalRecInvest + this.dataRec.totalRecEmp + this.dataRec.totalRecOut;
+      return (Math.round(value * 100) / 100).toFixed(2).replace(".",",");
+    },
+    calcExp(){
+      var value = this.dataExp.totalExpHouse + this.dataExp.totalExpInvestEduc + this.dataExp.totalExpInvestElet + this.dataExp.totalExpLaz + this.dataExp.totalExpOut
+      + this.dataExp.totalExpRest + this.dataExp.totalExpSau + this.dataExp.totalExpServ + this.dataExp.totalExpSup;
+      return (Math.round(value * 100) / 100).toFixed(2).replace(".",",");
     },
     formatDate (date) {
       if (!date) return null

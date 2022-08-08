@@ -299,6 +299,30 @@ td.text-start span {
   display: revert;
 }
 
+.homeView #apexDonutExp.five .apexcharts-legend-series:nth-child(5) {
+  display: revert;
+}
+
+.homeView #apexDonutExp.six .apexcharts-legend-series:nth-child(6) {
+  display: revert;
+}
+
+.homeView #apexDonutExp.seven .apexcharts-legend-series:nth-child(7) {
+  display: revert;
+}
+
+.homeView #apexDonutExp.eight .apexcharts-legend-series:nth-child(8) {
+  display: revert;
+}
+
+.homeView #apexDonutExp.nine .apexcharts-legend-series:nth-child(9) {
+  display: revert;
+}
+
+#apexDonutExp div.apexcharts-legend {
+  padding-top: 2rem;
+}
+
 @media (max-width: 356px) {
   #apexDonutRec .apexcharts-legend-series, #apexDonutExp .apexcharts-legend-series {
     display: none !important;
@@ -309,6 +333,15 @@ td.text-start span {
   .v-navigation-drawer--bottom.v-navigation-drawer--is-mobile {
     max-width: 200px !important;
     min-width: 200px !important;
+  }
+}
+
+@media (max-width: 576px) {
+  #apexDonutRec .apexcharts-legend-series, #apexDonutExp .apexcharts-legend-series {
+    display: none !important;
+  }
+  #apexDonutExp .apexcharts-legend {
+    display: none !important;
   }
 }
 
