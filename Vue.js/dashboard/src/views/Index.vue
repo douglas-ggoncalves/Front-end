@@ -132,6 +132,31 @@
           </div>
         </div>
       </v-col>
+
+      <v-col class="dash" :cols="12" :sm="4" :md="3">
+        <h4>Entradas e Saídas</h4>
+        
+        <div id="first">
+          <div v-if="!dataExp.hasExp">
+            <v-icon>mdi-chart-donut</v-icon>
+            <br>
+            <h5>
+              Você ainda não possui despesas.
+            </h5>
+          </div>
+
+          <div class="divDash" v-if="dataExp.hasExp">
+              <v-menu ref="menu2" v-model="menu2" :close-on-content-click="false" transition="scale-transition" offset-y max-width="290px" min-width="auto">
+                <template v-slot:activator="{ on, attrs }">
+                  <v-text-field v-model="dateRecAndExpsFormated" readonly :prepend-inner-icon="'mdi-calendar'" label="Informe o Mês *" hint="informe a data desejada" v-bind="attrs" v-on="on" ></v-text-field>
+                </template>
+                
+                <v-date-picker v-model="dateRecAndExps" type="month" no-title @input="menu2 = false" locale="pt"></v-date-picker>
+              </v-menu>
+            <apexchart class="" :width="150" :height="200" type="bar" :options="dataAll.plotOptions" :series="dataAll.series"></apexchart>
+          </div>
+        </div>
+      </v-col>
     </v-row>
   </v-container>
 </template>
@@ -151,11 +176,16 @@ Vue.component('apexchart', VueApexCharts)
 export default {
   data(){
     return {
+      dateRecAndExps: new Date().toISOString().substr(0, 7),
+      dateRecAndExpsFormated: this.formatMonth(new Date().toISOString().substr(0, 7)),
+      menu: false,
+      modal: false,
       width: 0,
       widthDonut: 0,
       date: (new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().substr(0, 10),
       dateFormatted: this.formatDate((new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().substr(0, 10)),
       menu1: false,
+      menu2: false,
       dateCalendar: '',
       money: {
         decimal: ',',
@@ -166,6 +196,65 @@ export default {
       },
       dialog: false,
       allFormsPagt:[],
+
+      dataAll: {
+        series: [{
+          name: 'Receitas',
+          data: [44]
+        }, {
+          name: 'Despesas',
+          data: [76]
+        }],
+        plotOptions: {
+          colors: ['#1AD174', '#F05847'],
+          tooltip: {
+            enabled: true,
+             y: {
+              formatter: function (val) {
+                return 'R$ ' + (Math.round(val * 100) / 100).toFixed(2).replace(".",",");
+              }
+            }
+          },
+          bar: {
+            horizontal: false,
+            columnWidth: '10%',
+            endingShape: 'rounded'
+          },
+          dataLabels: {
+            enabled: false
+          },
+          stroke: {
+            show: true,
+            width: 10,
+            colors: ['transparent']
+          },
+          xaxis: {
+            categories: ['Janeiro'],
+            axisBorder: {
+              show: false
+            },
+            axisTicks: {
+              show: false,
+            },
+            crosshairs: {
+              show: false
+            }
+          },
+          grid: {
+            show: false
+          },
+          yaxis: {
+            show: false,
+          },
+          chart: {
+            toolbar: {
+              show: false,
+            }
+          },
+        }
+       
+      },
+
       dataExp: {
         totalExpHouse: 0,
         totalExpInvestEduc: 0,
@@ -597,6 +686,20 @@ export default {
         })
       }
     },
+    configRecXExps(){
+      if(this.allFormsPagt[2].data != null){
+        this.allFormsPagt[2].data.forEach(element => {
+          this.dataExp.hasExp = true
+
+          if(this.dateFilterInit != undefined && this.dateFilterInit != '' && this.dateFilterFinal != undefined && this.dateFilterFinal != ''){
+            if(element.date >= this.dateFilterInit && element.date <= this.dateFilterFinal){
+              
+            }
+          }
+        })
+      }
+    },
+
     someAll(){
       var rec = this.dataRec.totalRecSalary + this.dataRec.totalRecInvest + this.dataRec.totalRecEmp + this.dataRec.totalRecOut;
       var exp = this.dataExp.totalExpHouse + this.dataExp.totalExpInvestEduc + this.dataExp.totalExpInvestElet + this.dataExp.totalExpLaz + this.dataExp.totalExpOut
@@ -618,6 +721,13 @@ export default {
       const [year, month, day] = date.split('-')
       return `${day}/${month}/${year}`
     },
+    
+    formatMonth (date) {
+      if (!date) return null
+
+      const [year, month] = date.split('-')
+      return `${month}/${year}`
+    },
     parseDate (date) {
       if (!date) return null
 
@@ -638,6 +748,10 @@ export default {
   watch: {
     date () {
       this.dateFormatted = this.formatDate(this.date)
+    },
+    dateRecAndExps () {
+      this.configRecXExps();
+      this.dateRecAndExpsFormated = this.formatMonth(this.dateRecAndExps)
     },
   },
 }
