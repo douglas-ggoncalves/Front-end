@@ -196,7 +196,6 @@ export default {
       },
       dialog: false,
       allFormsPagt:[],
-
       dataAll: {
         series: [{
           name: 'Receitas',
@@ -252,10 +251,9 @@ export default {
             }
           },
         }
-       
       },
-
       dataExp: {
+        total: 0,
         totalExpHouse: 0,
         totalExpInvestEduc: 0,
         totalExpInvestElet: 0,
@@ -303,6 +301,7 @@ export default {
       },
       dataRec: {
         indexs:[],
+        total: 0,
         totalRecSalary: 0,
         totalRecInvest: 0,
         totalRecEmp: 0,
@@ -371,6 +370,7 @@ export default {
       this.dataExp.seriesDonut = [this.dataExp.totalExpHouse, this.dataExp.totalExpInvestEduc, this.dataExp.totalExpInvestElet, this.dataExp.totalExpLaz, this.dataExp.totalExpOut,
        this.dataExp.totalExpRest, this.dataExp.totalExpSau, this.dataExp.totalExpServ, this.dataExp.totalExpSup]
       this.configWidthDash();
+      this.configRecXExps();
     } 
   },
   mounted(){
@@ -687,19 +687,31 @@ export default {
       }
     },
     configRecXExps(){
-      if(this.allFormsPagt[2].data != null){
-        this.allFormsPagt[2].data.forEach(element => {
-          this.dataExp.hasExp = true
-
-          if(this.dateFilterInit != undefined && this.dateFilterInit != '' && this.dateFilterFinal != undefined && this.dateFilterFinal != ''){
-            if(element.date >= this.dateFilterInit && element.date <= this.dateFilterFinal){
-              
-            }
+      this.dataRec.total = 0;
+      this.dataExp.total = 0;
+      var [monthSelected, yearSelected] = this.dateRecAndExpsFormated.split('/')
+      
+      if(this.allFormsPagt[1].data != null){
+        this.allFormsPagt[1].data.forEach(element => {
+          var [year, month] = element.date.split('-')
+          if(year == yearSelected &&  month == monthSelected){
+            this.dataRec.total = this.round(this.dataRec.total, element.value)
           }
         })
       }
-    },
+      
+      if(this.allFormsPagt[2].data != null){
+        this.allFormsPagt[2].data.forEach(element => {
+          var [year, month] = element.date.split('-')
+          if(year == yearSelected &&  month == monthSelected){
+            this.dataExp.total = this.round(this.dataExp.total, element.value)
+          }
+        })
+      }
 
+      this.dataAll.series = [{ name: 'Receitas', data: [this.dataRec.total] }, { name: 'Despesas', data: [this.dataExp.total] }]
+
+    },
     someAll(){
       var rec = this.dataRec.totalRecSalary + this.dataRec.totalRecInvest + this.dataRec.totalRecEmp + this.dataRec.totalRecOut;
       var exp = this.dataExp.totalExpHouse + this.dataExp.totalExpInvestEduc + this.dataExp.totalExpInvestElet + this.dataExp.totalExpLaz + this.dataExp.totalExpOut
@@ -750,8 +762,8 @@ export default {
       this.dateFormatted = this.formatDate(this.date)
     },
     dateRecAndExps () {
-      this.configRecXExps();
       this.dateRecAndExpsFormated = this.formatMonth(this.dateRecAndExps)
+      this.configRecXExps();
     },
   },
 }

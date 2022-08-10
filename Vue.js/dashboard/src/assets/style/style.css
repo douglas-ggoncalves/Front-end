@@ -118,6 +118,7 @@ td.text-start span {
 .homeView .reports div.dash {
   width: 100%;
   margin-bottom: 1.5rem;
+  border: 1px solid red;
 }
 
 .homeView .reports div.dash div#arrayMov {
