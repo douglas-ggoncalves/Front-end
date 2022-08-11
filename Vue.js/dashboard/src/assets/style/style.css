@@ -118,7 +118,6 @@ td.text-start span {
 .homeView .reports div.dash {
   width: 100%;
   margin-bottom: 1.5rem;
-  border: 1px solid red;
 }
 
 .homeView .reports div.dash div#arrayMov {
@@ -270,6 +269,11 @@ td.text-start span {
 }
 
 .homeView .reports div.dash > div#first div.divDash #apexchart > div {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.homeView .reports div.dash > div#first div.divDash #dashExpAndRecs > div {
   margin-left: auto;
   margin-right: auto;
 }

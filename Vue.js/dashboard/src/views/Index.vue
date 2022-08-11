@@ -133,27 +133,27 @@
         </div>
       </v-col>
 
-      <v-col class="dash" :cols="12" :sm="4" :md="3">
+      <v-col class="dash" :cols="12" :sm="8" :md="3">
         <h4>Entradas e Saídas</h4>
         
         <div id="first">
-          <div v-if="!dataExp.hasExp">
+
+          <div class="divDash">
+            <v-menu ref="menu2" v-model="menu2" :close-on-content-click="false" transition="scale-transition" offset-y max-width="290px" min-width="auto">
+              <template v-slot:activator="{ on, attrs }">
+                <v-text-field v-model="dateRecAndExpsFormated" readonly :prepend-inner-icon="'mdi-calendar'" label="Informe o Mês *" hint="informe a data desejada" v-bind="attrs" v-on="on" ></v-text-field>
+              </template>
+              
+              <v-date-picker v-model="dateRecAndExps" type="month" no-title @input="menu2 = false" locale="pt"></v-date-picker>
+            </v-menu>
+            <div v-if="!dataAll.hasDate">
             <v-icon>mdi-chart-donut</v-icon>
             <br>
             <h5>
-              Você ainda não possui despesas.
+              Você não possui movimentações no mês selecionado.
             </h5>
           </div>
-
-          <div class="divDash" v-if="dataExp.hasExp">
-              <v-menu ref="menu2" v-model="menu2" :close-on-content-click="false" transition="scale-transition" offset-y max-width="290px" min-width="auto">
-                <template v-slot:activator="{ on, attrs }">
-                  <v-text-field v-model="dateRecAndExpsFormated" readonly :prepend-inner-icon="'mdi-calendar'" label="Informe o Mês *" hint="informe a data desejada" v-bind="attrs" v-on="on" ></v-text-field>
-                </template>
-                
-                <v-date-picker v-model="dateRecAndExps" type="month" no-title @input="menu2 = false" locale="pt"></v-date-picker>
-              </v-menu>
-            <apexchart class="" :width="150" :height="200" type="bar" :options="dataAll.plotOptions" :series="dataAll.series"></apexchart>
+            <apexchart class="" id="dashExpAndRecs" :width="200" :height="200" type="bar" :options="dataAll.plotOptions" :series="dataAll.series"></apexchart>
           </div>
         </div>
       </v-col>
@@ -197,6 +197,7 @@ export default {
       dialog: false,
       allFormsPagt:[],
       dataAll: {
+        hasDate: false,
         series: [{
           name: 'Receitas',
           data: [44]
@@ -211,6 +212,11 @@ export default {
              y: {
               formatter: function (val) {
                 return 'R$ ' + (Math.round(val * 100) / 100).toFixed(2).replace(".",",");
+              },
+              title: {
+                formatter : function(){
+                  return 'Total:'
+                } 
               }
             }
           },
@@ -229,6 +235,9 @@ export default {
           },
           xaxis: {
             categories: ['Janeiro'],
+            labels: {
+              show: false
+            },
             axisBorder: {
               show: false
             },
@@ -687,6 +696,7 @@ export default {
       }
     },
     configRecXExps(){
+      this.dataAll.hasDate = true;
       this.dataRec.total = 0;
       this.dataExp.total = 0;
       var [monthSelected, yearSelected] = this.dateRecAndExpsFormated.split('/')
@@ -709,8 +719,42 @@ export default {
         })
       }
 
-      this.dataAll.series = [{ name: 'Receitas', data: [this.dataRec.total] }, { name: 'Despesas', data: [this.dataExp.total] }]
+      if(monthSelected == '01'){
+        Vue.set(this.dataAll.plotOptions.xaxis.categories, 0, 'Janeiro')
+      } else if(monthSelected == '02'){
+        Vue.set(this.dataAll.plotOptions.xaxis.categories, 0, 'Fevereiro')
+      } else if(monthSelected == '03'){
+        Vue.set(this.dataAll.plotOptions.xaxis.categories, 0, 'Março')
+      } else if(monthSelected == '04'){
+        Vue.set(this.dataAll.plotOptions.xaxis.categories, 0, 'Abril')
+      } else if(monthSelected == '05'){
+        Vue.set(this.dataAll.plotOptions.xaxis.categories, 0, 'Maio')
+      } else if(monthSelected == '06'){
+        Vue.set(this.dataAll.plotOptions.xaxis.categories, 0, 'Junho')
+      } else if(monthSelected == '07'){
+        Vue.set(this.dataAll.plotOptions.xaxis.categories, 0, 'Julho')
+      } else if(monthSelected == '08'){
+        Vue.set(this.dataAll.plotOptions.xaxis.categories, 0, 'Agosto')
+      } else if(monthSelected == '09'){
+        Vue.set(this.dataAll.plotOptions.xaxis.categories, 0, 'Setembro')
+      } else if(monthSelected == '10'){
+        Vue.set(this.dataAll.plotOptions.xaxis.categories, 0, 'Outubro')
+      } else if(monthSelected == '11'){
+        Vue.set(this.dataAll.plotOptions.xaxis.categories, 0, 'Novembro')
+      } else if(monthSelected == '12'){
+        Vue.set(this.dataAll.plotOptions.xaxis.categories, 0, 'Dezembro')
+      }
 
+      if(this.dataRec.total == 0 && this.dataExp.total == 0){
+        console.log("entrou no if? " + this.dataRec.total +' asdas ' + this.dataExp.total)
+        this.dataAll.hasDate = false;
+      }
+
+      this.dataAll.series = [{ name: `Receitas R$ ${this.toBrl(this.dataRec.total)}`, data: [this.dataRec.total] }, { name: `Despesas R$ ${this.toBrl(this.dataExp.total)}`, data: [this.dataExp.total] }]
+
+    },
+    toBrl(value){
+      return (Math.round(value * 100) / 100).toFixed(2);
     },
     someAll(){
       var rec = this.dataRec.totalRecSalary + this.dataRec.totalRecInvest + this.dataRec.totalRecEmp + this.dataRec.totalRecOut;

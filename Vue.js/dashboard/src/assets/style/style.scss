@@ -114,7 +114,6 @@ td.text-start{
         div.dash{
             width: 100%;
             margin-bottom: 1.5rem;
-            border: 1px solid red;
 
             div#arrayMov{
                 display: flex;
@@ -235,12 +234,19 @@ td.text-start{
                     margin-bottom: auto !important;
                     margin-top: auto !important;
                     padding: 1.5rem 1.25rem;
-
+                    
                     #apexchart{
                         max-height: 100% !important;
                         >div{
                            margin-left: auto;
                            margin-right: auto;
+                        }
+                    }
+
+                    #dashExpAndRecs{
+                        >div{
+                            margin-left: auto;
+                            margin-right: auto;
                         }
                     }
                 }
