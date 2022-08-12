@@ -1,5 +1,5 @@
 <template>
-  <v-container fluid class="homeView">
+  <v-container fluid class="homeView px-sm-10">
     <v-snackbar top min-width="50%" color="success" v-model="dataExp.snackbarNewExp" :timeout="5000">
       
       {{ this.dataExp.msgSuccess }}
@@ -232,7 +232,7 @@
         </v-card>
       </v-dialog>
  
-      <v-col class="dash" :cols="12" :sm="8" :md="6" :lg="4">
+      <v-col class="dash" :cols="12" :md="6">
         <h4>Despesas por Categoria</h4>
         
         <div id="first">
@@ -250,7 +250,7 @@
         </div>
       </v-col>
       
-      <v-col class="dash" :cols="12" :sm="8" :md="6" :lg="4">
+      <v-col class="dash" :cols="12" :md="6">
         <h4>Despesas por Ano</h4>
         
         <div id="first">

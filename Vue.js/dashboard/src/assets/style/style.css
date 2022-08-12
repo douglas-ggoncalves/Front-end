@@ -107,12 +107,8 @@ td.text-start span {
   background-color: #2196f3;
 }
 
-.homeView div.row .col > div.elements div.right span i.iOrange {
-  background-color: #f78302;
-}
-
 .homeView .reports {
-  margin-top: 1.5rem !important;
+  margin-top: 2rem !important;
 }
 
 .homeView .reports div.dash {
@@ -326,6 +322,15 @@ td.text-start span {
 
 #apexDonutExp div.apexcharts-legend {
   padding-top: 2rem;
+}
+
+@media (max-width: 280px) {
+  .reports {
+    margin-top: 2rem !important;
+  }
+  .reports #divLineIndex {
+    display: none;
+  }
 }
 
 @media (max-width: 356px) {

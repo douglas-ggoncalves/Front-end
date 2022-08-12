@@ -1,5 +1,5 @@
 <template>
-  <v-container fluid class="homeView">
+  <v-container fluid class="homeView px-sm-10">
     <v-snackbar top min-width="50%" color="success" v-model="dataRec.snackbarNewRec" :timeout="5000">
       
       {{ this.dataRec.msgSuccess }}
@@ -228,7 +228,7 @@
         </v-card>
       </v-dialog>
  
-      <v-col class="dash" :cols="12" :sm="8" :md="6" :lg="4">
+      <v-col class="dash" :cols="12" :md="6">
         <h4>Receitas por Categoria</h4>
         
         <div id="first">
@@ -246,7 +246,7 @@
         </div>
       </v-col>
       
-      <v-col class="dash" :cols="12" :sm="8" :md="6" :lg="4">
+      <v-col class="dash" :cols="12" :md="6">
         <h4>Receitas por Ano</h4>
         
         <div id="first">
@@ -499,7 +499,6 @@ export default {
                   filename: 'Receitas por ano',
                   columnDelimiter: ';',
                   headerCategory: 'Mês',
-                  //headerValue: 'Teste 2',
                 },
                 svg:{
                   filename: 'Receitas por ano',

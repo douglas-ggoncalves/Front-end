@@ -1,5 +1,5 @@
 <template>
-  <v-container fluid class="homeView px-10">
+  <v-container fluid class="homeView px-sm-10">
     <v-snackbar top min-width="50%" color="success" v-model="dataRec.snackbarNewRec" :timeout="5000">
       Receita cadastrada com sucesso
 
@@ -10,16 +10,29 @@
       </template>
     </v-snackbar>
     <v-row>
-      <v-col class="col" v-for="form in allFormsPagt" :key="form.id" :cols="10" :sm="6" :lg="4">
+      <v-col class="col" v-for="form in allFormsPagt" :key="form.id" :cols="12" :sm="6" :lg="4">
         <v-tooltip bottom>
           <template v-slot:activator="{ on, attrs }">
             <div class="elements" v-bind="attrs" v-on="on">
-              <a :href="`transacoes/${form.slug}`" style="">
+              <a v-if="form.title == 'Saldo Atual'" :href="`#`" style="">
                 <div class="left">
                   <span>{{ form.title }}</span>
                   <br>
-                  <span v-if="form.title == 'Saldo Atual'" class="value">R$ {{ someAll() }}</span>
-                  <span v-else-if="form.title == 'Receitas'" class="value">R$ {{ calcRec() }}</span>
+                  <span class="value">R$ {{ someAll() }}</span>
+                </div>
+                
+                <div class="right">
+                  <span>
+                    <v-icon class="iBlue">{{ form.icon }}</v-icon>
+                  </span>
+                </div>
+              </a>
+              
+              <a v-else :href="`transacoes/${form.slug}`" style="">
+                <div class="left">
+                  <span>{{ form.title }}</span>
+                  <br>
+                  <span v-if="form.title == 'Receitas'" class="value">R$ {{ calcRec() }}</span>
                   <span v-else class="value">R$ {{ calcExp() }}</span>
                 </div>
                 
@@ -27,9 +40,7 @@
                   <span>
                     <v-icon :class="{
                     iGreen: form.title == 'Receitas',
-                    iRed: form.title == 'Despesas',
-                    iBlue: form.title == 'Saldo Atual',
-                    iOrange: form.title == 'Cartão de crédito',}">{{ form.icon }}</v-icon>
+                    iRed: form.title == 'Despesas'}">{{ form.icon }}</v-icon>
                   </span>
                 </div>
               </a>
@@ -41,63 +52,7 @@
     </v-row>
 
     <v-row class="reports">
-      <v-dialog v-model="dialog" persistent max-width="600px">
-        <v-card>
-          <v-card-title>
-            <span class="text-h5">Nova Receita</span>
-          </v-card-title>
-
-          <v-card-text>
-            <v-container>
-              <v-row>
-                <v-col cols="12">
-                  <v-text-field :prepend-inner-icon="'mdi-cash-multiple'" v-model="dataRec.newRecValue" v-money="money" label="Informe o Valor *" hint="informe o valor desejado" required/> 
-                </v-col>
-
-                <v-col cols="12">
-                  <v-text-field :prepend-inner-icon="'mdi-file'" v-model="dataRec.newRecDesc" label="Descrição" type="text" hint="informe a descrição desejada" required/>
-                </v-col>
-
-                <v-col cols="12">
-                  <v-menu ref="menu1" v-model="menu1" :close-on-content-click="false" transition="scale-transition" offset-y max-width="290px" min-width="auto">
-                    <template v-slot:activator="{ on, attrs }">
-                      <v-text-field v-model="dateFormatted" readonly :prepend-inner-icon="'mdi-calendar'" label="Informe a Data *" hint="informe a data desejada" v-bind="attrs" @blur="date = parseDate(dateFormatted)" v-on="on" ></v-text-field>
-                    </template>
-                    
-                    <v-date-picker v-model="date" no-title @input="menu1 = false" locale="pt"></v-date-picker>
-                  </v-menu>
-                </v-col>
-
-                <v-col cols="12">
-                  <v-select :prepend-inner-icon="'mdi-label'" v-model="dataRec.newRecSelect" :items="[this.allFormsPagt[1].categories[0].title, this.allFormsPagt[1].categories[1].title, 
-                    this.allFormsPagt[1].categories[2].title, this.allFormsPagt[1].categories[3].title]" label="Categoria *" required>
-                  </v-select>
-                </v-col>
-
-              </v-row>
-            </v-container>
-            <small>* indica campo obrigatório</small>
-            <v-spacer></v-spacer>
-            <v-btn class="ma-1" color="error" @click="dialog = false">Cancelar</v-btn>
-            <v-btn class="ma-1" color="primary" @click="newRec()">Salvar</v-btn>
-            <v-btn class="ma-1"  color="success darken-1" @click="newRec(true)">Salvar e continuar cadastrando</v-btn>
-          </v-card-text>
-        </v-card>
-      </v-dialog>
-
-      <v-dialog v-model="this.dataRec.error" persistent transition="dialog-bottom-transition" max-width="600" style="z-index: 10000;">
-        <v-card>
-          <v-toolbar color="error" dark>Ocorreu um erro</v-toolbar>
-          <v-card-text>
-            <div class="text-h4 pa-12">{{ dataRec.msgError }}</div>
-          </v-card-text>
-          <v-card-actions class="justify-end">
-            <v-btn color="error" block @click="dataRec.error = false">Fechar</v-btn>
-          </v-card-actions>
-        </v-card>
-      </v-dialog>
-
-      <v-col class="dash" :cols="12" :sm="8" :md="6">
+      <v-col class="dash" :cols="12" :md="6">
         <h4>Receitas por Categoria</h4>
 
         <div id="first">
@@ -115,7 +70,7 @@
         </div>
       </v-col>
 
-      <v-col class="dash" :cols="12" :sm="8" :md="6">
+      <v-col class="dash" :cols="12" :md="6">
         <h4>Despesas por Categoria</h4>
         
         <div id="first">
@@ -132,12 +87,30 @@
           </div>
         </div>
       </v-col>
+      
+      <v-col class="dash" id="divLineIndex" :cols="12" :md="6">
+        <h4>Estatísticas por Ano</h4>
+        
+        <div id="first">
+          <div v-if="!dataExp.hasExp">
+            <v-icon>mdi-chart-donut</v-icon>
+            <br>
+            <h5>
+              Você ainda não possui despesas.
+            </h5>
+          </div>
+
+          <div class="divDash" v-if="dataExp.hasExp">
+            <v-select style="z-index: 12;" v-model="yearSelected" :items="arrayYears" menu-props="auto" label="Select" hide-details :prepend-inner-icon="'mdi-calendar-range'" single-line/>
+            <apexchart class="" :width="widthLine" height="350" id="" type="line" :options="data.new555" :series="data.series"></apexchart>
+          </div>
+        </div>
+      </v-col>
 
       <v-col class="dash" :cols="12" :sm="8" :md="3">
         <h4>Entradas e Saídas</h4>
         
         <div id="first">
-
           <div class="divDash">
             <v-menu ref="menu2" v-model="menu2" :close-on-content-click="false" transition="scale-transition" offset-y max-width="290px" min-width="auto">
               <template v-slot:activator="{ on, attrs }">
@@ -147,13 +120,13 @@
               <v-date-picker v-model="dateRecAndExps" type="month" no-title @input="menu2 = false" locale="pt"></v-date-picker>
             </v-menu>
             <div v-if="!dataAll.hasDate">
-            <v-icon>mdi-chart-donut</v-icon>
-            <br>
-            <h5>
-              Você não possui movimentações no mês selecionado.
-            </h5>
-          </div>
-            <apexchart class="" id="dashExpAndRecs" :width="200" :height="200" type="bar" :options="dataAll.plotOptions" :series="dataAll.series"></apexchart>
+              <v-icon>mdi-chart-donut</v-icon>
+              <br>
+              <h5>
+                Você não possui movimentações no mês selecionado.
+              </h5>
+            </div>
+            <apexchart class="" id="dashExpAndRecs" :width="200" :height="dataAll.height" type="bar" :options="dataAll.plotOptions" :series="dataAll.series"></apexchart>
           </div>
         </div>
       </v-col>
@@ -176,6 +149,57 @@ Vue.component('apexchart', VueApexCharts)
 export default {
   data(){
     return {
+      widthLine: 0,
+      yearSelected: '',
+      arrayYears: [],
+      data: {
+        series: [],
+        new555: {
+          chart: {
+            type: 'line',
+            toolbar: {
+              show: false,
+            }, 
+            zoom: {
+              enabled: false
+            }
+          },
+          dataLabels: {
+            enabled: false
+          },
+          colors: ['#1AD174', '#F05847'],
+          stroke: {
+            width: [5, 5],
+            curve: 'straight',
+            dashArray: [8, 8]
+          },
+          legend: {
+            tooltipHoverFormatter: function(val, opts) {
+              return val + ' R$ ' + (Math.round(opts.w.globals.series[opts.seriesIndex][opts.dataPointIndex] * 100) / 100).toFixed(2).replace(".",",") 
+            }
+          },
+          marReckers: {
+            size: 0,
+            hover: {
+              sizeOffset: 6
+            }
+          },
+          xaxis: {
+            categories: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'],
+          },
+          tooltip: {
+            y: {
+              formatter: function (val) {
+                return 'R$ ' + (Math.round(val * 100) / 100).toFixed(2).replace(".",",");
+              }
+            }
+          },
+          grid: {
+            borderColor: '#f1f1f1',
+          }
+        },
+      },
+
       dateRecAndExps: new Date().toISOString().substr(0, 7),
       dateRecAndExpsFormated: this.formatMonth(new Date().toISOString().substr(0, 7)),
       menu: false,
@@ -197,6 +221,7 @@ export default {
       dialog: false,
       allFormsPagt:[],
       dataAll: {
+        height: 200,
         hasDate: false,
         series: [{
           name: 'Receitas',
@@ -380,6 +405,8 @@ export default {
        this.dataExp.totalExpRest, this.dataExp.totalExpSau, this.dataExp.totalExpServ, this.dataExp.totalExpSup]
       this.configWidthDash();
       this.configRecXExps();
+      this.createArrayData();
+      this.configDataLine(this.yearSelected);
     } 
   },
   mounted(){
@@ -389,73 +416,168 @@ export default {
     configWidthDash(){
       if(window.innerWidth < 320){
         this.width = 250;
+        this.widthLine = 250;
         this.widthDonut = 250;
       } else if(window.innerWidth >= 320 && window.innerWidth <= 400){
         this.width = 300;
+        this.widthLine = 300;
         this.widthDonut = 319;
       } else if(window.innerWidth > 400 && window.innerWidth <= 500){
         this.width = 340;
+        this.widthLine = 340;
         this.widthDonut = 360;
       } else if(window.innerWidth > 500 && window.innerWidth <= 1263){
         this.width = 380;
+        this.widthLine = 450;
         this.widthDonut = 450;
       } else if(window.innerWidth > 1263 && window.innerWidth <= 1600){
         this.width = 380;
+        this.widthLine = 450;
         this.widthDonut = 420;
       } else if(window.innerWidth > 1600){
         this.width = 470;
+        this.widthLine = 550;
         this.widthDonut = 550;
       }
 
       window.addEventListener("resize", () => {
         if(window.innerWidth < 320){
           this.width = 250;
+          this.widthLine = 250;
           this.widthDonut = 250;
         } else if(window.innerWidth >= 320 && window.innerWidth <= 400){
           this.width = 300;
+          this.widthLine = 300;
           this.widthDonut = 319;
         } else if(window.innerWidth > 400 && window.innerWidth <= 500){
           this.width = 340;
+          this.widthLine = 340;
           this.widthDonut = 360;
         } else if(window.innerWidth > 500 && window.innerWidth <= 1263){
           this.width = 380;
+          this.widthLine = 450;
           this.widthDonut = 450;
         } else if(window.innerWidth > 1263 && window.innerWidth <= 1600){
           this.width = 380;
+          this.widthLine = 450;
           this.widthDonut = 420;
         } else if(window.innerWidth > 1600){
           this.width = 470;
+          this.widthLine = 550;
           this.widthDonut = 550;
         }
       })
     },
-    newRec(continueSave){
-      if(this.dataRec.newRecValue == 'R$ 0,00' ){
-        this.dataRec.error = true;
-        this.dataRec.msgError = 'Não é possivel cadastrar uma receita com valor zerado';
-      } else if(this.dataRec.newRecSelect == ""){
-        this.dataRec.error = true;
-        this.dataRec.msgError = 'Não é possivel cadastrar uma receita sem categoria';
-      } else{
-        this.dataRec.hasRec = true
-        var elementExist = document.getElementById("apexDonutRec")
+    configDataLine(date){
+      var janRec = 0;
+      var fevRec = 0;
+      var marRec = 0;
+      var abrRec = 0;
+      var mayRec = 0;
+      var junRec = 0;
+      var julRec = 0;
+      var augRec = 0;
+      var setRec = 0;
+      var outRec = 0;
+      var novRec = 0;
+      var dezRec = 0;
+      
+      if(this.allFormsPagt[1].data != null){
+        this.allFormsPagt[1].data.forEach(element => {
+          var [year, month] = element.date.split('-')
+          if(year == date){
+            if(month == '01'){
+              janRec = this.round(janRec, element.value)
+            } else if(month == '02'){
+              fevRec = this.round(fevRec, element.value)
+            } else if(month == '03'){
+              marRec = this.round(marRec, element.value)
+            } else if(month == '04'){
+              abrRec = this.round(abrRec, element.value)
+            } else if(month == '05'){
+              mayRec = this.round(mayRec, element.value)
+            } else if(month == '06'){
+              junRec = this.round(junRec, element.value)
+            } else if(month == '07'){
+              julRec = this.round(julRec, element.value)
+            } else if(month == '08'){
+              augRec = this.round(augRec, element.value)
+            } else if(month == '09'){
+              setRec = this.round(setRec, element.value)
+            } else if(month == '10'){
+              outRec = this.round(outRec, element.value)
+            } else if(month == '11'){
+              novRec = this.round(novRec, element.value)
+            } else if(month == '12'){
+              dezRec = this.round(dezRec, element.value)
+            }
+          }
+        })
+      }
 
-        this.generateData();
+      var janExp = 0;
+      var fevExp = 0;
+      var marExp = 0;
+      var abrExp = 0;
+      var mayExp = 0;
+      var junExp = 0;
+      var julExp = 0;
+      var augExp = 0;
+      var setExp = 0;
+      var outExp = 0;
+      var novExp = 0;
+      var dezExp = 0;
+      
+      if(this.allFormsPagt[2].data != null){
+        this.allFormsPagt[2].data.forEach(element => {
+          var [year, month] = element.date.split('-')
+          if(year == date){
+            if(month == '01'){
+              janExp = this.round(janExp, element.value)
+            } else if(month == '02'){
+              fevExp = this.round(fevExp, element.value)
+            } else if(month == '03'){
+              marExp = this.round(marExp, element.value)
+            } else if(month == '04'){
+              abrExp = this.round(abrExp, element.value)
+            } else if(month == '05'){
+              mayExp = this.round(mayExp, element.value)
+            } else if(month == '06'){
+              junExp = this.round(junExp, element.value)
+            } else if(month == '07'){
+              julExp = this.round(julExp, element.value)
+            } else if(month == '08'){
+              augExp = this.round(augExp, element.value)
+            } else if(month == '09'){
+              setExp = this.round(setExp, element.value)
+            } else if(month == '10'){
+              outExp = this.round(outExp, element.value)
+            } else if(month == '11'){
+              novExp = this.round(novExp, element.value)
+            } else if(month == '12'){
+              dezExp = this.round(dezExp, element.value)
+            }
+          }
+        })
+      }
 
-        if(elementExist){
-          if(this.dataRec.totalRecSalary != 0) document.getElementById("apexDonutRec").classList.add("one")
-          if(this.dataRec.totalRecInvest != 0) document.getElementById("apexDonutRec").classList.add("two")
-          if(this.dataRec.totalRecEmp != 0) document.getElementById("apexDonutRec").classList.add("three")
-          if(this.dataRec.totalRecOut != 0) document.getElementById("apexDonutRec").classList.add("four")
-        }
+      
+      var newDataRec = [janRec, fevRec, marRec, abrRec, mayRec, junRec, julRec, augRec, setRec, outRec, novRec, dezRec]
+      var newDataExp = [janExp, fevExp, marExp, abrExp, mayExp, junExp, julExp, augExp, setExp, outExp, novExp, dezExp]
 
-        this.dataRec.newRecValue = 0
-        this.dataRec.newRecSelect = ''
-        this.dataRec.newRecDesc = ''
-        this.dataRec.snackbarNewRec = true;
+      this.data.series = [{ name: 'Receitas', data: newDataRec }, { name: 'Despesas', data: newDataExp }]
+    },
+    createArrayData(){
+      var currentYear = (new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().substr(0, 10).split('-')[0]
+      this.yearSelected = parseInt(currentYear)
 
-        if(!continueSave){
-          this.dialog = false;
+      var minYear = parseInt(currentYear) - 100;
+      var maxYear = parseInt(currentYear) + 100;
+      for(var x = minYear; x <= maxYear; x++){
+        if(this.arrayYears == []){
+          this.arrayYears = x
+        } else{
+          this.arrayYears.push(x)
         }
       }
     },
@@ -628,12 +750,15 @@ export default {
               if(element.idCategory == 0){
                 this.dataExp.totalExpHouse = this.round(this.dataExp.totalExpHouse, element.value)
               }
+              
               if(element.idCategory == 1){
                 this.dataExp.totalExpInvestEduc = this.round(this.dataExp.totalExpInvestEduc, element.value)
               }
+              
               if(element.idCategory == 2){
                 this.dataExp.totalExpInvestElet = this.round(this.dataExp.totalExpInvestElet, element.value)
               }
+              
               if(element.idCategory == 3){
                 this.dataExp.totalExpLaz = this.round(this.dataExp.totalExpLaz, element.value)
               }
@@ -724,7 +849,7 @@ export default {
       } else if(monthSelected == '02'){
         Vue.set(this.dataAll.plotOptions.xaxis.categories, 0, 'Fevereiro')
       } else if(monthSelected == '03'){
-        Vue.set(this.dataAll.plotOptions.xaxis.categories, 0, 'Março')
+        Vue.set(this.dataAll.plotOptions.xaxis.categories, 0, 'MarRecço')
       } else if(monthSelected == '04'){
         Vue.set(this.dataAll.plotOptions.xaxis.categories, 0, 'Abril')
       } else if(monthSelected == '05'){
@@ -746,12 +871,13 @@ export default {
       }
 
       if(this.dataRec.total == 0 && this.dataExp.total == 0){
-        console.log("entrou no if? " + this.dataRec.total +' asdas ' + this.dataExp.total)
         this.dataAll.hasDate = false;
+        this.dataAll.height = 0
+      } else{
+        this.dataAll.height = 200
       }
 
       this.dataAll.series = [{ name: `Receitas R$ ${this.toBrl(this.dataRec.total)}`, data: [this.dataRec.total] }, { name: `Despesas R$ ${this.toBrl(this.dataExp.total)}`, data: [this.dataExp.total] }]
-
     },
     toBrl(value){
       return (Math.round(value * 100) / 100).toFixed(2);
@@ -804,6 +930,9 @@ export default {
   watch: {
     date () {
       this.dateFormatted = this.formatDate(this.date)
+    },
+    yearSelected(){
+      this.configDataLine(this.yearSelected)
     },
     dateRecAndExps () {
       this.dateRecAndExpsFormated = this.formatMonth(this.dateRecAndExps)

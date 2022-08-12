@@ -98,10 +98,6 @@ td.text-start{
                         i.iBlue{
                             background-color: rgb(33, 150, 243);
                         }
-                        
-                        i.iOrange{
-                            background-color: rgb(247, 131, 2);
-                        }
                     }
                 }
             }
@@ -109,9 +105,10 @@ td.text-start{
     }
 
     .reports{
-        margin-top: 1.5rem !important;
-
+        margin-top: 2rem !important;
+        
         div.dash{
+
             width: 100%;
             margin-bottom: 1.5rem;
 
@@ -324,6 +321,15 @@ td.text-start{
 #apexDonutExp {
     div.apexcharts-legend{
         padding-top: 2rem;
+    }
+}
+
+@media (max-width: 280px) { 
+    .reports{
+        margin-top: 2rem !important;
+        #divLineIndex{
+            display: none;
+        }
     }
 }
 
