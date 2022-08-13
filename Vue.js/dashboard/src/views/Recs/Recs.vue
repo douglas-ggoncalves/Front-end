@@ -1,7 +1,6 @@
 <template>
   <v-container fluid class="homeView px-sm-10">
     <v-snackbar top min-width="50%" color="success" v-model="dataRec.snackbarNewRec" :timeout="5000">
-      
       {{ this.dataRec.msgSuccess }}
       <template v-slot:action="{ attrs }">
         <v-btn color="white" text v-bind="attrs" @click="snackbar = false">
@@ -80,7 +79,6 @@
           :header-props="{'sortByText': 'Ordenar por'}" :footer-props="{'items-per-page-text':'Itens por página', 
           pageText: '{0}-{1} de {2}', 'items-per-page-all-text':'Todos'}" :headers="headers2" :items="desserts2" 
           :search="search2" :custom-filter="filterData">
-
             <template v-slot:[`item.desc`]="{ item }">
               <v-tooltip :color="'rgb(0, 0, 0)'" :max-width="220" bottom>
                 <template v-slot:activator="{ on, attrs }">
@@ -124,7 +122,6 @@
                 <div class="left">
                   <span>Receitas</span>
                   <br>
-                  
                   <span class="value">R$ {{ dataRec.totalRecSalary + dataRec.totalRecInvest + dataRec.totalRecEmp + dataRec.totalRecOut | toBrl }}</span>
                 </div>
                 
@@ -241,12 +238,12 @@
           </div>
 
           <div class="divDash" v-if="dataRec.hasRec">
-            <apexchart class="" :width="width" id="apexDonutRec" type="donut" :options="dataRec.optionsDonut" :series="dataRec.seriesDonut"></apexchart>
+            <apexchart class=""  height="350" id="apexDonutRec" type="donut" :options="dataRec.optionsDonut" :series="dataRec.seriesDonut"></apexchart>
           </div>
         </div>
       </v-col>
       
-      <v-col class="dash" :cols="12" :md="6">
+      <v-col class="dash" :cols="12" :md="6" :lg="4">
         <h4>Receitas por Ano</h4>
         
         <div id="first">
@@ -260,7 +257,7 @@
 
           <div class="divDash" v-if="dataRec.hasRec">
             <v-select style="z-index: 12;" v-model="yearSelected" :items="arrayYears" menu-props="auto" label="Select" hide-details :prepend-inner-icon="'mdi-calendar-range'" single-line/>
-            <apexchart type="line" :width="width" :options="dataRec.optionsLine" :series="dataRec.seriesLine"></apexchart>
+            <apexchart type="line"  height="350" :options="dataRec.optionsLine" :series="dataRec.seriesLine"></apexchart>
           </div>
         </div>
       </v-col>
@@ -389,7 +386,6 @@ Vue.component('apexchart', VueApexCharts)
 export default {
   data(){
     return {
-      width: 0,
       yearSelected: '',
       arrayYears: [],
       picker: 2022,
@@ -412,7 +408,6 @@ export default {
         { text: 'Ações', value: 'action', sortable: false }
       ],
       desserts2: [],
-      //price: 123.45,
       money: {
         decimal: ',',
         thousands: '.',
@@ -447,6 +442,9 @@ export default {
         snackbarNewRec: false,
         seriesDonut: [],
         optionsDonut: {
+          chart: {
+            width: '100%',
+          },
           tooltip: {
             enabled: true,
              y: {
@@ -466,6 +464,7 @@ export default {
           labels: ['Salário', 'Investimentos', 'Empréstimos', 'Outros'],
         },
         optionsLine: {
+          width: '100%',
           tooltip: {
             enabled: true,
              y: {
@@ -526,7 +525,6 @@ export default {
   },
   created(){
     this.allFormsPagt = scrypt.allFormsPagt;
-    /* Receitas */
 
     if(window) {
       this.allFormsPagt[1].data = JSON.parse(localStorage.getItem('dataRec'))
@@ -538,9 +536,7 @@ export default {
       }
   
       this.dataRec.seriesDonut = [this.dataRec.totalRecSalary, this.dataRec.totalRecInvest, this.dataRec.totalRecEmp, this.dataRec.totalRecOut]
-      this.configWidthDash()
     }
-    /* Fim Receitas */
   },
   mounted(){
     this.configShowDonut();
@@ -573,33 +569,6 @@ export default {
           document.getElementById("apexDonutRec").classList.remove("four")
         }
       }
-    },
-    configWidthDash(){
-      if(window.innerWidth < 320){
-        this.width = 250;
-      } else if(window.innerWidth >= 320 && window.innerWidth <= 400){
-        this.width = 300;
-      } else if(window.innerWidth > 400 && window.innerWidth <= 500){
-        this.width = 340;
-      } else if(window.innerWidth > 500 && window.innerWidth <= 1600){
-        this.width = 380;
-      } else if(window.innerWidth > 1600){
-        this.width = 470;
-      }
-      
-      window.addEventListener("resize", () => {
-        if(window.innerWidth < 320){
-          this.width = 250;
-        } else if(window.innerWidth >= 320 && window.innerWidth <= 400){
-          this.width = 300;
-        } else if(window.innerWidth > 400 && window.innerWidth <= 500){
-          this.width = 340;
-        } else if(window.innerWidth > 500 && window.innerWidth <= 1600){
-          this.width = 380;
-        } else if(window.innerWidth > 1600){
-          this.width = 470;
-        }
-      })
     },
     filterData (value, search2) {
       return  value != null &&

@@ -245,7 +245,7 @@
           </div>
 
           <div class="divDash" v-if="dataExp.hasExp">
-            <apexchart class="" :width="widthDonut" id="apexDonutExp" type="donut" :options="dataExp.optionsDonut" :series="dataExp.seriesDonut"></apexchart>
+            <apexchart class="" height="350" id="apexDonutExp" type="donut" :options="dataExp.optionsDonut" :series="dataExp.seriesDonut"></apexchart>
           </div>
         </div>
       </v-col>
@@ -264,7 +264,7 @@
 
           <div class="divDash" v-if="dataExp.hasExp">
             <v-select style="z-index: 12;" v-model="yearSelected" :items="arrayYears" menu-props="auto" label="Select" hide-details :prepend-inner-icon="'mdi-calendar-range'" single-line/>
-            <apexchart type="line" :width="width" :options="dataExp.optionsLine" :series="dataExp.seriesLine"></apexchart>
+            <apexchart type="line" height="350" :options="dataExp.optionsLine" :series="dataExp.seriesLine"></apexchart>
           </div>
         </div>
       </v-col>
@@ -282,7 +282,6 @@
                       <br>
                       <span v-if="allFormsPagt[2].data != null">{{ allFormsPagt[2].data.length }}</span>
                       <span v-if="allFormsPagt[2].data == null">0</span>
-                      
                     </div>
                     
                     <div class="right">
@@ -458,8 +457,7 @@ export default {
         seriesDonut: [],
         optionsDonut: {
           chart: {
-            redrawOnWindowResize: false,
-            redrawOnParentResize: false
+            width: '100%',
           },
           colors: 
             ['#2E93fA', '#66DA26', '#546E7A', '#986CDF', '#FF9800', '#29D9D5', '#FFC107', '#FF0000', '#000000']
@@ -497,6 +495,7 @@ export default {
             }
           },
           chart: {
+            width: '100%',
             defaultLocale: 'pt-br',
             locales: [{
               name: 'pt-br',
@@ -555,7 +554,6 @@ export default {
   
       this.dataExp.seriesDonut = [this.dataExp.totalExpHouse, this.dataExp.totalExpInvestEduc, this.dataExp.totalExpInvestElet, this.dataExp.totalExpLaz, this.dataExp.totalExpOut,
        this.dataExp.totalExpRest, this.dataExp.totalExpSau, this.dataExp.totalExpServ, this.dataExp.totalExpSup]
-      this.configWidthDash();
     }
   },
   mounted(){
@@ -620,49 +618,6 @@ export default {
           document.getElementById("apexDonutExp").classList.remove("nine")
         }
       }
-    },
-    configWidthDash(){
-      if(window.innerWidth < 320){
-        this.width = 250;
-        this.widthDonut = 250;
-      } else if(window.innerWidth >= 320 && window.innerWidth <= 400){
-        this.width = 300;
-        this.widthDonut = 319;
-      } else if(window.innerWidth > 400 && window.innerWidth <= 500){
-        this.width = 340;
-        this.widthDonut = 360;
-      } else if(window.innerWidth > 500 && window.innerWidth <= 1263){
-        this.width = 380;
-        this.widthDonut = 450;
-      } else if(window.innerWidth > 1263 && window.innerWidth <= 1600){
-        this.width = 380;
-        this.widthDonut = 420;
-      } else if(window.innerWidth > 1600){
-        this.width = 470;
-        this.widthDonut = 550;
-      }
-
-      window.addEventListener("resize", () => {
-        if(window.innerWidth < 320){
-          this.width = 250;
-          this.widthDonut = 250;
-        } else if(window.innerWidth >= 320 && window.innerWidth <= 400){
-          this.width = 300;
-          this.widthDonut = 319;
-        } else if(window.innerWidth > 400 && window.innerWidth <= 500){
-          this.width = 340;
-          this.widthDonut = 360;
-        } else if(window.innerWidth > 500 && window.innerWidth <= 1263){
-          this.width = 380;
-          this.widthDonut = 450;
-        } else if(window.innerWidth > 1263 && window.innerWidth <= 1600){
-          this.width = 380;
-          this.widthDonut = 420;
-        } else if(window.innerWidth > 1600){
-          this.width = 470;
-          this.widthDonut = 550;
-        }
-      })
     },
     filterData (value, search2) {
       return  value != null &&
@@ -1053,7 +1008,6 @@ export default {
         this.configDataLine(this.yearSelected);
         this.configShowDonut();
         this.setValuesSeries();
-        this.configWidthDash();
         if(window) {
           localStorage.setItem("dataExp", JSON.stringify(this.allFormsPagt[2].data));
         }

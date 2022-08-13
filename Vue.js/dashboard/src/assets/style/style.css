@@ -258,6 +258,7 @@ td.text-start span {
   margin-bottom: auto !important;
   margin-top: auto !important;
   padding: 1.5rem 1.25rem;
+  width: 100%;
 }
 
 .homeView .reports div.dash > div#first div.divDash #apexchart {
@@ -318,6 +319,10 @@ td.text-start span {
 
 .homeView #apexDonutExp.nine .apexcharts-legend-series:nth-child(9) {
   display: revert;
+}
+
+#apexDonutRec div.apexcharts-legend {
+  padding-top: 1rem;
 }
 
 #apexDonutExp div.apexcharts-legend {

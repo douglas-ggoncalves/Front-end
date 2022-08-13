@@ -65,7 +65,7 @@
           </div>
 
           <div class="divDash" v-if="dataRec.hasRec">
-            <apexchart class="" :width="width" id="apexDonutRec" type="donut" :options="dataRec.optionsDonut" :series="dataRec.series"></apexchart>
+            <apexchart class="" id="apexDonutRec" height="350" type="donut" :options="dataRec.optionsDonut" :series="dataRec.series"></apexchart>
           </div>
         </div>
       </v-col>
@@ -83,7 +83,7 @@
           </div>
 
           <div class="divDash" v-if="dataExp.hasExp">
-            <apexchart class="" :width="widthDonut" id="apexDonutExp" type="donut" :options="dataExp.optionsDonut" :series="dataExp.seriesDonut"></apexchart>
+            <apexchart class="" height="350" id="apexDonutExp" type="donut" :options="dataExp.optionsDonut" :series="dataExp.seriesDonut"></apexchart>
           </div>
         </div>
       </v-col>
@@ -100,9 +100,9 @@
             </h5>
           </div>
 
-          <div class="divDash" v-if="dataExp.hasExp">
+          <div class="divDash" v-if="dataExp.hasExp" style="">
             <v-select style="z-index: 12;" v-model="yearSelected" :items="arrayYears" menu-props="auto" label="Select" hide-details :prepend-inner-icon="'mdi-calendar-range'" single-line/>
-            <apexchart class="" :width="widthLine" height="350" id="" type="line" :options="data.new555" :series="data.series"></apexchart>
+            <apexchart class="" height="350" id="" type="line" :options="data.new555" :series="data.series"></apexchart>
           </div>
         </div>
       </v-col>
@@ -149,13 +149,13 @@ Vue.component('apexchart', VueApexCharts)
 export default {
   data(){
     return {
-      widthLine: 0,
       yearSelected: '',
       arrayYears: [],
       data: {
         series: [],
         new555: {
           chart: {
+            width: '100%',
             type: 'line',
             toolbar: {
               show: false,
@@ -199,13 +199,10 @@ export default {
           }
         },
       },
-
       dateRecAndExps: new Date().toISOString().substr(0, 7),
       dateRecAndExpsFormated: this.formatMonth(new Date().toISOString().substr(0, 7)),
       menu: false,
       modal: false,
-      width: 0,
-      widthDonut: 0,
       date: (new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().substr(0, 10),
       dateFormatted: this.formatDate((new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().substr(0, 10)),
       menu1: false,
@@ -308,8 +305,7 @@ export default {
         seriesDonut: [],
         optionsDonut: {
           chart: {
-            redrawOnWindowResize: false,
-            redrawOnParentResize: false
+            width: '100%',
           },
           colors: 
             ['#2E93fA', '#66DA26', '#546E7A', '#986CDF', '#FF9800', '#29D9D5', '#FFC107', '#FF0000', '#000000']
@@ -347,6 +343,9 @@ export default {
         error: false,
         msgError: '',
         optionsDonut: {
+          chart: {
+            width: '100%',
+          },
           tooltip: {
             enabled: true,
             y: {
@@ -403,7 +402,6 @@ export default {
 
       this.dataExp.seriesDonut = [this.dataExp.totalExpHouse, this.dataExp.totalExpInvestEduc, this.dataExp.totalExpInvestElet, this.dataExp.totalExpLaz, this.dataExp.totalExpOut,
        this.dataExp.totalExpRest, this.dataExp.totalExpSau, this.dataExp.totalExpServ, this.dataExp.totalExpSup]
-      this.configWidthDash();
       this.configRecXExps();
       this.createArrayData();
       this.configDataLine(this.yearSelected);
@@ -413,61 +411,6 @@ export default {
     this.configShowDonut();
   },
   methods:{
-    configWidthDash(){
-      if(window.innerWidth < 320){
-        this.width = 250;
-        this.widthLine = 250;
-        this.widthDonut = 250;
-      } else if(window.innerWidth >= 320 && window.innerWidth <= 400){
-        this.width = 300;
-        this.widthLine = 300;
-        this.widthDonut = 319;
-      } else if(window.innerWidth > 400 && window.innerWidth <= 500){
-        this.width = 340;
-        this.widthLine = 340;
-        this.widthDonut = 360;
-      } else if(window.innerWidth > 500 && window.innerWidth <= 1263){
-        this.width = 380;
-        this.widthLine = 450;
-        this.widthDonut = 450;
-      } else if(window.innerWidth > 1263 && window.innerWidth <= 1600){
-        this.width = 380;
-        this.widthLine = 450;
-        this.widthDonut = 420;
-      } else if(window.innerWidth > 1600){
-        this.width = 470;
-        this.widthLine = 550;
-        this.widthDonut = 550;
-      }
-
-      window.addEventListener("resize", () => {
-        if(window.innerWidth < 320){
-          this.width = 250;
-          this.widthLine = 250;
-          this.widthDonut = 250;
-        } else if(window.innerWidth >= 320 && window.innerWidth <= 400){
-          this.width = 300;
-          this.widthLine = 300;
-          this.widthDonut = 319;
-        } else if(window.innerWidth > 400 && window.innerWidth <= 500){
-          this.width = 340;
-          this.widthLine = 340;
-          this.widthDonut = 360;
-        } else if(window.innerWidth > 500 && window.innerWidth <= 1263){
-          this.width = 380;
-          this.widthLine = 450;
-          this.widthDonut = 450;
-        } else if(window.innerWidth > 1263 && window.innerWidth <= 1600){
-          this.width = 380;
-          this.widthLine = 450;
-          this.widthDonut = 420;
-        } else if(window.innerWidth > 1600){
-          this.width = 470;
-          this.widthLine = 550;
-          this.widthDonut = 550;
-        }
-      })
-    },
     configDataLine(date){
       var janRec = 0;
       var fevRec = 0;
