@@ -92,15 +92,15 @@
         <h4>Estatísticas por Ano</h4>
         
         <div id="first">
-          <div v-if="!dataExp.hasExp">
+          <div v-if="!dataExp.hasExp && !dataRec.hasRec">
             <v-icon>mdi-chart-donut</v-icon>
             <br>
             <h5>
-              Você ainda não possui despesas.
+              Você ainda não possui movimentações.
             </h5>
           </div>
 
-          <div class="divDash" v-if="dataExp.hasExp" style="">
+          <div class="divDash" v-if="dataExp.hasExp || dataRec.hasRec" style="">
             <v-select style="z-index: 12;" v-model="yearSelected" :items="arrayYears" menu-props="auto" label="Select" hide-details :prepend-inner-icon="'mdi-calendar-range'" single-line/>
             <apexchart class="" height="350" id="" type="line" :options="data.new555" :series="data.series"></apexchart>
           </div>
@@ -111,8 +111,14 @@
         <h4>Entradas e Saídas</h4>
         
         <div id="first">
-          <div class="divDash">
-            <v-menu v-if="allFormsPagt[1].data != null || allFormsPagt[1].data != null" ref="menu2" v-model="menu2" :close-on-content-click="false" transition="scale-transition" offset-y max-width="290px" min-width="auto">
+          <div v-if="!dataExp.hasExp && !dataRec.hasRec">
+            <v-icon>mdi-chart-donut</v-icon>
+            <br>
+            <h5>Você ainda não possui movimentações.</h5>
+          </div>
+              
+          <div class="divDash" v-if="dataExp.hasExp || dataRec.hasRec">
+            <v-menu ref="menu2" v-model="menu2" :close-on-content-click="false" transition="scale-transition" offset-y max-width="290px" min-width="auto">
               <template v-slot:activator="{ on, attrs }">
                 <v-text-field v-model="dateRecAndExpsFormated" readonly :prepend-inner-icon="'mdi-calendar'" label="Informe o Mês *" hint="informe a data desejada" v-bind="attrs" v-on="on" ></v-text-field>
               </template>
@@ -122,9 +128,7 @@
             <div v-if="!dataAll.hasDate">
               <v-icon>mdi-chart-donut</v-icon>
               <br>
-              <h5 >
-                Você não possui movimentações no mês selecionado.
-              </h5>
+              <h5>Você não possui movimentações na data selecionada.</h5>
             </div>
             <apexchart class="" id="dashExpAndRecs" :width="200" :height="dataAll.height" type="bar" :options="dataAll.plotOptions" :series="dataAll.series"></apexchart>
           </div>

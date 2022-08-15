@@ -3,7 +3,7 @@
     <v-snackbar top min-width="50%" color="success" v-model="dataRec.snackbarNewRec" :timeout="5000">
       {{ this.dataRec.msgSuccess }}
       <template v-slot:action="{ attrs }">
-        <v-btn color="white" text v-bind="attrs" @click="snackbar = false">
+        <v-btn color="white" text v-bind="attrs" @click="dataRec.snackbarNewRec = false">
           Fechar
         </v-btn>
       </template>
@@ -208,7 +208,7 @@
             <v-spacer></v-spacer>
             <v-btn class="ma-1" color="error" @click="dialog = false">Cancelar</v-btn>
             <v-btn class="ma-1" color="primary" @click="newRec()">Salvar</v-btn>
-            <v-btn class="ma-1"  color="success darken-1" @click="newRec(true)">Salvar e continuar cadastrando</v-btn>
+            <v-btn class="d-none d-sm-inline-flex ma-1" color="success darken-1" @click="newRec(true)">Salvar e continuar cadastrando</v-btn>
           </v-card-text>
         </v-card>
       </v-dialog>
