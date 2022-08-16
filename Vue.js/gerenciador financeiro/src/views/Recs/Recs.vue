@@ -229,15 +229,25 @@
         <h4>Receitas por Categoria</h4>
         
         <div id="first">
-          <div v-if="!dataRec.hasRec">
+          <div v-if="allFormsPagt[1].data != null && allFormsPagt[1].data.length == 0 && dataRec.message == ''">
             <v-icon>mdi-chart-donut</v-icon>
             <br>
-            <h5>
-              Você ainda não possui receitas.
-            </h5>
+            <h5>Você ainda não possui receitas.</h5>
+          </div>
+          
+          <div v-if="allFormsPagt[1].data != null && allFormsPagt[1].data.length == 0 && dataRec.message != ''">
+            <v-icon>mdi-chart-donut</v-icon>
+            <br>
+            <h5>{{ dataRec.message }}</h5>
+          </div>
+          
+          <div v-if="allFormsPagt[1].data != null && allFormsPagt[1].data.length > 0 && dataRec.message != ''">
+            <v-icon>mdi-chart-donut</v-icon>
+            <br>
+            <h5>{{ dataRec.message }}</h5>
           </div>
 
-          <div class="divDash" v-if="dataRec.hasRec">
+          <div class="divDash" v-if="allFormsPagt[1].data != null && allFormsPagt[1].data.length > 0 && dataRec.message == ''">
             <apexchart class=""  height="350" id="apexDonutRec" type="donut" :options="dataRec.optionsDonut" :series="dataRec.seriesDonut"></apexchart>
           </div>
         </div>
@@ -247,15 +257,13 @@
         <h4>Receitas por Ano</h4>
         
         <div id="first">
-          <div v-if="!dataRec.hasRec">
+          <div v-if="allFormsPagt[1].data != null && allFormsPagt[1].data.length == 0">
             <v-icon>mdi-chart-donut</v-icon>
             <br>
-            <h5>
-              Você ainda não possui receitas.
-            </h5>
+            <h5>Você ainda não possui receitas.</h5>
           </div>
 
-          <div class="divDash" v-if="dataRec.hasRec">
+          <div class="divDash" v-else>
             <v-select style="z-index: 12;" v-model="yearSelected" :items="arrayYears" menu-props="auto" label="Select" hide-details :prepend-inner-icon="'mdi-calendar-range'" single-line/>
             <apexchart type="line"  height="350" :options="dataRec.optionsLine" :series="dataRec.seriesLine"></apexchart>
           </div>
@@ -296,12 +304,10 @@
                   Últimas movimentações criadas
                 </h3>
 
-                <div style="text-align: center" v-if="!dataRec.hasRec">
+                <div style="text-align: center" v-if="allFormsPagt[1].data != null && allFormsPagt[1].data.length == 0">
                   <v-icon>mdi-chart-donut</v-icon>
                   <br>
-                  <h5>
-                    Você ainda não possui receitas.
-                  </h5>
+                  <h5>Você ainda não possui receitas.</h5>
                 </div>
 
                 <div v-if="allFormsPagt[1].data != null && allFormsPagt[1].data[allFormsPagt[1].data.length -1]" class="data">
@@ -435,7 +441,7 @@ export default {
         newRecValue: '0',
         newRecSelect: '',
         newRecDesc: '',
-        hasRec: false,
+        message: '', 
         error: false,
         msgError: '',
         msgSuccess: '',
@@ -533,8 +539,10 @@ export default {
       if(this.allFormsPagt[1].data != null){
         this.configData();
         this.configDataLine(this.yearSelected);
+      } else{
+        this.allFormsPagt[1].data = [];
       }
-  
+
       this.dataRec.seriesDonut = [this.dataRec.totalRecSalary, this.dataRec.totalRecInvest, this.dataRec.totalRecEmp, this.dataRec.totalRecOut]
     }
   },
@@ -650,15 +658,14 @@ export default {
         this.dataRec.error = true;
         this.dataRec.msgError = 'Preencha os campos data inicial e final antes de filtrar';
       } else if(this.dateFilterFinal >= this.dateFilterInit){
+        this.dataRec.message = ''
         var elementExist = document.getElementById("apexDonutRec")
         this.configData();
         Vue.set(this.dataRec.seriesDonut, 0, (this.dataRec.totalRecSalary))
         Vue.set(this.dataRec.seriesDonut, 1, (this.dataRec.totalRecInvest))
         Vue.set(this.dataRec.seriesDonut, 2, (this.dataRec.totalRecEmp))
         Vue.set(this.dataRec.seriesDonut, 3, (this.dataRec.totalRecOut))
-        if(this.dataRec.seriesDonut[0] == 0 && this.dataRec.seriesDonut[1] == 0 && this.dataRec.seriesDonut[2] == 0 && this.dataRec.seriesDonut[3] == 0){
-          this.dataRec.hasRec = false
-        }
+        this.verifyMessage();
 
         if(elementExist){
           if(this.dataRec.totalRecSalary == 0) document.getElementById("apexDonutRec").classList.remove("one")
@@ -676,16 +683,13 @@ export default {
       this.dateFilterFinal = ''
       this.dateFilterFormattedInit = ''
       this.dateFilterFormattedFinal = ''
+      this.dataRec.message = ''
       var elementExist = document.getElementById("apexDonutRec")
       this.configData();
       Vue.set(this.dataRec.seriesDonut, 0, (this.dataRec.totalRecSalary))
       Vue.set(this.dataRec.seriesDonut, 1, (this.dataRec.totalRecInvest))
       Vue.set(this.dataRec.seriesDonut, 2, (this.dataRec.totalRecEmp))
       Vue.set(this.dataRec.seriesDonut, 3, (this.dataRec.totalRecOut))
-
-      if(this.dataRec.seriesDonut[0] == 0 && this.dataRec.seriesDonut[1] == 0 && this.dataRec.seriesDonut[2] == 0 && this.dataRec.seriesDonut[3] == 0){
-        this.dataRec.hasRec = false
-      }
 
       if(elementExist){
         if(this.dataRec.totalRecSalary == 0) document.getElementById("apexDonutRec").classList.remove("one")
@@ -702,7 +706,7 @@ export default {
         this.dataRec.error = true;
         this.dataRec.msgError = 'Não é possivel cadastrar uma receita sem categoria';
       } else{
-        this.dataRec.hasRec = true
+        this.dataRec.message = ''
         var elementExist = document.getElementById("apexDonutRec")
         this.generateData();
 
@@ -720,6 +724,8 @@ export default {
         this.configData();
         this.configDataLine(this.yearSelected);
         this.configShowDonut();
+
+        this.verifyMessage();
         
         this.dataRec.msgSuccess = 'Receita cadastrada com sucesso'
         if(!continueSave){
@@ -813,6 +819,15 @@ export default {
         Vue.set(this.dataRec.seriesDonut, 3, this.dataRec.totalRecOut)
       }
     },
+    verifyMessage(){
+      if(this.dataRec.seriesDonut[0] == 0 && this.dataRec.seriesDonut[1] == 0 && this.dataRec.seriesDonut[2] == 0 && this.dataRec.seriesDonut[3] == 0){
+        if(this.allFormsPagt[1].data.length == 0) {
+          this.dataRec.message = ''
+        } else if(this.allFormsPagt[1].data.length > 0){
+          this.dataRec.message = 'Você não possui movimentações na data selecionada.'
+        }
+      }
+    },
     editItem(item){
       this.editedItem.id = item.idRec;
       this.editedItem.desc = item.desc.trim();
@@ -834,19 +849,17 @@ export default {
       var arr = this.allFormsPagt[1].data.filter(element => element.idRec != this.editedItem.id)
       this.allFormsPagt[1].data = arr
       this.desserts2 = []
-      this.configData()
+      this.configData();
       this.configDataLine(this.yearSelected);
       this.dialogDelete = false;
+      this.dataRec.message = ''
 
       Vue.set(this.dataRec.seriesDonut, 0, (this.dataRec.totalRecSalary))
       Vue.set(this.dataRec.seriesDonut, 1, (this.dataRec.totalRecInvest))
       Vue.set(this.dataRec.seriesDonut, 2, (this.dataRec.totalRecEmp))
       Vue.set(this.dataRec.seriesDonut, 3, (this.dataRec.totalRecOut))
 
-      if(this.dataRec.seriesDonut[0] == 0 && this.dataRec.seriesDonut[1] == 0 && this.dataRec.seriesDonut[2] == 0 && this.dataRec.seriesDonut[3] == 0){
-        this.dataRec.hasRec = false
-      }
-
+      this.verifyMessage();
       this.configShowDonut();
       if(window) {
         localStorage.setItem("dataRec", JSON.stringify(this.allFormsPagt[1].data));
@@ -908,6 +921,7 @@ export default {
         Vue.set(this.dataRec.seriesDonut, 1, (this.dataRec.totalRecInvest))
         Vue.set(this.dataRec.seriesDonut, 2, (this.dataRec.totalRecEmp))
         Vue.set(this.dataRec.seriesDonut, 3, (this.dataRec.totalRecOut))
+        this.verifyMessage();
 
         if(window) {
           localStorage.setItem("dataRec", JSON.stringify(this.allFormsPagt[1].data));
@@ -949,7 +963,6 @@ export default {
       
       if(this.allFormsPagt[1].data != null){
         this.allFormsPagt[1].data.forEach(element => {
-          this.dataRec.hasRec = true
 
           if(this.dateFilterInit != undefined && this.dateFilterInit != '' && this.dateFilterFinal != undefined && this.dateFilterFinal != ''){
             if(element.date >= this.dateFilterInit && element.date <= this.dateFilterFinal){

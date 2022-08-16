@@ -234,15 +234,25 @@
         <h4>Despesas por Categoria</h4>
         
         <div id="first">
-          <div v-if="!dataExp.hasExp">
+          <div v-if="allFormsPagt[2].data != null && allFormsPagt[2].data.length == 0 && dataExp.message == ''">
             <v-icon>mdi-chart-donut</v-icon>
             <br>
-            <h5>
-              Você ainda não possui despesas.
-            </h5>
+            <h5>Você ainda não possui despesas.</h5>
           </div>
 
-          <div class="divDash" v-if="dataExp.hasExp">
+          <div v-if="allFormsPagt[2].data != null && allFormsPagt[2].data.length == 0 && dataExp.message != ''">
+            <v-icon>mdi-chart-donut</v-icon>
+            <br>
+            <h5>{{ dataExp.message }}</h5>
+          </div>
+          
+          <div v-if="allFormsPagt[2].data != null && allFormsPagt[2].data.length > 0 && dataExp.message != ''">
+            <v-icon>mdi-chart-donut</v-icon>
+            <br>
+            <h5>{{ dataExp.message }}</h5>
+          </div>
+
+          <div class="divDash" v-if="allFormsPagt[2].data != null && allFormsPagt[2].data.length > 0 && dataExp.message == ''">
             <apexchart class="" height="350" id="apexDonutExp" type="donut" :options="dataExp.optionsDonut" :series="dataExp.seriesDonut"></apexchart>
           </div>
         </div>
@@ -252,7 +262,7 @@
         <h4>Despesas por Ano</h4>
         
         <div id="first">
-          <div v-if="!dataExp.hasExp">
+          <div v-if="allFormsPagt[2].data != null && allFormsPagt[2].data.length == 0">
             <v-icon>mdi-chart-donut</v-icon>
             <br>
             <h5>
@@ -260,7 +270,7 @@
             </h5>
           </div>
 
-          <div class="divDash" v-if="dataExp.hasExp">
+          <div class="divDash" v-else>
             <v-select style="z-index: 12;" v-model="yearSelected" :items="arrayYears" menu-props="auto" label="Select" hide-details :prepend-inner-icon="'mdi-calendar-range'" single-line/>
             <apexchart type="line" height="350" :options="dataExp.optionsLine" :series="dataExp.seriesLine"></apexchart>
           </div>
@@ -301,7 +311,7 @@
                   Últimas movimentações criadas
                 </h3>
 
-                <div style="text-align: center" v-if="!dataExp.hasExp">
+                <div style="text-align: center" v-if="allFormsPagt[2].data != null && allFormsPagt[2].data.length == 0">
                   <v-icon>mdi-chart-donut</v-icon>
                   <br>
                   <h5>
@@ -447,7 +457,7 @@ export default {
         newExpValue: '0',
         newExpSelect: '',
         newExpDesc: '',
-        hasExp: false,
+        message: '',
         error: false,
         msgError: '',
         msgSuccess: '',
@@ -548,6 +558,8 @@ export default {
       if(this.allFormsPagt[2].data != null){
         this.configData();
         this.configDataLine(this.yearSelected);
+      } else{
+        this.allFormsPagt[2].data = [];
       }
   
       this.dataExp.seriesDonut = [this.dataExp.totalExpHouse, this.dataExp.totalExpInvestEduc, this.dataExp.totalExpInvestElet, this.dataExp.totalExpLaz, this.dataExp.totalExpOut,
@@ -702,19 +714,16 @@ export default {
       Vue.set(this.dataExp.seriesDonut, 6, (this.dataExp.totalExpSau))
       Vue.set(this.dataExp.seriesDonut, 7, (this.dataExp.totalExpServ))
       Vue.set(this.dataExp.seriesDonut, 8, (this.dataExp.totalExpSup))
-
-      if(this.dataExp.seriesDonut[0] == 0 && this.dataExp.seriesDonut[1] == 0 && this.dataExp.seriesDonut[2] == 0 && this.dataExp.seriesDonut[3] == 0 && this.dataExp.seriesDonut[4] == 0 &&
-      this.dataExp.seriesDonut[5] == 0 && this.dataExp.seriesDonut[6] == 0 && this.dataExp.seriesDonut[7] == 0 && this.dataExp.seriesDonut[8] == 0){
-        this.dataExp.hasExp = false
-      }
     },
     filterByDate(){
       if(this.dateFilterInit == '' || this.dateFilterFinal == ''){
         this.dataExp.error = true;
         this.dataExp.msgError = 'Preencha os campos data inicial e final antes de filtrar';
       } else if(this.dateFilterFinal >= this.dateFilterInit){
+        this.dataExp.message = ''
         this.configData();
         this.setValuesSeries();
+        this.verifyMessage();
        
         this.configShowDonut();
       } else {
@@ -725,6 +734,7 @@ export default {
     clearDateFilter(){
       this.dateFilterInit = ''
       this.dateFilterFinal = ''
+      this.dataExp.message = ''
       this.dateFilterFormattedInit = ''
       this.dateFilterFormattedFinal = ''
       this.configData();
@@ -739,7 +749,7 @@ export default {
         this.dataExp.error = true;
         this.dataExp.msgError = 'Não é possivel cadastrar uma despesa sem categoria';
       } else{
-        this.dataExp.hasExp = true
+        this.dataExp.message = ''
         this.generateData();
 
         this.dataExp.newExpValue = 0
@@ -750,6 +760,7 @@ export default {
         this.configDataLine(this.yearSelected);
         this.configShowDonut();
 
+        this.verifyMessage();
         this.dataExp.msgSuccess = 'Despesa cadastrada com sucesso'
         if(!continueSave){
           this.dialog = false;
@@ -947,6 +958,16 @@ export default {
         Vue.set(this.dataExp.seriesDonut, 8, this.dataExp.totalExpSup) 
       }
     },
+    verifyMessage(){
+      if(this.dataExp.seriesDonut[0] == 0 && this.dataExp.seriesDonut[1] == 0 && this.dataExp.seriesDonut[2] == 0 && this.dataExp.seriesDonut[3] == 0 && this.dataExp.seriesDonut[4] == 0 &&
+      this.dataExp.seriesDonut[5] == 0 && this.dataExp.seriesDonut[6] == 0 && this.dataExp.seriesDonut[7] == 0 && this.dataExp.seriesDonut[8] == 0){
+        if(this.allFormsPagt[2].data.length == 0) {
+          this.dataExp.message = ''
+        } else if(this.allFormsPagt[2].data.length > 0){
+          this.dataExp.message = 'Você não possui movimentações na data selecionada.'
+        }
+      }
+    },
     editItem(item){
       this.editedItem.id = item.idExp;
       this.editedItem.desc = item.desc.trim();
@@ -971,7 +992,9 @@ export default {
       this.configData()
       this.configDataLine(this.yearSelected);
       this.dialogDelete = false;
+      this.dataExp.message = ''
       this.setValuesSeries();
+      this.verifyMessage();
       this.configShowDonut();
       if(window) {
         localStorage.setItem("dataExp", JSON.stringify(this.allFormsPagt[2].data));
@@ -1006,6 +1029,8 @@ export default {
         this.configDataLine(this.yearSelected);
         this.configShowDonut();
         this.setValuesSeries();
+        this.verifyMessage();
+
         if(window) {
           localStorage.setItem("dataExp", JSON.stringify(this.allFormsPagt[2].data));
         }
@@ -1128,8 +1153,6 @@ export default {
       
       if(this.allFormsPagt[2].data != null){
         this.allFormsPagt[2].data.forEach(element => {
-          this.dataExp.hasExp = true
-
           if(this.dateFilterInit != undefined && this.dateFilterInit != '' && this.dateFilterFinal != undefined && this.dateFilterFinal != ''){
             if(element.date >= this.dateFilterInit && element.date <= this.dateFilterFinal){
               if(element.idCategory == 0){
