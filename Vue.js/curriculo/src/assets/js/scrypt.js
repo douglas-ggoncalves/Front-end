@@ -18,13 +18,14 @@ data.projects = [
     { title: "Pokedex", link: "https://douglas-ggoncalves.github.io/Front-end/Vue.js/pokedex/dist", tech: [{ code: 4 }, { code: 1 }, { code: 10 }] },
     { title: "Conversor de Moedas", link: "https://douglas-ggoncalves.github.io/Front-end/Vue.js/conversor/dist", tech: [{ code: 4 }, { code: 1 }, { code: 10 }] },
     { title: "Calculadora", link: "https://douglas-ggoncalves.github.io/Front-end/Vue.js/calculadora/dist", tech: [{ code: 4 }, { code: 1 }] },
-    { title: "Cinemax", link: "https://themoviedb-cinemax.netlify.app/", tech: [{ code: 4 }, { code: 1 }, { code: 2 }, { code: 5 }, { code: 10 }, { code: 16 }] },
+    { title: "Cinemax", link: "https://themoviedb-cinemax.netlify.app/", tech: [{ code: 4 }, { code: 1 }, { code: 5 }, { code: 2 }, { code: 10 }, { code: 16 }] },
     { title: "Sistema Maximus", doc: "https://github.com/douglas-ggoncalves/Full-Stack/tree/main/Sistema%20Maximus/backnode#readme", tech: [{ code: 4 }, { code: 6 }, { code: 1 }, { code: 5 }, { code: 2 }, { code: 16 }, { code: 7 }] },
     { title: "Mata Mosquito", tech: [{ code: 0 }, { code: 1 }, { code: 3 }] },
     { title: "Realiza Assessoria", doc: "https://github.com/douglas-ggoncalves/Node.js/blob/main/Realiza/README.md", tech: [{ code: 6 }, { code: 13 }, { code: 1 }, { code: 3 }, { code: 8 }] },
     { title: "Guia Perguntas", doc: "https://github.com/douglas-ggoncalves/Node.js/blob/main/Guia%20Perguntas/README.md", tech: [{ code: 6 }, { code: 13 }, { code: 1 }, { code: 5 }, { code: 3 }, { code: 8 }] },
     { title: "API de Usuários", doc: "https://github.com/douglas-ggoncalves/Full-Stack/tree/main/API%20de%20Usuarios", tech: [{ code: 4 }, { code: 6 }, { code: 10 }, { code: 15 }, { code: 8 }] },
     { title: "Lista de Tarefas", link: "https://douglas-ggoncalves.github.io/Front-end/Vue.js/tarefas/dist", tech: [{ code: 4 }, { code: 1 }, { code: 17 }] },
+    { title: "Gestão Financeira", link: "https://gestao-financeira.netlify.app", tech: [{ code: 4 }, { code: 1 }, { code: 5 }, { code: 17 }] },
 ]
 
 data.technologies = [
