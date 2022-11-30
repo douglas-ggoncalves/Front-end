@@ -55,7 +55,7 @@
           <span>
             Um verdadeiro amante do conhecimento, sempre procurando aprender
             mais e compartilhar informações, tecnólogo em análise e
-            desenvolvimento de sistemas (2019 - 2021),
+            desenvolvimento de sistemas (2019 - 2021)
           </span>
 
           <h3>Habilidades e Competências</h3>
@@ -105,7 +105,7 @@
                 <p>MySQL / SQLServer</p>
                 <v-progress-linear
                   color="primary accent-4"
-                  value="75"
+                  value="80"
                 ></v-progress-linear>
               </div>
             </div>
@@ -115,7 +115,7 @@
                 <p>Vue.js</p>
                 <v-progress-linear
                   color="primary accent-4"
-                  value="80"
+                  value="85"
                 ></v-progress-linear>
               </div>
 
@@ -131,7 +131,7 @@
                 <p>Bootstrap</p>
                 <v-progress-linear
                   color="primary accent-4"
-                  value="90"
+                  value="95"
                 ></v-progress-linear>
               </div>
 
