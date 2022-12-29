@@ -73,7 +73,8 @@ export default {
         this.tasks = JSON.parse(localStorage.getItem('tasks'))
       }
     }
-  }, created(){
+  }, 
+  created(){
     if(window) {
       this.tasks = JSON.parse(localStorage.getItem('tasks'))
     } 

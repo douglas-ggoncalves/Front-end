@@ -1,0 +1,915 @@
+/* ---------- Colors ---------- */
+blue-color = #2693FF
+lightBlue-color = #E9F4FB
+darkBlue-color = #1182F2;
+white-color = #FFFFFF
+gray-color = #BFDAEB
+darkGray-color = #77899E
+lightGray-color = #F4FBFF
+lightGray2-color = #E2EEF5
+green-color = #1AD18F
+greenDark-color = #5ECDA5
+red-color = #FF4874
+red2-color = #F491BA
+orange-color = #FFC42E
+/* ---------- End Colors ---------- */
+
+
+/* ---------- Fonts ---------- */
+@font-face{
+  font-family Gilroy Black
+  font-style normal
+  src url('../fonts/SVN-Gilroy Black.ttf')
+}
+
+@font-face{
+  font-family Gilroy Bold
+  font-style normal
+  src url('../fonts/SVN-Gilroy Bold.ttf')
+}
+
+@font-face{
+  font-family Gilroy Italic
+  font-style normal
+  src url('../fonts/SVN-Gilroy Italic.ttf')
+}
+
+@font-face{
+  font-family Gilroy Light
+  font-style normal
+  src url('../fonts/SVN-Gilroy Light.ttf')
+}
+
+@font-face{
+  font-family Gilroy Medium
+  font-style normal
+  src url('../fonts/SVN-Gilroy Medium.ttf')
+}
+
+@font-face{
+  font-family Gilroy Regular
+  font-style normal
+  src url('../fonts/SVN-Gilroy Regular.ttf')
+}
+
+@font-face{
+  font-family Gilroy SemiBold
+  font-style normal
+  src url('../fonts/SVN-Gilroy SemiBold.ttf')
+}
+
+@font-face{
+  font-family Gilroy Thin
+  font-style normal
+  src url('../fonts/SVN-Gilroy Thin.ttf')
+}
+/* ---------- End Fonts ---------- */
+
+/* ---------- Global Changes ---------- */
+*{
+  margin: 0;
+  padding: 0;
+}
+
+section{
+  width: 100%;
+}
+
+.row{
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+button{
+  cursor: pointer;
+  border: none;
+}
+/* ---------- End Global Changes ---------- */
+
+/* ---------- Login Screen ---------- */
+section#loginScreen
+  display: flex;
+  height 100vh;
+  align-items: center;
+  justify-content: center;
+  background-color: blue-color;
+  
+  .leftSide
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+    color: white-color;
+  img
+    display: block;
+    margin 0 auto;
+  h1
+    color: white;
+    font-size: 2.6rem;
+    font-weight: normal;
+    display: inline;
+  h1#facilita
+    font-family: Gilroy Bold;
+  h1#tasks
+    font-family: Gilroy Regular;
+  h5
+    font-size: 0.95em;
+    font-weight: normal;
+    margin-bottom 1.25rem;
+    font-family: Gilroy Regular;
+  .rightSide
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    >div
+      padding: 0 0.5rem;
+    h3
+      font-weight normal;
+      margin: 1rem 0;
+      font-family: Gilroy Bold;
+    span
+      display: block;
+      font-weight 500;
+      opacity: 0.8;
+      font-family: Gilroy Medium;
+      margin-bottom .3rem;
+    input
+      outline: 1px solid gray-color !important;
+      border: 1px solid gray-color;
+      border-radius: 4px;
+      padding: 1rem .5rem;
+      width: 100%;
+      margin-bottom 1rem;
+      box-sizing: border-box;
+      display: inline-block;
+      &:focus
+        outline: 1px solid blue-color !important;
+        border: 1px solid blue-color !important;
+    button
+      padding: 1rem 0.8rem;
+      color: white-color;
+      background: green-color;
+      margin: .5rem 0 1.5rem 0;
+      border-radius: 4px;
+      width: 100%;
+      font-family: Gilroy SemiBold;
+      font-size: 1.01rem;
+    a
+      color: white-color;
+      font-family: Gilroy SemiBold;
+      font-size: 0.79rem;
+/* ---------- End Login Screen ---------- */
+
+/* ---------- Header ---------- */
+header
+  height: 10vh;
+  width: 100%;
+  position absolute;
+  #topNavigation
+    z-index: 1000;
+    background-color: white-color;
+    width: 80%;
+    -webkit-box-shadow: 0px 7px 12px -17px rgba(0,0,0,0.95); 
+    box-shadow: 0px 7px 12px -17px rgba(0,0,0,0.95);
+    height: 10vh;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    >div
+      display: flex;
+      align-items: center;
+      padding: 1rem .5rem;
+    div#dataUser{
+      margin: auto 0;
+    }
+    h4
+      font-family: Gilroy SemiBold;
+      line-height: 0.6;
+    span
+      color: blue-color;
+      font-family: Gilroy SemiBold;
+      font-size: 0.75rem;
+    img
+      max-width: 100%;
+      height: 2.85rem;
+      border-radius: 50%;
+      float: left;
+      margin: auto .5rem;
+  #sideNavigation
+    background-color: blue-color;
+    text-align: center;
+    color: white-color;
+    position: relative;
+    z-index: 999;
+    height 10vh;
+    width: 20%;
+    display: flex;
+    justify-content: center;
+    div#image
+      position absolute;
+      width: 100%;
+      height: 10vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      img
+        max-width: 100%;
+        height: 2.5rem;
+        margin auto .5rem auto 1.2rem;
+/* ---------- End Header ---------- */
+
+/* ---------- Home Page ---------- */
+#homePage
+  div#content  
+    height: 100vh;
+    width: 100%;
+    margin-left: auto;
+    position relative;
+    div#barLeft 
+      position: relative;
+      width: 20%;
+      float: left;
+    div#itemsMenu
+      color: white-color;
+      display: flex;
+      align-items: center;      
+      justify-content: center;
+      height: 100vh;
+      background-color: blue-color;
+      width: 100%;
+      >div
+        width: 100%;
+      span
+        display: block;
+        text-align: center;
+        padding: .8rem 0;
+        border-bottom: 1px solid rgba(191, 218, 235, 0.5);
+        width: 100%;
+        &:hover
+          background-color: darkBlue-color;
+          cursor pointer;
+        &.active
+          background-color: darkBlue-color;
+        &#first
+          border-top: 1px solid rgba(191, 218, 235, 0.5);
+      svg
+        display: block;
+        font-size: 1.6rem;
+        margin-left auto;
+        margin-right auto;
+      p
+        font-size: 0.45rem;
+        margin-top .5rem;
+        color: white-color;
+        font-family: Gilroy Regular;
+        background-color: transparent;
+    div#subMain
+      position: relative;
+      width: 90%;
+      max-width: 90%;
+      height: 100vh;
+      margin-left auto;
+    div#spacer
+      height: 10vh;
+    #leftContent
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      -webkit-box-shadow: 7px 7px 12px -17px rgba(0,0,0,0.95); 
+      box-shadow: 7px 7px 12px -17px rgba(0,0,0,0.95);
+      background-color: lightGray-color;
+      height: 22%;
+      >div
+        >button
+          margin-left: 1rem;
+      button.roundedUrgent, button.roundedImportant, button.roundedOthers
+        text-align: center; 
+        display: flex;
+        align-items: center;
+        button
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          height: 16px;
+          width: 16px;
+          color: white-color;
+          text-align: center;
+          vertical-align: center;
+          line-height: 1;
+          border-radius: 50%;
+          margin-left: .3rem;
+          margin-bottom: 0;
+      button.roundedUrgent
+        button
+          background-color: red-color;
+      button.roundedImportant
+        button
+          background-color: orange-color;
+      button.roundedOthers
+        button
+          background-color: blue-color;
+      h4
+        margin-bottom .5rem;
+        display: block;
+        font-family: Gilroy Medium;
+        opacity: 0.85;
+      button
+        background-color: transparent;
+        font-family: Gilroy SemiBold;
+        margin-bottom 0.3rem;
+        display: block;
+        font-size: 0.8rem;
+        &.active
+          color: blue-color;
+        &:hover
+          color: blue-color;
+        svg
+          font-size: 0.55rem;
+          padding-right: .4rem;
+    #rightContent
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: lightBlue-color;
+      height: 68%;      
+      margin-left: auto;
+      font-family: Gilroy Medium;
+      overflow-y: auto; 
+      >div
+        min-height: 85%;
+        max-height: 85%;
+        min-width: 50%;
+        max-width: 90%;
+      h3
+        margin-bottom .3rem;
+      p
+        color: darkGray-color;
+      span.active
+        color: blue-color;
+        &#quantTask
+          text-decoration: underline;
+      .input-container
+        display: flex;
+        margin-top 1.5rem;
+        border-radius: 4px;
+        border: 2px solid gray-color;
+        width: 100%;
+      div.items.taskActive
+        background-color: #F4FAFD;
+        span.descItem
+          text-decoration: line-through;
+          text-decoration-thickness: 1px;
+        svg
+          color: green-color;
+          opacity: 0.6;
+        span.descItem
+          opacity: 0.6;
+        div.final
+          div.chip
+            opacity: 0.6;
+      div.items
+        word-break: break-all;
+        margin-bottom: 0.5rem;
+        background-color: white-color;
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        height 100%;
+        height: 100%;
+        >div
+          width: 100%; 
+          height: 100%;
+          display: flex; 
+          align-items: center;
+        div.left
+          display: flex; 
+          align-items:center; 
+          cursor: pointer;
+          width: 100%; 
+          height: 100%;
+          padding-bottom: 1.5rem;
+          padding-top: 1.5rem;
+        div.final
+          margin-left: auto; 
+          display: flex; 
+          align-items: center;
+          min-width: 50%;
+          .dropbtn
+            color: white;
+            border: none;
+            cursor: pointer;
+            z-index: 999;
+            position: relative;
+            margin-right: .5rem;
+            svg
+              font-size: 1.25rem !important;
+              min-width: 5px !important;
+          .dropdown
+            position: relative;
+            display: inline-block;
+            padding: 0.35rem 0 0 .3rem;
+          .dropdown-content
+            display: none;
+            position: absolute;
+            top: 0;
+            right: 0;
+            background-color: white-color;
+            min-width: 105px;
+            box-shadow: 0px 2px 16px 0px rgba(0,0,0,0.2);
+            border-radius: 4px;
+            z-index: 1;
+            width: 100%;
+          .dropdown-content button
+            color: darkGray-color;
+            padding: 12px 25px 12px 0;
+            text-decoration: none;
+            font-size: 0.8rem;
+            margin: 0 auto 0 0 !important;
+            display: block;
+            font-family: Gilroy Bold;
+            font-weight: normal;
+            width: 100%;
+          .dropdown-content button:hover
+            background-color: lightGray-color !important;
+          .dropdown:hover .dropdown-content
+            display: block !important;
+          .dot
+            height: 8px;
+            width: 8px;
+            background-color: gray-color;
+            border-radius: 50%;
+            display: inline-block;
+          .dot.edit
+            background-color: greenDark-color;
+            margin-top .35rem;
+        .chip
+          display: inline-block;
+          color: white;
+          padding: 2px 13px;
+          height: 17px;
+          font-size: 14px;
+          line-height: 17px;
+          border-radius: 25px;
+          margin-bottom auto;
+          margin: auto 0 auto auto;
+          &.urgent
+            background-color: red-color;
+          &.important
+            background-color: orange-color;
+          &.others
+            background-color: blue-color;
+        span
+          font-family: Gilroy SemiBold;
+          cursor: pointer;
+        svg
+          font-size: 1.7rem;
+          color: lightGray2-color;
+          cursor: pointer;
+        button
+          margin-left auto;
+          background-color: transparent;
+          svg
+            color: gray-color;
+      svg
+        color: gray-color;
+        min-width: 50px;
+        text-align: center;
+        position relative;
+        margin: auto 0;
+        top: 50%;
+        right: 0;
+        cursor text;
+      .input-field
+        display: flex
+        align-items: center;
+        padding: 10px;
+        border: none;
+        width 100%;
+        outline: none;
+        background: transparent;
+        position relative;
+        color: darkGray-color;
+      
+    #addTask
+      background-color: #1AD18F;
+      color: white-color;
+      position: absolute;
+      right: 0;
+      z-index: 1000;
+      font-size: 1.5rem;
+      bottom: 0;
+      padding: 1rem;
+      height: 55px;
+      width: 55px;
+      border-radius: 50%;
+      margin-bottom: 2rem;
+      margin-right: 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+
+/* ---------- End Home Page ---------- */
+
+
+/* ---------- Modals ---------- */
+/* The Modal (background) */
+.modal
+  display: none; /* none, flex */
+  position: absolute;
+  z-index: 9999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  overflow: auto;
+  background-color: rgb(0,0,0);
+  background-color: rgba(0,0,0,0.4);
+  .modal-content
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    border-radius: 4px;
+    
+    /* The Close Button */
+    .close 
+      color: #aaaaaa;
+      float: right;
+      font-size: 1.3rem;
+      font-weight: bold;
+    .close:hover, .close:focus
+      color: #000;
+      text-decoration: none;
+      cursor: pointer;
+    h3
+      display: inline-block;
+      font-family: Gilroy Bold;
+      margin-bottom: 1.5rem;
+  span
+    margin-left auto;
+    margin-bottom: .3rem;
+  form
+    font-family: Gilroy Regular;
+    span
+      font-weight: 600;
+      font-size: 0.85rem;
+      opacity: 0.7;
+    input, textarea
+      width: 100%;
+      box-sizing: border-box;
+      margin-bottom: 1rem;
+      font-family: Gilroy Semibold;
+      border: 2px solid gray-color;
+      border-radius: 4px;
+      padding: .5rem;
+      opacity: 0.8;
+      font-size: 0.85rem;
+    input:focus-visible, textarea:focus-visible
+      outline: none;
+      border: 2px solid blue-color;
+    textarea
+      resize: none;
+      spellcheck: false
+    span
+      display: block;
+  div.modalFooter
+    padding-bottom: 1rem;
+    span
+      display: flex;
+      align-items: center;
+      float: left;
+      margin-right: .5rem;
+      font-family: Gilroy Regular;
+      font-weight: 600;
+      font-size: 0.7rem;
+      opacity: 0.7;
+      cursor: pointer;
+      vertical-align: middle;
+      button
+        background-color: transparent;
+        border: 2px solid gray-color;
+        height: 16px;
+        width: 16px;
+        border-radius: 50%;
+        margin-right: .3rem;
+      .buttonActive
+        background-color: green-color;
+    button#add
+      margin-left: auto;
+      float: right;
+      color: white-color;
+      background-color: green-color;
+      border-radius: 4px;
+      padding: .5rem 1rem;
+    
+    button#cancelEdit
+      margin-left: auto;
+      float: right;
+      color: white-color;
+      background-color: #A6C1D2;
+      border-radius: 4px;
+      padding: .5rem 1rem;
+    button#saveButton
+      margin-left: auto;
+      float: right;
+      color: white-color;
+      background-color: green-color;
+      border-radius: 4px;
+      padding: .5rem 1rem;
+      margin-right: .3rem;
+      margin-left: .3rem;
+    div#checkbox
+      margin-bottom: .5rem;
+      font-family: Gilroy Regular;
+      font-weight: 600;
+      opacity: 0.7;
+      font-size: 0.7rem;
+      input
+        width: 1rem;
+        height: 1rem;
+        border-radius: 50%;
+        vertical-align: middle;
+        appearance: none;
+        border: 2px solid gray-color;
+        -webkit-appearance: none;
+        cursor: pointer;
+        &.active
+          background-color: green-color;
+      label
+        vertical-align: middle;
+        cursor: pointer;
+        margin-left: 0.3rem;
+
+.modalDelete
+  display: none; /* none, flex */
+  position: absolute;
+  z-index: 9999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  overflow: auto;
+  background-color: rgb(0,0,0);
+  background-color: rgba(0,0,0,0.4);
+  text-align: center;
+  font-family: Gilroy Regular;
+  .modal-content
+    background-color: #fefefe;
+    margin: auto;
+    padding: 2rem;
+    border: 1px solid #888;
+    border-radius: 4px;
+    div#icon
+      background-color: #EDF6FC;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100px;
+      width: 100px;
+      padding: .7rem;
+      margin-left: auto;
+      margin-right: auto;
+      svg
+        height: 70px;
+        width: 70px;
+        color: darkGray-color;
+    h3
+      line-height: 1;
+      margin-top: .7rem;
+      margin-bottom: 0;
+      span
+        color: red-color;
+    span#subTitle
+      display: block;
+      margin-bottom: 1.2rem;
+      font-family: Gilroy Regular;
+      font-weight: 600;
+      margin-top: .25rem;
+      font-size: 0.85rem;
+      opacity: 0.8;
+
+    button
+      color: white; 
+      padding: .5rem 1rem;
+      border-radius: 4px
+      margin-left: .3rem;
+      margin-right: .3rem;
+
+    button#cancel
+      background-color: green-color; 
+    
+    button#confirm
+      background-color: #FF4874; 
+/* ---------- End Modals ---------- */
+
+
+/* ---------- Media Queries ---------- */
+@media (max-width: 300px) { 
+  section#loginScreen{
+    h1{
+      font-size: 2.3rem;
+    }
+
+    h3{
+      font-size: 1.025rem;
+    }
+  }
+}
+
+@media (max-width: 450px) { 
+  .modalDelete .modal-content, .modal .modal-content, {
+    margin-left: .5rem;
+    margin-right: .5rem;
+  }
+}
+@media (min-width: 576px) { 
+  #rightContent{
+    .dropdown{
+      padding: 0.35rem .5rem 0 .5rem !important;
+    }
+  }
+  #homePage div#content div#itemsMenu p{
+    font-size: 0.6rem;
+  }
+
+  #homePage{
+    div#content{
+      #leftContent{
+        height: 10%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-left: auto;
+        
+        h4{
+          display: none;
+        }
+        >div{
+          display: flex;
+          align-items: center;
+
+          >button {
+            margin-left: .5rem;
+            margin-right: .5rem;
+            font-size: 0.7rem;
+          }
+        }
+      }
+    }
+  }
+}
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) { 
+  section#loginScreen{
+    background-color: white-color;
+
+    .leftSide {
+      background-color: blue-color
+      height: 100vh;
+      -ms-flex: 0 0 41%;
+      flex: 0 0 41%;
+      max-width: 41%;
+      text-align: left;
+      img{
+        margin: 0;
+      }
+    }
+
+    .rightSide{
+      -ms-flex: 0 0 59%;
+      flex: 0 0 59%;
+      max-width: 59%;
+
+      a{
+        color: blue-color;
+      }
+    }
+  }
+
+  header{
+    #topNavigation{
+      width: 90%;
+      >div{
+        padding: 1rem 1.5rem !important;
+      }
+    }
+
+    #sideNavigation{
+      width: 10% !important;
+      div#image{
+        img{
+          height: 4rem !important;
+        }
+      }
+    }
+  }
+  #homePage{
+    div#content{
+      div#barLeft {
+        width: 10%;
+      }
+      div#itemsMenu p{
+        font-size: 0.7rem;
+      }
+      div#spacer{
+        display: none;
+      }
+
+      #leftContent{
+        height: 100%;
+        width: 20%;
+        float: left;
+
+        h4{
+          display: block;
+        }
+
+        >div{
+          display: block;
+        }
+
+        h4{
+          margin-bottom 3rem;
+        }
+        button{
+          margin-bottom 0.8rem;
+        }
+
+        #onlyFinished{
+          margin-bottom: 0;  
+        }
+      }
+
+      #rightContent{
+        max-width: 80%;
+        height: 100%; 
+        >div{
+          min-height: 70%;
+          max-height: 70%;
+          max-width: 80%;
+        }
+
+        div.items div.final{
+          min-width: 30% !important;
+        }
+      }
+    } 
+  }
+
+  .modal{
+    .modal-content{
+      width: 30%;
+    }
+    div.modalFooter{
+      span{
+        font-size: 0.8rem;
+      }
+      div#checkbox{
+        font-size: 0.8rem;
+      }
+    }
+  }
+    
+}
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) { 
+  section#loginScreen{
+    .leftSide {
+      -ms-flex: 0 0 36%;
+      flex: 0 0 36%;
+      max-width: 36%;
+    }
+
+    .rightSide{
+      -ms-flex: 0 0 64%;
+      flex: 0 0 64%;
+      max-width: 64%;
+    }
+    
+  }
+
+  #rightContent{
+    >div{
+      max-width: 60%;
+    }
+  }
+
+  .modalDelete{
+    .modal-content{
+      width: 25%;
+    }
+  }
+}
+
+// Extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) { 
+  
+}
+/* ---------- End Media Queries ---------- */

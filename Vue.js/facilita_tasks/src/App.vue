@@ -1,28 +1,31 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <Index v-show="viewSelected == 'Início'" v-on:alterViewEmit="alterViewEmit($event)"/>
+    <Home v-show="viewSelected == 'Home'" v-on:alterViewEmit="alterViewEmit($event)"/>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+ import Index from './views/Index.vue'
+ import Home from './views/Home.vue'
 
 export default {
   name: 'App',
+  data() {
+    return {
+      viewCurrent: "Index",
+      viewSelected: "Início"
+    }
+  },
   components: {
-    HelloWorld
+    Index,
+    Home
+  },
+  methods: {
+    alterViewEmit(element){
+      this.viewSelected = element;
+    }
   }
 }
 </script>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
