@@ -302,6 +302,7 @@ header
           line-height: 1;
           border-radius: 50%;
           margin-left: .3rem;
+          padding: 0.7rem;
           margin-bottom: 0;
       button.roundedUrgent
         button
@@ -766,7 +767,7 @@ header
 }
 
 // Medium devices (tablets, 768px and up)
-@media (min-width: 768px) { 
+@media (min-width: 768px) {
   section#loginScreen{
     background-color: white-color;
 
@@ -840,6 +841,7 @@ header
         }
         button{
           margin-bottom 0.8rem;
+          font-size: 1rem !important;
         }
 
         #onlyFinished{
@@ -850,10 +852,16 @@ header
       #rightContent{
         max-width: 80%;
         height: 100%; 
+        h3{
+          font-size: 1.3em;
+        }
         >div{
           min-height: 70%;
           max-height: 70%;
           max-width: 80%;
+          >p{
+            font-size: 1.1rem;
+          }
         }
 
         div.items div.final{
@@ -898,6 +906,10 @@ header
   #rightContent{
     >div{
       max-width: 60%;
+
+      >p{
+        font-size: 1.25rem !important;
+      }
     }
   }
 
@@ -906,6 +918,31 @@ header
       width: 25%;
     }
   }
+
+  #homePage{
+    div#content{
+      div#itemsMenu p{
+        font-size: 0.9rem !important;
+      }
+    }
+    #rightContent{
+      .input-field{
+        font-size: 1.1rem !important;
+      }
+      div.items{
+        div.left{
+          font-size: 1.1rem !important;
+        }
+        .chip{
+          font-size: 1.1rem !important;
+          line-height: 1 !important;
+          padding: 4px 13px !important;
+        }
+      } 
+    } 
+  }
+
+
 }
 
 // Extra large devices (large desktops, 1200px and up)
