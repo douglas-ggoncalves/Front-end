@@ -21,6 +21,7 @@ data.projects = [
     { title: "Cinemax", link: "https://themoviedb-cinemax.netlify.app/", tech: [{ code: 4 }, { code: 1 }, { code: 5 }, { code: 2 }, { code: 10 }, { code: 16 }] },
     { title: "Sistema Maximus", doc: "https://github.com/douglas-ggoncalves/Full-Stack/tree/main/Sistema%20Maximus/backnode#readme", tech: [{ code: 4 }, { code: 6 }, { code: 1 }, { code: 5 }, { code: 2 }, { code: 16 }, { code: 7 }] },
     { title: "Mata Mosquito", tech: [{ code: 0 }, { code: 1 }, { code: 3 }] },
+    { title: "Facilita Tasks", link: "https://facilitatasks.netlify.app/", tech: [{ code: 4}, { code: 0 }, { code: 1 }, { code: 18 }] },
     { title: "Realiza Assessoria", doc: "https://github.com/douglas-ggoncalves/Node.js/blob/main/Realiza/README.md", tech: [{ code: 6 }, { code: 13 }, { code: 1 }, { code: 3 }, { code: 8 }] },
     { title: "Guia Perguntas", doc: "https://github.com/douglas-ggoncalves/Node.js/blob/main/Guia%20Perguntas/README.md", tech: [{ code: 6 }, { code: 13 }, { code: 1 }, { code: 5 }, { code: 3 }, { code: 8 }] },
     { title: "API de Usuários", doc: "https://github.com/douglas-ggoncalves/Full-Stack/tree/main/API%20de%20Usuarios", tech: [{ code: 4 }, { code: 6 }, { code: 10 }, { code: 15 }, { code: 8 }] },
@@ -47,6 +48,7 @@ data.technologies = [
     { desc: "Bulma CSS", icon: "bulma", color: "green accent-2" },
     { desc: "Vue Router", icon: "vuejs", color: "green" },
     { desc: "Vuetify", icon: "vuetify", color: "blue lighten-2" },
+    { desc: "Stylus", icon: "alpha-s-box-outline", color: "light-green darken-1" }
 ]
 
 module.exports = data

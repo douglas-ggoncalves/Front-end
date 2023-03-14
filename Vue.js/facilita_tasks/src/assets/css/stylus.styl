@@ -182,6 +182,24 @@ header
       display: flex;
       align-items: center;
       padding: 1rem .5rem;
+      >div#avatar
+        height: 44px;
+        min-width: 44px;
+        width: 44px;
+        background-color: #1867c0 !important;
+        border-color: #1867c0 !important;
+        align-items: center;
+        border-radius: 50%;
+        display: inline-flex;
+        justify-content: center;
+        line-height: normal;
+        text-align: center;
+        vertical-align: middle;
+        overflow: hidden;
+        margin-right: 0.5rem;
+        span
+          color: white;
+      
     div#dataUser{
       margin: auto 0;
     }
@@ -797,6 +815,7 @@ header
   header{
     #topNavigation{
       width: 90%;
+      
       >div{
         padding: 1rem 1.5rem !important;
       }
@@ -804,6 +823,7 @@ header
 
     #sideNavigation{
       width: 10% !important;
+
       div#image{
         img{
           height: 4rem !important;
@@ -816,9 +836,11 @@ header
       div#barLeft {
         width: 10%;
       }
+
       div#itemsMenu p{
         font-size: 0.7rem;
       }
+
       div#spacer{
         display: none;
       }
@@ -850,7 +872,8 @@ header
       }
 
       #rightContent{
-        max-width: 80%;
+        max-width: 80% !important;
+        min-width: 80% !important;
         height: 100%; 
         h3{
           font-size: 1.3em;
@@ -884,8 +907,8 @@ header
       }
     }
   }
-    
 }
+
 // Large devices (desktops, 992px and up)
 @media (min-width: 992px) { 
   section#loginScreen{
@@ -900,12 +923,12 @@ header
       flex: 0 0 64%;
       max-width: 64%;
     }
-    
   }
 
   #rightContent{
     >div{
-      max-width: 60%;
+      max-width: 60% !important;
+      min-width: 60% !important;
 
       >p{
         font-size: 1.25rem !important;
@@ -941,8 +964,6 @@ header
       } 
     } 
   }
-
-
 }
 
 // Extra large devices (large desktops, 1200px and up)

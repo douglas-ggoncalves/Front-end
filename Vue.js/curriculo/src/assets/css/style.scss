@@ -24,7 +24,7 @@ $green: #06AA48;
     width: 100%; 
     text-align: center;
     margin-top: .3rem;
-    margin-bottom: .3rem;
+    margin-bottom: 1rem;
     >div{
         height: 56px;
         min-width: 56px;
@@ -226,6 +226,10 @@ div#content{
 }
 /* End Sobre */
 
+.v-list-item--dense .v-list-item__title, .v-list-item--dense .v-list-item__subtitle, .v-list--dense .v-list-item .v-list-item__title, .v-list--dense .v-list-item .v-list-item__subtitle {
+    padding-left: 0.45rem !important;
+}
+
 /* Portfólio */
 #containerPort{
     div.row{
@@ -257,6 +261,11 @@ div#content{
         margin-left: auto;
         margin-right: auto;
         color: white;
+        font-size: 1.1rem;
+
+        &:hover{
+            color: #29d9d5;
+        }
     }
 }
 /* End Portfólio */
@@ -344,7 +353,6 @@ div#content{
             .primary--text{
                 color: $green !important;
             }
-
         }
 
         #containerPort{
@@ -357,6 +365,10 @@ div#content{
 
             a{
                 color: black !important;
+
+                &:hover{
+                    color: $green !important;
+                }
             }
         }
     }

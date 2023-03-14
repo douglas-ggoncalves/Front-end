@@ -59,7 +59,7 @@
           <div>
             <h3>Minhas Tarefas</h3>
             
-            <p>Olá <span class="active">Eduardo Pereira,</span> você <span>{{ quant() > 0 ? 'tem' : 'não tem' }}</span>  <span class="active" id="quantTask">{{ quant() | showMsgTasks  }}</span> {{ quant() > 1 ? 'pendentes' : 'pendente'}}.</p>
+            <p>Olá <span class="active">Douglas Gonçalves,</span> você <span>{{ quant() > 0 ? 'tem' : 'não tem' }}</span>  <span class="active" id="quantTask">{{ quant() | showMsgTasks  }}</span> {{ quant() > 1 ? 'pendentes' : 'pendente'}}.</p>
             <div class="input-container" @click="inputFocus()">
               <input id="searchTaskInput" class="input-field" type="text" v-model="inputSearch" placeholder="Buscar Tarefas">
               <font-awesome-icon icon="fa-solid fa-magnifying-glass" />
@@ -290,7 +290,7 @@ export default {
       },
       tasks:[
         /*{ id: 1, title: "Planejar desenvolvimento do app TodoList",  description: "adasd", checked: true, category: 'urgent', descCategory: 'Urgente' },
-        { id: 2, title: "Criar projeto Vue.js",  description: "adasd",checked: false, category: 'important', descCategory: 'Importante' },
+        { id: 2, title: "Criar projeto Vue.js", description: "adasd", checked: false, category: 'important', descCategory: 'Importante' },
         { id: 3, title: "Montar telas HTML/CSS", description: "adasd", checked: false, category: 'important', descCategory: 'Importante' },*/
       ]
     }

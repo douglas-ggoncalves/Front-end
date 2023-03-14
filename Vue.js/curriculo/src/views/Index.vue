@@ -53,9 +53,10 @@
           <h3>Sobre mim</h3>
 
           <span>
-            Um verdadeiro amante do conhecimento, sempre procurando aprender
-            mais e compartilhar informações, tecnólogo em análise e
-            desenvolvimento de sistemas (2019 - 2021)
+            Sou um desenvolvedor com vivência em construção de projetos bem
+            elaborados, apaixonado pelo o que faço, sou de fácil relacionamento e
+            focado em resultados, estou sempre em busca de aprender algo que me
+            ajude a ser um desenvolvedor cada vez melhor.
           </span>
 
           <h3>Habilidades e Competências</h3>
@@ -136,6 +137,14 @@
               </div>
 
               <div>
+                <p>C#</p>
+                <v-progress-linear
+                  color="primary accent-4"
+                  value="85"
+                ></v-progress-linear>
+              </div>
+
+              <div>
                 <p>jQuery</p>
                 <v-progress-linear
                   color="primary accent-4"
@@ -197,7 +206,7 @@
               </v-chip-group>
             </v-card-text>
 
-            <v-card-actions color="deep-purple lighten-2">
+            <v-card-actions id="urlsProjetos" color="deep-purple lighten-2">
               <a
                 v-if="!project.link && !project.doc"
                 target="blank"

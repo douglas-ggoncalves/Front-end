@@ -10,9 +10,13 @@
 
       <div id="topNavigation">
         <div>
-          <img src="../assets/img/john.jpg" alt="Eduardo Pereira da Costa">
+          <div id="avatar">
+            <span>
+              DG
+            </span>
+          </div>
           <div id="dataUser">
-            <h4>Eduardo Pereira da Costa</h4>
+            <h4>Douglas Gonçalves</h4>
             <span>Front-end Developer</span>
           </div>
         </div>

@@ -21,7 +21,7 @@
   width: 100%;
   text-align: center;
   margin-top: .3rem;
-  margin-bottom: .3rem;
+  margin-bottom: 1rem;
 }
 
 #divImage > div {
@@ -265,6 +265,10 @@ div#content {
 }
 
 /* End Sobre */
+.v-list-item--dense .v-list-item__title, .v-list-item--dense .v-list-item__subtitle, .v-list--dense .v-list-item .v-list-item__title, .v-list--dense .v-list-item .v-list-item__subtitle {
+  padding-left: 0.45rem !important;
+}
+
 /* Portfólio */
 #containerPort div.row {
   display: -webkit-box;
@@ -309,6 +313,11 @@ div#content {
   margin-left: auto;
   margin-right: auto;
   color: white;
+  font-size: 1.1rem;
+}
+
+#containerPort a:hover {
+  color: #29d9d5;
 }
 
 /* End Portfólio */
@@ -387,6 +396,10 @@ div#content {
 
 .theme--light #content #containerPort a {
   color: black !important;
+}
+
+.theme--light #content #containerPort a:hover {
+  color: #06AA48 !important;
 }
 
 /* End Alter Theme */

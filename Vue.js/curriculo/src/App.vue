@@ -46,7 +46,6 @@
 
       <v-navigation-drawer v-model="drawer" absolute temporary>
         <v-list dense nav>
-
           <div id="divImage" style="">
             <div app>
               <span>DG</span>
@@ -70,7 +69,7 @@
               </v-list-item-icon>
 
               <v-list-item-content>
-                <v-list-item-title>{{ item.title }}</v-list-item-title>
+                <v-list-item-title style="font-family: 'Roboto', sans-serif;">{{ item.title }}</v-list-item-title>
               </v-list-item-content>
             </v-list-item>
           </v-list-item-group>

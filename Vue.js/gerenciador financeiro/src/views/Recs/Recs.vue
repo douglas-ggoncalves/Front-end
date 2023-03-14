@@ -241,7 +241,7 @@
           </div>
 
           <div class="divDash" v-if="allFormsPagt[1].data != null && allFormsPagt[1].data.length > 0 && dataRec.message == ''">
-            <apexchart class=""  height="350" id="apexDonutRec" type="donut" :options="dataRec.optionsDonut" :series="dataRec.seriesDonut"></apexchart>
+            <apexchart class="" height="350" id="apexDonutRec" type="donut" :options="dataRec.optionsDonut" :series="dataRec.seriesDonut"></apexchart>
           </div>
         </div>
       </v-col>
@@ -956,7 +956,6 @@ export default {
       
       if(this.allFormsPagt[1].data != null){
         this.allFormsPagt[1].data.forEach(element => {
-
           if(this.dateFilterInit != undefined && this.dateFilterInit != '' && this.dateFilterFinal != undefined && this.dateFilterFinal != ''){
             if(element.date >= this.dateFilterInit && element.date <= this.dateFilterFinal){
               if(element.idCategory == 0){
