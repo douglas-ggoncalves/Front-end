@@ -1,0 +1,94 @@
+* {
+  margin: 0;
+  padding: 0;
+  border: none;
+  list-style: none;
+  outline: none !important;
+  text-decoration: none !important;
+  transition: all 0.2s;
+  -webkit-transition: all 0.2s;
+  -moz-transition: all 0.2s;
+  -o-transition: all 0.2s;
+  font-family: 'Roboto', 'sans-serif';
+}
+
+header, section, footer {
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+/* ---------- Variables ---------- */
+/* ---------- End Variables ---------- */
+body {
+  background-color: black !important;
+}
+
+body div#main {
+  background-color: #1b1b1b;
+  padding: 1.5rem .7rem 1.5rem .7rem;
+  color: white;
+  text-align: center;
+}
+
+body div#main > div {
+  width: 100%;
+}
+
+body div#main > div div#password span {
+  display: block;
+  margin: 0 auto 1rem auto;
+  padding: .5rem 0 .5rem 0;
+  line-height: normal;
+  text-align: left;
+  width: 100% !important;
+  font-size: 1.5rem;
+}
+
+body div#main > div div.itens {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-bottom: .3rem;
+}
+
+body div#main > div div.itens span {
+  cursor: pointer;
+  line-height: normal;
+  font-size: 1.2rem;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+body div#main > div div.itens span:hover {
+  color: aqua;
+}
+
+body div#main > div div.itens input {
+  margin-left: auto;
+}
+
+body div#main > div h3 {
+  margin-bottom: 1rem;
+}
+
+body div#main > div button {
+  cursor: pointer;
+  margin-top: 1.5rem;
+  width: 100%;
+  padding: .3rem 1rem;
+}
+
+body div#main > div button:hover {
+  color: white;
+  background-color: black;
+}
+/*# sourceMappingURL=style.css.map */
