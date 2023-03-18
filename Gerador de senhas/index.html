@@ -27,25 +27,26 @@
     <title>Gerador de Senhas</title>
 </head>
 <body>
+    
     <div class="container-fluid" style="height: 100vh;">
         <div class="row d-flex justify-content-center align-items-center h-100">
-            <div class="col-4" id="main">
+            <div class="col-11 col-sm-8 col-md-6 col-lg-4 col-xl-3" id="main">
                 <h3>
                     Gerador de Senhas
                 </h3>
 
                 <div>
                     <div id="password">
-                        <span id="passwordSpan">asdasd</span>
-
-                        <button onclick="copyPassword()">
+                        <span id="passwordSpan"></span>
+                        
+                        <button data-toggle="tooltip" data-placement="left" title="Tooltip on left" onclick="copyPassword()">
                             <i class="fa-regular fa-clipboard"></i>
                         </button>
                     </div>
 
                     <div class="itens">
                         <span>Tamanho da senha</span>
-                        <input type="number" min="4" max="50" value="14">
+                        <input type="number" id="number" min="4" max="50" value="20">
                     </div>
 
                     <div class="itens">
@@ -68,7 +69,7 @@
                         <input type="checkbox" checked id="symbols">
                     </div>
 
-                    <button onclick="generatePassword()">
+                    <button id="generatePassword" onclick="generatePassword()">
                         Gerar Senha
                     </button>
                 </div>
@@ -84,18 +85,85 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
         integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
         crossorigin="anonymous"></script>
+    <script src="js/zxcvbn.js">
+    </script>
     <script src="js/bootstrap.min.js"></script>
     <script>
-        function copyPassword(){
-            navigator.clipboard.writeText(document.getElementById("passwordSpan").innerText)
-        }
-        
-        function generatePassword(element){
+        function generatePassword(){
+            var count = document.getElementById("number").value;
+            
+            if(count < 4){
+                alert("A senha deve conter pelo menos 4 caracteres.");
+                return;
+            }
 
+            var uppercaseLetters = document.getElementById('uppercaseLetters').checked;
+            var lowercaseLetters = document.getElementById('lowercaseLetters').checked;
+            var numbers = document.getElementById('numbers').checked;
+            var symbols = document.getElementById('symbols').checked;
+            var password = "";
+
+            if(!uppercaseLetters && !lowercaseLetters && !numbers && !symbols){
+                alert("Selecione uma opção para poder gerar a senha.");
+                return;
+            }
+
+            var optionsUppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+            var optionsLowerCase = "abcdefghijklmnopqrstuvwxyz";
+            var optionsNumbers = "0123456789";
+            var optionsSymbols = "!@#$%^&*()+?><:{}[]";
+
+            while(password.length < count){
+                var randomNumber = Math.floor(Math.random() * 4);
+
+                if(randomNumber == 0 && uppercaseLetters){
+                    password += optionsUppercase[Math.floor(Math.random() * (optionsUppercase.length))]
+                }
+
+                if(randomNumber == 1 && lowercaseLetters){
+                    password += optionsLowerCase[Math.floor(Math.random() * (optionsLowerCase.length))]
+                }
+
+                if(randomNumber == 2 && numbers){
+                    password += optionsNumbers[Math.floor(Math.random() * (optionsNumbers.length))]
+                }
+
+                if(randomNumber == 3 && symbols){
+                    password += optionsSymbols[Math.floor(Math.random() * (optionsSymbols.length))]
+                }
+            }
+            
+            document.getElementById("passwordSpan").textContent = password;
         }
 
         function alterarCheckBox(element){
             document.getElementById(element).checked = !document.getElementById(element).checked;
+        }
+
+        function copyPassword(){
+            var count = document.getElementById("number").value;
+
+            if(document.getElementById("passwordSpan").innerText == ""){
+                alert("Não há dados para copiar.");
+                return;
+            }
+
+            var password = document.getElementById("passwordSpan").innerText;
+            validatePassword(password);
+
+            navigator.clipboard.writeText(password).then(res => {
+                alert("Senha copiada com sucesso.")
+            }).catch(err => {
+                alert("Não foi possível copiar a senha.")
+            })
+        }
+
+        function validatePassword(password){
+            var teste = zxcvbn('Tr0ub4dour&3')
+
+            alert("teste " + JSON.stringify(teste.score))
+            
+
         }
     </script>
 </body>
