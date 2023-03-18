@@ -9,7 +9,7 @@
     -webkit-transition: all 0.2s;
     -moz-transition: all 0.2s;
     -o-transition: all 0.2s;
-    font-family:  'Roboto', 'sans-serif';
+    font-family: 'Roboto', 'sans-serif';
 }
 
 header, section, footer{
@@ -38,14 +38,33 @@ body{
             width: 100%;
 
             div#password{
+                border: 1px solid rgba(255, 255, 255, 0.3);
+                display: flex;
+                align-items: center;
+                margin-bottom: 1.5rem;
+                padding: .3rem .4rem;
+
                 span{
-                    display: block;
-                    margin: 0 auto 1rem auto;
-                    padding: .5rem 0 .5rem 0;
+                    display: inline-block;
                     line-height: normal;
                     text-align: left;
-                    width: 100% !important;
-                    font-size: 1.5rem;
+                    width: 50% !important;
+                    font-size: 1.4rem;
+                }
+
+                button{
+                    color: white;
+                    float: right;
+                    background-color: rgb(51, 49, 49);
+                    width: 20%;
+                    height: 100%;
+                    line-height: normal;
+                    margin: 0 0 0 auto;
+
+                    &:hover{
+                        background-color: white;
+                        color: black;
+                    }
                 }
             }
 

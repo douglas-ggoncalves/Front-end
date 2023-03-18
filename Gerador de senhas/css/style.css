@@ -37,14 +37,39 @@ body div#main > div {
   width: 100%;
 }
 
+body div#main > div div#password {
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-bottom: 1.5rem;
+  padding: .3rem .4rem;
+}
+
 body div#main > div div#password span {
-  display: block;
-  margin: 0 auto 1rem auto;
-  padding: .5rem 0 .5rem 0;
+  display: inline-block;
   line-height: normal;
   text-align: left;
-  width: 100% !important;
-  font-size: 1.5rem;
+  width: 50% !important;
+  font-size: 1.4rem;
+}
+
+body div#main > div div#password button {
+  color: white;
+  float: right;
+  background-color: #333131;
+  width: 20%;
+  height: 100%;
+  line-height: normal;
+  margin: 0 0 0 auto;
+}
+
+body div#main > div div#password button:hover {
+  background-color: white;
+  color: black;
 }
 
 body div#main > div div.itens {
