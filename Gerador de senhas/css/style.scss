@@ -20,7 +20,6 @@ header, section, footer{
     margin-left: auto;
 }
 
-
 /* ---------- Variables ---------- */
 $colorBlack: black;
 $colorWhite: white;
@@ -47,7 +46,6 @@ body{
                 margin-bottom: 1.5rem;
                 padding: .3rem .4rem;
                 height: 50px;
-                
 
                 span{
                     display: inline-block;
@@ -104,6 +102,22 @@ body{
                 input#number{
                     padding-left: .3rem;
                 }
+
+                div.progress{
+                    display: inline; 
+                    width: 50%; 
+                    margin-left: auto;
+                    height: 1.25rem;
+                    overflow: visible;
+                    border-radius: 0.25rem !important;
+
+                    >div.progress-bar{
+                        font-size: 1.2rem;
+                        line-height: normal;
+                        height: 100%;
+                        border-radius: 0.25rem !important;
+                    }
+                }
             }
 
             h3{
@@ -131,8 +145,18 @@ body{
     }
 }
 
-@media (min-width: 576px) { 
-    
+@media (max-width: 340px) { 
+    div#main{
+        >div{
+            div.itens{
+                div.progress{
+                    >div.progress-bar{
+                        font-size: 1rem !important;
+                    }
+                }
+            }
+        }
+    }
 }
 
 @media (min-width: 768px) { 
