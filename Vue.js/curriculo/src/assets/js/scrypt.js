@@ -26,6 +26,7 @@ data.projects = [
     { title: "Guia Perguntas", doc: "https://github.com/douglas-ggoncalves/Node.js/blob/main/Guia%20Perguntas/README.md", tech: [{ code: 6 }, { code: 13 }, { code: 1 }, { code: 5 }, { code: 3 }, { code: 8 }] },
     { title: "API de Usuários", doc: "https://github.com/douglas-ggoncalves/Full-Stack/tree/main/API%20de%20Usuarios", tech: [{ code: 4 }, { code: 6 }, { code: 10 }, { code: 15 }, { code: 8 }] },
     { title: "Lista de Tarefas", link: "https://douglas-ggoncalves.github.io/Front-end/Vue.js/tarefas/dist", tech: [{ code: 4 }, { code: 1 }, { code: 17 }] },
+    { title: "Gerador de Senhas", tech: [{ code: 0 }, { code: 1 }, { code: 5 }, { code: 2 }, { code: 3 }] },
     { title: "Gestão Financeira", link: "https://gestao-financeira.netlify.app", tech: [{ code: 4 }, { code: 1 }, { code: 5 }, { code: 17 }] },
 ]
 
