@@ -1,0 +1,35 @@
+
+$grayColor: #F7F6F5;
+$greenColor: #558B2F;
+
+/* Start index */
+div#index{
+    background-color: $grayColor;
+
+    /* Start headerRow */
+    div#headerRow{
+        text-align: center;
+
+        #images{
+            span{
+                font-size: 2rem;
+            }
+
+            hr{
+                width: 70%; 
+                margin: 0 auto;
+            }
+        }
+    }
+    /* End headerRow */
+
+    /* Start dataRow */
+    div#dataRow, div#selectFoodRow{
+        h2{
+            font-weight: normal;
+            color: $greenColor;
+        }
+    }
+    /* End dataRow */
+}
+/* End index */
