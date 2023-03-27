@@ -33,13 +33,17 @@
     <v-row id="selectFoodRow">
       <v-col cols="12">
         <h2>Selecione uma Comida</h2>
+        <input type="file" id="archivoExcel" value="../assets/js/myfoodapediadata/Food_Display_Table.xlsx" @change="subirExcel()">
+
+        <v-btn color="success" @click="descarExcel()">
+          Download
+        </v-btn>
       </v-col>
 
       <v-col cols="12">
         <v-text-field
           v-model="message"
           :append-icon="'mdi-magnify'"
-          :prepend-icon="icon"
           filled
           clear-icon="mdi-close-circle"
           clearable
@@ -47,17 +51,18 @@
           type="text"
           @click:clear="clearMessage"
           @click:append="searchData"
-          
         ></v-text-field>
       </v-col>
-
-     
     </v-row>
   </v-container>
 </template>
 
 <script>
 import '../assets/style/style.css'
+
+//import scrypt from '../assets/js/scrypt.js'
+import readXlsFile from "read-excel-file";
+import exportFromJSON from "export-from-json";
 
 export default {
   name: 'HelloWorld',
@@ -66,7 +71,9 @@ export default {
   },
   data (){
     return{
-      message: ''
+      message: '',
+      foodName: '',
+      items: []
     }
   },
   methods: {
@@ -78,8 +85,32 @@ export default {
     },
     clearMessage () {
       this.message = ''
+    },
+    subirExcel(){
+      /*const input = document.getElementById("archivoExcel");
+
+      readXlsFile(input.files[0]).then((rows) => {
+        this.items = rows;
+      })*/
+
+      
+    },
+
+    descarExcel(){
+      const data = this.items;
+      const fileName = "download";
+      const exportType = exportFromJSON.types.json
+
+      exportFromJSON({ data, fileName, exportType })
     }
   },
+
+  mounted(){
+    readXlsFile("../assets/js/myfoodapediadata/Food_Display_Table.xlsx").then((rows) => {
+      this.items = rows;
+      console.log("itens " + this.items)
+    })
+  }
 }
 </script>
 
