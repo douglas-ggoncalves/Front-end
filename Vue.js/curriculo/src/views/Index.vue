@@ -106,7 +106,7 @@
                 <p>MySQL / SQLServer</p>
                 <v-progress-linear
                   color="primary accent-4"
-                  value="80"
+                  value="90"
                 ></v-progress-linear>
               </div>
             </div>
@@ -160,13 +160,25 @@
                 ></v-progress-linear>
               </div>
             </div>
+            
           </div>
+            <v-btn class="mt-15" large rounded color="primary" @click="alterViewEmit2()">
+              VER MAIS
+            </v-btn>
         </v-col>
       </v-row>
     </v-container>
 
     <v-container id="containerPort" :fluid="true" v-if="select == 'Portfólio'">
+      
+
       <v-row class="px-sm-2 px-md-3 px-lg-3">
+        <v-col :cols="12">
+          <v-btn class="mb-5" large rounded color="primary" @click="alterViewEmit3()">
+              Entrar em Contato
+            </v-btn>
+        </v-col>
+
         <v-col
           v-for="(project, index) in projects"
           :key="index"
@@ -222,6 +234,12 @@
               >
             </v-card-actions>
           </v-card>
+        </v-col>
+
+        <v-col :cols="12">
+          <v-btn class="mt-15" large rounded color="primary" @click="alterViewEmit3()">
+              Entrar em Contato
+            </v-btn>
         </v-col>
       </v-row>
     </v-container>
@@ -401,6 +419,12 @@ export default {
   methods: {
     alterViewEmit() {
       this.$emit("alterViewEmit", "Sobre");
+    },
+    alterViewEmit2() {
+      this.$emit("alterViewEmit", "Portfólio");
+    },
+    alterViewEmit3() {
+      this.$emit("alterViewEmit", "Contato");
     },
     typeText() {
       if (this.charIndex < this.typeArray[this.typeArrayIndex].length) {

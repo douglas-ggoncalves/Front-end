@@ -20,38 +20,29 @@
 #divImage {
   width: 100%;
   text-align: center;
-  margin-top: .3rem;
+  margin-top: 0.3rem;
   margin-bottom: 1rem;
 }
-
 #divImage > div {
   height: 56px;
   min-width: 56px;
   width: 56px;
   background-color: #f44336 !important;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  align-items: center;
   border-radius: 50%;
-  display: -webkit-inline-box;
-  display: -ms-inline-flexbox;
   display: inline-flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  justify-content: center;
   line-height: normal;
   position: relative;
   text-align: center;
   vertical-align: middle;
   overflow: hidden;
 }
-
 #divImage > div span {
   color: white;
 }
-
 #divImage hr {
-  margin: .5rem auto;
+  margin: 0.5rem auto;
   width: 50%;
   border: 3px solid white none;
   border-bottom: none;
@@ -77,8 +68,7 @@ div#content {
 }
 
 .v-sheet.v-card:not(.v-sheet--outlined) {
-  -webkit-box-shadow: none !important;
-          box-shadow: none !important;
+  box-shadow: none !important;
 }
 
 .v-application--wrap {
@@ -86,65 +76,38 @@ div#content {
 }
 
 #content .container.container--fluid {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  align-items: center;
   text-align: center;
   min-height: 100%;
 }
 
 /* containerInício */
 #containerInício > .row {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  justify-content: center;
   text-align: center;
   padding: 0;
   margin: 0;
 }
-
 #containerInício h3 span.cursor {
   display: inline-block;
   margin-left: 3px;
   width: 4px;
-  -webkit-animation: cursorBlink 1s infinite;
-          animation: cursorBlink 1s infinite;
+  animation: cursorBlink 1s infinite;
 }
-
 #containerInício h3 span.cursor.typing {
-  -webkit-animation: none;
-          animation: none;
+  animation: none;
 }
-
 #containerInício button {
   display: block;
   margin-left: auto;
   margin-right: auto;
-  margin-top: .3rem;
+  margin-top: 0.3rem;
 }
-
 #containerInício span#name {
   font-weight: bold;
 }
-
-@-webkit-keyframes cursorBlink {
-  49% {
-    background-color: #fff;
-  }
-  50% {
-    background-color: transparent;
-  }
-  99% {
-    background-color: transparent;
-  }
-}
-
 @keyframes cursorBlink {
   49% {
     background-color: #fff;
@@ -160,52 +123,37 @@ div#content {
 /* End containerInício */
 /* Contato */
 #containerContato {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  justify-content: center;
 }
-
 #containerContato > .row {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  justify-content: center;
   text-align: center;
   padding-bottom: 1rem;
   padding-top: 1rem;
 }
-
 #containerContato form > div {
-  padding-bottom: .5rem;
-  padding-top: .5rem;
+  padding-bottom: 0.5rem;
+  padding-top: 0.5rem;
 }
-
 #containerContato form h3 {
   margin-top: 2.5rem;
 }
-
 #containerContato h3 {
-  margin-bottom: .3rem;
+  margin-bottom: 0.3rem;
 }
-
 #containerContato a {
-  margin-left: .3rem;
-  margin-right: .3rem;
+  margin-left: 0.3rem;
+  margin-right: 0.3rem;
   color: transparent;
 }
-
 #containerContato hr {
-  margin: 3rem auto .5rem;
+  margin: 3rem auto 0.5rem;
   width: 50%;
   border: 3px solid white none;
   border-bottom: none;
 }
-
 #containerContato .theme--dark.v-btn-toggle:not(.v-btn-toggle--group) {
   background: transparent !important;
 }
@@ -213,51 +161,36 @@ div#content {
 /* End Contato */
 /* Sobre */
 #containerSobre > .row {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  justify-content: center;
   padding-bottom: 1rem;
   padding-top: 1rem;
   text-align: center;
 }
-
 #containerSobre > .row #elements {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  justify-content: center;
   margin-top: 1rem;
 }
-
 #containerSobre > .row #elements > div {
   text-align: left;
   margin-left: 1rem;
   margin-right: 1rem;
   width: 50%;
 }
-
 #containerSobre > .row #elements > div > div {
-  padding-bottom: .5rem;
-  padding-top: .5rem;
+  padding-bottom: 0.5rem;
+  padding-top: 0.5rem;
 }
-
 #containerSobre > .row #elements p {
-  margin-bottom: .3rem !important;
+  margin-bottom: 0.3rem !important;
 }
-
 #containerSobre > .row h3, #containerSobre > .row h4 {
   margin-top: 1rem;
 }
-
 #containerSobre > .row span {
   display: block;
 }
-
 #containerSobre > .row span > a {
   text-decoration: none;
   text-align: center !important;
@@ -271,42 +204,24 @@ div#content {
 
 /* Portfólio */
 #containerPort div.row {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  justify-content: center;
   width: 100%;
   padding-bottom: 2.5rem;
   padding-top: 2.5rem;
   background-color: #121212;
 }
-
 #containerPort .v-card__title {
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  justify-content: center;
 }
-
 #containerPort .v-card__text {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  justify-content: center;
 }
-
 #containerPort .v-card__actions {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  justify-content: center;
 }
-
 #containerPort a {
   text-decoration: none;
   text-align: center !important;
@@ -315,7 +230,6 @@ div#content {
   color: white;
   font-size: 1.1rem;
 }
-
 #containerPort a:hover {
   color: #29d9d5;
 }
@@ -325,15 +239,12 @@ div#content {
 .theme--dark #content #containerInício span#name {
   color: #2196f3 !important;
 }
-
 .theme--dark #content #containerInício h3 span.typed-text {
   color: #2196f3;
 }
-
 .theme--dark #content #containerInício h3 span.cursor {
   background-color: white;
 }
-
 .theme--dark #content #containerContato .v-label.v-label--active-theme--dark.primary--text {
   color: white !important;
 }
@@ -341,66 +252,57 @@ div#content {
 .theme--light #content #containerInício button {
   background-color: #06AA48 !important;
 }
-
 .theme--light #content #containerInício span#name {
   color: #06AA48 !important;
 }
-
 .theme--light #content #containerInício h3 span.typed-text {
   color: #06AA48;
 }
-
 .theme--light #content #containerInício h3 span.cursor {
   background-color: black;
 }
-
 .theme--light #content #containerInício svg.primary--text {
   color: #06AA48 !important;
   caret-color: #06AA48 !important;
 }
-
+.theme--light #content #containerSobre button {
+  background-color: #06AA48 !important;
+}
 .theme--light #content #containerSobre .v-progress-linear__background.primary.accent-4 {
   background-color: #06AA48 !important;
   border-color: #06AA48 !important;
 }
-
 .theme--light #content #containerSobre div.v-progress-linear__determinate.primary.accent-4 {
   background-color: #06AA48 !important;
   border-color: #06AA48 !important;
 }
-
 .theme--light #content #containerSobre svg.primary--text {
   color: #06AA48 !important;
   caret-color: #06AA48 !important;
 }
-
 .theme--light #content #containerSobre a {
   color: #06AA48 !important;
 }
-
 .theme--light #content #containerContato .v-label.v-label--active-theme--dark.primary--text {
   color: white !important;
 }
-
 .theme--light #content #containerContato .primary--text {
   color: #06AA48 !important;
 }
-
+.theme--light #content #containerPort button {
+  background-color: #06AA48 !important;
+}
 .theme--light #content #containerPort div.row {
   background-color: #FFFFFF;
 }
-
 .theme--light #content #containerPort .v-card {
   border: 1px solid rgba(0, 0, 0, 0.2);
 }
-
 .theme--light #content #containerPort a {
   color: black !important;
 }
-
 .theme--light #content #containerPort a:hover {
   color: #06AA48 !important;
 }
 
-/* End Alter Theme */
-/*# sourceMappingURL=style.css.map */
+/* End Alter Theme *//*# sourceMappingURL=style.css.map */
