@@ -4,22 +4,41 @@
     text-decoration: none;
 }
 
-body.darkScrollbar::-webkit-scrollbar {
-    height: 1rem;
-    width: 0.9rem;
-}
+/* Start Style ScroolBar */
+    // Specific to Webkit browsers such as Chrome, Safari and new versions of Microsoft Edge.
+    body.darkScrollbar::-webkit-scrollbar {
+        height: 1rem;
+        width: 0.9rem;
+    }
 
-body.darkScrollbar::-webkit-scrollbar-thumb {
-    background-color: rgba(217,217,227,0.2);
-    border-color: rgba(255,255,255, 0.29);
-    border-radius: 9999px;
-    border-width: 1px;
-}
+    body.darkScrollbar::-webkit-scrollbar-thumb {
+        background-color: rgba(217,217,227,0.2);
+        border-color: rgba(255,255,255, 0.29);
+        border-radius: 9999px;
+        border-width: 1px;
+    }
 
-body.darkScrollbar::-webkit-scrollbar-track {
-    background-color: black;
-    border-radius: 9999px;
-}
+    body.darkScrollbar::-webkit-scrollbar-track {
+        background-color: black;
+    }
+
+    // Specific to Firefox
+    body.darkScrollbar {
+        scrollbar-width: thin;
+        scrollbar-color: rgba(217,217,227,0.2) black;
+    }
+
+    // Specific to Internet Explorer
+    body.darkScrollbar {
+        scrollbar-face-color: rgba(217,217,227,0.2);
+        scrollbar-track-color: black;
+        scrollbar-shadow-color: black;
+        scrollbar-highlight-color: black;
+        scrollbar-3dlight-color: black;
+        scrollbar-darkshadow-color: black;
+        scrollbar-arrow-color: rgba(217,217,227,0.2);
+    }
+/* End Style ScroolBar */
 
 .v-application .v-list  a {
     padding-left: 0 !important;
@@ -31,4 +50,10 @@ body.darkScrollbar::-webkit-scrollbar-track {
 
 .v-application .theme--light.v-list a {
     color: rgba(0, 0, 0, 0.87) !important;
+}
+
+@media (min-width: 1264px) { 
+    #home div.v-overlay__scrim{
+      opacity: 0 !important;
+    }
 }

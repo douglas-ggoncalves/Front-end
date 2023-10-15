@@ -1,48 +1,11 @@
 <template>
   <v-container fluid id="home">
-    <v-navigation-drawer
-      class="d-lg-none"
-      v-model="drawer"
-      absolute
-      temporary
-    >
-      <v-list-item style="height: 8vh;">
-        <v-list-item-avatar>
-          <v-img src="../assets/img/profilePhoto.png"></v-img>
-        </v-list-item-avatar>
-
-        <v-list-item-content>
-          <v-list-item-title>Douglas Gonçalves</v-list-item-title>
-        </v-list-item-content>
-      </v-list-item>
-
-      <v-divider></v-divider>
-
-      <v-list dense>
-        <v-list-item
-          v-for="link in linksInComputed"
-          :key="link.title"
-          link
-        >
-        <a :href="link.url" class="v-list-item v-list-item--link">
-          <v-list-item-icon>
-            <v-icon>{{ link.icon }}</v-icon>
-          </v-list-item-icon>
-
-          <v-list-item-content>
-            <v-list-item-title>{{ link.title }}</v-list-item-title>
-          </v-list-item-content>
-        </a>
-
-        </v-list-item>
-
-      </v-list>
-    </v-navigation-drawer>
+    <SideBar ref="sidebarRef" />
 
     <v-theme-provider id="main">
       <v-row>
         <v-col class="d-flex justify-start align-center leftColNav" :cols="9" :md="9" :lg="3">
-          <v-img src="../assets/img/profilePhoto.png"></v-img>
+          <v-img src="../../assets/img/profilePhoto.png"></v-img>
       
           <h3 class="ml-lg-4">DOUGLAS GONÇALVES</h3>
         </v-col>
@@ -63,6 +26,7 @@
             v-bind="attrs"
             v-on="on"
             v-on:click="drawer = !drawer"
+            @click="toggleSideBar"
           >
             <v-icon>mdi-menu</v-icon>
           </v-btn>
@@ -118,12 +82,19 @@
 </template>
 
 <script>
-import '../assets/style.css'
+import '../../assets/style.css'
+import SideBar from './SideBar.vue'
 
 export default {
+  props: {
+    isOpen: {
+      type: Boolean,
+      default: true
+    },
+  },
   data(){
     return{
-      themeDark: false,
+      themeDark: true,
       languageIndex: 0,
       drawer: null,
     }
@@ -132,20 +103,30 @@ export default {
     alterTheme(){
       this.$vuetify.theme.dark = !this.$vuetify.theme.dark;
       this.themeDark = !this.$vuetify.theme.dark;
+      const bodyElement = document.getElementsByTagName("body")[0];
+    
+      if (this.$vuetify.theme.dark == true) {
+        bodyElement.classList = "darkScrollbar";
+      } else {
+        bodyElement.classList = "";
+      }
     },
     changeLanguage(){
       var language = this.languageIndex == 0 ?  "pt": "en";
 
       this.$i18n.locale = language;
     },
-    asdasd(asdsad){
-      alert('asd ' + JSON.stringify(asdsad)) // url
+    toggleSideBar() {
+      this.$refs.sidebarRef.toggleSidebar();
     }
   },
   computed: {
     linksInComputed() {
       return this.$t('links');
     }
+  },
+  components: {
+    SideBar
   }
 }
 </script>
@@ -231,37 +212,33 @@ export default {
     }
   }
 
-@media (max-width: 345px) { 
-  #home{
-    div.leftColNav{
-      padding-left: 0 !important;
-      margin-left: 0 !important;
+  @media (max-width: 345px) { 
+    #home{
+      div.leftColNav{
+        padding-left: 0 !important;
+        margin-left: 0 !important;
 
-      div.v-avatar.teal{
-        display: none;
+        div.v-avatar.teal{
+          display: none;
+        }
       }
-    }
 
-    h3{
-      font-size: 0.85rem !important;
+      h3{
+        font-size: 0.85rem !important;
+      }
     }
   }
-}
 
-@media (min-width: 1264px) { 
-  #home{
-    >div.v-overlay.v-overlay--absolute.v-overlay--active > div.v-overlay__scrim{
-      display: none !important;
-    }
-
-    div.leftColNav{
-      >div{
-        height: 54px !important;
-        max-height: 54px !important;
-        max-width: 54px !important;
-        width: 54px !important;
+  @media (min-width: 1264px) { 
+    #home{
+      div.leftColNav{
+        >div{
+          height: 54px !important;
+          max-height: 54px !important;
+          max-width: 54px !important;
+          width: 54px !important;
+        }
       }
-    }
-  } 
-}
+    } 
+  }
 </style>

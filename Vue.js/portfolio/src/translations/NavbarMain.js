@@ -4,7 +4,7 @@ export default {
       titleLanguage: 'TRANSLATIONS'
     },
     links:
-      [
+    [
         { url: "home", title: "Home", icon: 'mdi-home' },
         { url: "skills", title: "Skills", icon: 'mdi-hammer-wrench' },
         { url: "projects", title: "Projects", icon: 'mdi-account-box-multiple-outline'},

@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import NavbarMain from './components/NavbarMain';
+import NavbarMain from './components/navbar/NavbarMain';
 import HomePage from './components/HomePage';
 import ProfileSkills from './components/ProfileSkills';
 import ProjectCards from './components/ProjectCards';
@@ -26,19 +26,5 @@ export default {
     ProjectCards,
     ContactForm
   },
-
-  data: () => ({
-    //
-  }),
-  created(){
-    const bodyElement = document.getElementsByTagName("body")[0];
-    
-    if (this.$vuetify.theme.dark == true) {
-      bodyElement.classList = "darkScrollbar";
-    } else {
-      bodyElement.classList = "";
-    }
-    this.$vuetify.theme.dark = true;
-  }
 };
 </script>
