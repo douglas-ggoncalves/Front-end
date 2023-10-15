@@ -1,0 +1,34 @@
+*{
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+}
+
+body.darkScrollbar::-webkit-scrollbar {
+    height: 1rem;
+    width: 0.9rem;
+}
+
+body.darkScrollbar::-webkit-scrollbar-thumb {
+    background-color: rgba(217,217,227,0.2);
+    border-color: rgba(255,255,255, 0.29);
+    border-radius: 9999px;
+    border-width: 1px;
+}
+
+body.darkScrollbar::-webkit-scrollbar-track {
+    background-color: black;
+    border-radius: 9999px;
+}
+
+.v-application .v-list  a {
+    padding-left: 0 !important;
+}
+
+.v-application .theme--dark.v-list a {
+    color: #FFFFFF !important;
+}
+
+.v-application .theme--light.v-list a {
+    color: rgba(0, 0, 0, 0.87) !important;
+}
