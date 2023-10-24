@@ -4,6 +4,15 @@
     text-decoration: none;
 }
 
+.v-container {
+    padding: 12px !important;
+}
+
+.v-btn--icon.v-btn--density-default {
+    width: 36px !important;
+    height: 36px !important;
+}
+
 /* Start Style ScroolBar */
     // Specific to Webkit browsers such as Chrome, Safari and new versions of Microsoft Edge.
     body.darkScrollbar::-webkit-scrollbar {
@@ -44,11 +53,11 @@
     padding-left: 0 !important;
 }
 
-.v-application .theme--dark.v-list a {
+.v-application .v-theme--dark.v-list a {
     color: #FFFFFF !important;
 }
 
-.v-application .theme--light.v-list a {
+.v-application .v-theme--light.v-list a {
     color: rgba(0, 0, 0, 0.87) !important;
 }
 

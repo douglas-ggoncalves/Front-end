@@ -2,84 +2,93 @@
   <v-container fluid id="home">
     <SideBar ref="sidebarRef" />
 
-    <v-theme-provider id="main">
-      <v-row>
-        <v-col class="d-flex justify-start align-center leftColNav" :cols="9" :md="9" :lg="3">
-          <v-img src="../../assets/img/profilePhoto.png"></v-img>
-      
-          <h3 class="ml-lg-4">DOUGLAS GONÇALVES</h3>
-        </v-col>
+    <v-row id="main">
+      <v-col class="d-flex justify-start align-center leftColNav" :cols="9" :md="9" :lg="3">
+        <v-img cover src="../../assets/img/profilePhoto.png"></v-img>
+    
+        <h3 class="ml-lg-4">DOUGLAS GONÇALVES</h3>
+      </v-col>
 
-        <v-col class="d-none d-lg-flex justify-center align-center" :lg="6">
-          <ul>
-            <li v-for="(link, index) in linksInComputed" :key="index">
-              <a color="white" :href="`#${link.url}`">{{ link.title }}</a>
-            </li>
-          </ul>
-        </v-col>
+      <v-col class="d-none d-lg-flex justify-center align-center" :lg="6">
+        <ul>
+          <li v-for="(link, index) in linksInComputed" :key="index">
+            <a color="white" :href="`#${link.url}`">{{ link.title }}</a>
+          </li>
+        </ul>
+      </v-col>
 
-        <v-col class="d-flex justify-end align-center" :cols="3" :md="3" :lg="3">
-          <v-btn
-            class="d-lg-none"
-            icon
-            color="white"
-            v-bind="attrs"
-            v-on="on"
-            v-on:click="drawer = !drawer"
-            @click="toggleSideBar"
-          >
-            <v-icon>mdi-menu</v-icon>
-          </v-btn>
+      <v-col class="d-flex justify-end align-center" :cols="3" :md="3" :lg="3">
+        <v-btn
+          variant="text"
+          class="d-lg-none"
+          icon="mdi-menu"
+          v-bind="attrs"
+          v-on="on"
+          v-on:click="drawer = !drawer"
+          @click="toggleSideBar"
+        >
+        </v-btn>
 
-          <v-menu
-            open-on-hover
-            offset-y
-          >
-            <template v-slot:activator="{ on, attrs }">
-              <v-btn
-                icon
-                color="white"
-                v-bind="attrs"
-                v-on="on"
-              >
-                <v-icon>mdi-translate</v-icon>
-              </v-btn>
-            </template>
+        <v-btn
+          variant="text"
+          :icon="themeDark ? 'mdi-white-balance-sunny' : 'mdi-weather-night'"
+          v-bind="attrs"
+          v-on="on"
+          v-on:click="toggleTheme()"
+        >
+        </v-btn>
 
-            <v-list style="text-align:center" class="p-0 m-0">
-              <v-list-item-title style="font-weight: bold;" class="mb-2" v-t="'message.titleLanguage'"><v-divider class="mt-2"/></v-list-item-title>
-              
-              <v-list-item-group
-                v-model="languageIndex"
-                mandatory
-                @change="changeLanguage(item)"
+        <v-menu open-on-hover open-delay="2" close-delay="2" :location="'bottom'">
+          <template v-slot:activator="{ props }">
+            <v-btn
+              variant="text"
+              icon="mdi-translate"
+              v-bind="props"
+            >
+            </v-btn>
+          </template>
+
+          <v-list style="text-align:center" class="p-0 m-0">
+            <v-list-item-title style="font-weight: bold;" class="mb-2" v-t="'message.titleLanguage'"><v-divider class="mt-2"/></v-list-item-title>
+          
+              <v-list-item
+                v-for="(item, index) in this.$tm('items')" 
+                :key="index"
+                :value="languageIndex"
                 color="primary"
+                :active="languageIndex == index"
+                :active-color="'primary'"
+                @click="changeLanguage(index)"
               >
-                <v-list-item
-                  v-for="(item, index) in this.$t('items')"
-                  :key="index"
-                >
-                  <v-list-item-title>{{ item.state }}</v-list-item-title>
-                </v-list-item>
-              </v-list-item-group>
-            </v-list>
-          </v-menu>
-
-          <v-btn
-            icon
-            color="white"
-            v-bind="attrs"
-            v-on="on"
-            v-on:click="alterTheme()"
-          >
-            <v-icon>{{ themeDark ? "mdi-white-balance-sunny" : "mdi-weather-night" }} </v-icon>
-          </v-btn>
-
-        </v-col>
-      </v-row>
-    </v-theme-provider>
+                <v-list-item-title>{{ item.state }}</v-list-item-title>
+              </v-list-item>
+          </v-list>
+        </v-menu>
+      </v-col>
+    </v-row>
   </v-container>
 </template>
+
+<script setup>
+import { useTheme } from 'vuetify'
+
+const theme = useTheme()
+
+function toggleTheme () {
+  theme.global.name.value = theme.global.current.value.dark ? 'light' : 'dark'
+
+  var temaDark = theme.global.current.value.dark ? true : false;
+  this.themeDark = temaDark;
+
+  const bodyElement = document.getElementsByTagName("body")[0];
+    
+    if (temaDark == true) {
+      bodyElement.classList = "darkScrollbar";
+    } else {
+      bodyElement.classList = "";
+    }
+}
+</script>
 
 <script>
 import '../../assets/style.css'
@@ -95,25 +104,16 @@ export default {
   data(){
     return{
       themeDark: true,
-      languageIndex: 0,
+      languageIndex: 1,
       drawer: null,
+      asdasdasdasd: 0
     }
   },
   methods: {
-    alterTheme(){
-      this.$vuetify.theme.dark = !this.$vuetify.theme.dark;
-      this.themeDark = !this.$vuetify.theme.dark;
-      const bodyElement = document.getElementsByTagName("body")[0];
-    
-      if (this.$vuetify.theme.dark == true) {
-        bodyElement.classList = "darkScrollbar";
-      } else {
-        bodyElement.classList = "";
-      }
-    },
-    changeLanguage(){
-      var language = this.languageIndex == 0 ?  "pt": "en";
-
+    changeLanguage(item){
+      var language = item == 0 ?  "pt": "en";
+      this.languageIndex = item;
+      
       this.$i18n.locale = language;
     },
     toggleSideBar() {
@@ -122,7 +122,7 @@ export default {
   },
   computed: {
     linksInComputed() {
-      return this.$t('links');
+      return this.$tm('links');
     }
   },
   components: {
@@ -132,7 +132,12 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  .theme--dark.v-application{
+  .v-theme--dark .v-list-item--active {
+    color: #2081CE !important;
+    background-color: #1F3B51 !important;
+  }
+      
+  .v-theme--dark{
     #home{
       background-color: #121212 !important;
       border-bottom: 1px solid rgba(255, 255, 255, 0.1);
@@ -151,7 +156,12 @@ export default {
     }
   }
 
-  .theme--light.v-application{
+  .v-theme--light .v-list-item--active {
+    color: #2D82D6 !important;
+    background-color: #E3EEF9 !important;
+  }
+
+  .v-theme--light{
     #home{
       background-color: #FFFFFF !important;
       border-bottom: 1px solid rgba(19, 11, 11, 0.1);
@@ -181,6 +191,7 @@ export default {
       top: 0;
       left: 0;
       right: 0;
+      margin: -12px !important;
 
       div.leftColNav{
         >div{

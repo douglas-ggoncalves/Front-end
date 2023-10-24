@@ -1,8 +1,6 @@
 <template>
-<v-container fluid>
-  
-</v-container>
-  
+  <div>
+
+  </div>
 </template>
 
-<script>

@@ -1,15 +1,10 @@
 const { defineConfig } = require('@vue/cli-service')
 module.exports = defineConfig({
-  transpileDependencies: [
-    'vuetify'
-  ],
- //pluginOptions: {
- //  i18n: {
- //    locale: 'ja',
- //    fallbackLocale: 'en',
- //    localeDir: 'locales',
- //    enableInSFC: false,
- //    enableLegacy: false
- //  }
- //}
+  transpileDependencies: true,
+
+  pluginOptions: {
+    vuetify: {
+			// https://github.com/vuetifyjs/vuetify-loader/tree/next/packages/vuetify-loader
+		}
+  }
 })

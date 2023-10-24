@@ -5,14 +5,18 @@
     absolute
     temporary
   >
-    <v-list-item style="height: 8vh;" class="d-lg-none">
-      <v-list-item-avatar>
-        <v-img src="../../assets/img/profilePhoto.png"></v-img>
-      </v-list-item-avatar>
+    <v-list-item style="height: 8vh;" class="d-lg-none py-0">
+      <template v-slot:prepend>
+        <v-avatar>
+          <v-img
+            cover
+            src="../../assets/img/profilePhoto.png"
+            alt="Douglas"
+          />
+        </v-avatar>
+      </template>
 
-      <v-list-item-content>
-        <v-list-item-title>Douglas Gonçalves</v-list-item-title>
-      </v-list-item-content>
+      <v-list-item-title id="abagail">Douglas Gonçalves</v-list-item-title>
     </v-list-item>
 
     <v-divider></v-divider>
@@ -53,12 +57,16 @@ export default {
   },
   computed: {
     linksInComputed() {
-      return this.$t('links');
+      return this.$tm('links');
     }
   },
 }
 </script>
 <style lang="scss" scoped>
+  #home v-list-item-icon{
+    margin-right: 17px !important;
+  }
+
   @media (min-width: 1264px) { 
     div.v-overlay__scrim{
       opacity: 0 !important;

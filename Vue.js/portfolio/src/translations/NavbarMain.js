@@ -5,10 +5,10 @@ export default {
     },
     links:
     [
-        { url: "home", title: "Home", icon: 'mdi-home' },
-        { url: "skills", title: "Skills", icon: 'mdi-hammer-wrench' },
-        { url: "projects", title: "Projects", icon: 'mdi-account-box-multiple-outline'},
-        { url: "contact", title: "Contact", icon: 'mdi-at' }
+      { url: "home", title: "Home", icon: 'mdi-home' },
+      { url: "skills", title: "Skills", icon: 'mdi-hammer-wrench' },
+      { url: "projects", title: "Projects", icon: 'mdi-account-box-multiple-outline'},
+      { url: "contact", title: "Contact", icon: 'mdi-at' }
     ],
     items: [
       { state: 'Portuguese (Brazil)', abbr: 'pt' },

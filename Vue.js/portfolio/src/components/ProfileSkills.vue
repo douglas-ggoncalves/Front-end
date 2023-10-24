@@ -7,7 +7,7 @@
         </v-row>
 
         <v-row class="d-flex justify-center itens">
-          <v-col v-for="(skill, index) in this.$t('allSkills')" :key="index" class="d-flex align-center col" :cols="12" :sm="6" :md="4">
+          <v-col v-for="(skill, index) in this.$tm('allSkills')" :key="index" class="d-flex align-center col" :cols="12" :sm="6" :md="4">
             <div class="dadIcon mt-3 mt-md-4">
               <div class="icon">
                 <v-icon :class="skill.className">{{ skill.icon }}</v-icon>
@@ -40,7 +40,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  .v-application.theme--light div.dadIcon {
+  .v-theme--light div.dadIcon {
     border: 1px solid rgba(19, 11, 11, 0.3);
 
     &:hover{
@@ -48,7 +48,7 @@ export default {
     }
   }
 
-  .v-application.theme--dark div.dadIcon {
+  .v-theme--dark div.dadIcon {
     border: 1px solid rgba(255, 255, 255, 0.3);
 
     &:hover{
@@ -85,13 +85,13 @@ export default {
         }
 
         div.icon{
-          transition: all 0.3s;
+          transition: all 1.3s !important;
+          margin-right: 1rem;
 
           i{
+            transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1), visibility 0s;
             font-size: 40px;
           }
-
-          margin-right: 1rem;
 
           .HTML5{
             color: #DD4B25;
