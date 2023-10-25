@@ -1,6 +1,6 @@
 <template>
   <v-container fluid id="HomePage">
-    
+    <h5 style="color: white">abc home paghe</h5>
   </v-container>
 </template>
 

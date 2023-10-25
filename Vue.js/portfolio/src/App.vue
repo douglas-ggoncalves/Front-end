@@ -6,7 +6,6 @@
       <ProfileSkills />
       <ProjectCards />
       <ContactForm />
-      <SwiperComponent />
     </v-main>
   </v-app>
 </template>
@@ -16,7 +15,6 @@ import HomePage from './components/HomePage';
 import ProfileSkills from './components/ProfileSkills';
 import ProjectCards from './components/ProjectCards';
 import ContactForm from './components/ContactForm';
-import SwiperComponent from './components/SwiperComponent';
 
 export default {
   components: {
@@ -25,7 +23,6 @@ export default {
     ProfileSkills,
     ProjectCards,
     ContactForm,
-    SwiperComponent,
   },
   data() {
     return {

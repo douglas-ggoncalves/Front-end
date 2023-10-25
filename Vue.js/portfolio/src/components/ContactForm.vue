@@ -1,5 +1,5 @@
 <template>
-  <v-container>
+  <v-container fluid id="contact">
     
   </v-container>
 </template>
@@ -12,4 +12,3 @@ export default {
   }
 }
 </script>
-

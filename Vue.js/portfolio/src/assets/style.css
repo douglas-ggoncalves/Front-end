@@ -8,6 +8,10 @@
   padding: 12px !important;
 }
 
+html {
+  scroll-behavior: smooth !important;
+}
+
 .v-btn--icon.v-btn--density-default {
   width: 36px !important;
   height: 36px !important;

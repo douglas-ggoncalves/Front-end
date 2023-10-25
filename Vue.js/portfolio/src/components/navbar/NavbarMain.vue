@@ -3,21 +3,21 @@
     <SideBar ref="sidebarRef" />
 
     <v-row id="main">
-      <v-col class="d-flex justify-start align-center leftColNav" :cols="9" :md="9" :lg="3">
+      <v-col class="d-flex justify-start align-center leftColNav" :cols="9" :lg="3">
         <v-img cover src="../../assets/img/profilePhoto.png"></v-img>
     
         <h3 class="ml-lg-4">DOUGLAS GONÇALVES</h3>
       </v-col>
 
-      <v-col class="d-none d-lg-flex justify-center align-center" :lg="6">
+      <v-col class="d-none d-lg-flex justify-center align-center navCenter" :lg="6">
         <ul>
           <li v-for="(link, index) in linksInComputed" :key="index">
-            <a color="white" :href="`#${link.url}`">{{ link.title }}</a>
+            <a color="white" @click.prevent="navigateTo(link.url)" style="cursor: pointer;">{{ link.title }}</a>
           </li>
         </ul>
       </v-col>
 
-      <v-col class="d-flex justify-end align-center" :cols="3" :md="3" :lg="3">
+      <v-col class="d-flex justify-end align-center" :cols="3">
         <v-btn
           variant="text"
           class="d-lg-none"
@@ -82,11 +82,11 @@ function toggleTheme () {
 
   const bodyElement = document.getElementsByTagName("body")[0];
     
-    if (temaDark == true) {
-      bodyElement.classList = "darkScrollbar";
-    } else {
-      bodyElement.classList = "";
-    }
+  if (temaDark == true) {
+    bodyElement.classList = "darkScrollbar";
+  } else {
+    bodyElement.classList = "";
+  }
 }
 </script>
 
@@ -104,12 +104,26 @@ export default {
   data(){
     return{
       themeDark: true,
-      languageIndex: 1,
+      languageIndex: 0,
       drawer: null,
-      asdasdasdasd: 0
     }
   },
   methods: {
+    navigateTo(targetId) {
+    // Encontre o elemento alvo
+    const targetElement = document.getElementById(targetId);
+    if (targetElement) {
+      // Calcule a posição desejada (posição do elemento - 10vh)
+      const vh = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0);
+      const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - (0.08 * vh);
+      
+      // Rolagem para a posição desejada
+      window.scrollTo({
+        top: targetPosition,
+        behavior: 'smooth'
+      });
+    }
+  },
     changeLanguage(item){
       var language = item == 0 ?  "pt": "en";
       this.languageIndex = item;
@@ -139,17 +153,19 @@ export default {
       
   .v-theme--dark{
     #home{
-      background-color: #121212 !important;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      >div#main{
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        background-color: #121212 !important;
+      }
 
       ul{
         li{
           a{
             color: white !important;
-          }
-    
-          &:hover{
-            border-bottom: 1px solid white;
+
+            &:hover{
+              border-bottom: 1px solid white;
+            }
           }
         }
       }
@@ -163,17 +179,19 @@ export default {
 
   .v-theme--light{
     #home{
-      background-color: #FFFFFF !important;
-      border-bottom: 1px solid rgba(19, 11, 11, 0.1);
+      >div#main{
+        border-bottom: 1px solid rgba(19, 11, 11, 0.1);
+        background-color: #FFFFFF !important;
+      }
 
       ul{
         li{
           a{
             color: black !important;
-          }
-  
-          &:hover{
-            border-bottom: 1px solid black;
+
+            &:hover{
+              border-bottom: 1px solid black;
+            }
           }
         }
       }
@@ -181,17 +199,21 @@ export default {
   }
 
   #home{
+    min-height: 8vh; 
+    
     >div#main{
+
+      background-color: #121212 !important;
       display: flex;
       align-items: center;
       width: 100%;
-      height: 8vh;
-      position: sticky;
+      height: 8vh !important;
+      position: fixed;
       z-index: 6 !important;
       top: 0;
       left: 0;
       right: 0;
-      margin: -12px !important;
+      margin: 0 !important;
 
       div.leftColNav{
         >div{

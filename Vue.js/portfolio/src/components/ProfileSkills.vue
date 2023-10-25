@@ -1,5 +1,5 @@
 <template>
-  <v-container fluid id="ProfileSkills">
+  <v-container fluid id="skills">
     <v-row class="d-flex justify-center">
       <v-col class="" :cols="12" :lg="10" :xl="8">
         <v-row>
@@ -56,7 +56,7 @@ export default {
     }
   }
 
-  #ProfileSkills{
+  #skills{
     h1{
       padding-left: 0.4rem !important;
     }
@@ -150,7 +150,7 @@ export default {
   }
 
   @media (max-width: 345px) { 
-    #ProfileSkills{
+    #skills{
       h4{
         font-size: 0.9rem !important;
       }
@@ -166,7 +166,7 @@ export default {
   }
 
   @media (min-width: 1264px) { 
-    #ProfileSkills{
+    #skills{
       h1{
         padding-left: 1rem !important;
       }

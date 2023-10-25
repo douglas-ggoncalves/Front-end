@@ -28,9 +28,7 @@
         link
       >
         <a :href="link.url" class="v-list-item v-list-item--link">
-          <v-list-item-icon>
-            <v-icon>{{ link.icon }}</v-icon>
-          </v-list-item-icon>
+          <v-icon style="margin-right: 17px;">{{ link.icon }}</v-icon>
 
           <v-list-item-content>
             <v-list-item-title>{{ link.title }}</v-list-item-title>
@@ -63,10 +61,6 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-  #home v-list-item-icon{
-    margin-right: 17px !important;
-  }
-
   @media (min-width: 1264px) { 
     div.v-overlay__scrim{
       opacity: 0 !important;
