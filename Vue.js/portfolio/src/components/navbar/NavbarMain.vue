@@ -6,7 +6,8 @@
       <v-col class="d-flex justify-start align-center leftColNav" :cols="9" :lg="3">
         <v-img cover src="../../assets/img/profilePhoto.png"></v-img>
     
-        <h3 class="ml-lg-4">DOUGLAS GONÇALVES</h3>
+        <h3 class="ml-1 ml-lg-4 name">DOUGLAS</h3>
+        <h3 class="lastName">GONÇALVES</h3>
       </v-col>
 
       <v-col class="d-none d-lg-flex justify-center align-center navCenter" :lg="6">
@@ -202,7 +203,6 @@ export default {
     min-height: 8vh; 
     
     >div#main{
-
       background-color: #121212 !important;
       display: flex;
       align-items: center;
@@ -228,7 +228,14 @@ export default {
         h3{
           display: inline;
           font-size: 1.0rem;
+        }
+
+        h3.name{
           margin-left: 8px !important;
+        }
+
+        h3.lastName{
+          margin-left: 6px !important;
         }
       }
 
@@ -247,17 +254,38 @@ export default {
 
   @media (max-width: 345px) { 
     #home{
-      div.leftColNav{
-        padding-left: 0 !important;
-        margin-left: 0 !important;
+      >div#main{
+        div.leftColNav{
+          padding-left: 0 !important;
+          margin-left: 0 !important;
 
-        div.v-avatar.teal{
-          display: none;
+          >div{
+            height: 36px !important;
+            max-height: 36px !important;
+            max-width: 36px !important;
+            width: 36px !important;
+          }
+
+          div.v-avatar.teal{
+            display: none;
+          }
+        }
+
+        h3{
+          font-size: 0.85rem !important;
         }
       }
+    }
+  }
 
-      h3{
-        font-size: 0.85rem !important;
+  @media (max-width: 420px) { 
+    #home{
+      >div#main{
+        div.leftColNav{
+          h3.lastName{
+            display: none !important;
+          }
+        }
       }
     }
   }

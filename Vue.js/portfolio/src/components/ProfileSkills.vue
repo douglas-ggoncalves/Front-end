@@ -46,6 +46,10 @@ export default {
     &:hover{
       border: 1px solid rgba(19, 11, 11, 0.6);
     }
+
+    .GitHub{
+      color: #202B3C;
+    }
   }
 
   .v-theme--dark div.dadIcon {
@@ -114,7 +118,7 @@ export default {
           }
           
           .SQLServer{
-            color: #031D31;
+            color: #006EC2;
           }
           
           .MySQL{
@@ -141,8 +145,32 @@ export default {
             color: #E84D31;
           }
 
-          .GitHub{
-            color: #202B3C;
+          .API{
+            color: #FF9210;
+          }
+
+          .EJS{
+            color: #4CAF50;
+          }
+
+          .Express{
+            color: #394671;
+          }
+
+          .BulmaCSS{
+            color: #69F0AE;
+          }
+
+          .VueRouter{
+            color: #4CAF50;
+          }
+
+          .Vuetify{
+            color: #64B5F6;
+          }
+
+          .Stylus{
+            color: #7CB333;
           }
         }
       }
