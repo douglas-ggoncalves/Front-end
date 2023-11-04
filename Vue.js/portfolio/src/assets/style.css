@@ -66,4 +66,15 @@ body.darkScrollbar {
   #home div.v-overlay__scrim {
     opacity: 0 !important;
   }
+}
+.v-theme--dark span.swiper-pagination-bullet {
+  background-color: white !important;
+}
+
+.v-theme--dark .swiper-button-prev:after {
+  color: white !important;
+}
+
+.v-theme--dark .swiper-button-next:after {
+  color: white !important;
 }/*# sourceMappingURL=style.css.map */

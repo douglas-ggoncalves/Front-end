@@ -77,15 +77,16 @@
       :effect="'coverflow'"
       :grabCursor="true"
       :centeredSlides="true"
-      :slidesPerView="'3'"
+      :slidesPerView="'2.8'"
       :initialSlide="2"
       :coverflowEffect="{
         rotate: 0,
         stretch: 0,
         depth: 100,
-        modifier: 2.5,
+        modifier: 2.8,
         slideShadows: true,
       }"
+      :spaceBetween="0"
       :pagination="{
         clickable: true
       }"
@@ -94,12 +95,18 @@
       :clickable="true"
       class="mySwiper"
     >
-      <swiper-slide v-for="(img, index) in sortedProjects" :key="index">
+      <swiper-slide v-for="(project, index) in sortedProjects" :key="index">
         <img 
           class="swiper-image"
-          :src="img.src" 
+          :src="project.src" 
         />
+
+         <div class="content" style="">
+            <h2>{{ project.title }}</h2>
+            <p>{{ project.relevance }}</p>
+          </div>
       </swiper-slide>
+
     </swiper>
   </v-container>
 </template>
@@ -121,13 +128,12 @@ import { EffectCoverflow, Pagination, Navigation } from 'swiper/modules';
     },
     data() {
       return {
-        swiperKey: 0,
         orderSelected: 0,
         arrayProjects: [
           { tech: [{ code: 0 }, { code: 1 }, { code: 2 }, { code: 3 }, { code: 34 }], relevance: 10, title: "Burger", data: "16-04-2022", src: require('@/assets/img/Burger.png')},
-          { tech: [ { code: 0 }, { code: 1 }, { code: 5 }, { code: 2 }, { code: 3 }, { code: 9 }], relevance: 10, title: "Coffee", data: "17-05-2022", src: require('@/assets/img/Coffee.png')},
+          { tech: [{ code: 0 }, { code: 1 }, { code: 5 }, { code: 2 }, { code: 3 }, { code: 9 }], relevance: 10, title: "Coffee", data: "17-05-2022", src: require('@/assets/img/Coffee.png')},
           { tech: [{ code: 0 }, { code: 1 }, { code: 2 }, { code: 3 }], relevance: 9, title: "Age Sport", data: "14-05-2022", src: require('@/assets/img/Age Sport.png')},
-          { tech: [ { code: 0 }, { code: 1 }, { code: 5 }, { code: 2 }, { code: 3 }, { code: 9 }], relevance: 8, title: "BeatUp", data: "15-04-2022", src: require('@/assets/img/BeatUp.png')},
+          { tech: [{ code: 0 }, { code: 1 }, { code: 5 }, { code: 2 }, { code: 3 }, { code: 9 }], relevance: 8, title: "BeatUp", data: "15-04-2022", src: require('@/assets/img/BeatUp.png')},
           { tech: [{ code: 0 }, { code: 1 }, { code: 5 }, { code: 2 }, { code: 3 }], relevance: 7, title: "Construction", data: "15-06-2022", src: require('@/assets/img/Construction.png')},
           { tech: [{ code: 0 }, { code: 1 }, { code: 5 }, { code: 2 }], relevance: 8, title: "DentalCare", data: "15-07-2022", src: require('@/assets/img/DentalCare.png')},
           { tech: [{ code: 0 }, { code: 1 }, { code: 5 }, { code: 2 },{ code: 3 }], relevance: 8, title: "Education Site", data: "15-07-2022", src: require('@/assets/img/Education Site.png')},
@@ -136,6 +142,22 @@ import { EffectCoverflow, Pagination, Navigation } from 'swiper/modules';
           { tech: [{ code: 0 }, { code: 1 }, { code: 2 }], relevance: 8, title: "Maximus", data: "15-07-2022", src: require('@/assets/img/Maximus.png')},
           { tech: [{ code: 0 }, { code: 1 }, { code: 5 }, { code: 2 }], relevance: 8, title: "Online Education", data: "18-06-2022", src: require('@/assets/img/Online Education.png')},
           { tech: [{ code: 0 }, { code: 1 }, { code: 2 }], relevance: 10, title: "Travel WebSite", data: "16-06-2022", src: require('@/assets/img/Travel Website.png')},
+          //
+          { tech: [{ code: 4 }, { code: 6 }, { code: 10 }, { code: 15 }, { code: 8 }], relevance: 10, title: "API de Usuários", data: "16-06-2022", src: require('@/assets/img/API de Usuários.png')},
+          { tech: [{ code: 4 }, { code: 1 }], relevance: 10, title: "Calculadora", data: "16-06-2022", src: require('@/assets/img/Calculadora.png')},
+          { tech: [{ code: 4 }, { code: 1 }, { code: 5 }, { code: 2 }, { code: 10 }, { code: 16 }], relevance: 10, title: "Cinemax", data: "16-06-2022", src: require('@/assets/img/Cinemax.png')},
+          { tech: [{ code: 4 }, { code: 1 }], relevance: 10, title: "Cronômetro", data: "16-06-2022", src: require('@/assets/img/Cronômetro.png')},
+          { tech: [{ code: 4 }, { code: 0 }, { code: 1 }, { code: 18 }], relevance: 10, title: "Facilita Tasks", data: "16-06-2022", src: require('@/assets/img/Facilita Tasks.png')},
+          { tech: [{ code: 0 }, { code: 1 }, { code: 5 }, { code: 2 }, { code: 3 }], relevance: 10, title: "Gerador de Senhas", data: "16-06-2022", src: require('@/assets/img/Gerador de Senhas.png')},
+          { tech: [{ code: 4 }, { code: 1 }, { code: 5 }, { code: 17 }], relevance: 10, title: "Gestão Financeira", data: "16-06-2022", src: require('@/assets/img/Gestão Financeira.png')},
+          { tech: [{ code: 6 }, { code: 13 }, { code: 1 }, { code: 5 }, { code: 3 }, { code: 8 }], relevance: 7, title: "Guia Perguntas", data: "16-06-2022", src: require('@/assets/img/Guia Perguntas.png')},
+          { tech: [{ code: 4 }, { code: 1 }, { code: 17 }], relevance: 7, title: "Lista de Tarefas", data: "16-06-2022", src: require('@/assets/img/Lista de Tarefas.png')},
+          { tech: [{ code: 0 }, { code: 1 }, { code: 3 }], relevance: 7.6, title: "Mata Mosquito", data: "16-06-2022", src: require('@/assets/img/Mata Mosquito.png')},
+          { tech: [{ code: 4 }, { code: 1 }, { code: 10 }], relevance: 8.2, title: "Pokedex", data: "16-06-2022", src: require('@/assets/img/Pokedex.png')},
+          { tech: [{ code: 6 }, { code: 13 }, { code: 1 }, { code: 3 }, { code: 8 }], relevance: 6.9, title: "Realiza Assessoria", data: "16-06-2022", src: require('@/assets/img/Realiza Assessoria.png')},
+          { tech: [{ code: 4 }, { code: 6 }, { code: 1 }, { code: 5 }, { code: 2 }, { code: 16 }, { code: 7 }], relevance: 10, title: "Sistema Maximus", data: "16-06-2022", src: require('@/assets/img/Sistema Maximus.png')},
+          { tech: [{ code: 0 }, { code: 1 }, { code: 2 }], relevance: 9, title: "Spotify", data: "16-01-2022", src: require('@/assets/img/Spotify.png')},
+          
         ],
         selectedLanguages: [],
       }
@@ -183,10 +205,10 @@ import { EffectCoverflow, Pagination, Navigation } from 'swiper/modules';
       sortedProjects(newVal, oldVal) {
         if (newVal !== oldVal) {
           this.$nextTick(() => {
-            console.log(this.$refs.mySwiper);
-            if (this.$refs.mySwiper && this.$refs.mySwiper.swiper) {
-              alert("asdas")
-              this.$refs.mySwiper.swiper.slideTo(0);
+            // Seleciona o primeiro ponto na paginação do Swiper e simula um clique
+            const firstPaginationBullet = document.querySelector('.swiper-pagination-bullet:first-child');
+            if (firstPaginationBullet) {
+              firstPaginationBullet.click();
             }
           });
         }
@@ -223,10 +245,8 @@ html, body {
   font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
   font-size: 14px;
   color: #000;
-  //margin: 0;
-  //padding: 0;
 }
-
+  
 #projects{
   margin-top: 4.5rem;
 
@@ -240,76 +260,68 @@ html, body {
     }
   }
 
+    
   .swiper {
     width: 100%;
     padding-top: 15px;
     padding-bottom: 50px;
+    
+    .swiper-slide-active{
+      .content{
+        background: linear-gradient(to bottom,rgba(0,0,0,0),rgba(0,0,0,.75)) !important;
+      }
+    }
+    
+    .content {
+      position: absolute;
+      left: 0;
+      width: 100%;
+      bottom: 0;
+      //box-sizing: border-box;
+     // border-radius: 0 0 8px 8px;
+      h2, p{
+        padding-left: 18px;
+      }
+
+      p{
+        padding-bottom: 8px;
+      }
+    }
   }
 
   .swiper-slide {
     background-position: center;
     background-size: cover;
     width: 300px;
-    height: 300px;
+    height: auto;
   }
 
   .swiper-slide img {
     display: block;
     width: 100%;
+    height: auto;
   }
+
 
   .tranding-slider-control .swiper-pagination {
     position: relative;
     width: 15rem;
     bottom: 1rem;
   }
-
-  /*  ----------------------------------------        */
-
-
-  .swiper-button-prev, .swiper-rtl {
-    bottom: var(--swiper-pagination-bottom, 0px);
-    top: var(--swiper-pagination-top, auto) !important;
-    left: 42%;
-    transform: translateX(-42%);
-  }
-
-  .swiper-button-next {
-    bottom: var(--swiper-pagination-bottom, 0px) !important;
-    top: var(--swiper-pagination-top, auto) !important;
-    right: 42% !important;
-    transform: translateX(42%);
-  }
-
-  div.swiper-wrapper img {
-    max-width: 100% !important;
-    border-radius: 0.5rem;
-    object-fit: cover !important;
-  }
-  .swiper-image {
-    max-width: 100%;
-    height: 100% !important;
-    display: block;
-  }
-
-  .swiper-button-next:after{
-    /*font-size: 1.5rem !important;*/
-  }
 }
+@media (min-width: 1264px) { 
+  #projects{
+    h1{
+      padding-left: 1rem !important;
+    }
 
-  @media (min-width: 1264px) { 
-    #projects{
-      h1{
-        padding-left: 1rem !important;
-      }
-
-      div.itens{
+    div.itens{
+      >div{
         >div{
-          >div{
-            margin-left: 0rem !important;
-          }
+          margin-left: 0rem !important;
         }
       }
     }
   }
+}
 </style>
