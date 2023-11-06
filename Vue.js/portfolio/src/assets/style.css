@@ -77,4 +77,23 @@ body.darkScrollbar {
 
 .v-theme--dark .swiper-button-next:after {
   color: white !important;
+}
+
+.mySwiper {
+  min-height: 380px;
+  border-radius: 8px !important;
+}
+.mySwiper div.swiper-slide {
+  min-height: 380px;
+}
+.mySwiper div.swiper-wrapper {
+  min-height: 380px;
+  border-radius: 8px !important;
+}
+.mySwiper img {
+  border-radius: 8px !important;
+}
+
+.swiper-carousel .swiper-slide {
+  border-radius: 8px !important;
 }/*# sourceMappingURL=style.css.map */

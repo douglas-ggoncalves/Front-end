@@ -77,7 +77,7 @@
       :effect="'coverflow'"
       :grabCursor="true"
       :centeredSlides="true"
-      :slidesPerView="'2.8'"
+      :slidesPerView="swiperOptions.slidesPerView"
       :initialSlide="2"
       :coverflowEffect="{
         rotate: 0,
@@ -95,18 +95,32 @@
       :clickable="true"
       class="mySwiper"
     >
-      <swiper-slide v-for="(project, index) in sortedProjects" :key="index">
+      <swiper-slide v-for="(project, index) in sortedProjects" :key="index" style="border-radius: 8px !important;">
         <img 
-          class="swiper-image"
           :src="project.src" 
-        />
+          style="width:100%; height:100%; object-fit: cover;  border-radius: 8px;"
 
-         <div class="content" style="">
-            <h2>{{ project.title }}</h2>
-            <p>{{ project.relevance }}</p>
-          </div>
+        /> <!-- class="swiper-image" -->
+
+        <div class="content" style="">
+           <h2>{{ project.title }}</h2>
+           <!--  <p>{{ project.relevance }}</p> -->
+
+            <v-card class="">
+              <v-card-text>
+                <v-btn :prepend-icon="'mdi-alpha-s-box-outline'"  variant="outlined" density="comfortable" v-for="(tech, index) in project.tech" :key="index">
+                  {{ getLanguageTitle(tech.code) }}
+                  <v-tooltip
+                    activator="parent"
+                    location="bottom"
+                  >
+                    {{ getLanguageTitle(tech.code) }}
+                  </v-tooltip>
+                </v-btn>
+              </v-card-text>
+            </v-card>
+        </div>
       </swiper-slide>
-
     </swiper>
   </v-container>
 </template>
@@ -129,6 +143,9 @@ import { EffectCoverflow, Pagination, Navigation } from 'swiper/modules';
     data() {
       return {
         orderSelected: 0,
+        swiperOptions: {
+          slidesPerView: 2.8
+        },
         arrayProjects: [
           { tech: [{ code: 0 }, { code: 1 }, { code: 2 }, { code: 3 }, { code: 34 }], relevance: 10, title: "Burger", data: "16-04-2022", src: require('@/assets/img/Burger.png')},
           { tech: [{ code: 0 }, { code: 1 }, { code: 5 }, { code: 2 }, { code: 3 }, { code: 9 }], relevance: 10, title: "Coffee", data: "17-05-2022", src: require('@/assets/img/Coffee.png')},
@@ -142,7 +159,6 @@ import { EffectCoverflow, Pagination, Navigation } from 'swiper/modules';
           { tech: [{ code: 0 }, { code: 1 }, { code: 2 }], relevance: 8, title: "Maximus", data: "15-07-2022", src: require('@/assets/img/Maximus.png')},
           { tech: [{ code: 0 }, { code: 1 }, { code: 5 }, { code: 2 }], relevance: 8, title: "Online Education", data: "18-06-2022", src: require('@/assets/img/Online Education.png')},
           { tech: [{ code: 0 }, { code: 1 }, { code: 2 }], relevance: 10, title: "Travel WebSite", data: "16-06-2022", src: require('@/assets/img/Travel Website.png')},
-          //
           { tech: [{ code: 4 }, { code: 6 }, { code: 10 }, { code: 15 }, { code: 8 }], relevance: 10, title: "API de Usuários", data: "16-06-2022", src: require('@/assets/img/API de Usuários.png')},
           { tech: [{ code: 4 }, { code: 1 }], relevance: 10, title: "Calculadora", data: "16-06-2022", src: require('@/assets/img/Calculadora.png')},
           { tech: [{ code: 4 }, { code: 1 }, { code: 5 }, { code: 2 }, { code: 10 }, { code: 16 }], relevance: 10, title: "Cinemax", data: "16-06-2022", src: require('@/assets/img/Cinemax.png')},
@@ -157,7 +173,6 @@ import { EffectCoverflow, Pagination, Navigation } from 'swiper/modules';
           { tech: [{ code: 6 }, { code: 13 }, { code: 1 }, { code: 3 }, { code: 8 }], relevance: 6.9, title: "Realiza Assessoria", data: "16-06-2022", src: require('@/assets/img/Realiza Assessoria.png')},
           { tech: [{ code: 4 }, { code: 6 }, { code: 1 }, { code: 5 }, { code: 2 }, { code: 16 }, { code: 7 }], relevance: 10, title: "Sistema Maximus", data: "16-06-2022", src: require('@/assets/img/Sistema Maximus.png')},
           { tech: [{ code: 0 }, { code: 1 }, { code: 2 }], relevance: 9, title: "Spotify", data: "16-01-2022", src: require('@/assets/img/Spotify.png')},
-          
         ],
         selectedLanguages: [],
       }
@@ -215,6 +230,24 @@ import { EffectCoverflow, Pagination, Navigation } from 'swiper/modules';
       }
     },
     methods: {
+      updateSlidesPerView() {
+        // Exemplo: Se a tela for menor que 768px, mostre apenas 1 slide
+        if (window.innerWidth < 420) {
+          this.swiperOptions.slidesPerView = '1'; // '1'
+        }
+        else if (window.innerWidth >= 420  && window.innerWidth < 768) {
+          this.swiperOptions.slidesPerView = '1.25'; // '1'
+        } else {
+          this.swiperOptions.slidesPerView = '2.8';
+        }
+
+        // Força a atualização do Swiper
+        this.$nextTick(() => {
+          if (this.$refs.mySwiper && this.$refs.mySwiper.swiper) {
+            this.$refs.mySwiper.swiper.update();
+          }
+        });
+      },
       toggle () {
         if (this.selectAllLanguage) {
           this.selectedLanguages = []
@@ -222,6 +255,10 @@ import { EffectCoverflow, Pagination, Navigation } from 'swiper/modules';
           this.selectedLanguages = this.languages.slice()
         }
       },
+      getLanguageTitle(code) {
+        const language = this.languages.find(language => language.code === code);
+        return language ? language.title : 'Código não encontrado';
+      }
     },
     created(){
       
@@ -231,7 +268,10 @@ import { EffectCoverflow, Pagination, Navigation } from 'swiper/modules';
 
       this.languages = allSkills.filter(element => element.title !== "Git" && element.title !== "GitHub");
       this.selectedLanguages = this.languages.slice();
-    }
+
+      this.updateSlidesPerView();
+      window.addEventListener('resize', this.updateSlidesPerView);
+    },
   };
 </script>
 
@@ -259,16 +299,20 @@ html, body {
       padding: 0 0.4rem !important;
     }
   }
-
     
   .swiper {
     width: 100%;
     padding-top: 15px;
     padding-bottom: 50px;
     
-    .swiper-slide-active{
+    .swiper-slide{
       .content{
         background: linear-gradient(to bottom,rgba(0,0,0,0),rgba(0,0,0,.75)) !important;
+        border-radius: 8px;
+
+        h2, p{
+          color: white !important;
+        }
       }
     }
     
@@ -277,8 +321,9 @@ html, body {
       left: 0;
       width: 100%;
       bottom: 0;
-      //box-sizing: border-box;
-     // border-radius: 0 0 8px 8px;
+      // box-sizing: border-box;
+      // border-radius: 0 0 8px 8px;
+
       h2, p{
         padding-left: 18px;
       }
@@ -300,8 +345,8 @@ html, body {
     display: block;
     width: 100%;
     height: auto;
+    object-fit: cover;
   }
-
 
   .tranding-slider-control .swiper-pagination {
     position: relative;
@@ -309,6 +354,7 @@ html, body {
     bottom: 1rem;
   }
 }
+
 @media (min-width: 1264px) { 
   #projects{
     h1{

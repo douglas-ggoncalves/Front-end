@@ -217,22 +217,6 @@
                 </v-tooltip>
               </v-chip-group>
             </v-card-text>
-
-            <v-card-actions id="urlsProjetos" color="deep-purple lighten-2">
-              <a
-                v-if="!project.link && !project.doc"
-                target="blank"
-                :href="`https://douglas-ggoncalves.github.io/Front-end/${project.title}`"
-                >Acessar Site</a
-              >
-              <a v-if="project.link && !project.doc" target="blank" :href="`${project.link}`"
-                >Acessar Site</a
-              >
-
-              <a v-if="project.doc" target="blank" :href="`${project.doc}`"
-                >Acessar Documentação</a
-              >
-            </v-card-actions>
           </v-card>
         </v-col>
 
