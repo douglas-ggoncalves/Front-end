@@ -1,20 +1,42 @@
 *{
-    margin: 0;
-    padding: 0;
-    text-decoration: none;
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
 }
 
+/* ---------- Variables ---------- */
+$HTML5: #DD4B25;
+$CSS3: #3595CF;
+$Bootstrap: #6A37B2;
+$JavaScript: #EFD81D;
+$TypeScript: #2F74C0;
+$SQLServer: #006EC2;
+$MySQL: #47809D;
+$NodeJS: #74AC5F;
+$VueJS: #3FB27F;
+$CSharp: #642075;
+$Sass: #C76494;
+$Git: #E84D31;
+$API: #FF9210;
+$EJS: #4CAF50;
+$Express: #394671;
+$BulmaCSS: #69F0AE;
+$VueRouter: #4CAF50;
+$Vuetify: #64B5F6;
+$Stylus: #7CB333;
+/* ---------- End Variables ---------- */
+
 .v-container {
-    padding: 12px !important;
+  padding: 12px !important;
 }
 
 html {
-    scroll-behavior: smooth !important;
+  scroll-behavior: smooth !important;
 }
 
 .v-btn--icon.v-btn--density-default {
-    width: 36px !important;
-    height: 36px !important;
+  width: 36px !important;
+  height: 36px !important;
 }
 
 /* Start Style ScroolBar */
@@ -87,18 +109,213 @@ html {
     border-radius: 8px !important;
 
     div.swiper-slide{
-        min-height: 380px;
+      min-height: 380px;
     }
 
     div.swiper-wrapper{
-        min-height: 380px;
-        border-radius: 8px !important;
+      min-height: 380px;
+      border-radius: 8px !important;
     }
 
    img{
-        border-radius: 8px !important;
+      border-radius: 8px !important;
     }
 }
+
 .swiper-carousel .swiper-slide {
-    border-radius: 8px !important;
+  border-radius: 8px !important;
+}
+
+#skills{
+  .HTML5 {
+    color: $HTML5;
+  }
+  
+  .CSS3 {
+    color: $CSS3;
+  }
+  
+  .Bootstrap {
+    color: $Bootstrap;
+  }
+  
+  .JavaScript {
+    color: $JavaScript;
+  }
+  
+  .TypeScript {
+    color: $TypeScript;
+  }
+  
+  .SQLServer {
+    color: $SQLServer;
+  }
+  
+  .MySQL {
+    color: $MySQL;
+  }
+  
+  .NodeJS {
+    color: $NodeJS;
+  }
+  
+  .VueJS {
+    color: $VueJS;
+  }
+  
+  .CSharp {
+    color: $CSharp;
+  }
+  
+  .Sass {
+    color: $Sass;
+  }
+  
+  .Git {
+    color: $Git;
+  }
+  
+  .API {
+    color: $API;
+  }
+  
+  .EJS {
+    color: $EJS;
+  }
+  
+  .Express {
+    color: $Express;
+  }
+  
+  .BulmaCSS {
+    color: $BulmaCSS;
+  }
+  
+  .VueRouter {
+    color: $VueRouter;
+  }
+  
+  .Vuetify {
+    color: $Vuetify;
+  }
+  
+  .Stylus {
+    color: $Stylus;
+  }
+}
+
+#projects{
+  .HTML5 {
+    i {
+      color: $HTML5;
+    }
+  }
+  
+  .CSS3 {
+    i {
+      color: $CSS3;
+    }
+  }
+  
+  .Bootstrap {
+    i {
+      color: $Bootstrap;
+    }
+  }
+  
+  .JavaScript {
+    i {
+      color: $JavaScript;
+    }
+  }
+  
+  .TypeScript {
+    i {
+      color: $TypeScript;
+    }
+  }
+  
+  .SQLServer {
+    i {
+      color: $SQLServer;
+    }
+  }
+  
+  .MySQL {
+    i {
+      color: $MySQL;
+    }
+  }
+  
+  .NodeJS {
+    i {
+      color: $NodeJS;
+    }
+  }
+  
+  .VueJS {
+    i {
+      color: $VueJS;
+    }
+  }
+  
+  .CSharp {
+    i {
+      color: $CSharp;
+    }
+  }
+  
+  .Sass {
+    i {
+      color: $Sass;
+    }
+  }
+  
+  .Git {
+    i {
+      color: $Git;
+    }
+  }
+  
+  .API {
+    i {
+      color: $API;
+    }
+  }
+  
+  .EJS {
+    i {
+      color: $EJS;
+    }
+  }
+  
+  .Express {
+    i {
+      color: $Express;
+    }
+  }
+  
+  .BulmaCSS {
+    i {
+      color: $BulmaCSS;
+    }
+  }
+  
+  .VueRouter {
+    i {
+      color: $VueRouter;
+    }
+  }
+  
+  .Vuetify {
+    i {
+      color: $Vuetify;
+    }
+  }
+  
+  .Stylus {
+    i {
+      color: $Stylus;
+    }
+  }
 }

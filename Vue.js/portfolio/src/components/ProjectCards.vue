@@ -103,22 +103,28 @@
         /> <!-- class="swiper-image" -->
 
         <div class="content" style="">
-           <h2>{{ project.title }}</h2>
-           <!--  <p>{{ project.relevance }}</p> -->
-
-            <v-card class="">
-              <v-card-text>
-                <v-btn :prepend-icon="'mdi-alpha-s-box-outline'"  variant="outlined" density="comfortable" v-for="(tech, index) in project.tech" :key="index">
+          <h2>{{ project.title }}</h2>
+          <!--  <p>{{ project.relevance }}</p> -->
+          <v-card class="">
+            <v-card-text>
+              <v-btn 
+                :class="getClassIcon(tech.code)"
+                :prepend-icon="getIcon(tech.code)"
+                variant="outlined" 
+                density="comfortable" 
+                v-for="(tech, index) in project.tech" :key="index"
+              >
+                <span>{{ getLanguageTitle(tech.code) }}</span>
+                <v-tooltip
+                  activator="parent"
+                  location="bottom"
+                  style="background-color: red !important;"
+                >
                   {{ getLanguageTitle(tech.code) }}
-                  <v-tooltip
-                    activator="parent"
-                    location="bottom"
-                  >
-                    {{ getLanguageTitle(tech.code) }}
-                  </v-tooltip>
-                </v-btn>
-              </v-card-text>
-            </v-card>
+                </v-tooltip>
+              </v-btn>
+            </v-card-text>
+          </v-card>
         </div>
       </swiper-slide>
     </swiper>
@@ -148,9 +154,9 @@ import { EffectCoverflow, Pagination, Navigation } from 'swiper/modules';
         },
         arrayProjects: [
           { tech: [{ code: 0 }, { code: 1 }, { code: 2 }, { code: 3 }, { code: 34 }], relevance: 10, title: "Burger", data: "16-04-2022", src: require('@/assets/img/Burger.png')},
-          { tech: [{ code: 0 }, { code: 1 }, { code: 5 }, { code: 2 }, { code: 3 }, { code: 9 }], relevance: 10, title: "Coffee", data: "17-05-2022", src: require('@/assets/img/Coffee.png')},
+          { tech: [{ code: 0 }, { code: 1 }, { code: 5 }, { code: 2 }, { code: 3 }], relevance: 10, title: "Coffee", data: "17-05-2022", src: require('@/assets/img/Coffee.png')},
           { tech: [{ code: 0 }, { code: 1 }, { code: 2 }, { code: 3 }], relevance: 9, title: "Age Sport", data: "14-05-2022", src: require('@/assets/img/Age Sport.png')},
-          { tech: [{ code: 0 }, { code: 1 }, { code: 5 }, { code: 2 }, { code: 3 }, { code: 9 }], relevance: 8, title: "BeatUp", data: "15-04-2022", src: require('@/assets/img/BeatUp.png')},
+          { tech: [{ code: 0 }, { code: 1 }, { code: 5 }, { code: 2 }, { code: 3 }], relevance: 8, title: "BeatUp", data: "15-04-2022", src: require('@/assets/img/BeatUp.png')},
           { tech: [{ code: 0 }, { code: 1 }, { code: 5 }, { code: 2 }, { code: 3 }], relevance: 7, title: "Construction", data: "15-06-2022", src: require('@/assets/img/Construction.png')},
           { tech: [{ code: 0 }, { code: 1 }, { code: 5 }, { code: 2 }], relevance: 8, title: "DentalCare", data: "15-07-2022", src: require('@/assets/img/DentalCare.png')},
           { tech: [{ code: 0 }, { code: 1 }, { code: 5 }, { code: 2 },{ code: 3 }], relevance: 8, title: "Education Site", data: "15-07-2022", src: require('@/assets/img/Education Site.png')},
@@ -258,6 +264,14 @@ import { EffectCoverflow, Pagination, Navigation } from 'swiper/modules';
       getLanguageTitle(code) {
         const language = this.languages.find(language => language.code === code);
         return language ? language.title : 'Código não encontrado';
+      },
+      getIcon(code) {
+        const language = this.languages.find(language => language.code === code);
+        return language ? language.icon : 'Código não encontrado';
+      },
+      getClassIcon(code) {
+        const language = this.languages.find(language => language.code === code);
+        return language ? language.className : 'Código não encontrado';
       }
     },
     created(){
@@ -299,7 +313,13 @@ html, body {
       padding: 0 0.4rem !important;
     }
   }
-    
+
+  .v-card-text{
+    >button{
+      padding: 0 10px;
+    }
+  }
+
   .swiper {
     width: 100%;
     padding-top: 15px;
@@ -321,8 +341,10 @@ html, body {
       left: 0;
       width: 100%;
       bottom: 0;
-      // box-sizing: border-box;
-      // border-radius: 0 0 8px 8px;
+
+      button{
+        margin: 2px 4px 2px 0 !important;
+      }
 
       h2, p{
         padding-left: 18px;

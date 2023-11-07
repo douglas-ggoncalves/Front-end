@@ -4,6 +4,8 @@
   text-decoration: none;
 }
 
+/* ---------- Variables ---------- */
+/* ---------- End Variables ---------- */
 .v-container {
   padding: 12px !important;
 }
@@ -96,4 +98,120 @@ body.darkScrollbar {
 
 .swiper-carousel .swiper-slide {
   border-radius: 8px !important;
+}
+
+#skills .HTML5 {
+  color: #DD4B25;
+}
+#skills .CSS3 {
+  color: #3595CF;
+}
+#skills .Bootstrap {
+  color: #6A37B2;
+}
+#skills .JavaScript {
+  color: #EFD81D;
+}
+#skills .TypeScript {
+  color: #2F74C0;
+}
+#skills .SQLServer {
+  color: #006EC2;
+}
+#skills .MySQL {
+  color: #47809D;
+}
+#skills .NodeJS {
+  color: #74AC5F;
+}
+#skills .VueJS {
+  color: #3FB27F;
+}
+#skills .CSharp {
+  color: #642075;
+}
+#skills .Sass {
+  color: #C76494;
+}
+#skills .Git {
+  color: #E84D31;
+}
+#skills .API {
+  color: #FF9210;
+}
+#skills .EJS {
+  color: #4CAF50;
+}
+#skills .Express {
+  color: #394671;
+}
+#skills .BulmaCSS {
+  color: #69F0AE;
+}
+#skills .VueRouter {
+  color: #4CAF50;
+}
+#skills .Vuetify {
+  color: #64B5F6;
+}
+#skills .Stylus {
+  color: #7CB333;
+}
+
+#projects .HTML5 i {
+  color: #DD4B25;
+}
+#projects .CSS3 i {
+  color: #3595CF;
+}
+#projects .Bootstrap i {
+  color: #6A37B2;
+}
+#projects .JavaScript i {
+  color: #EFD81D;
+}
+#projects .TypeScript i {
+  color: #2F74C0;
+}
+#projects .SQLServer i {
+  color: #006EC2;
+}
+#projects .MySQL i {
+  color: #47809D;
+}
+#projects .NodeJS i {
+  color: #74AC5F;
+}
+#projects .VueJS i {
+  color: #3FB27F;
+}
+#projects .CSharp i {
+  color: #642075;
+}
+#projects .Sass i {
+  color: #C76494;
+}
+#projects .Git i {
+  color: #E84D31;
+}
+#projects .API i {
+  color: #FF9210;
+}
+#projects .EJS i {
+  color: #4CAF50;
+}
+#projects .Express i {
+  color: #394671;
+}
+#projects .BulmaCSS i {
+  color: #69F0AE;
+}
+#projects .VueRouter i {
+  color: #4CAF50;
+}
+#projects .Vuetify i {
+  color: #64B5F6;
+}
+#projects .Stylus i {
+  color: #7CB333;
 }/*# sourceMappingURL=style.css.map */
