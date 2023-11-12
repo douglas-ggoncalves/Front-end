@@ -6,8 +6,8 @@
           <h1>{{ $t('titleProjectCards') }}</h1>
         </v-row>
 
-        <v-row class="d-sm-flex justify-sm-start pb-0 itens"> <!-- d-flex justify-start  -->
-          <v-col class="d-sm-flex" :cols="12" :lg="10" :xl="8"> <!-- d-flex -->
+        <v-row class="d-sm-flex justify-sm-start pb-0 itens">
+          <v-col class="d-sm-flex" :cols="12" :lg="10" :xl="8">
             <v-col
               class="pb-0 px-0 pb-sm-3 pr-sm-3 pl-lg-3"
               :cols="12"
@@ -71,7 +71,9 @@
       </v-col>
     </v-row>
 
-    <swiper
+    <v-row>
+      <v-col :cols="12">
+      <swiper
       :key="swiperKey"
       :navigation="true"
       :effect="'coverflow'"
@@ -98,15 +100,21 @@
       <swiper-slide v-for="(project, index) in sortedProjects" :key="index" style="border-radius: 8px !important;">
         <img 
           :src="project.src" 
-          style="width:100%; height:100%; object-fit: cover;  border-radius: 8px;"
+          style="max-width: 100%; height: auto; object-fit: contain;  border-radius: 8px;"
 
-        /> <!-- class="swiper-image" -->
+        />
 
         <div class="content" style="">
-          <h2>{{ project.title }}</h2>
-          <!--  <p>{{ project.relevance }}</p> -->
-          <v-card class="">
-            <v-card-text>
+          <v-card>
+            <div class="projectTitle">
+              <h2>{{ project.title }}</h2>
+            </div>
+            <v-divider class="border-opacity-20 mx-4"></v-divider>
+
+            <v-card-text style="padding-bottom: 10px !important; padding-top: 0 !important;">
+              <div class="projectSubTitle">
+                <h2>{{ $t('subTitleProjectCards') }}</h2>
+              </div>
               <v-btn 
                 :class="getClassIcon(tech.code)"
                 :prepend-icon="getIcon(tech.code)"
@@ -118,16 +126,21 @@
                 <v-tooltip
                   activator="parent"
                   location="bottom"
-                  style="background-color: red !important;"
                 >
                   {{ getLanguageTitle(tech.code) }}
                 </v-tooltip>
               </v-btn>
             </v-card-text>
+
+            <v-card-actions>
+              <a href="https://curriculo-douglas-goncalves.netlify.app/" target="_blank">Acessar Site</a>
+            </v-card-actions>
           </v-card>
         </div>
       </swiper-slide>
     </swiper>
+      </v-col>
+    </v-row>
   </v-container>
 </template>
 
@@ -329,9 +342,39 @@ html, body {
       .content{
         background: linear-gradient(to bottom,rgba(0,0,0,0),rgba(0,0,0,.75)) !important;
         border-radius: 8px;
+        text-align: center;
 
-        h2, p{
+        div.projectTitle, div.projectSubTitle{
+          padding: 12px 0 !important;
+        }
+
+        div.v-card-actions{
+          padding: 0 !important;
+        }
+
+        h2{
+          font-size: 1.25rem;
+          display: inline;
+          margin-left: auto;
+        }
+
+        h2, p, a{
           color: white !important;
+        }
+
+        a{
+          font-size: 1.15rem;
+          display: inline;
+          margin: 0 .5rem;
+          border-bottom: 1px solid transparent;
+        }
+
+        a{
+          margin: 0 auto;
+
+          &:hover{
+            border-bottom: 1px solid white;
+          }
         }
       }
     }
@@ -359,15 +402,16 @@ html, body {
   .swiper-slide {
     background-position: center;
     background-size: cover;
-    width: 300px;
+    //width: 300px; // 555
+    min-height: 520px;
     height: auto;
   }
 
   .swiper-slide img {
-    display: block;
-    width: 100%;
-    height: auto;
-    object-fit: cover;
+    //display: block;
+    //width: 100%;
+    //height: auto;
+    //object-fit: contain;
   }
 
   .tranding-slider-control .swiper-pagination {

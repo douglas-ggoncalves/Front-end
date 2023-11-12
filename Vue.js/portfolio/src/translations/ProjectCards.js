@@ -1,6 +1,7 @@
 export default {
     en: {
         titleProjectCards: "Projects",
+        subTitleProjectCards: "Tools Used",
         titleSelectLanguage: "Select Language",
         labelSelect: "Select All",
         spanOther: "other",
@@ -14,6 +15,7 @@ export default {
     },
     pt: {   
         titleProjectCards: "Projetos",
+        subTitleProjectCards: "Ferramentas Usadas",
         titleSelectLanguage: "Selecione a Linguagem",
         labelSelect: "Selecionar Todos",
         spanOther: "outro",

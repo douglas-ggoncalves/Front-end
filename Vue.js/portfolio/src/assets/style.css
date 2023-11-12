@@ -64,11 +64,6 @@ body.darkScrollbar {
   color: rgba(0, 0, 0, 0.87) !important;
 }
 
-@media (min-width: 1264px) {
-  #home div.v-overlay__scrim {
-    opacity: 0 !important;
-  }
-}
 .v-theme--dark span.swiper-pagination-bullet {
   background-color: white !important;
 }
@@ -82,14 +77,14 @@ body.darkScrollbar {
 }
 
 .mySwiper {
-  min-height: 380px;
+  min-height: 520px;
   border-radius: 8px !important;
 }
 .mySwiper div.swiper-slide {
-  min-height: 380px;
+  min-height: 520px;
 }
 .mySwiper div.swiper-wrapper {
-  min-height: 380px;
+  min-height: 520px;
   border-radius: 8px !important;
 }
 .mySwiper img {
@@ -214,4 +209,18 @@ body.darkScrollbar {
 }
 #projects .Stylus i {
   color: #7CB333;
+}
+
+@media (min-width: 1264px) {
+  #home div.v-overlay__scrim {
+    opacity: 0 !important;
+  }
+}
+@media (min-width: 1200px) {
+  .mySwiper {
+    min-height: 350px !important;
+  }
+  .mySwiper div.swiper-wrapper {
+    min-height: 350px !important;
+  }
 }/*# sourceMappingURL=style.css.map */
