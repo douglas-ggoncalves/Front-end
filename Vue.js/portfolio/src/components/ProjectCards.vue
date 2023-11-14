@@ -166,7 +166,7 @@ import { EffectCoverflow, Pagination, Navigation } from 'swiper/modules';
           slidesPerView: 2.8
         },
         arrayProjects: [
-          { tech: [{ code: 0 }, { code: 1 }, { code: 2 }, { code: 3 }, { code: 34 }], relevance: 10, title: "Burger", data: "16-04-2022", src: require('@/assets/img/Burger.png')},
+          { tech: [{ code: 0 }, { code: 1 }, { code: 5 }, { code: 2 }, { code: 3 }], relevance: 10, title: "Burger", data: "16-04-2022", src: require('@/assets/img/Burger.png')},
           { tech: [{ code: 0 }, { code: 1 }, { code: 5 }, { code: 2 }, { code: 3 }], relevance: 10, title: "Coffee", data: "17-05-2022", src: require('@/assets/img/Coffee.png')},
           { tech: [{ code: 0 }, { code: 1 }, { code: 2 }, { code: 3 }], relevance: 9, title: "Age Sport", data: "14-05-2022", src: require('@/assets/img/Age Sport.png')},
           { tech: [{ code: 0 }, { code: 1 }, { code: 5 }, { code: 2 }, { code: 3 }], relevance: 8, title: "BeatUp", data: "15-04-2022", src: require('@/assets/img/BeatUp.png')},
@@ -250,13 +250,22 @@ import { EffectCoverflow, Pagination, Navigation } from 'swiper/modules';
     },
     methods: {
       updateSlidesPerView() {
-        // Exemplo: Se a tela for menor que 768px, mostre apenas 1 slide
         if (window.innerWidth < 420) {
           this.swiperOptions.slidesPerView = '1'; // '1'
         }
         else if (window.innerWidth >= 420  && window.innerWidth < 768) {
           this.swiperOptions.slidesPerView = '1.25'; // '1'
-        } else {
+        } 
+        else if (window.innerWidth >= 768  && window.innerWidth < 992){
+          this.swiperOptions.slidesPerView = '1.5';
+        }
+        else if (window.innerWidth >= 992  && window.innerWidth < 1064){
+          this.swiperOptions.slidesPerView = '1.8';
+        }
+        else if (window.innerWidth >= 1064  && window.innerWidth < 1400){
+          this.swiperOptions.slidesPerView = '2.05';
+        }
+        else {
           this.swiperOptions.slidesPerView = '2.8';
         }
 
@@ -313,6 +322,31 @@ html, body {
   font-size: 14px;
   color: #000;
 }
+
+.v-theme--dark{
+  a{
+    color: white !important;
+  }
+
+    a{
+    &:hover{
+      border-bottom: 1px solid white !important;
+    }
+  }
+}
+
+.v-theme--light{
+  a{
+    color: black !important;
+  }
+
+    a{
+    &:hover{
+      border-bottom: 1px solid black !important;
+    }
+  }
+}
+  
   
 #projects{
   margin-top: 4.5rem;
@@ -357,11 +391,6 @@ html, body {
           display: inline;
           margin-left: auto;
         }
-
-        h2, p, a{
-          color: white !important;
-        }
-
         a{
           font-size: 1.15rem;
           display: inline;
@@ -371,10 +400,6 @@ html, body {
 
         a{
           margin: 0 auto;
-
-          &:hover{
-            border-bottom: 1px solid white;
-          }
         }
       }
     }
@@ -399,19 +424,14 @@ html, body {
     }
   }
 
-  .swiper-slide {
-    background-position: center;
-    background-size: cover;
-    //width: 300px; // 555
-    min-height: 520px;
-    height: auto;
-  }
-
-  .swiper-slide img {
-    //display: block;
-    //width: 100%;
-    //height: auto;
-    //object-fit: contain;
+  .mySwiper {
+    .swiper-slide {
+      background-position: center;
+      background-size: cover;
+      //width: 300px; // 555
+      min-height: 520px;
+      height: auto;
+    }
   }
 
   .tranding-slider-control .swiper-pagination {

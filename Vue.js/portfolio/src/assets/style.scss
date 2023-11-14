@@ -99,15 +99,14 @@ html {
 }
 
 .mySwiper {
-  //min-height: 380px;
-  min-height: 520px;
+ // min-height: 520px;
   border-radius: 8px !important;
 
-  div.swiper-slide{
+  .swiper-slide{
     min-height: 520px;
   }
 
-  div.swiper-wrapper{
+  .swiper-wrapper{
     //min-height: 380px;
     min-height: 520px;
     border-radius: 8px !important;
@@ -316,21 +315,6 @@ html {
   }
 }
 
-
-@media (min-width: 576px) { 
-  
-}
-
-@media (min-width: 768px) { 
-  
-}
-
-@media (min-width: 992px) { 
-  
-}
-
-
-
 @media (min-width: 1264px) { 
   #home div.v-overlay__scrim{
     opacity: 0 !important;
@@ -345,8 +329,4 @@ html {
       min-height: 350px !important;
     }
   }
-}
-
-@media (min-width: 1400px) { 
-  
 }

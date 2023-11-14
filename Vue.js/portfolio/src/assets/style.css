@@ -77,13 +77,12 @@ body.darkScrollbar {
 }
 
 .mySwiper {
-  min-height: 520px;
   border-radius: 8px !important;
 }
-.mySwiper div.swiper-slide {
+.mySwiper .swiper-slide {
   min-height: 520px;
 }
-.mySwiper div.swiper-wrapper {
+.mySwiper .swiper-wrapper {
   min-height: 520px;
   border-radius: 8px !important;
 }
