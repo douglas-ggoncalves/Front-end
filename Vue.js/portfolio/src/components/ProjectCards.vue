@@ -68,77 +68,109 @@
             </v-col>
           </v-col>
         </v-row>
+
+        <v-row class="text-center mt-0 itens">
+          <v-col :cols="12">
+            <v-col
+              class="pb-0 px-0 pb-sm-3 pl-lg-3"
+              :cols="12"
+            >
+              <v-card
+                color="surface-variant"
+                variant="tonal"
+                v-if="sortedProjects.length == 0"
+                style="padding: 0 0.4rem !important;"
+              >
+                <v-card-text class="font-weight-black">
+                  {{ $t("noProjectsFound") }}
+                </v-card-text>
+              </v-card>
+            </v-col>
+          </v-col>
+        </v-row>
       </v-col>
     </v-row>
 
     <v-row>
       <v-col :cols="12">
-      <swiper
-      :key="swiperKey"
-      :navigation="true"
-      :effect="'coverflow'"
-      :grabCursor="true"
-      :centeredSlides="true"
-      :slidesPerView="swiperOptions.slidesPerView"
-      :initialSlide="2"
-      :coverflowEffect="{
-        rotate: 0,
-        stretch: 0,
-        depth: 100,
-        modifier: 2.8,
-        slideShadows: true,
-      }"
-      :spaceBetween="0"
-      :pagination="{
-        clickable: true
-      }"
-      
-      :modules="modules"
-      :clickable="true"
-      class="mySwiper"
-    >
-      <swiper-slide v-for="(project, index) in sortedProjects" :key="index" style="border-radius: 8px !important;">
-        <img 
-          :src="project.src" 
-          style="max-width: 100%; height: auto; object-fit: contain;  border-radius: 8px;"
+        <swiper
+          :key="swiperKey"
+          :navigation="true"
+          :effect="'coverflow'"
+          :grabCursor="true"
+          :centeredSlides="true"
+          :slidesPerView="swiperOptions.slidesPerView"
+          :initialSlide="2"
+          :coverflowEffect="{
+            rotate: 0,
+            stretch: 0,
+            depth: 100,
+            modifier: 2.8,
+            slideShadows: true,
+          }"
+          :spaceBetween="0"
+          :pagination="{
+            clickable: true
+          }"
+          
+          :modules="modules"
+          :clickable="true"
+          class="mySwiper"
+        >
 
-        />
+          <swiper-slide v-for="(project, index) in sortedProjects" :key="index" style="border-radius: 8px !important;">
+            <img 
+              :src="project.src" 
+              style="max-width: 100%; height: auto; object-fit: contain;  border-radius: 8px;"
+            />
 
-        <div class="content" style="">
-          <v-card>
-            <div class="projectTitle">
-              <h2>{{ project.title }}</h2>
+            <div class="content" style="">
+              <v-card>
+                <div class="projectTitle">
+                  <h2>{{ project.title }}</h2>
+                </div>
+                <v-divider class="border-opacity-20 mx-4"></v-divider>
+
+                <v-card-text style="padding-bottom: 10px !important; padding-top: 0 !important;">
+                  <div class="projectSubTitle">
+                    <h2>{{ $t('subTitleProjectCards') }}</h2>
+                  </div>
+                  <v-btn 
+                    :class="getClassIcon(tech.code)"
+                    :prepend-icon="getIcon(tech.code)"
+                    variant="outlined" 
+                    density="comfortable" 
+                    v-for="(tech, index) in project.tech" :key="index"
+                  >
+                    <span>{{ getLanguageTitle(tech.code) }}</span>
+                    <v-tooltip
+                      activator="parent"
+                      location="bottom"
+                    >
+                      {{ getLanguageTitle(tech.code) }}
+                    </v-tooltip>
+                  </v-btn>
+                </v-card-text>
+
+                <v-card-actions>
+                   <a
+                    v-if="!project.link && !project.doc"
+                    target="blank"
+                    :href="`https://douglas-ggoncalves.github.io/Front-end/${project.title}`"
+                    >{{ $t('accessWebsite') }}</a
+                  >
+                  <a v-if="project.link && !project.doc" target="blank" :href="`${project.link}`"
+                    >{{ $t('accessWebsite') }}</a
+                  >
+                  <a v-if="project.doc" target="blank" :href="`${project.doc}`"
+                    >Acessar Documentação</a
+                  >
+                </v-card-actions>
+              </v-card>
             </div>
-            <v-divider class="border-opacity-20 mx-4"></v-divider>
+          </swiper-slide>
+        </swiper>
 
-            <v-card-text style="padding-bottom: 10px !important; padding-top: 0 !important;">
-              <div class="projectSubTitle">
-                <h2>{{ $t('subTitleProjectCards') }}</h2>
-              </div>
-              <v-btn 
-                :class="getClassIcon(tech.code)"
-                :prepend-icon="getIcon(tech.code)"
-                variant="outlined" 
-                density="comfortable" 
-                v-for="(tech, index) in project.tech" :key="index"
-              >
-                <span>{{ getLanguageTitle(tech.code) }}</span>
-                <v-tooltip
-                  activator="parent"
-                  location="bottom"
-                >
-                  {{ getLanguageTitle(tech.code) }}
-                </v-tooltip>
-              </v-btn>
-            </v-card-text>
-
-            <v-card-actions>
-              <a href="https://curriculo-douglas-goncalves.netlify.app/" target="_blank">Acessar Site</a>
-            </v-card-actions>
-          </v-card>
-        </div>
-      </swiper-slide>
-    </swiper>
       </v-col>
     </v-row>
   </v-container>
@@ -166,32 +198,33 @@ import { EffectCoverflow, Pagination, Navigation } from 'swiper/modules';
           slidesPerView: 2.8
         },
         arrayProjects: [
-          { tech: [{ code: 0 }, { code: 1 }, { code: 5 }, { code: 2 }, { code: 3 }], relevance: 10, title: "Burger", data: "16-04-2022", src: require('@/assets/img/Burger.png')},
-          { tech: [{ code: 0 }, { code: 1 }, { code: 5 }, { code: 2 }, { code: 3 }], relevance: 10, title: "Coffee", data: "17-05-2022", src: require('@/assets/img/Coffee.png')},
-          { tech: [{ code: 0 }, { code: 1 }, { code: 2 }, { code: 3 }], relevance: 9, title: "Age Sport", data: "14-05-2022", src: require('@/assets/img/Age Sport.png')},
-          { tech: [{ code: 0 }, { code: 1 }, { code: 5 }, { code: 2 }, { code: 3 }], relevance: 8, title: "BeatUp", data: "15-04-2022", src: require('@/assets/img/BeatUp.png')},
-          { tech: [{ code: 0 }, { code: 1 }, { code: 5 }, { code: 2 }, { code: 3 }], relevance: 7, title: "Construction", data: "15-06-2022", src: require('@/assets/img/Construction.png')},
-          { tech: [{ code: 0 }, { code: 1 }, { code: 5 }, { code: 2 }], relevance: 8, title: "DentalCare", data: "15-07-2022", src: require('@/assets/img/DentalCare.png')},
-          { tech: [{ code: 0 }, { code: 1 }, { code: 5 }, { code: 2 },{ code: 3 }], relevance: 8, title: "Education Site", data: "15-07-2022", src: require('@/assets/img/Education Site.png')},
-          { tech: [{ code: 0 }, { code: 1 }, { code: 2 }], relevance: 7, title: "Finans", data: "15-01-2022", src: require('@/assets/img/Finans.png')},
-          { tech: [{ code: 0 }, { code: 1 }, { code: 5 }, { code: 2 }], relevance: 7, title: "Illustration", data: "15-07-2022", src: require('@/assets/img/Illustration.png')},
-          { tech: [{ code: 0 }, { code: 1 }, { code: 2 }], relevance: 8, title: "Maximus", data: "15-07-2022", src: require('@/assets/img/Maximus.png')},
-          { tech: [{ code: 0 }, { code: 1 }, { code: 5 }, { code: 2 }], relevance: 8, title: "Online Education", data: "18-06-2022", src: require('@/assets/img/Online Education.png')},
-          { tech: [{ code: 0 }, { code: 1 }, { code: 2 }], relevance: 10, title: "Travel WebSite", data: "16-06-2022", src: require('@/assets/img/Travel Website.png')},
-          { tech: [{ code: 4 }, { code: 6 }, { code: 10 }, { code: 15 }, { code: 8 }], relevance: 10, title: "API de Usuários", data: "16-06-2022", src: require('@/assets/img/API de Usuários.png')},
-          { tech: [{ code: 4 }, { code: 1 }], relevance: 10, title: "Calculadora", data: "16-06-2022", src: require('@/assets/img/Calculadora.png')},
-          { tech: [{ code: 4 }, { code: 1 }, { code: 5 }, { code: 2 }, { code: 10 }, { code: 16 }], relevance: 10, title: "Cinemax", data: "16-06-2022", src: require('@/assets/img/Cinemax.png')},
-          { tech: [{ code: 4 }, { code: 1 }], relevance: 10, title: "Cronômetro", data: "16-06-2022", src: require('@/assets/img/Cronômetro.png')},
-          { tech: [{ code: 4 }, { code: 0 }, { code: 1 }, { code: 18 }], relevance: 10, title: "Facilita Tasks", data: "16-06-2022", src: require('@/assets/img/Facilita Tasks.png')},
-          { tech: [{ code: 0 }, { code: 1 }, { code: 5 }, { code: 2 }, { code: 3 }], relevance: 10, title: "Gerador de Senhas", data: "16-06-2022", src: require('@/assets/img/Gerador de Senhas.png')},
-          { tech: [{ code: 4 }, { code: 1 }, { code: 5 }, { code: 17 }], relevance: 10, title: "Gestão Financeira", data: "16-06-2022", src: require('@/assets/img/Gestão Financeira.png')},
-          { tech: [{ code: 6 }, { code: 13 }, { code: 1 }, { code: 5 }, { code: 3 }, { code: 8 }], relevance: 7, title: "Guia Perguntas", data: "16-06-2022", src: require('@/assets/img/Guia Perguntas.png')},
-          { tech: [{ code: 4 }, { code: 1 }, { code: 17 }], relevance: 7, title: "Lista de Tarefas", data: "16-06-2022", src: require('@/assets/img/Lista de Tarefas.png')},
-          { tech: [{ code: 0 }, { code: 1 }, { code: 3 }], relevance: 7.6, title: "Mata Mosquito", data: "16-06-2022", src: require('@/assets/img/Mata Mosquito.png')},
-          { tech: [{ code: 4 }, { code: 1 }, { code: 10 }], relevance: 8.2, title: "Pokedex", data: "16-06-2022", src: require('@/assets/img/Pokedex.png')},
-          { tech: [{ code: 6 }, { code: 13 }, { code: 1 }, { code: 3 }, { code: 8 }], relevance: 6.9, title: "Realiza Assessoria", data: "16-06-2022", src: require('@/assets/img/Realiza Assessoria.png')},
-          { tech: [{ code: 4 }, { code: 6 }, { code: 1 }, { code: 5 }, { code: 2 }, { code: 16 }, { code: 7 }], relevance: 10, title: "Sistema Maximus", data: "16-06-2022", src: require('@/assets/img/Sistema Maximus.png')},
-          { tech: [{ code: 0 }, { code: 1 }, { code: 2 }], relevance: 9, title: "Spotify", data: "16-01-2022", src: require('@/assets/img/Spotify.png')},
+          { title: "Burger", data: "16-04-2022", relevance: 10, tech: [{ code: 0 }, { code: 1 }, { code: 5 }, { code: 2 }, { code: 3 }], src: require('@/assets/img/Burger.png') },
+          {  title: "Coffee", data: "17-05-2022", relevance: 10, tech: [{ code: 0 }, { code: 1 }, { code: 5 }, { code: 2 }, { code: 3 }], src: require('@/assets/img/Coffee.png')},
+          { title: "Age Sport", data: "14-05-2022", relevance: 9, tech: [{ code: 0 }, { code: 1 }, { code: 2 }, { code: 3 }], src: require('@/assets/img/Age Sport.png')},
+          { title: "BeatUp", data: "15-04-2022", relevance: 8, tech: [{ code: 0 }, { code: 1 }, { code: 5 }, { code: 2 }, { code: 3 }], src: require('@/assets/img/BeatUp.png')},
+          { title: "Construction", data: "15-06-2022", relevance: 7, tech: [{ code: 0 }, { code: 1 }, { code: 5 }, { code: 2 }, { code: 3 }], src: require('@/assets/img/Construction.png')},
+          { title: "DentalCare", data: "15-07-2022", relevance: 8, tech: [{ code: 0 }, { code: 1 }, { code: 5 }, { code: 2 }], src: require('@/assets/img/DentalCare.png')},
+          { title: "Education Site", data: "15-07-2022", relevance: 8, tech: [{ code: 0 }, { code: 1 }, { code: 5 }, { code: 2 },{ code: 3 }], src: require('@/assets/img/Education Site.png')},
+          { title: "Finans", data: "15-01-2022", relevance: 7, tech: [{ code: 0 }, { code: 1 }, { code: 2 }], src: require('@/assets/img/Finans.png')},
+          { title: "Illustration", data: "15-07-2022", relevance: 7, tech: [{ code: 0 }, { code: 1 }, { code: 5 }, { code: 2 }], src: require('@/assets/img/Illustration.png')},
+          { title: "Maximus", data: "15-07-2022", relevance: 8, tech: [{ code: 0 }, { code: 1 }, { code: 2 }], src: require('@/assets/img/Maximus.png')},
+          { title: "Online Education", data: "18-06-2022", relevance: 8, tech: [{ code: 0 }, { code: 1 }, { code: 5 }, { code: 2 }], src: require('@/assets/img/Online Education.png')},
+          { title: "Travel Website", data: "16-06-2022", relevance: 10, tech: [{ code: 0 }, { code: 1 }, { code: 2 }], src: require('@/assets/img/Travel Website.png')},
+          { title: "API de Usuários", data: "16-06-2022", relevance: 10, tech: [{ code: 4 }, { code: 6 }, { code: 10 }, { code: 15 }, { code: 8 }], doc: "https://github.com/douglas-ggoncalves/Full-Stack/tree/main/API%20de%20Usuarios", src: require('@/assets/img/API de Usuários.png')},
+          { title: "Calculadora", data: "16-06-2022", relevance: 10, tech: [{ code: 4 }, { code: 1 }], link: "https://douglas-ggoncalves.github.io/Front-end/Vue.js/calculadora/dist", src: require('@/assets/img/Calculadora.png')},
+          { title: "Cinemax", data: "16-06-2022", relevance: 10, tech: [{ code: 4 }, { code: 1 }, { code: 5 }, { code: 2 }, { code: 10 }, { code: 16 }], src: require('@/assets/img/Cinemax.png')},
+          { title: "Cronômetro", data: "16-06-2022", relevance: 10, tech: [{ code: 4 }, { code: 1 }], link: "https://douglas-ggoncalves.github.io/Front-end/Vue.js/cronometro/dist", src: require('@/assets/img/Cronômetro.png')},
+          { title: "Facilita Tasks", data: "16-06-2022", relevance: 10, tech: [{ code: 4 }, { code: 0 }, { code: 1 }, { code: 18 }], link: "https://facilitatasks.netlify.app/", src: require('@/assets/img/Facilita Tasks.png')},
+          { title: "Gerador de Senhas", data: "16-06-2022", relevance: 10, tech: [{ code: 0 }, { code: 1 }, { code: 5 }, { code: 2 }, { code: 3 }], src: require('@/assets/img/Gerador de Senhas.png')},
+          { title: "Gestão Financeira", data: "16-06-2022", relevance: 10, tech: [{ code: 4 }, { code: 1 }, { code: 5 }, { code: 17 }], link: "https://gestao-financeira.netlify.app", src: require('@/assets/img/Gestão Financeira.png')},
+          { title: "Guia Perguntas", data: "16-06-2022", relevance: 7, tech: [{ code: 6 }, { code: 13 }, { code: 1 }, { code: 5 }, { code: 3 }, { code: 8 }], doc: "https://github.com/douglas-ggoncalves/Node.js/blob/main/Guia%20Perguntas/README.md", src: require('@/assets/img/Guia Perguntas.png')},
+          { title: "Lista de Tarefas", data: "16-06-2022", relevance: 7, tech: [{ code: 4 }, { code: 1 }, { code: 17 }], link: "https://douglas-ggoncalves.github.io/Front-end/Vue.js/tarefas/dist", src: require('@/assets/img/Lista de Tarefas.png')},
+          { title: "Mata Mosquito", data: "16-06-2022", relevance: 7.6, tech: [{ code: 0 }, { code: 1 }, { code: 3 }], src: require('@/assets/img/Mata Mosquito.png')},
+          { title: "Pokedex", data: "16-06-2022", relevance: 8.2, tech: [{ code: 4 }, { code: 1 }, { code: 10 }], link: "https://douglas-ggoncalves.github.io/Front-end/Vue.js/pokedex/dist", src: require('@/assets/img/Pokedex.png')},
+          { title: "Realiza Assessoria", data: "16-06-2022", relevance: 6.9, tech: [{ code: 6 }, { code: 13 }, { code: 1 }, { code: 3 }, { code: 8 }], doc: "https://github.com/douglas-ggoncalves/Node.js/blob/main/Realiza/README.md", src: require('@/assets/img/Realiza Assessoria.png')},
+          { title: "Sistema Maximus", data: "16-06-2022", relevance: 10, tech: [{ code: 4 }, { code: 6 }, { code: 1 }, { code: 5 }, { code: 2 }, { code: 16 }, { code: 7 }], doc: "https://github.com/douglas-ggoncalves/Full-Stack/tree/main/Sistema%20Maximus/backnode#readme", src: require('@/assets/img/Sistema Maximus.png')},
+          { title: "Spotify", data: "16-01-2022", relevance: 9, tech: [{ code: 0 }, { code: 1 }, { code: 2 }], src: require('@/assets/img/Spotify.png')},
+          { title: "Conversor de Moedas", data: "16-06-2022", relevance: 10, tech: [{ code: 4 }, { code: 1 }, { code: 10 }], link: "https://douglas-ggoncalves.github.io/Front-end/Vue.js/conversor/dist", src: require('@/assets/img/Conversor de Moedas.png')},
         ],
         selectedLanguages: [],
       }
@@ -428,8 +461,7 @@ html, body {
     .swiper-slide {
       background-position: center;
       background-size: cover;
-      //width: 300px; // 555
-      min-height: 520px;
+      min-height: 320px;
       height: auto;
     }
   }
@@ -438,6 +470,46 @@ html, body {
     position: relative;
     width: 15rem;
     bottom: 1rem;
+  }
+}
+
+@media (max-width: 420px) { 
+  .mySwiper {
+    .swiper-slide {
+      max-height: 380px;
+    }
+  }
+}
+
+@media (min-width: 420px) and (max-width: 620px) { 
+  .mySwiper {
+    .swiper-slide {
+      max-height: 420px;
+    }
+  }
+}
+
+@media (min-width: 620px) and (max-width: 1064px) { 
+  .mySwiper {
+    .swiper-slide {
+      max-height: 440px;
+    }
+  }
+}
+
+@media (min-width: 1064px) and (max-width: 1199px) { 
+  .mySwiper {
+    .swiper-slide {
+      max-height: 460px;
+    }
+  }
+}
+
+@media (min-width: 1200px) and (max-width: 1399px) { 
+  .mySwiper {
+    .swiper-slide {
+      min-height: 480px;
+    }
   }
 }
 
@@ -453,6 +525,14 @@ html, body {
           margin-left: 0rem !important;
         }
       }
+    }
+  }
+}
+
+@media (min-width: 1400px) { 
+  .mySwiper {
+    .swiper-slide {
+      min-height: 480px;
     }
   }
 }

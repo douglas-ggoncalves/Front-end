@@ -107,7 +107,6 @@ html {
   }
 
   .swiper-wrapper{
-    //min-height: 380px;
     min-height: 520px;
     border-radius: 8px !important;
   }
@@ -315,18 +314,56 @@ html {
   }
 }
 
+
+@media (max-width: 620px) { 
+  .mySwiper {
+    .swiper-wrapper{
+      max-height: 380px !important;
+      min-height: 380px;
+    }
+  }
+}
+
+@media (min-width: 620px) and (max-width: 1064px) { 
+  .mySwiper {
+    .swiper-wrapper{
+      max-height: 480px !important;
+      min-height: 480px;
+    }
+  }
+}
+
+@media (min-width: 1064px) and (max-width: 1199px) { 
+  .mySwiper {
+    .swiper-wrapper{
+      max-height: 480px !important;
+      min-height: 480px;
+    }
+  }
+}
+
 @media (min-width: 1264px) { 
   #home div.v-overlay__scrim{
     opacity: 0 !important;
   }
 }
 
-@media (min-width: 1200px) { 
+@media (min-width: 1200px) and (max-width: 1399px) { 
   .mySwiper {
-    min-height: 350px !important;
+    min-height: 500px !important;
   
     div.swiper-wrapper{
-      min-height: 350px !important;
+      min-height: 500px !important;
+    }
+  }
+}
+
+@media (min-width: 1400px) { 
+  .mySwiper {
+    min-height: 460px !important;
+  
+    div.swiper-wrapper{
+      min-height: 460px !important;
     }
   }
 }
