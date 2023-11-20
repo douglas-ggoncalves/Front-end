@@ -2,8 +2,8 @@ import { createI18n } from 'vue-i18n';
 import NavbarTranslations from './translations/NavbarMain';
 import HomePageTranslations from './translations/HomePage';
 import ProfileTranslations from './translations/ProfileSkills';
-import ProjectCards from './translations/ProjectCards';
-
+import ProjectCardsTranslations from './translations/ProjectCards';
+import ContactTranslations from './translations/Contact';
 
 const messages = {
   en: {
@@ -11,7 +11,8 @@ const messages = {
     ...NavbarTranslations.en,
     ...HomePageTranslations.en,
     ...ProfileTranslations.en,
-    ...ProjectCards.en,
+    ...ProjectCardsTranslations.en,
+    ...ContactTranslations.en,
     greetings: [
       { url: "home", title: "Home", icon: 'mdi-home' },
         { url: "skills", title: "Skills", icon: 'mdi-hammer-wrench' },
@@ -24,7 +25,8 @@ const messages = {
     ...NavbarTranslations.pt,
     ...HomePageTranslations.pt,
     ...ProfileTranslations.pt,
-    ...ProjectCards.pt,
+    ...ProjectCardsTranslations.pt,
+    ...ContactTranslations.pt,
     greetings: [
       { url: "home", title: "Home", icon: 'mdi-home' },
         { url: "skills", title: "Skills", icon: 'mdi-hammer-wrench' },
