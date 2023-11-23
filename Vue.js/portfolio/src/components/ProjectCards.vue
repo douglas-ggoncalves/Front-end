@@ -345,195 +345,195 @@ import { EffectCoverflow, Pagination, Navigation } from 'swiper/modules';
 </script>
 
 <style lang="scss" scoped>
-#app { height: 100% }
+  #app { height: 100% }
 
-html, body {
-  position: relative;
-  height: 100%;
-  background: #eee;
-  font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
-  font-size: 14px;
-  color: #000;
-}
-
-.v-theme--dark{
-  a{
-    color: white !important;
-  }
-
-    a{
-    &:hover{
-      border-bottom: 1px solid white !important;
-    }
-  }
-}
-
-.v-theme--light{
-  a{
-    color: black !important;
-  }
-
-    a{
-    &:hover{
-      border-bottom: 1px solid black !important;
-    }
-  }
-}
-  
-  
-#projects{
-  margin-top: 4.5rem;
-
-  h1{
-    padding-left: 0.4rem !important;
-  }
-
-  div.itens{
-    >div{
-      padding: 0 0.4rem !important;
-    }
-  }
-
-  .v-card-text{
-    >button{
-      padding: 0 10px;
-    }
-  }
-
-  .swiper {
-    width: 100%;
-    padding-top: 15px;
-    padding-bottom: 50px;
-    
-    .swiper-slide{
-      .content{
-        background: linear-gradient(to bottom,rgba(0,0,0,0),rgba(0,0,0,.75)) !important;
-        border-radius: 8px;
-        text-align: center;
-
-        div.projectTitle, div.projectSubTitle{
-          padding: 12px 0 !important;
-        }
-
-        div.v-card-actions{
-          padding: 0 !important;
-        }
-
-        h2{
-          font-size: 1.25rem;
-          display: inline;
-          margin-left: auto;
-        }
-        a{
-          font-size: 1.15rem;
-          display: inline;
-          margin: 0 .5rem;
-          border-bottom: 1px solid transparent;
-        }
-
-        a{
-          margin: 0 auto;
-        }
-      }
-    }
-    
-    .content {
-      position: absolute;
-      left: 0;
-      width: 100%;
-      bottom: 0;
-
-      button{
-        margin: 2px 4px 2px 0 !important;
-      }
-
-      h2, p{
-        padding-left: 18px;
-      }
-
-      p{
-        padding-bottom: 8px;
-      }
-    }
-  }
-
-  .mySwiper {
-    .swiper-slide {
-      background-position: center;
-      background-size: cover;
-      min-height: 320px;
-      height: auto;
-    }
-  }
-
-  .tranding-slider-control .swiper-pagination {
+  html, body {
     position: relative;
-    width: 15rem;
-    bottom: 1rem;
+    height: 100%;
+    background: #eee;
+    font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    color: #000;
   }
-}
 
-@media (max-width: 420px) { 
-  .mySwiper {
-    .swiper-slide {
-      max-height: 380px;
+  .v-theme--dark{
+    a{
+      color: white !important;
+    }
+
+      a{
+      &:hover{
+        border-bottom: 1px solid white !important;
+      }
     }
   }
-}
 
-@media (min-width: 420px) and (max-width: 620px) { 
-  .mySwiper {
-    .swiper-slide {
-      max-height: 420px;
+  .v-theme--light{
+    a{
+      color: black !important;
+    }
+
+      a{
+      &:hover{
+        border-bottom: 1px solid black !important;
+      }
     }
   }
-}
-
-@media (min-width: 620px) and (max-width: 1064px) { 
-  .mySwiper {
-    .swiper-slide {
-      max-height: 440px;
-    }
-  }
-}
-
-@media (min-width: 1064px) and (max-width: 1199px) { 
-  .mySwiper {
-    .swiper-slide {
-      max-height: 460px;
-    }
-  }
-}
-
-@media (min-width: 1200px) and (max-width: 1399px) { 
-  .mySwiper {
-    .swiper-slide {
-      min-height: 480px;
-    }
-  }
-}
-
-@media (min-width: 1264px) { 
+  
+  
   #projects{
+    margin-top: 4.5rem;
+
     h1{
-      padding-left: 1rem !important;
+      padding-left: 0.4rem !important;
     }
 
     div.itens{
       >div{
+        padding: 0 0.4rem !important;
+      }
+    }
+
+    .v-card-text{
+      >button{
+        padding: 0 10px;
+      }
+    }
+
+    .swiper {
+      width: 100%;
+      padding-top: 15px;
+      padding-bottom: 50px;
+      
+      .swiper-slide{
+        .content{
+          background: linear-gradient(to bottom,rgba(0,0,0,0),rgba(0,0,0,.75)) !important;
+          border-radius: 8px;
+          text-align: center;
+
+          div.projectTitle, div.projectSubTitle{
+            padding: 12px 0 !important;
+          }
+
+          div.v-card-actions{
+            padding: 0 !important;
+          }
+
+          h2{
+            font-size: 1.25rem;
+            display: inline;
+            margin-left: auto;
+          }
+          a{
+            font-size: 1.15rem;
+            display: inline;
+            margin: 0 .5rem;
+            border-bottom: 1px solid transparent;
+          }
+
+          a{
+            margin: 0 auto;
+          }
+        }
+      }
+      
+      .content {
+        position: absolute;
+        left: 0;
+        width: 100%;
+        bottom: 0;
+
+        button{
+          margin: 2px 4px 2px 0 !important;
+        }
+
+        h2, p{
+          padding-left: 18px;
+        }
+
+        p{
+          padding-bottom: 8px;
+        }
+      }
+    }
+
+    .mySwiper {
+      .swiper-slide {
+        background-position: center;
+        background-size: cover;
+        min-height: 320px;
+        height: auto;
+      }
+    }
+
+    .tranding-slider-control .swiper-pagination {
+      position: relative;
+      width: 15rem;
+      bottom: 1rem;
+    }
+  }
+
+  @media (max-width: 420px) { 
+    .mySwiper {
+      .swiper-slide {
+        max-height: 380px;
+      }
+    }
+  }
+
+  @media (min-width: 420px) and (max-width: 620px) { 
+    .mySwiper {
+      .swiper-slide {
+        max-height: 420px;
+      }
+    }
+  }
+
+  @media (min-width: 620px) and (max-width: 1064px) { 
+    .mySwiper {
+      .swiper-slide {
+        max-height: 440px;
+      }
+    }
+  }
+
+  @media (min-width: 1064px) and (max-width: 1199px) { 
+    .mySwiper {
+      .swiper-slide {
+        max-height: 460px;
+      }
+    }
+  }
+
+  @media (min-width: 1200px) and (max-width: 1399px) { 
+    .mySwiper {
+      .swiper-slide {
+        min-height: 480px;
+      }
+    }
+  }
+
+  @media (min-width: 1264px) { 
+    #projects{
+      h1{
+        padding-left: 1rem !important;
+      }
+
+      div.itens{
         >div{
-          margin-left: 0rem !important;
+          >div{
+            margin-left: 0rem !important;
+          }
         }
       }
     }
   }
-}
 
-@media (min-width: 1400px) { 
-  .mySwiper {
-    .swiper-slide {
-      min-height: 480px;
+  @media (min-width: 1400px) { 
+    .mySwiper {
+      .swiper-slide {
+        min-height: 480px;
+      }
     }
   }
-}
 </style>
