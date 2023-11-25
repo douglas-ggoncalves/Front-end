@@ -11,19 +11,19 @@
         
     </v-row>
     
-    <v-btn icon="mdi-arrow-down" class="my-arrow" variant="outlined" />
-
+    <v-btn icon="mdi-arrow-down" class="my-arrow" variant="outlined" @click="store.btnDown = !store.btnDown"/>
   </v-container>
 </template>
 
 <script>
 import 'animate.css';
-
+import { store } from '../store.js'
 export default {
   data(){
     return{
+      store
     }
-  }
+  },
 }
 </script>
 

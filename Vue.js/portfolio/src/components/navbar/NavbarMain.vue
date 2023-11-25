@@ -94,12 +94,12 @@ function toggleTheme () {
 <script>
 import '../../assets/style.css'
 import SideBar from './SideBar.vue'
-
+import { store } from '../../store.js'
 export default {
   props: {
     isOpen: {
       type: Boolean,
-      default: true
+      default: true,
     },
   },
   data(){
@@ -107,24 +107,25 @@ export default {
       themeDark: true,
       languageIndex: 0,
       drawer: null,
+      store
     }
   },
   methods: {
     navigateTo(targetId) {
-    // Encontre o elemento alvo
-    const targetElement = document.getElementById(targetId);
-    if (targetElement) {
-      // Calcule a posição desejada (posição do elemento - 10vh)
-      const vh = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0);
-      const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - (0.08 * vh);
-      
-      // Rolagem para a posição desejada
-      window.scrollTo({
-        top: targetPosition,
-        behavior: 'smooth'
-      });
-    }
-  },
+      // Encontre o elemento alvo
+      const targetElement = document.getElementById(targetId);
+      if (targetElement) {
+        // Calcule a posição desejada (posição do elemento - 10vh)
+        const vh = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0);
+        const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - (0.08 * vh);
+        
+        // Rolagem para a posição desejada
+        window.scrollTo({
+          top: targetPosition,
+          behavior: 'smooth'
+        });
+      }
+    },
     changeLanguage(item){
       var language = item == 0 ?  "pt": "en";
       this.languageIndex = item;
@@ -138,6 +139,11 @@ export default {
   computed: {
     linksInComputed() {
       return this.$tm('links');
+    }
+  },
+  watch: {
+    'store.btnDown': function () {
+      this.navigateTo("skills");
     }
   },
   components: {

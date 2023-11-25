@@ -314,6 +314,25 @@ html {
   }
 }
 
+#Contact{
+  .github {
+    i {
+      color: #6A37B2;
+    }
+  }
+
+  .linkedin {
+    i {
+      color: #0077B5;
+    }
+  }
+
+  .email {
+    i {
+      color: #F7BB4E;
+    }
+  }
+}
 
 @media (max-width: 620px) { 
   .mySwiper {
