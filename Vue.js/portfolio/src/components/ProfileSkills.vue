@@ -1,5 +1,5 @@
 <template>
-  <v-container fluid id="skills">
+  <v-container fluid class="d-flex align-center" id="skills">
     <v-row class="d-flex justify-center">
       <v-col class="" :cols="12" :lg="10" :xl="8">
         <v-row>
@@ -61,6 +61,8 @@ export default {
   }
 
   #skills{
+    min-height: 92vh !important;
+
     h1{
       padding-left: 0.4rem !important;
     }

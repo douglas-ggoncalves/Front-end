@@ -1,178 +1,180 @@
 <template>
-  <v-container fluid id="projects">
-    <v-row class="d-flex justify-center">
-      <v-col class="" :cols="12" :lg="10" :xl="8">
-        <v-row>
-          <h1>{{ $t('titleProjectCards') }}</h1>
-        </v-row>
+  <v-container fluid class="d-flex align-center" id="projects">
+    <v-container fluid>
+      <v-row class="d-flex justify-center">
+        <v-col class="" :cols="12" :lg="10" :xl="8">
+          <v-row>
+            <h1>{{ $t('titleProjectCards') }}</h1>
+          </v-row>
 
-        <v-row class="d-sm-flex justify-sm-start pb-0 itens">
-          <v-col class="d-sm-flex" :cols="12" :lg="10" :xl="8">
-            <v-col
-              class="pb-0 px-0 pb-sm-3 pr-sm-3 pl-lg-3"
-              :cols="12"
-              :sm="7"
-              :md="5"
-            >
-              <v-select
-                v-model="selectedLanguages"
-                :item-value="item => item"
-                :items="languages"
-                :label="$t('titleSelectLanguage')"
-                multiple
-                variant="outlined"
+          <v-row class="d-sm-flex justify-sm-start pb-0 itens">
+            <v-col class="d-sm-flex" :cols="12" :lg="10" :xl="8">
+              <v-col
+                class="pb-0 px-0 pb-sm-3 pr-sm-3 pl-lg-3"
+                :cols="12"
+                :sm="7"
+                :md="5"
               >
-                <template v-slot:prepend-item>
-                  <v-list-item
-                    :title="$t('labelSelect')"
-                    @click="toggle"
-                  >
-                    <template v-slot:prepend>
-                      <v-checkbox-btn
-                        :color="selectedSomeData ? 'white' : undefined"
-                        :indeterminate="selectedSomeData && !selectAllLanguage"
-                        :model-value="selectedSomeData"
-                      ></v-checkbox-btn>
-                    </template>
-                  </v-list-item>
-
-                  <v-divider class="mt-2"></v-divider>
-                </template>
-                <template v-slot:selection="{ item, index }">
-                  <v-chip v-if="index < 2">
-                    <span>{{ item.title }}</span>
-                  </v-chip>
-                  <span
-                    v-if="index === 2"
-                    class="text-grey text-caption align-self-center"
-                  >
-                    (+ {{ selectedLanguages.length - 2 }} {{ selectedLanguages.length - 2 == 1 ? ($t('spanOther')) : ($t('spanOthers')) }})
-                  </span>
-                </template>
-              </v-select>
-            </v-col>
-            
-            <v-col
-              class="pa-0 py-sm-3 "
-              :cols="12"
-              :sm="5"
-              :md="3"
-            >
-              <v-select
-                v-model="orderSelected" 
-                item-value="id"
-                :label="$t('titleOrderItems')"
-                :items="$tm('orderItems')"
-                variant="outlined"
-              ></v-select>
-            </v-col>
-          </v-col>
-        </v-row>
-
-        <v-row class="text-center mt-0 itens">
-          <v-col :cols="12">
-            <v-col
-              class="pb-0 px-0 pb-sm-3 pl-lg-3"
-              :cols="12"
-            >
-              <v-card
-                color="surface-variant"
-                variant="tonal"
-                v-if="sortedProjects.length == 0"
-                style="padding: 0 0.4rem !important;"
-              >
-                <v-card-text class="font-weight-black">
-                  {{ $t("noProjectsFound") }}
-                </v-card-text>
-              </v-card>
-            </v-col>
-          </v-col>
-        </v-row>
-      </v-col>
-    </v-row>
-
-    <v-row>
-      <v-col :cols="12">
-        <swiper
-          :key="swiperKey"
-          :navigation="true"
-          :effect="'coverflow'"
-          :grabCursor="true"
-          :centeredSlides="true"
-          :slidesPerView="swiperOptions.slidesPerView"
-          :initialSlide="2"
-          :coverflowEffect="{
-            rotate: 0,
-            stretch: 0,
-            depth: 100,
-            modifier: 2.8,
-            slideShadows: true,
-          }"
-          :spaceBetween="0"
-          :pagination="{
-            clickable: true
-          }"
-          
-          :modules="modules"
-          :clickable="true"
-          class="mySwiper"
-        >
-
-          <swiper-slide v-for="(project, index) in sortedProjects" :key="index" style="border-radius: 8px !important;">
-            <img 
-              :src="project.src" 
-              style="max-width: 100%; height: auto; object-fit: contain;  border-radius: 8px;"
-            />
-
-            <div class="content" style="">
-              <v-card>
-                <div class="projectTitle">
-                  <h2>{{ project.title }}</h2>
-                </div>
-                <v-divider class="border-opacity-20 mx-4"></v-divider>
-
-                <v-card-text style="padding-bottom: 10px !important; padding-top: 0 !important;">
-                  <div class="projectSubTitle">
-                    <h2>{{ $t('subTitleProjectCards') }}</h2>
-                  </div>
-                  <v-btn 
-                    :class="getClassIcon(tech.code)"
-                    :prepend-icon="getIcon(tech.code)"
-                    variant="outlined" 
-                    density="comfortable" 
-                    v-for="(tech, index) in project.tech" :key="index"
-                  >
-                    <span>{{ getLanguageTitle(tech.code) }}</span>
-                    <v-tooltip
-                      activator="parent"
-                      location="bottom"
+                <v-select
+                  v-model="selectedLanguages"
+                  :item-value="item => item"
+                  :items="languages"
+                  :label="$t('titleSelectLanguage')"
+                  multiple
+                  variant="outlined"
+                >
+                  <template v-slot:prepend-item>
+                    <v-list-item
+                      :title="$t('labelSelect')"
+                      @click="toggle"
                     >
-                      {{ getLanguageTitle(tech.code) }}
-                    </v-tooltip>
-                  </v-btn>
-                </v-card-text>
+                      <template v-slot:prepend>
+                        <v-checkbox-btn
+                          :color="selectedSomeData ? 'white' : undefined"
+                          :indeterminate="selectedSomeData && !selectAllLanguage"
+                          :model-value="selectedSomeData"
+                        ></v-checkbox-btn>
+                      </template>
+                    </v-list-item>
 
-                <v-card-actions>
-                   <a
-                    v-if="!project.link && !project.doc"
-                    target="blank"
-                    :href="`https://douglas-ggoncalves.github.io/Front-end/${project.title}`"
-                    >{{ $t('accessWebsite') }}</a
-                  >
-                  <a v-if="project.link && !project.doc" target="blank" :href="`${project.link}`"
-                    >{{ $t('accessWebsite') }}</a
-                  >
-                  <a v-if="project.doc" target="blank" :href="`${project.doc}`"
-                    >Acessar Documentação</a
-                  >
-                </v-card-actions>
-              </v-card>
-            </div>
-          </swiper-slide>
-        </swiper>
+                    <v-divider class="mt-2"></v-divider>
+                  </template>
+                  <template v-slot:selection="{ item, index }">
+                    <v-chip v-if="index < 2">
+                      <span>{{ item.title }}</span>
+                    </v-chip>
+                    <span
+                      v-if="index === 2"
+                      class="text-grey text-caption align-self-center"
+                    >
+                      (+ {{ selectedLanguages.length - 2 }} {{ selectedLanguages.length - 2 == 1 ? ($t('spanOther')) : ($t('spanOthers')) }})
+                    </span>
+                  </template>
+                </v-select>
+              </v-col>
+              
+              <v-col
+                class="pa-0 py-sm-3 "
+                :cols="12"
+                :sm="5"
+                :md="3"
+              >
+                <v-select
+                  v-model="orderSelected" 
+                  item-value="id"
+                  :label="$t('titleOrderItems')"
+                  :items="$tm('orderItems')"
+                  variant="outlined"
+                ></v-select>
+              </v-col>
+            </v-col>
+          </v-row>
 
-      </v-col>
-    </v-row>
+          <v-row class="text-center mt-0 itens">
+            <v-col :cols="12">
+              <v-col
+                class="pb-0 px-0 pb-sm-3 pl-lg-3"
+                :cols="12"
+              >
+                <v-card
+                  color="surface-variant"
+                  variant="tonal"
+                  v-if="sortedProjects.length == 0"
+                  style="padding: 0 0.4rem !important;"
+                >
+                  <v-card-text class="font-weight-black">
+                    {{ $t("noProjectsFound") }}
+                  </v-card-text>
+                </v-card>
+              </v-col>
+            </v-col>
+          </v-row>
+        </v-col>
+      </v-row>
+
+      <v-row>
+        <v-col :cols="12">
+          <swiper
+            :key="swiperKey"
+            :navigation="true"
+            :effect="'coverflow'"
+            :grabCursor="true"
+            :centeredSlides="true"
+            :slidesPerView="swiperOptions.slidesPerView"
+            :initialSlide="2"
+            :coverflowEffect="{
+              rotate: 0,
+              stretch: 0,
+              depth: 100,
+              modifier: 2.8,
+              slideShadows: true,
+            }"
+            :spaceBetween="0"
+            :pagination="{
+              clickable: true
+            }"
+            
+            :modules="modules"
+            :clickable="true"
+            class="mySwiper"
+          >
+
+            <swiper-slide v-for="(project, index) in sortedProjects" :key="index" style="border-radius: 8px !important;">
+              <img 
+                :src="project.src" 
+                style="max-width: 100%; height: auto; object-fit: contain;  border-radius: 8px;"
+              />
+
+              <div class="content" style="">
+                <v-card>
+                  <div class="projectTitle">
+                    <h2>{{ project.title }}</h2>
+                  </div>
+                  <v-divider class="border-opacity-20 mx-4"></v-divider>
+
+                  <v-card-text style="padding-bottom: 10px !important; padding-top: 0 !important;">
+                    <div class="projectSubTitle">
+                      <h2>{{ $t('subTitleProjectCards') }}</h2>
+                    </div>
+                    <v-btn 
+                      :class="getClassIcon(tech.code)"
+                      :prepend-icon="getIcon(tech.code)"
+                      variant="outlined" 
+                      density="comfortable" 
+                      v-for="(tech, index) in project.tech" :key="index"
+                    >
+                      <span>{{ getLanguageTitle(tech.code) }}</span>
+                      <v-tooltip
+                        activator="parent"
+                        location="bottom"
+                      >
+                        {{ getLanguageTitle(tech.code) }}
+                      </v-tooltip>
+                    </v-btn>
+                  </v-card-text>
+
+                  <v-card-actions>
+                    <a
+                      v-if="!project.link && !project.doc"
+                      target="blank"
+                      :href="`https://douglas-ggoncalves.github.io/Front-end/${project.title}`"
+                      >{{ $t('accessWebsite') }}</a
+                    >
+                    <a v-if="project.link && !project.doc" target="blank" :href="`${project.link}`"
+                      >{{ $t('accessWebsite') }}</a
+                    >
+                    <a v-if="project.doc" target="blank" :href="`${project.doc}`"
+                      >Acessar Documentação</a
+                    >
+                  </v-card-actions>
+                </v-card>
+              </div>
+            </swiper-slide>
+          </swiper>
+
+        </v-col>
+      </v-row>
+    </v-container>
   </v-container>
 </template>
 
@@ -379,9 +381,9 @@ import { EffectCoverflow, Pagination, Navigation } from 'swiper/modules';
       }
     }
   }
-  
-  
+
   #projects{
+    min-height: 92vh !important;
     margin-top: 4.5rem;
 
     h1{

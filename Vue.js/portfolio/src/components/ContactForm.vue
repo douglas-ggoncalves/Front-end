@@ -5,13 +5,12 @@
         <v-row>
           <h1>{{ $t('titleContact') }}</h1>
         </v-row>
-
       </v-col>
 
       <v-col class="d-flex justify-center px-0" :cols="12" :lg="10" :xl="8">
         <v-col class="px-0" :cols="12">
           <v-col :cols="12" class="px-0">
-            <v-text-field v-model="name" clearable :label="$t('nameContact')" variant="outlined" :rules="[rules.minCharacters]"></v-text-field>
+            <v-text-field v-model="name" :label="$t('nameContact')" variant="outlined" :rules="[rules.minCharacters]"></v-text-field>
           </v-col>
 
           <v-col :cols="12" class="pa-0 pb-2">
@@ -33,28 +32,6 @@
             <v-btn variant="outlined" type="submit" :loading="loading">
               {{ $t('sendMessage') }}
             </v-btn>
-          </v-col>
-
-          <v-col :cols="12" class="d-flex justify-center mt-5">
-            <a
-              v-for="(item, index) in this.$tm('socialItems')"
-              :key="index"
-              :href="item.URL"
-              target="_blank"
-              class="mx-1"
-            >
-              <v-btn
-                class="buttons"
-                :class="item.icon"
-                :prepend-icon="'mdi-' + item.icon"
-                variant="outlined"
-              >
-                {{ item.title }}
-                <v-tooltip activator="parent" location="bottom">
-                  {{ item.tooltipText }}
-                </v-tooltip>
-              </v-btn>
-            </a>
           </v-col>
         </v-col>
       </v-col>
@@ -88,21 +65,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  .v-theme--light {
-    .buttons{
-      color: #000000 !important;
-    }
-  }
-
-  .v-theme--dark {
-    .buttons{
-      color: white !important;;
-    }
-  }
-
   #Contact{
-    height: 92vh !important;
-
+    min-height: 92vh !important;
     padding-bottom: 5rem !important;
     padding-top: 5rem !important;
   }
