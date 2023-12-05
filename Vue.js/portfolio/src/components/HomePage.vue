@@ -4,7 +4,7 @@
       <v-col :cols="12" :md="10" :xl="6" class="animate__animated animate__lightSpeedInRight">
         <h1>Douglas Gonçalves</h1>
         <h2 class="mb-3">
-          Como desenvolvedor, meu objetivo é criar soluções que combinem funcionalidade com design responsivo, focando sempre em qualidade e performance. Adoro novos desafios e estou sempre pronto para aprender.
+          {{ $t('titleHomePage') }}
         </h2>
       </v-col>
 

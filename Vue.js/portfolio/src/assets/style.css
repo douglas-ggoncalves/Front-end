@@ -210,14 +210,11 @@ body.darkScrollbar {
   color: #7CB333;
 }
 
-#Footer .github i {
-  color: #6A37B2;
+.contactLink {
+  display: block;
 }
-#Footer .linkedin i {
-  color: #0077B5;
-}
-#Footer .email i {
-  color: #F7BB4E;
+.contactLink i {
+  font-size: 2rem !important;
 }
 
 @media (max-width: 620px) {

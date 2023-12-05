@@ -6,7 +6,6 @@
       <ProfileSkills />
       <ProjectCards />
       <ContactForm />
-      <FooterForm />
     </v-main>
   </v-app>
 </template>
@@ -16,7 +15,6 @@ import HomePage from './components/HomePage';
 import ProfileSkills from './components/ProfileSkills';
 import ProjectCards from './components/ProjectCards';
 import ContactForm from './components/ContactForm';
-import FooterForm from './components/FooterForm';
 
 export default {
   components: {
@@ -25,7 +23,6 @@ export default {
     ProfileSkills,
     ProjectCards,
     ContactForm,
-    FooterForm
   },
   data() {
     return {

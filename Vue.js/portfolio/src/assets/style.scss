@@ -40,39 +40,39 @@ html {
 }
 
 /* Start Style ScroolBar */
-    // Specific to Webkit browsers such as Chrome, Safari and new versions of Microsoft Edge.
-    body.darkScrollbar::-webkit-scrollbar {
-      height: 1rem;
-      width: 0.9rem;
-    }
+// Specific to Webkit browsers such as Chrome, Safari and new versions of Microsoft Edge.
+body.darkScrollbar::-webkit-scrollbar {
+  height: 1rem;
+  width: 0.9rem;
+}
 
-    body.darkScrollbar::-webkit-scrollbar-thumb {
-      background-color: rgba(217,217,227,0.2);
-      border-color: rgba(255,255,255, 0.29);
-      border-radius: 9999px;
-      border-width: 1px;
-    }
+body.darkScrollbar::-webkit-scrollbar-thumb {
+  background-color: rgba(217,217,227,0.2);
+  border-color: rgba(255,255,255, 0.29);
+  border-radius: 9999px;
+  border-width: 1px;
+}
 
-    body.darkScrollbar::-webkit-scrollbar-track {
-      background-color: black;
-    }
+body.darkScrollbar::-webkit-scrollbar-track {
+  background-color: black;
+}
 
-    // Specific to Firefox
-    body.darkScrollbar {
-      scrollbar-width: thin;
-      scrollbar-color: rgba(217,217,227,0.2) black  ;
-    }
+// Specific to Firefox
+body.darkScrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(217,217,227,0.2) black  ;
+}
 
-    // Specific to Internet Explorer
-    body.darkScrollbar {
-      scrollbar-face-color: rgba(217,217,227,0.2);
-      scrollbar-track-color: black;
-      scrollbar-shadow-color: black;
-      scrollbar-highlight-color: black;
-      scrollbar-3dlight-color: black;
-      scrollbar-darkshadow-color: black;
-      scrollbar-arrow-color: rgba(217,217,227,0.2);
-    }
+// Specific to Internet Explorer
+body.darkScrollbar {
+  scrollbar-face-color: rgba(217,217,227,0.2);
+  scrollbar-track-color: black;
+  scrollbar-shadow-color: black;
+  scrollbar-highlight-color: black;
+  scrollbar-3dlight-color: black;
+  scrollbar-darkshadow-color: black;
+  scrollbar-arrow-color: rgba(217,217,227,0.2);
+}
 /* End Style ScroolBar */
 
 .v-application .v-list  a {
@@ -314,23 +314,11 @@ html {
   }
 }
 
-#Footer{
-  .github {
-    i {
-      color: #6A37B2;
-    }
-  }
+.contactLink{
+  display: block;
 
-  .linkedin {
-    i {
-      color: #0077B5;
-    }
-  }
-
-  .email {
-    i {
-      color: #F7BB4E;
-    }
+  i{
+    font-size: 2rem !important;
   }
 }
 

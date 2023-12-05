@@ -4,6 +4,7 @@ import HomePageTranslations from './translations/HomePage';
 import ProfileTranslations from './translations/ProfileSkills';
 import ProjectCardsTranslations from './translations/ProjectCards';
 import ContactTranslations from './translations/Contact';
+import Footer from './translations/Footer';
 
 const messages = {
   en: {
@@ -13,6 +14,7 @@ const messages = {
     ...ProfileTranslations.en,
     ...ProjectCardsTranslations.en,
     ...ContactTranslations.en,
+    ...Footer.en,
     greetings: [
       { url: "home", title: "Home", icon: 'mdi-home' },
         { url: "skills", title: "Skills", icon: 'mdi-hammer-wrench' },
@@ -27,6 +29,7 @@ const messages = {
     ...ProfileTranslations.pt,
     ...ProjectCardsTranslations.pt,
     ...ContactTranslations.pt,
+    ...Footer.pt,
     greetings: [
       { url: "home", title: "Home", icon: 'mdi-home' },
         { url: "skills", title: "Skills", icon: 'mdi-hammer-wrench' },

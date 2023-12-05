@@ -9,6 +9,7 @@ export default {
         nameContact: "Type your Name",
         emailContact: "Enter your Email",
         messageContact: "Leave your Message",
+        waitMessage: "Please stand by",
         socialItems: [
             { title: 'GitHub', icon: 'github', tooltipText: "Visit My Page on Github", URL: "https://github.com/douglas-ggoncalves" },
             { title: 'Email', icon: 'email', tooltipText: "Contact Me via Email", URL: "mailto:douglasdepaula10@hotmail.com" }, 
@@ -26,6 +27,7 @@ export default {
         nameContact: "Digite seu Nome",
         emailContact: "Informe seu e-mail",
         messageContact: "Deixe sua Mensagem",
+        waitMessage: "Por favor Aguarde",
         socialItems: [
             { title: 'GitHub', icon: 'github', tooltipText: "Visite Minha Página no Github", URL: "https://github.com/douglas-ggoncalves" },
             { title: 'E-mail', icon: 'email', tooltipText: "Contate-me via E-mail", URL: "mailto:douglasdepaula10@hotmail.com" },

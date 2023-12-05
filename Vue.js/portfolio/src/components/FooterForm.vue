@@ -1,44 +1,32 @@
 <template>
   <v-container fluid class="d-flex align-center" id="Footer">
-    <v-row class="d-flex justify-center">
-      <v-col class="d-flex justify-center px-0" :cols="12" :lg="10" :xl="8">
-        <v-col class="px-0" :cols="12">
-          <v-col :cols="12" class="d-flex justify-center mt-5">
-            <a
-              v-for="(item, index) in this.$tm('socialItems')"
-              :key="index"
-              :href="item.URL"
-              target="_blank"
-              class="mx-1"
-            >
-              <v-btn
-                class="buttons"
-                :class="item.icon"
-                :prepend-icon="'mdi-' + item.icon"
-                variant="outlined"
-              >
-                {{ item.title }}
-                <v-tooltip activator="parent" location="bottom">
-                  {{ item.tooltipText }}
-                </v-tooltip>
-              </v-btn>
-            </a>
-          </v-col>
-        </v-col>
+    <v-row>
+      <v-col class="d-flex justify-center" :cols="12">
+        <v-btn prepend-icon="mdi-arrow-up" class="my-arrow" variant="outlined" @click="store.btnUP = !store.btnUP">
+          {{ $t('btnFooterDesc') }}
+        </v-btn>
+      </v-col>
+
+      <v-col class="d-flex justify-center" style="user-select: none;" :cols="12">
+        © {{ currentYear }} Douglas Gonçalves | {{ $t('thanksFooter') }}
       </v-col>
     </v-row>
   </v-container>
 </template>
 
 <script>
+import { store } from '../store.js'
 import '../assets/style.css'
 
 export default {
   data(){
     return{
-      
+      store
     }
   },
+  created() {
+    this.currentYear = new Date().getFullYear();
+  }
 }
 </script>
 
@@ -55,16 +43,27 @@ export default {
     }
   }
 
-  .v-theme--light{
-    h1{
-        
+  div#Footer{
+    .buttons{
+      border-radius: .25rem !important;
+      width: 70px !important;
+      height: 38px !important;
+    }
+
+    .my-arrow {
+      position: absolute; 
+      bottom: 1.5%; 
+     // left: 50%;
+      animation: arrow-bounce 2s infinite;
+    }
+
+    @keyframes arrow-bounce {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-10px);
+      }
     }
   }
-
-  div#Footer{
-    
-  }
-
-
-  
 </style>

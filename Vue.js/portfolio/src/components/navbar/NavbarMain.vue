@@ -95,6 +95,7 @@ function toggleTheme () {
 import '../../assets/style.css'
 import SideBar from './SideBar.vue'
 import { store } from '../../store.js'
+
 export default {
   props: {
     isOpen: {
@@ -144,6 +145,9 @@ export default {
   watch: {
     'store.btnDown': function () {
       this.navigateTo("skills");
+    },
+    'store.btnUP': function () {
+      this.navigateTo("HomePage");
     }
   },
   components: {

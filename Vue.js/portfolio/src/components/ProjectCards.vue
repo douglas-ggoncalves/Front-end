@@ -164,7 +164,7 @@
                       >{{ $t('accessWebsite') }}</a
                     >
                     <a v-if="project.doc" target="blank" :href="`${project.doc}`"
-                      >Acessar Documentação</a
+                      >{{ $t('accessDocumentation') }}</a
                     >
                   </v-card-actions>
                 </v-card>
